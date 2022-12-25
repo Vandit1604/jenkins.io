@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins requires Java 11 or newer
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Beginning with Jenkins 2.357, Jenkins requires Java 11.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/blog/2022/06/28/require-java-11/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins requires Java 11 or newer" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins requires Java 11 or newer" name="twitter:title">
+<meta content="Beginning with Jenkins 2.357, Jenkins requires Java 11.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/jemkins.io-5818/images/post-images/2022-06-require-java-11/jenkins-requires-java-11.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins requires Java 11 or newer" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/blog/2022/06/28/require-java-11/" property="og:url">
+<meta content="Beginning with Jenkins 2.357, Jenkins requires Java 11.
+" name="og:description">
+<meta content="Jenkins requires Java 11 or newer" property="og:site_name">
+<meta content="/jenkins.io/jemkins.io-5818/images/post-images/2022-06-require-java-11/jenkins-requires-java-11.png" name="og:image">
+<link href="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/jemkins.io-5818/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="/jenkins.io/jemkins.io-5818/">
+Jenkins
+</a>
+<button class="navbar-toggler" data-bs-target="#CollapsingNavbar" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+<!-- starting partial cdf_logo.html.haml -->
+<svg width="36" height="18" xmlns="http://www.w3.org/2000/svg" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3.23 44.77 362.70 271.95"><defs><linearGradient id="a" x1="359.765" x2="104.082" y1="134.295" y2="124.577" gradientTransform="matrix(1 0 0 -1 0 439.068)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ed1c24"/><stop offset="1" stop-color="#f7941d"/></linearGradient><linearGradient id="b" x1="355.202" x2="99.519" y1="254.467" y2="244.749" xlink:href="#a"/><linearGradient id="c" x1="183.903" x2="10.612" y1="227.598" y2="221.023" xlink:href="#a"/><linearGradient id="d" x1="367.119" x2="157.995" y1="265.311" y2="257.091" xlink:href="#a"/></defs><path fill="#c49a6c" d="M231.52 309.278c2.483-.332 4.895-.77 7.255-1.329s4.649-1.206 6.991-1.957c13.494-4.58 25.187-12.952 36.374-24.593l-.14-.175c-14.944 15.486-30.693 25.344-50.48 28.054z"/><path fill="url(#a)" d="M224.232 309.96h.332c1.084 0 2.15-.14 3.216-.228a93.844 93.844 0 0 1-3.233.227z"/><path fill="url(#b)" d="M284.692 187.187l-.122.192.122-.192z"/><path fill="url(#c)" d="M146.145 231.847a150.844 150.844 0 0 1-12.97 15.862c-7.582 7.889-15.507 13.563-24.652 16.667a47.832 47.832 0 0 1-4.738 1.326 56.959 56.959 0 0 1-4.916.9 38.32 38.32 0 0 1-1.682.214l-.912.083c-.723.059-1.445.118-2.18.154h-3.068a42.325 42.325 0 0 1-9.192-1.043 49.977 49.977 0 0 1-6.764-2.002 43.097 43.097 0 0 1-4.525-1.954c-1.493-.77-2.961-1.516-4.407-2.37a59.5 59.5 0 0 1-17.105-15.399 59.714 59.714 0 0 1-2.914-4.311 53.09 53.09 0 0 1-1.291-2.263 51.985 51.985 0 0 1-2.263-4.738 46.72 46.72 0 0 1 0-36.426 51.986 51.986 0 0 1 2.263-4.738 54.14 54.14 0 0 1 1.291-2.263 59.742 59.742 0 0 1 2.914-4.311 59.714 59.714 0 0 1 17.105-15.4 60.828 60.828 0 0 1 4.407-2.369q2.217-1 4.525-1.777a49.976 49.976 0 0 1 6.906-2.073 42.325 42.325 0 0 1 9.192-1.042h3.128c.722 0 1.445.094 2.155.154l1.043.106 1.019.119c1.8.237 3.553.557 5.271.96.853.2 1.694.426 2.523.663a51.186 51.186 0 0 1 11.846 5.176 59.645 59.645 0 0 1 4.395 2.89 74.485 74.485 0 0 1 8.386 7.108q2.038 1.99 4.063 4.193l.083-.13a159.395 159.395 0 0 1 11.064 13.942c5.437-8.576 13.658-21.464 16.584-25.74 1.185-1.718 2.37-3.46 3.66-5.212-13.54-16.513-29.827-30.23-51.587-36.082h-.154a89.397 89.397 0 0 0-3.187-.794l-.45-.107a92.565 92.565 0 0 0-3.151-.627l-.628-.119a80.578 80.578 0 0 0-3.743-.569h-.142a58.29 58.29 0 0 0-2.073-.236h-.391l-1.872-.166h-.568l-1.754-.119h-.675l-1.777-.07h-3.115c-46.447-.25-87.125 40.476-87.125 86.911s40.725 87.173 87.172 87.173h3.14l1.729-.071h.734l1.67-.095h.676l1.706-.154h.568l1.813-.213.414-.06 1.967-.272h.213a125.91 125.91 0 0 0 3.553-.628l.652-.142c.96-.201 1.907-.415 2.855-.64l.58-.142a86.66 86.66 0 0 0 3.009-.817l.237-.071c20.73-6.077 36.425-19.392 49.55-35.277-2.037-3.068-3.4-5.366-4.039-6.48z"/><path fill="url(#d)" d="M318.05 51.733v94.66a85.514 85.514 0 0 0-52.595-18.729h-3.115l-1.777.072-.7.047-1.752.118h-.569l-1.871.166h-.391c-.7.071-1.386.142-2.073.237h-.154c-1.256.154-2.5.355-3.732.569l-.628.118c-1.066.19-2.108.403-3.15.628l-.45.107c-30.35 6.858-50.333 28.808-66.822 52.82-.7 1.018-1.35 2.049-2.038 3.068-2.25 3.423-5.46 8.422-8.635 13.397-4.17 6.527-8.292 13.03-9.939 15.66l20.624 32.137s21.997 40.465 61.68 51.482l.237.07c.995.297 2.002.558 3.009.818l.58.142c.936.237 1.896.439 2.855.64l.652.142c1.184.225 2.369.439 3.553.628h.214l1.966.273.415.059 1.812.213h.569l1.705.154h.676l1.67.095h.734l1.73.07h3.139c54.703 0 86.355-30.964 87.149-85.063V51.733zm-52.595 215.403h-3.068c-.734 0-1.457-.095-2.18-.154l-.912-.083c-.568-.06-1.125-.13-1.682-.213a49.077 49.077 0 0 1-9.571-2.275 49.612 49.612 0 0 1-6.634-2.83 55.792 55.792 0 0 1-6.254-3.768 63.068 63.068 0 0 1-3.009-2.215 82.399 82.399 0 0 1-8.683-7.925l-.095.119c-1.255-1.303-2.487-2.69-3.731-4.11-.154-.167-.296-.356-.45-.534-.628-.722-1.256-1.445-1.884-2.215s-1.125-1.398-1.682-2.097-.888-1.101-1.338-1.682a184.467 184.467 0 0 1-6.053-8.292c-.7-.995-1.398-2.025-2.109-3.056-.379-.569-.77-1.184-1.185-1.73-.675-1.018-1.362-2.013-2.049-3.056l-.355-.545c-1.185-1.812-2.37-3.684-3.649-5.603q2.95-4.608 5.817-8.86c1.907-2.831 3.79-5.556 5.662-8.138s3.72-5.046 5.591-7.38 3.72-4.525 5.603-6.586q2.026-2.203 4.063-4.194c1.374-1.338 2.748-2.594 4.158-3.778s2.807-2.287 4.252-3.329a57.594 57.594 0 0 1 7.748-4.62c.331-.166.663-.367 1.006-.533l.226-.118c1.41-.652 2.843-1.185 4.3-1.73l.485-.201c.273-.083.557-.142.83-.237a44.943 44.943 0 0 1 3.34-.948l1.374-.343a60.798 60.798 0 0 1 4.738-.841l1.019-.119 1.042-.106c.711 0 1.434-.119 2.156-.154h3.128a42.431 42.431 0 0 1 4.572.26 48.011 48.011 0 0 1 6.93 1.35c1.54.427 3.08.925 4.596 1.505a48.724 48.724 0 0 1 4.525 1.955c1.493.722 2.961 1.516 4.407 2.369s2.866 1.8 4.24 2.784 2.725 2.049 4.028 3.174a58.459 58.459 0 0 1 8.837 9.477 59.73 59.73 0 0 1 2.914 4.312 51.067 51.067 0 0 1 5.318 11.916 47.38 47.38 0 0 1 1.185 5.165 45.567 45.567 0 0 1 .71 8.09c.072 35.964-16.062 52.122-52.227 52.122z"/></svg>
+
+<!-- ending partial cdf_logo.html.haml -->
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://cd.foundation/">
+What is CDF?
+</a>
+<a class="dropdown-item feature" href="https://jenkins-x.io/">
+Jenkins X
+</a>
+<a class="dropdown-item feature" href="https://tekton.dev/">
+Tekton
+</a>
+<a class="dropdown-item feature" href="https://www.spinnaker.io/">
+Spinnaker
+</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="active nav-item">
+<a class="nav-link" href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/book/">
+<strong>
+User Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/installing/">
+&nbsp;-&nbsp;Installing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/">
+&nbsp;-&nbsp;Jenkins Pipeline
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/managing/">
+&nbsp;-&nbsp;Managing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/security/">
+&nbsp;-&nbsp;Securing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/system-administration/">
+&nbsp;-&nbsp;System Administration
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/troubleshooting/">
+&nbsp;-&nbsp;Troubleshooting Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/glossary/">
+&nbsp;-&nbsp;Terms and Definitions
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/solutions/">
+<strong>
+Solution Pages
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+<strong>
+Tutorials
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/pipeline/tour/getting-started/">
+&nbsp;-&nbsp;Guided Tour
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+&nbsp;-&nbsp;More Tutorials
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/developer/">
+<strong>
+Developer Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/participate/">
+<strong>
+Contributor Guide
+</strong>
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/participate/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/chat/" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+Meet
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+<a class="dropdown-item feature" href="https://community.jenkins.io/">
+Forum
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins.io/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/mailing-lists/" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/ux/">
+&nbsp;-&nbsp;User Experience
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+CI/CD and Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jenkins-operator/">
+Jenkins Operator
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/remoting/">
+Jenkins Remoting
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/press/">
+Press
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/conduct/">
+Conduct
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/books/">
+Books
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/zh/">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item searchbox">
+<input aria-label="Search" class="form-control searchbox" placeholder="Search" type="search">
+</li>
+<li class="nav-item download-btn">
+<a class="nav-link btn btn-outline-secondary" href="/jenkins.io/jemkins.io-5818/download/">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/jemkins.io-5818/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins requires Java 11 or newer
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/basil/"><div class="app-avatar"></div> Basil Crow</a>
+June 28, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+requires+Java+11+or+newer&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Fjemkins.io-5818%2Fblog%2F2022%2F06%2F28%2Frequire-java-11%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/post-images/2022-06-require-java-11/jenkins-requires-java-11.png" alt="Jenkins requires Java 11" width="400px"></span></p>
+</div>
+<div class="paragraph">
+<p>The Jenkins project is committed to delivering a world-class platform experience for end users and developers alike.
+At the core of this experience is <a href="https://www.java.com/">Java</a>, an <a href="https://dl.acm.org/doi/10.1145/154766.155364">object-oriented</a> programming language with a cross-platform runtime in the form of the <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java virtual machine (JVM)</a>.
+Since its inception, the Jenkins project has been a major consumer of Java, distributing over 1,800 plugins to an installed base of over 300,000 controllers,
+and Jenkins regularly appears on <a href="https://blogs.oracle.com/javamagazine/post/the-top-25-greatest-java-apps-ever-written">lists of the top Java applications of all time</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Beginning with Jenkins 2.357 (released on June 28, 2022) and the forthcoming 2.361.1 LTS release, Jenkins requires Java 11 or newer.</strong>
+Additionally, beginning with Jenkins 2.355 (released on June 14, 2022) and Jenkins 2.346.1 LTS (released on June 22, 2022), Jenkins supports Java 17.
+Plugins have already been prepared in <a href="https://issues.jenkins.io/browse/JENKINS-68446">JENKINS-68446</a>.
+<strong>Use the Plugin Manager to upgrade all plugins before <em>and</em> after upgrading to Jenkins 2.357.</strong></p>
+</div>
+<div class="paragraph">
+<p>Long-time Jenkins users and Java developers may recall previous migrations to Java 7 and Java 8.
+While these migrations were not trivial, they pale in comparison to the magnitude of the migration to Java 9 and beyond.
+Java 9 represents a <a href="https://en.wikipedia.org/wiki/Sea_change_(idiom)">sea change</a> in the Java ecosystem across many dimensions.
+Not only are there changes to licensing policies, versioning schemes, release cadences, and long-term support (LTS) cycles,
+but also there are a number of significant technical changes to the language and runtime (e.g., <a href="https://openjdk.org/projects/jigsaw/">Project Jigsaw</a>),
+not all of them retaining the high levels of compatibility that characterized previous releases.
+Although these evolutionary changes are likely to be in the best interests of the Java community in the long term,
+it is nevertheless incumbent on the community to be aware of the impact and to plan accordingly.</p>
+</div>
+<div class="paragraph">
+<p>In this blog post, we will discuss the Jenkins project&#8217;s migration to Java 11 and Java 17,
+reflecting on it in the context of previous Java migrations within the Jenkins project and the Java community more broadly.
+We will summarize the benefits and risks and describe the upgrade process.
+Finally, we will share a glimpse at what is coming in future releases.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="history"><a class="anchor" href="#history"></a>History</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since its inception in 2005, the Jenkins (then Hudson) project has gone through a number of Java migrations.
+To a large degree, the present migration is consistent with historical precedent within the Jenkins project.
+For years the Jenkins project has published <a href="http://stats.jenkins.io">anonymous usage statistics</a>,
+as described in <a href="https://brokenco.de/2019/05/23/jenkins-usage-stats.html">a piece by R. Tyler Croy</a> and <a href="https://github.com/jenkins-infra/jenkins-usage-stats">recently revised by Andrew Bayer</a>,
+which enable us to quantify past and present trends.</p>
+</div>
+<div class="sect2">
+<h3 id="data"><a class="anchor" href="#data"></a>Data</h3>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-06-require-java-11/jvms.png" alt="JVMS by Date"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="analysis"><a class="anchor" href="#analysis"></a>Analysis</h3>
+<div class="paragraph">
+<p>The above data reveals that the lifecycle of each major Java version is clearly a Gaussian function.
+Each major version of Java is released by the vendor,
+begins a phase of rapidly growing adoption,
+reaches a usage peak,
+loses support from the Jenkins project,
+begins a decline in usage,
+declines in usage to a terminal state,
+and finally reaches vendor end-of-life (EOL),
+in roughly that order.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Java 6</th>
+<th class="tableblock halign-left valign-top">Java 7</th>
+<th class="tableblock halign-left valign-top">Java 8</th>
+<th class="tableblock halign-left valign-top">Java 11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Vendor release date</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">December 11, 2006</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">July 7, 2011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 18, 2014</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">September 25, 2018</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Rapid adoption</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">October 2009<br>
+(11,193 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">February 2013<br>
+(10,997 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">February 2015<br>
+(12,210 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">November 2019<br>
+(10,094 installations)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Peak usage</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 2013<br>
+(47,244 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">June 2015<br>
+(68,681 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">February 2021<br>
+(261,468 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Jenkins weeklies require next major version</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">May 2015<br>
+(21,798 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 2017<br>
+(40,569 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">June 2022<br>
+(185,286 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Terminal decline in usage</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">May 2016<br>
+(10,283 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 2019<br>
+(10,123 installations)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Vendor End of Life (EOL)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">December 31, 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">July 31, 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://adoptium.net/support/">At least November 2026</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://adoptium.net/support/">At least October 2024</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Extrapolating further, one can observe the following trends:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It takes at least a year for Jenkins users to begin to adopt a new release of Java.</p>
+</li>
+<li>
+<p>Once Jenkins users begin to adopt a new version of Java, usage of the preceding Java version eventually reaches a peak and begins to decline.</p>
+</li>
+<li>
+<p>The Jenkins project has historically started requiring a new Java version roughly halfway through the period of decline of the preceding Java version.</p>
+</li>
+<li>
+<p>Once Jenkins requires a given Java version, usage of the preceding Java version continues to decline until it reaches a terminal stage of decline.</p>
+</li>
+<li>
+<p>The abovementioned terminal stage of decline typically correlates with the end of active support from the Java vendor.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h3>
+<div class="paragraph">
+<p>Critically, the Jenkins project has never required a given version of Java until the preceding version is clearly declining in usage.
+This reduces risk by ensuring that the majority of users are successfully running the new version in production.
+Conversely, the requirement of a new Java version for Jenkins users incentivizes the remaining users to upgrade
+and prevents users who are reluctant to upgrade from putting the project at risk by continuing to rely on a version that is reaching vendor end-of-life (EOL).</p>
+</div>
+<div class="paragraph">
+<p>The requirement for Java 11 is consistent with historical precedent.
+Usage of Java 8 peaked in February 2021 and has been declining since then.
+Meanwhile, adoption of Java 11 has been increasing rapidly since November 2019 but has not yet reached a peak.
+The time is right to require Java 11.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="a-new-era-for-java"><a class="anchor" href="#a-new-era-for-java"></a>A new era for Java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The release of Java 9 heralded a new era in the evolution of the Java Platform.
+In addition to new features (e.g., <a href="https://openjdk.org/projects/jigsaw/">Project Jigsaw</a>), it introduced a new versioning scheme and release cadence.
+Originally, there was a new major version released every few years.
+After Java 9, the release schedule changed to a new major version every six (6) months, with a Long Term Support (LTS) release of Java selected every few major versions.</p>
+</div>
+<div class="sect2">
+<h3 id="java-8-forever-always"><a class="anchor" href="#java-8-forever-always"></a>Java 8, Forever &amp; Always?</h3>
+<div class="paragraph">
+<p>Members of the Jenkins community, spearheaded by Oleg Nenashev, <a href="/blog/2018/06/08/jenkins-java10-hackathon/">began working on Java 11 support in 2018</a>.
+At the time, Java 9, 10, and 11 had not yet achieved significant levels of adoption.
+In <a href="https://engineering.linkedin.com/blog/2022/linkedin-s-journey-to-java-11">a piece on LinkedIn&#8217;s journey to Java 11</a>, Jesse Jie provides the following anecdote:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+As an anecdote, some sessions at the Oracle Code One conference in late 2019 asked attendees if their products were using Java 9 or higher
+to which only about 20% of the room said that they were; few major companies had adopted Java 11 either.
+</blockquote>
+<div class="attribution">
+&#8212; Jesse Jie
+</div>
+</div>
+<div class="paragraph">
+<p>These observations match our own experience in the Jenkins project.
+Many users are choosing to stay on Java 8, and Java vendors are responding in turn by extending support for Java 8:
+to May 2026 (in the case of <a href="https://adoptium.net/support/">Adoptium</a>, <a href="https://aws.amazon.com/corretto/faqs/">Amazon Corretto</a>, and <a href="https://www.ibm.com/support/pages/semeru-runtimes-support">IBM Semeru</a>) and to December 2030 (in the case of <a href="https://www.azul.com/products/azul-support-roadmap/">Azul</a> and <a href="https://www.oracle.com/java/technologies/java-se-support-roadmap.html">Oracle</a>).
+This is an unprecedented level of support for a version of Java originally released in 2014.</p>
+</div>
+<div class="paragraph">
+<p>While the Jenkins project could remain on Java 8 for the foreseeable future, this would be imprudent for several reasons.
+First, many key third-party libraries consumed by the Jenkins project (e.g., <a href="https://www.eclipse.org/jetty/">Jetty</a>, <a href="https://www.eclipse.org/jgit/">JGit</a>, <a href="https://spring.io/blog/2021/09/02/a-java-17-and-jakarta-ee-9-baseline-for-spring-framework-6">Spring Framework</a>, and <a href="https://spring.io/projects/spring-security">Spring Security</a>) are beginning to require newer versions of Java,
+and staying on Java 8 puts the Jenkins project at risk of eventually not being able to receive security updates from upstream projects.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, significant runtime improvements have been made to the Java Platform in recent years.
+For example, LinkedIn saw <a href="https://engineering.linkedin.com/blog/2022/linkedin-s-journey-to-java-11">drastic performance improvements</a> when migrating to Java 11,
+and Adoptium saw <a href="https://twitter.com/sxaTech/status/1537764804416380929">significant memory usage improvements</a> when migrating to Java 11 (on Jenkins, no less!).
+Recent Java runtimes provide a number of improvements to <a href="https://www.cs.cmu.edu/~fp/courses/15411-f07/misc/gc-survey.pdf">garbage collection</a>, among other areas.</p>
+</div>
+<div class="paragraph">
+<p>Finally, Jenkins takes pride in its strong development community, and staying on a current version of Java helps attract and retain developers.
+As one developer put it in <a href="https://groups.google.com/g/jenkinsci-dev/c/sw_WepGw0Pk/m/L_UN2jWUXW4J">a 2015 mailing list post</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+In the context of recruiting (OSS) developers, I think Java moves slowly enough (especially cf. C#) to damage its mindshare
+without additionally making it all less fun by making everyone act like a corporate IT developer stuck on an obsolete platform.
+That just drives people to work on CI systems that don&#8217;t have that constraint.
+</blockquote>
+<div class="attribution">
+&#8212; Nigel Magnay
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="trouble-with-jaxb"><a class="anchor" href="#trouble-with-jaxb"></a>Trouble with JAXB</h3>
+<div class="paragraph">
+<p>Prior to Java 11, <a href="https://github.com/eclipse-ee4j/jaxb-ri">Java Architecture for XML Binding (JAXB)</a> was part of the Java Platform, and one could use it without adding a third-party dependency.
+Beginning with Java 11, JAXB is no longer a part of the Java Platform and requires adding a third-party dependency.
+Thanks to work done several years ago by Baptiste Mathus and others, <a href="https://plugins.jenkins.io/jaxb/">a JAXB Jenkins plugin is available</a>,
+which provides the JAXB library to Jenkins plugins in the form of a plugin-to-plugin dependency.</p>
+</div>
+<div class="paragraph">
+<p>The vast majority of plugins have already been prepared to support Java 11 via the JAXB plugin in <a href="https://issues.jenkins.io/browse/JENKINS-68446">JENKINS-68446</a>.
+Jenkins users need only upgrade plugins to compatible versions as documented in the <strong>Released As</strong> field in Jira.
+<strong>It is critical to use the Plugin Manager to upgrade all plugins before <em>and</em> after upgrading to Jenkins 2.357.</strong>
+Failure to upgrade plugins to compatible versions may result in <code>ClassNotFoundException</code>, <code>NoClassDefFoundError</code>, or other low-level Java errors.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dr-openjdk-or-how-i-learned-to-stop-worrying-and-love-java-9-and-beyond"><a class="anchor" href="#dr-openjdk-or-how-i-learned-to-stop-worrying-and-love-java-9-and-beyond"></a>Dr. OpenJDK or: How I Learned to Stop Worrying and Love Java 9 and Beyond</h3>
+<div class="paragraph">
+<p>The world of Java development was shaken in 2019 when Oracle changed the licensing policy for Java 8.
+Recent years have seen the proliferation of a number of different Java vendors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://adoptium.net/">Adoptium</a> (then <a href="https://adoptopenjdk.net/">AdoptOpenJDK</a>)</p>
+</li>
+<li>
+<p><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a></p>
+</li>
+<li>
+<p><a href="https://www.azul.com/products/core/">Azul Platform Core</a> (then Zulu)</p>
+</li>
+<li>
+<p><a href="https://bell-sw.com/pages/downloads/">BellSoft Liberica JDK</a></p>
+</li>
+<li>
+<p><a href="https://developer.ibm.com/languages/java/semeru-runtimes/">IBM Semeru</a></p>
+</li>
+<li>
+<p><a href="https://www.microsoft.com/openjdk">Microsoft OpenJDK</a></p>
+</li>
+<li>
+<p><a href="https://www.oracle.com/java/">Oracle Java</a></p>
+</li>
+<li>
+<p><a href="https://developers.redhat.com/products/openjdk/download">Red Hat OpenJDK</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Yes, even Microsoft now has a build of OpenJDK.</p>
+</div>
+<div class="paragraph">
+<p>The presence of so many options can be initially daunting.
+In recent years, the Jenkins project has been using and recommending Adoptium/Eclipse Temurin,
+which is the Java vendor used in <a href="https://hub.docker.com/r/jenkins/jenkins/">the official Jenkins Docker images</a> and the Java vendor used to power the <a href="/projects/infrastructure/">Jenkins project&#8217;s infrastructure</a>.
+Reciprocally, we are also pleased to note that Adoptium builds are done with Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-11-vs-java-17"><a class="anchor" href="#java-11-vs-java-17"></a>Java 11 vs. Java 17</h3>
+<div class="paragraph">
+<p>At the center of the vast majority of the abovementioned Java distributions is the <a href="https://openjdk.org/">OpenJDK</a> project, which brings us to our final point.
+Throughout the development of this project, we repeatedly encountered issues that were resolved in Java 17 but not yet backported to Java 11.
+As good citizens of the open source community, we <a href="https://github.com/openjdk/jdk11u-dev/pulls?q=author%3Abasil">contributed backports where applicable for the benefit of Jenkins users and the broader Java community</a>.</p>
+</div>
+<div class="paragraph">
+<p>Java 17 support in Jenkins is brand new, and it has not yet reached a stage of rapid adoption within the Jenkins community.
+Nevertheless, our experience has been that Java 17 is usually a more reliable choice than Java 11.
+We enthusiastically invite the Jenkins community to begin adopting Java 17,
+and we can say with confidence that the migration from Java 11 to Java 17 will not be nearly as painful as the migration from Java 8 to Java 11.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrading-to-java-11-or-17"><a class="anchor" href="#upgrading-to-java-11-or-17"></a>Upgrading to Java 11 or 17</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="order-of-operations"><a class="anchor" href="#order-of-operations"></a>Order of operations</h3>
+<div class="paragraph">
+<p>Beginning with Jenkins 2.357 (released on June 28, 2022) and the forthcoming 2.361.1 LTS release,
+Jenkins requires Java 11 or newer on both the controller JVM (i.e., the JVM running <code>jenkins.war</code>) and agent JVMs (i.e., JVMs running <code>remoting.jar</code>).</p>
+</div>
+<div class="paragraph">
+<p>This does not imply that you need to build your application with the same version of Java.
+You can continue to use any desired JDK to build your application,
+so long as the JVM used for running Jenkins itself is version 11 or newer.
+For example, the Global Tool Configuration page can still be used to provide a JDK 8 installation for building your application.
+Similarly, you can set up ephemeral or static agents with two installations of Java:
+Java 11 or newer to run <code>remoting.jar</code> for Jenkins and Java 8 to build your application.</p>
+</div>
+<div class="paragraph">
+<p>Since Jenkins 2.296, we have been recommending that users run the controller on Java 11.
+Prior to Jenkins 2.357 and Jenkins 2.361.1, running the controller on Java 11 and agents on Java 8, though not recommended, did not result in errors.
+Beginning with Jenkins 2.357 and Jenkins 2.361.1, running the controller on Java 11 and agents on Java 8 will result in the following error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError: hudson/remoting/Launcher has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:473)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:601)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Therefore, it is critical to upgrade both the controller <em>and</em> agents to Java 11 or newer prior to upgrading Jenkins to 2.357 or 2.361.1.
+Use the <a href="https://plugins.jenkins.io/versioncolumn/">Versions Node Monitors</a> plugin to verify that agents are running a compatible version of Java.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-images"><a class="anchor" href="#docker-images"></a>Docker images</h3>
+<div class="paragraph">
+<p>The official Jenkins Docker images for <a href="https://hub.docker.com/r/jenkins/jenkins/">the controller</a> and <a href="https://hub.docker.com/r/jenkins/inbound-agent/">agents</a> have been based on Java 11 for many months,
+with Java 8 available as a fallback and Java 17 available in preview mode.
+Beginning with Jenkins 2.357, the Java 8 images will be retired and the Java 17 images will transition from preview to general availability (GA).
+Users of the official Jenkins Docker images need not install or configure Java on their own, as it comes preinstalled in the image.</p>
+</div>
+<div class="paragraph">
+<p>If you are using a Docker image to run both the agent Java process (i.e., <code>remoting.jar</code>) and your own application build and your application build still requires Java 8,
+you will need to provide a Java 11 or newer runtime for the Jenkins agent process and a Java 8 environment for your application build.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="os-packages"><a class="anchor" href="#os-packages"></a>OS packages</h3>
+<div class="paragraph">
+<p>Users of the <a href="/download/">official Jenkins OS packages for Debian, Red Hat, and SUSE Linux distributions</a> should note that these packages are agnostic to the Java vendor.
+In other words, you must bring your own Java package.
+One straightforward way to do this is to install Java 11 from your Linux distribution, as described on the package download site:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://pkg.jenkins.io/debian/">Debian</a></dt>
+<dd>
+<p><code>apt-get install fontconfig openjdk-11-jre</code></p>
+</dd>
+<dt class="hdlist1"><a href="https://pkg.jenkins.io/redhat/">Red Hat</a></dt>
+<dd>
+<p><code>yum install fontconfig java-11-openjdk</code></p>
+</dd>
+<dt class="hdlist1"><a href="https://pkg.jenkins.io/opensuse/">openSUSE</a></dt>
+<dd>
+<p><code>zypper install dejavu-fonts fontconfig java-11-openjdk</code></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>By virtue of not requiring any custom repositories, this is certainly the simplest method (and the one used by the Jenkins project&#8217;s <a href="https://github.com/jenkinsci/packaging/tree/f7c48c9bdc39bce6a8259403d97b0ce337084a37/molecule/default">packaging tests</a>),
+but it does not give the user a high degree of control over the Java runtime environment.
+As mentioned previously, the official Jenkins Docker images use Adoptium/Eclipse Temurin (as does the Jenkins infrastructure project).
+Enthusiastic users may wish to install Java from Adoptium or another vendor.
+Adoptium recently began providing Linux installation packages, as described in <a href="https://blog.adoptium.net/2021/12/eclipse-temurin-linux-installers-available/">a piece by George Adams</a>.
+Ultimately, the choice of which Java vendor to use is your own, as long as that vendor provides Java 11 or Java 17.
+Refer to your chosen Java vendor for installation instructions.</p>
+</div>
+<div class="paragraph">
+<p>Once you have installed a suitable version of Java, configure Jenkins to use that Java runtime.
+The most straightforward way is to configure that version of Java as the default version of Java at the operating system (OS) level:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://pkg.jenkins.io/debian/">Debian</a></dt>
+<dd>
+<p><code>update-alternatives --config java</code></p>
+</dd>
+<dt class="hdlist1"><a href="https://pkg.jenkins.io/redhat/">Red Hat</a></dt>
+<dd>
+<p><code>alternatives --config java</code></p>
+</dd>
+<dt class="hdlist1"><a href="https://pkg.jenkins.io/opensuse/">openSUSE</a></dt>
+<dd>
+<p><code>update-alternatives --config java</code></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Alternatively, users who do not wish to change the default version of Java can customize the <code>JAVA_HOME</code> or <code>JENKINS_JAVA_CMD</code> environment variable as part of the Jenkins <code>systemd(1)</code> service unit.
+Refer to the <a href="https://www.jenkins.io/doc/book/system-administration/systemd-services/">Managing systemd services</a> section of the Jenkins documentation for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="garbage-collection-options"><a class="anchor" href="#garbage-collection-options"></a>Garbage collection options</h3>
+<div class="paragraph">
+<p>Users who have customized Java garbage collection options should note that these options have changed in recent versions of Java.
+Refer to the following <a href="https://support.cloudbees.com/hc/en-us/articles/222446987-Prepare-Jenkins-for-Support">CloudBees Support article</a> for the recommended garbage collection options for Java 11:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>-XX:+AlwaysPreTouch
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=${PATH}
+-XX:+UseG1GC
+-XX:+UseStringDeduplication
+-XX:+ParallelRefProcEnabled
+-XX:+DisableExplicitGC
+-XX:+UnlockDiagnosticVMOptions
+-XX:+UnlockExperimentalVMOptions
+-Xlog:gc*=info,gc+heap=debug,gc+ref*=debug,gc+ergo*=trace,gc+age*=trace:file=${PATH}/gc.log:utctime,pid,level,tags:filecount=2,filesize=100M
+-XX:ErrorFile=${PATH}/hs_err_%p.log
+-XX:+LogVMOutput
+-XX:LogFile=${PATH}/jvm.log</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These options are explained in-depth in the <a href="https://docs.oracle.com/en/java/javase/11/tools/java.html#GUID-3B1CE181-CD30-4178-9602-230B800D4FAE">Oracle Java documentation</a> as well as the <a href="https://docs.cloudbees.com/docs/admin-resources/latest/jvm-troubleshooting/">CloudBees Jenkins JVM guide</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reporting-issues"><a class="anchor" href="#reporting-issues"></a>Reporting issues</h3>
+<div class="paragraph">
+<p>If you find a regression in a plugin, please file a bug report in Jira:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-67688">JENKINS-67688: Java 11 Phase 5: Require Java 11 or newer</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When reporting an issue, include the following information:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the <a href="https://issues.jenkins.io/browse/JENKINS-67688">JENKINS-67688</a> epic.</p>
+</li>
+<li>
+<p>Provide the output of <code>java -version</code> (e.g., OpenJDK 64-Bit Server VM build 11.0.15+10-Ubuntu-0ubuntu0.22.04.1)</p>
+</li>
+<li>
+<p>Provide the name, version, and architecture of the operating system you are using (e.g., Ubuntu 20.04.4 LTS x86_64).</p>
+</li>
+<li>
+<p>Provide the <em>complete</em> list of installed plugins as suggested in the <a href="https://www.jenkins.io/doc/book/system-administration/diagnosing-errors/%23how-to-report-a-bug">bug reporting guidelines</a>.</p>
+</li>
+<li>
+<p>Provide the <em>complete</em> stack trace, if relevant.</p>
+</li>
+<li>
+<p>Provide steps to reproduce the issue <em>from scratch</em> on a minimal Jenkins installation; the scenario should fail on Jenkins 2.356 or earlier when the steps are followed on Java 11 or Java 17 and pass when the steps are followed on Java 8.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-work"><a class="anchor" href="#future-work"></a>Future work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We expect to see usage of Java 11 continue to grow until it reaches a peak.
+We expect to see usage of Java 8 continue to decline until it reaches a terminal state, as was the case for Java 7 and Java 6.
+We expect to see usage of Java 17 transition from minimal levels to significant levels.
+To reach our goal of Java 17 as the recommended Java version, we need cooperation from both Jenkins users and contributors alike.
+The development work for Java 17 support is tracked in the following Jira epics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-67908">JENKINS-67908: Java 17 Phase 1: Support Java 17</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-67909">JENKINS-67909: Java 17 Phase 2: Deprecate support for Java 11</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-67907">JENKINS-67907: Java 17 Phase 3: Require Java 17 or newer</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have made it this far through this post, you are clearly enthusiastic about the Jenkins platform experience.
+If you have never contributed, why not?
+We would love to work with you.
+Join one of our <a href="https://www.jenkins.io/sigs/platform/">Platform Special Interest Group (SIG)</a> meetings to learn more.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion-2"><a class="anchor" href="#conclusion-2"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We expect to see a bit of disruption from these changes but hope that in the long term they will be in the best interests of the Jenkins community.
+Please reach out on the <a href="https://www.jenkins.io/mailing-lists/">developers' list</a> with any questions or suggestions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As noted above, members of the Jenkins community began working on Java 11 support in 2018, well before the present author&#8217;s involvement in the project
+and well beyond the present author&#8217;s ability to identify and name everyone who was involved in the effort.
+In addition to the many plugin maintainers who merged and released JAXB fixes in a timely fashion,
+we would like to thank the following regular contributors for their recent efforts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adrien Lecharpentier</p>
+</li>
+<li>
+<p>Alexander Brandes</p>
+</li>
+<li>
+<p>Alex Earl</p>
+</li>
+<li>
+<p>Andrew Bayer</p>
+</li>
+<li>
+<p>Baptiste Mathus</p>
+</li>
+<li>
+<p>Carroll Chiou</p>
+</li>
+<li>
+<p>Damien Duportal</p>
+</li>
+<li>
+<p>Daniel Beck</p>
+</li>
+<li>
+<p>Devin Nusbaum</p>
+</li>
+<li>
+<p>Dr. Ullrich Hafner</p>
+</li>
+<li>
+<p>Jesse Glick</p>
+</li>
+<li>
+<p>Kevin Martens</p>
+</li>
+<li>
+<p>Mark Waite</p>
+</li>
+<li>
+<p>Oleg Nenashev</p>
+</li>
+<li>
+<p>Olivier Lamy</p>
+</li>
+<li>
+<p>Tim Jacomb</p>
+</li>
+<li>
+<p>Vincent Latombe</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thank you! It would not have been possible without you.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/basil/">
+Basil Crow
+</a>
+</p>
+<div class="paragraph">
+<p>Basil is a long-time Jenkins user and contributor, a Jenkins core maintainer, and the maintainer of the <a href="https://plugins.jenkins.io/email-ext">Email Extension</a>, <a href="https://plugins.jenkins.io/timestamper">Timestamper</a>, and <a href="https://plugins.jenkins.io/swarm">Swarm</a> plugins (among others).
+Basil enjoys working on open source software in his free time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/basil" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bcrow" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/basilcrow" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script data="ionicons" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2022/06/2022-06-28-require-java-11.adoc" title="Edit /blog/2022/06/2022-06-28-require-java-11.adoc on GitHub">
+<img alt="Edit /blog/2022/06/2022-06-28-require-java-11.adoc on GitHub" class="icon-improve" src="/images/github-mark.svg">
+Improve this page
+</a>
+&nbsp;
+<a href="https://github.com/jenkins-infra/jenkins.io/issues/new?labels=bug&amp;template=4-bug.md&amp;title=Jenkins requires Java 11 or newer page - TODO: Put a summary here&amp;body=Problem with the [Jenkins requires Java 11 or newer](https://www.jenkins.io/blog/2022/06/28/require-java-11/) page, [source file](https://github.com/jenkins-infra/jenkins.io/blob/master/content/blog/2022/06/2022-06-28-require-java-11.adoc)%0A%0ATODO: Describe the expected and actual behavior here %0A%0A%23%23 Screenshots %0A%0A TODO: Add screenshots if possible %0A%0A%23%23 Possible Solution %0A%0A%3C!-- If you have suggestions on a fix for the bug, please describe it here. --%3E %0A%0AN/A" title="Report a problem with /blog/2022/06/2022-06-28-require-java-11.adoc">
+<ion-icon class="report" name="warning"></ion-icon>
+Report a problem
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/download/">
+Downloads
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/participate/">
+Contributing
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/">
+Structure and governance
+</a>
+</li>
+<li>
+<a href="https://issues.jenkins.io">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://community.jenkins.io">
+Forum
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/mailing-lists/">
+Mailing lists
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/chat/">
+Chats
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/sigs/">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Other</h5>
+<ul class="other">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/conduct/">
+Code of Conduct
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/press/">
+Press information
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/merchandise/">
+Merchandise
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

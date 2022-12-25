@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+$class: 'GitSCM'
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/doc/pipeline/steps/params/gitscm/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="$class: &#39;GitSCM&#39;" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="$class: &#39;GitSCM&#39;" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/jemkins.io-5818/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="$class: &#39;GitSCM&#39;" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/doc/pipeline/steps/params/gitscm/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="$class: &#39;GitSCM&#39;" property="og:site_name">
+<meta content="/jenkins.io/jemkins.io-5818/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/jemkins.io-5818/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="/jenkins.io/jemkins.io-5818/">
+Jenkins
+</a>
+<button class="navbar-toggler" data-bs-target="#CollapsingNavbar" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+<!-- starting partial cdf_logo.html.haml -->
+<svg width="36" height="18" xmlns="http://www.w3.org/2000/svg" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3.23 44.77 362.70 271.95"><defs><linearGradient id="a" x1="359.765" x2="104.082" y1="134.295" y2="124.577" gradientTransform="matrix(1 0 0 -1 0 439.068)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ed1c24"/><stop offset="1" stop-color="#f7941d"/></linearGradient><linearGradient id="b" x1="355.202" x2="99.519" y1="254.467" y2="244.749" xlink:href="#a"/><linearGradient id="c" x1="183.903" x2="10.612" y1="227.598" y2="221.023" xlink:href="#a"/><linearGradient id="d" x1="367.119" x2="157.995" y1="265.311" y2="257.091" xlink:href="#a"/></defs><path fill="#c49a6c" d="M231.52 309.278c2.483-.332 4.895-.77 7.255-1.329s4.649-1.206 6.991-1.957c13.494-4.58 25.187-12.952 36.374-24.593l-.14-.175c-14.944 15.486-30.693 25.344-50.48 28.054z"/><path fill="url(#a)" d="M224.232 309.96h.332c1.084 0 2.15-.14 3.216-.228a93.844 93.844 0 0 1-3.233.227z"/><path fill="url(#b)" d="M284.692 187.187l-.122.192.122-.192z"/><path fill="url(#c)" d="M146.145 231.847a150.844 150.844 0 0 1-12.97 15.862c-7.582 7.889-15.507 13.563-24.652 16.667a47.832 47.832 0 0 1-4.738 1.326 56.959 56.959 0 0 1-4.916.9 38.32 38.32 0 0 1-1.682.214l-.912.083c-.723.059-1.445.118-2.18.154h-3.068a42.325 42.325 0 0 1-9.192-1.043 49.977 49.977 0 0 1-6.764-2.002 43.097 43.097 0 0 1-4.525-1.954c-1.493-.77-2.961-1.516-4.407-2.37a59.5 59.5 0 0 1-17.105-15.399 59.714 59.714 0 0 1-2.914-4.311 53.09 53.09 0 0 1-1.291-2.263 51.985 51.985 0 0 1-2.263-4.738 46.72 46.72 0 0 1 0-36.426 51.986 51.986 0 0 1 2.263-4.738 54.14 54.14 0 0 1 1.291-2.263 59.742 59.742 0 0 1 2.914-4.311 59.714 59.714 0 0 1 17.105-15.4 60.828 60.828 0 0 1 4.407-2.369q2.217-1 4.525-1.777a49.976 49.976 0 0 1 6.906-2.073 42.325 42.325 0 0 1 9.192-1.042h3.128c.722 0 1.445.094 2.155.154l1.043.106 1.019.119c1.8.237 3.553.557 5.271.96.853.2 1.694.426 2.523.663a51.186 51.186 0 0 1 11.846 5.176 59.645 59.645 0 0 1 4.395 2.89 74.485 74.485 0 0 1 8.386 7.108q2.038 1.99 4.063 4.193l.083-.13a159.395 159.395 0 0 1 11.064 13.942c5.437-8.576 13.658-21.464 16.584-25.74 1.185-1.718 2.37-3.46 3.66-5.212-13.54-16.513-29.827-30.23-51.587-36.082h-.154a89.397 89.397 0 0 0-3.187-.794l-.45-.107a92.565 92.565 0 0 0-3.151-.627l-.628-.119a80.578 80.578 0 0 0-3.743-.569h-.142a58.29 58.29 0 0 0-2.073-.236h-.391l-1.872-.166h-.568l-1.754-.119h-.675l-1.777-.07h-3.115c-46.447-.25-87.125 40.476-87.125 86.911s40.725 87.173 87.172 87.173h3.14l1.729-.071h.734l1.67-.095h.676l1.706-.154h.568l1.813-.213.414-.06 1.967-.272h.213a125.91 125.91 0 0 0 3.553-.628l.652-.142c.96-.201 1.907-.415 2.855-.64l.58-.142a86.66 86.66 0 0 0 3.009-.817l.237-.071c20.73-6.077 36.425-19.392 49.55-35.277-2.037-3.068-3.4-5.366-4.039-6.48z"/><path fill="url(#d)" d="M318.05 51.733v94.66a85.514 85.514 0 0 0-52.595-18.729h-3.115l-1.777.072-.7.047-1.752.118h-.569l-1.871.166h-.391c-.7.071-1.386.142-2.073.237h-.154c-1.256.154-2.5.355-3.732.569l-.628.118c-1.066.19-2.108.403-3.15.628l-.45.107c-30.35 6.858-50.333 28.808-66.822 52.82-.7 1.018-1.35 2.049-2.038 3.068-2.25 3.423-5.46 8.422-8.635 13.397-4.17 6.527-8.292 13.03-9.939 15.66l20.624 32.137s21.997 40.465 61.68 51.482l.237.07c.995.297 2.002.558 3.009.818l.58.142c.936.237 1.896.439 2.855.64l.652.142c1.184.225 2.369.439 3.553.628h.214l1.966.273.415.059 1.812.213h.569l1.705.154h.676l1.67.095h.734l1.73.07h3.139c54.703 0 86.355-30.964 87.149-85.063V51.733zm-52.595 215.403h-3.068c-.734 0-1.457-.095-2.18-.154l-.912-.083c-.568-.06-1.125-.13-1.682-.213a49.077 49.077 0 0 1-9.571-2.275 49.612 49.612 0 0 1-6.634-2.83 55.792 55.792 0 0 1-6.254-3.768 63.068 63.068 0 0 1-3.009-2.215 82.399 82.399 0 0 1-8.683-7.925l-.095.119c-1.255-1.303-2.487-2.69-3.731-4.11-.154-.167-.296-.356-.45-.534-.628-.722-1.256-1.445-1.884-2.215s-1.125-1.398-1.682-2.097-.888-1.101-1.338-1.682a184.467 184.467 0 0 1-6.053-8.292c-.7-.995-1.398-2.025-2.109-3.056-.379-.569-.77-1.184-1.185-1.73-.675-1.018-1.362-2.013-2.049-3.056l-.355-.545c-1.185-1.812-2.37-3.684-3.649-5.603q2.95-4.608 5.817-8.86c1.907-2.831 3.79-5.556 5.662-8.138s3.72-5.046 5.591-7.38 3.72-4.525 5.603-6.586q2.026-2.203 4.063-4.194c1.374-1.338 2.748-2.594 4.158-3.778s2.807-2.287 4.252-3.329a57.594 57.594 0 0 1 7.748-4.62c.331-.166.663-.367 1.006-.533l.226-.118c1.41-.652 2.843-1.185 4.3-1.73l.485-.201c.273-.083.557-.142.83-.237a44.943 44.943 0 0 1 3.34-.948l1.374-.343a60.798 60.798 0 0 1 4.738-.841l1.019-.119 1.042-.106c.711 0 1.434-.119 2.156-.154h3.128a42.431 42.431 0 0 1 4.572.26 48.011 48.011 0 0 1 6.93 1.35c1.54.427 3.08.925 4.596 1.505a48.724 48.724 0 0 1 4.525 1.955c1.493.722 2.961 1.516 4.407 2.369s2.866 1.8 4.24 2.784 2.725 2.049 4.028 3.174a58.459 58.459 0 0 1 8.837 9.477 59.73 59.73 0 0 1 2.914 4.312 51.067 51.067 0 0 1 5.318 11.916 47.38 47.38 0 0 1 1.185 5.165 45.567 45.567 0 0 1 .71 8.09c.072 35.964-16.062 52.122-52.227 52.122z"/></svg>
+
+<!-- ending partial cdf_logo.html.haml -->
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://cd.foundation/">
+What is CDF?
+</a>
+<a class="dropdown-item feature" href="https://jenkins-x.io/">
+Jenkins X
+</a>
+<a class="dropdown-item feature" href="https://tekton.dev/">
+Tekton
+</a>
+<a class="dropdown-item feature" href="https://www.spinnaker.io/">
+Spinnaker
+</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/book/">
+<strong>
+User Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/installing/">
+&nbsp;-&nbsp;Installing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/">
+&nbsp;-&nbsp;Jenkins Pipeline
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/managing/">
+&nbsp;-&nbsp;Managing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/security/">
+&nbsp;-&nbsp;Securing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/system-administration/">
+&nbsp;-&nbsp;System Administration
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/troubleshooting/">
+&nbsp;-&nbsp;Troubleshooting Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/glossary/">
+&nbsp;-&nbsp;Terms and Definitions
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/solutions/">
+<strong>
+Solution Pages
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+<strong>
+Tutorials
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/pipeline/tour/getting-started/">
+&nbsp;-&nbsp;Guided Tour
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+&nbsp;-&nbsp;More Tutorials
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/developer/">
+<strong>
+Developer Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/participate/">
+<strong>
+Contributor Guide
+</strong>
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/participate/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/chat/" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+Meet
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+<a class="dropdown-item feature" href="https://community.jenkins.io/">
+Forum
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins.io/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/mailing-lists/" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/ux/">
+&nbsp;-&nbsp;User Experience
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+CI/CD and Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jenkins-operator/">
+Jenkins Operator
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/remoting/">
+Jenkins Remoting
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/press/">
+Press
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/conduct/">
+Conduct
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/books/">
+Books
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/zh/">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item searchbox">
+<input aria-label="Search" class="form-control searchbox" placeholder="Search" type="search">
+</li>
+<li class="nav-item download-btn">
+<a class="nav-link btn btn-outline-secondary" href="/jenkins.io/jemkins.io-5818/download/">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/jemkins.io-5818/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/jemkins.io-5818/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div class="sect1">
+<h2 id="class-gitscm"><a class="anchor" href="#class-gitscm"></a>$class: 'GitSCM'</h2>
+<div class="sectionbody">
+<li><code>$class: 'GitSCM'</code><div>
+<div><div>
+ <p>The <a href="https://plugins.jenkins.io/git/" rel="nofollow">git plugin</a> provides fundamental git operations for Jenkins projects. It can poll, fetch, checkout, and merge contents of git repositories.</p>
+ <p>The git plugin provides an SCM implementation to be used with the Pipeline SCM <a href="https://www.jenkins.io/doc/pipeline/steps/workflow-scm-step" rel="nofollow"><code>checkout</code></a> step. The <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow"><strong>Pipeline Syntax Snippet Generator</strong></a> guides the user to select git plugin checkout options and provides online help for each of the options.</p>
+</div></div>
+<ul><li><code>userRemoteConfigs</code>
+<div><div>
+ Specify the repository to track. This can be a URL or a local file path. Note that for super-projects (repositories with submodules), only a local file path or a complete URL is valid. The following are examples of valid git URLs.
+ <ul>
+  <li>ssh://git@github.com/github/git.git</li>
+  <li>git@github.com:github/git.git (short notation for ssh protocol)</li>
+  <li>ssh://user@other.host.com/~/repos/R.git (to access the repos/R.git repository in the user's home directory)</li>
+  <li>https://github.com/github/git.git</li>
+ </ul> <br> If the repository is a super-project, the location from which to clone submodules is dependent on whether the repository is bare or non-bare (i.e. has a working directory).
+ <ul>
+  <li>If the super-project is bare, the location of the submodules will be taken from <em>.gitmodules</em>.</li>
+  <li>If the super-project is <strong>not</strong> bare, it is assumed that the repository has each of its submodules cloned and checked out appropriately. Thus, the submodules will be taken directly from a path like <code>${SUPER_PROJECT_URL}/${SUBMODULE}</code>, rather than relying on information from <em>.gitmodules</em>.</li>
+ </ul> For a local URL/path to a super-project, <em>git rev-parse --is-bare-repository</em> is used to detect whether the super-project is bare or not. <br> For a remote URL to a super-project, the ending of the URL determines whether a bare or non-bare repository is assumed:
+ <ul>
+  <li>If the remote URL ends with <em>/.git</em>, a <em>non</em>-bare repository is assumed.</li>
+  <li>If the remote URL does <strong>NOT</strong> end with <em>/.git</em>, a bare repository is assumed.</li>
+ </ul>
+</div></div>
+
+<ul><b>Array / List of Nested Object</b>
+<li><code>url : String</code>
+<div><div>
+ Specify the URL or path of the git repository. This uses the same syntax as your <code>git clone</code> command.
+</div></div>
+
+</li>
+<li><code>name : String</code>
+<div><div>
+ ID of the repository, such as <code>origin</code>, to uniquely identify this repository among other remote repositories. This is the same "name" that you use in your <code>git remote</code> command. If left empty, Jenkins will generate unique names for you.
+ <p>You normally want to specify this when you have multiple remote repositories.</p>
+</div></div>
+
+</li>
+<li><code>refspec : String</code>
+<div><div>
+ A refspec controls the remote refs to be retrieved and how they map to local refs. If left blank, it will default to the normal behaviour of <code>git fetch</code>, which retrieves all the branch heads as <code>remotes/REPOSITORYNAME/BRANCHNAME</code>. This default behaviour is OK for most cases.
+ <p>In other words, the default refspec is "+refs/heads/*:refs/remotes/REPOSITORYNAME/*" where <code>REPOSITORYNAME</code> is the value you specify in the above "name of repository" textbox.</p>
+ <p>When do you want to modify this value? A good example is when you want to just retrieve one branch. For example, <code>+refs/heads/master:refs/remotes/origin/master</code> would only retrieve the master branch and nothing else.</p>
+ <p>The plugin uses a default refspec for its initial fetch, unless the "Advanced Clone Option" is set to honor refspec. This keeps compatibility with previous behavior, and allows the job definition to decide if the refspec should be honored on initial clone.</p>
+ <p>Multiple refspecs can be entered by separating them with a space character. <code>+refs/heads/master:refs/remotes/origin/master&nbsp;+refs/heads/develop:refs/remotes/origin/develop</code> retrieves the master branch and the develop branch and nothing else.</p>
+ <p>See <a href="https://git-scm.com/book/en/v2/Git-Internals-The-Refspec" rel="nofollow">the refspec definition in Git user manual</a> for more details.</p>
+</div></div>
+
+</li>
+<li><code>credentialsId : String</code>
+<div><div>
+ Credential used to <strong>check out</strong> sources.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>branches</code>
+<div><div>
+ List of branches to build. Jenkins jobs are most effective when each job builds only a single branch. When a single job builds multiple branches, the changelog comparisons between branches often show no changes or incorrect changes.
+</div></div>
+
+<ul><b>Array / List of Nested Object</b>
+<li><code>name : String</code>
+<div><div>
+ <p>Specify the branches if you'd like to track a specific branch in a repository. If left blank, all branches will be examined for changes and built.</p>
+ <p>The safest way is to use the <code>refs/heads/&lt;branchName&gt;</code> syntax. This way the expected branch is unambiguous.</p>
+ <p>If your branch name has a <code>/</code> in it make sure to use the full reference above. When not presented with a full path the plugin will only use the part of the string right of the last slash. Meaning <code>foo/bar</code> will actually match <code>bar</code>.</p>
+ <p>If you use a wildcard branch specifier, with a slash (e.g. <code>release/</code>), you'll need to specify the origin repository in the branch names to make sure changes are picked up. So e.g. <code>origin/release/</code></p>
+ <p>Possible options:</p>
+ <ul>
+  <li><strong><code>&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch. If ambiguous the first result is taken, which is not necessarily the expected one. Better use <code>refs/heads/&lt;branchName&gt;</code>.<br> E.g. <code>master</code>, <code>feature1</code>, ...</li>
+  <li><strong><code>refs/heads/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch.<br> E.g. <code>refs/heads/master</code>, <code>refs/heads/feature1/master</code>, ...</li>
+  <li><strong><code>&lt;remoteRepoName&gt;/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch. If ambiguous the first result is taken, which is not necessarily the expected one.<br> Better use <code>refs/heads/&lt;branchName&gt;</code>.<br> E.g. <code>origin/master</code></li>
+  <li><strong><code>remotes/&lt;remoteRepoName&gt;/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch.<br> E.g. <code>remotes/origin/master</code></li>
+  <li><strong><code>refs/remotes/&lt;remoteRepoName&gt;/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch.<br> E.g. <code>refs/remotes/origin/master</code></li>
+  <li><strong><code>&lt;tagName&gt;</code></strong><br> This does not work since the tag will not be recognized as tag.<br> Use <code>refs/tags/&lt;tagName&gt;</code> instead.<br> E.g. <code>git-2.3.0</code></li>
+  <li><strong><code>refs/tags/&lt;tagName&gt;</code></strong><br> Tracks/checks out the specified tag.<br> E.g. <code>refs/tags/git-2.3.0</code></li>
+  <li><strong><code>&lt;commitId&gt;</code></strong><br> Checks out the specified commit.<br> E.g. <code>5062ac843f2b947733e6a3b105977056821bd352</code>, <code>5062ac84</code>, ...</li>
+  <li><strong><code>${ENV_VARIABLE}</code></strong><br> It is also possible to use environment variables. In this case the variables are evaluated and the result is used as described above.<br> E.g. <code>${TREEISH}</code>, <code>refs/tags/${TAGNAME}</code>, ...</li>
+  <li><strong><code>&lt;Wildcards&gt;</code></strong><br> The syntax is of the form: <code>REPOSITORYNAME/BRANCH</code>. In addition, <code>BRANCH</code> is recognized as a shorthand of <code>*/BRANCH</code>, '*' is recognized as a wildcard, and '**' is recognized as wildcard that includes the separator '/'. Therefore, <code>origin/branches*</code> would match <code>origin/branches-foo</code> but not <code>origin/branches/foo</code>, while <code>origin/branches**</code> would match both <code>origin/branches-foo</code> and <code>origin/branches/foo</code>.</li>
+  <li><strong><code>:&lt;regular expression&gt;</code></strong><br> The syntax is of the form: <code>:regexp</code>. Regular expression syntax in branches to build will only build those branches whose names match the regular expression.<br> Examples:<br>
+   <ul>
+    <li><code>:^(?!(origin/prefix)).*</code>
+     <ul>
+      <li>matches: <code>origin</code> or <code>origin/master</code> or <code>origin/feature</code></li>
+      <li>does not match: <code>origin/prefix</code> or <code>origin/prefix_123</code> or <code>origin/prefix-abc</code></li>
+     </ul></li>
+    <li><code>:origin/release-\d{8}</code>
+     <ul>
+      <li>matches: <code>origin/release-20150101</code></li>
+      <li>does not match: <code>origin/release-2015010</code> or <code>origin/release-201501011</code> or <code>origin/release-20150101-something</code></li>
+     </ul></li>
+    <li><code>:^(?!origin/master$|origin/develop$).*</code>
+     <ul>
+      <li>matches: <code>origin/branch1</code> or <code>origin/branch-2</code> or <code>origin/master123</code> or <code>origin/develop-123</code></li>
+      <li>does not match: <code>origin/master</code> or <code>origin/develop</code></li>
+     </ul></li>
+   </ul></li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+</ul></li>
+<li><code>browser</code>
+<div><div>
+ Defines the repository browser that displays changes detected by the git plugin.
+</div></div>
+
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'AssemblaWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://www.assembla.com/code/PROJECT/git/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'BacklogGitRepositoryBrowser'</code><div>
+<ul><li><code>repoName : String</code>
+</li>
+<li><code>repoUrl : String</code>
+</li>
+</ul></div></li>
+<li><code>bitbucketServer</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the Bitbucket Server root URL for this repository (such as <em>https://bitbucket:7990/OWNER/REPO/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'BitbucketWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://bitbucket.org/OWNER/REPO/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'CGit'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>http://cgit.example.com:port/group/REPO/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'FisheyeGitRepositoryBrowser'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the URL of this repository in FishEye (such as <em>http://fisheye6.cenqua.com/browse/ant/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitBlitRepositoryBrowser'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository.
+</div></div>
+
+</li>
+<li><code>projectName : String</code>
+<div><div>
+ Specify the name of the project in GitBlit.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitBucketBrowser'</code><div>
+<ul><li><code>url : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'GitLab'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>http://gitlabserver:port/group/REPO/</em>).
+</div></div>
+
+</li>
+<li><code>version : String</code> (optional)
+<div><div>
+ Specify the major and minor version of GitLab you use (such as 9.1). If you don't specify a version, a modern version of GitLab (&gt;= 8.0) is assumed.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitLabBrowser'</code><div>
+<div><div>
+ Specify the HTTP URL for this project's GitLab page so that links to changes can be automatically generated by Jenkins. The URL needs to include the owner and project. If the GitLab server is <code>https://gitLab.example.com</code> then the URL for bob's skunkworks project might be <code>https://gitLab.example.com/bob/skunkworks</code>.
+</div></div>
+<ul><li><code>projectUrl : String</code>
+<div><div>
+ Specify the HTTP URL for this project's GitLab page. The URL needs to include the owner and project so, for example, if the GitLab server is <code>https://gitLab.example.com</code> then the URL for bob's skunkworks project might be <code>https://gitLab.example.com/bob/skunkworks</code>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitList'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>http://gitlistserver:port/REPO/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://github.com/jenkinsci/jenkins.git</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GiteaBrowser'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the HTTP URL for this repository's Gitea page. The URL needs to include the owner and repository so, for example, if the Gitea server is <code>https://gitea.example.com</code> then the URL for bob's skunkworks project repository might be <code>https://gitea.example.com/bob/skunkworks</code>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GithubWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the HTTP URL for this repository's GitHub page (such as <em>https://github.com/jquery/jquery</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Gitiles'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://gwt.googlesource.com/gwt/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitoriousWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://gitorious.org/gitorious/mainline</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GogsGit'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>http://gogs.example.com:port/username/some-repo-url.git</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'KilnGit'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://khanacademy.kilnhg.com/Code/Website/Group/webapp</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Phabricator'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the phabricator instance root URL (such as <em>http://phabricator.example.com</em>).
+</div></div>
+
+</li>
+<li><code>repo : String</code>
+<div><div>
+ Specify the repository name in phabricator (such as the <em>foo</em> part of <em>phabricator.example.com/diffusion/foo/browse</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'RedmineWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>http://SERVER/PATH/projects/PROJECT/repository</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'RhodeCode'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the HTTP URL for this repository's RhodeCode page (such as <em>http://rhodecode.mydomain.com:5000/projects/PROJECT/repos/REPO/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ScmManagerGitRepositoryBrowser'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://scm-manager.org/scm/repo/namespace/name</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Stash'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the HTTP URL for this repository's Stash page (such as <em>http://stash.mydomain.com:7990/projects/PROJECT/repos/REPO/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'TFS2013GitRepositoryBrowser'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Either the name of the remote whose URL should be used, or the URL of this module in TFS (such as <em>http://fisheye6.cenqua.com/tfs/PROJECT/_git/REPO/</em>). If empty (default), the URL of the "origin" repository is used.
+ <p>If TFS is also used as the repository server, this can usually be left blank.</p>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'TracGitRepositoryBrowser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'TuleapBrowser'</code><div>
+<div><div>
+ Specify the HTTPS URL for the Tuleap Git repository so that links to changes can be automatically generated by Jenkins.
+</div></div>
+<ul><li><code>repositoryUrl : String</code>
+<div><div>
+ The URL is the web URL of the Tuleap Git repository.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ViewGitWeb'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>http://code.fealdia.org/viewgit/</em>).
+</div></div>
+
+</li>
+<li><code>projectName : String</code>
+<div><div>
+ Specify the name of the project in ViewGit (e.g. scripts, scuttle etc. from <em>http://code.fealdia.org/viewgit/</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>gitTool : String</code>
+<div><p>Absolute path to the git executable.</p>
+<p>This is <strong>different</strong> from other Jenkins tool definitions. Rather than providing the directory that contains the executable, you <strong>must provide the complete path to the executable</strong>. Setting '<code>/usr/bin/git</code>' would be correct, while setting '<code>/usr/bin/</code>' is not correct.</p></div>
+
+</li>
+<li><code>extensions</code>
+<div><div>
+ <p>Extensions add new behavior or modify existing plugin behavior for different uses. Extensions help users more precisely tune plugin behavior to meet their needs.</p>
+ <p>Extensions include:</p>
+ <ul>
+  <li><strong>Clone extensions</strong> modify the git operations that retrieve remote changes into the agent workspace. The extensions can adjust the amount of history retrieved, how long the retrieval is allowed to run, and other retrieval details.</li>
+  <li><strong>Checkout extensions</strong> modify the git operations that place files in the workspace from the git repository on the agent. The extensions can adjust the maximum duration of the checkout operation, the use and behavior of git submodules, the location of the workspace on the disc, and more.</li>
+  <li><strong>Changelog extensions</strong> adapt the source code difference calculations for different cases.</li>
+  <li><strong>Tagging extensions</strong> allow the plugin to apply tags in the current workspace.</li>
+  <li><strong>Build initiation extensions</strong> control the conditions that start a build. They can ignore notifications of a change or force a deeper evaluation of the commits when polling.</li>
+  <li><strong>Merge extensions</strong> can optionally merge changes from other branches into the current branch of the agent workspace. They control the source branch for the merge and the options applied to the merge.</li>
+ </ul>
+ <p></p>
+</div></div>
+
+<ul><b>Array / List of Nested Choice of Objects</b>
+<li><code>$class: 'AuthorInChangelog'</code><div>
+<div><div>
+ The default behavior is to use the Git commit's "Committer" value in Jenkins' build changesets. If this option is selected, the Git commit's "Author" value would be used instead.
+</div></div>
+<ul></ul></div></li>
+<li><code>$class: 'BuildChooserSetting'</code><div>
+<div><div>
+ When you are interested in using a job to build multiple heads (most typically multiple branches), you can choose how Jenkins choose what branches to build in what order.
+ <p>This extension point in Jenkins is used by many other plugins to control the job to build specific commits. When you activate those plugins, you may see them installing a custom strategy here.</p>
+</div></div>
+<ul><li><code>buildChooser</code>
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'AlternativeBuildChooser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'AncestryBuildChooser'</code><div>
+<ul><li><code>maximumAgeInDays : int</code>
+</li>
+<li><code>ancestorCommitSha1 : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'DefaultBuildChooser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'DeflakeGitBuildChooser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'GerritTriggerBuildChooser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'InverseBuildChooser'</code><div>
+<ul></ul></div></li>
+</ul></li>
+</ul></div></li>
+<li><code>$class: 'BuildSingleRevisionOnly'</code><div>
+<div><div>
+ Disable scheduling for multiple candidate revisions.<br> If we have 3 branches:<br> ----A--.---.--- B<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-----C<br> jenkins would try to build (B) and (C).<br> This behaviour disables this and only builds one of them.<br> It is helpful to reduce the load of the Jenkins infrastructure when the SCM system like Bitbucket or GitHub should decide what commits to build.
+</div></div>
+<ul></ul></div></li>
+<li><code>$class: 'ChangelogToBranch'</code><div>
+<div><div>
+ This method calculates the changelog against the specified branch.
+</div></div>
+<ul><li><code>options</code>
+<ul><b>Nested Object</b>
+<li><code>compareRemote : String</code>
+<div><div>
+ Name of the repository, such as <code>origin</code>, that contains the branch you specify below.
+</div></div>
+
+</li>
+<li><code>compareTarget : String</code>
+<div><div>
+ The name of the branch within the named repository to compare against.
+</div></div>
+
+</li>
+</ul></li>
+</ul></div></li>
+<li><code>$class: 'CheckoutOption'</code><div>
+<ul><li><code>timeout : int</code>
+<div><div>
+ Specify a timeout (in minutes) for checkout.<br> This option overrides the default timeout of 10 minutes. <br> You can change the global git timeout via the property org.jenkinsci.plugins.gitclient.Git.timeOut (see <a href="https://issues.jenkins.io/browse/JENKINS-11286" rel="nofollow">JENKINS-11286</a>). Note that property should be set on both controller and agent to have effect (see <a href="https://issues.jenkins.io/browse/JENKINS-22547" rel="nofollow">JENKINS-22547</a>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'CleanBeforeCheckout'</code><div>
+<div><div>
+ Clean up the workspace before every checkout by deleting all untracked files and directories, including those which are specified in <code>.gitignore</code>. It also resets all <em>tracked</em> files to their versioned state. This ensures that the workspace is in the same state as if you cloned and checked out in a brand-new empty directory, and ensures that your build is not affected by the files generated by the previous build.
+</div></div>
+<ul><li><code>deleteUntrackedNestedRepositories : boolean</code> (optional)
+<div><div>
+ Deletes untracked submodules and any other subdirectories which contain <code>.git</code> directories.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'CleanCheckout'</code><div>
+<div><div>
+ Clean up the workspace after every checkout by deleting all untracked files and directories, including those which are specified in <code>.gitignore</code>. It also resets all <em>tracked</em> files to their versioned state. This ensures that the workspace is in the same state as if you cloned and checked out in a brand-new empty directory, and ensures that your build is not affected by the files generated by the previous build.
+</div></div>
+<ul><li><code>deleteUntrackedNestedRepositories : boolean</code> (optional)
+<div><div>
+ Deletes untracked submodules and any other subdirectories which contain <code>.git</code> directories.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'CloneOption'</code><div>
+<ul><li><code>shallow : boolean</code>
+<div><div>
+ Perform shallow clone, so that git will not download the history of the project, saving time and disk space when you just want to access the latest version of a repository.
+</div></div>
+
+</li>
+<li><code>noTags : boolean</code>
+<div><div>
+ Deselect this to perform a clone without tags, saving time and disk space when you just want to access what is specified by the refspec.
+</div></div>
+
+</li>
+<li><code>reference : String</code>
+<div><div>
+ Specify a folder containing a repository that will be used by Git as a reference during clone operations.<br> This option will be ignored if the folder is not available on the controller or agent where the clone is being executed.
+</div></div>
+
+</li>
+<li><code>timeout : int</code>
+<div><div>
+ Specify a timeout (in minutes) for clone and fetch operations.<br> This option overrides the default timeout of 10 minutes. <br> You can change the global git timeout via the property org.jenkinsci.plugins.gitclient.Git.timeOut (see <a href="https://issues.jenkins.io/browse/JENKINS-11286" rel="nofollow">JENKINS-11286</a>). Note that property should be set on both controller and agent to have effect (see <a href="https://issues.jenkins.io/browse/JENKINS-22547" rel="nofollow">JENKINS-22547</a>).
+</div></div>
+
+</li>
+<li><code>depth : int</code> (optional)
+<div><div>
+ Set shallow clone depth, so that git will only download recent history of the project, saving time and disk space when you just want to access the latest commits of a repository.
+</div></div>
+
+</li>
+<li><code>honorRefspec : boolean</code> (optional)
+<div><div>
+ Perform initial clone using the refspec defined for the repository. This can save time, data transfer and disk space when you only need to access the references specified by the refspec.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'CodeCommitURLHelper'</code><div>
+<ul><li><code>credentialId : String</code>
+<div><div>
+ <p>OPTIONAL: Select the credentials to use.<br> If not specified, defaults to the <a href="http://docs.aws.amazon.com/AWSSdkDocsJava/latest/DeveloperGuide/credentials.html#using-the-default-credential-provider-chain" rel="nofollow"> DefaultAWSCredentialsProviderChain </a> behaviour - <b>*FROM THE JENKINS INSTANCE*</b></p>
+ <p>In the latter case, usage of IAM Role Profiles seems not to work, thus relying on environment variables / system properties or the ~/.aws/credentials file, thus not recommended.</p>
+</div></div>
+
+</li>
+<li><code>repositoryName : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'DisableRemotePoll'</code><div>
+<div><div>
+ Git plugin uses git ls-remote polling mechanism by default when configured with a single branch (no wildcards!). This compare the latest built commit SHA with the remote branch without cloning a local copy of the repo.<br><br> If you don't want to / can't use this.<br><br> If this option is selected, polling will require a workspace and might trigger unwanted builds (see <a href="https://issues.jenkins.io/browse/JENKINS-10131" rel="nofollow">JENKINS-10131</a>).
+</div></div>
+<ul></ul></div></li>
+<li><code>$class: 'ExcludeFromChangeSet'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'ExcludeFromPoll'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'GitLFSPull'</code><div>
+<div><div>
+ Enable <a href="https://git-lfs.github.com/" rel="nofollow">git large file support</a> for the workspace by pulling large files after the checkout completes. Requires that the controller and each agent performing an LFS checkout have installed `git lfs`.
+</div></div>
+<ul></ul></div></li>
+<li><code>$class: 'GitSCMChecksExtension'</code><div>
+<ul><li><code>verboseConsoleLog : boolean</code> (optional)
+<div><div>
+ If this option is checked, verbose log will be output to build console; the verbose log is useful for debugging the publisher creation.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'GitSCMStatusChecksExtension'</code><div>
+<ul><li><code>name : String</code> (optional)
+</li>
+<li><code>skip : boolean</code> (optional)
+</li>
+<li><code>skipProgressUpdates : boolean</code> (optional)
+</li>
+<li><code>suppressLogs : boolean</code> (optional)
+</li>
+<li><code>unstableBuildNeutral : boolean</code> (optional)
+</li>
+</ul></div></li>
+<li><code>$class: 'GitTagMessageExtension'</code><div>
+<div><div>
+ If the revision checked out has a git tag associated with it, the tag name will be exported during the build as <strong>GIT_TAG_NAME</strong>. <br> If a message was specified when creating the tag, then that message will be exported during the build as the <strong>GIT_TAG_MESSAGE</strong> environment variable. <br> If no tag message was specified, the commit message will be used. <br> If you ticked the <strong>Use most recent tag</strong> option, and the revision checked out has no git tag associated with it, the parent commits will be searched for a git tag, and the rules stated above will apply to the first parent commit with a git tag.
+ <p></p> If the revision has more than one tag associated with it, only the most recent tag will be taken into account, <strong>unless</strong> the refspec contains "refs/tags/" — i.e. builds are only triggered when certain tag names or patterns are matched — in which case the exact tag name that triggered the build will be used, even if it's not the most recent tag for this commit. <br> For this reason, if you're not using a tag-specific refspec but you <em>are</em> using the "Create a tag for every build" behaviour, you should make sure that the build-tagging behaviour is configured to run <em>after</em> this "export git tag message" behaviour.
+ <p></p> Tag and commit messages which span multiple lines are no problem, though only the first 10000 lines of a tag's message will be exported.
+</div></div>
+<ul><li><code>useMostRecentTag : boolean</code> (optional)
+</li>
+</ul></div></li>
+<li><code>$class: 'IgnoreNotifyCommit'</code><div>
+<div><div>
+ If checked, this repository will be ignored when the notifyCommit-URL is accessed regardless of if the repository matches or not.
+</div></div>
+<ul></ul></div></li>
+<li><code>$class: 'LocalBranch'</code><div>
+<div><div>
+ If given, checkout the revision to build as HEAD on this branch.
+ <p>If selected, and its value is an empty string or "**", then the branch name is computed from the remote branch without the origin. In that case, a remote branch origin/master will be checked out to a local branch named master, and a remote branch origin/develop/new-feature will be checked out to a local branch named develop/newfeature.</p>
+ <p>Please note that this has not been tested with submodules.</p>
+</div></div>
+<ul><li><code>localBranch : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'MessageExclusion'</code><div>
+<ul><li><code>excludedMessage : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any revisions committed with message matched to <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html" rel="nofollow">Pattern</a> when determining if a build needs to be triggered. This can be used to exclude commits done by the build itself from triggering another build, assuming the build server commits the change with a distinct message.
+ <p></p>Exclusion uses <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html" rel="nofollow">Pattern</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Matcher.html#matches()" rel="nofollow">matching</a>
+ <p></p>
+ <pre>.*\[maven-release-plugin\].*</pre> The example above illustrates that if only revisions with "[maven-release-plugin]" message in first comment line have been committed to the SCM a build will not occur.
+ <p></p> You can create more complex patterns using embedded flag expressions.
+ <pre>(?s).*FOO.*</pre> This example will search FOO message in all comment lines.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'PathRestriction'</code><div>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will pay attention to included and/or excluded files and/or folders when determining if a build needs to be triggered.
+ <p></p> Using this behaviour will preclude the faster git ls-remote polling mechanism, forcing polling to require a workspace thus sometimes triggering unwanted builds, as if you had selected the <strong>Force polling using workspace</strong> extension as well.
+</div></div>
+<ul><li><code>includedRegions : String</code>
+<div><div>
+ Each inclusion uses <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html" rel="nofollow">java regular expression pattern matching</a>, and must be separated by a new line. An empty list implies that everything is included.
+ <p></p>
+ <pre>    myapp/src/main/web/.*\.html
+    myapp/src/main/web/.*\.jpeg
+    myapp/src/main/web/.*\.gif
+  </pre> The example above illustrates that a build will only occur, if html/jpeg/gif files have been committed to the SCM. Exclusions take precedence over inclusions, if there is an overlap between included and excluded regions.
+</div></div>
+
+</li>
+<li><code>excludedRegions : String</code>
+<div><div>
+ Each exclusion uses <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html" rel="nofollow">java regular expression pattern matching</a>, and must be separated by a new line.
+ <p></p>
+ <pre>    myapp/src/main/web/.*\.html
+    myapp/src/main/web/.*\.jpeg
+    myapp/src/main/web/.*\.gif
+  </pre> The example above illustrates that if only html/jpeg/gif files have been committed to the SCM a build will not occur.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'PerBuildTag'</code><div>
+<div><div>
+ Create a tag in the workspace for every build to unambiguously mark the commit that was built. You can combine this with Git publisher to push the tags to the remote repository.
+</div></div>
+<ul></ul></div></li>
+<li><code>$class: 'PreBuildMerge'</code><div>
+<div><div>
+ These options allow you to perform a merge to a particular branch before building. For example, you could specify an integration branch to be built, and to merge to master. In this scenario, on every change of integration, Jenkins will perform a merge with the master branch, and try to perform a build if the merge is successful. It then may push the merge back to the remote repository if the Git Push post-build action is selected.
+</div></div>
+<ul><li><code>options</code>
+<ul><b>Nested Object</b>
+<li><code>mergeTarget : String</code>
+<div><div>
+ The name of the branch within the named repository to merge to, such as <code>master</code>.
+</div></div>
+
+</li>
+<li><code>fastForwardMode</code> (optional)
+<div><div>
+ Merge fast-forward mode selection.<br> The default, --ff, gracefully falls back to a merge commit when required.<br> For more information, see the <a href="http://git-scm.com/docs/git-merge" rel="nofollow">Git Merge Documentation</a>
+</div></div>
+
+<ul><li><b>Values:</b> <code>FF</code>, <code>FF_ONLY</code>, <code>NO_FF</code></li></ul></li>
+<li><code>mergeRemote : String</code> (optional)
+<div><div>
+ Name of the repository, such as <code>origin</code>, that contains the branch you specify below. If left blank, it'll default to the name of the first repository configured above.
+</div></div>
+
+</li>
+<li><code>mergeStrategy</code> (optional)
+<div><div>
+ Merge strategy selection. <strong>This feature is not fully implemented in JGIT.</strong>
+</div></div>
+
+<ul><li><b>Values:</b> <code>DEFAULT</code>, <code>RESOLVE</code>, <code>RECURSIVE</code>, <code>OCTOPUS</code>, <code>OURS</code>, <code>SUBTREE</code>, <code>RECURSIVE_THEIRS</code></li></ul></li>
+</ul></li>
+</ul></div></li>
+<li><code>pretestedIntegration</code><div>
+<ul><li><code>gitIntegrationStrategy</code>
+<ul><b>Nested Choice of Objects</b>
+<li><code>accumulated</code><div>
+<div><h2>Accumulated Commit Strategy</h2>
+<div>
+ This strategy merges your commits with the --no-ff switch
+</div></div>
+<ul><li><code>shortCommitMessage : boolean</code> (optional)
+</li>
+</ul></div></li>
+<li><code>ffonly</code><div>
+<div><h2>Fast Forward only (--ff-only) Strategy</h2>
+<div>
+ This strategy fast-forward only using the --ff-only switch - or fails
+</div></div>
+<ul><li><code>shortCommitMessage : boolean</code> (optional)
+</li>
+</ul></div></li>
+<li><code>squash</code><div>
+<div><h2>Squashed Commit Strategy</h2>
+<div>
+ This strategy squashes all your commit on a given branch with the --squash option
+</div></div>
+<ul></ul></div></li>
+</ul></li>
+<li><code>integrationBranch : String</code>
+<div><h3>What to specify</h3>
+<p>The branch name must match your integration branch name. <b>No trailing slash.</b></p>
+<h3>Merge is performed the following way</h3>
+<h5>Squash commit</h5>
+<pre>            git checkout -B &lt;Branch name&gt; &lt;Repository name&gt;/&lt;Branch name&gt;
+            git merge --squash &lt;Branch matched by git&gt;
+            git commit -C &lt;Branch matched by git&gt;</pre>
+<h5>Accumulated commit</h5>
+<pre>            git checkout -B &lt;Branch name&gt; &lt;Repository name&gt;/&lt;Branch name&gt;
+            git merge -m &lt;commitMsg&gt; &lt;Branch matched by git&gt; --no-ff</pre>
+<h3>When changes are pushed to the integration branch?</h3>
+<p>Changes are only ever pushed when the build results is SUCCESS</p>
+<pre>            git push &lt;Repository name&gt; &lt;Branch name&gt;</pre></div>
+
+</li>
+<li><code>repoName : String</code>
+<div><div>
+ <h3>What to specify</h3>
+ <p>The repository name. In git the repository is always the name of the remote. So if you have specified a repository name in your Git configuration. You need to specify the exact same name here, otherwise no integration will be performed. We do the merge based on this.</p>
+ <p><b>No trailing slash on repository name.</b></p>
+ <p><span>Remember to specify this when working with NAMED repositories in Git</span></p>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'PruneStaleBranch'</code><div>
+<div><div>
+ Run "git remote prune" for each remote, to prune obsolete local branches.
+</div></div>
+<ul></ul></div></li>
+<li><code>pruneTags</code><div>
+<ul><li><code>pruneTags : boolean</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'RelativeTargetDirectory'</code><div>
+<ul><li><code>relativeTargetDir : String</code>
+<div><div>
+ Specify a local directory (relative to <a rel="nofollow">the workspace root</a>) where the Git repository will be checked out. If left empty, the workspace root itself will be used.
+ <p>This extension should <strong>not</strong> be used in Jenkins Pipeline (either declarative or scripted). Jenkins Pipeline already provides standard techniques for checkout to a subdirectory. Use <a href="https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#ws-allocate-workspace" rel="nofollow">ws</a> and <a href="https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/#dir-change-current-directory" rel="nofollow">dir</a> in Jenkins Pipeline rather than this extension.</p>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ScmName'</code><div>
+<div><div>
+ <p>Unique name for this SCM. Needed when using Git within the Multi SCM plugin.</p>
+</div></div>
+<ul><li><code>name : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'SparseCheckoutPaths'</code><div>
+<div><div>
+ <p>Specify the paths that you'd like to sparse checkout. This may be used for saving space (Think about a reference repository). Be sure to use a recent version of Git, at least above 1.7.10</p>
+</div></div>
+<ul><li><code>sparseCheckoutPaths</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>path : String</code>
+</li>
+</ul></li>
+</ul></div></li>
+<li><code>$class: 'SubmoduleOption'</code><div>
+<ul><li><code>disableSubmodules : boolean</code>
+<div><div>
+ By disabling support for submodules you can still keep using basic git plugin functionality and just have Jenkins to ignore submodules completely as if they didn't exist.
+</div></div>
+
+</li>
+<li><code>recursiveSubmodules : boolean</code>
+<div><div>
+ Retrieve all submodules recursively (uses '--recursive' option which requires git&gt;=1.6.5)
+</div></div>
+
+</li>
+<li><code>trackingSubmodules : boolean</code>
+<div><div>
+ Retrieve the tip of the configured branch in .gitmodules (Uses '--remote' option which requires git&gt;=1.8.2)
+</div></div>
+
+</li>
+<li><code>reference : String</code>
+<div><div>
+ Specify a folder containing a repository that will be used by Git as a reference during clone operations.<br> This option will be ignored if the folder is not available on the controller or agent where the clone is being executed.<br> To prepare a reference folder with multiple subprojects, create a bare git repository and add all the remote urls then perform a fetch:<br>
+ <pre>  git init --bare
+  git remote add SubProject1 https://gitrepo.com/subproject1
+  git remote add SubProject2 https://gitrepo.com/subproject2
+  git fetch --all
+  </pre>
+</div></div>
+
+</li>
+<li><code>timeout : int</code>
+<div><div>
+ Specify a timeout (in minutes) for submodules operations.<br> This option overrides the default timeout of 10 minutes. <br> You can change the global git timeout via the property org.jenkinsci.plugins.gitclient.Git.timeOut (see <a href="https://issues.jenkins.io/browse/JENKINS-11286" rel="nofollow">JENKINS-11286</a>). Note that property should be set on both controller and agent to have effect (see <a href="https://issues.jenkins.io/browse/JENKINS-22547" rel="nofollow">JENKINS-22547</a>).
+</div></div>
+
+</li>
+<li><code>parentCredentials : boolean</code>
+<div><div>
+ Use credentials from the default remote of the parent project.
+</div></div>
+
+</li>
+<li><code>depth : int</code> (optional)
+<div><div>
+ Set shallow clone depth, so that git will only download recent history of the project, saving time and disk space when you just want to access the latest commits of a repository.
+</div></div>
+
+</li>
+<li><code>shallow : boolean</code> (optional)
+<div><div>
+ Perform shallow clone, so that git will not download the history of the project, saving time and disk space when you just want to access the latest version of a repository.
+</div></div>
+
+</li>
+<li><code>threads : int</code> (optional)
+<div><div>
+ Specify the number of threads that will be used to update submodules.<br> If unspecified, the command line git default thread count is used.<br>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'UserExclusion'</code><div>
+<ul><li><code>excludedUsers : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any revisions committed by users in this list when determining if a build needs to be triggered. This can be used to exclude commits done by the build itself from triggering another build, assuming the build server commits the change with a distinct SCM user.
+ <p></p> Using this behaviour will preclude the faster git ls-remote polling mechanism, forcing polling to require a workspace thus sometimes triggering unwanted builds, as if you had selected the <strong>Force polling using workspace</strong> extension as well.
+ <p></p>Each exclusion uses exact string comparison and must be separated by a new line. User names are only excluded if they exactly match one of the names in this list.
+ <p></p>
+ <pre>auto_build_user</pre> The example above illustrates that if only revisions by "auto_build_user" have been committed to the SCM a build will not occur.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'UserIdentity'</code><div>
+<ul><li><code>name : String</code>
+<div><div>
+ <p>If given, "GIT_COMMITTER_NAME=[this]" and "GIT_AUTHOR_NAME=[this]" are set for builds. This overrides whatever is in the global settings.</p>
+</div></div>
+
+</li>
+<li><code>email : String</code>
+<div><div>
+ <p>If given, "GIT_COMMITTER_EMAIL=[this]" and "GIT_AUTHOR_EMAIL=[this]" are set for builds. This overrides whatever is in the global settings.</p>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'WipeWorkspace'</code><div>
+<div><div>
+ Delete the contents of the workspace before building, ensuring a fully fresh workspace.
+</div></div>
+<ul></ul></div></li>
+</ul></li>
+<li><code>doGenerateSubmoduleConfigurations : boolean</code> (optional)
+<div><p>Removed facility that was intended to test combinations of git submodule versions. Removed in git plugin 4.6.0. Ignores the user provided value and always uses <code>false</code> as its value.</p></div>
+
+</li>
+<li><code>submoduleCfg</code> (optional)
+<div><p>Removed facility that was intended to test combinations of git submodule versions. Removed in git plugin 4.6.0. Ignores the user provided value(s) and always uses empty values.</p></div>
+
+<ul><b>Array / List of Nested Object</b>
+<li><code>submoduleName : String</code>
+<div><p><strong>Removed</strong> in git plugin 4.6.0.</p></div>
+
+</li>
+<li><code>branches : Array / List of String</code>
+<div><p><strong>Removed</strong> in git plugin 4.6.0.</p></div>
+
+<ul></ul></li>
+</ul></li>
+</ul></div></li>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script data="ionicons" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/download/">
+Downloads
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/participate/">
+Contributing
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/">
+Structure and governance
+</a>
+</li>
+<li>
+<a href="https://issues.jenkins.io">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://community.jenkins.io">
+Forum
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/mailing-lists/">
+Mailing lists
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/chat/">
+Chats
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/sigs/">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Other</h5>
+<ul class="other">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/conduct/">
+Code of Conduct
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/press/">
+Press information
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/merchandise/">
+Merchandise
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

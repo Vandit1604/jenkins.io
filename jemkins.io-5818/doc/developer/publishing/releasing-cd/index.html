@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Setting up automated plugin release
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/doc/developer/publishing/releasing-cd/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Setting up automated plugin release" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Setting up automated plugin release" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/jemkins.io-5818/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Setting up automated plugin release" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/doc/developer/publishing/releasing-cd/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Setting up automated plugin release" property="og:site_name">
+<meta content="/jenkins.io/jemkins.io-5818/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/jemkins.io-5818/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="/jenkins.io/jemkins.io-5818/">
+Jenkins
+</a>
+<button class="navbar-toggler" data-bs-target="#CollapsingNavbar" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+<!-- starting partial cdf_logo.html.haml -->
+<svg width="36" height="18" xmlns="http://www.w3.org/2000/svg" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3.23 44.77 362.70 271.95"><defs><linearGradient id="a" x1="359.765" x2="104.082" y1="134.295" y2="124.577" gradientTransform="matrix(1 0 0 -1 0 439.068)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ed1c24"/><stop offset="1" stop-color="#f7941d"/></linearGradient><linearGradient id="b" x1="355.202" x2="99.519" y1="254.467" y2="244.749" xlink:href="#a"/><linearGradient id="c" x1="183.903" x2="10.612" y1="227.598" y2="221.023" xlink:href="#a"/><linearGradient id="d" x1="367.119" x2="157.995" y1="265.311" y2="257.091" xlink:href="#a"/></defs><path fill="#c49a6c" d="M231.52 309.278c2.483-.332 4.895-.77 7.255-1.329s4.649-1.206 6.991-1.957c13.494-4.58 25.187-12.952 36.374-24.593l-.14-.175c-14.944 15.486-30.693 25.344-50.48 28.054z"/><path fill="url(#a)" d="M224.232 309.96h.332c1.084 0 2.15-.14 3.216-.228a93.844 93.844 0 0 1-3.233.227z"/><path fill="url(#b)" d="M284.692 187.187l-.122.192.122-.192z"/><path fill="url(#c)" d="M146.145 231.847a150.844 150.844 0 0 1-12.97 15.862c-7.582 7.889-15.507 13.563-24.652 16.667a47.832 47.832 0 0 1-4.738 1.326 56.959 56.959 0 0 1-4.916.9 38.32 38.32 0 0 1-1.682.214l-.912.083c-.723.059-1.445.118-2.18.154h-3.068a42.325 42.325 0 0 1-9.192-1.043 49.977 49.977 0 0 1-6.764-2.002 43.097 43.097 0 0 1-4.525-1.954c-1.493-.77-2.961-1.516-4.407-2.37a59.5 59.5 0 0 1-17.105-15.399 59.714 59.714 0 0 1-2.914-4.311 53.09 53.09 0 0 1-1.291-2.263 51.985 51.985 0 0 1-2.263-4.738 46.72 46.72 0 0 1 0-36.426 51.986 51.986 0 0 1 2.263-4.738 54.14 54.14 0 0 1 1.291-2.263 59.742 59.742 0 0 1 2.914-4.311 59.714 59.714 0 0 1 17.105-15.4 60.828 60.828 0 0 1 4.407-2.369q2.217-1 4.525-1.777a49.976 49.976 0 0 1 6.906-2.073 42.325 42.325 0 0 1 9.192-1.042h3.128c.722 0 1.445.094 2.155.154l1.043.106 1.019.119c1.8.237 3.553.557 5.271.96.853.2 1.694.426 2.523.663a51.186 51.186 0 0 1 11.846 5.176 59.645 59.645 0 0 1 4.395 2.89 74.485 74.485 0 0 1 8.386 7.108q2.038 1.99 4.063 4.193l.083-.13a159.395 159.395 0 0 1 11.064 13.942c5.437-8.576 13.658-21.464 16.584-25.74 1.185-1.718 2.37-3.46 3.66-5.212-13.54-16.513-29.827-30.23-51.587-36.082h-.154a89.397 89.397 0 0 0-3.187-.794l-.45-.107a92.565 92.565 0 0 0-3.151-.627l-.628-.119a80.578 80.578 0 0 0-3.743-.569h-.142a58.29 58.29 0 0 0-2.073-.236h-.391l-1.872-.166h-.568l-1.754-.119h-.675l-1.777-.07h-3.115c-46.447-.25-87.125 40.476-87.125 86.911s40.725 87.173 87.172 87.173h3.14l1.729-.071h.734l1.67-.095h.676l1.706-.154h.568l1.813-.213.414-.06 1.967-.272h.213a125.91 125.91 0 0 0 3.553-.628l.652-.142c.96-.201 1.907-.415 2.855-.64l.58-.142a86.66 86.66 0 0 0 3.009-.817l.237-.071c20.73-6.077 36.425-19.392 49.55-35.277-2.037-3.068-3.4-5.366-4.039-6.48z"/><path fill="url(#d)" d="M318.05 51.733v94.66a85.514 85.514 0 0 0-52.595-18.729h-3.115l-1.777.072-.7.047-1.752.118h-.569l-1.871.166h-.391c-.7.071-1.386.142-2.073.237h-.154c-1.256.154-2.5.355-3.732.569l-.628.118c-1.066.19-2.108.403-3.15.628l-.45.107c-30.35 6.858-50.333 28.808-66.822 52.82-.7 1.018-1.35 2.049-2.038 3.068-2.25 3.423-5.46 8.422-8.635 13.397-4.17 6.527-8.292 13.03-9.939 15.66l20.624 32.137s21.997 40.465 61.68 51.482l.237.07c.995.297 2.002.558 3.009.818l.58.142c.936.237 1.896.439 2.855.64l.652.142c1.184.225 2.369.439 3.553.628h.214l1.966.273.415.059 1.812.213h.569l1.705.154h.676l1.67.095h.734l1.73.07h3.139c54.703 0 86.355-30.964 87.149-85.063V51.733zm-52.595 215.403h-3.068c-.734 0-1.457-.095-2.18-.154l-.912-.083c-.568-.06-1.125-.13-1.682-.213a49.077 49.077 0 0 1-9.571-2.275 49.612 49.612 0 0 1-6.634-2.83 55.792 55.792 0 0 1-6.254-3.768 63.068 63.068 0 0 1-3.009-2.215 82.399 82.399 0 0 1-8.683-7.925l-.095.119c-1.255-1.303-2.487-2.69-3.731-4.11-.154-.167-.296-.356-.45-.534-.628-.722-1.256-1.445-1.884-2.215s-1.125-1.398-1.682-2.097-.888-1.101-1.338-1.682a184.467 184.467 0 0 1-6.053-8.292c-.7-.995-1.398-2.025-2.109-3.056-.379-.569-.77-1.184-1.185-1.73-.675-1.018-1.362-2.013-2.049-3.056l-.355-.545c-1.185-1.812-2.37-3.684-3.649-5.603q2.95-4.608 5.817-8.86c1.907-2.831 3.79-5.556 5.662-8.138s3.72-5.046 5.591-7.38 3.72-4.525 5.603-6.586q2.026-2.203 4.063-4.194c1.374-1.338 2.748-2.594 4.158-3.778s2.807-2.287 4.252-3.329a57.594 57.594 0 0 1 7.748-4.62c.331-.166.663-.367 1.006-.533l.226-.118c1.41-.652 2.843-1.185 4.3-1.73l.485-.201c.273-.083.557-.142.83-.237a44.943 44.943 0 0 1 3.34-.948l1.374-.343a60.798 60.798 0 0 1 4.738-.841l1.019-.119 1.042-.106c.711 0 1.434-.119 2.156-.154h3.128a42.431 42.431 0 0 1 4.572.26 48.011 48.011 0 0 1 6.93 1.35c1.54.427 3.08.925 4.596 1.505a48.724 48.724 0 0 1 4.525 1.955c1.493.722 2.961 1.516 4.407 2.369s2.866 1.8 4.24 2.784 2.725 2.049 4.028 3.174a58.459 58.459 0 0 1 8.837 9.477 59.73 59.73 0 0 1 2.914 4.312 51.067 51.067 0 0 1 5.318 11.916 47.38 47.38 0 0 1 1.185 5.165 45.567 45.567 0 0 1 .71 8.09c.072 35.964-16.062 52.122-52.227 52.122z"/></svg>
+
+<!-- ending partial cdf_logo.html.haml -->
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://cd.foundation/">
+What is CDF?
+</a>
+<a class="dropdown-item feature" href="https://jenkins-x.io/">
+Jenkins X
+</a>
+<a class="dropdown-item feature" href="https://tekton.dev/">
+Tekton
+</a>
+<a class="dropdown-item feature" href="https://www.spinnaker.io/">
+Spinnaker
+</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/book/">
+<strong>
+User Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/installing/">
+&nbsp;-&nbsp;Installing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/">
+&nbsp;-&nbsp;Jenkins Pipeline
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/managing/">
+&nbsp;-&nbsp;Managing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/security/">
+&nbsp;-&nbsp;Securing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/system-administration/">
+&nbsp;-&nbsp;System Administration
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/troubleshooting/">
+&nbsp;-&nbsp;Troubleshooting Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/glossary/">
+&nbsp;-&nbsp;Terms and Definitions
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/solutions/">
+<strong>
+Solution Pages
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+<strong>
+Tutorials
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/pipeline/tour/getting-started/">
+&nbsp;-&nbsp;Guided Tour
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+&nbsp;-&nbsp;More Tutorials
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/developer/">
+<strong>
+Developer Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/participate/">
+<strong>
+Contributor Guide
+</strong>
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/participate/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/chat/" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+Meet
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+<a class="dropdown-item feature" href="https://community.jenkins.io/">
+Forum
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins.io/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/mailing-lists/" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/ux/">
+&nbsp;-&nbsp;User Experience
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+CI/CD and Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jenkins-operator/">
+Jenkins Operator
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/remoting/">
+Jenkins Remoting
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/press/">
+Press
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/conduct/">
+Conduct
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/books/">
+Books
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/zh/">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item searchbox">
+<input aria-label="Search" class="form-control searchbox" placeholder="Search" type="search">
+</li>
+<li class="nav-item download-btn">
+<a class="nav-link btn btn-outline-secondary" href="/jenkins.io/jemkins.io-5818/download/">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/" class="active">Publishing Plugins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/style-guides/" class="">Style Guides</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/source-code-hosting/" class="">Source Code Hosting</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/artifact-repository/" class="">Artifact Repository</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/documentation/" class="">Plugin Documentation</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/wiki-page/" class="">Plugin Wiki Pages</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/plugin-site/" class="">Plugin Site</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/continuous-integration/" class="">Continuous Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/publishing/usage-statistics/" class="">Usage Statistics</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/jemkins.io-5818/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Setting up automated plugin release
+</h1>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Continuous Delivery of Jenkins Components and Plugin (<a href="https://github.com/jenkinsci/jep/blob/master/jep/229/README.adoc">JEP-229</a>) is relatively new.
+Any feedback from early adopters will be appreciated.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maintainers of Jenkins plugin repositories on GitHub can opt into continuous delivery (CD).
+In this mode, every successful build of the default branch (<code>master</code> or <code>main</code>) by ci.jenkins.io results in a new plugin release.
+GitHub Actions are used to rebuild the code and deploy it to Artifactory,
+without the need for maintainers to use personal credentials or local builds.
+Release notes are generated automatically according to pull request (PR) titles and some predefined labels.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>maven-release-plugin</code> (MRP) is not used in this mode.
+Rather than traditional version numbers like <code>1.23</code> or <code>2.3.4</code> which are chosen by the maintainer,
+a CD release will have a version of the form <code>123.vabcdef456789</code>:
+an integer component determined by the Git history depth,
+and an informational component with the Git commit hash.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="checklist"><a class="anchor" href="#checklist"></a>Checklist</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="incrementals-enablement"><a class="anchor" href="#incrementals-enablement"></a>Incrementals Enablement</h3>
+<div class="paragraph">
+<p>Verify that the plugin has already been <a href="../../plugin-development/incrementals">incrementalified</a>.
+<code>pom.xml</code> should contain <code>&lt;version&gt;${revision}${changelist}&lt;/version&gt;</code> and the files <code>.mvn/extensions.xml</code> and <code>.mvn/maven.config</code> should exist <strong>before proceeding with subsequent steps</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A new plugin created from the <a href="https://github.com/jenkinsci/archetypes/">archetypes</a> will already have this setup.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enable-cd-permissions"><a class="anchor" href="#enable-cd-permissions"></a>Enable CD Permissions</h3>
+<div class="paragraph">
+<p>Enable the continuous delivery flag in <a href="https://github.com/jenkins-infra/repository-permissions-updater/">repository permission updater</a> (RPU) for your plugin by filing a pull request adding to <code>permissions/plugin-xxx.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">cd</span><span class="pi">:</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once that has been merged, start checking <code><a href="https://github.com/jenkinsci/your-plugin/settings/secrets/actions" class="bare">https://github.com/jenkinsci/your-plugin/settings/secrets/actions</a></code>
+until you see <code>MAVEN_TOKEN</code> and <code>MAVEN_USERNAME</code> appear under <strong>Repository secrets</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configure-cd-workflow"><a class="anchor" href="#configure-cd-workflow"></a>Configure CD Workflow</h3>
+<div class="paragraph">
+<p>Create the CD workflow as a copy of the template:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="nb">mkdir</span> <span class="nt">-p</span> .github/workflows
+curl <span class="nt">--silent</span> <span class="nt">--show-error</span> <span class="nt">--location</span> <span class="nt">--output</span> .github/workflows/cd.yaml https://raw.githubusercontent.com/jenkinsci/.github/master/workflow-templates/cd.yaml
+git add .github/workflows/cd.yaml</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configure-release-drafter"><a class="anchor" href="#configure-release-drafter"></a>Configure Release Drafter</h3>
+<div class="paragraph">
+<p>You can delete any existing Release Drafter configuration,
+as the default is to assume <a href="https://github.com/probot/octokit-plugin-config/blob/fa1700ed56e2c76afb4dd618bf27e7c8a445c4d8/src/util/get-config-files.ts#L37-L51"><code>_extends: .github</code></a>;
+and/or workflow, as that will be subsumed by the CD workflow:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">git <span class="nb">rm</span> .github/release-drafter.y<span class="k">*</span>ml
+git <span class="nb">rm</span> .github/workflows/release-drafter.y<span class="k">*</span>ml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also <a href="https://github.com/apps/release-drafter/installations/775283">remove the App from the repository</a> if it was configured that way.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+These files may have been set up this way by the <a href="https://github.com/jenkinsci/archetypes/">plugin archetype</a> that you used to initialize the plugin.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configure-dependabot-optional"><a class="anchor" href="#configure-dependabot-optional"></a>Configure Dependabot (optional)</h3>
+<div class="paragraph">
+<p>If you have a <code>.github/dependabot.yml</code>, add:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="pi">-</span> <span class="na">package-ecosystem</span><span class="pi">:</span> <span class="s">github-actions</span>
+  <span class="na">directory</span><span class="pi">:</span> <span class="s">/</span>
+  <span class="na">schedule</span><span class="pi">:</span>
+    <span class="na">interval</span><span class="pi">:</span> <span class="s">monthly</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you did not yet have such a file, create it now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">curl <span class="nt">--silent</span> <span class="nt">--show-error</span> <span class="nt">--location</span> <span class="nt">--output</span> .github/dependabot.yml https://raw.githubusercontent.com/jenkinsci/archetypes/master/common-files/.github/dependabot.yml</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-maven-pom-and-config"><a class="anchor" href="#update-maven-pom-and-config"></a>Update Maven POM and Config</h3>
+<div class="paragraph">
+<p>Update the file <code>.mvn/maven.config</code> so it looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>-Pconsume-incrementals
+-Pmight-produce-incrementals
+-Dchangelist.format=%d.v%s</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Update the Maven <code>pom.xml</code> as described below, depending on your preferred version number format.</p>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;re done with these changes, commit all of the source file changes in a branch and file a pull request for them.
+Do not forget to <code>git add .</code> to make sure any newly created files are included.
+Merge this PR activating CD.
+Be sure to apply one of the <a href="https://github.com/jenkinsci/.github/blob/ce466227c534c42820a597cb8e9cac2f2334920a/.github/release-drafter.yml#L9-L50">predefined labels</a>
+to this and every subsequent PR before merging so that Release Drafter can properly categorize changes.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Fully automated versioning</dt>
+<dd>
+<p>For a regular component whose version number is not that meaningful, let the version number be automatically determined by setting a top-level <code>&lt;version&gt;${changelist}&lt;/version&gt;</code> and having an entry <code>&lt;changelist&gt;999999-SNAPSHOT&lt;/changelist&gt;</code> in the <code>&lt;properties&gt;</code> section, removing <code>&lt;revision&gt;</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="diff"><span class="gd">--- a/.mvn/maven.config
+</span><span class="gi">+++ b/.mvn/maven.config
+</span><span class="p">@@ -1,2 +1,3 @@</span>
+ -Pconsume-incrementals
+ -Pmight-produce-incrementals
+<span class="gi">+-Dchangelist.format=%d.v%s
+</span><span class="gd">--- a/pom.xml
+</span><span class="gi">+++ b/pom.xml
+</span><span class="p">@@ -7,7 +7,7 @@</span>
+<span class="gd">-    &lt;version&gt;${revision}${changelist}&lt;/version&gt;
+</span><span class="gi">+    &lt;version&gt;${changelist}&lt;/version&gt;
+</span>     &lt;packaging&gt;hpi&lt;/packaging&gt;
+<span class="p">@@ -26,8 +26,7 @@</span>
+     &lt;properties&gt;
+<span class="gd">-        &lt;revision&gt;1.23&lt;/revision&gt;
+-        &lt;changelist&gt;-SNAPSHOT&lt;/changelist&gt;
+</span><span class="gi">+        &lt;changelist&gt;999999-SNAPSHOT&lt;/changelist&gt;
+</span>         &lt;jenkins.version&gt;2.361.4&lt;/jenkins.version&gt;
+     &lt;/properties&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this typical case, a CI/release build (<code>-Dset.changelist</code> specified) will be of the form <code>123.vabcdef456789</code>.
+A snapshot build will be <code>999999-SNAPSHOT</code>: arbitrary but treated as a snapshot by Maven and newer than any release.
+You can see examples of the proposed snapshot and release versions in your case by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">mvn validate
+mvn validate <span class="nt">-Dset</span>.changelist <span class="nt">-Dignore</span>.dirt</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Note that you will very quickly create releases with version numbers greater than 100, as the major version component corresponds to the number of commits in the branch you&#8217;re releasing from.
+If you&#8217;re not ready to commit to all future versions of your plugin being this large, see the next option.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is worth communicating this to your users, as they will see a very different version number format than before.
+The best way to do this is to add a line to the release notes: <a href="https://github.com/jenkinsci/azure-artifact-manager-plugin/releases/tag/86.va2aa4b1038c7">example note</a>.
+</td>
+</tr>
+</table>
+</div>
+</dd>
+<dt class="hdlist1">Manually controlled prefix</dt>
+<dd>
+<p>If you do not want to have large major version numbers, like with fully automated versioning described above, keep <code>&lt;revision&gt;</code> in the <code>&lt;properties&gt;</code> section, setting it to the prefix (<code>major</code>, <code>major.minor</code>, etc., depending on how much of the version number you want to manually manage) and use it as part of the top-level <code>&lt;version&gt;</code> element:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="diff"><span class="gd">--- a/.mvn/maven.config
+</span><span class="gi">+++ b/.mvn/maven.config
+</span><span class="p">@@ -1,2 +1,3 @@</span>
+ -Pconsume-incrementals
+ -Pmight-produce-incrementals
+<span class="gi">+-Dchangelist.format=%d.v%s
+</span><span class="gd">--- a/pom.xml
+</span><span class="gi">+++ b/pom.xml
+</span><span class="p">@@ -10,12 +10,12 @@</span>
+   &lt;artifactId&gt;some-library-wrapper&lt;/artifactId&gt;
+<span class="gd">-  &lt;version&gt;${revision}${changelist}&lt;/version&gt;
+</span><span class="gi">+  &lt;version&gt;${revision}.${changelist}&lt;/version&gt;
+</span>   &lt;packaging&gt;hpi&lt;/packaging&gt;
+   &lt;properties&gt;
+<span class="gd">-    &lt;revision&gt;1.2.3&lt;/revision&gt;
+-    &lt;changelist&gt;-SNAPSHOT&lt;/changelist&gt;
+</span><span class="gi">+    &lt;revision&gt;1&lt;/revision&gt;
++    &lt;changelist&gt;999999-SNAPSHOT&lt;/changelist&gt;
+</span>     &lt;jenkins.version&gt;2.361.4&lt;/jenkins.version&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the version numbers will look like <code>1.321.vabcdef456789</code> or <code>1.999999-SNAPSHOT</code>, respectively.
+This could be appropriate if you are leery of committing up front to having major version numbers be in the triple digits,
+with no option of going back to <code>maven-release-plugin</code>-style versioning except by starting at say <code>1000.1</code>,
+because version numbers going forward must be mathematically larger than any currently on the update center.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is <em>not recommended</em> to implement actual semantic versioning with automated releases performed by CD, as that requires great care in always changing the <code>revision</code> as part of the changes that semantically would require a <code>revision</code> change for the next release.
+Otherwise, automated releases may have version numbers that semantically would not make sense.
+</td>
+</tr>
+</table>
+</div>
+</dd>
+<dt class="hdlist1">Versioning with wrapped components</dt>
+<dd>
+<p>Similar to the previous option, for a component whose version number ought to reflect a release version of some wrapped component, use a hyphen (<code>-</code>) as the separator between the prefix corresponding to the wrapped component&#8217;s version and the CD-generated suffix:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="diff"><span class="gd">--- a/.mvn/maven.config
+</span><span class="gi">+++ b/.mvn/maven.config
+</span><span class="p">@@ -1,2 +1,3 @@</span>
+ -Pconsume-incrementals
+ -Pmight-produce-incrementals
+<span class="gi">+-Dchangelist.format=%d.v%s
+</span><span class="gd">--- a/pom.xml
+</span><span class="gi">+++ b/pom.xml
+</span><span class="p">@@ -10,12 +10,12 @@</span>
+   &lt;artifactId&gt;some-library-wrapper&lt;/artifactId&gt;
+<span class="gd">-  &lt;version&gt;${revision}${changelist}&lt;/version&gt;
+</span><span class="gi">+  &lt;version&gt;${revision}-${changelist}&lt;/version&gt;
+</span>   &lt;packaging&gt;hpi&lt;/packaging&gt;
+   &lt;properties&gt;
+<span class="gd">-    &lt;revision&gt;4.0.0-1.3&lt;/revision&gt;
+-    &lt;changelist&gt;-SNAPSHOT&lt;/changelist&gt;
+</span><span class="gi">+    &lt;revision&gt;4.0.0&lt;/revision&gt;
++    &lt;changelist&gt;999999-SNAPSHOT&lt;/changelist&gt;
+</span>     &lt;jenkins.version&gt;2.361.4&lt;/jenkins.version&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the version numbers will look like <code>4.0.0-123.vabcdef456789</code> or <code>4.0.0-999999-SNAPSHOT</code>, respectively.
+Use the <code>revision</code> property for the <code>&lt;dependency&gt;</code> declaration to ensure they always match:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.elsewhere<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>some-lib<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${revision}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="releasing"><a class="anchor" href="#releasing"></a>Releasing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now whenever Jenkins reports a successful build of your default branch,
+and at least one pull request had a label indicating it was of interest to users
+(e.g., <code>enhancement</code> rather than <code>chore</code>), your component will be released to Artifactory and
+release notes published in GitHub.
+You do not need any special credentials or local checkout; just merge pull requests with suitable titles and labels.</p>
+</div>
+<div class="paragraph">
+<p>You will see a lot of workflow runs in the <strong>Actions</strong> tab in GitHub, only a small proportion of which are actual releases.
+Due to technical limitations in GitHub Actions it is not possible to suppress the extraneous runs.
+Actual releases will display a green check next to the <strong>release</strong> stage.</p>
+</div>
+<div class="paragraph">
+<p>You can also trigger a deployment explicitly, if the current commit has a passing check from Jenkins. Visit <a href="https://github.com/jenkinsci/your-plugin/actions?query=workflow%3Acd" class="bare">https://github.com/jenkinsci/your-plugin/actions?query=workflow%3Acd</a> and click Run workflow.
+If you prefer to only deploy explicitly, not on every push, just comment out the <code>check_run</code> section in the workflow.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="noting-incompatible-changes"><a class="anchor" href="#noting-incompatible-changes"></a>Noting incompatible changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is best to avoid ever making incompatible changes to your plugin.
+If you must make one, then you can define <code>hpi.compatibleSinceVersion</code> as for <a href="../../plugin-development/mark-a-plugin-incompatible">any plugins</a>.
+If <code>master</code> is currently <code>123.vXXX</code> according to</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">mvn validate <span class="nt">-Dset</span>.changelist</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then you can set</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;hpi.compatibleSinceVersion&gt;</span>124<span class="nt">&lt;/hpi.compatibleSinceVersion&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in your pull request with the breaking changes,
+since the new release version will be <code>124.vXXX</code> if you squash-merge this PR,
+or something higher (at least <code>125.vXXX</code>) if you true-merge it.
+(It is only important that the value is greater than that of the previous actual release,
+and less than or equal to that of the release containing the breaking change.)</p>
+</div>
+<div class="paragraph">
+<p>Do not forget to mark the PR with the label <code>breaking</code> (or <code>removed</code>) to get an appropriate categorization in release notes.
+(These labels also normally cause a release to be triggered automatically upon merge.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fallback"><a class="anchor" href="#fallback"></a>Fallback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can also release manually if you have configured your machine for <a href="../releasing-manually">manual release</a>.
+To cut a release:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">git checkout master
+git pull <span class="nt">--ff-only</span>
+mvn <span class="nt">-Dset</span>.changelist <span class="se">\</span>
+  <span class="nt">-DaltDeploymentRepository</span><span class="o">=</span>maven.jenkins-ci.org::default::https://repo.jenkins-ci.org/releases/ <span class="se">\</span>
+  clean deploy</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>Troubleshooting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Check that <code>MAVEN_TOKEN</code> and <code>MAVEN_USERNAME</code> appear under Repository secrets.</p>
+</div>
+<div class="sect2">
+<h3 id="the-upload-to-the-maven-repository-fails-with-401-unauthorized"><a class="anchor" href="#the-upload-to-the-maven-repository-fails-with-401-unauthorized"></a>The upload to the Maven repository fails with "401 Unauthorized"</h3>
+<div class="paragraph">
+<p>Unauthorized means that the credentials were invalid, or not sent by Maven.</p>
+</div>
+<div class="paragraph">
+<p>This normally means that the secrets configured in the repository have expired, create an issue in the INFRA helpdesk on <a href="https://github.com/jenkins-infra/helpdesk/issues/new/choose">GitHub</a>, and let the team know in #jenkins-infra on <a href="https://libera.chat/">Libera Chat</a>.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively you can temporarily update the secrets yourself with your own personal credentials.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-upload-to-the-maven-repository-fails-with-403-forbidden"><a class="anchor" href="#the-upload-to-the-maven-repository-fails-with-403-forbidden"></a>The upload to the Maven repository fails with "403 Forbidden"</h3>
+<div class="paragraph">
+<p>The two most common explanations for this error are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You don&#8217;t have permission to upload to the specified path.
+<a href="../requesting-hosting/#request-upload-permissions">Learn more about how to request upload permissions</a>.
+Check that the path you&#8217;re allowed to upload to matches the actual upload attempt (i.e. no typos).</p>
+</li>
+<li>
+<p>The specified release already exists and you try to overwrite it.
+We do not allow replacing existing releases.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="further-troubleshooting-help"><a class="anchor" href="#further-troubleshooting-help"></a>Further troubleshooting help</h3>
+<div class="paragraph">
+<p>If none of the provided solutions help, send an email to the <a href="/mailing-lists">Jenkins developers mailing list</a> and explain what you did, and how it failed.</p>
+</div>
+</div>
+</div>
+</div>
+<h2>
+References
+</h2>
+<ul>
+<li><a href="/jep/229">JEP-229: Continuous Delivery of Jenkins Components and Plugins</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script data="ionicons" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/developer/publishing/releasing-cd.adoc" title="Edit /doc/developer/publishing/releasing-cd.adoc on GitHub">
+<img alt="Edit /doc/developer/publishing/releasing-cd.adoc on GitHub" class="icon-improve" src="/images/github-mark.svg">
+Improve this page
+</a>
+&nbsp;
+<a href="https://github.com/jenkins-infra/jenkins.io/issues/new?labels=bug&amp;template=4-bug.md&amp;title=Setting up automated plugin release page - TODO: Put a summary here&amp;body=Problem with the [Setting up automated plugin release](https://www.jenkins.io/doc/developer/publishing/releasing-cd/) page, [source file](https://github.com/jenkins-infra/jenkins.io/blob/master/content/doc/developer/publishing/releasing-cd.adoc)%0A%0ATODO: Describe the expected and actual behavior here %0A%0A%23%23 Screenshots %0A%0A TODO: Add screenshots if possible %0A%0A%23%23 Possible Solution %0A%0A%3C!-- If you have suggestions on a fix for the bug, please describe it here. --%3E %0A%0AN/A" title="Report a problem with /doc/developer/publishing/releasing-cd.adoc">
+<ion-icon class="report" name="warning"></ion-icon>
+Report a problem
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/download/">
+Downloads
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/participate/">
+Contributing
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/">
+Structure and governance
+</a>
+</li>
+<li>
+<a href="https://issues.jenkins.io">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://community.jenkins.io">
+Forum
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/mailing-lists/">
+Mailing lists
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/chat/">
+Chats
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/sigs/">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Other</h5>
+<ul class="other">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/conduct/">
+Code of Conduct
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/press/">
+Press information
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/merchandise/">
+Merchandise
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

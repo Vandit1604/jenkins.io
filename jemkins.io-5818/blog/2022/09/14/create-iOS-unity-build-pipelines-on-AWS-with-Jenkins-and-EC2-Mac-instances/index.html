@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/blog/2022/09/14/create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/jemkins.io-5818/images/post-images/Jenkins-DevOps.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/jemkins.io-5818/blog/2022/09/14/create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances" property="og:site_name">
+<meta content="/jenkins.io/jemkins.io-5818/images/post-images/Jenkins-DevOps.png" name="og:image">
+<link href="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/jemkins.io-5818/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/jemkins.io-5818/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="/jenkins.io/jemkins.io-5818/">
+Jenkins
+</a>
+<button class="navbar-toggler" data-bs-target="#CollapsingNavbar" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+<!-- starting partial cdf_logo.html.haml -->
+<svg width="36" height="18" xmlns="http://www.w3.org/2000/svg" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3.23 44.77 362.70 271.95"><defs><linearGradient id="a" x1="359.765" x2="104.082" y1="134.295" y2="124.577" gradientTransform="matrix(1 0 0 -1 0 439.068)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ed1c24"/><stop offset="1" stop-color="#f7941d"/></linearGradient><linearGradient id="b" x1="355.202" x2="99.519" y1="254.467" y2="244.749" xlink:href="#a"/><linearGradient id="c" x1="183.903" x2="10.612" y1="227.598" y2="221.023" xlink:href="#a"/><linearGradient id="d" x1="367.119" x2="157.995" y1="265.311" y2="257.091" xlink:href="#a"/></defs><path fill="#c49a6c" d="M231.52 309.278c2.483-.332 4.895-.77 7.255-1.329s4.649-1.206 6.991-1.957c13.494-4.58 25.187-12.952 36.374-24.593l-.14-.175c-14.944 15.486-30.693 25.344-50.48 28.054z"/><path fill="url(#a)" d="M224.232 309.96h.332c1.084 0 2.15-.14 3.216-.228a93.844 93.844 0 0 1-3.233.227z"/><path fill="url(#b)" d="M284.692 187.187l-.122.192.122-.192z"/><path fill="url(#c)" d="M146.145 231.847a150.844 150.844 0 0 1-12.97 15.862c-7.582 7.889-15.507 13.563-24.652 16.667a47.832 47.832 0 0 1-4.738 1.326 56.959 56.959 0 0 1-4.916.9 38.32 38.32 0 0 1-1.682.214l-.912.083c-.723.059-1.445.118-2.18.154h-3.068a42.325 42.325 0 0 1-9.192-1.043 49.977 49.977 0 0 1-6.764-2.002 43.097 43.097 0 0 1-4.525-1.954c-1.493-.77-2.961-1.516-4.407-2.37a59.5 59.5 0 0 1-17.105-15.399 59.714 59.714 0 0 1-2.914-4.311 53.09 53.09 0 0 1-1.291-2.263 51.985 51.985 0 0 1-2.263-4.738 46.72 46.72 0 0 1 0-36.426 51.986 51.986 0 0 1 2.263-4.738 54.14 54.14 0 0 1 1.291-2.263 59.742 59.742 0 0 1 2.914-4.311 59.714 59.714 0 0 1 17.105-15.4 60.828 60.828 0 0 1 4.407-2.369q2.217-1 4.525-1.777a49.976 49.976 0 0 1 6.906-2.073 42.325 42.325 0 0 1 9.192-1.042h3.128c.722 0 1.445.094 2.155.154l1.043.106 1.019.119c1.8.237 3.553.557 5.271.96.853.2 1.694.426 2.523.663a51.186 51.186 0 0 1 11.846 5.176 59.645 59.645 0 0 1 4.395 2.89 74.485 74.485 0 0 1 8.386 7.108q2.038 1.99 4.063 4.193l.083-.13a159.395 159.395 0 0 1 11.064 13.942c5.437-8.576 13.658-21.464 16.584-25.74 1.185-1.718 2.37-3.46 3.66-5.212-13.54-16.513-29.827-30.23-51.587-36.082h-.154a89.397 89.397 0 0 0-3.187-.794l-.45-.107a92.565 92.565 0 0 0-3.151-.627l-.628-.119a80.578 80.578 0 0 0-3.743-.569h-.142a58.29 58.29 0 0 0-2.073-.236h-.391l-1.872-.166h-.568l-1.754-.119h-.675l-1.777-.07h-3.115c-46.447-.25-87.125 40.476-87.125 86.911s40.725 87.173 87.172 87.173h3.14l1.729-.071h.734l1.67-.095h.676l1.706-.154h.568l1.813-.213.414-.06 1.967-.272h.213a125.91 125.91 0 0 0 3.553-.628l.652-.142c.96-.201 1.907-.415 2.855-.64l.58-.142a86.66 86.66 0 0 0 3.009-.817l.237-.071c20.73-6.077 36.425-19.392 49.55-35.277-2.037-3.068-3.4-5.366-4.039-6.48z"/><path fill="url(#d)" d="M318.05 51.733v94.66a85.514 85.514 0 0 0-52.595-18.729h-3.115l-1.777.072-.7.047-1.752.118h-.569l-1.871.166h-.391c-.7.071-1.386.142-2.073.237h-.154c-1.256.154-2.5.355-3.732.569l-.628.118c-1.066.19-2.108.403-3.15.628l-.45.107c-30.35 6.858-50.333 28.808-66.822 52.82-.7 1.018-1.35 2.049-2.038 3.068-2.25 3.423-5.46 8.422-8.635 13.397-4.17 6.527-8.292 13.03-9.939 15.66l20.624 32.137s21.997 40.465 61.68 51.482l.237.07c.995.297 2.002.558 3.009.818l.58.142c.936.237 1.896.439 2.855.64l.652.142c1.184.225 2.369.439 3.553.628h.214l1.966.273.415.059 1.812.213h.569l1.705.154h.676l1.67.095h.734l1.73.07h3.139c54.703 0 86.355-30.964 87.149-85.063V51.733zm-52.595 215.403h-3.068c-.734 0-1.457-.095-2.18-.154l-.912-.083c-.568-.06-1.125-.13-1.682-.213a49.077 49.077 0 0 1-9.571-2.275 49.612 49.612 0 0 1-6.634-2.83 55.792 55.792 0 0 1-6.254-3.768 63.068 63.068 0 0 1-3.009-2.215 82.399 82.399 0 0 1-8.683-7.925l-.095.119c-1.255-1.303-2.487-2.69-3.731-4.11-.154-.167-.296-.356-.45-.534-.628-.722-1.256-1.445-1.884-2.215s-1.125-1.398-1.682-2.097-.888-1.101-1.338-1.682a184.467 184.467 0 0 1-6.053-8.292c-.7-.995-1.398-2.025-2.109-3.056-.379-.569-.77-1.184-1.185-1.73-.675-1.018-1.362-2.013-2.049-3.056l-.355-.545c-1.185-1.812-2.37-3.684-3.649-5.603q2.95-4.608 5.817-8.86c1.907-2.831 3.79-5.556 5.662-8.138s3.72-5.046 5.591-7.38 3.72-4.525 5.603-6.586q2.026-2.203 4.063-4.194c1.374-1.338 2.748-2.594 4.158-3.778s2.807-2.287 4.252-3.329a57.594 57.594 0 0 1 7.748-4.62c.331-.166.663-.367 1.006-.533l.226-.118c1.41-.652 2.843-1.185 4.3-1.73l.485-.201c.273-.083.557-.142.83-.237a44.943 44.943 0 0 1 3.34-.948l1.374-.343a60.798 60.798 0 0 1 4.738-.841l1.019-.119 1.042-.106c.711 0 1.434-.119 2.156-.154h3.128a42.431 42.431 0 0 1 4.572.26 48.011 48.011 0 0 1 6.93 1.35c1.54.427 3.08.925 4.596 1.505a48.724 48.724 0 0 1 4.525 1.955c1.493.722 2.961 1.516 4.407 2.369s2.866 1.8 4.24 2.784 2.725 2.049 4.028 3.174a58.459 58.459 0 0 1 8.837 9.477 59.73 59.73 0 0 1 2.914 4.312 51.067 51.067 0 0 1 5.318 11.916 47.38 47.38 0 0 1 1.185 5.165 45.567 45.567 0 0 1 .71 8.09c.072 35.964-16.062 52.122-52.227 52.122z"/></svg>
+
+<!-- ending partial cdf_logo.html.haml -->
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://cd.foundation/">
+What is CDF?
+</a>
+<a class="dropdown-item feature" href="https://jenkins-x.io/">
+Jenkins X
+</a>
+<a class="dropdown-item feature" href="https://tekton.dev/">
+Tekton
+</a>
+<a class="dropdown-item feature" href="https://www.spinnaker.io/">
+Spinnaker
+</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="active nav-item">
+<a class="nav-link" href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/book/">
+<strong>
+User Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/installing/">
+&nbsp;-&nbsp;Installing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/pipeline/">
+&nbsp;-&nbsp;Jenkins Pipeline
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/managing/">
+&nbsp;-&nbsp;Managing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/security/">
+&nbsp;-&nbsp;Securing Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/system-administration/">
+&nbsp;-&nbsp;System Administration
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/troubleshooting/">
+&nbsp;-&nbsp;Troubleshooting Jenkins
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/book/glossary/">
+&nbsp;-&nbsp;Terms and Definitions
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/solutions/">
+<strong>
+Solution Pages
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+<strong>
+Tutorials
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/pipeline/tour/getting-started/">
+&nbsp;-&nbsp;Guided Tour
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/doc/tutorials/">
+&nbsp;-&nbsp;More Tutorials
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/doc/developer/">
+<strong>
+Developer Guide
+</strong>
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/participate/">
+<strong>
+Contributor Guide
+</strong>
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/participate/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/chat/" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+Meet
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+<a class="dropdown-item feature" href="https://community.jenkins.io/">
+Forum
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins.io/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/mailing-lists/" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/ux/">
+&nbsp;-&nbsp;User Experience
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jam/">
+CI/CD and Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/jenkins-operator/">
+Jenkins Operator
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/projects/remoting/">
+Jenkins Remoting
+</a>
+<a class="dropdown-item feature" href="/jenkins.io/jemkins.io-5818/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/press/">
+Press
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/project/conduct/">
+Conduct
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/books/">
+Books
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="/jenkins.io/jemkins.io-5818/zh/">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item searchbox">
+<input aria-label="Search" class="form-control searchbox" placeholder="Search" type="search">
+</li>
+<li class="nav-item download-btn">
+<a class="nav-link btn btn-outline-secondary" href="/jenkins.io/jemkins.io-5818/download/">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/jemkins.io-5818/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/kursonsk/"><div class="app-avatar"><img alt="Sergey Kurson" class="app-avatar__image" src="/images/avatars/kursonsk.jpg"></div> Sergey Kurson</a><a class="app-author-link" href="/blog/authors/glenduca/"><div class="app-avatar"><img alt="Glenn Duncan" class="app-avatar__image" src="/images/avatars/glenduca.jpg"></div> Glenn Duncan</a>
+September 14, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Create+iOS+Unity+build+pipelines+on+AWS+with+Jenkins+and+EC2+Mac+instances&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Fjemkins.io-5818%2Fblog%2F2022%2F09%2F14%2Fcreate-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="imageblock right">
+<div class="content">
+<img src="/images/post-images/Jenkins-DevOps.png" alt="Jenkins DevOps">
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-ios-unity-build-pipelines-on-aws-with-jenkins-and-ec2-mac-instances"><a class="anchor" href="#create-ios-unity-build-pipelines-on-aws-with-jenkins-and-ec2-mac-instances"></a>Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every mobile game, whether it is a multiplayer or standalone game, must
+build binaries. Developers of high budget, high profile AAA and AA games
+tend to lean towards managing a build farm, whereas independent
+developers (indies) may rely on local or third-party solutions. Managing
+compute infrastructure is a time consuming and ongoing task for many
+companies and developers, especially in relation to iOS builds, which
+require applications to be signed before submission to the App Store.
+Given the overhead required to run and maintain a local build
+environment, it rarely makes sense to maintain physical build farms for
+many teams.</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Mac instances launched at re:Invent 2020, introduced macOS as
+a supported instance type for the first time. Later in 2022, Apple
+M1-based Mac instances were released, enabling Apple silicon in the
+cloud alongside the x86 architecture. Today, EC2 Mac instances are being
+leveraged by thousands of customers today to build and run their macOS
+workloads on the AWS cloud. By using EC2 Mac instances in combination
+with EC2 Spot instances and Jenkins CI/CD, Unity developers were able to
+build scalable, cost efficient, and fast iOS pipelines for building,
+testing, signing, and publishing to the App Store.</p>
+</div>
+<div class="paragraph">
+<p>In this blog post, we discover how to build a scalable and
+cost-efficient iOS build pipeline on AWS that can be deployed within
+hours.</p>
+</div>
+<div class="sect2">
+<h3 id="overview-of-solution"><a class="anchor" href="#overview-of-solution"></a>Overview of solution</h3>
+<div class="paragraph">
+<p>This solution is possible due to Unity`s ability to split a build
+process into two parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Xcode Project preparation: a first phase involving processing
+compute-intensive images, videos, music, and compiling additional
+assets.</p>
+</li>
+<li>
+<p>Xcode Build, packaging, and signature: the second and final phase of
+building an iOS app which must be done using macOS, an EC2 Mac instance
+in our solution.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The high-level architecture looks like the following:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image1.png" alt="image" width="624" height="217"></span></p>
+</div>
+<div class="paragraph">
+<p>We will build upon these concepts and will use EC2 Spot instances for
+the compute-heavy phase of asset compilation in conjunction with the EC2
+Autoscaling feature. We will also use an EC2 Mac instance to complete
+the second, final Xcode build step. For the whole pipeline,
+orchestration is done with Jenkins CI/CD. We
+will also use the ability of the Unity engine to be Dockerized to
+implement scalability and flexibility.</p>
+</div>
+<div class="paragraph">
+<p>Services and dependencies used in our solution are shown on the
+following diagram:</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id=""><a class="anchor" href="#"></a><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image2.png" alt="image" width="624" height="250"></span></h3>
+
+</div>
+<div class="sect2">
+<h3 id="key-pieces"><a class="anchor" href="#key-pieces"></a>Key pieces</h3>
+<div class="paragraph">
+<p>In this blog I will not explain the solution step by step; instead, I
+will emphasize key pieces of the solution, which you can setup on your
+own. You can follow the whole procedure by going through the workshop
+<a href="https://catalog.us-east-1.prod.workshops.aws/workshops/43e96ac6-6d4f-4d99-af97-3ac2a5987391/en-US/020-build-farms/060-labs-unity-mac">here</a>,
+a repository with code and a sample project can be found
+<a href="https://github.com/aws-samples/unity-aws-ec2-mac-build-farm">here</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="networking-template"><a class="anchor" href="#networking-template"></a>Networking template</h4>
+<div class="paragraph">
+<p>To setup the whole solution, I have created the following
+<a href="https://static.us-east-1.prod.workshops.aws/public/b40b1644-6805-40c7-888e-7a5b080112ab/static/templates/template_full.yaml">CloudFormation
+template</a>. It prepares the environment by creating a VPC, subnets, a
+Jenkins Manager installation and an EC2 bastion host. To deploy the
+stack in us-east-2 (Ohio) region, click the button:
+<span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image3.png" alt="image" width="112" height="21"></span></p>
+</div>
+<div class="paragraph">
+<p>The stack incorporates VPC with two availability zones (AZs), and with
+two private and two public subnets. To follow best practices, we will
+place Jenkins Manager and execution nodes within the private subnet. The
+stack also sets up a bastion host in order to access resources in the
+private subnet.</p>
+</div>
+<div class="paragraph">
+<p>Internal resources will use NAT gateway to reach the internet in two
+availability zones to reduce inter-AZ traffic costs.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image4.png" alt="image" width="624" height="295"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="unity-container-and-build-server"><a class="anchor" href="#unity-container-and-build-server"></a>Unity container and build server</h4>
+<div class="paragraph">
+<p>The demonstration
+<a href="https://github.com/aws-samples/unity-aws-ec2-mac-build-farm">repository</a>
+includes a sample Unity project to build. The Unity engine can be
+containerized—the Linux-based solution uses Docker to pull a specific
+Unity version from a repository, set up a license, and build the Xcode
+project. Since the process is compute-heavy, the types of instance used
+in this case is a C5.4xlarge instance, which are compute-optimized
+instances.</p>
+</div>
+<div class="paragraph">
+<p><strong>Unity part that needs to be legally validated</strong></p>
+</div>
+<div class="paragraph">
+<p>In order to build a Unity project and create an Xcode project in a
+production environment, you will need a license. For that, Unity
+provides several options: in our example, we will use “Unity Build
+Server” licenses. (You can read more
+<a href="https://unity.com/products/unity-build-server">here</a>.) Here are some AWS
+cloud-specific steps to implement in order to ensure the Build Server is
+setup in resilient way.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build server installations maintain a number of “seats” or licenses
+which are loaned to workers and released after the build process is
+done; however, the build server is bound to number of cores on the
+instance, as well as the network interface’s MAC address. This means
+that once you “bind” seats to an instance of Build Server and you need
+to launch it on a new instance, if the number of cores or network
+interface do not match, you will lose your seats. In order to avoid such
+a problem, you’ll need to provision an additional ENI, attach it to the
+instance, and use its MAC address to bind Build Server to that ENI’s
+address. Once that is done, you can launch new instances from AMIs with
+Build server, attach the ENI, and your licenses are secure and assigned.</p>
+</li>
+<li>
+<p>To ensure that the process is automated, set up an autoscaling group
+(ASG) with the Build Server AMI— a single instance—and set it to attach
+the specific ENI to any new instance each time it is launched.</p>
+</li>
+<li>
+<p>For a multi-AZ setup, you need two separate build servers with their
+own distinct seat groups.</p>
+</li>
+<li>
+<p>You can expose Build Server via
+<a href="https://docs.aws.amazon.com/general/latest/gr/rande.html">AWS Service
+Endpoint</a> by setting up a Network Load Balancer in front of the Build
+Server instance’s ASG and providing a link to the endpoint to your
+consumers.</p>
+</li>
+<li>
+<p>Unity editor within workers need to be configured in order to connect
+to Build server. This can be achieved by providing configuration file
+each time a Docker container is started via Jenkinsfile. Configuration
+might look like the following:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="o">{</span>
+    <span class="s2">"licensingServiceBaseUrl"</span><span class="o">:</span> <span class="s2">"\{http(s)://\{server dns name}}"</span><span class="o">,</span>
+    <span class="s2">"enableEntitlementLicensing"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
+    <span class="s2">"enableFloatingApi"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
+    <span class="s2">"clientConnectTimeoutSec"</span><span class="o">:</span> <span class="mi">5</span><span class="o">,</span>
+    <span class="s2">"clientHandshakeTimeoutSec"</span><span class="o">:</span> <span class="mi">10</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and the file should be saved as
+'/usr/share/unity3d/config/services-config.json' of the container. The
+License server DNS name can be stored in Secrets Manager.</p>
+</div>
+<div class="paragraph">
+<p><strong>End of Unity Part</strong></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ec2-mac-and-secrets-manager"><a class="anchor" href="#ec2-mac-and-secrets-manager"></a>EC2 Mac and Secrets Manager</h4>
+<div class="paragraph">
+<p>In order to build and sign iOS applications, we need an EC2 Mac
+instance. To launch an Amazon EC2 Mac instance, you must first allocate
+a dedicated host in Amazon EC2. A dedicated host is a physical server
+that is wholly allocated for your use. Please keep in mind that
+currently EC2 Mac dedicated hosts cannot be released earlier than 24
+hours after being launched. There is no restriction on how often you can
+launch an EC2 Mac instance on a dedicated host, however. Depending on
+the architecture (mac1 for x86, mac2 for Apple silicon), you will need
+different dedicated hosts.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image5.png" alt="image" width="624" height="117"></span></p>
+</div>
+<div class="paragraph">
+<p>Once the instance is launched, you will need to enable VNC to connect to
+it via the graphical user interface (GUI). That process is described
+<a href="https://catalog.us-east-1.prod.workshops.aws/workshops/43e96ac6-6d4f-4d99-af97-3ac2a5987391/en-US/020-build-farms/060-labs-unity-mac/015-environment-and-ec2-mac/040-ec2-mac-setup/020-enable-graphical-remote-desktop">here</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image6.png" alt="image" width="624" height="499"></span></p>
+</div>
+<div class="paragraph">
+<p>EC2 Mac instances use most of the same tools that you have already been
+using with other EC2 instances. These instances live in the VPC, support
+IAM, support user data, and can boot from EBS volumes, so you can create
+golden AMIs with all the required software installed; for example,
+Xcode. EC2 Mac instances can be configured by Systems Manager, for
+example to install patches. It is also integrated with Cloudwatch for
+logs. Basically, treat it the same as any EC2 instance that you need to
+configure and then use as a part of the unattended CI/CD pipeline to run
+your builds.</p>
+</div>
+<div class="paragraph">
+<p>In our case, the instance also needs to have Java and Xcode installed,
+as well as an IAM role to call to other services, such as Amazon Secrets
+Manager.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="build-signing-and-aws-secrets-manager"><a class="anchor" href="#build-signing-and-aws-secrets-manager"></a>Build signing and AWS Secrets Manager</h4>
+<div class="paragraph">
+<p>To sign the build for the App Store, we need to have a signing
+certificate and a provisioning profile. It is possible to also generate
+an application package that can later be signed by another certificate.
+This is common for companies that want to separate test environments’
+certificates from their production environment.</p>
+</div>
+<div class="paragraph">
+<p>The development certificate, its password, and the provisioning profile
+can be stored in AWS Secrets Manager, a great way to save your secrets
+and have secure access to resources.</p>
+</div>
+<div class="paragraph">
+<p>To set up a temporary keychain with signature files, you can use either
+<a href="https://fastlane.tools/">Fastlane</a> or create the temporary keychain
+manually.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="linux-worker-instances"><a class="anchor" href="#linux-worker-instances"></a>Linux worker instances</h4>
+<div class="paragraph">
+<p>In order for Linux workers to be able to run build instructions from
+Jenkins, several features have to be enabled for Linux worker instances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Docker engine and Java must be installed</p>
+</li>
+<li>
+<p>The attached EBS storage has to be large enough to incorporate the
+docker images</p>
+</li>
+<li>
+<p>The instance’s security group should allow communication from Jenkins
+Manager node port 22 (Manager node uses ssh to connect to the worker and
+setup agent)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jenkins-setup"><a class="anchor" href="#jenkins-setup"></a>Jenkins setup</h4>
+<div class="paragraph">
+<p>Jenkins uses a manager node to orchestrate builds. Build jobs will run
+either on EC2 Mac or on EC2 Spot instances managed by the EC2 Fleet
+plugin. Jenkins manager stores configurations, provides a user
+interface, and orchestrates build jobs. It can also store build
+artifacts, however I find it’s better to use Amazon S3 as it provides
+virtually unlimited storage, and can easily be used from within Jenkins
+pipeline.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image7.png" alt="image" width="624" height="319"></span></p>
+</div>
+<div class="paragraph">
+<p>In order to orchestrate Linux build instances, Jenkins needs the
+following plugins:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image8.png" alt="image" width="624" height="195"></span></p>
+</div>
+<div class="paragraph">
+<p>The <strong>Docker</strong> and <strong>Docker pipeline</strong> plugins allow us to run docker
+pipeline steps. These are required to launch Unity containers and run
+the first part of the build within.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>EC2 Fleet</strong> plugin allows for simple integration with Autoscaling
+groups, significantly reducing the overhead of launching new instances,
+starting a Jenkins agent, and running a build. The EC2 Fleet plugin is
+decoupled from the Auto Scaling group, which allows for full control of
+the kinds of instances to be launched. This way, we can utilize the full
+power of Spot instances as temporary workers, thus significantly
+reducing costs.</p>
+</div>
+<div class="paragraph">
+<p>In order to orchestrate Mac instances, the instance has to have port 22
+enabled as well as Java installed. You can add the instance manually, or
+launch it via CloudFormation or Terraform and use the self-registration
+method described <a href="/doc/book/managing/nodes/">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Please note that currently dynamic provisioning of EC2 Mac instances via
+Auto Scaling groups is not possible due to the minimum 24 hour
+reservation time for which an EC2 Mac dedicated host has to be reserved.
+However, we can use several Jenkins executors on a single EC2 Mac
+instance:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image9.png" alt="image" width="624" height="336"></span></p>
+</div>
+<div class="paragraph">
+<p>Also, labels can be used in order to separate kinds of workers within a
+pipeline. Note that on a screenshot above I use label “mac”.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="build-pipeline-and-running-a-build"><a class="anchor" href="#build-pipeline-and-running-a-build"></a>Build pipeline and running a build</h4>
+<div class="paragraph">
+<p>Every Jenkins pipeline can be described using a <strong>Jenkinsfile</strong> file. It
+is a YAML-formatted document which describes all the steps for the
+pipeline. You can read more
+<a href="/doc/book/pipeline/jenkinsfile/">here</a>. I already
+have such a file stored in my repository. The file contents are
+following:</p>
+</div>
+<details>
+<summary class="title">Click to reveal the Jenkinsfile</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+
+    <span class="n">environment</span> <span class="o">{</span>
+        <span class="n">UNITY_PROJECT_DIR</span><span class="o">=</span><span class="s1">'UnityProjectSample'</span>
+        <span class="n">IMAGE</span><span class="o">=</span><span class="s1">'unityci/editor'</span>
+        <span class="n">UNITY_VERSION</span><span class="o">=</span><span class="s1">'2021.3.6f1-ios-1.0'</span>
+        <span class="c1">// Build parameters</span>
+        <span class="n">UNITY_LICENSE_FILE</span><span class="o">=</span><span class="s1">'UNITY_LICENSE_FILE'</span>
+        <span class="n">PROVISIONING_PROFILE_NAME</span><span class="o">=</span><span class="s1">'UnityBuildSample-profile'</span>
+        <span class="c1">// secret from Secrets Manager</span>
+        <span class="n">TEAM_ID_KEY</span><span class="o">=</span><span class="s1">'TEAM_ID'</span>
+        <span class="n">LICENSE_SERVER_ENDPOINT</span><span class="o">=</span><span class="s1">'LICENSE_SERVER_ENDPOINT'</span>
+        <span class="n">SIGNING_CERT</span><span class="o">=</span><span class="s1">'SIGNING_CERT'</span>
+        <span class="n">SIGNING_CERT_PRIV_KEY</span><span class="o">=</span><span class="s1">'SIGNING_CERT_PRIV_KEY'</span>
+        <span class="n">SIGNING_CERT_PRIV_KEY_PASSPHRASE</span><span class="o">=</span><span class="s1">'SIGNING_CERT_PRIV_KEY_PASSPHRASE'</span>
+        <span class="n">APPLE_WWDR_CERT</span><span class="o">=</span><span class="s1">'APPLE_WWDR_CERT'</span>
+        <span class="n">PROVISIONING_PROFILE</span><span class="o">=</span><span class="s1">'PROVISIONING_PROFILE'</span>
+    <span class="o">}</span>
+
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'build Unity project on spot'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">agent</span> <span class="o">{</span>
+                <span class="n">docker</span> <span class="o">{</span>
+                    <span class="n">image</span> <span class="s1">'unityci/editor:2021.3.6f1-ios-1.0'</span>
+                    <span class="n">args</span> <span class="s1">'-u root:root'</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="c1">// install stuff for Unity, build xcode project, archive the result</span>
+                <span class="n">sh</span> <span class="s1">'''
+                    printenv
+                    echo "===Installing stuff for unity"
+                    apt-get update
+                    apt-get install -y curl unzip zip
+                    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o
+                    "awscliv2.zip"
+                    unzip -o awscliv2.zip
+                    ./aws/install
+                    apt-get install sudo
+                    # Following section can be uncommented if Unity Build server is used
+                    # just to push it through
+                    # sudo mkdir -p /usr/share/unity3d/config/
+                    # endpoint=`aws secretsmanager get-secret-value \
+                    # --secret-id $LICENSE_SERVER_ENDPOINT --output text --query
+                    # 'SecretString' | cut -d '"' -f4`
+                    # configfile='\{
+                    # "licensingServiceBaseUrl": "'$endpoint'",
+                    # "enableEntitlementLicensing": true,
+                    # "enableFloatingApi": true,
+                    # "clientConnectTimeoutSec": 5,
+                    # "clientHandshakeTimeoutSec": 10
+                    # }'
+                    # Copying Unity .ulf license file from S3 to container
+                    # aws s3 cp "s3://$\{S3_BUCKET}/Unity_2021.3.6f1-ios-1.0.ulf"
+                    # "/root/.local/share/unity3d/Unity/Unity_lic.ulf"
+                    # mkdir -p "/root/.local/share/unity3d/Unity"
+                    # aws secretsmanager get-secret-value --secret-id $UNITY_LICENSE_FILE
+                    # --output text --query SecretBinary |
+                    # base64 -d &gt; "/root/.local/share/unity3d/Unity/Unity_lic.ulf"
+                    # echo "===Building Xcode project"
+                    # We also pull in additional repository with actual Unity Project.
+                    # We have several configuration files for our build configuration
+                    # You can find those in UnityProjectSample folder
+                    rm nodulus -rf
+                    git clone https://github.com/Hyperparticle/nodulus.git
+                    cp -nR nodulus/* UnityProjectSample/
+                    cd $UNITY_PROJECT_DIR
+                    mkdir -p ./iOSProj
+                    mkdir -p ./Build/iosBuild
+                    xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' \
+                        /opt/unity/Editor/Unity \
+                        -quit \
+                        -batchmode \
+                        -nographics \
+                        -executeMethod ExportTool.ExportXcodeProject \
+                        -buildTarget iOS \
+                        -customBuildTarget iOS \
+                        -customBuildName iosBuild \
+                        -customBuildPath ./Build/iosBuild \
+                        -logFile /dev/stdout
+                    echo "===Zipping Xcode project"
+                    zip -r iOSProj iOSProj
+                    '''</span>
+                    <span class="c1">// pick up archive xcode project</span>
+                    <span class="n">dir</span><span class="o">(</span><span class="s2">"$\{env.UNITY_PROJECT_DIR}"</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">stash</span> <span class="nl">includes:</span> <span class="s1">'iOSProj.zip'</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">'xcode-project'</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">post</span> <span class="o">{</span>
+                    <span class="n">always</span> <span class="o">{</span>
+                        <span class="n">sh</span> <span class="s2">"chmod -R 777 ."</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">stage</span><span class="o">(</span><span class="s1">'build and sign iOS app on mac'</span><span class="o">)</span><span class="err">\</span><span class="o">{</span>
+                <span class="c1">// we don't need the source code for this stage</span>
+                <span class="n">options</span> <span class="o">{</span>
+                    <span class="n">skipDefaultCheckout</span><span class="o">()</span>
+                <span class="o">}</span>
+                <span class="n">agent</span> <span class="o">{</span>
+                    <span class="n">label</span> <span class="s2">"mac"</span>
+                <span class="o">}</span>
+                <span class="n">environment</span> <span class="o">{</span>
+                    <span class="n">HOME_FOLDER</span><span class="o">=</span><span class="s1">'/Users/jenkins'</span>
+                    <span class="n">PROJECT_FOLDER</span><span class="o">=</span><span class="s1">'iOSProj'</span>
+                <span class="o">}</span>
+                <span class="n">steps</span> <span class="o">{</span>
+                    <span class="n">unstash</span> <span class="s1">'xcode-project'</span>
+                    <span class="n">sh</span> <span class="s1">'''
+                    pwd
+                    ls -l
+                    # Remove old project and unpack a new one
+                    rm -rf $\{PROJECT_FOLDER}
+                    unzip iOSProj.zip
+                    '''</span>
+
+                    <span class="c1">// create export options file</span>
+                    <span class="n">writeFile</span> <span class="nl">file:</span> <span class="s2">"$\{env.PROJECT_FOLDER}/ExportOptions.plist"</span><span class="o">,</span> <span class="nl">text:</span> <span class="s2">"""
+                    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+                    &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+                    "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+                    &lt;plist version="1.0"&gt;
+                        &lt;dict&gt;
+                            &lt;key&gt;signingStyle&lt;/key&gt;
+                            &lt;string&gt;manual&lt;/string&gt;
+                        &lt;/dict&gt;
+                    &lt;/plist&gt;
+                """</span>
+
+                <span class="n">sh</span> <span class="s1">'''
+                PATH=$PATH:/usr/local/bin
+                cd $\{PROJECT_FOLDER}
+                # Update project settings
+                # sed -i "" 's|^#!/bin/sh|#!/bin/bash|' MapFileParser.sh
+                # extra backslash for groovy
+                TEAM_ID=`aws secretsmanager get-secret-value \
+                    --secret-id $TEAM_ID_KEY --output text --query 'SecretString' | cut -d '"' -f4`
+                # extra backslash for groovy
+                sed -i "" "s/DEVELOPMENT_TEAM = \\"\\"/DEVELOPMENT_TEAM = $TEAM_ID/g" Unity-iPhone.xcodeproj/project.pbxproj
+                #############################################
+                # setup certificates in a temporary keychain
+                #############################################
+
+                echo "===Setting up a temporary keychain"
+                pwd
+                # Unique keychain ID
+                MY_KEYCHAIN="temp.keychain.`uuidgen`"
+                MY_KEYCHAIN_PASSWORD="secret"
+                security create-keychain -p "$MY_KEYCHAIN_PASSWORD" "$MY_KEYCHAIN"
+                # Append the temporary keychain to the user search list
+                # double backslash for groovy
+                security list-keychains -d user -s "$MY_KEYCHAIN" $(security list-keychains -d user | sed s/\\"//g)
+                # Output user keychain search list for debug
+                security list-keychains -d user
+                # Disable lock timeout (set to "no timeout")
+                security set-keychain-settings "$MY_KEYCHAIN"
+                # Unlock keychain
+                security unlock-keychain -p "$MY_KEYCHAIN_PASSWORD" "$MY_KEYCHAIN"
+                echo "===Importing certs"
+                # Import certs to a keychain; bash process substitution doesn't work with security for some reason
+                aws secretsmanager get-secret-value --secret-id $SIGNING_CERT --output text --query SecretBinary | base64 -d -o /tmp/cert &amp;&amp; security -v import /tmp/cert -k "$MY_KEYCHAIN" -T "/usr/bin/codesign"
+                rm /tmp/cert
+                PASSPHRASE=`aws secretsmanager get-secret-value \
+                    --secret-id $SIGNING_CERT_PRIV_KEY_PASSPHRASE --output text --query 'SecretString' | cut -d '"' -f4`
+                aws secretsmanager get-secret-value --secret-id $SIGNING_CERT_PRIV_KEY --output text --query SecretBinary |
+base64 -d -o /tmp/priv.p12 &amp;&amp;
+                security -v import /tmp/priv.p12 -k "$MY_KEYCHAIN" -P "$PASSPHRASE" -t priv -T "/usr/bin/codesign"
+                rm /tmp/priv.p12; PASSPHRASE=''
+                #aws secretsmanager get-secret-value --secret-id $APPLE_WWDR_CERT --output text --query SecretBinary | \
+                # base64 -d -o /tmp/cert &amp;&amp;
+                # security -v import /tmp/cert -k "$MY_KEYCHAIN"
+                # rm /tmp/cert
+                # Dump keychain for debug
+                security dump-keychain "$MY_KEYCHAIN"
+                # Set partition list (ACL) for a key
+                security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $MY_KEYCHAIN_PASSWORD $MY_KEYCHAIN
+                # Get signing identity for xcodebuild command
+                security find-identity -v -p codesigning $MY_KEYCHAIN
+                # double backslash for groovy
+                CODE_SIGN_IDENTITY=`security find-identity -v -p codesigning $MY_KEYCHAIN | awk '/ *1\\)/ \{print $2}'`
+                echo code signing identity is $CODE_SIGN_IDENTITY
+                security default-keychain -s $MY_KEYCHAIN
+                #############################################
+                # setup provisioning profile
+                #############################################
+                echo ===setting up a provisioning profile
+                pwd
+                # # if the provisioning profile already exists, don't overwrite
+                # PROV_PROFILE_FILENAME="$\{HOME}/Library/MobileDevice/Provisioning Profiles/$\{PROVISIONING_PROFILE_NAME}.mobileprovision"
+                # if [ ! -f "$PROV_PROFILE_FILENAME" ]; then
+                # aws secretsmanager get-secret-value --secret-id $PROVISIONING_PROFILE --output text --query SecretBinary | \
+                # base64 -d -o "$\{PROV_PROFILE_FILENAME}"
+                # fi
+                # # lock, since multiple jobs can use the same provisioning profile
+                # if [ -f "$\{PROV_PROFILE_FILENAME}.lock" ]; then
+                # n=`cat "$\{PROV_PROFILE_FILENAME}.lock"`
+                # n=$((n+1))
+                # else
+                # n=1
+                # fi
+                # echo $n &gt; "$\{PROV_PROFILE_FILENAME}.lock"
+                #############################################
+                # Build
+                #############################################
+                echo ===Building
+                pwd
+                # xcodebuild -scheme Unity-iPhone -sdk iphoneos -configuration AppStoreDistribution archive -archivePath "$PWD/build/Unity-iPhone.xcarchive" CODE_SIGN_STYLE="Manual" PROVISIONING_PROFILE_SPECIFIER_APP="$PROVISIONING_PROFILE_NAME" CODE_SIGN_IDENTITY=$CODE_SIGN_IDENTITY OTHER_CODE_SIGN_FLAGS="--keychain=$MY_KEYCHAIN" -UseModernBuildSystem=0
+                xcodebuild -scheme Unity-iPhone -sdk iphoneos -configuration AppStoreDistribution archive -archivePath "$PWD/build/Unity-iPhone.xcarchive" CODE_SIGN_STYLE="Manual" CODE_SIGN_IDENTITY=$CODE_SIGN_IDENTITY OTHER_CODE_SIGN_FLAGS="--keychain=$MY_KEYCHAIN" -UseModernBuildSystem=0 CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+                # Generate ipa
+                echo ===Exporting ipa
+                pwd
+                # xcodebuild -exportArchive -archivePath "$PWD/build/Unity-iPhone.xcarchive" -exportOptionsPlist ExportOptions.plist -exportPath "$PWD/build"
+                #############################################
+                # Upload
+                #############################################
+                # Upload to S3
+                # /usr/local/bin/aws s3 cp ./build/*.ipa s3://$\{S3_BUCKET}/
+                #############################################
+                # Cleanup
+                #############################################
+                # Delete keychain - should be moved to a post step, but this would require a global variable or smth
+                security delete-keychain "$MY_KEYCHAIN"
+                # Delete a provisioning profile if no jobs use it anymore
+                n=0
+                if [ -f "$\{PROV_PROFILE_FILENAME}.lock" ]; then
+                n=`cat "$\{PROV_PROFILE_FILENAME}.lock"`
+                n=$((n-1))
+                echo $n &gt; "$\{PROV_PROFILE_FILENAME}.lock"
+                fi
+                if [ "$n" -le "0" ]; then
+                rm -f "$\{PROV_PROFILE_FILENAME}"
+                rm -f "$\{PROV_PROFILE_FILENAME}.lock"
+                fi
+                '''</span>
+            <span class="o">}</span>
+            <span class="n">post</span> <span class="o">{</span>
+                <span class="n">always</span> <span class="o">{</span>
+                    <span class="n">sh</span> <span class="s1">'''
+                    #############################################
+                    # cleanup
+                    #############################################
+                    zip -r iOSProj/build/Unity-iPhone.zip iOSProj/build/Unity-iPhone.xcarchive
+                    rm -rf iOSProj/build/Unity-iPhone.xcarchive
+                    '''</span>
+                    <span class="n">archiveArtifacts</span> <span class="nl">artifacts:</span> <span class="s1">'**/Unity-iPhone.zip'</span><span class="o">,</span> <span class="nl">onlyIfSuccessful:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">caseSensitive:</span> <span class="kc">false</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">post</span> <span class="o">{</span>
+        <span class="n">success</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s1">'Success ^_^'</span>
+        <span class="o">}</span>
+        <span class="n">failure</span> <span class="o">{</span>
+            <span class="n">echo</span> <span class="s1">'Failed :('</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>The key pieces of the file:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>agent – describes which instances the build should run on. In my case
+label “mac” is used to separate EC2 Mac instances from Spot instances</p>
+</li>
+<li>
+<p>environment – describes environment variables used by the build</p>
+</li>
+<li>
+<p>stage(‘Name’) – describes separate stage</p>
+</li>
+<li>
+<p>docker – describes docker image that is pulled and is later used to
+run Unity build in</p>
+</li>
+<li>
+<p>xvfb-run /opt/unity/Editor/Unity – runs unity editor in headless mode
+within a container</p>
+</li>
+<li>
+<p>security create-keychain – creates private keychain to store secrets
+like signing certificate. The keychain is later deleted.</p>
+</li>
+<li>
+<p>To pass Artifacts between stages, Jenkins` <strong>stash</strong> function is used</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And once done, the basic pipeline should look like the following:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image10.png" alt="image" width="624" height="247"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="final-architecture"><a class="anchor" href="#final-architecture"></a>Final architecture</h3>
+<div class="paragraph">
+<p>Once the all the key pieces mentioned in this post are assembled, the
+final picture is as following:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-14-Create-iOS-Unity-build-pipelines/image11.png" alt="image" width="624" height="344"></span></p>
+</div>
+<div class="paragraph">
+<p>Also refer to the
+<a href="https://d1.awsstatic.com/architecture-diagrams/ArchitectureDiagrams/unity-build-pipeline-ios-games-on-aws-cloud-ra.pdf?did=wp_card&amp;trk=wp_card">full
+diagram</a> with additional details explained. For this diagram, we assume
+that code and Docker images are located within the AWS account as well,
+to reduce data transfer charges and improve latency.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="main-solution-benefits-and-costs"><a class="anchor" href="#main-solution-benefits-and-costs"></a>Main solution benefits and costs</h3>
+<div class="paragraph">
+<p>There are several factors that are important to consider when building
+this solution:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unity version control.<br>
+This solution allows for flexible control of which Unity version is used
+for the build. By simply using tagging for Docker images, the pipeline
+can run different versions of Unity without changing the configuration
+of the pipeline in general.</p>
+</li>
+<li>
+<p>Flexible Xcode version control<br>
+By utilizing AMI images for EC2 Mac, it is possible to build a library
+of iOS and preinstalled Xcode versions to quickly launch on EC2 Mac
+hosts. This process can be further automated by using tools like Packer
+or EC2 Image Builder to create AMIs for different versions of
+environments.</p>
+</li>
+<li>
+<p>Cost benefits when using Spot instances and using less Mac instances<br>
+Since this solution implements a split-build approach, it allows us to
+take 30 to 70% of the computing time from EC2 Mac instances. This allows
+for better parallelization of builds and reduces time required by the
+EC2 Mac instance to process the code, resulting in much faster builds in
+general. Spot instances are also used instead of on-demand instances.
+Thus, depending on a build, the approach can reduce the cost by around
+30-40%.</p>
+</li>
+<li>
+<p>It is also possible to setup “layers” of EC2 Mac instances by using
+several Macs for development and production builds separately, this
+allows for secure separation of environments.</p>
+</li>
+<li>
+<p>Automatization of the pipeline via versioned Jenkinsfiles and Amazon
+CloudFormation templates allows for consistent and controllable approach
+to build environments.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h3>
+<div class="paragraph">
+<p>This post explains key pieces of the of cost-effective Unity build
+pipeline. It utilizes a mechanism of separation of the build to Linux
+instances and EC2 Mac instances. The compute-heavy part can be done on
+cost-efficient Spot instances, which reduces load to Mac instances and
+allows for more parallel builds at a time. We went through Unity and iOS
+build environments, key elements, licensing, workers and overall CI/CD
+process automation with Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>This approach has already been adopted by our Game tech clients:
+<a href="https://aws.amazon.com/ec2/instance-types/mac/customers/" class="bare">https://aws.amazon.com/ec2/instance-types/mac/customers/</a> - Riot Games,
+Pokemon Company and others. The pipelines speed being improved up to
+400% (Pokemon Company), Improving management time (Riot games) and
+reduced complexity (Jamcity).</p>
+</div>
+<div class="paragraph">
+<p>We will be speaking more on this topic at the <a href="/blog/2022/09/13/jenkins-contributor-summit-2022-agenda-orlando-florida/">Jenkins Contributor Summit</a>, on September 27 at <a href="https://reg.devopsworld.com/flow/cloudbees/devopsworld22/Landing/page/welcome">DevOps World in Orlando, Florida</a>. Hope to see you there!</p>
+</div>
+<div class="paragraph">
+<p><strong>Suggested tags:</strong>
+<a href="https://aws.amazon.com/blogs/gametech/tag/amazon-game-development/">Amazon Game Development</a>,
+Amazon EC2 Mac,
+<a href="https://aws.amazon.com/blogs/gametech/tag/aws-for-games/">AWS for Games</a>,
+<a href="https://aws.amazon.com/blogs/gametech/tag/aws-game-development/">AWS game development</a>,
+<a href="https://aws.amazon.com/blogs/gametech/tag/aws-game-tech/">AWS Game Tech</a>,
+<a href="https://aws.amazon.com/blogs/gametech/tag/unity/">Unity</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/contributor-summit/">
+contributor-summit
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/contribute/">
+contribute
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/devopsworld2022/">
+devopsworld2022
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/aws/">
+aws
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/game-development/">
+game-development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/mac/">
+mac
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/aws-ec2-mac/">
+aws-ec2-mac
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/jemkins.io-5818/node/tags/mac/">
+mac
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Sergey Kurson" class="app-avatar__image" src="/jenkins.io/jemkins.io-5818/images/avatars/kursonsk.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kursonsk/">
+Sergey Kurson
+</a>
+</p>
+<div class="paragraph">
+<p>Senior Solutions Architect at Amazon Web Services.
+As a passionate gamer and 10+ years IT professional I keep looking for
+modern and efficient approaches to solving IT challenges. (TBU)</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kursonsk" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Glenn Duncan" class="app-avatar__image" src="/jenkins.io/jemkins.io-5818/images/avatars/glenduca.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/glenduca/">
+Glenn Duncan
+</a>
+</p>
+<div class="paragraph">
+<p>Proserve consultant at Amazon Web Services.
+I have been a Professional Services Consultant for 2 years, and I enjoy
+helping people build effective and efficient solutions.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/glenduca" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/jemkins.io-5818/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script data="ionicons" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2022/09/2022-09-14-create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances.adoc" title="Edit /blog/2022/09/2022-09-14-create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances.adoc on GitHub">
+<img alt="Edit /blog/2022/09/2022-09-14-create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances.adoc on GitHub" class="icon-improve" src="/images/github-mark.svg">
+Improve this page
+</a>
+&nbsp;
+<a href="https://github.com/jenkins-infra/jenkins.io/issues/new?labels=bug&amp;template=4-bug.md&amp;title=Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances page - TODO: Put a summary here&amp;body=Problem with the [Create iOS Unity build pipelines on AWS with Jenkins and EC2 Mac instances](https://www.jenkins.io/blog/2022/09/14/create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances/) page, [source file](https://github.com/jenkins-infra/jenkins.io/blob/master/content/blog/2022/09/2022-09-14-create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances.adoc)%0A%0ATODO: Describe the expected and actual behavior here %0A%0A%23%23 Screenshots %0A%0A TODO: Add screenshots if possible %0A%0A%23%23 Possible Solution %0A%0A%3C!-- If you have suggestions on a fix for the bug, please describe it here. --%3E %0A%0AN/A" title="Report a problem with /blog/2022/09/2022-09-14-create-iOS-unity-build-pipelines-on-AWS-with-Jenkins-and-EC2-Mac-instances.adoc">
+<ion-icon class="report" name="warning"></ion-icon>
+Report a problem
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/download/">
+Downloads
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/node/">
+Blog
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/doc/">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/security/">
+Security
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/participate/">
+Contributing
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/">
+Structure and governance
+</a>
+</li>
+<li>
+<a href="https://issues.jenkins.io">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/project/roadmap/">
+Roadmap
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://community.jenkins.io">
+Forum
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/events/">
+Events
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/mailing-lists/">
+Mailing lists
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/chat/">
+Chats
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/sigs/">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Other</h5>
+<ul class="other">
+<li>
+<a href="/jenkins.io/jemkins.io-5818/conduct/">
+Code of Conduct
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/press/">
+Press information
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/merchandise/">
+Merchandise
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/artwork/">
+Artwork
+</a>
+</li>
+<li>
+<a href="/jenkins.io/jemkins.io-5818/awards/">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>
