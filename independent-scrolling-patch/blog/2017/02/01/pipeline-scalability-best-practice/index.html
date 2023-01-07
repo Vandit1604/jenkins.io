@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Best Practices for Scalable Pipeline Code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/02/01/pipeline-scalability-best-practice/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Best Practices for Scalable Pipeline Code" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Best Practices for Scalable Pipeline Code" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Best Practices for Scalable Pipeline Code" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/02/01/pipeline-scalability-best-practice/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Best Practices for Scalable Pipeline Code" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Best Practices for Scalable Pipeline Code
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/svanoort/"><div class="app-avatar"></div> Sam Van Oort</a>
+February 01, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Best+Practices+for+Scalable+Pipeline+Code&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F02%2F01%2Fpipeline-scalability-best-practice%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https://github.com/svanoort">Sam Van Oort</a>,
+Software Engineer at <a href="https://cloudbees.com">CloudBees</a> and contributor to
+the Jenkins project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Today I&#8217;m going to show you best practices to write scalable and robust Jenkins Pipelines. This is drawn from a
+combination of work with the internals of Pipeline and observations with large-scale users.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline code works beautifully for its intended role of automating
+build/test/deploy/administer tasks.  As it is pressed into more complex roles
+and unanticipated uses, some users hit issues.  In these cases, applying the
+best practices can make the difference between:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A single controller running
+<a href="https://www.cloudbees.com/so-you-want-build-worlds-biggest-jenkins-cluster">hundreds
+of concurrent builds</a> on low end hardware (4 CPU cores and 4 GB of
+heap)</p>
+</li>
+<li>
+<p>Running a couple dozen builds and bringing a controller to its knees or
+crashing it&#8230;&#8203;even with 16+ CPU cores and 20+ GB of heap!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This has been seen in the wild.</p>
+</div>
+<div class="sect1">
+<h2 id="fundamentals"><a class="anchor" href="#fundamentals"></a>Fundamentals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To understand Pipeline behavior you must understand a few points about
+how it executes.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Except for the steps themselves, all of the Pipeline logic, the Groovy conditionals, loops, etc execute on the controller. Whether simple <em>or</em> complex! Even inside a <code>node</code> block!</p>
+</li>
+<li>
+<p><em>Steps</em> may use executors to do work where appropriate, but each
+step has a small on-controller overhead too.</p>
+</li>
+<li>
+<p>Pipeline code is written as Groovy but the execution model is
+radically transformed at compile-time to Continuation Passing Style
+(CPS).</p>
+</li>
+<li>
+<p>This transformation provides valuable safety and durability
+guarantees for Pipelines, but it comes with trade-offs:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Steps can invoke Java and execute fast and efficiently, but Groovy
+is <em>much</em> slower to run than normal.</p>
+</li>
+<li>
+<p>Groovy logic requires far more memory, because an object-based
+syntax/block tree is kept in memory.<br></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Pipelines persist the program and its state frequently to be able to
+survive failure of the controller.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>From these we arrive at a set of best practices to make pipelines more
+effective.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="best-practices-for-Pipeline-code"><a class="anchor" href="#best-practices-for-Pipeline-code"></a>Best Practices For Pipeline Code</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Think of Pipeline code as glue:</strong> just enough Groovy code to connect
+together the Pipeline steps and integrate tools, and no more.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>This makes code easier to maintain, more robust against bugs, and
+reduces load on controllers.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Keep it simple:</strong> limit the amount of complex logic embedded in the
+Pipeline itself (similarly to a shell script) and avoid treating it as a
+general-purpose programming language.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Pipeline restricts all variables to <code>Serializable</code> types, so keeping
+Pipeline logic simple helps avoid a <code>NotSerializableException</code> - see
+appendix at the bottom.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Use <code>@NonCPS</code>-annotated functions for slightly more complex work.</strong>
+This means more involved processing, logic, and transformations. This
+lets you leverage additional Groovy &amp; functional features for more
+powerful, concise, and performant code.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>This still runs on controllers so be mindful of complexity, but is much
+faster than native Pipeline code because it doesn’t provide durability
+and uses a faster execution model. Still, be mindful of the CPU cost and
+offload to executors for complex work (see below).</p>
+</li>
+<li>
+<p><code>@NonCPS</code> functions can use a much broader subset of the Groovy
+language, such as iterators and functional features, which makes them
+more terse and fast to write.</p>
+</li>
+<li>
+<p><code>@NonCPS</code> functions should not use Pipeline steps internally, however
+you can store the result of a Pipeline step to a variable and use it
+that as the input to a <code>@NonCPS</code> function.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><strong>Gotcha:</strong> It’s not guaranteed that use of a step will generate an
+error (there is an open RFE to implement that), but you should not rely
+on that behavior. You may see improper handling of exceptions, in
+particular.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>While normal Pipeline is restricted to serializable local variables
+(see appendix at bottom), <code>@NonCPS</code> functions can use more complex,
+nonserializable types internally (for example regex matchers, etc). Parameters
+and return types should still be Serializable, however.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><strong>Gotcha:</strong> improper usages are not guaranteed to raise an error with
+normal Pipeline (optimizations may mask the issue), but it is unsafe to
+rely on this behavior.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Prefer external scripts/tools for complex or CPU-expensive
+processing</strong> rather than Groovy language features. This offloads work
+from the controller to external executors, allowing for easy scale-out of
+hardware resources. It is also generally easier to test because these
+components can be tested in isolation without the full on-controller
+execution environment.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Many software vendors will provide easy command-line clients for
+their tools in various programming languages. These are often robust,
+performant, and easy to use. Plugins offer another option (see below).</p>
+</li>
+<li>
+<p>Shell or batch steps are often the easiest way to integrate these
+tools, which can be written in any language. For example: <code>sh “java -jar
+client.jar $endPointUrl $inputData”</code> for a Java client, or <code>sh “python
+jiraClient.py $issueId $someParam”</code> for a Python client.<br></p>
+</li>
+<li>
+<p><strong>Gotcha: especially avoid Pipeline XML or JSON parsing using Groovy&#8217;s <code>XmlSlurper</code> and <code>JsonSlurper</code>!  Strongly prefer command-line tools or scripts.</strong></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>The Groovy implementations are complex and as a result more brittle in Pipeline use.</p>
+</li>
+<li>
+<p><code>XmlSlurper</code> and <code>JsonSlurper</code> can carry a high memory and CPU cost in pipelines</p>
+</li>
+<li>
+<p>xmllint and xmlstartlet are command-line tools offering XML extraction via xpath</p>
+</li>
+<li>
+<p><a href="https://stedolan.github.io/jq/">jq</a> offers the same functionality for JSON</p>
+</li>
+<li>
+<p>These extraction tools may be coupled to curl or wget for fetching information from an HTTP API</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Examples of other places to use command-line tools:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Templating large files</p>
+</li>
+<li>
+<p>Nontrivial integration with external APIs (for bigger vendors,
+consider a Jenkins plugin if a quality offering exists)</p>
+</li>
+<li>
+<p>Simulations/complex calculations</p>
+</li>
+<li>
+<p>Business logic</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Consider existing plugins for external integrations.</strong> Jenkins has a
+wealth of plugins, especially for source control, artifact management,
+deployment systems, and systems automation. These can greatly reduce the
+amount of Pipeline code to maintain. Well-written plugins may be
+faster and more robust than Pipeline equivalents.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Consider both plugins and command-line clients (above)&#8201;&#8212;&#8201;one may be
+easier than the other.</p>
+</li>
+<li>
+<p>Plugins may be of widely varying quality. Look at the number of installations and how frequently and recently updates appear in the changelog. Poorly-maintained plugins
+with limited installations may actually be worse than writing a little
+custom Pipeline code.</p>
+</li>
+<li>
+<p>As a last resort, if there is a good-quality plugin that is not
+Pipeline-enabled, it is <a href="/blog/2016/05/25/update-plugin-for-pipeline/">fairly easy to write a Pipeline wrapper</a> to
+integrate it or write a custom step that will invoke it.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Assume things will go wrong:</strong> don’t rely on workspaces being clean
+of the remnants from previous executions, clean explicitly where needed.
+Make use of timeouts and retry steps (that’s what they’re there for).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Within a git repository, <code>git clean -fdx</code> is a good way to
+accomplish this and reduces the amount of SCM cloning</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>DO use parameterized Pipelines and variables to make your Pipeline
+scripts more reusable.</strong> Passing in parameters is especially helpful for
+handling different environments and should be preferred to applying
+conditional lookup logic; however, try to limit parameterized pipelines invoking each other.</p>
+</li>
+<li>
+<p><strong>Try to limit business logic embedded in Pipelines.</strong> To some extent
+this is inevitable, but try to focus on tasks to complete instead,
+because this yields more maintainable, reusable, and often more
+performant Pipeline code.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>One code smell that points to a problem is many hard-coded
+constants. Consider taking advantage of the options above to refactor
+code for better composability.</p>
+</li>
+<li>
+<p>For complex cases, consider using Jenkins integration options
+(plugins, Jenkins API calls, invoking input steps externally) to offload
+implementation of more complex business rules to an external system if
+they fit more naturally there.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Please, think of these as guidelines, not strict rules – Jenkins
+Pipeline provides a great deal of power and flexibility, and it&#8217;s there
+to be used.</p>
+</div>
+<div class="paragraph">
+<p>Breaking enough of these rules at scale can cause controllers to fail by
+placing an unsustainable load on them.</p>
+</div>
+<div class="paragraph">
+<p>For additional guidance, I also recommend
+<a href="https://www.cloudbees.com/need-speed-building-Pipelines-be-faster">this
+Jenkins World talk</a>
+on how to engineer Pipelines for speed and performance:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="appendix-serializable-vs.-non-serializable-types"><a class="anchor" href="#appendix-serializable-vs.-non-serializable-types"></a>Appendix: Serializable vs. Non-Serializable Types:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To assist with Pipeline development, here are common serializable and
+non-serializable types, to assist with deciding if your logic can be CPS
+or should be in a <code>@NonCPS</code> function to avoid issues.</p>
+</div>
+<div class="paragraph">
+<p><strong>Common Serializable Types (safe everywhere):</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>All primitive types and their object wrappers: byte, boolean, int,
+double, short, char</p>
+</li>
+<li>
+<p>Strings</p>
+</li>
+<li>
+<p>enums</p>
+</li>
+<li>
+<p>Arrays of serializable types</p>
+</li>
+<li>
+<p>ArrayLists and normal Groovy Lists</p>
+</li>
+<li>
+<p>Sets: HashSet</p>
+</li>
+<li>
+<p>Maps: normal Groovy Map, HashMap, TreeMap</p>
+</li>
+<li>
+<p>Exceptions</p>
+</li>
+<li>
+<p>URLs</p>
+</li>
+<li>
+<p>Dates</p>
+</li>
+<li>
+<p>Regex Patterns (compiled patterns)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Common non-Serializable Types (only safe in <code>@NonCPS</code> functions):</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Iterators: this is a common problem. You need to use C-style loop, i.e.
+<code>for(int i=0; i&lt;max; i++){</code></p>
+</li>
+<li>
+<p>Regex Matchers (you can use the
+built-in functions in String, etc, just not the Matcher itself)</p>
+</li>
+<li>
+<p><strong>Important:</strong> <code>JsonObject</code>, <code>JsonSlurper</code>, etc in Groovy 2+ (used in some 2.x+
+versions of Jenkins).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>This is due to an internal implementation change&#8201;&#8212;&#8201;earlier versions may serialize.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/performance/">
+performance
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/scalability/">
+scalability
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/svanoort/">
+Sam Van Oort
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/svanoort" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/02/2017-02-01-pipeline-scalability-best-practice.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Ranorex Test Execution Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/ranorex-integration/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Ranorex Test Execution Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Ranorex Test Execution Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Ranorex Test Execution Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/ranorex-integration/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Ranorex Test Execution Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#ranorex-test-execution-plugin">Ranorex Test Execution Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#ranorex-run-a-ranorex-test-suite"><code>ranorex</code>: Run a Ranorex test suite</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="ranorex-test-execution-plugin"><a class="anchor" href="#ranorex-test-execution-plugin"></a>Ranorex Test Execution Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/ranorex-integration">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="ranorex-run-a-ranorex-test-suite"><a class="anchor" href="#ranorex-run-a-ranorex-test-suite"></a><code>ranorex</code>: Run a Ranorex test suite</h3>
+<ul><li><code>cmdLineArgs : String</code> (optional)
+<div><div>
+ Allows you to add Ranorex command line arguments. Some of the most important ones include: <br>
+ <table>
+  <tbody>
+   <tr>
+    <th>Flag</th>
+    <th>Function</th>
+   </tr>
+   <tr>
+    <td>config | cfg:&lt;config parameter name&gt;=&lt;value&gt;</td>
+    <td>&nbsp;Set values for configuration parameters.</td>
+   </tr>
+   <tr>
+    <td>reportlevel | rl: Debug|Info|Warn|Error|Success|Failure|&lt;any integer&gt;</td>
+    <td>&nbsp;Sets the minimum report level that log messages need to have in order to be included in the log file. Specify 'None' to completely disable reporting. These levels correspond to the following integer values: Debug=10,Info=20,Warn=30,Error=40,Success=110,Failure=120</td>
+   </tr>
+   <tr>
+    <td>testcase | tc:&lt;name or guid of test case&gt;</td>
+    <td>Runs this test case only.</td>
+   </tr>
+   <tr>
+    <td>testsuite | ts:&lt;path to test suite file&gt;</td>
+    <td>Runs the test cases defined by the test suite (rxtst) file. By default the rxtst file with the same name as the &lt;TestSuiteExe&gt; is used or the first rxtst file in the same folder as &lt;TestSuiteExe&gt;.</td>
+   </tr>
+   <tr>
+    <td>module | mo:&lt;module name or guid&gt;</td>
+    <td>Runs the module with the specified name or guid. Assemblies loaded by &lt;TestSuiteExe&gt; and assemblies referenced in the rxtst file are searched.</td>
+   </tr>
+   <tr>
+    <td>testcaseparam | tcpa:&lt;name or guid of test case&gt;:&lt;parameter name&gt;=&lt;value&gt;</td>
+    <td>Creates or overrides values for testcase parameters specified in the test suite.</td>
+   </tr>
+   <tr>
+    <td>runlabel | rul:&lt;custom value&gt;</td>
+    <td>Sets a custom runlabel for the test run.</td>
+   </tr>
+   <tr>
+    <td>testcasedatarange | tcdr:&lt;name or guid of test case&gt;=&lt;data range&gt;</td>
+    <td>Sets the data range for a testcase.</td>
+   </tr>
+  </tbody>
+ </table>
+</div></div>
+
+</li>
+<li><code>rxGlobalParameter : String</code> (optional)
+<div><div>
+ Allows you to create or override values for global parameters set in the test suite. Enter parameters according to the following pattern: "ParameterName=Value" Separate parameters with semicolons or add one parameter per line.
+</div></div>
+
+</li>
+<li><code>rxJUnitReport : boolean</code> (optional)
+</li>
+<li><code>rxReportDirectory : String</code> (optional)
+<div><div>
+ Allows you to specify the directory that your report will be saved to. If no path is specified, the location of your Ranorex Test Suite file will be used.
+</div></div>
+
+</li>
+<li><code>rxReportExtension : String</code> (optional)
+</li>
+<li><code>rxReportFile : String</code> (optional)
+<div><div>
+ Allows you to specify the file name of the report with the standard placeholders available in the <a href="https://www.ranorex.com/support/user-guide-20/lesson-4-ranorex-test-suite.html#c16095" rel="nofollow">test suite settings</a>. By default, the following pattern is used (%S_%Y%M%D_%T).
+</div></div>
+
+</li>
+<li><code>rxRunConfiguration : String</code> (optional)
+<div><div>
+ Runs the test suite using one of the run configurations available in the test suite. Enter the exact name of the run configuration you want to use. By default, the run configuration currently selected in the test suite is used. If you want to create or edit run configurations, please use Ranorex Studio or the Ranorex Test Suite Runner.
+</div></div>
+
+</li>
+<li><code>rxTestRail : boolean</code> (optional)
+<div><div>
+ Reports the test run results to TestRail via API. Requires 'Test Rail User' and 'Test Rail Password'.
+</div></div>
+
+</li>
+<li><code>rxTestRailPassword : String</code> (optional)
+<div><div>
+ Password or API key for the user specified in 'Test Rail User'.
+</div></div>
+
+</li>
+<li><code>rxTestRailRID : String</code> (optional)
+<div><div>
+ (Optional) The identifier of an existing test run in TestRail to report test results to. Without this argument a new test run is created.
+</div></div>
+
+</li>
+<li><code>rxTestRailRunName : String</code> (optional)
+<div><div>
+ (Optional) Creates a new test run in TestRail with the specified name to report test results to. Without this argument the default name is used.
+</div></div>
+
+</li>
+<li><code>rxTestRailUser : String</code> (optional)
+<div><div>
+ Email used to sign in to TestRail.
+</div></div>
+
+</li>
+<li><code>rxTestSuiteFilePath : String</code> (optional)
+<div><div>
+ Enter the path to the test suite file (*.rxtst) located in the output folder of your solution.
+</div></div>
+
+</li>
+<li><code>rxZippedReport : boolean</code> (optional)
+<div><div>
+ Compresses the report and the associated files into a single archive with the .rxzlog extension. The following additional input fields will appear when this option is enabled:
+ <ul>
+  <li>Compressed report directory</li>
+  <li>Compressed report file name</li>
+ </ul>
+</div></div>
+
+</li>
+<li><code>rxZippedReportDirectory : String</code> (optional)
+<div><div>
+ Allows you to specify the directory that your compressed report will be saved to. If no path is specified, the location of your Ranorex Test Suite file will be used.
+</div></div>
+
+</li>
+<li><code>rxZippedReportFile : String</code> (optional)
+<div><div>
+ Allows you to specify the file name of the compressed report with the standard placeholders available in the <a href="https://www.ranorex.com/support/user-guide-20/lesson-4-ranorex-test-suite.html#c16095" rel="nofollow">test suite settings</a>. If no filename is specified, the same name as the "Ranorex Report File Name" is used.
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2017-06-06
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2017-06-06/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2017-06-06" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2017-06-06" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2017-06-06" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2017-06-06/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2017-06-06" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins Security Advisory 2017-06-06
+</h1>
+<div class="paragraph">
+<p>This advisory announces multiple vulnerabilities in the <a href="https://plugins.jenkins.io/favorite">Favorite Plugin</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="description"><a class="anchor" href="#description"></a>Description</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="missing-permission-check-in-favorite-plugin-allows-anyone-to-change-favorites-for-any-other-user"><a class="anchor" href="#missing-permission-check-in-favorite-plugin-allows-anyone-to-change-favorites-for-any-other-user"></a>Missing permission check in Favorite Plugin allows anyone to change favorites for any other user</h3>
+<div class="paragraph">
+<p><strong>JENKINS-44643 / CVE-2017-1000243</strong></p>
+</div>
+<div class="paragraph">
+<p>A missing permission check allowed any user to add or remove favorites for any other user.</p>
+</div>
+<div class="paragraph">
+<p>The API was changed so users cannot change another user&#8217;s favorites, only their own.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="csrf-vulnerability-in-favorite-plugin-allows-changing-another-users-favorites"><a class="anchor" href="#csrf-vulnerability-in-favorite-plugin-allows-changing-another-users-favorites"></a>CSRF vulnerability in Favorite Plugin allows changing another user&#8217;s favorites</h3>
+<div class="paragraph">
+<p><strong>SECURITY-532 / CVE-2017-1000244</strong></p>
+</div>
+<div class="paragraph">
+<p>An API used to add and remove a favorite was vulnerable to CSRF, allowing attackers to change the victim&#8217;s favorites.</p>
+</div>
+<div class="paragraph">
+<p>The API now requires requests to be sent via POST, which is subject to the CSRF protection configurable in Jenkins global security configuration.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="severity"><a class="anchor" href="#severity"></a>Severity</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>JENKINS-44643: <strong><a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">medium</a></strong></p>
+</li>
+<li>
+<p>SECURITY-532: <strong><a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N">medium</a></strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="affected-versions"><a class="anchor" href="#affected-versions"></a>Affected versions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>JENKINS-44643: Favorite Plugin up to and including 2.1.0.</p>
+</li>
+<li>
+<p>SECURITY-532: Favorite Plugin up to and including 2.2.0.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fix"><a class="anchor" href="#fix"></a>Fix</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Users of Favorite Plugin should update it to version 2.3.0 or newer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="credit"><a class="anchor" href="#credit"></a>Credit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project would like to thank the reporter for discovering and <a href="/security/#reporting-vulnerabilities">reporting</a> this vulnerability:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Andres Rodriguez, CloudBees, Inc.</strong> for SECURITY-532</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2017-06-06.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

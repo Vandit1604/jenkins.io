@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins at SCaLE 14x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/01/04/jenkins-at-scale14x/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins at SCaLE 14x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins at SCaLE 14x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins at SCaLE 14x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/01/04/jenkins-at-scale14x/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins at SCaLE 14x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins at SCaLE 14x
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+January 04, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+at+SCaLE+14x&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F01%2F04%2Fjenkins-at-scale14x%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image right"><a class="image" href="https://www.socallinuxexpo.org/scale/14x"><img src="/images/conferences/scale_14x.png" alt="SCaLE 14x" width="180"></a></span></p>
+</div>
+<div class="paragraph">
+<p>For the past few years, a couple members of the Jenkins project have made the
+trip to Los Angeles for the
+<a href="https://www.socallinuxexpo.org/scale/14x">Southern California Linux Expo</a>.
+Despite the name it&#8217;s a fairly broad open source technology conference and
+since it is hosted prior to <a href="https://fosdem.org">FOSDEM</a>, it&#8217;s also a good
+conference to get us in the open source mood after the holiday break.</p>
+</div>
+<div class="paragraph">
+<p>Unlike previous years, when SCaLE was hosted at the LAX Hilton, this year it has
+grown and moved to the
+<a href="https://www.socallinuxexpo.org/scale/14x/venue">Pasadena Convention
+Center</a>. There, as with previous years, we&#8217;ll have a table in the expo hall with <a href="https://twitter.com/kohsukekawa/status/662718638135181313">plenty of
+stickers</a> and <em>perhaps</em> some other forms of swag available for devotees to
+collect.</p>
+</div>
+<div class="paragraph">
+<p>The expo hall will be open January 23rd and January 24th, and a few Jenkins
+contributors will be there to ask questions to, talk about CI/CD and hand out
+stickers.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, <a href="https://github.com/rtyler">I</a> have a presentation on
+Saturday, January 23rd titled
+"<a href="https://www.socallinuxexpo.org/scale/14x/presentations/continuous-delivery-infrastructure-jenkins">Continuous
+Delivery of Infrastructure with Jenkins</a>"</p>
+</div>
+<div class="paragraph">
+<div class="title">Talk abstract</div>
+<p>""
+In this talk we will review continuous delivery concepts and put them into
+practice by building a continuous delivery pipeline with Jenkins to test, stage
+and deploy to infrastructure code to production. Reducing the effort, error
+rate and time it takes to deploy a configuration to change to production means
+less time fighting fires and more time doing what you want.
+""</p>
+</div>
+<div class="paragraph">
+<p>During the talk I&#8217;ll be highlighting some of the positive, and negative,
+patterns used by the <a href="https://github.com/jenkins-infra">Jenkins
+infrastructure</a> team to manage, test and deliver the Jenkins project&#8217;s own
+infrastructure. Sort of a followup from my
+<a href="https://www.youtube.com/watch?v=3hqLGKa4QwA">2014 PuppetConf talk</a> about
+migrating Jenkins infrastructure from controllerless
+<a href="https://puppetlabs.com">Puppet</a> to a
+<a href="https://docs.puppetlabs.com/pe/index.html">Puppet Enterprise</a> oriented
+installation.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re in the LA area, we hope to see you for <a href="https://www.socallinuxexpo.org/scale/14x">SCaLE 14X</a> in Pasadena!</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meetup/">
+meetup
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jam/">
+jam
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-01-04-jenkins-at-scale14x.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

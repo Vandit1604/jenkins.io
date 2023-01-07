@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.332.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.332/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.332.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.332.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.332.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.332/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.332.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.332.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.332.1 covers the upgrade from  2.319.3.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-332-4">
+Upgrading to Jenkins 2.332.4
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-332-3">
+Upgrading to Jenkins 2.332.3
+</h3>
+<div class="sect3">
+<h4 id="log-messages-discarded-under-memory-pressure"><a class="anchor" href="#log-messages-discarded-under-memory-pressure"></a>Log messages discarded under memory pressure</h4>
+<div class="paragraph">
+<p>As of 2.332.1, log messages are discarded when the Java Virtual Machine (JVM) is under memory pressure.
+As of 2.332.3, such discarded messages appear in the Log Recorder page as <code>&lt;discarded&gt;</code>.
+To retain such log messages, alleviate memory pressure by increasing the Java heap size with e.g. the <code>-Xmx</code> Java flag.
+Alternatively, install <a href="https://plugins.jenkins.io/support-core/">Support Core</a> to write these log messages to disk,
+where they are not subject to eviction.</p>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-332-2">
+Upgrading to Jenkins 2.332.2
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-332-1">
+Upgrading to Jenkins 2.332.1
+</h3>
+<div class="sect3">
+<h4 id="linux-installation-packages-use-systemd"><a class="anchor" href="#linux-installation-packages-use-systemd"></a>Linux installation packages use <code>systemd</code></h4>
+<div class="paragraph">
+<p>Linux installation packages provided by the Jenkins project now use the Linux system and service manager (<code>systemd</code>) to manage the Jenkins service and its configuration.
+Existing installations that use the Debian/Ubuntu deb package format, the Red Hat rpm package format, and the SUSE rpm package format will use <code>systemd</code> when they upgrade to Jenkins 2.332.1.</p>
+</div>
+<div class="paragraph">
+<p>The upgrade process reads the existing settings from the operating system specific System V <code>init</code> configuration files and writes those settings into a <code>systemd</code> override file for the Jenkins service.</p>
+</div>
+<div class="paragraph">
+<p>After the upgrade process is complete, the system-level configuration settings are managed with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># systemctl edit jenkins</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="/doc/book/system-administration/systemd-services/">Managing systemd services</a> page for more details of <code>systemd</code> administration.
+See the <a href="/blog/2022/03/25/systemd-migration/">blog post</a> for more details about the migration.</p>
+</div>
+<div class="paragraph">
+<p>If you find a regression, please file a bug report in <a href="https://issues.jenkins.io/">Jira</a>.
+When reporting an issue, include the following information:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the <code>core</code> component.</p>
+</li>
+<li>
+<p>Provide the name, version, and architecture of the Linux distribution you are using (e.g., Ubuntu 20.04.4 LTS x86_64).</p>
+</li>
+<li>
+<p>Provide the contents of the old System V <code>init(8)</code> configuration in <code>/etc/{default,sysconfig}/jenkins</code>, sanitized as necessary.</p>
+</li>
+<li>
+<p>Provide the contents of the <code>systemd(1)</code> drop-in unit in <code>/etc/systemd/system/jenkins.service.d/override.conf</code>, sanitized as necessary.</p>
+</li>
+<li>
+<p>Provide steps to reproduce the issue <em>from scratch</em> on a minimal Jenkins installation; the scenario should fail when the steps are followed on Jenkins 2.335 or later and pass when the steps are followed on Jenkins 2.334 or earlier.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="guava-upgraded"><a class="anchor" href="#guava-upgraded"></a>Guava upgraded</h4>
+<div class="paragraph">
+<p>The Guava library from Google is bundled in Jenkins core.
+Jenkins has upgraded the Guava library from 11.0.1 (released on January 9, 2012) to 31.0.1 (released on September 27, 2021).
+Plugins have already been prepared to support the new version of Guava in <a href="https://github.com/jenkinsci/jep/blob/master/jep/233/README.adoc">JEP-233</a>.
+Use the Plugin Manager to upgrade all plugins before and after upgrading to Jenkins 2.332.1.
+See the <a href="/blog/2021/11/09/guava-upgrade/">Guava upgrade blog post</a> for more details.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jruby-removed"><a class="anchor" href="#jruby-removed"></a>JRuby removed</h4>
+<div class="paragraph">
+<p>JRuby support has been removed from Jenkins core.
+A small number of JRuby-based plugins are affected.
+See the <a href="/blog/2021/12/22/deprecated-ruby-runtime/">JRuby removal blog post</a> for migration notes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="asm-5-removed"><a class="anchor" href="#asm-5-removed"></a>ASM 5 removed</h4>
+<div class="paragraph">
+<p>A repackaged version of ObjectWebASM 5 and the upstream version of ASM were both included in Jenkins core.
+Jenkins core no longer provides the repackaged version of ASM 5.
+Users of SCM API must upgrade SCM API to the latest version prior to upgrading Jenkins.
+Plugins that use the repackaged version of ASM 5 must be updated to use the upstream version of ASM instead.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jndi-setting-of-jenkins-home-directory-removed"><a class="anchor" href="#jndi-setting-of-jenkins-home-directory-removed"></a>JNDI setting of Jenkins home directory removed</h4>
+<div class="paragraph">
+<p>Support for setting the Jenkins home directory via Java Naming and Directory Interface (JNDI) has been removed.
+The Jenkins home directory may still be set using the <code>-DJENKINS_HOME</code> Java system property or the <code>JENKINS_HOME</code> environment variable.</p>
+</div>
+<div class="paragraph">
+<p>Users who load <code>jenkins.war</code> via a servlet container like Tomcat should refer to their servlet container&#8217;s documentation
+for information on how to customize Java system properties or environment variables.</p>
+</div>
+<div class="paragraph">
+<p>For example, the Tomcat servlet container accepts custom Java system properties in the <code>CATALINA_OPTS</code> environment variable.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="windows-batch-file-and-powershell-script-encoding"><a class="anchor" href="#windows-batch-file-and-powershell-script-encoding"></a>Windows batch file and PowerShell script encoding</h4>
+<div class="paragraph">
+<p>In traditional job types, the scripts used in Windows batch file and PowerShell steps are encoded in the JVM&#8217;s default encoding.
+In previous releases, characters in these scripts that could not be encoded in the JVM&#8217;s default encoding were silently converted to ? (question mark) characters.
+In the current release, a script that contains characters that cannot be encoded in the JVM&#8217;s default encoding will result in an explicit and intentional failure of the batch file or PowerShell step.</p>
+</div>
+<div class="paragraph">
+<p>Users who encounter such failures should either rewrite the script to be compatible with the JVM&#8217;s default encoding,
+or they should change the JVM&#8217;s default encoding to be compatible with the script.
+In most cases, the solution is to change the JVM&#8217;s default encoding from Windows-1252 to UTF-8
+by setting the <code>-Dfile.encoding=UTF-8</code> Java system property on the JVM of the node that executes the script.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="log-messages-discarded-under-memory-pressure"><a class="anchor" href="#log-messages-discarded-under-memory-pressure"></a>Log messages discarded under memory pressure</h4>
+<div class="paragraph">
+<p>As of 2.332.1, log messages are discarded when the Java Virtual Machine (JVM) is under memory pressure.
+Such discarded log messages are not displayed in the Log Recorder page.
+To retain such log messages, alleviate memory pressure by increasing the Java heap size with e.g. the <code>-Xmx</code> Java flag.
+Alternatively, install <a href="https://plugins.jenkins.io/support-core/">Support Core</a> to write these log messages to disk,
+where they are not subject to eviction.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

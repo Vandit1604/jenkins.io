@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Hudson's future
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2011/01/11/hudsons-future/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Hudson&#39;s future" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Hudson&#39;s future" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Hudson&#39;s future" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2011/01/11/hudsons-future/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Hudson&#39;s future" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Hudson's future
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+January 11, 2011
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Hudson%27s+future&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2011%2F01%2F11%2Fhudsons-future%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>First, my apologies for the lack of updates on the <a href="https://hudson-labs.org/content/whos-driving-thing">Hudson/Oracle situation</a> for
+the last few weeks. While talks have been ongoing, the holidays have slowed
+things down, and we didn&#8217;t want to send out information that would later turn
+out not to be true. We&#8217;ve been waiting for the talks to reach a resolution -
+and I believe they now have.</p>
+</div>
+<div class="paragraph">
+<p>Since the <a href="https://www.java.net">java.net</a> migration problems, Oracle and representatives from the
+Hudson community have been involved in talks on the future of the project in a
+number of areas. The Hudson representatives have been <a href="https://twitter.com/abayer">myself</a>, <a href="https://twitter.com/kohsukekawa">Kohsuke
+Kawaguchi</a>, and <a href="https://twitter.com/SachaLabourey">Sacha Labourey</a>  (CEO of CloudBees and Kohsuke&#8217;s boss), who was
+brought in to help provide experience with discussions on a corporate/executive
+level which neither Kohsuke nor I have, with Alan Harder and <a href="https://twitter.com/agentdero">R. Tyler Croy</a>
+advising on the side.</p>
+</div>
+<div class="paragraph">
+<p>These talks have in many ways been fruitful - we came to working agreements
+with Oracle on the project infrastructure (such as mailing lists and SCM
+repository location), code review policy for Hudson core, and perhaps most
+significantly, a governance structure for the project going forward. Some
+issues are not yet entirely resolved, such as questions on restrictions on
+third party dependency licenses. But one issue, which we feel is the most
+significant issue of all, one for which we now believe no resolution is
+possible: the rights to the name <strong>Hudson</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Oracle has told us that they have trademark applications filed in both the EU
+and US for Hudson, based on Hudson&#8217;s creation by Kohsuke while working at Sun.
+The problem is that this trademark ownership gives Oracle the ability to revoke
+the Hudson project&#8217;s right to call itself Hudson at any time, and while Oracle
+has made an attempt to offer some guarantees (most notably, that binary
+releases of Hudson, once they&#8217;ve been released with the name Hudson attached,
+will always retain the right to the name), they are not offering any binding
+guarantee that the Hudson project will be able to retain its use of the name in
+perpetuity.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, to continue using the name Hudson means ceding some of the project&#8217;s
+independence to Oracle - if the project and its governance board opted to go in
+a direction Oracle disapproved of, Oracle would be able to take away the naming
+rights. Or, in a less dramatic scenario, Oracle could insist on certain changes
+to the code, infrastructure decisions, process, etc, regardless of opposition
+from the Hudson development community, in order to retain the rights to the
+name.</p>
+</div>
+<div class="paragraph">
+<p>In short, we&#8217;d be living under a sword of <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Damocles">Damocles</a>, regardless of the goodwill
+of the individuals we&#8217;ve been negotiating with at Oracle - Hudson as a project
+would be beholden to Oracle&#8217;s whims for its continued use of its own name, and
+we believe that&#8217;s not viable.
+As I see it, the only viable option facing the project now is to rename it, in
+order to free it from the burden of Oracle&#8217;s ownership of its name. This is not
+a first choice, not by a long shot, but I don&#8217;t see any other choice available
+to us that would preserve the integrity of the project going forward. Oracle
+will be presenting their proposal for the project continuing under their
+umbrella - I encourage you to read it when it becomes available and weigh it
+accordingly. I&#8217;ll just focus on what Kohsuke, other prominent Hudson community
+members and I have endorsed.</p>
+</div>
+<div class="sect2">
+<h3 id="the-proposal"><a class="anchor" href="#the-proposal"></a>The Proposal</h3>
+<div class="paragraph">
+<p>First, we rename the project - the choice for a new name is <strong>Jenkins</strong>, which we
+think evokes the same sort of English butler feel as Hudson. We&#8217;ve already
+registered domains, Twitter users, etc for the new name, and have done our best
+to verify that there are no existing trademarks which would conflict with it.
+Kohsuke will be registering the trademark for Jenkins in his name, with the
+intent of transferring ownership of the trademark to the umbrella of the
+<a href="https://www.sfconservancy.org/">Software Freedom Conservancy</a> once the Jenkins project has been admitted to it
+(which, I should add, is very much our plan, hopefully in their next round of
+new projects in a few months - we&#8217;ve already had preliminary contacts with
+SFC). We still invite Oracle to remain involved with the project, on equal
+terms with all other contributors, and hope they&#8217;ll take us up on this
+invitation.</p>
+</div>
+<div class="paragraph">
+<p>Second, out of respect for Oracle&#8217;s trademark claim on Hudson, we will move our
+infrastructure off of Oracle-owned and hosted servers, and we will rename
+existing independent components of the infrastructure to no longer use "Hudson"</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>i.e., mailing lists, Github repos, etc. This would be a gradual process,
+obviously.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Third, we will put in place an interim governance board for the project,
+consisting of three members - myself, Kohsuke and, if Oracle elects to remain
+involved, Winston Prakash, the Oracle engineer working on Hudson. The interim
+board members will serve for the next 3-6 months, until the governance
+structure can be nailed down securely enough to hold elections for the board
+members.</p>
+</div>
+<div class="paragraph">
+<p>Obviously, such a move could not be undertaken without the agreement and
+support of the Hudson community. We believe this proposal is the best choice
+for the project in the situation it&#8217;s currently in, but we aren&#8217;t closing off
+discussion, questions, etc, and we encourage your feedback and comments. If
+there&#8217;s anything you need clarified, please ask and we&#8217;ll do our best to
+answer.</p>
+</div>
+<div class="paragraph">
+<p>Once Oracle&#8217;s proposal is available later this week (hopefully Wednesday,
+possibly Thursday, from what I&#8217;ve been told), which I strongly advise you all to
+read and consider, we&#8217;ll be putting up a poll to determine the position of the
+community. Once that vote is done, assuming the consensus is to rename, we&#8217;ll
+put the mechanisms in motion and switch over as fast we can.</p>
+</div>
+<div class="paragraph">
+<p>There may be some confusion as to whether we&#8217;re proposing to fork Hudson, or
+rename the existing project. I firmly believe we are proposing the latter - for
+me, the project&#8217;s key component is Kohsuke himself. If the community decides to
+support renaming the project to Jenkins, and Oracle chooses to continue
+development themselves under the name Hudson, they are, obviously, entirely
+welcome to do so. But with Kohsuke working on Jenkins, that&#8217;s the true home and
+the future of the project for me, regardless of the name.</p>
+</div>
+<hr>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meta/">
+meta
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/news/">
+news
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2011/2011-01-11-hudsons-future.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Windows Installer Upgrades
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/12/windows-installers-upgrade/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Windows Installer Upgrades" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Windows Installer Upgrades" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Windows Installer Upgrades" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/12/windows-installers-upgrade/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Windows Installer Upgrades" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Windows Installer Upgrades
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/vsilverman/"><div class="app-avatar"><img alt="Vlad Silverman" class="app-avatar__image" src="/images/avatars/vsilverman.jpg"></div> Vlad Silverman</a><a class="app-author-link" href="/blog/authors/slide_o_mix/"><div class="app-avatar"><img alt="Alex Earl" class="app-avatar__image" src="/images/avatars/slide_o_mix.jpg"></div> Alex Earl</a>
+August 12, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Windows+Installer+Upgrades&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F08%2F12%2Fwindows-installers-upgrade%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>This article describes the transition from the old Jenkins Windows installer 2.235.2 (32 bit) to the new Jenkins Windows installer 2.235.3 (64 bit)</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a look how Jenkins installation on Windows happened before release of this upgrade.</p>
+</div>
+<div class="sect1">
+<h2 id="step-1"><a class="anchor" href="#step-1"></a>Step 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/old_installer_1.png" alt="Installer Startup"></span></p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s evident that branding information is not present here.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step-2"><a class="anchor" href="#step-2"></a>Step 2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/old_installer_2.png" alt="Installation Directory"></span></p>
+</div>
+<div class="paragraph">
+<p>Jenkins would be installed into the 32 bit programs directory along with a 32 bit Java 8 runtime environment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step-3"><a class="anchor" href="#step-3"></a>Step 3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/old_installer_3.png" alt="Install It"></span></p>
+</div>
+<div class="paragraph">
+<p>There was no option to select the user that would run the Jenkins service or the network port that would be used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="issues"><a class="anchor" href="#issues"></a>Issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The previous installer had issues that needed to be resolved:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only supported 32-bit installations</p>
+</li>
+<li>
+<p>Bundled an outdated Java 8 runtime environment</p>
+</li>
+<li>
+<p>No support for Java 11</p>
+</li>
+<li>
+<p>No port selection during installation</p>
+</li>
+<li>
+<p>No choice of account for the Jenkins service</p>
+</li>
+<li>
+<p>The <code>Program Files (x86)</code> directory was used for the Jenkins home directory</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="road-forward"><a class="anchor" href="#road-forward"></a>Road Forward</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The new Jenkins Windows Installer resolves those issues</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Supports 64 bit installations and drops 32 bit support</p>
+</li>
+<li>
+<p>Supports 64 bit Java 8 and 64 bit Java 11</p>
+</li>
+<li>
+<p>Port selection and validation from the installer</p>
+</li>
+<li>
+<p>Service account selection and validation from the installer</p>
+</li>
+<li>
+<p>Program is installed in <code>Program Files</code> with Jenkins home directory in <code>%AppData%</code> of the selected service account</p>
+</li>
+<li>
+<p>The JENKINS_HOME directory is placed in the LocalAppData directory for the user that the service will run as, this aligns with modern Windows file system layouts</p>
+</li>
+<li>
+<p>The installer has been updated with branding to make it look nicer and provide a better user experience</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="screenshots"><a class="anchor" href="#screenshots"></a>Screenshots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You may see below the sequence of screenshots for the new installer:</p>
+</div>
+<div class="sect2">
+<h3 id="step-1-2"><a class="anchor" href="#step-1-2"></a>Step 1</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/new_installer_1.png" alt="Installer Startup"></span></p>
+</div>
+<div class="paragraph">
+<p>We can see now the Jenkins logo as a prominent part of the installer UI.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-2-2"><a class="anchor" href="#step-2-2"></a>Step 2</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/new_installer_2.png" alt="Installation Directory"></span></p>
+</div>
+<div class="paragraph">
+<p>Jenkins installs by default in the 64 bit programs folder rather than in the 32 bit folder.
+Now the Jenkins logo and name are in the header during entire process of installation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-3-2"><a class="anchor" href="#step-3-2"></a>Step 3</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/new_installer_3.png" alt="Account Selection"></span></p>
+</div>
+<div class="paragraph">
+<p>Now the installer allows both specifying and testing the credentials by validating that the account has LogonAsService rights.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-4"><a class="anchor" href="#step-4"></a>Step 4</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/new_installer_4.png" alt="Port Selection"></span></p>
+</div>
+<div class="paragraph">
+<p>Now the installer also allows specifying the port that Jenkins should run on and will not continue until a valid port is entered and tested.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-5"><a class="anchor" href="#step-5"></a>Step 5</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/new_installer_5.png" alt="JRE Selection"></span></p>
+</div>
+<div class="paragraph">
+<p>Now instead of bundling a JRE, the installer searches for a compatible JRE on the system (in the current search no JRE was installed).
+In case you would like to use a different JRE from the one found by the installer, you can browse and specify it.
+Only Java 8 and Java 11 runtimes are supported.
+In case the selected JRE is found to be version 11 the installer will automatically add the necessary arguments and additional jar files for running under Java 11.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-6"><a class="anchor" href="#step-6"></a>Step 6</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2020-08-12-win-installers-upgrade/new_installer_6.png" alt="Install It"></span></p>
+</div>
+<div class="paragraph">
+<p>All of the items that users can enter in the installer should be overridable on the command line for automated deployment as well. The full list of properties that can be overridden will be available soon.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="next-steps"><a class="anchor" href="#next-steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Windows users have alternatives for their existing Jenkins installations:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Upgrade from inside Jenkins</dt>
+<dd>
+<p>The "Manage Jenkins" section of the running Jenkins will continue to include an "Upgrade" button for Windows users.
+You may continue to use that "Upgrade" button to update the Jenkins installation on your Windows computer.
+Upgrade from inside Jenkins will continue to use the current Java version.
+Upgrade from inside Jenkins will continue to use the current installation location.</p>
+</dd>
+<dt class="hdlist1">Upgrade with the new Jenkins MSI installer</dt>
+<dd>
+<p>If you run the new Jenkins MSI installer on your Jenkins that was installed with the old Jenkins MSI installer, it will prompt for a new port and a service account.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop and disable the existing Jenkins service from the Windows Service Manager</p>
+</li>
+<li>
+<p>Run the new installer to create the new installation with desired settings</p>
+</li>
+<li>
+<p>Stop the newly installed Jenkins service</p>
+</li>
+<li>
+<p>Copy existing Jenkins configuration files to the new Jenkins home directory</p>
+</li>
+<li>
+<p>Start the newly installed Jenkins service</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>After the new Jenkins MSI installer has run, the "Manage Jenkins" section of the running Jenkins will continue to include an "Upgrade" button for Windows users.
+You may continue to use that "Upgrade" button to update the Jenkins installation on your Windows computer.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/windows/">
+windows
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/installers/">
+installers
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Vlad Silverman" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/vsilverman.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/vsilverman/">
+Vlad Silverman
+</a>
+</p>
+<div class="paragraph">
+<p>Vlad is an active user of Jenkins and at the beginning of 2020 he also started actively contributing to the Jenkins project. He resides in Silicon Valley and for 10+ years had been involved in building/testing business processes for large enterprises and mid-size companies.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/vsilverman" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/vsilverman" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Alex Earl" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/slide_o_mix.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/slide_o_mix/">
+Alex Earl
+</a>
+</p>
+<div class="paragraph">
+<p>Alex comes from a .NET background but likes to get his hands dirty in many different languages and frameworks. He currently
+does embedded development in a silicon validation group. He is an internal evangelist for Jenkins at his company. Alex
+is a community contributor to Jenkins, working on plugin hosting and maintaining several plugins. He is also involved in
+a few SIGS. Alex enjoys working on open source software in his "free" time as well as spending time with his family.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/slide" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/alexcearl" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/08/2020-08-12-windows-installers-upgrade.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

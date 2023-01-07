@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Introducing Tutorials in the Jenkins User Documentation
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/11/27/tutorials-in-the-jenkins-user-documentation/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Introducing Tutorials in the Jenkins User Documentation" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Introducing Tutorials in the Jenkins User Documentation" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Introducing Tutorials in the Jenkins User Documentation" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/11/27/tutorials-in-the-jenkins-user-documentation/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Introducing Tutorials in the Jenkins User Documentation" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Introducing Tutorials in the Jenkins User Documentation
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/gilesgas/"><div class="app-avatar"></div> Giles Gaskell</a>
+November 27, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Introducing+Tutorials+in+the+Jenkins+User+Documentation&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F11%2F27%2Ftutorials-in-the-jenkins-user-documentation%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Regular perusers of the <a href="/doc">Jenkins User Documentation</a> may have noticed
+the presence of the <strong>Tutorials</strong> part (between the <strong>Guided Tour</strong> and <strong>User
+Handbook</strong>) that appeared in the last couple of months and gradually began to get
+populated with much of my recent work, writing Jenkins tutorials.</p>
+</div>
+<div class="paragraph">
+<p>My name&#8217;s Giles and I&#8217;ve been a technical writer in the software development
+field for several years now. I&#8217;ve always been passionate about technical writing
+and more recently, the technologies that go into developing written content and
+automating its generation - like Jenkins! I was a former Atlassian and recently
+joined CloudBees as a Senior Technical Writer, working remotely from the "Sydney
+Office", with my current focus on the Jenkins User Documentation.</p>
+</div>
+<div class="sect1">
+<h2 id="why-tutorials"><a class="anchor" href="#why-tutorials"></a>Why tutorials?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My exposure to Jenkins and its usage over the years has been patchy at best.
+During this time, however, I&#8217;ve had some degree of experience as a user of
+various continuous delivery (CD) tools like Jenkins and am reasonably familiar
+with the advantages these tools can offer software development teams.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve also found that while many software developers are familiar with the
+broader concept of "developer operations" (or simply "devops"), fewer seem
+familiar with the concepts of CD and related tools to facilitate devops within
+organizations.</p>
+</div>
+<div class="paragraph">
+<p>The CD process is based on the fundamental flow of <strong>building the application</strong> &gt;
+<strong>testing it</strong> &gt; <strong>delivering it</strong>, where typically:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>building</strong> part involves compiling the application and/or ensuring all
+necessary libraries and dependencies are in place for the application to run
+as intended.</p>
+</li>
+<li>
+<p>The <strong>testing</strong> part involves testing the built application with automated tests
+to ensure that changes implemented by developers function as expected.</p>
+</li>
+<li>
+<p>The <strong>delivering</strong> part involves packaging or presenting the application in a
+way that can be delivered to customers or other users for any kind of purpose.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, as one of the major contributors to the Jenkins User Documentation (and
+faced with a reasonably steep learning curve), it quickly became apparent about
+the lack of accessible documentation to hand-hold people relatively new to
+Jenkins through this CD process. I couldn&#8217;t find anything in the Jenkins User
+Documentation to demonstrate how Jenkins implements this process on a simple
+app that delivers an end result.</p>
+</div>
+<div class="paragraph">
+<p>With the guidance and assistance of helpful colleagues, I therefore decided to
+embark on creating a series of Jenkins tutorials to help fill these
+documentation and knowledge gaps. These tutorials are based on Daniele Procida&#8217;s
+description of how tutorials should be presented in his blog post
+"<a href="https://www.divio.com/en/blog/documentation/">What nobody tells you about
+documentation</a>").</p>
+</div>
+<div class="sect2">
+<h3 id="introductory-tutorials"><a class="anchor" href="#introductory-tutorials"></a>Introductory tutorials</h3>
+<div class="paragraph">
+<p>The first set of tutorials on the <a href="/doc/tutorials">Tutorials overview</a> page
+demonstrate how to implement this fundamental CD process in Jenkins on a simple
+application for a given technology stack.</p>
+</div>
+<div class="paragraph">
+<p>So far, there&#8217;s one for
+<a href="/doc/tutorials/build-a-java-app-with-maven/">Java with Maven</a> and another
+for <a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm/">Node.js and
+React with npm</a>. Another for Python will be added to this list in the near
+future.</p>
+</div>
+<div class="paragraph">
+<p>These tutorials define your application&#8217;s entire CD process (i.e. your Pipeline)
+in a <code>Jenkinsfile</code>, whose Groovy-like Declarative Pipeline syntax is checked in
+to your Git source repository. Managing your Pipeline with your application&#8217;s
+source code like this forms the fundamentals of "Pipeline as code".</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Introductory tutorials</strong> also cover how to use some powerful features of
+Jenkins, like <a href="/doc/tutorials/create-a-pipeline-in-blue-ocean/">Blue Ocean</a>,
+which makes it easy to connect to an existing cloud, web or locally hosted Git
+repository and create your Pipeline with limited knowledge of Pipeline syntax.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advanced-tutorials"><a class="anchor" href="#advanced-tutorials"></a>Advanced tutorials</h3>
+<div class="paragraph">
+<p>Also soon to be released will be the first <strong>Advanced tutorial</strong> on building
+multibranch Pipelines in Jenkins. This tutorial takes the "Pipeline as code"
+concept to a new level, where a single <code>Jenkinsfile</code> (defining the entire CD
+process across all branches of your application&#8217;s Git repository) consists of
+multiple stages which are selectively executed based on the branch that Jenkins
+is building.</p>
+</div>
+<div class="paragraph">
+<p>Additional tutorials that demonstrate more advanced features of Jenkins and how
+to manage your Pipelines with greater sophistication and flexibility will be
+added to this section in future.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summing-up"><a class="anchor" href="#summing-up"></a>Summing up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can access all currently available tutorials from the
+<a href="/doc/tutorials">Tutorials overview</a> page in the Jenkins User Documentation.
+It&#8217;s worthwhile checking that page from time to time as it&#8217;ll be updated
+whenever a new tutorial is published.</p>
+</div>
+<div class="paragraph">
+<p>Also, if you have any suggestions for tutorials or other content you&#8217;d like to
+see in the documentation, please post your suggestions in the
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-docs">Jenkins
+Documentation Google Group</a>, which you can also post (and reply) to by emailing
+<code>jenkinsci-docs@googlegroups.com</code>.</p>
+</div>
+<div class="paragraph boxshadow">
+<p><span class="image center"><img src="/images/post-images/2017-11/sydney-office-team.jpg" alt="The &quot;Sydney Office&quot; team" width="80%"></span><br>
+<em>The Sydney Office team meeting at Carriageworks - from left to right, Giles
+Gaskell, Nicholae Pascu, Michael Neale and James Dumay</em></p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/gilesgas/">
+Giles Gaskell
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/gilesgas" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/giles_gas" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/11/2017-11-27-tutorials-in-the-jenkins-user-documentation.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

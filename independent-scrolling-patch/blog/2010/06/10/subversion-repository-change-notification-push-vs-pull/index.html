@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Subversion repository change notification: push vs pull
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/06/10/subversion-repository-change-notification-push-vs-pull/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Subversion repository change notification: push vs pull" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Subversion repository change notification: push vs pull" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Subversion repository change notification: push vs pull" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/06/10/subversion-repository-change-notification-push-vs-pull/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Subversion repository change notification: push vs pull" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Subversion repository change notification: push vs pull
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/kohsuke/"><div class="app-avatar"><img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/images/avatars/kohsuke.jpeg"></div> Kohsuke Kawaguchi</a>
+June 10, 2010
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Subversion+repository+change+notification%3A+push+vs+pull&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2010%2F06%2F10%2Fsubversion-repository-change-notification-push-vs-pull%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>People often configure <a href="https://en.wikipedia.org/wiki/Hudson%20%28software%29">Hudson</a> to start a new build whenever a change is made to the repository. In fact, this is often considered central to the practice of continuous integration.</p>
+</div>
+<div class="paragraph">
+<p>There are two ways to achieve this. One is the "pull" model, where Hudson periodically reaches out to a Subversion repository to see if there is any changes. The other is the "push" model, where you make the Subversion repository reach out to Hudson.</p>
+</div>
+<div class="paragraph">
+<p>Both approaches have trade-offs. The pull model is easier to configure, since you can do this entirely from Hudson. But this comes at the expense of increased load to the Subversion server. Even though the overhead of Subversion polling is relatively low, as you add more projects to Hudson and increase the polling frequency, the overhead may get non-trivial (imagine the number of Hudson pollings that the poor <a href="https://java.net">java.net</a> Subversion server gets, for example.) A more serious downside, in my opinion, is that this increases the delay from your commit to a build. For example, if your build just takes 5 mins, then even if you poll every minute, you pay on average 30 seconds delay before a build starts — a 10% overhead!</p>
+</div>
+<div class="paragraph">
+<p>The push approach eliminates those two downsides, but it requires a post-commit hook configuration in the Subversion repository, which has to be done manually by the administrator, because those scripts are not exposed to external systems like Hudson.</p>
+</div>
+<div class="paragraph">
+<p>With that said, if you do have an access to the Subversion repository post-commit hook, I highly recommend the push approach, and in Hudson we made it as easy as possible to configure the set up. Here&#8217;s the script you&#8217;ll need in your post-commit hook:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>REPOS="$1" REV="$2" UUID=\`svnlook uuid $REPOS\` /usr/bin/wget \
+       --header "Content-Type:text/plain;charset=UTF-8" \
+       --post-data "\`svnlook changed --revision $REV $REPOS\`" \
+       --output-document "-" \
+       https://server/hudson/subversion/${UUID}/notifyCommit?rev=$REV</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This script basically just tells Hudson that there was a change in a repository. Hudson will then check this information against all the jobs that have a polling configured, and schedule the builds accordingly. The beauty of this approach is two-folds:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The script doesn&#8217;t change when you add/remove/rename jobs.</p>
+</li>
+<li>
+<p>The overhead is constant regardless of the number of jobs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you haven&#8217;t configured a push setup yet, now is the time to do so!</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/kohsuke.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kohsuke/">
+Kohsuke Kawaguchi
+</a>
+</p>
+<div class="paragraph">
+<p>Kohsuke is the creator of Jenkins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kohsuke" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/kohsukekawa" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2010/2010-06-10-subversion-repository-change-notification-push-vs-pull.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

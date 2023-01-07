@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Exposed Services and Ports
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/services/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Exposed Services and Ports" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Exposed Services and Ports" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Exposed Services and Ports" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/services/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Exposed Services and Ports" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="active">Securing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" class="">Access Control</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/securing-jenkins/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/managing-security/" class="">Managing Security</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/" class="">Controller Isolation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/csrf-protection/" class="">CSRF Protection</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/user-content/" class="">Rendering User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/build-authorization/" class="">Access Control for Builds</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/environment-variables/" class="">Handling Environment Variables</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/markup-formatter/" class="">Markup Formatters</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/services/" class="active">Exposed Services and Ports</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../markup-formatter">
+⇐ Markup Formatters
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Securing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../../system-administration">
+System Administration ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Exposed Services and Ports
+</h1>
+<div class="paragraph">
+<p>Jenkins is a fairly complex application and as such does more than just serve a web interface.
+This section documents the services it frequently exposes on the network.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Plugins may expose further services on the network.
+Only very commonly installed plugins are considered below.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="web-ui"><a class="anchor" href="#web-ui"></a>Web UI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The web UI served via HTTP (or HTTPS), by default on port 8080.
+Sometimes Jenkins is running behind a reverse proxy that may customize or filter requests and responses.</p>
+</div>
+<div class="paragraph">
+<p>For an overview of the URLs accessible to users without any permissions in Jenkins, see <a href="../access-control">Access Control</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tcp-agent-listener-port"><a class="anchor" href="#tcp-agent-listener-port"></a>TCP Agent Listener Port</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins can expose a TCP port that allows inbound agents to connect to it.
+It can be enabled, disabled, and configured in <em>Manage Jenkins » Configure Global Security</em>.</p>
+</div>
+<div class="paragraph">
+<p>The two supported modes (while enabled) are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Random</strong>: The TCP port is chosen at random to avoid collisions on the Jenkins <a href="../../glossary/#controller">controller</a>.
+The downside to randomized ports is that they are chosen during the boot of the Jenkins controller, making it difficult to manage firewall rules allowing TCP traffic.</p>
+</li>
+<li>
+<p><strong>Fixed</strong>: The port is chosen by the Jenkins administrator and is consistent across reboots of the Jenkins controller.
+This makes it easier to manage firewall rules allowing TCP-based agents to connect to the controller.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This service is disabled by default in most packages, but the Docker images expose it at port 50000.</p>
+</div>
+<div class="paragraph">
+<p>HTTP requests at this port get a minimal plain text response with some diagnostic information.
+It looks like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>Jenkins-Agent-Protocols: JNLP4-connect, Ping <i class="conum" data-value="1"></i><b>(1)</b>
+Jenkins-Version: 2.289 <i class="conum" data-value="2"></i><b>(2)</b>
+Jenkins-Session: b4783dfa <i class="conum" data-value="3"></i><b>(3)</b>
+Client: 172.17.0.1 <i class="conum" data-value="4"></i><b>(4)</b>
+Server: 172.17.0.3 <i class="conum" data-value="5"></i><b>(5)</b>
+Remoting-Minimum-Version: 3.14 <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>List of currently enabled TCP inbound agent protocols.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The current version of Jenkins.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The session of the current Jenkins execution. This is unrelated to web session cookies. This is changed to a new value whenever Jenkins starts. It is used in various URLs to help implement caching of static resources, and can be used by clients to tell whether Jenkins restarted.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The client IP address as seen from Jenkins.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The Jenkins controller&#8217;s IP address.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The minimum required version of the <a href="https://github.com/jenkinsci/remoting/">Remoting</a> library for agents to connect to this Jenkins controller.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Inbound agents may instead be configured to use WebSocket transport to connect to Jenkins.
+In this case no extra TCP port need be enabled and no special security configuration is needed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ssh-server"><a class="anchor" href="#ssh-server"></a>SSH Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://plugins.jenkins.io/sshd">SSH Server</a> Plugin can be configured to open an SSH port on the Jenkins controller.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This plugin&#8217;s functionality was part of Jenkins (core) until Jenkins 2.281.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Authentication can be username/password or using public key authentication.
+For the latter, the public keys can be stored in Jenkins users' profiles.</p>
+</div>
+<div class="paragraph">
+<p>This SSH server does not provide a regular OS shell once logged in.
+Instead, it provides a shell-like interface for the <a href="/doc/book/managing/cli/">Jenkins CLI</a>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, some plugins may provide features that require the SSH server to be enabled, like the <a href="https://plugins.jenkins.io/git-server">GIT server</a> Plugin.</p>
+</div>
+<div class="paragraph">
+<p>This service is disabled by default.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="udp-and-mdns-service-discovery"><a class="anchor" href="#udp-and-mdns-service-discovery"></a>UDP and mDNS Service Discovery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins releases 2.219 and earlier included features that allowed users to discover Jenkins on their network.
+These features have been removed without replacement in Jenkins 2.220 for security reasons.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../markup-formatter">
+⇐ Markup Formatters
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Securing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../../system-administration">
+System Administration ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/security/services.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

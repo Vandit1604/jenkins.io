@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Access Control
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Access Control" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Access Control" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Access Control" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Access Control" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="active">Securing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" class="active">Access Control</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/securing-jenkins/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/managing-security/" class="">Managing Security</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/" class="">Controller Isolation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/csrf-protection/" class="">CSRF Protection</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/user-content/" class="">Rendering User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/build-authorization/" class="">Access Control for Builds</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/environment-variables/" class="">Handling Environment Variables</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/markup-formatter/" class="">Markup Formatters</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/services/" class="">Exposed Services and Ports</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Securing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../securing-jenkins">
+Securing Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Access Control
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#common-configuration-mistakes">Common Configuration Mistakes</a></li>
+<li><a href="#permissions">Permissions</a></li>
+<li><a href="#disabling-access-control">Disabling Access Control</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins access control is split into two parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Authentication (users prove who they are) is done using a <em>security realm</em>.
+The security realm determines user identity and group memberships.</p>
+</li>
+<li>
+<p>Authorization (users are permitted to do something) is done by an <em>authorization strategy</em>.
+This controls whether a user (directly or through group memberships) has a permission.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These can be independent, or work in combination.
+An independent configuration would be <a href="https://plugins.jenkins.io/active-directory">Active Directory</a> or <a href="https://plugins.jenkins.io/ldap">LDAP</a> as security realm, and something like <a href="https://plugins.jenkins.io/matrix-auth">Matrix Authorization Strategy</a> as authorization strategy.
+An example for related security realm and authorization strategy configuration is <a href="https://plugins.jenkins.io/github-oauth">GitHub Authentication</a>:
+While its security realm can be used with a generic authorization strategy, it also provides an authorization strategy that looks up a user&#8217;s repository permissions on GitHub, and grants or denies permissions to related jobs in Jenkins based on that.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Jenkins could be set up to have basic access control happen outside of it.
+Some examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The built-in <a href="https://github.com/jenkinsci/winstone">Winstone/Jetty servlet container wrapper</a> provides options that implement a basic security realm outside Jenkins.</p>
+</li>
+<li>
+<p>If Jenkins is running behind a reverse proxy like Nginx or Apache, those can limit access to Jenkins.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An advantage of these approaches is that they do not allow any access to Jenkins unless a user is authorized, reducing the impact of security issues in Jenkins or plugins especially when accessible from the internet.
+A disadvantage is the lack of integration with Jenkins access controls and potentially even interfering with it (e.g. when trying to authenticate scripted clients).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="common-configuration-mistakes"><a class="anchor" href="#common-configuration-mistakes"></a>Common Configuration Mistakes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When configuring authentication and authorization in Jenkins, it is easy to accidentally allow far more access than intended.
+See <a href="/doc/book/security/access-control/permissions/#administer">the documentation on the access given to administrators</a> about the impact of unintentionally granting Administer permission.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>Anyone can do anything</em></dt>
+<dd>
+<p>This authorization strategy is very rarely a good choice, as it allows even anonymous users to administer Jenkins.
+As a rule of thumb, it should not be used.
+Never rely on the Jenkins URL to not be known outside your team or organization alone for security.</p>
+</dd>
+<dt class="hdlist1"><em>Logged-in users can do anything</em></dt>
+<dd>
+<p>This authorization strategy can be a sensible choice as long as only fully trusted users have accounts to access Jenkins.
+This is the default with Jenkins&#8217;s single admin user when setting up Jenkins with the setup wizard.</p>
+<div class="paragraph">
+<p>Switching to an authentication realm that allows untrusted users to have an account later will result in those users getting administrative access to Jenkins if you keep this authorization stategy.
+Examples include enabling account signup for <em>Jenkins' own user database</em>, or various other authorization realms, many of which (GitHub, Google, GitLab, etc.) allow anyone to sign up for an account.</p>
+</div>
+</dd>
+<dt class="hdlist1">Anonymous and authenticated users</dt>
+<dd>
+<p>Similar to the previous items, you should generally not grant significant permissions to <code>anonymous</code> (the anonymous user) or authenticated (any authenticated user) when using an authorization strategy that allows finer-grained control (like <a href="https://plugins.jenkins.io/matrix-auth">Matrix Authorization Strategy</a>).
+Granting Overall/Administer permission to <em>anonymous</em> is similar to <em>Anyone can do anything</em>, while granting that permission to <em>authenticated</em> is essentially the same as <em>Logged-in users can do anything</em>.</p>
+</dd>
+<dt class="hdlist1">Built-in node</dt>
+<dd>
+<p>Users with limited permissions <a href="/doc/book/security/controller-isolation/">must not be able to configure jobs that run on the built-in node</a>.
+When setting up a new Jenkins instance, adding users and switching authorization strategies, it is important to also set up distributed builds and limit what jobs are able to run on the built-in node.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="permissions"><a class="anchor" href="#permissions"></a>Permissions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At a very basic level, the <em>Overall/Read</em> permission provides users some basic access to Jenkins.
+This permission is a prerequisite for more substantial access to Jenkins.
+Without this permission, only very few features explicitly intended to be used without authentication are available.</p>
+</div>
+<div class="paragraph">
+<p>The highest level of permissions is <em>Overall/Administer</em>.
+With this permission, users can upload and install plugins and have access to the <a href="/doc/book/managing/script-console/">Script Console</a>.</p>
+</div>
+<div class="paragraph">
+<p>Between these two extremes is finer-grained permission control involving other permissions.
+Permissions in Jenkins have a <em>scope</em>: They can be granted globally, on an item (like a folder or job), on a build, etc.
+Whenever a user attempts to do something that is protected by permissions, the authorization strategy is checked for whether the current user has the specific permission (e.g., <em>Job/Read</em>) on the specific object (e.g., a job).
+Exactly how permissions are assigned and whether and how they&#8217;re inherited is controlled by the specific authorization strategy.</p>
+</div>
+<div class="paragraph">
+<p>As an example, <a href="https://plugins.jenkins.io/matrix-auth">Matrix Authorization Strategy</a> provides two different authorization strategies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>One provides a single global configuration of all permissions.
+A user granted <em>Item/Read</em> will be granted that permission everywhere.</p>
+</li>
+<li>
+<p>One provides a project-based configuration.
+In this model, permissions can be granted globally (as in the previous strategy), or only on specific folders, jobs, or agents.
+Permissions are by default inherited, but that can be customized as well, so that users granted <em>Item/Read</em> globally or on a parent folder may be excluded from access to a job.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more details about the various permissions in Jenkins and the level of access they grant, see <a href="/doc/book/security/access-control/permissions/">Permissions</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="disabling-access-control"><a class="anchor" href="#disabling-access-control"></a>Disabling Access Control</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See <a href="/doc/book/security/access-control/disable/">Disable Access Control</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Securing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../securing-jenkins">
+Securing Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/security/access-control.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

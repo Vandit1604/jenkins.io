@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Backing-up/Restoring Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/system-administration/backing-up/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Backing-up/Restoring Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Backing-up/Restoring Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Backing-up/Restoring Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/system-administration/backing-up/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Backing-up/Restoring Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="active">System Administration</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/backing-up/" class="active">Backing-up/Restoring Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/monitoring/" class="">Monitoring Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/administering-jenkins-on-kubernetes/" class="">Administering Jenkins on Kubernetes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/with-chef/" class="">Managing Jenkins with Chef</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/with-puppet/" class="">Managing Jenkins with Puppet</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/viewing-logs/" class="">Viewing logs</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/authenticating-scripted-clients/" class="">Authenticating scripted clients</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/" class="">Reverse proxy configuration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-troubleshooting/" class="">Reverse proxy - Issues</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/systemd-services/" class="">Managing systemd services</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ System Administration
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../monitoring">
+Monitoring Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Backing-up/Restoring Jenkins
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#creating-a-backup">Creating a Backup</a>
+<ul class="sectlevel2">
+<li><a href="#filesystem-snapshots">Filesystem snapshots</a></li>
+<li><a href="#plugins-for-backup">Plugins for backup</a></li>
+<li><a href="#writing-a-shell-script-for-backups">Writing a shell script for backups</a></li>
+</ul>
+</li>
+<li><a href="#back-up-the-controller-key-separately">Back up the Controller Key Separately</a></li>
+<li><a href="#which-files-should-be-backed-up">Which Files Should Be Backed Up?</a>
+<ul class="sectlevel2">
+<li><a href="#jenkins_home">$JENKINS_HOME</a></li>
+<li><a href="#configuration-files">Configuration files</a></li>
+<li><a href="#jobs-subdirectory">./jobs Subdirectory</a></li>
+<li><a href="#what-may-not-need-to-be-backed-up">What may not need to be backed up</a></li>
+</ul>
+</li>
+<li><a href="#validating-a-backup">Validating a backup</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#going-further">Going further</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Having good backups of your Jenkins instance is critically important.
+Backups are used for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Disaster recovery.</p>
+</li>
+<li>
+<p>Recovering an older configuration (an accidental configuration change may not be discovered for some time).</p>
+</li>
+<li>
+<p>Recovering a file that is corrupted or was deleted accidentally.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This page discusses the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How to create a backup</p>
+</li>
+<li>
+<p>Files that should be backed up</p>
+</li>
+<li>
+<p>How to validate a backup to ensure that it is usable</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-backup"><a class="anchor" href="#creating-a-backup"></a>Creating a Backup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Various schemes can be used to create backups.
+These are discussed in this section:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Filesystem snapshots</p>
+</li>
+<li>
+<p>Plugins for backup</p>
+</li>
+<li>
+<p>Write a shell script that backs up the Jenkins instance</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="filesystem-snapshots"><a class="anchor" href="#filesystem-snapshots"></a>Filesystem snapshots</h3>
+<div class="paragraph">
+<p>Filesystem snapshots provide maximum consistency for backups.
+They also run faster than live backups,
+reducing the possibility of copying different data at different time points.
+They are supported by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Linux Logical Volume Manager (LVM)</p>
+</li>
+<li>
+<p>Linux btrfs</p>
+</li>
+<li>
+<p>Solaris ZFS (which also supports incremental backups)</p>
+</li>
+<li>
+<p>FreeBSD ZFS</p>
+</li>
+<li>
+<p>OpenZFS on Linux</p>
+</li>
+<li>
+<p>Some other file system architectures</p>
+</li>
+<li>
+<p>Many cloud providers</p>
+</li>
+<li>
+<p>Some separate storage devices also let you create snapshots at the storage level.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plugins-for-backup"><a class="anchor" href="#plugins-for-backup"></a>Plugins for backup</h3>
+<div class="paragraph">
+<p>Several plugins are available for backup.
+From the main menu select <em>Manage Jenkins</em>, then go to <em>Manage Plugins&gt;Available</em> and search for <strong>backup</strong>.
+Note that only the <a href="https://plugins.jenkins.io/thinBackup/">thinBackup Plugin</a> of the open source plugins is currently being maintained.
+You can try the other plugins but you may have problems with them.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="writing-a-shell-script-for-backups"><a class="anchor" href="#writing-a-shell-script-for-backups"></a>Writing a shell script for backups</h3>
+<div class="paragraph">
+<p>You can write your own shell script that copies the appropriate files and directories to a backup location.
+Use <a href="https://man7.org/linux/man-pages/man8/cron.8.html">cron</a>
+to schedule when the backup script runs.</p>
+</div>
+<div class="paragraph">
+<p>The shell script should create a directory such as <code>/mnt/backup</code>
+to which the backup will be written;
+be sure that you have write permissions to that directory.
+Consider creating <code>/mnt/backup</code> as a separate filesystem with its own mount point.
+An alternative method is to create a subdirectory in <code>/var</code>.
+Note that if you use this method,
+you might need to use the <strong>sudo</strong> command to execute the restore operation.
+Backing up to <code>/tmp</code> is not advised because <code>/tmp</code> may be cleaned on reboot.</p>
+</div>
+<div class="paragraph">
+<p>Create a unique identifier for each backup (use a timestamp, for example)
+to ensure that today&#8217;s backup does not overwrite yesterday&#8217;s backup.</p>
+</div>
+<div class="paragraph">
+<p>Writing files to a local file system is the fastest way to take the backup.
+Consider copying the completed backup to a remote backup server or device for long term storage.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="back-up-the-controller-key-separately"><a class="anchor" href="#back-up-the-controller-key-separately"></a>Back up the Controller Key Separately</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Never include the controller key in your Jenkins backup!</strong></p>
+</div>
+<div class="paragraph">
+<p>The controller key is used to encrypt data in the <em>secrets</em> directory that secures credentials.
+It is stored in the <em>$JENKINS_HOME/secrets/hudson.util.Secret</em> file
+in the <em>$JENKINS_HOME/secrets/</em> directory and encrypted with <code>master.key</code>.
+If you need to restore a system from a backup, you will need this file.
+And, if someone else accesses your backups and has this key, they have full access to all your information.</p>
+</div>
+<div class="paragraph">
+<p>You should treat your controller key like you treat your SSH private key and NEVER include it in a regular backup.
+Instead, back up the <code>master.key</code> file separately and store it in a very secure location away from your other backups.
+It is a very file small that is seldom changed.
+If you need to do a full system restore, you will need to restore the rest of the system and then apply the backup of the <code>master.key</code> file separately.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="which-files-should-be-backed-up"><a class="anchor" href="#which-files-should-be-backed-up"></a>Which Files Should Be Backed Up?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The number of files you back up can affect both the time required to run the backup and the size of the resulting backup.
+It also impacts the complexity of restoring the system from the backup.
+Here we discuss why various files should be backed up
+and list some files that could safely be excluded from at least some backups.</p>
+</div>
+<div class="sect2">
+<h3 id="jenkins_home"><a class="anchor" href="#jenkins_home"></a>$JENKINS_HOME</h3>
+<div class="paragraph">
+<p>Backing up the entire <code>$JENKINS_HOME</code> directory
+preserves the entire Jenkins instance.
+To restore the system, just copy the entire backup to the new system.</p>
+</div>
+<div class="paragraph">
+<p>Note, however, that <code>JENKINS_HOME</code> includes a number of files that do not really need to be backed up.
+Selecting specific directories and files to back up yields smaller backups
+but may require a greater effort to restore a system.
+One approach is to back up different directories on different schedules.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration-files"><a class="anchor" href="#configuration-files"></a>Configuration files</h3>
+<div class="paragraph">
+<p>Configuration files are stored directly in the <code>$JENKINS_HOME</code> directory.
+<code>./config.xml</code> is the main Jenkins configuration file.
+Other configuration files also have the <code>.xml</code> suffix.
+Specify <code>$JENKINS_HOME/*.xml</code> to back up all configuration files.</p>
+</div>
+<div class="paragraph">
+<p>Configuration files can also be stored in an SCM repository.
+This keeps copies of all previous versions of each file
+that can be retrieved using standard SCM facilities.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jobs-subdirectory"><a class="anchor" href="#jobs-subdirectory"></a>./jobs Subdirectory</h3>
+<div class="paragraph">
+<p>The <code>$JENKINS_HOME/jobs</code> directory contains information related
+to all the jobs you create in Jenkins.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>./builds</strong>&#8201;&#8212;&#8201;Contains build records</p>
+</li>
+<li>
+<p><strong>./builds/archive</strong>&#8201;&#8212;&#8201;Contains archived artifacts</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Back this up if it is important to retain these artifacts long-term</p>
+</li>
+<li>
+<p>These can be very large and may make your backups very large</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>./workspace</strong>&#8201;&#8212;&#8201;Contains files checked out from the SCM</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It is usually not necessary to back up these files. You can perform a clean checkout after restoring the system.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>./plugins/*.hpi</strong>&#8201;&#8212;&#8201;Plugin packages with specific versions used on your system</p>
+</li>
+<li>
+<p><strong>./plugins/*.jpi</strong>&#8201;&#8212;&#8201;Plugin packages with specific versions used on your system</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-may-not-need-to-be-backed-up"><a class="anchor" href="#what-may-not-need-to-be-backed-up"></a>What may not need to be backed up</h3>
+<div class="paragraph">
+<p>The following files and directories
+do not usually need to be included in every routine backup
+because you can download the latest version when you are restoring a system.
+However, some disaster recovery experts recommend against doing any upgrades
+while restoring the system,
+to avoid delays caused by compatibility issues that might arise.
+If your disaster recovery plan specifies that you restore the system
+using the same software versions that were previously running,
+you can make an infrequent backup of the system and all downloaded tools
+and use that to restore the system..</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>./war</strong>&#8201;&#8212;&#8201;Exploded <code>war</code> file</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To restore a system, download the latest <code>war</code> file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>./cache</strong>&#8201;&#8212;&#8201;Downloaded tools</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To restore a system, download the current version of the tools.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>./tools</strong>&#8201;&#8212;&#8201;Extracted tools</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To restore a system, extract the tools again.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>./plugins/xxx</strong>&#8201;&#8212;&#8201;Subdirectories of installed plugins</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These will be automatically populated on the next restart.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="validating-a-backup"><a class="anchor" href="#validating-a-backup"></a>Validating a backup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your backup strategy should include validation of each backup.
+You do not want to learn that your backup is no good when you need it!</p>
+</div>
+<div class="paragraph">
+<p>A simple way to validate a full backup is to restore it to a temporary location.
+Create a directory for the test validation (such as <strong>/mnt/backup-test</strong>)
+and restore the backup to that directory.</p>
+</div>
+<div class="paragraph">
+<p>Set $JENKINS_HOME to point to this directory,
+specifying a random HTTP port so you do not collide with the real Jenkins instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">export </span><span class="nv">JENKINS_HOME</span><span class="o">=</span>/mnt/backup-test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now execute the restored Jenkins instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">java <span class="nt">-jar</span> jenkins.war <span class="nt">---httpPort</span><span class="o">=</span>9999</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Making backups is a Jenkins best practice.</p>
+</li>
+<li>
+<p>Backups are critical for disaster recovery.</p>
+</li>
+<li>
+<p>Always set up a backup policy that defines:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The configurations and records that need to be saved from the controller</p>
+</li>
+<li>
+<p>How often backups should be taken</p>
+</li>
+<li>
+<p>Where backups should be stored</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Validate your backups.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You should periodically check whether your backups are intact
+and can be used to meet your recovery objectives.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="going-further"><a class="anchor" href="#going-further"></a>Going further</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some recommended readings on this subject:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.cloudbees.com/blog/why-smart-efficient-backup-and-restore-techniques-are-essential-jenkins-production-server">Why Smart, Efficient Backup and Restore Techniques are Essential with Jenkins Production Server</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/backup/">Backup Plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/thinBackup/">thinBackup Plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ System Administration
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../monitoring">
+Monitoring Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/system-administration/backing-up.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

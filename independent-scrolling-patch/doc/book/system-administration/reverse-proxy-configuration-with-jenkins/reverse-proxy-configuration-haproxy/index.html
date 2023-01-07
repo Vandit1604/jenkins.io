@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Reverse proxy - HAProxy
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-haproxy/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Reverse proxy - HAProxy" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Reverse proxy - HAProxy" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Reverse proxy - HAProxy" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-haproxy/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Reverse proxy - HAProxy" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="active">System Administration</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/backing-up/index.html" class="">Backing-up/Restoring Jenkins</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/monitoring/index.html" class="">Monitoring Jenkins</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/administering-jenkins-on-kubernetes/index.html" class="">Administering Jenkins on Kubernetes</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/with-chef/index.html" class="">Managing Jenkins with Chef</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/with-puppet/index.html" class="">Managing Jenkins with Puppet</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/viewing-logs/index.html" class="">Viewing logs</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/authenticating-scripted-clients/index.html" class="">Authenticating scripted clients</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/index.html" class="">Reverse proxy configuration</a>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-apache/" class="">Reverse proxy - Apache</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-nginx/" class="">Reverse proxy - Nginx</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-haproxy/" class="active">Reverse proxy - HAProxy</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-squid/" class="">Reverse proxy - Squid</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-iis/" class="">Reverse proxy - IIS</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-iptables/" class="">Reverse proxy - iptables</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-troubleshooting/index.html" class="">Reverse proxy - Issues</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/systemd-services/index.html" class="">Managing systemd services</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<style>
+  .row.body {
+    padding-top: 3rem;
+  }
+</style>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+</div>
+<div class="row" style="padding-left: 5rem">
+<a class="index" href="/jenkins.io/independent-scrolling-patch/doc/book/">
+Index
+</a>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+Reverse proxy - HAProxy
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#plain-http">Plain HTTP</a></li>
+<li><a href="#with-ssl">With SSL</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In situations where you want a user friendly URL, different public
+ports, or to terminate SSL connections before they reach Jenkins, you
+may find it useful to run Jenkins (or the servlet container that Jenkins
+runs in) behind HAProxy.
+This section discusses some of the approaches for doing this.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="plain-http"><a class="anchor" href="#plain-http"></a>Plain HTTP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using HAProxy 2.6.6, here is an example HAProxy.cfg to proxy over plain
+HTTP:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code># If you already have an haproxy.cfg file, you can probably leave the
+# global and defaults section as-is, but you might need to increase the
+# timeouts so that long-running CLI commands will work.
+global
+    maxconn 4096
+    log stdout local0 debug
+
+defaults
+   log global
+   option httplog
+   option dontlognull
+   option forwardfor
+   maxconn 20
+   timeout connect 5s
+   timeout client 60s
+   timeout server 60s
+
+frontend http-in
+  log stdout format raw local0 debug #for additional logging
+  bind *:80
+  mode http
+  acl prefixed-with-jenkins  path_beg /jenkins
+  http-request redirect code 301 prefix /jenkins unless prefixed-with-jenkins #Use http-request redirect prefix to add /jenkins prefix to the URL's location to ensure jenkins base url is working properly.
+  use_backend jenkins if prefixed-with-jenkins
+
+backend jenkins
+  log stdout format raw local0 debug
+  mode http
+  server jenkins1 127.0.0.1:8080 check
+  http-request replace-path /jenkins(/)?(.*) /\2
+  http-request set-header X-Forwarded-Port %[dst_port]
+  http-request add-header X-Forwarded-Proto https if { ssl_fc }
+  http-request set-header X-Forwarded-Host %[req.hdr(Host)]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This assumes Jenkins is running locally on port 8080.</p>
+</div>
+<div class="paragraph">
+<p>This assumes that you are using the <a href="http://localhost/jenkins">/jenkins</a> context path for both the
+site exposed from HAProxy, and Jenkins itself.
+If this is not the case, you will need to adjust the configuration.
+Refer to the HAProxy documentation on <a href="https://www.haproxy.com/documentation/hapee/latest/traffic-routing/">Traffic Routing</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>If you are experiencing the following error when attempting to run long
+CLI commands in Jenkins, and Jenkins is running behind HAProxy,
+it is probably due to HAProxy timing out the CLI connection.
+You can increase the <code>timeout client</code> and <code>timeout server</code> settings as
+necessary so the command will complete successfully.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>WARNING: null
+hudson.cli.DiagnosedStreamCorruptionException
+Read back: 0x00 0x00 0x00 0x1e 0x07
+           'Started reverse-proxy-test #68'
+           0x00 0x00 0x00 0x01 0x07 0x0a
+Read ahead:
+Diagnosis problem:
+    java.io.IOException: Premature EOF
+        at sun.net.www.http.ChunkedInputStream.readAheadBlocking(ChunkedInputStream.java:565)
+        ...
+    at hudson.cli.FlightRecorderInputStream.analyzeCrash(FlightRecorderInputStream.java:82)
+    at hudson.cli.PlainCLIProtocol$EitherSide$Reader.run(PlainCLIProtocol.java:153)
+Caused by: java.io.IOException: Premature EOF
+    at sun.net.www.http.ChunkedInputStream.readAheadBlocking(ChunkedInputStream.java:565)
+    ...
+    at java.io.DataInputStream.readInt(DataInputStream.java:387)
+    at hudson.cli.PlainCLIProtocol$EitherSide$Reader.run(PlainCLIProtocol.java:111)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="with-ssl"><a class="anchor" href="#with-ssl"></a>With SSL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using HAProxy 2.6.6, here is an example HAProxy.cfg to connect to the
+proxy using SSL, terminate the SSL connection, and then talk to Jenkins
+using plain HTTP:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code># If you already have an haproxy.cfg file, you can probably leave the
+# global and defaults section as-is, but you might need to increase the
+# timeouts so that long-running CLI commands will work.
+
+global
+    maxconn 4096
+    log stdout local0 debug
+
+defaults
+   log global
+   option httplog
+   option dontlognull
+   option forwardfor
+   maxconn 20
+   timeout connect 5s
+   timeout client 5m
+   timeout server 5m
+
+frontend http-in
+  log stdout format raw local0 debug
+  bind *:80
+  bind *:443 ssl crt /usr/local/etc/haproxy/ssl/server.pem
+  mode http
+  acl prefixed-with-jenkins  path_beg /jenkins
+  http-request redirect code 301 prefix /jenkins unless prefixed-with-jenkins
+  redirect scheme https if !{ ssl_fc } # Redirect http requests to https
+  use_backend jenkins if prefixed-with-jenkins
+
+backend jenkins
+  log stdout format raw  local0 debug
+  mode http
+  server jenkins1 127.0.0.1:8080 check
+  http-request replace-path /jenkins(/)?(.*) /\2
+  http-request set-header X-Forwarded-Port %[dst_port]
+  http-request add-header X-Forwarded-Proto https if { ssl_fc }
+  http-request set-header X-Forwarded-Host %[req.hdr(Host)]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+</div>
+<div class="row" style="padding-left: 5rem">
+<a class="index" href="/jenkins.io/independent-scrolling-patch/doc/book/">
+Index
+</a>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-haproxy.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

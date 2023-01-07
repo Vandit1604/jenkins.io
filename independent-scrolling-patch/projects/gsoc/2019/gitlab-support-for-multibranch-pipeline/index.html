@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Multibranch Pipeline support for GitLab SCM
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/gitlab-support-for-multibranch-pipeline/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Multibranch Pipeline support for GitLab SCM" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Multibranch Pipeline support for GitLab SCM" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Multibranch Pipeline support for GitLab SCM" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/gitlab-support-for-multibranch-pipeline/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Multibranch Pipeline support for GitLab SCM" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Multibranch Pipeline support for GitLab SCM
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Add Multibranch Pipeline support for GitLab SCM private and SaaS instances so that Jenkins can automatically build branches and pull requests with Jenkinsfile
+</p>
+<p>
+<b>
+Status:
+</b>
+Completed
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Student:
+<a class="app-author-link" href="/blog/authors/baymac/"><div class="app-avatar"><img alt="Parichay Barpanda" class="app-avatar__image" src="/images/avatars/baymac.jpg"></div> Parichay Barpanda</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/markyjackson-taulia/"><div class="app-avatar"><img alt="Marky Jackson" class="app-avatar__image" src="/images/avatars/markyjackson-taulia.png"></div> Marky Jackson</a>
+, 
+<a class="app-author-link" href="/blog/authors/justinharringa/"><div class="app-avatar"><img alt="Justin Harringa" class="app-avatar__image" src="/images/avatars/justinharringa.jpeg"></div> Justin Harringa</a>
+, 
+<a class="app-author-link" href="/blog/authors/jetersen/"><div class="app-avatar"></div> Joseph Petersen</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>Currently GitLab Plugin does not support Multibranch Pipeline jobs. The underlying API does
+not implement calls to fetch Merge Requests during builds. Other problems with this plugin is
+doesn&#8217;t follow conventional SCM plugin design, doesn&#8217;t support folder org, doesn&#8217;t have separate
+api plugin etc. So this project is about solving issues with the GitLab Jenkins Integration by
+improving the current GitLab Plugin and creating separate plugins for GitLab Api and GitLab
+Branch Source. One stretch goal is to add GitLab Pipeline support for Blueocean.</p>
+</div>
+<div class="sect2">
+<h3 id="issues"><a class="anchor" href="#issues"></a>Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>No folder organisation support for GitLab</p>
+</li>
+<li>
+<p>No Multibranch Pipeline Job support for GitLab</p>
+</li>
+<li>
+<p>GitLab APIs currently used does not have all GitLab APIs features and limits the scope of future expansion</p>
+</li>
+<li>
+<p>GitLab Plugin does not follow convention of SCM Plugins i.e. 3 separate plugins for api, build and branch Source</p>
+</li>
+<li>
+<p>GitLab Plugin also does not leverage new SCM trait APIs, some features like auto-management of webhooks, password authentication are missing</p>
+</li>
+<li>
+<p>No Pipeline Support for GitLab in Blueocean while GitHub and BitBucket are supported</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solutions"><a class="anchor" href="#solutions"></a>Solutions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>[NEW] GitLab Api Plugin that wraps new GitLab Java Api repository which is actively maintained and has almost all GitLab Apis support</p>
+</li>
+<li>
+<p>[NEW] GitLab Branch Source Plugin that supports Branch Source Functionality like Github BS, Bitbucket BS etc</p>
+</li>
+<li>
+<p>[IMPROVED] GitLab Plugin that is lightweight and provides build triggers, web hooks management and other API support</p>
+</li>
+<li>
+<p>[NEW] Pipeline Support for GitLab in Blueocean</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more details, see this Google Doc - <a href="https://docs.google.com/document/d/1YpuCC129U8KPXAwiXRXQ_4XWuLursPGl3rzQjz43-CY/edit?usp=sharing">Proposal</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluation-phase-1"><a class="anchor" href="#evaluation-phase-1"></a>Evaluation Phase 1</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Complete implementation with documentation and plugin release of <code>GitLab API Plugin</code> that wraps the <a href="https://github.com/gmessner/gitlab4j-api/">gitlab4j-api</a> into a plugin<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wiki -  <a href="https://wiki.jenkins.io/display/JENKINS/GitLab+API+Plugin" class="bare">https://wiki.jenkins.io/display/JENKINS/GitLab+API+Plugin</a></p>
+</li>
+<li>
+<p>Repo - <a href="https://github.com/jenkinsci/gitlab-api-plugin" class="bare">https://github.com/jenkinsci/gitlab-api-plugin</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Implementation of GitLab Server Configuration in <code>GitLab Branch Source Plugin</code> with JCasC support. The implementation was done inside the plugin to support new <code>GitLab API Plugin</code> and also use Java 8 streams.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>GitLab Personal Access Token Creator</p>
+</li>
+<li>
+<p>Allows duplicate GitLab server entries with unique id</p>
+</li>
+<li>
+<p>Supports GitLab Server versions above 11.0</p>
+</li>
+<li>
+<p>Configure server via yaml (JCasC)</p>
+</li>
+<li>
+<p>Supports GitLab API Plugin - abstracts api calls</p>
+</li>
+<li>
+<p>Supports incremental tools - check if PRs work with downstream plugins</p>
+</li>
+<li>
+<p>Supports Maven Checkstyle Plugin - enforces good coding style</p>
+</li>
+<li>
+<p>Java 8 compatibility - streams API</p>
+</li>
+<li>
+<p>Jenkins version - 2.150.3</p>
+</li>
+<li>
+<p>3 enhancement and fix release</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Repo - <a href="https://github.com/baymac/gitlab-branch-source-plugin" class="bare">https://github.com/baymac/gitlab-branch-source-plugin</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="resources"><a class="anchor" href="#resources"></a>Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Blogs</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2019/06/29/phase-1-multibranch-pipeline-support-for-gitlab/">Coding phase 1 summary</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/06/gsoc-coding-period-the-fourth-week">Fourth week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/06/gsoc-coding-period-the-mock-presentation-week">Third week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/06/gsoc-coding-period-the-second-week">Second week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/06/gsoc-coding-period-the-beginning">First week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/05/project-workflow-for-gsoc">Project workflow for GSoC</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/03/intellij-setup-for-plugin-development">IntelliJ setup for Jenkins Plugin Development</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Slides: <a href="https://drive.google.com/file/d/1c3UWwEb5rDmO6YEn5fU3qVbVW-opuUXb/view" class="bare">https://drive.google.com/file/d/1c3UWwEb5rDmO6YEn5fU3qVbVW-opuUXb/view</a></p>
+</li>
+<li>
+<p>Demo: <a href="https://www.youtube.com/watch?v=ij6ByZqI67o" class="bare">https://www.youtube.com/watch?v=ij6ByZqI67o</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluation-phase-2"><a class="anchor" href="#evaluation-phase-2"></a>Evaluation Phase 2</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implementation of Branch Source part of <code>GitLab Branch Source Plugin</code> with Multibranch Pipeline and Folder Organization support.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Checkout credentials to checkout over SSH/HTTPS</p>
+</li>
+<li>
+<p>Groups/Subgroups support</p>
+</li>
+<li>
+<p>Webhooks Support</p>
+</li>
+<li>
+<p>Pipeline Status Notifier</p>
+</li>
+<li>
+<p>Skip Notification - Doesn’t notify GitLab about pipeline status [Trait]</p>
+</li>
+<li>
+<p>WebHook Mode - Override default webhook management mode [Trait]</p>
+</li>
+<li>
+<p>Checkout Over SSH - Use this mode to checkout over ssh [Trait]</p>
+</li>
+<li>
+<p>Tag Discovery - Discover tags in the repository [Trait]</p>
+</li>
+<li>
+<p>Reduced API Calls</p>
+</li>
+<li>
+<p>2 Alpha releases</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Repo - <a href="https://github.com/jenkinsci/gitlab-branch-source-plugin" class="bare">https://github.com/jenkinsci/gitlab-branch-source-plugin</a></p>
+</li>
+<li>
+<p>Wiki - <a href="https://wiki.jenkins.io/display/JENKINS/GitLab+Branch+Source+Plugin" class="bare">https://wiki.jenkins.io/display/JENKINS/GitLab+Branch+Source+Plugin</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="resources-2"><a class="anchor" href="#resources-2"></a>Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Blogs</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://baymac.github.io/2019/07/gsoc-coding-period-plugin-release-week">Ninth week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/07/gsoc-coding-period-plugin-hosting-week">Seventh week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/07/gsoc-coding-period-the-sixth-week">Sixth week</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/06/gsoc-coding-period-the-presentation-week">Fifth week</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Slides: <a href="https://docs.google.com/presentation/d/1fMiDiLi3L39hoaFz-qLLhWQXwb1U9864_Per3vTc1dk/edit?usp=sharing" class="bare">https://docs.google.com/presentation/d/1fMiDiLi3L39hoaFz-qLLhWQXwb1U9864_Per3vTc1dk/edit?usp=sharing</a></p>
+</li>
+<li>
+<p>Demo: <a href="https://www.youtube.com/watch?v=tnoObQqGhyM" class="bare">https://www.youtube.com/watch?v=tnoObQqGhyM</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluation-phase-3"><a class="anchor" href="#evaluation-phase-3"></a>Evaluation Phase 3</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Improvements to GitLab Branch Source Plugin, lots of improvements including major bugs fixes. Complete documentation in the repository documents.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Web hook events trigger for Push/Merge Request/Tag Events fixed</p>
+</li>
+<li>
+<p>Trusted Permission Strategy for MRs from forked projects</p>
+</li>
+<li>
+<p>Add support for System Hooks to detect newly created projects</p>
+</li>
+<li>
+<p>Add symbols to discovery traits for JCasC support</p>
+</li>
+<li>
+<p>Merge Requests web hook trigger fix</p>
+</li>
+<li>
+<p>Trigger Merge Request with comment trait</p>
+</li>
+<li>
+<p>Log build status as comment trait</p>
+</li>
+<li>
+<p>3 beta releases and 1 GA release</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="resources-3"><a class="anchor" href="#resources-3"></a>Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Blogs</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2019/08/23/introducing-gitlab-branch-source-plugin/">Coding phase 3 summary</a></p>
+</li>
+<li>
+<p><a href="https://baymac.github.io/2019/07/gsoc-coding-period-second-presentation-week">Ninth Week</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="meeting-schedule"><a class="anchor" href="#meeting-schedule"></a>Meeting Schedule</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Weekdays - Tuesday and Friday</p>
+</li>
+<li>
+<p>Time - 04:00pm (UTC)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-links"><a class="anchor" href="#other-links"></a>Other links</h3>
+<div class="paragraph">
+<p><a href="https://drive.google.com/file/d/1tk_8221juDRF2-k2hByYt4LdztNtcZtm/view">GSoC Proposal</a><br>
+<a href="https://docs.google.com/document/d/12sICOnFXJXHEkqWV8yq6dy_ZcVs-5gL_zeDae8gnWdo/edit?usp=sharing">Daily Notes</a><br>
+<a href="https://docs.google.com/document/d/12elprUjiou80z2W7SSbNTZiyguJ6LEj4Z718MdoA2_c/edit?usp=sharing">GSoC Process</a><br>
+<a href="https://docs.google.com/document/d/1r_zQy5KpNNAO4KerFJrowWvGfFIU7xdEdqKgFenS3lI/edit?usp=sharing">Design Document</a><br></p>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gitlab-branch-source-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gitlab-branch-source-plugin.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#issues">Issues</a></li>
+<li><a href="#solutions">Solutions</a></li>
+<li><a href="#evaluation-phase-1">Evaluation Phase 1</a></li>
+<li><a href="#evaluation-phase-2">Evaluation Phase 2</a></li>
+<li><a href="#evaluation-phase-3">Evaluation Phase 3</a></li>
+<li><a href="#meeting-schedule">Meeting Schedule</a></li>
+<li><a href="#other-links">Other links</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gitlab-branch-source-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gitlab-branch-source-plugin.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2019/gitlab-support-for-multibranch-pipeline.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1410 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="https://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>
+Jenkins Changelog
+</title>
+<link>
+https://jenkins.io/changelog
+</link>
+<atom:link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/changelog/rss.xml" rel="self" type="application/rss+xml"></atom:link>
+<description>
+Changelog for Jenkins weekly releases
+</description>
+<lastBuildDate>
+Sat, 7 Jan 2023 00:00:00 +0000
+</lastBuildDate>
+<!-- starting partial changelog-changes.xml.haml -->
+<item>
+<title>Jenkins 2.385</title>
+<link>
+https://jenkins.io/changelog//#v2.385
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Allow HTML syntax for node descriptions.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Hide values in tables showing potentially sensitive system properties and environment variables by default.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add support for badge icons in Management links.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add tabs to System Information page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items for agents.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Restyle file uploads to match modern forms UI.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items in logging views.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items in builds.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items for agents.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items in Views.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items in abstract classes.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items in User page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add missing breadcrumb items in system information page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update the design of the 'Advanced' button.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade XStream from 1.4.19 to 1.4.20.
+This maintenance release addresses two security vulnerabilities that can cause a denial of service by raising a stack overflow in affected applications.
+It also provides new converters for &lt;code&gt;Optional&lt;/code&gt; and &lt;code&gt;Atomic&lt;/code&gt; types.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Revert "Label 'Dismiss' buttons red." that was introduced in 2.378.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Do not prompt the user that changes may not have been saved after apply has been clicked.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Remove negative letter spacing to improve legibility in some languages and fonts.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Align table headers with columns.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.385
+</guid>
+<pubDate>
+Tue, 3 Jan 2023 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.384</title>
+<link>
+https://jenkins.io/changelog//#v2.384
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Align Build Executor Status collapsed content with build queue design pattern.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Remove support for log rotation via &lt;code&gt;SIGALRM&lt;/code&gt;. The command-line argument &lt;code&gt;--daemon&lt;/code&gt; has been removed.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Restore link to last breadcrumb.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.384
+</guid>
+<pubDate>
+Mon, 26 Dec 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.383</title>
+<link>
+https://jenkins.io/changelog//#v2.383
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Add search bar for top level settings in Manage Jenkins.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Robustness improvement regarding build number collisions.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Prevent Angry Jenkins when checking a non http(s) based update center URL.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Improve robustness of class loading on agents.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Delaying initialization of cryptography needed for TCP inbound agents unless and until such an agent is connected.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Allow plugins to generate symbol markup from Java code.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.383
+</guid>
+<pubDate>
+Tue, 20 Dec 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.382</title>
+<link>
+https://jenkins.io/changelog//#v2.382
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Upgrade Guice from 5.0.1 to 5.1.0.
+Guice 5.1.0 contains eight fixes and improvements.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add telemetry related to distributed builds.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix the update of disabled plugins.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Provide native Java 11 HTTP client versions of &lt;code&gt;FormValidation#URLCheck&lt;/code&gt; methods.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.382
+</guid>
+<pubDate>
+Mon, 12 Dec 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.381</title>
+<link>
+https://jenkins.io/changelog//#v2.381
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Bug:
+Improve tooltip performance.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.381
+</guid>
+<pubDate>
+Sun, 4 Dec 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.380</title>
+<link>
+https://jenkins.io/changelog//#v2.380
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Major RFE:
+Update appearance and framework for tooltips.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Security from 5.7.5 to 5.8.0.
+Spring Security 5.8.0 includes 71 fixes and improvements.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Delete &lt;code&gt;.disabled&lt;/code&gt; files when uninstalling a plugin.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: better error logging for unexpected problems in &lt;code&gt;Computer.threadPoolForRemoting&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.380
+</guid>
+<pubDate>
+Tue, 29 Nov 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.379</title>
+<link>
+https://jenkins.io/changelog//#v2.379
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Jenkins no longer bundles a patched version of the deprecated Commons HttpClient 3.x library for use by plugins.
+Plugins should be migrated to the native Java 11 HTTP client or updated to depend on the legacy Commons HttpClient 3.x API plugin.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Set default file size rotation of AsyncPeriodicWork / AsyncAperiodicWork task logs.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Remove the deprecated WMI Windows Agents plugin from the setup wizard.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Remove the deprecated Multijob plugin from the setup wizard.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add the URL of a plugin to the 'systemInfo' view.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add a "copy to clipboard" button to controller and agent thread dump pages.
+Remove the side panel from controller thread dumps.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix the animation of the popup dialog in the admin monitor.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Memory leak when repeatedly connecting WebSocket agents.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Wait for 10 seconds before attempting to reconnect a WebSocket agent regardless of whether or not the controller is responding.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix a race condition affecting the launch of inbound agents.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Introduce a high level HTTP client API.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Framework from 5.3.23 to 5.3.24.
+Spring Framework 5.3.24 includes 33 fixes and improvements.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.379
+</guid>
+<pubDate>
+Tue, 22 Nov 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.378</title>
+<link>
+https://jenkins.io/changelog//#v2.378
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Label 'Dismiss' buttons red.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Replace 'Changes' view icon with a symbol.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update 'Manage Nodes' page to use app bar and remove sidebar from 'New Node' page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add telemetry for activation of permissions that are not enabled by default.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+The minimum required Remoting version has been increased to 4.7 (released on February 16, 2021).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix overlapping buttons in administrative monitors.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix consoleview bouncing when new entries appear.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix error on profile page if the gravatar plugin is installed.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Reduce size of the focus state (regression from 2.366).
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.378
+</guid>
+<pubDate>
+Mon, 14 Nov 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.377</title>
+<link>
+https://jenkins.io/changelog//#v2.377
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Remove deprecated and unused class &lt;code&gt;UnbufferedBase64InputStream&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Allow detached plugin location to be overridden.          
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Security from 5.7.4 to 5.7.5. 
+Spring Security 5.7.5 includes fixes for two authorization mapping issues affecting the scopes in &lt;code&gt;spring-security-oauth2-client&lt;/code&gt; and &lt;code&gt;org.springframework.security.web.access.intercept.AuthorizationFilter&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.377
+</guid>
+<pubDate>
+Tue, 8 Nov 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.376</title>
+<link>
+https://jenkins.io/changelog//#v2.376
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Avoid unnecessary configuration save when reloading configuration from disk.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update ANTLR2 grammars and code to ANTLR4.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update submit buttons to use &lt;code&gt;.jenkins-button&lt;/code&gt; classes.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Use &lt;code&gt;inbound&lt;/code&gt; as the preferred symbol rather than &lt;code&gt;jnlp&lt;/code&gt; for inbound agents in JCasC.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Prevent deadlock on WebSocket agents.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.376
+</guid>
+<pubDate>
+Mon, 31 Oct 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.375</title>
+<link>
+https://jenkins.io/changelog//#v2.375
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Major Bug:
+Prevent a stack overflow when loading a queue (regression in 2.361).
+&lt;/li&gt;
+&lt;li&gt;
+Major RFE:
+Improve breadcrumb bar accessibility.
+&lt;/li&gt;
+&lt;li&gt;
+Major RFE:
+Update the design of notifications.
+&lt;/li&gt;
+&lt;li&gt;
+Major RFE:
+Update the weather and status icons.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Suppress log messages from periodically running background tasks, such as "Periodic background build discarder".
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update design of Manage Users page.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Prevent exception from being thrown when attempting to initiate a safe restart. (regression in 2.374)
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Align the default value of the HTTP keep-alive timeout in Winstone with that of the upstream Jetty project by changing it from 5 seconds to 30 seconds.
+Remove unused &lt;code&gt;--ajp13Port&lt;/code&gt;, &lt;code&gt;--ajp13ListenAddress&lt;/code&gt;, &lt;code&gt;--handlerCountMax&lt;/code&gt;, and &lt;code&gt;--handlerCountMaxIdle&lt;/code&gt; options.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Table column header highlight is overlapping with other header highlight.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix ClassCastException when trying to build a Job whose parameter list is empty.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Allow serialization of atomic boolean data types on Java 17.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Script Security Plugin from 1172.v35f6a_0b_8207e to 1189.vb_a_b_7c8fd5fde.
+Update bundled Pipeline: API Plugin from 1144.v61c3180fa_03f to 1164.v760c223ddb_32.
+Update bundled Pipeline: Supporting APIs Plugin from 813.vb_d7c3d2984a_0 to 839.v35e2736cfd5c.
+Update bundled SCM API Plugin from 602.v6a_81757a_31d2 to 608.vfa_f971c5a_a_e9.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Improve JNLP Port Unreachable error message with host value.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Security from 5.7.3 to 5.7.4. 
+Spring Security 5.7.4 includes dependency upgrades and minor fixes.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.375
+</guid>
+<pubDate>
+Tue, 25 Oct 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.374</title>
+<link>
+https://jenkins.io/changelog//#v2.374
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Clarify safe restart won't wait for Pipeline jobs.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Allow form checker to check more than one thing at a time.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Replace the old Jenkins table layout in the slow trigger administrative monitor with the new Jenkins table layout.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add documentation for the &lt;code&gt;--paramsFromStdIn&lt;/code&gt; and &lt;code&gt;--version&lt;/code&gt; command-line options.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix sorting of British currency in tables.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Add support for the app-bar component in the side panel.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.374
+</guid>
+<pubDate>
+Mon, 17 Oct 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.373</title>
+<link>
+https://jenkins.io/changelog//#v2.373
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Use a more appropriate icon for log records.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Use a more appropriate Manage Old Data icon.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Ensure that temporary network partitions do not cancel the WebSocket ping thread (regression in 2.363).
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Deprecate the &lt;code&gt;--extraLibFolder&lt;/code&gt; option for removal on or after January 1, 2023.
+Remove the &lt;code&gt;--toolsJar&lt;/code&gt; and &lt;code&gt;--useJasper&lt;/code&gt; options.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.373
+</guid>
+<pubDate>
+Tue, 11 Oct 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.372</title>
+<link>
+https://jenkins.io/changelog//#v2.372
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Improve the error message when running the controller on an unsupported Java version.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add a "Reset to default" button to reset update site url to default.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Modernize update center check button.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Modernize session termination button.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Improve performance when killing processes at the end of a build on Windows.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade the bundled Instance Identity plugin from 3.1 to 116.vf8f487400980.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Introduce a new interface &lt;code&gt;TriggeredItem&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.372
+</guid>
+<pubDate>
+Mon, 3 Oct 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.371</title>
+<link>
+https://jenkins.io/changelog//#v2.371
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Bug:
+Support staging of releases (regression in 2.361).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+An exception is no longer thrown when stopping a stuck build on Windows on Java 17.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.371
+</guid>
+<pubDate>
+Mon, 26 Sep 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.370</title>
+<link>
+https://jenkins.io/changelog//#v2.370
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Security:
+Important security fix.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.370
+</guid>
+<pubDate>
+Wed, 21 Sep 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.369</title>
+<link>
+https://jenkins.io/changelog//#v2.369
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Replace header icons with ionicons.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Press '/' to focus the search bar on a page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Winstone 6.4: Upgrade Jetty from 10.0.11 to 10.0.12.
+Support HTTP/2 without the use of a custom &lt;code&gt;--extraLibFolder&lt;/code&gt; option.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Framework from 5.3.22 to 5.3.23.
+&lt;/li&gt;
+&lt;li&gt;
+Major Bug:
+Fix broken UI on Configure Global Security form when plugins with active security warnings are installed (regression in 2.368).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Table columns get wider or smaller depending on the sort selection.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Improve build progress animation when refreshing parts of the history/executors widget.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix a race condition that causes file descriptor leaks when cloud agents are created.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Trigger form validation events after editing a CodeMirror formatted text area.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Remove managed, provided dependency on log4j 1.2.17. Plugin builds that depend directly or transitively on log4j 1.2.17 must remove this dependency or exclude it from their build in order for their build to pass.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Export &lt;code&gt;hudson.model.Run#isInProgress&lt;/code&gt; to the &lt;code&gt;json&lt;/code&gt; API.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.369
+</guid>
+<pubDate>
+Tue, 20 Sep 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.368</title>
+<link>
+https://jenkins.io/changelog//#v2.368
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Show recommended actions (e.g., to update affected plugins) in security warnings popup.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix thread safety in websockets handling.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.368
+</guid>
+<pubDate>
+Mon, 12 Sep 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.367</title>
+<link>
+https://jenkins.io/changelog//#v2.367
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Add sidebar to plugin manager, increase search bar size.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add support for Apple's touch bar icons.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Minor changes to empty state arrow icon and header user profile icon.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Removed: The signed &lt;code&gt;jenkins-parent-${JENKINS_VERSION}-src.zip&lt;/code&gt; source archives have been removed from Artifactory for future releases.
+Users who wish to download source archives for offline consumption are encouraged to do so via GitHub.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Provide more information about the agent connection when it fails with &lt;code&gt;EOFException&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Display email form validation errors near the data entry field in the setup form.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix autosizing of CodeMirror textbox.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix bouncing build number element on mouse hover.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Properly reset attributes of cached symbols.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+The dropdown chevron on the build executor queue is no longer misplaced, if the widget is refreshed.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Enable ProjectNamingStrategy to check the full name of a new item.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.367
+</guid>
+<pubDate>
+Tue, 6 Sep 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.366</title>
+<link>
+https://jenkins.io/changelog//#v2.366
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Bug:
+Fix &lt;code&gt;searchBar is null&lt;/code&gt; issue in setup wizard and when using custom Jenkins headers.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix a potential &lt;code&gt;FileAlreadyExistsException&lt;/code&gt; error on startup on systems with slow I/O.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Add focus state in radio buttons.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Temporarily restore compatibility with PowerMock-based tests (regression in 2.358).
+Support for PowerMock will be completely removed on or after June 1, 2023.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Simple Logging Facade for Java (SLF4J from from 1.7.36 to 2.0.0.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.366
+</guid>
+<pubDate>
+Mon, 29 Aug 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.365</title>
+<link>
+https://jenkins.io/changelog//#v2.365
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Bug:
+Fix the resize behavior of Execute Shell build steps.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Allow agent processes to access the changed inbound agent connection URL (regression in 2.364).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Restore focus state for checkboxes (regression in 2.361).
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Deprecate &lt;code&gt;AdministrativeError&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Upgrade Spring Security from 5.7.2 to 5.7.3.
+Spring Security 5.7.3 includes 19 fixes and improvements.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.365
+</guid>
+<pubDate>
+Tue, 23 Aug 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.364</title>
+<link>
+https://jenkins.io/changelog//#v2.364
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Remove hierarchal sidebar links.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update design of buttons on the dashboard.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Support usage of &lt;code&gt;PluginManager#whichPlugin&lt;/code&gt; in &lt;code&gt;JenkinsRule&lt;/code&gt;-based tests.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Winstone from 6.1 to 6.2.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.364
+</guid>
+<pubDate>
+Mon, 15 Aug 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.363</title>
+<link>
+https://jenkins.io/changelog//#v2.363
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Security:
+Important security fix.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Winstone 6.1: Upgrade Jetty from 9.4.46.v20220331 to 10.0.11.
+Remove support for OpenSSL-style PEM-encoded RSA private keys when running Jenkins with the embedded Jetty (Winstone) container and TLS.
+The flags &lt;code&gt;--httpsPrivateKey&lt;/code&gt; and &lt;code&gt;--httpsCertificate&lt;/code&gt; have been removed.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Replace magnifying glass icon with computer icon in node overview.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix an error when rebuilding jobs triggered by polling (regression in 2.358).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Version select input is out of style with other drop down select input
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Retain the position of the project configuration SCM checkbox when it is selected.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Add a space between repeating chunk items.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.363
+</guid>
+<pubDate>
+Mon, 8 Aug 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.362</title>
+<link>
+https://jenkins.io/changelog//#v2.362
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Use same styling on test overview bar as other Jenkins components.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Remove the tap highlight for iOS devices.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Eclipse Tyrus from 2.0.1 to 2.1.0.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Apache MINA SSHD from 2.8.0 to 2.9.0.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Improve performance of a previous fix for &lt;code&gt;java.lang.OutOfMemoryError: unable to create new native thread&lt;/code&gt; on agents.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix sorting by timestamp list of installed plugins in plugin manager.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Use correct plugin identifier when plugin id includes '-plugin' more than once.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Do not lead to other pages when users press enter key in the filter box of dropdown lists.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Introduced &lt;code&gt;SetContextClassLoader&lt;/code&gt; utility class to assist in plugin class loading.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.362
+</guid>
+<pubDate>
+Mon, 1 Aug 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.361</title>
+<link>
+https://jenkins.io/changelog//#v2.361
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Remove 'Workspace' and 'Recent Changes' project summary buttons
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Tabs now appear above their respective sections, not at the top of the page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Keyboard shortcut added to focus global search bar (CMD + K/CTRL + K).
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Remove &lt;code&gt;onclick&lt;/code&gt; and &lt;code&gt;disabled&lt;/code&gt; attributes from &lt;code&gt;f:toggleSwitch&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Remove support for Flash-based cross-domain (XDR) transaction support in YUI 2: Connection Manager.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Blocked upstream projects in the queue block downstream projects when the option "Block build when upstream project is building" is enabled for the downstream project.
+ Blocked downstream projects in the queue block upstream projects when the option "Block build when downstream project is building" is enabled for the upstream project.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Update center checkboxes keep focus state after they have been clicked.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Change state of plugin manager "select all" checkbox when it is clicked.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix build number cutoff in build history widget.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Retain the search pattern and results across collapsing and reopening the dropdown list.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.361
+</guid>
+<pubDate>
+Tue, 26 Jul 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.360</title>
+<link>
+https://jenkins.io/changelog//#v2.360
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Remove the "New View" sidebar link.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Rework "Updates" table checkbox selection controls.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add breadcrumbs to "Manage Jenkins" and children of it. Developers should ensure they use relative links for navigating between pages if they are a child of "Manage Jenkins".
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Framework from 5.3.21 to 5.3.22.
+Spring Framework 5.3.22 includes 45 fixes and improvements.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Do not include links on bread crumb elements that do not define a hyperlink destination.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Make context menu shadow darker than before.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Make progress bar easy to see.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.360
+</guid>
+<pubDate>
+Tue, 19 Jul 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.359</title>
+<link>
+https://jenkins.io/changelog//#v2.359
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Major RFE:
+New design for configure project page.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Do not drop scale on sidebar symbols when the link text is longer than a line.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Remove the margin from the changelog url.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Don't display the job creation button to a user without Job/Create permission.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Support Java 11 in &lt;code&gt;hudson.slaves.Channels#newJVM&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.359
+</guid>
+<pubDate>
+Mon, 11 Jul 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.358</title>
+<link>
+https://jenkins.io/changelog//#v2.358
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+RFE:
+Utilize modernized table in old data page.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Small revamp to loading spinner design.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Copy button design updated.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Use modern checkbox for the reboot checkbox of the plugin manager.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Reverting prior attempts to make log records collectible.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Use a single border around CodeMirror boxes.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Use a solid background to make the build history pagination control more visible.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Make previous boot attempt timestamps available to &lt;code&gt;boot-failure.groovy&lt;/code&gt; startup hooks (regression in 2.308).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Do not show the node log details link to users without permission to read the log.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix links in breadcrumb context menus to items in subfolders.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Avoid Amazon Corretto JDK issue by placing initialization logic into a well-defined package namespace.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Java Native Access from 5.12.0 to 5.12.1.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Deprecate &lt;code&gt;Functions.singletonList&lt;/code&gt; which is not normally needed in JEXL.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Developer: Jenkins core &lt;code&gt;.properties&lt;/code&gt; files are now encoded in UTF-8.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.358
+</guid>
+<pubDate>
+Wed, 6 Jul 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.357</title>
+<link>
+https://jenkins.io/changelog//#v2.357
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Major RFE:
+Require Java 11 or newer.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+The &lt;code&gt;install-plugins.sh&lt;/code&gt; script has been removed from the Docker containers after 18 months as a deprecated script.
+Manage plugin versions in containers with the plugin installation manager tool.
+The plugin installation manager tool is available in the image as &lt;code&gt;jenkins-plugin-cli&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+The &lt;code&gt;instance-identity&lt;/code&gt; module has been converted to a detached plugin.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update the minimum required Remoting version to 4.2.1.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix radio buttons selection offset.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Plugins selected for update cannot be unselected once the update has started.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix raster image build status icons no longer displaying when running Jenkins with a non-empty context path due to a malformed URL.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Show all log messages when an inbound agent fails to connect (regression in 2.310).
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Fix 'unavailable plugin' messages in plugin manager.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Ignore duplicate log recorders keyed by same name.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Tags and other sortable items are now displayed in the alphabetical order if the name contains more than one dot.
+&lt;/li&gt;
+&lt;li&gt;
+Bug:
+Add sidepanel links on the error page displayed when a user incorrectly updates their password.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled JUnit plugin from 1.47 to 1119.1121.vc43d0fc45561 for security advisory.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Spring Security from 5.7.1 to 5.7.2.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Bump spring-framework-bom from 5.3.20 to 5.3.21.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Upgrade Java Native Access (JNA) from 5.11.0 to 5.12.0.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Allow plugin definition file (&lt;code&gt;plugins.txt&lt;/code&gt;) to be generated from contents of the plugins directory.
+Upgrade plugin installation manager tool from 2.12.6 to 2.12.7.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Display URL API plugin from 2.3.5 to 2.3.6.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Pipeline API plugin from 2.42 to 1144.v61c3180fa_03f.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Plugin Utilities API plugin from 1.5.0 to 2.16.0.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Checks API plugin from 1.1.1 to 1.7.4.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled ECharts API plugin from 4.9.0-2 to 5.3.2-1.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled SnakeYAML API plugin from 1.27.0 to 1.29.1.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled JQuery3 API plugin from 3.5.1-2 to 3.6.0-2.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Font Awesome API plugin from 5.15.1-1 to 6.0.0-1.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled SCM API plugin from 2.6.5 to 602.v6a_81757a_31d2.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Update bundled Structs plugin from 1.23 to 308.v852b473a2b8c.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Replace bundled Bootstrap 4 API plugin 4.5.3-1 with Bootstrap 5 API plugin 5.1.3-6.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Replace bundled Popper.js API plugin 1.16.0-7 with Popper.js 2 API plugin 2.11.2-1.
+&lt;/li&gt;
+&lt;li&gt;
+RFE:
+Add bundled Pipeline Supporting APIs plugin 813.vb_d7c3d2984a_0.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.357
+</guid>
+<pubDate>
+Mon, 27 Jun 2022 00:00:00 +0000
+</pubDate>
+</item>
+<item>
+<title>Jenkins 2.356</title>
+<link>
+https://jenkins.io/changelog//#v2.356
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;
+Security:
+Important security fixes.
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+<guid isPermaLink="false">
+jenkins-2.356
+</guid>
+<pubDate>
+Wed, 22 Jun 2022 00:00:00 +0000
+</pubDate>
+</item>
+
+<!-- ending partial changelog-changes.xml.haml -->
+</channel>
+</rss>

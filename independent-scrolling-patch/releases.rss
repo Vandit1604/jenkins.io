@@ -1,0 +1,2314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <author>
+    <name>Jenkins History Bot</name>
+  </author>
+  <id>urn:63067410335c11e0bc8e0800200c9a66:feed</id>
+  <link href="https://www.jenkins.io/"/>
+  <link href="https://www.jenkins.io/releases.rss"
+    rel="self"
+    type="application/atom+xml"/>
+  <title>Jenkins plugin releases</title>
+  <updated>2023-01-07T12:12:47+00:00</updated>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:aws-secrets-manager-secret-source:1.62.v120c8e5058ee</id>
+    <link href="https://plugins.jenkins.io/aws-secrets-manager-secret-source"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T16:01:35+00:00</published>
+    <summary>AWS Secrets Manager SecretSource 1.62.v120c8e5058ee</summary>
+    <title>AWS Secrets Manager SecretSource 1.62.v120c8e5058ee</title>
+    <updated>2023-01-06T16:01:35+00:00</updated>
+    <dc:date>2023-01-06T16:01:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:39:26+00:00</published>
+    <summary>Blue Ocean 1.27.0</summary>
+    <title>Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:39:26+00:00</updated>
+    <dc:date>2023-01-06T08:39:26+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-bitbucket-pipeline:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-bitbucket-pipeline"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:35:55+00:00</published>
+    <summary>Bitbucket Pipeline for Blue Ocean 1.27.0</summary>
+    <title>Bitbucket Pipeline for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:35:55+00:00</updated>
+    <dc:date>2023-01-06T08:35:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-commons:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-commons"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T07:58:37+00:00</published>
+    <summary>Common API for Blue Ocean 1.27.0</summary>
+    <title>Common API for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T07:58:37+00:00</updated>
+    <dc:date>2023-01-06T07:58:37+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-config:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-config"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:34:38+00:00</published>
+    <summary>Config API for Blue Ocean 1.27.0</summary>
+    <title>Config API for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:34:38+00:00</updated>
+    <dc:date>2023-01-06T08:34:38+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-core-js:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-core-js"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T07:57:53+00:00</published>
+    <summary>Blue Ocean Core JS 1.27.0</summary>
+    <title>Blue Ocean Core JS 1.27.0</title>
+    <updated>2023-01-06T07:57:53+00:00</updated>
+    <dc:date>2023-01-06T07:57:53+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-dashboard:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-dashboard"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:32:29+00:00</published>
+    <summary>Dashboard for Blue Ocean 1.27.0</summary>
+    <title>Dashboard for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:32:29+00:00</updated>
+    <dc:date>2023-01-06T08:32:29+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-events:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-events"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:30:28+00:00</published>
+    <summary>Events API for Blue Ocean 1.27.0</summary>
+    <title>Events API for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:30:28+00:00</updated>
+    <dc:date>2023-01-06T08:30:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-executor-info:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-executor-info"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:39:01+00:00</published>
+    <summary>DEPRECATED Blue Ocean Executor Info 1.27.0</summary>
+    <title>DEPRECATED Blue Ocean Executor Info 1.27.0</title>
+    <updated>2023-01-06T08:39:01+00:00</updated>
+    <dc:date>2023-01-06T08:39:01+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-git-pipeline:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-git-pipeline"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:35:27+00:00</published>
+    <summary>Git Pipeline for Blue Ocean 1.27.0</summary>
+    <title>Git Pipeline for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:35:27+00:00</updated>
+    <dc:date>2023-01-06T08:35:27+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-github-pipeline:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-github-pipeline"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:35:03+00:00</published>
+    <summary>GitHub Pipeline for Blue Ocean 1.27.0</summary>
+    <title>GitHub Pipeline for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:35:03+00:00</updated>
+    <dc:date>2023-01-06T08:35:03+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-i18n:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-i18n"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T07:59:57+00:00</published>
+    <summary>i18n for Blue Ocean 1.27.0</summary>
+    <title>i18n for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T07:59:57+00:00</updated>
+    <dc:date>2023-01-06T07:59:57+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jira:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-jira"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:39:55+00:00</published>
+    <summary>JIRA Integration for Blue Ocean 1.27.0</summary>
+    <title>JIRA Integration for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:39:55+00:00</updated>
+    <dc:date>2023-01-06T08:39:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jwt:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-jwt"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:02:29+00:00</published>
+    <summary>JWT for Blue Ocean 1.27.0</summary>
+    <title>JWT for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:02:29+00:00</updated>
+    <dc:date>2023-01-06T08:02:29+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-personalization:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-personalization"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:33:43+00:00</published>
+    <summary>Personalization for Blue Ocean 1.27.0</summary>
+    <title>Personalization for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:33:43+00:00</updated>
+    <dc:date>2023-01-06T08:33:43+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-api-impl:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-pipeline-api-impl"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:18:18+00:00</published>
+    <summary>Pipeline implementation for Blue Ocean 1.27.0</summary>
+    <title>Pipeline implementation for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:18:18+00:00</updated>
+    <dc:date>2023-01-06T08:18:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-editor:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-pipeline-editor"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:37:40+00:00</published>
+    <summary>Blue Ocean Pipeline Editor 1.27.0</summary>
+    <title>Blue Ocean Pipeline Editor 1.27.0</title>
+    <updated>2023-01-06T08:37:40+00:00</updated>
+    <dc:date>2023-01-06T08:37:40+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-scm-api:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-pipeline-scm-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:01:54+00:00</published>
+    <summary>Pipeline SCM API for Blue Ocean 1.27.0</summary>
+    <title>Pipeline SCM API for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:01:54+00:00</updated>
+    <dc:date>2023-01-06T08:01:54+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-rest"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T07:59:32+00:00</published>
+    <summary>REST API for Blue Ocean 1.27.0</summary>
+    <title>REST API for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T07:59:32+00:00</updated>
+    <dc:date>2023-01-06T07:59:32+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest-impl:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-rest-impl"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:03:04+00:00</published>
+    <summary>REST Implementation for Blue Ocean 1.27.0</summary>
+    <title>REST Implementation for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:03:04+00:00</updated>
+    <dc:date>2023-01-06T08:03:04+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-web:1.27.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-web"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T08:01:09+00:00</published>
+    <summary>Web for Blue Ocean 1.27.0</summary>
+    <title>Web for Blue Ocean 1.27.0</title>
+    <updated>2023-01-06T08:01:09+00:00</updated>
+    <dc:date>2023-01-06T08:01:09+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ec2:2.0.5</id>
+    <link href="https://plugins.jenkins.io/ec2"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T16:31:47+00:00</published>
+    <summary>Amazon EC2 2.0.5</summary>
+    <title>Amazon EC2 2.0.5</title>
+    <updated>2023-01-06T16:31:47+00:00</updated>
+    <dc:date>2023-01-06T16:31:47+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:jenkins-design-language:1.27.0</id>
+    <link href="https://plugins.jenkins.io/jenkins-design-language"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T07:55:39+00:00</published>
+    <summary>Design Language 1.27.0</summary>
+    <title>Design Language 1.27.0</title>
+    <updated>2023-01-06T07:55:39+00:00</updated>
+    <dc:date>2023-01-06T07:55:39+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jobcacher:341.va_8a_50b_f4330e</id>
+    <link href="https://plugins.jenkins.io/jobcacher"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T22:02:02+00:00</published>
+    <summary>Job Cacher 341.va_8a_50b_f4330e</summary>
+    <title>Job Cacher 341.va_8a_50b_f4330e</title>
+    <updated>2023-01-06T22:02:02+00:00</updated>
+    <dc:date>2023-01-06T22:02:02+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ldap:659.v8ca_b_a_fe79fa_d</id>
+    <link href="https://plugins.jenkins.io/ldap"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T21:18:47+00:00</published>
+    <summary>LDAP 659.v8ca_b_a_fe79fa_d</summary>
+    <title>LDAP 659.v8ca_b_a_fe79fa_d</title>
+    <updated>2023-01-06T21:18:47+00:00</updated>
+    <dc:date>2023-01-06T21:18:47+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:matomo-analytics:1.12.v94b_37870907e</id>
+    <link href="https://plugins.jenkins.io/matomo-analytics"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T10:33:34+00:00</published>
+    <summary>Matomo analytics 1.12.v94b_37870907e</summary>
+    <title>Matomo analytics 1.12.v94b_37870907e (new)</title>
+    <updated>2023-01-06T10:33:34+00:00</updated>
+    <dc:date>2023-01-06T10:33:34+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:mock-load-builder:72.va_d24249b_1400</id>
+    <link href="https://plugins.jenkins.io/mock-load-builder"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T19:50:17+00:00</published>
+    <summary>Mock Load Builder 72.va_d24249b_1400</summary>
+    <title>Mock Load Builder 72.va_d24249b_1400</title>
+    <updated>2023-01-06T19:50:17+00:00</updated>
+    <dc:date>2023-01-06T19:50:17+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:powershell:2.0</id>
+    <link href="https://plugins.jenkins.io/powershell"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T23:16:06+00:00</published>
+    <summary>PowerShell 2.0</summary>
+    <title>PowerShell 2.0</title>
+    <updated>2023-01-06T23:16:06+00:00</updated>
+    <dc:date>2023-01-06T23:16:06+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:visual-basic-6:2.0</id>
+    <link href="https://plugins.jenkins.io/visual-basic-6"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-06T19:57:09+00:00</published>
+    <summary>Visual Basic 6 2.0</summary>
+    <title>Visual Basic 6 2.0</title>
+    <updated>2023-01-06T19:57:09+00:00</updated>
+    <dc:date>2023-01-06T19:57:09+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:autify:62.v97b_e5b_db_a_48d</id>
+    <link href="https://plugins.jenkins.io/autify"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-05T01:29:06+00:00</published>
+    <summary>Autify 62.v97b_e5b_db_a_48d</summary>
+    <title>Autify 62.v97b_e5b_db_a_48d</title>
+    <updated>2023-01-05T01:29:06+00:00</updated>
+    <dc:date>2023-01-05T01:29:06+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.btc.ep:btc-embeddedplatform:22.3.1</id>
+    <link href="https://plugins.jenkins.io/btc-embeddedplatform"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-05T15:20:45+00:00</published>
+    <summary>BTC DSL for Pipeline 22.3.1</summary>
+    <title>BTC DSL for Pipeline 22.3.1</title>
+    <updated>2023-01-05T15:20:45+00:00</updated>
+    <dc:date>2023-01-05T15:20:45+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:build-timeout:1.28</id>
+    <link href="https://plugins.jenkins.io/build-timeout"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-05T00:17:14+00:00</published>
+    <summary>Build Timeout 1.28</summary>
+    <title>Build Timeout 1.28</title>
+    <updated>2023-01-05T00:17:14+00:00</updated>
+    <dc:date>2023-01-05T00:17:14+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:cavisson-ns-nd-integration:4.8.0.149</id>
+    <link href="https://plugins.jenkins.io/cavisson-ns-nd-integration"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-05T07:02:43+00:00</published>
+    <summary>NS-ND Integration Performance Publisher 4.8.0.149</summary>
+    <title>NS-ND Integration Performance Publisher 4.8.0.149</title>
+    <updated>2023-01-05T07:02:43+00:00</updated>
+    <dc:date>2023-01-05T07:02:43+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:list-git-branches-parameter:0.0.12</id>
+    <link href="https://plugins.jenkins.io/list-git-branches-parameter"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-05T02:59:44+00:00</published>
+    <summary>List Git Branches Parameter 0.0.12</summary>
+    <title>List Git Branches Parameter 0.0.12</title>
+    <updated>2023-01-05T02:59:44+00:00</updated>
+    <dc:date>2023-01-05T02:59:44+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.6wind.jenkins:lockable-resources:1106.vc9153f1a_ff25</id>
+    <link href="https://plugins.jenkins.io/lockable-resources"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-05T14:19:35+00:00</published>
+    <summary>Lockable Resources 1106.vc9153f1a_ff25</summary>
+    <title>Lockable Resources 1106.vc9153f1a_ff25</title>
+    <updated>2023-01-05T14:19:35+00:00</updated>
+    <dc:date>2023-01-05T14:19:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:build-timeout:1.27</id>
+    <link href="https://plugins.jenkins.io/build-timeout"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T21:42:55+00:00</published>
+    <summary>Build Timeout 1.27</summary>
+    <title>Build Timeout 1.27</title>
+    <updated>2023-01-04T21:42:55+00:00</updated>
+    <dc:date>2023-01-04T21:42:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cron_column:1.6</id>
+    <link href="https://plugins.jenkins.io/cron_column"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T21:36:44+00:00</published>
+    <summary>Cron Column 1.6</summary>
+    <title>Cron Column 1.6</title>
+    <updated>2023-01-04T21:36:44+00:00</updated>
+    <dc:date>2023-01-04T21:36:44+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:design-library:188.v08c3f93d7f56</id>
+    <link href="https://plugins.jenkins.io/design-library"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T19:43:04+00:00</published>
+    <summary>Design Library 188.v08c3f93d7f56</summary>
+    <title>Design Library 188.v08c3f93d7f56</title>
+    <updated>2023-01-04T19:43:04+00:00</updated>
+    <dc:date>2023-01-04T19:43:04+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:generic-webhook-trigger:1.86.2</id>
+    <link href="https://plugins.jenkins.io/generic-webhook-trigger"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T15:54:11+00:00</published>
+    <summary>Generic Webhook Trigger 1.86.2</summary>
+    <title>Generic Webhook Trigger 1.86.2</title>
+    <updated>2023-01-04T15:54:11+00:00</updated>
+    <dc:date>2023-01-04T15:54:11+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:de.wellnerbou.jenkins:git-changelog:3.27</id>
+    <link href="https://plugins.jenkins.io/git-changelog"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T16:18:42+00:00</published>
+    <summary>Git Changelog 3.27</summary>
+    <title>Git Changelog 3.27</title>
+    <updated>2023-01-04T16:18:42+00:00</updated>
+    <dc:date>2023-01-04T16:18:42+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.coravy.hudson.plugins.github:github:1.36.1</id>
+    <link href="https://plugins.jenkins.io/github"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T12:06:40+00:00</published>
+    <summary>GitHub 1.36.1</summary>
+    <title>GitHub 1.36.1</title>
+    <updated>2023-01-04T12:06:40+00:00</updated>
+    <dc:date>2023-01-04T12:06:40+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.sonymobile.jenkins.plugins.kerberos-sso:kerberos-sso:1.11</id>
+    <link href="https://plugins.jenkins.io/kerberos-sso"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T10:05:14+00:00</published>
+    <summary>Kerberos SSO 1.11</summary>
+    <title>Kerberos SSO 1.11</title>
+    <updated>2023-01-04T10:05:14+00:00</updated>
+    <dc:date>2023-01-04T10:05:14+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:qiniu:1.1.2</id>
+    <link href="https://plugins.jenkins.io/qiniu"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T12:25:30+00:00</published>
+    <summary>Qiniu 1.1.2</summary>
+    <title>Qiniu 1.1.2</title>
+    <updated>2023-01-04T12:25:30+00:00</updated>
+    <dc:date>2023-01-04T12:25:30+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:qy-wechat-notification:1.1.2</id>
+    <link href="https://plugins.jenkins.io/qy-wechat-notification"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T06:14:00+00:00</published>
+    <summary>Qy Wechat Notification 1.1.2</summary>
+    <title>Qy Wechat Notification 1.1.2</title>
+    <updated>2023-01-04T06:14:00+00:00</updated>
+    <dc:date>2023-01-04T06:14:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:rb:1.4</id>
+    <link href="https://plugins.jenkins.io/rb"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T18:23:05+00:00</published>
+    <summary>Review Board 1.4</summary>
+    <title>Review Board 1.4</title>
+    <updated>2023-01-04T18:23:05+00:00</updated>
+    <dc:date>2023-01-04T18:23:05+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:subversion:2.17.0</id>
+    <link href="https://plugins.jenkins.io/subversion"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T11:17:20+00:00</published>
+    <summary>Subversion 2.17.0</summary>
+    <title>Subversion 2.17.0</title>
+    <updated>2023-01-04T11:17:20+00:00</updated>
+    <dc:date>2023-01-04T11:17:20+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-cps:3601.v9b_36a_d99e1cc</id>
+    <link href="https://plugins.jenkins.io/workflow-cps"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-04T00:49:07+00:00</published>
+    <summary>Pipeline: Groovy 3601.v9b_36a_d99e1cc</summary>
+    <title>Pipeline: Groovy 3601.v9b_36a_d99e1cc</title>
+    <updated>2023-01-04T00:49:07+00:00</updated>
+    <dc:date>2023-01-04T00:49:07+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cron_column:1.5</id>
+    <link href="https://plugins.jenkins.io/cron_column"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T20:18:00+00:00</published>
+    <summary>Cron Column 1.5</summary>
+    <title>Cron Column 1.5</title>
+    <updated>2023-01-03T20:18:00+00:00</updated>
+    <dc:date>2023-01-03T20:18:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:file-parameters:264.v1733d9b_2a_380</id>
+    <link href="https://plugins.jenkins.io/file-parameters"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T17:05:54+00:00</published>
+    <summary>File Parameter 264.v1733d9b_2a_380</summary>
+    <title>File Parameter 264.v1733d9b_2a_380</title>
+    <updated>2023-01-03T17:05:54+00:00</updated>
+    <dc:date>2023-01-03T17:05:54+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jobcacher:329.vf853a_4a_c5f5f</id>
+    <link href="https://plugins.jenkins.io/jobcacher"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T20:07:06+00:00</published>
+    <summary>Job Cacher 329.vf853a_4a_c5f5f</summary>
+    <title>Job Cacher 329.vf853a_4a_c5f5f</title>
+    <updated>2023-01-03T20:07:06+00:00</updated>
+    <dc:date>2023-01-03T20:07:06+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pipeline-maven:1256.v14a_6e1e0de4b</id>
+    <link href="https://plugins.jenkins.io/pipeline-maven"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T07:55:42+00:00</published>
+    <summary>Pipeline Maven Integration 1256.v14a_6e1e0de4b</summary>
+    <title>Pipeline Maven Integration 1256.v14a_6e1e0de4b</title>
+    <updated>2023-01-03T07:55:42+00:00</updated>
+    <dc:date>2023-01-03T07:55:42+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:plain-credentials:143.v1b_df8b_d3b_e48</id>
+    <link href="https://plugins.jenkins.io/plain-credentials"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T22:04:31+00:00</published>
+    <summary>Plain Credentials 143.v1b_df8b_d3b_e48</summary>
+    <title>Plain Credentials 143.v1b_df8b_d3b_e48</title>
+    <updated>2023-01-03T22:04:31+00:00</updated>
+    <dc:date>2023-01-03T22:04:31+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:support-core:1244.vceb_57079258a</id>
+    <link href="https://plugins.jenkins.io/support-core"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T01:58:18+00:00</published>
+    <summary>Support Core 1244.vceb_57079258a</summary>
+    <title>Support Core 1244.vceb_57079258a</title>
+    <updated>2023-01-03T01:58:18+00:00</updated>
+    <dc:date>2023-01-03T01:58:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:zos-connector:3.226.vc15f02a_a_84a_3</id>
+    <link href="https://plugins.jenkins.io/zos-connector"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-03T15:51:22+00:00</published>
+    <summary>IBM z/OS Connector 3.226.vc15f02a_a_84a_3</summary>
+    <title>IBM z/OS Connector 3.226.vc15f02a_a_84a_3</title>
+    <updated>2023-01-03T15:51:22+00:00</updated>
+    <dc:date>2023-01-03T15:51:22+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:jenkins-infra-test:116.v6850a_d22f5d6</id>
+    <link href="https://plugins.jenkins.io/jenkins-infra-test"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-02T18:38:07+00:00</published>
+    <summary>infrastructure test 116.v6850a_d22f5d6</summary>
+    <title>infrastructure test 116.v6850a_d22f5d6</title>
+    <updated>2023-01-02T18:38:07+00:00</updated>
+    <dc:date>2023-01-02T18:38:07+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:port-allocator:1.10</id>
+    <link href="https://plugins.jenkins.io/port-allocator"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-02T20:19:32+00:00</published>
+    <summary>Port Allocator 1.10</summary>
+    <title>Port Allocator 1.10</title>
+    <updated>2023-01-02T20:19:32+00:00</updated>
+    <dc:date>2023-01-02T20:19:32+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:role-strategy:584.vf8e515397ecd</id>
+    <link href="https://plugins.jenkins.io/role-strategy"
+      rel="alternate"
+      type="text/html"/>
+    <published>2023-01-02T22:21:49+00:00</published>
+    <summary>Role-based Authorization Strategy 584.vf8e515397ecd</summary>
+    <title>Role-based Authorization Strategy 584.vf8e515397ecd</title>
+    <updated>2023-01-02T22:21:49+00:00</updated>
+    <dc:date>2023-01-02T22:21:49+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:build-timeout:1.26</id>
+    <link href="https://plugins.jenkins.io/build-timeout"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-31T17:02:41+00:00</published>
+    <summary>Build Timeout 1.26</summary>
+    <title>Build Timeout 1.26</title>
+    <updated>2022-12-31T17:02:41+00:00</updated>
+    <dc:date>2022-12-31T17:02:41+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:email-ext:2.93</id>
+    <link href="https://plugins.jenkins.io/email-ext"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-31T01:50:54+00:00</published>
+    <summary>Email Extension 2.93</summary>
+    <title>Email Extension 2.93</title>
+    <updated>2022-12-31T01:50:54+00:00</updated>
+    <dc:date>2022-12-31T01:50:54+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:keeper-secrets-manager:1.0-79.v401df8db86b3</id>
+    <link href="https://plugins.jenkins.io/keeper-secrets-manager"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-31T19:30:18+00:00</published>
+    <summary>Keeper Secrets Manager 1.0-79.v401df8db86b3</summary>
+    <title>Keeper Secrets Manager 1.0-79.v401df8db86b3</title>
+    <updated>2022-12-31T19:30:18+00:00</updated>
+    <dc:date>2022-12-31T19:30:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.bmc.ims:bmc-cfa:170.vc9a83c268739</id>
+    <link href="https://plugins.jenkins.io/bmc-cfa"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T07:34:35+00:00</published>
+    <summary>BMC AMI DevOps for Application Checkpoint Analysis 170.vc9a83c268739</summary>
+    <title>BMC AMI DevOps for Application Checkpoint Analysis 170.vc9a83c268739</title>
+    <updated>2022-12-30T07:34:35+00:00</updated>
+    <dc:date>2022-12-30T07:34:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.bmc.ims:bmc-change-manager-imstm:48.v6bd42382a2ee</id>
+    <link href="https://plugins.jenkins.io/bmc-change-manager-imstm"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T06:55:18+00:00</published>
+    <summary>BMC AMI DevOps for Change Manager for IMS TM 48.v6bd42382a2ee</summary>
+    <title>BMC AMI DevOps for Change Manager for IMS TM 48.v6bd42382a2ee</title>
+    <updated>2022-12-30T06:55:18+00:00</updated>
+    <dc:date>2022-12-30T06:55:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git:5.0.0</id>
+    <link href="https://plugins.jenkins.io/git"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T13:59:27+00:00</published>
+    <summary>Git 5.0.0</summary>
+    <title>Git 5.0.0</title>
+    <updated>2022-12-30T13:59:27+00:00</updated>
+    <dc:date>2022-12-30T13:59:27+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:4.0.0</id>
+    <link href="https://plugins.jenkins.io/git-client"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T13:25:39+00:00</published>
+    <summary>Git client 4.0.0</summary>
+    <title>Git client 4.0.0</title>
+    <updated>2022-12-30T13:25:39+00:00</updated>
+    <dc:date>2022-12-30T13:25:39+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:gitlab-branch-source:644.va_a_66886e07b_5</id>
+    <link href="https://plugins.jenkins.io/gitlab-branch-source"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T10:41:39+00:00</published>
+    <summary>GitLab Branch Source 644.va_a_66886e07b_5</summary>
+    <title>GitLab Branch Source 644.va_a_66886e07b_5</title>
+    <updated>2022-12-30T10:41:39+00:00</updated>
+    <dc:date>2022-12-30T10:41:39+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:progress-bar-column-plugin:11.vdef198c2d6c1</id>
+    <link href="https://plugins.jenkins.io/progress-bar-column-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T09:51:18+00:00</published>
+    <summary>Progress Bar Column 11.vdef198c2d6c1</summary>
+    <title>Progress Bar Column 11.vdef198c2d6c1</title>
+    <updated>2022-12-30T09:51:18+00:00</updated>
+    <dc:date>2022-12-30T09:51:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sbt:81.vb_82499046630</id>
+    <link href="https://plugins.jenkins.io/sbt"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T10:12:52+00:00</published>
+    <summary>sbt 81.vb_82499046630</summary>
+    <title>sbt 81.vb_82499046630</title>
+    <updated>2022-12-30T10:12:52+00:00</updated>
+    <dc:date>2022-12-30T10:12:52+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:svn-revert-plugin:279.va_77c7e060d51</id>
+    <link href="https://plugins.jenkins.io/svn-revert-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T11:00:28+00:00</published>
+    <summary>Subversion Revert 279.va_77c7e060d51</summary>
+    <title>Subversion Revert 279.va_77c7e060d51</title>
+    <updated>2022-12-30T11:00:28+00:00</updated>
+    <dc:date>2022-12-30T11:00:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:windows-exe-runner:35.vea_7d292d39a_2</id>
+    <link href="https://plugins.jenkins.io/windows-exe-runner"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-30T11:27:46+00:00</published>
+    <summary>Windows Exe Runner 35.vea_7d292d39a_2</summary>
+    <title>Windows Exe Runner 35.vea_7d292d39a_2</title>
+    <updated>2022-12-30T11:27:46+00:00</updated>
+    <dc:date>2022-12-30T11:27:46+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.alibabacloud.jenkins:alibabacloud-ecs:1.14</id>
+    <link href="https://plugins.jenkins.io/alibabacloud-ecs"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T07:20:21+00:00</published>
+    <summary>Alibaba Cloud ECS 1.14</summary>
+    <title>Alibaba Cloud ECS 1.14</title>
+    <updated>2022-12-29T07:20:21+00:00</updated>
+    <dc:date>2022-12-29T07:20:21+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:any-buildstep:14.ve115ec1484f0</id>
+    <link href="https://plugins.jenkins.io/any-buildstep"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T21:36:07+00:00</published>
+    <summary>Any Build Step 14.ve115ec1484f0</summary>
+    <title>Any Build Step 14.ve115ec1484f0</title>
+    <updated>2022-12-29T21:36:07+00:00</updated>
+    <dc:date>2022-12-29T21:36:07+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:anything-goes-formatter:19.v3e2b_1b_3e0ee5</id>
+    <link href="https://plugins.jenkins.io/anything-goes-formatter"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T21:44:00+00:00</published>
+    <summary>anything-goes-formatter 19.v3e2b_1b_3e0ee5</summary>
+    <title>anything-goes-formatter 19.v3e2b_1b_3e0ee5</title>
+    <updated>2022-12-29T21:44:00+00:00</updated>
+    <dc:date>2022-12-29T21:44:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:artifactory:3.18.0</id>
+    <link href="https://plugins.jenkins.io/artifactory"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T14:17:18+00:00</published>
+    <summary>Artifactory 3.18.0</summary>
+    <title>Artifactory 3.18.0</title>
+    <updated>2022-12-29T14:17:18+00:00</updated>
+    <dc:date>2022-12-29T14:17:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:build-keeper-plugin:19.va_df8a_2c65123</id>
+    <link href="https://plugins.jenkins.io/build-keeper-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T22:11:49+00:00</published>
+    <summary>Build Keeper 19.va_df8a_2c65123</summary>
+    <title>Build Keeper 19.va_df8a_2c65123</title>
+    <updated>2022-12-29T22:11:49+00:00</updated>
+    <dc:date>2022-12-29T22:11:49+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.to-declarative:declarative-pipeline-migration-assistant:1.5.4</id>
+    <link href="https://plugins.jenkins.io/declarative-pipeline-migration-assistant"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T08:04:15+00:00</published>
+    <summary>Declarative Pipeline Migration Assistant 1.5.4</summary>
+    <title>Declarative Pipeline Migration Assistant 1.5.4</title>
+    <updated>2022-12-29T08:04:15+00:00</updated>
+    <dc:date>2022-12-29T08:04:15+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.to-declarative:declarative-pipeline-migration-assistant-api:1.5.4</id>
+    <link href="https://plugins.jenkins.io/declarative-pipeline-migration-assistant-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T08:03:46+00:00</published>
+    <summary>Declarative Pipeline Migration Assistant API 1.5.4</summary>
+    <title>Declarative Pipeline Migration Assistant API 1.5.4</title>
+    <updated>2022-12-29T08:03:46+00:00</updated>
+    <dc:date>2022-12-29T08:03:46+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:implied-labels:0.11</id>
+    <link href="https://plugins.jenkins.io/implied-labels"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T17:57:16+00:00</published>
+    <summary>Implied Labels 0.11</summary>
+    <title>Implied Labels 0.11</title>
+    <updated>2022-12-29T17:57:16+00:00</updated>
+    <dc:date>2022-12-29T17:57:16+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:jfrog:1.0.5</id>
+    <link href="https://plugins.jenkins.io/jfrog"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T14:25:55+00:00</published>
+    <summary>JFrog 1.0.5</summary>
+    <title>JFrog 1.0.5</title>
+    <updated>2022-12-29T14:25:55+00:00</updated>
+    <dc:date>2022-12-29T14:25:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:loadrunner-cloud:5.0.3-322.vc3428feb_0cd1</id>
+    <link href="https://plugins.jenkins.io/loadrunner-cloud"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T06:41:38+00:00</published>
+    <summary>LoadRunner Cloud 5.0.3-322.vc3428feb_0cd1</summary>
+    <title>LoadRunner Cloud 5.0.3-322.vc3428feb_0cd1</title>
+    <updated>2022-12-29T06:41:38+00:00</updated>
+    <dc:date>2022-12-29T06:41:38+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:miniorange-saml-sp:1.0.19</id>
+    <link href="https://plugins.jenkins.io/miniorange-saml-sp"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T07:50:44+00:00</published>
+    <summary>SAML Single Sign On(SSO) 1.0.19</summary>
+    <title>SAML Single Sign On(SSO) 1.0.19</title>
+    <updated>2022-12-29T07:50:44+00:00</updated>
+    <dc:date>2022-12-29T07:50:44+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:nant:248.vcc8a_3eec8db_a</id>
+    <link href="https://plugins.jenkins.io/nant"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T23:28:18+00:00</published>
+    <summary>NAnt 248.vcc8a_3eec8db_a</summary>
+    <title>NAnt 248.vcc8a_3eec8db_a</title>
+    <updated>2022-12-29T23:28:18+00:00</updated>
+    <dc:date>2022-12-29T23:28:18+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:oic-auth:2.4</id>
+    <link href="https://plugins.jenkins.io/oic-auth"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T20:46:08+00:00</published>
+    <summary>OpenId Connect Authentication 2.4</summary>
+    <title>OpenId Connect Authentication 2.4</title>
+    <updated>2022-12-29T20:46:08+00:00</updated>
+    <dc:date>2022-12-29T20:46:08+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:role-strategy:575.v4d286a_03e6d7</id>
+    <link href="https://plugins.jenkins.io/role-strategy"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T22:34:30+00:00</published>
+    <summary>Role-based Authorization Strategy 575.v4d286a_03e6d7</summary>
+    <title>Role-based Authorization Strategy 575.v4d286a_03e6d7</title>
+    <updated>2022-12-29T22:34:30+00:00</updated>
+    <dc:date>2022-12-29T22:34:30+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:spotinst:2.2.9</id>
+    <link href="https://plugins.jenkins.io/spotinst"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T13:27:27+00:00</published>
+    <summary>Spotinst 2.2.9</summary>
+    <title>Spotinst 2.2.9</title>
+    <updated>2022-12-29T13:27:27+00:00</updated>
+    <dc:date>2022-12-29T13:27:27+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:support-core:1241.v32a_39d7032e5</id>
+    <link href="https://plugins.jenkins.io/support-core"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T07:58:57+00:00</published>
+    <summary>Support Core 1241.v32a_39d7032e5</summary>
+    <title>Support Core 1241.v32a_39d7032e5</title>
+    <updated>2022-12-29T07:58:57+00:00</updated>
+    <dc:date>2022-12-29T07:58:57+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:thinBackup:1.15</id>
+    <link href="https://plugins.jenkins.io/thinBackup"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-29T12:58:39+00:00</published>
+    <summary>ThinBackup 1.15</summary>
+    <title>ThinBackup 1.15</title>
+    <updated>2022-12-29T12:58:39+00:00</updated>
+    <dc:date>2022-12-29T12:58:39+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:JDK_Parameter_Plugin:1.2</id>
+    <link href="https://plugins.jenkins.io/JDK_Parameter_Plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-28T13:17:04+00:00</published>
+    <summary>JDK Parameter 1.2</summary>
+    <title>JDK Parameter 1.2</title>
+    <updated>2022-12-28T13:17:04+00:00</updated>
+    <dc:date>2022-12-28T13:17:04+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:genexus:310.vb59358aefc7b</id>
+    <link href="https://plugins.jenkins.io/genexus"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-28T16:53:05+00:00</published>
+    <summary>GeneXus 310.vb59358aefc7b</summary>
+    <title>GeneXus 310.vb59358aefc7b</title>
+    <updated>2022-12-28T16:53:05+00:00</updated>
+    <dc:date>2022-12-28T16:53:05+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:violation-comments-to-stash:1.130</id>
+    <link href="https://plugins.jenkins.io/violation-comments-to-stash"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-28T18:08:06+00:00</published>
+    <summary>Violation Comments to Bitbucket Server 1.130</summary>
+    <title>Violation Comments to Bitbucket Server 1.130</title>
+    <updated>2022-12-28T18:08:06+00:00</updated>
+    <dc:date>2022-12-28T18:08:06+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:support-core:1237.vdd0b_ed646870</id>
+    <link href="https://plugins.jenkins.io/support-core"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-27T08:08:33+00:00</published>
+    <summary>Support Core 1237.vdd0b_ed646870</summary>
+    <title>Support Core 1237.vdd0b_ed646870</title>
+    <updated>2022-12-27T08:08:33+00:00</updated>
+    <dc:date>2022-12-27T08:08:33+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:design-library:185.v42866eb_012ca</id>
+    <link href="https://plugins.jenkins.io/design-library"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-26T00:55:34+00:00</published>
+    <summary>Design Library 185.v42866eb_012ca</summary>
+    <title>Design Library 185.v42866eb_012ca</title>
+    <updated>2022-12-26T00:55:34+00:00</updated>
+    <dc:date>2022-12-26T00:55:34+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:genexus:309.v384cf89e8b06</id>
+    <link href="https://plugins.jenkins.io/genexus"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-26T22:51:28+00:00</published>
+    <summary>GeneXus 309.v384cf89e8b06</summary>
+    <title>GeneXus 309.v384cf89e8b06</title>
+    <updated>2022-12-26T22:51:28+00:00</updated>
+    <dc:date>2022-12-26T22:51:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:jersey2-api:2.38-1</id>
+    <link href="https://plugins.jenkins.io/jersey2-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-26T14:57:30+00:00</published>
+    <summary>Jersey 2 API 2.38-1</summary>
+    <title>Jersey 2 API 2.38-1</title>
+    <updated>2022-12-26T14:57:30+00:00</updated>
+    <dc:date>2022-12-26T14:57:30+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:bitbucket-oauth:0.13</id>
+    <link href="https://plugins.jenkins.io/bitbucket-oauth"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-25T12:51:36+00:00</published>
+    <summary>Bitbucket OAuth 0.13</summary>
+    <title>Bitbucket OAuth 0.13</title>
+    <updated>2022-12-25T12:51:36+00:00</updated>
+    <dc:date>2022-12-25T12:51:36+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.blazemeter.plugins:BlazeMeterJenkinsPlugin:4.18</id>
+    <link href="https://plugins.jenkins.io/BlazeMeterJenkinsPlugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-23T08:50:34+00:00</published>
+    <summary>BlazeMeter 4.18</summary>
+    <title>BlazeMeter 4.18</title>
+    <updated>2022-12-23T08:50:34+00:00</updated>
+    <dc:date>2022-12-23T08:50:34+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:powershell:1.8</id>
+    <link href="https://plugins.jenkins.io/powershell"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-23T12:27:36+00:00</published>
+    <summary>PowerShell 1.8</summary>
+    <title>PowerShell 1.8</title>
+    <updated>2022-12-23T12:27:36+00:00</updated>
+    <dc:date>2022-12-23T12:27:36+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:tics:2022.4.0.2</id>
+    <link href="https://plugins.jenkins.io/tics"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-23T08:20:25+00:00</published>
+    <summary>TICS 2022.4.0.2</summary>
+    <title>TICS 2022.4.0.2</title>
+    <updated>2022-12-23T08:20:25+00:00</updated>
+    <dc:date>2022-12-23T08:20:25+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:downstream-ext:73.vdda_16e6eb_0da</id>
+    <link href="https://plugins.jenkins.io/downstream-ext"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T14:45:51+00:00</published>
+    <summary>Downstream-Ext 73.vdda_16e6eb_0da</summary>
+    <title>Downstream-Ext 73.vdda_16e6eb_0da</title>
+    <updated>2022-12-22T14:45:51+00:00</updated>
+    <dc:date>2022-12-22T14:45:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:envfile:43.v2644436e7d71</id>
+    <link href="https://plugins.jenkins.io/envfile"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T12:18:21+00:00</published>
+    <summary>Environment File 43.v2644436e7d71</summary>
+    <title>Environment File 43.v2644436e7d71</title>
+    <updated>2022-12-22T12:18:21+00:00</updated>
+    <dc:date>2022-12-22T12:18:21+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:fail-the-build-plugin:5.v153b_2c826ef0</id>
+    <link href="https://plugins.jenkins.io/fail-the-build-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T13:05:48+00:00</published>
+    <summary>Fail The Build 5.v153b_2c826ef0</summary>
+    <title>Fail The Build 5.v153b_2c826ef0</title>
+    <updated>2022-12-22T13:05:48+00:00</updated>
+    <dc:date>2022-12-22T13:05:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jqs-monitoring:37.vf50a_82a_0b_f32</id>
+    <link href="https://plugins.jenkins.io/jqs-monitoring"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T12:54:54+00:00</published>
+    <summary>Job/Queue/Agents Monitoring 37.vf50a_82a_0b_f32</summary>
+    <title>Job/Queue/Agents Monitoring 37.vf50a_82a_0b_f32</title>
+    <updated>2022-12-22T12:54:54+00:00</updated>
+    <dc:date>2022-12-22T12:54:54+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:sic.software:kpp-management-plugin:105.v767485951b_d2</id>
+    <link href="https://plugins.jenkins.io/kpp-management-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T14:34:05+00:00</published>
+    <summary>Keychains and Provisioning Profiles Management 105.v767485951b_d2</summary>
+    <title>Keychains and Provisioning Profiles Management 105.v767485951b_d2</title>
+    <updated>2022-12-22T14:34:05+00:00</updated>
+    <dc:date>2022-12-22T14:34:05+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:pipeline-project-env:72.v066708ed9888</id>
+    <link href="https://plugins.jenkins.io/pipeline-project-env"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T08:21:25+00:00</published>
+    <summary>Pipeline Project-Env 72.v066708ed9888</summary>
+    <title>Pipeline Project-Env 72.v066708ed9888</title>
+    <updated>2022-12-22T08:21:25+00:00</updated>
+    <dc:date>2022-12-22T08:21:25+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:slave-status:56.v1798df8ff586</id>
+    <link href="https://plugins.jenkins.io/slave-status"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-22T14:43:48+00:00</published>
+    <summary>Agent Status 56.v1798df8ff586</summary>
+    <title>Agent Status 56.v1798df8ff586</title>
+    <updated>2022-12-22T14:43:48+00:00</updated>
+    <dc:date>2022-12-22T14:43:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.cloudbees.jenkins.plugins:amazon-ecs:1.47</id>
+    <link href="https://plugins.jenkins.io/amazon-ecs"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T15:31:32+00:00</published>
+    <summary>Amazon Elastic Container Service (ECS) / Fargate 1.47</summary>
+    <title>Amazon Elastic Container Service (ECS) / Fargate 1.47</title>
+    <updated>2022-12-21T15:31:32+00:00</updated>
+    <dc:date>2022-12-21T15:31:32+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:build-alias-setter:42.vc1a_d84c93275</id>
+    <link href="https://plugins.jenkins.io/build-alias-setter"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T10:36:27+00:00</published>
+    <summary>Build Alias Setter 42.vc1a_d84c93275</summary>
+    <title>Build Alias Setter 42.vc1a_d84c93275</title>
+    <updated>2022-12-21T10:36:27+00:00</updated>
+    <dc:date>2022-12-21T10:36:27+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:create-fingerprint:25.v0a_b_e60b_42fa_4</id>
+    <link href="https://plugins.jenkins.io/create-fingerprint"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T17:49:00+00:00</published>
+    <summary>Fingerprint 25.v0a_b_e60b_42fa_4</summary>
+    <title>Fingerprint 25.v0a_b_e60b_42fa_4</title>
+    <updated>2022-12-21T17:49:00+00:00</updated>
+    <dc:date>2022-12-21T17:49:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:deploy-integrationserver:1.0</id>
+    <link href="https://plugins.jenkins.io/deploy-integrationserver"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T10:32:21+00:00</published>
+    <summary>Deploy to webMethods Integration Server 1.0</summary>
+    <title>Deploy to webMethods Integration Server 1.0 (new)</title>
+    <updated>2022-12-21T10:32:21+00:00</updated>
+    <dc:date>2022-12-21T10:32:21+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:downstream-buildview:68.v0949b_29950b_1</id>
+    <link href="https://plugins.jenkins.io/downstream-buildview"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T18:04:29+00:00</published>
+    <summary>Downstream build view 68.v0949b_29950b_1</summary>
+    <title>Downstream build view 68.v0949b_29950b_1</title>
+    <updated>2022-12-21T18:04:29+00:00</updated>
+    <dc:date>2022-12-21T18:04:29+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:doxygen:178.v6ea_ef5f7dfdb</id>
+    <link href="https://plugins.jenkins.io/doxygen"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T19:11:50+00:00</published>
+    <summary>Doxygen 178.v6ea_ef5f7dfdb</summary>
+    <title>Doxygen 178.v6ea_ef5f7dfdb</title>
+    <updated>2022-12-21T19:11:50+00:00</updated>
+    <dc:date>2022-12-21T19:11:50+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:grypescanner:1.4</id>
+    <link href="https://plugins.jenkins.io/grypescanner"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T18:55:22+00:00</published>
+    <summary>GrypeScanner 1.4</summary>
+    <title>GrypeScanner 1.4</title>
+    <updated>2022-12-21T18:55:22+00:00</updated>
+    <dc:date>2022-12-21T18:55:22+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:hsts-filter-plugin:10.v6e229055329a</id>
+    <link href="https://plugins.jenkins.io/hsts-filter-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T10:23:51+00:00</published>
+    <summary>HSTS Filter 10.v6e229055329a</summary>
+    <title>HSTS Filter 10.v6e229055329a</title>
+    <updated>2022-12-21T10:23:51+00:00</updated>
+    <dc:date>2022-12-21T10:23:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:jfrog:1.0.4</id>
+    <link href="https://plugins.jenkins.io/jfrog"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T14:04:16+00:00</published>
+    <summary>JFrog 1.0.4</summary>
+    <title>JFrog 1.0.4</title>
+    <updated>2022-12-21T14:04:16+00:00</updated>
+    <dc:date>2022-12-21T14:04:16+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:macstadium-orka:1.31</id>
+    <link href="https://plugins.jenkins.io/macstadium-orka"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T14:27:15+00:00</published>
+    <summary>Orka by MacStadium 1.31</summary>
+    <title>Orka by MacStadium 1.31</title>
+    <updated>2022-12-21T14:27:15+00:00</updated>
+    <dc:date>2022-12-21T14:27:15+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:pipeline-groovy-lib:629.vb_5627b_ee2104</id>
+    <link href="https://plugins.jenkins.io/pipeline-groovy-lib"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T17:44:48+00:00</published>
+    <summary>Pipeline: Groovy Libraries 629.vb_5627b_ee2104</summary>
+    <title>Pipeline: Groovy Libraries 629.vb_5627b_ee2104</title>
+    <updated>2022-12-21T17:44:48+00:00</updated>
+    <dc:date>2022-12-21T17:44:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:plasticscm-mergebot:0.16</id>
+    <link href="https://plugins.jenkins.io/plasticscm-mergebot"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T09:52:28+00:00</published>
+    <summary>MergeBot PlasticSCM 0.16</summary>
+    <title>MergeBot PlasticSCM 0.16</title>
+    <updated>2022-12-21T09:52:28+00:00</updated>
+    <dc:date>2022-12-21T09:52:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:project-stats-plugin:23.v47fee1f77b_84</id>
+    <link href="https://plugins.jenkins.io/project-stats-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T16:10:05+00:00</published>
+    <summary>Project statistics 23.v47fee1f77b_84</summary>
+    <title>Project statistics 23.v47fee1f77b_84</title>
+    <updated>2022-12-21T16:10:05+00:00</updated>
+    <dc:date>2022-12-21T16:10:05+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:jp.ikedam.jenkins.plugins:scoring-load-balancer:59.vf791549fa_989</id>
+    <link href="https://plugins.jenkins.io/scoring-load-balancer"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T10:16:03+00:00</published>
+    <summary>Scoring Load Balancer 59.vf791549fa_989</summary>
+    <title>Scoring Load Balancer 59.vf791549fa_989</title>
+    <updated>2022-12-21T10:16:03+00:00</updated>
+    <dc:date>2022-12-21T10:16:03+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:test-results-aggregator:1.2.11</id>
+    <link href="https://plugins.jenkins.io/test-results-aggregator"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T15:28:30+00:00</published>
+    <summary>Test Results Aggregator 1.2.11</summary>
+    <title>Test Results Aggregator 1.2.11</title>
+    <updated>2022-12-21T15:28:30+00:00</updated>
+    <dc:date>2022-12-21T15:28:30+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:text-finder-run-condition:6.vdf94e6f8d2c3</id>
+    <link href="https://plugins.jenkins.io/text-finder-run-condition"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-21T15:42:09+00:00</published>
+    <summary>Text Finder Run Condition 6.vdf94e6f8d2c3</summary>
+    <title>Text Finder Run Condition 6.vdf94e6f8d2c3</title>
+    <updated>2022-12-21T15:42:09+00:00</updated>
+    <dc:date>2022-12-21T15:42:09+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:casdoor-auth:18.v131a_41f5b_e2e</id>
+    <link href="https://plugins.jenkins.io/casdoor-auth"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T05:21:45+00:00</published>
+    <summary>Casdoor Authentication 18.v131a_41f5b_e2e</summary>
+    <title>Casdoor Authentication 18.v131a_41f5b_e2e (new)</title>
+    <updated>2022-12-20T05:21:45+00:00</updated>
+    <dc:date>2022-12-20T05:21:45+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:de.wellnerbou.jenkins:git-changelog:3.26</id>
+    <link href="https://plugins.jenkins.io/git-changelog"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T08:01:28+00:00</published>
+    <summary>Git Changelog 3.26</summary>
+    <title>Git Changelog 3.26</title>
+    <updated>2022-12-20T08:01:28+00:00</updated>
+    <dc:date>2022-12-20T08:01:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:horreum:0.1.548.v5a_c5f77b_2db_a_</id>
+    <link href="https://plugins.jenkins.io/horreum"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T09:01:20+00:00</published>
+    <summary>Horreum 0.1.548.v5a_c5f77b_2db_a_</summary>
+    <title>Horreum 0.1.548.v5a_c5f77b_2db_a_</title>
+    <updated>2022-12-20T09:01:20+00:00</updated>
+    <dc:date>2022-12-20T09:01:20+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.6wind.jenkins:lockable-resources:1102.vde5663d777cf</id>
+    <link href="https://plugins.jenkins.io/lockable-resources"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T05:54:39+00:00</published>
+    <summary>Lockable Resources 1102.vde5663d777cf</summary>
+    <title>Lockable Resources 1102.vde5663d777cf</title>
+    <updated>2022-12-20T05:54:39+00:00</updated>
+    <dc:date>2022-12-20T05:54:39+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ontrack:4.1.1</id>
+    <link href="https://plugins.jenkins.io/ontrack"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T14:51:00+00:00</published>
+    <summary>ontrack Jenkins 4.1.1</summary>
+    <title>ontrack Jenkins 4.1.1</title>
+    <updated>2022-12-20T14:51:00+00:00</updated>
+    <dc:date>2022-12-20T14:51:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:p4:1.13.2</id>
+    <link href="https://plugins.jenkins.io/p4"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T10:45:03+00:00</published>
+    <summary>P4 1.13.2</summary>
+    <title>P4 1.13.2</title>
+    <updated>2022-12-20T10:45:03+00:00</updated>
+    <dc:date>2022-12-20T10:45:03+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.reliza:reliza-integration:0.2.0</id>
+    <link href="https://plugins.jenkins.io/reliza-integration"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T14:18:20+00:00</published>
+    <summary>Reliza Integration 0.2.0</summary>
+    <title>Reliza Integration 0.2.0</title>
+    <updated>2022-12-20T14:18:20+00:00</updated>
+    <dc:date>2022-12-20T14:18:20+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:wxwork-notification:1.0.1-63.v9fca_a_10fa_8e8</id>
+    <link href="https://plugins.jenkins.io/wxwork-notification"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-20T14:18:01+00:00</published>
+    <summary>WXWork Notification 1.0.1-63.v9fca_a_10fa_8e8</summary>
+    <title>WXWork Notification 1.0.1-63.v9fca_a_10fa_8e8</title>
+    <updated>2022-12-20T14:18:01+00:00</updated>
+    <dc:date>2022-12-20T14:18:01+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:code-coverage-api:3.3.2</id>
+    <link href="https://plugins.jenkins.io/code-coverage-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-19T11:37:46+00:00</published>
+    <summary>Code Coverage API 3.3.2</summary>
+    <title>Code Coverage API 3.3.2</title>
+    <updated>2022-12-19T11:37:46+00:00</updated>
+    <dc:date>2022-12-19T11:37:46+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:generic-webhook-trigger:1.86.1</id>
+    <link href="https://plugins.jenkins.io/generic-webhook-trigger"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-19T09:59:12+00:00</published>
+    <summary>Generic Webhook Trigger 1.86.1</summary>
+    <title>Generic Webhook Trigger 1.86.1</title>
+    <updated>2022-12-19T09:59:12+00:00</updated>
+    <dc:date>2022-12-19T09:59:12+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:gradle:2.2</id>
+    <link href="https://plugins.jenkins.io/gradle"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-19T09:43:51+00:00</published>
+    <summary>Gradle 2.2</summary>
+    <title>Gradle 2.2</title>
+    <updated>2022-12-19T09:43:51+00:00</updated>
+    <dc:date>2022-12-19T09:43:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:macstadium-orka:1.30</id>
+    <link href="https://plugins.jenkins.io/macstadium-orka"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-19T13:07:51+00:00</published>
+    <summary>Orka by MacStadium 1.30</summary>
+    <title>Orka by MacStadium 1.30</title>
+    <updated>2022-12-19T13:07:51+00:00</updated>
+    <dc:date>2022-12-19T13:07:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sysdig-secure:2.2.6</id>
+    <link href="https://plugins.jenkins.io/sysdig-secure"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-19T18:11:28+00:00</published>
+    <summary>Sysdig Secure Container Image Scanner 2.2.6</summary>
+    <title>Sysdig Secure Container Image Scanner 2.2.6</title>
+    <updated>2022-12-19T18:11:28+00:00</updated>
+    <dc:date>2022-12-19T18:11:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:tics:2022.4.0.1</id>
+    <link href="https://plugins.jenkins.io/tics"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-19T09:02:28+00:00</published>
+    <summary>TICS 2022.4.0.1</summary>
+    <title>TICS 2022.4.0.1</title>
+    <updated>2022-12-19T09:02:28+00:00</updated>
+    <dc:date>2022-12-19T09:02:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:JDK_Parameter_Plugin:1.1</id>
+    <link href="https://plugins.jenkins.io/JDK_Parameter_Plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-17T02:19:49+00:00</published>
+    <summary>JDK Parameter 1.1</summary>
+    <title>JDK Parameter 1.1</title>
+    <updated>2022-12-17T02:19:49+00:00</updated>
+    <dc:date>2022-12-17T02:19:49+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:aws-sam:1.2.7</id>
+    <link href="https://plugins.jenkins.io/aws-sam"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-16T19:46:24+00:00</published>
+    <summary>AWS SAM 1.2.7</summary>
+    <title>AWS SAM 1.2.7</title>
+    <updated>2022-12-16T19:46:24+00:00</updated>
+    <dc:date>2022-12-16T19:46:24+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.compuware.jenkins:compuware-topaz-for-total-test:2.4.12</id>
+    <link href="https://plugins.jenkins.io/compuware-topaz-for-total-test"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-16T11:24:19+00:00</published>
+    <summary>Compuware Topaz for Total Test 2.4.12</summary>
+    <title>Compuware Topaz for Total Test 2.4.12</title>
+    <updated>2022-12-16T11:24:19+00:00</updated>
+    <dc:date>2022-12-16T11:24:19+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:netsparker-cloud-scan:2.1.9</id>
+    <link href="https://plugins.jenkins.io/netsparker-cloud-scan"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-16T13:27:51+00:00</published>
+    <summary>Netsparker Enterprise Scan 2.1.9</summary>
+    <title>Netsparker Enterprise Scan 2.1.9</title>
+    <updated>2022-12-16T13:27:51+00:00</updated>
+    <dc:date>2022-12-16T13:27:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:radargun:1.15</id>
+    <link href="https://plugins.jenkins.io/radargun"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-16T13:54:40+00:00</published>
+    <summary>RadarGun 1.15</summary>
+    <title>RadarGun 1.15</title>
+    <updated>2022-12-16T13:54:40+00:00</updated>
+    <dc:date>2022-12-16T13:54:40+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:synopsys-polaris:1.3.2</id>
+    <link href="https://plugins.jenkins.io/synopsys-polaris"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-16T12:20:08+00:00</published>
+    <summary>Synopsys Polaris Software Integrity Platform 1.3.2</summary>
+    <title>Synopsys Polaris Software Integrity Platform 1.3.2</title>
+    <updated>2022-12-16T12:20:08+00:00</updated>
+    <dc:date>2022-12-16T12:20:08+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:tuleap-oauth:1.1.19</id>
+    <link href="https://plugins.jenkins.io/tuleap-oauth"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-16T10:01:16+00:00</published>
+    <summary>Tuleap Authentication 1.1.19</summary>
+    <title>Tuleap Authentication 1.1.19</title>
+    <updated>2022-12-16T10:01:16+00:00</updated>
+    <dc:date>2022-12-16T10:01:16+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:acunetix-360-scan:2.1.9</id>
+    <link href="https://plugins.jenkins.io/acunetix-360-scan"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T20:03:05+00:00</published>
+    <summary>Acunetix 360 Scan 2.1.9</summary>
+    <title>Acunetix 360 Scan 2.1.9</title>
+    <updated>2022-12-15T20:03:05+00:00</updated>
+    <dc:date>2022-12-15T20:03:05+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.conjur.jenkins:conjur-credentials:1.0.14</id>
+    <link href="https://plugins.jenkins.io/conjur-credentials"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T20:10:55+00:00</published>
+    <summary>Conjur Secrets 1.0.14</summary>
+    <title>Conjur Secrets 1.0.14</title>
+    <updated>2022-12-15T20:10:55+00:00</updated>
+    <dc:date>2022-12-15T20:10:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.datadog.jenkins.plugins:datadog:5.2.0</id>
+    <link href="https://plugins.jenkins.io/datadog"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T10:44:55+00:00</published>
+    <summary>Datadog 5.2.0</summary>
+    <title>Datadog 5.2.0</title>
+    <updated>2022-12-15T10:44:55+00:00</updated>
+    <dc:date>2022-12-15T10:44:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:forensics-api:1.17.0</id>
+    <link href="https://plugins.jenkins.io/forensics-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T20:56:21+00:00</published>
+    <summary>Forensics API 1.17.0</summary>
+    <title>Forensics API 1.17.0</title>
+    <updated>2022-12-15T20:56:21+00:00</updated>
+    <dc:date>2022-12-15T20:56:21+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:gerrit-checks-api:55.vf754c52a_e85e</id>
+    <link href="https://plugins.jenkins.io/gerrit-checks-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T15:00:04+00:00</published>
+    <summary>Gerrit Checks API 55.vf754c52a_e85e</summary>
+    <title>Gerrit Checks API 55.vf754c52a_e85e (new)</title>
+    <updated>2022-12-15T15:00:04+00:00</updated>
+    <dc:date>2022-12-15T15:00:04+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jobcacher:323.vcb_cb_98b_4e96a</id>
+    <link href="https://plugins.jenkins.io/jobcacher"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T06:13:20+00:00</published>
+    <summary>Job Cacher 323.vcb_cb_98b_4e96a</summary>
+    <title>Job Cacher 323.vcb_cb_98b_4e96a</title>
+    <updated>2022-12-15T06:13:20+00:00</updated>
+    <dc:date>2022-12-15T06:13:20+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:klocwork:2022.4</id>
+    <link href="https://plugins.jenkins.io/klocwork"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T19:36:45+00:00</published>
+    <summary>Klocwork Analysis 2022.4</summary>
+    <title>Klocwork Analysis 2022.4</title>
+    <updated>2022-12-15T19:36:45+00:00</updated>
+    <dc:date>2022-12-15T19:36:45+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pagerduty:0.7.1</id>
+    <link href="https://plugins.jenkins.io/pagerduty"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T21:48:48+00:00</published>
+    <summary>PagerDuty 0.7.1</summary>
+    <title>PagerDuty 0.7.1</title>
+    <updated>2022-12-15T21:48:48+00:00</updated>
+    <dc:date>2022-12-15T21:48:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:scm-api:631.v9143df5b_e4a_a</id>
+    <link href="https://plugins.jenkins.io/scm-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T23:10:33+00:00</published>
+    <summary>SCM API 631.v9143df5b_e4a_a</summary>
+    <title>SCM API 631.v9143df5b_e4a_a</title>
+    <updated>2022-12-15T23:10:33+00:00</updated>
+    <dc:date>2022-12-15T23:10:33+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:synopsys-polaris:1.3.0</id>
+    <link href="https://plugins.jenkins.io/synopsys-polaris"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T16:13:38+00:00</published>
+    <summary>Synopsys Polaris Software Integrity Platform 1.3.0</summary>
+    <title>Synopsys Polaris Software Integrity Platform 1.3.0</title>
+    <updated>2022-12-15T16:13:38+00:00</updated>
+    <dc:date>2022-12-15T16:13:38+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-cps:3583.v4f58de0d78d5</id>
+    <link href="https://plugins.jenkins.io/workflow-cps"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-15T15:00:44+00:00</published>
+    <summary>Pipeline: Groovy 3583.v4f58de0d78d5</summary>
+    <title>Pipeline: Groovy 3583.v4f58de0d78d5</title>
+    <updated>2022-12-15T15:00:44+00:00</updated>
+    <dc:date>2022-12-15T15:00:44+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:checks-api:1.8.1</id>
+    <link href="https://plugins.jenkins.io/checks-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T11:57:21+00:00</published>
+    <summary>Checks API 1.8.1</summary>
+    <title>Checks API 1.8.1</title>
+    <updated>2022-12-14T11:57:21+00:00</updated>
+    <dc:date>2022-12-14T11:57:21+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ci-with-toad-edge:2.7</id>
+    <link href="https://plugins.jenkins.io/ci-with-toad-edge"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T05:18:12+00:00</published>
+    <summary>Continuous Integration with Toad Edge 2.7</summary>
+    <title>Continuous Integration with Toad Edge 2.7</title>
+    <updated>2022-12-14T05:18:12+00:00</updated>
+    <dc:date>2022-12-14T05:18:12+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.conjur.jenkins:conjur-credentials:1.0.13</id>
+    <link href="https://plugins.jenkins.io/conjur-credentials"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T18:06:34+00:00</published>
+    <summary>Conjur Secrets 1.0.13</summary>
+    <title>Conjur Secrets 1.0.13</title>
+    <updated>2022-12-14T18:06:34+00:00</updated>
+    <dc:date>2022-12-14T18:06:34+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:jp.shiftinc.jenkins.plugins:discard-old-build:1.07</id>
+    <link href="https://plugins.jenkins.io/discard-old-build"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T18:19:09+00:00</published>
+    <summary>Discard Old Build 1.07</summary>
+    <title>Discard Old Build 1.07</title>
+    <updated>2022-12-14T18:19:09+00:00</updated>
+    <dc:date>2022-12-14T18:19:09+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.perforce.halm.jenkins:helix-alm-test-management:1.0.12</id>
+    <link href="https://plugins.jenkins.io/helix-alm-test-management"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T15:02:48+00:00</published>
+    <summary>Helix ALM Test Management 1.0.12</summary>
+    <title>Helix ALM Test Management 1.0.12</title>
+    <updated>2022-12-14T15:02:48+00:00</updated>
+    <dc:date>2022-12-14T15:02:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.sonatype.nexus.ci:nexus-jenkins-plugin:3.16.471.v2dcf088efb_7f</id>
+    <link href="https://plugins.jenkins.io/nexus-jenkins-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T13:31:25+00:00</published>
+    <summary>Nexus Platform 3.16.471.v2dcf088efb_7f</summary>
+    <title>Nexus Platform 3.16.471.v2dcf088efb_7f</title>
+    <updated>2022-12-14T13:31:25+00:00</updated>
+    <dc:date>2022-12-14T13:31:25+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:pipeline-project-env:66.v00058ca_88721</id>
+    <link href="https://plugins.jenkins.io/pipeline-project-env"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T20:10:51+00:00</published>
+    <summary>Pipeline Project-Env 66.v00058ca_88721</summary>
+    <title>Pipeline Project-Env 66.v00058ca_88721</title>
+    <updated>2022-12-14T20:10:51+00:00</updated>
+    <dc:date>2022-12-14T20:10:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:prism-api:1.29.0-2</id>
+    <link href="https://plugins.jenkins.io/prism-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T14:52:33+00:00</published>
+    <summary>Prism API 1.29.0-2</summary>
+    <title>Prism API 1.29.0-2</title>
+    <updated>2022-12-14T14:52:33+00:00</updated>
+    <dc:date>2022-12-14T14:52:33+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:skip-certificate-check:1.1</id>
+    <link href="https://plugins.jenkins.io/skip-certificate-check"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T17:59:48+00:00</published>
+    <summary>skip-certificate-check 1.1</summary>
+    <title>skip-certificate-check 1.1</title>
+    <updated>2022-12-14T17:59:48+00:00</updated>
+    <dc:date>2022-12-14T17:59:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.modules:sshd:3.275.v9e17c10f2571</id>
+    <link href="https://plugins.jenkins.io/sshd"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T00:25:24+00:00</published>
+    <summary>SSH server 3.275.v9e17c10f2571</summary>
+    <title>SSH server 3.275.v9e17c10f2571</title>
+    <updated>2022-12-14T00:25:24+00:00</updated>
+    <dc:date>2022-12-14T00:25:24+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:warnings-ng:9.22.0</id>
+    <link href="https://plugins.jenkins.io/warnings-ng"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T13:42:58+00:00</published>
+    <summary>Warnings Next Generation 9.22.0</summary>
+    <title>Warnings Next Generation 9.22.0</title>
+    <updated>2022-12-14T13:42:58+00:00</updated>
+    <dc:date>2022-12-14T13:42:58+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-cps:3581.v2b_e4c99c76ed</id>
+    <link href="https://plugins.jenkins.io/workflow-cps"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-14T23:03:38+00:00</published>
+    <summary>Pipeline: Groovy 3581.v2b_e4c99c76ed</summary>
+    <title>Pipeline: Groovy 3581.v2b_e4c99c76ed</title>
+    <updated>2022-12-14T23:03:38+00:00</updated>
+    <dc:date>2022-12-14T23:03:38+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:3.12.4</id>
+    <link href="https://plugins.jenkins.io/git-client"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-13T19:52:19+00:00</published>
+    <summary>Git client 3.12.4</summary>
+    <title>Git client 3.12.4</title>
+    <updated>2022-12-13T19:52:19+00:00</updated>
+    <dc:date>2022-12-13T19:52:19+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sauce-ondemand:1.209</id>
+    <link href="https://plugins.jenkins.io/sauce-ondemand"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-13T21:25:05+00:00</published>
+    <summary>Sauce OnDemand 1.209</summary>
+    <title>Sauce OnDemand 1.209</title>
+    <updated>2022-12-13T21:25:05+00:00</updated>
+    <dc:date>2022-12-13T21:25:05+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.soos:soos-sca:55.v1c46012e7b_08</id>
+    <link href="https://plugins.jenkins.io/soos-sca"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-13T12:07:54+00:00</published>
+    <summary>SOOS SCA 55.v1c46012e7b_08</summary>
+    <title>SOOS SCA 55.v1c46012e7b_08</title>
+    <updated>2022-12-13T12:07:54+00:00</updated>
+    <dc:date>2022-12-13T12:07:54+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:validating-yaml-parameter:89.vf13c6b_f41036</id>
+    <link href="https://plugins.jenkins.io/validating-yaml-parameter"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-13T21:37:58+00:00</published>
+    <summary>ValidatingYamlParameter 89.vf13c6b_f41036</summary>
+    <title>ValidatingYamlParameter 89.vf13c6b_f41036</title>
+    <updated>2022-12-13T21:37:58+00:00</updated>
+    <dc:date>2022-12-13T21:37:58+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:autify:61.v66194a_45795c</id>
+    <link href="https://plugins.jenkins.io/autify"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-12T20:09:14+00:00</published>
+    <summary>Autify 61.v66194a_45795c</summary>
+    <title>Autify 61.v66194a_45795c</title>
+    <updated>2022-12-12T20:09:14+00:00</updated>
+    <dc:date>2022-12-12T20:09:14+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.synopsys:defensics:2022.12.0</id>
+    <link href="https://plugins.jenkins.io/defensics"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-12T11:44:35+00:00</published>
+    <summary>Defensics 2022.12.0</summary>
+    <title>Defensics 2022.12.0</title>
+    <updated>2022-12-12T11:44:35+00:00</updated>
+    <dc:date>2022-12-12T11:44:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:display-url-api:2.3.7</id>
+    <link href="https://plugins.jenkins.io/display-url-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-12T05:04:48+00:00</published>
+    <summary>Display URL API 2.3.7</summary>
+    <title>Display URL API 2.3.7</title>
+    <updated>2022-12-12T05:04:48+00:00</updated>
+    <dc:date>2022-12-12T05:04:48+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.csanchez.jenkins.plugins:kubernetes:3743.v1fa_4c724c3b_7</id>
+    <link href="https://plugins.jenkins.io/kubernetes"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-12T17:42:41+00:00</published>
+    <summary>Kubernetes 3743.v1fa_4c724c3b_7</summary>
+    <title>Kubernetes 3743.v1fa_4c724c3b_7</title>
+    <updated>2022-12-12T17:42:41+00:00</updated>
+    <dc:date>2022-12-12T17:42:41+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:de.peass:peass-ci:2.3.4-1200.v4e26209cfd19</id>
+    <link href="https://plugins.jenkins.io/peass-ci"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-12T14:56:02+00:00</published>
+    <summary>Peass-CI 2.3.4-1200.v4e26209cfd19</summary>
+    <title>Peass-CI 2.3.4-1200.v4e26209cfd19</title>
+    <updated>2022-12-12T14:56:02+00:00</updated>
+    <dc:date>2022-12-12T14:56:02+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:saml:4.385.v4dea_91565e9d</id>
+    <link href="https://plugins.jenkins.io/saml"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-12T08:17:49+00:00</published>
+    <summary>SAML 4.385.v4dea_91565e9d</summary>
+    <title>SAML 4.385.v4dea_91565e9d</title>
+    <updated>2022-12-12T08:17:49+00:00</updated>
+    <dc:date>2022-12-12T08:17:49+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git:4.14.3</id>
+    <link href="https://plugins.jenkins.io/git"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-11T19:31:35+00:00</published>
+    <summary>Git 4.14.3</summary>
+    <title>Git 4.14.3</title>
+    <updated>2022-12-11T19:31:35+00:00</updated>
+    <dc:date>2022-12-11T19:31:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pipeline-maven:3.11.1</id>
+    <link href="https://plugins.jenkins.io/pipeline-maven"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-11T13:55:03+00:00</published>
+    <summary>Pipeline Maven Integration 3.11.1</summary>
+    <title>Pipeline Maven Integration 3.11.1</title>
+    <updated>2022-12-11T13:55:03+00:00</updated>
+    <dc:date>2022-12-11T13:55:03+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:gitea-pat-kubernetes-credentials:17.vfe3747cad95a</id>
+    <link href="https://plugins.jenkins.io/gitea-pat-kubernetes-credentials"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-10T13:51:39+00:00</published>
+    <summary>Gitea PAT Kubernetes Credentials 17.vfe3747cad95a</summary>
+    <title>Gitea PAT Kubernetes Credentials 17.vfe3747cad95a</title>
+    <updated>2022-12-10T13:51:39+00:00</updated>
+    <dc:date>2022-12-10T13:51:39+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:30:40+00:00</published>
+    <summary>Blue Ocean 1.26.0</summary>
+    <title>Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:30:40+00:00</updated>
+    <dc:date>2022-12-09T05:30:40+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-bitbucket-pipeline:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-bitbucket-pipeline"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:27:35+00:00</published>
+    <summary>Bitbucket Pipeline for Blue Ocean 1.26.0</summary>
+    <title>Bitbucket Pipeline for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:27:35+00:00</updated>
+    <dc:date>2022-12-09T05:27:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-commons:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-commons"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:02:04+00:00</published>
+    <summary>Common API for Blue Ocean 1.26.0</summary>
+    <title>Common API for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:02:04+00:00</updated>
+    <dc:date>2022-12-09T05:02:04+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-config:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-config"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:26:16+00:00</published>
+    <summary>Config API for Blue Ocean 1.26.0</summary>
+    <title>Config API for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:26:16+00:00</updated>
+    <dc:date>2022-12-09T05:26:16+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-core-js:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-core-js"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:01:29+00:00</published>
+    <summary>Blue Ocean Core JS 1.26.0</summary>
+    <title>Blue Ocean Core JS 1.26.0</title>
+    <updated>2022-12-09T05:01:29+00:00</updated>
+    <dc:date>2022-12-09T05:01:29+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-dashboard:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-dashboard"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:22:51+00:00</published>
+    <summary>Dashboard for Blue Ocean 1.26.0</summary>
+    <title>Dashboard for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:22:51+00:00</updated>
+    <dc:date>2022-12-09T05:22:51+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-events:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-events"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:21:00+00:00</published>
+    <summary>Events API for Blue Ocean 1.26.0</summary>
+    <title>Events API for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:21:00+00:00</updated>
+    <dc:date>2022-12-09T05:21:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-executor-info:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-executor-info"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:30:17+00:00</published>
+    <summary>DEPRECATED Blue Ocean Executor Info 1.26.0</summary>
+    <title>DEPRECATED Blue Ocean Executor Info 1.26.0</title>
+    <updated>2022-12-09T05:30:17+00:00</updated>
+    <dc:date>2022-12-09T05:30:17+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-git-pipeline:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-git-pipeline"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:27:08+00:00</published>
+    <summary>Git Pipeline for Blue Ocean 1.26.0</summary>
+    <title>Git Pipeline for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:27:08+00:00</updated>
+    <dc:date>2022-12-09T05:27:08+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-github-pipeline:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-github-pipeline"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:26:44+00:00</published>
+    <summary>GitHub Pipeline for Blue Ocean 1.26.0</summary>
+    <title>GitHub Pipeline for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:26:44+00:00</updated>
+    <dc:date>2022-12-09T05:26:44+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-i18n:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-i18n"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:03:00+00:00</published>
+    <summary>i18n for Blue Ocean 1.26.0</summary>
+    <title>i18n for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:03:00+00:00</updated>
+    <dc:date>2022-12-09T05:03:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jira:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-jira"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:31:01+00:00</published>
+    <summary>JIRA Integration for Blue Ocean 1.26.0</summary>
+    <title>JIRA Integration for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:31:01+00:00</updated>
+    <dc:date>2022-12-09T05:31:01+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jwt:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-jwt"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:05:17+00:00</published>
+    <summary>JWT for Blue Ocean 1.26.0</summary>
+    <title>JWT for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:05:17+00:00</updated>
+    <dc:date>2022-12-09T05:05:17+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-personalization:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-personalization"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:24:46+00:00</published>
+    <summary>Personalization for Blue Ocean 1.26.0</summary>
+    <title>Personalization for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:24:46+00:00</updated>
+    <dc:date>2022-12-09T05:24:46+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-api-impl:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-pipeline-api-impl"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:12:47+00:00</published>
+    <summary>Pipeline implementation for Blue Ocean 1.26.0</summary>
+    <title>Pipeline implementation for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:12:47+00:00</updated>
+    <dc:date>2022-12-09T05:12:47+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-editor:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-pipeline-editor"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:29:20+00:00</published>
+    <summary>Blue Ocean Pipeline Editor 1.26.0</summary>
+    <title>Blue Ocean Pipeline Editor 1.26.0</title>
+    <updated>2022-12-09T05:29:20+00:00</updated>
+    <dc:date>2022-12-09T05:29:20+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-scm-api:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-pipeline-scm-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:04:55+00:00</published>
+    <summary>Pipeline SCM API for Blue Ocean 1.26.0</summary>
+    <title>Pipeline SCM API for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:04:55+00:00</updated>
+    <dc:date>2022-12-09T05:04:55+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-rest"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:02:35+00:00</published>
+    <summary>REST API for Blue Ocean 1.26.0</summary>
+    <title>REST API for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:02:35+00:00</updated>
+    <dc:date>2022-12-09T05:02:35+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest-impl:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-rest-impl"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:05:46+00:00</published>
+    <summary>REST Implementation for Blue Ocean 1.26.0</summary>
+    <title>REST Implementation for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:05:46+00:00</updated>
+    <dc:date>2022-12-09T05:05:46+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-web:1.26.0</id>
+    <link href="https://plugins.jenkins.io/blueocean-web"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T05:04:09+00:00</published>
+    <summary>Web for Blue Ocean 1.26.0</summary>
+    <title>Web for Blue Ocean 1.26.0</title>
+    <updated>2022-12-09T05:04:09+00:00</updated>
+    <dc:date>2022-12-09T05:04:09+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.compuware.jenkins:compuware-topaz-for-total-test:2.4.10</id>
+    <link href="https://plugins.jenkins.io/compuware-topaz-for-total-test"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T12:01:21+00:00</published>
+    <summary>Compuware Topaz for Total Test 2.4.10</summary>
+    <title>Compuware Topaz for Total Test 2.4.10</title>
+    <updated>2022-12-09T12:01:21+00:00</updated>
+    <dc:date>2022-12-09T12:01:21+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:dependency-check-jenkins-plugin:5.2.1</id>
+    <link href="https://plugins.jenkins.io/dependency-check-jenkins-plugin"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T10:28:56+00:00</published>
+    <summary>OWASP Dependency-Check 5.2.1</summary>
+    <title>OWASP Dependency-Check 5.2.1</title>
+    <updated>2022-12-09T10:28:56+00:00</updated>
+    <dc:date>2022-12-09T10:28:56+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.axis.jenkins.plugins.eiffel:eiffel-broadcaster:2.5.0</id>
+    <link href="https://plugins.jenkins.io/eiffel-broadcaster"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T14:20:25+00:00</published>
+    <summary>Eiffel Broadcaster 2.5.0</summary>
+    <title>Eiffel Broadcaster 2.5.0</title>
+    <updated>2022-12-09T14:20:25+00:00</updated>
+    <dc:date>2022-12-09T14:20:25+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:gitea-pat-kubernetes-credentials:0.0.3</id>
+    <link href="https://plugins.jenkins.io/gitea-pat-kubernetes-credentials"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T19:12:28+00:00</published>
+    <summary>Gitea PAT Kubernetes Credentials 0.0.3</summary>
+    <title>Gitea PAT Kubernetes Credentials 0.0.3</title>
+    <updated>2022-12-09T19:12:28+00:00</updated>
+    <dc:date>2022-12-09T19:12:28+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:jenkins-design-language:1.26.0</id>
+    <link href="https://plugins.jenkins.io/jenkins-design-language"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T04:59:30+00:00</published>
+    <summary>Design Language 1.26.0</summary>
+    <title>Design Language 1.26.0</title>
+    <updated>2022-12-09T04:59:30+00:00</updated>
+    <dc:date>2022-12-09T04:59:30+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:propelo-job-reporter:1.0.27</id>
+    <link href="https://plugins.jenkins.io/propelo-job-reporter"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-09T06:13:13+00:00</published>
+    <summary>Propelo's Job Reporter 1.0.27</summary>
+    <title>Propelo's Job Reporter 1.0.27</title>
+    <updated>2022-12-09T06:13:13+00:00</updated>
+    <dc:date>2022-12-09T06:13:13+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:analysis-model-api:10.21.0</id>
+    <link href="https://plugins.jenkins.io/analysis-model-api"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-08T06:53:00+00:00</published>
+    <summary>Analysis Model API 10.21.0</summary>
+    <title>Analysis Model API 10.21.0</title>
+    <updated>2022-12-08T06:53:00+00:00</updated>
+    <dc:date>2022-12-08T06:53:00+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:azure-ad:303.va_91ef20ee49f</id>
+    <link href="https://plugins.jenkins.io/azure-ad"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-08T10:19:29+00:00</published>
+    <summary>Azure AD 303.va_91ef20ee49f</summary>
+    <title>Azure AD 303.va_91ef20ee49f</title>
+    <updated>2022-12-08T10:19:29+00:00</updated>
+    <dc:date>2022-12-08T10:19:29+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:azure-keyvault:161.va_60991a_5d3d2</id>
+    <link href="https://plugins.jenkins.io/azure-keyvault"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-08T10:38:44+00:00</published>
+    <summary>Azure Key Vault 161.va_60991a_5d3d2</summary>
+    <title>Azure Key Vault 161.va_60991a_5d3d2</title>
+    <updated>2022-12-08T10:38:44+00:00</updated>
+    <dc:date>2022-12-08T10:38:44+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:matrix-auth:3.1.6</id>
+    <link href="https://plugins.jenkins.io/matrix-auth"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-08T16:21:43+00:00</published>
+    <summary>Matrix Authorization Strategy 3.1.6</summary>
+    <title>Matrix Authorization Strategy 3.1.6</title>
+    <updated>2022-12-08T16:21:43+00:00</updated>
+    <dc:date>2022-12-08T16:21:43+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:script-security:1228.vd93135a_2fb_25</id>
+    <link href="https://plugins.jenkins.io/script-security"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-08T22:07:59+00:00</published>
+    <summary>Script Security 1228.vd93135a_2fb_25</summary>
+    <title>Script Security 1228.vd93135a_2fb_25</title>
+    <updated>2022-12-08T22:07:59+00:00</updated>
+    <dc:date>2022-12-08T22:07:59+00:00</dc:date>
+  </entry>
+  <entry>
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:zos-connector:3.221.v3154c45b_3d8d</id>
+    <link href="https://plugins.jenkins.io/zos-connector"
+      rel="alternate"
+      type="text/html"/>
+    <published>2022-12-08T06:39:34+00:00</published>
+    <summary>IBM z/OS Connector 3.221.v3154c45b_3d8d</summary>
+    <title>IBM z/OS Connector 3.221.v3154c45b_3d8d</title>
+    <updated>2022-12-08T06:39:34+00:00</updated>
+    <dc:date>2022-12-08T06:39:34+00:00</dc:date>
+  </entry>
+  <dc:date>2023-01-07T12:12:47+00:00</dc:date>
+</feed>

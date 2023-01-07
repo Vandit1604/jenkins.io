@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Organization Proposal - GSoD 2021
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/2021/organization-proposal/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Organization Proposal - GSoD 2021" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Organization Proposal - GSoD 2021" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsod/gsod_opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Organization Proposal - GSoD 2021" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/2021/organization-proposal/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Organization Proposal - GSoD 2021" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsod/gsod_opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Organization Proposal - GSoD 2021
+</h1>
+<div class="paragraph">
+<p>This document is our draft to complete the Google Season of Docs 2021 <a href="https://developers.google.com/season-of-docs/docs/org-proposal-template">organization proposal template</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="about-your-organization"><a class="anchor" href="#about-your-organization"></a>About your organization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins, originally founded in 2006 as "Hudson", is one of the leading automation servers.
+The project&#8217;s motto is "Build great things at any scale".
+Using extensible, plugin-based architecture developers have created hundreds of plugins to adapt Jenkins to a multitude of build, test, and deployment automation workloads.
+Jenkins is open-source, MIT License is used for most of the components.</p>
+</div>
+<div class="paragraph">
+<p>The project has thousands of active contributors working on Jenkins core, plugins, website, project infrastructure, localization activities, and, of course, documentation.
+We invite technical writers to join the community and contribute to the documentation being used by millions of Jenkins users worldwide.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-your-project"><a class="anchor" href="#about-your-project"></a>About your project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We need to expand the documentation describing Jenkins on Kubernetes.
+We would like to create documentation that describes the concepts, techniques, and choices for Kubernetes users running Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>The improved documentation will also be referenced in a Kubernetes Solutions Page.</p>
+</div>
+<div class="sect2">
+<h3 id="your-projects-problem"><a class="anchor" href="#your-projects-problem"></a>Your project&#8217;s problem</h3>
+<div class="paragraph">
+<p>Jenkins users have significant challenges deploying on Kubernetes.
+A successful Jenkins deployment on Kubernetes combines many different Jenkins components.
+Mistakes in using those components create a less reliable and less usable Jenkins installation.</p>
+</div>
+<div class="paragraph">
+<p>There are many levels to be addressed and many places where incomplete information and mistakes lead to installation and upgrade problems.
+The Jenkins documentation created by this project will describe the compromises and the alternatives for Jenkins on Kubernetes.
+Documentation users will be able to confidently deploy Jenkins on Kubernetes with an understanding of the strengths and weaknesses of their solution.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="your-projects-scope"><a class="anchor" href="#your-projects-scope"></a>Your project&#8217;s scope</h3>
+<div class="paragraph">
+<p>Project scope will be adapted based on available time from the writer.</p>
+</div>
+<div class="sect3">
+<h4 id="preparation-phase"><a class="anchor" href="#preparation-phase"></a>Preparation Phase</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Review <a href="https://leanpub.com/the-devops-2-3-toolkit">DevOps 2.3 Toolkit</a> by Viktor Farcic</p>
+</li>
+<li>
+<p>Review and explore <a href="https://leanpub.com/the-devops-2-4-toolkit">DevOps 2.4 Toolkit</a> by Viktor Farcic (<a href="https://github.com/vfarcic/devops24">open source</a>, content can be reused with attribution)</p>
+</li>
+<li>
+<p>Review and explore <a href="/doc/book/installing/kubernetes/">Installing Jenkins - Kubernetes</a>, identify and fix issues detected</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="writing-phase-1-docker-images"><a class="anchor" href="#writing-phase-1-docker-images"></a>Writing Phase 1 - Docker images</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Document creating a Docker image that contains plugins and use it in Kubernetes</p>
+</li>
+<li>
+<p>Document maintaining plugin versions with plugin installation manager tool</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="writing-phase-2-configuration-as-code"><a class="anchor" href="#writing-phase-2-configuration-as-code"></a>Writing Phase 2 - Configuration as Code</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Document maintaining system configuration with configuration as code</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="writing-phase-3-agents"><a class="anchor" href="#writing-phase-3-agents"></a>Writing Phase 3 - Agents</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Document ephemeral agents in a Kubernetes cluster</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Using the kubernetes plugin for ephemeral agents</p>
+</li>
+<li>
+<p>Using static agents</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="writing-phase-4-solution-page"><a class="anchor" href="#writing-phase-4-solution-page"></a>Writing Phase 4 - Solution Page</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Create <a href="/solutions/">solution page</a> for Kubernetes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Videos</p>
+</li>
+<li>
+<p>Links to jenkins.io documents</p>
+</li>
+<li>
+<p>Links to other documents</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="measuring-project-success"><a class="anchor" href="#measuring-project-success"></a>Measuring project success</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Significant increase in references to Jenkins documentation pages for Kubernetes.</p>
+</li>
+<li>
+<p>Positive feedback on Kubernetes documentation in the <a href="https://docs.google.com/spreadsheets/d/1nA8xVOkyKmZ8oTYSLdwjborT0w-BpBNNZT0nxR9deZ8/edit#gid=1087292709">documentation feedback</a></p>
+</li>
+<li>
+<p>Low rate of new Kubernetes documentation issues reported in the <a href="https://github.com/jenkins-infra/jenkins.io/issues">jenkins.io issues</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-budget"><a class="anchor" href="#project-budget"></a>Project budget</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Project budget table</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Budget item</th>
+<th class="tableblock halign-right valign-top">Amount</th>
+<th class="tableblock halign-right valign-top">Running total</th>
+<th class="tableblock halign-left valign-top">Notes / justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technical writer to create detailed documentation for Jenkins on Kubernetes.</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">$6000.00</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">$6000.00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assumes 6 months at 1000.00 per month for the writer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volunteer stipends</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">$500.00</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">$7500.00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 volunteer stipends x 500 each</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel1">
+<li><a href="#about-your-organization">About your organization</a></li>
+<li><a href="#about-your-project">About your project</a>
+<ul class="sectlevel2">
+<li><a href="#your-projects-problem">Your project&#8217;s problem</a></li>
+<li><a href="#your-projects-scope">Your project&#8217;s scope</a></li>
+<li><a href="#measuring-project-success">Measuring project success</a></li>
+</ul>
+</li>
+<li><a href="#project-budget">Project budget</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-docs" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/docs" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/docs.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2020/12/04/gsod-project-report/">
+GSOD Project Report: Document Jenkins on Kubernetes
+</a>
+</li>
+<li>
+<a href="/blog/2020/11/05/installing-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes: Installing Jenkins on Kubernetes Documentation Release
+</a>
+</li>
+<li>
+<a href="/blog/2020/09/25/document-jenkins-on-kubernetes-introduction/">
+Documenting Jenkins on Kubernetes Introduction
+</a>
+</li>
+<li>
+<a href="/blog/2019/05/11/docs-sig-announcement/">
+Jenkins Documentation Special Interest Group
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//sigs/docs/gsod/2021/organization-proposal.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

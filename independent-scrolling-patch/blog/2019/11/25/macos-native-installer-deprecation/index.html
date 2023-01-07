@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins macOS native installer deprecation
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/11/25/macos-native-installer-deprecation/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins macOS native installer deprecation" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins macOS native installer deprecation" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins macOS native installer deprecation" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/11/25/macos-native-installer-deprecation/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins macOS native installer deprecation" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins macOS native installer deprecation
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+November 25, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+macOS+native+installer+deprecation&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F11%2F25%2Fmacos-native-installer-deprecation%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>In addition to WAR files and Docker images, the Jenkins project provides native installers for each weekly and LTS release.
+There are installers available for Linux distributions, Windows, macOS and other operating systems.
+There are also installers provided by third parties.
+You can find the list of these installers on the <a href="/download">Downloads</a> page.</p>
+</div>
+<div class="paragraph">
+<p>In this blog post, we announce the upcoming deprecation of the macOS native installer.
+We will review the replacement options and the rollout plan.</p>
+</div>
+<div class="sect2">
+<h3 id="why"><a class="anchor" href="#why"></a>Why?</h3>
+<div class="paragraph">
+<p>Maintaining installers is a significant maintenance effort for the project
+because installers require testing and, sometimes, specific platforms and environments for packaging.
+When installers lose relevance for the majority of the Jenkins audience, we remove them or handover maintenance to third parties on other areas.
+For macOS, there are currently two types of packages: native installers with GUI for desktop versions and <a href="https://brew.sh/">Homebrew packages</a>.
+Since Homebrew is now a defacto standard package manager for macOS users, from the Jenkins standpoint it made sense to deprecate the native installers.</p>
+</div>
+<div class="paragraph">
+<p>Why now?
+There is ongoing work on automating Jenkins Core releases within the Jenkins infrastructure.
+Long story short, we are moving Jenkins release pipelines to Kubernetes on Microsoft Azure.
+This environment does not offer macOS machines that are needed to produce native installers.
+If you are interested to know more, there will be a <a href="https://sched.co/Uara">How Jenkins Builds and Delivers Jenkins in the Cloud</a> talk presented by <a href="https://github.com/olblak">Olivier Vernin</a> at <a href="https://www.cloudbees.com/devops-world/lisbon">DevOps World | Jenkins World 2019 Europe in Lisbon</a> (use the <code>JWFOSS</code> code for a 30% discount!).</p>
+</div>
+<div class="paragraph">
+<p>We could have used an external service for building macOS installers,
+but it would have added an additional point of failure and implementation/maintenance overhead.
+So we discussed it in the <a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/xc-lDVsr0bQ">developer mailing list</a> and agreed that it is better to just deprecate and then remove the packages.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="replacing-native-installers"><a class="anchor" href="#replacing-native-installers"></a>Replacing native installers</h3>
+<div class="paragraph">
+<p>In the case of macOS, there are two main alternatives available: managing the service manually or migrating to Homebrew packages.
+Before doing a migration, we highly recommend backing up your instance.</p>
+</div>
+<div class="sect3">
+<h4 id="managing-jenkins-with-war-file-on-macos"><a class="anchor" href="#managing-jenkins-with-war-file-on-macos"></a>Managing Jenkins with WAR file on macOS</h4>
+<div class="paragraph">
+<p>If your Jenkins instance was previously set up with a native installer,
+to update Jenkins it will be enough to replace the <code>jenkins.war</code> file in the installation directory and restart the instance.
+The services will keep running as it was configured before the migration.
+The default installation directory is <code>/Applications/Jenkins/jenkins.war</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="managing-jenkins-with-homebrew"><a class="anchor" href="#managing-jenkins-with-homebrew"></a>Managing Jenkins with Homebrew</h4>
+<div class="paragraph">
+<p>Installing Jenkins with <a href="https://brew.sh/">Homebrew</a> is a way to go for those who want to install Jenkins using a package manager.
+There are two Homebrew formulas for Jenkins: <a href="https://formulae.brew.sh/formula/jenkins">jenkins</a> for Weekly releases and <a href="https://formulae.brew.sh/formula/jenkins-lts">jenkins-lts</a> for LTS ones.
+These packages are supported by a third party (Homebrew community),
+and they may be not as frequently updated as packages supported by the Jenkins project directly.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Before doing a migration from macOS Native installers to HomeBrew, please make sure to backup your Jenkins instance.
+There are no automatic migration tools available, and the installation may corrupt your <code>JENKINS_HOME</code> or service configuration files in edge cases.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you switch to Homebrew, you will need to properly migrate the <code>JENKINS_HOME</code> data to the new location.
+We do not provide an official migration guide, but it is possible to find some guidelines on the Web.</p>
+</div>
+<div class="paragraph">
+<p>Sample commands:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install the latest Weekly version: <code>brew install jenkins</code></p>
+</li>
+<li>
+<p>Install a specific Weekly version: <code>brew install jenkins@YOUR_VERSION</code></p>
+</li>
+<li>
+<p>Start the Jenkins service: <code>brew services start jenkins</code></p>
+</li>
+<li>
+<p>Restart the Jenkins service: <code>brew services restart jenkins</code></p>
+</li>
+<li>
+<p>Update the Jenkins version: <code>brew upgrade jenkins</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information see the documentation for Homebrew packages on the macOS <a href="/download">Download</a> pages.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rollout-plan"><a class="anchor" href="#rollout-plan"></a>Rollout plan</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>macOS native packaging is considered as deprecated starting from Jenkins 2.206 and Jenkins LTS 2.204.1</p>
+</li>
+<li>
+<p>For Jenkins Weekly macOS native packaging will be removed with the switch to the new Jenkins release flow.
+The exact date is to be determined.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>After the change, there will be no macOS native installers produced for new Jenkins Weekly releases</p>
+</li>
+<li>
+<p>Releases for previous versions will be available <a href="https://get.jenkins.io/osx/">in this archive</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For Jenkins LTS macOS will be removed with the switch to the new Jenkins release flow in the LTS baseline.
+This change will happen only after the deployment of the new release flow in Jenkins Weekly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>After the switch, there will be no macOS native installers produced for new Jenkins LTS releases</p>
+</li>
+<li>
+<p>Releases for previous versions will be available <a href="https://get.jenkins.io/osx-stable/">in this archive</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/xc-lDVsr0bQ">discussion on the developer mailing list</a> for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="questions-and-feedback"><a class="anchor" href="#questions-and-feedback"></a>Questions and feedback</h3>
+<div class="paragraph">
+<p>If you have any questions or want to provide feedback, please use the developer mailing list thread mentioned above <a href="/sigs/platform">Platform SIG</a> channels (chat, google group).
+Any feedback will be much appreciated because we plan more installer/ and platform deprecations in the future.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/deprecation/">
+deprecation
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/macos/">
+macos
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platforms/">
+platforms
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/11/2019-11-25-macos-native-installer-deprecation.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+External Fingerprint Storage Phase-1 Updates
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/06/27/external-fingerprint-storage/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="External Fingerprint Storage Phase-1 Updates" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="External Fingerprint Storage Phase-1 Updates" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/06-external-fingerprint-storage/redis_plugin_gsoc_opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="External Fingerprint Storage Phase-1 Updates" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/06/27/external-fingerprint-storage/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="External Fingerprint Storage Phase-1 Updates" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/06-external-fingerprint-storage/redis_plugin_gsoc_opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+External Fingerprint Storage Phase-1 Updates
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/stellargo/"><div class="app-avatar"><img alt="Sumit Sarin" class="app-avatar__image" src="/images/avatars/stellargo.jpeg"></div> Sumit Sarin</a>
+June 27, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=External+Fingerprint+Storage+Phase-1+Updates&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F06%2F27%2Fexternal-fingerprint-storage%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Externalizing fingerprint storage for Jenkins is a  Google Summer of Code 2020 project.
+We are working on building a pluggable storage engine for fingerprints (see <a href="https://github.com/jenkinsci/jep/blob/master/jep/226/README.adoc">JEP-226</a>).</p>
+</div>
+<div class="paragraph">
+<p>File fingerprinting is a way to track which version of a file is being used by a job/build, making dependency tracking easy. The fingerprint engine of Jenkins can track usages of artifacts, credentials, files, etc. within the system. Currently, it does this by maintaining a local XML-based database which leads to dependence on the physical disk of the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>Allowing fingerprint storage to be moved to external storages decreases the dependence of Jenkins instances on the physical disk space and also allows for tracking the flow of fingerprints across instances of Jenkins connected to the same external storage.</p>
+</div>
+<div class="paragraph">
+<p>Advantages of using external storage drivers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Remove dependence on Jenkins controller disk storage</p>
+</li>
+<li>
+<p>Can configure pay-as-you-use cloud storages</p>
+</li>
+<li>
+<p>Easy Backup Management</p>
+</li>
+<li>
+<p>Better Reliability and Availability</p>
+</li>
+<li>
+<p>Fingerprints can be tracked across Jenkins instances</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Along with this API, we are also working on a <a href="https://github.com/jenkinsci/redis-fingerprint-storage-plugin">reference implementation</a> in the form of a plugin, powered by Redis.</p>
+</div>
+<div class="paragraph">
+<p>As phase 1 of this project comes to an end, this blog post serves as a summary of the progress we made to the entire Jenkins community.</p>
+</div>
+<div class="sect1">
+<h2 id="current-state"><a class="anchor" href="#current-state"></a>Current State</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="https://github.com/jenkinsci/jenkins/pull/4731">new API</a> introduced in Jenkins core is under review. Once merged, it will offer developers to extend it to build external fingerprint storage plugins.</p>
+</li>
+<li>
+<p>The <a href="https://github.com/jenkinsci/redis-fingerprint-storage-plugin">Redis Fingerprint Storage Plugin</a> is alpha release ready. We would immensely appreciate any feedback.</p>
+</li>
+</ul>
+</div>
+<div class="videoblock">
+<div class="title">External Fingerprint Storage Demo</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/yzd-y5ByXg8?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 youtube com/watch?v=yzd-y5ByXg8&feature=youtu be[Demo]">
+<h2 id="introducing-the-new-api-for-plugin-developers"><a class="anchor" href="#introducing-the-new-api-for-plugin-developers"></a>Introducing the new API for plugin developers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With <a href="https://github.com/jenkinsci/jenkins/pull/4731">PR-4731</a>, we introduce a new fingerprint storage API, allowing configuring custom storage engines.
+We exposed the following methods in the new <code>FingerprintStorage</code> class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>void save()</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Saves the given Fingerprint in the storage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Fingerprint load(String id)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Returns the Fingerprint with the given unique ID. The unique ID for a fingerprint is defined by Fingerprint#getHashString().</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>void delete(String id)</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the Fingerprint with the given unique ID.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>boolean isReady()</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Returns true if there is some data in the fingerprint database corresponding to the particular Jenkins instance.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-redis-fingerprint-storage-plugin"><a class="anchor" href="#introducing-redis-fingerprint-storage-plugin"></a>Introducing Redis Fingerprint Storage Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/redis-fingerprint-storage-plugin">Redis Fingerprint Storage Plugin</a> uses the new External Fingerprint Storage API to store the fingerprints in a Redis instance.</p>
+</div>
+<div class="sect2">
+<h3 id="installation"><a class="anchor" href="#installation"></a>Installation:</h3>
+<div class="paragraph">
+<p>The alpha release (version <code>0.1-alpha-1</code>) for the plugin was drafted, and can be installed using the <a href="/doc/developer/publishing/releasing-experimental-updates/">experimental update center</a>.</p>
+</div>
+<div class="paragraph">
+<p>Follow along the following steps after running Jenkins to download and install the plugin:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select <code>Manage Jenkins</code></p>
+</li>
+<li>
+<p>Select <code>Manage Plugins</code></p>
+</li>
+<li>
+<p>Go to <code>Advanced</code> tab</p>
+</li>
+<li>
+<p>Configure the Update Site URL as: <a href="https://updates.jenkins.io/experimental/update-center.json" class="bare">https://updates.jenkins.io/experimental/update-center.json</a></p>
+</li>
+<li>
+<p>Click on <code>Submit</code>, and then press the <code>Check Now</code> button.</p>
+</li>
+<li>
+<p>Go to <code>Available</code> tab.</p>
+</li>
+<li>
+<p>Search for <code>Redis Fingerprint Storage Plugin</code> and check the box along it.</p>
+</li>
+<li>
+<p>Click on <code>Install without restart</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The plugin should now be installed on your system.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the plugin has been installed, you can configure the Redis server details by following the steps below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select <code>Manage Jenkins</code></p>
+</li>
+<li>
+<p>Select <code>Configure System</code></p>
+</li>
+<li>
+<p>Scroll to the section <code>Redis Fingerprint Storage Configuration</code> and fill in the required details:</p>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020/06-external-fingerprint-storage/configure_redis.png" alt="Configure Redis"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Host</code> - Enter hostname where Redis is running</p>
+</li>
+<li>
+<p><code>Port</code> - Specify the port on which Redis is running</p>
+</li>
+<li>
+<p><code>SSL</code> - Click if SSL is enabled</p>
+</li>
+<li>
+<p><code>Database</code> - Redis supports integer indexed databases, which can be specified here.</p>
+</li>
+<li>
+<p><code>Connection Timeout</code> - Set the connection timeout duration in milliseconds.</p>
+</li>
+<li>
+<p><code>Socked Timeout</code> - Set the socket timeout duration in milliseconds.</p>
+</li>
+<li>
+<p><code>Credentials</code> - Configure authentication using username and password to the Redis instance.</p>
+</li>
+<li>
+<p><code>Enabled</code> - Check this to enable the plugin (Note: This is likely to be removed very soon, and will be enabled by default.)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use the <code>Test Redis Connection</code> to verify that the details are correct and Jenkins is able to connect to the Redis instance.</p>
+</li>
+<li>
+<p>Press the <code>Save</code> button.</p>
+</li>
+<li>
+<p>Now, all the fingerprints produced by this Jenkins instance should be saved in the configured Redis server!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-work"><a class="anchor" href="#future-work"></a>Future Work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some of the topics we aim to tackle in the next phases include extending the API, fingerprint cleanup, migrations (internal&#8594;external, external&#8594;internal, external&#8594;external), tracing, ORM, implementing the saveable listener, etc.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="acknowledgements"><a class="anchor" href="#acknowledgements"></a>Acknowledgements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Redis Fingerprint Storage plugin is built and maintained by the Google Summer of Code (GSoC) Team for
+<a href="/projects/gsoc/2020/projects/external-fingerprint-storage/">External Fingerprint Storage for Jenkins</a>.</p>
+</div>
+<div class="paragraph">
+<p>Special thanks to <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a>, <a href="https://github.com/afalko">Andrey Falko</a>, <a href="https://github.com/mikecirioli">Mike Cirioli</a>, <a href="https://github.com/jglick">Jesse Glick</a>, and the entire Jenkins community for all the contribution to this project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reaching-out"><a class="anchor" href="#reaching-out"></a>Reaching Out</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Feel free to reach out to us for any questions, feedback, etc. on the project&#8217;s <a href="https://gitter.im/jenkinsci/external-fingerprint-storage">Gitter Channel</a> or the <a href="mailto:jenkinsci-dev@googlegroups.com">Jenkins Developer Mailing list</a></p>
+</div>
+<div class="paragraph">
+<p>We use Jenkins <a href="https://issues.jenkins.io/">Jira</a> to track issues.
+Feel free to file issues under <code>redis-fingerprint-storage-plugin</code> component.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-links"><a class="anchor" href="#other-links"></a>Other Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=yzd-y5ByXg8&amp;feature=youtu.be">Phase 1 demo</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1hrdOYKXBWyQG-k53KUe6zFXJ3KWEK4t7smdtpNtp1Wo/edit#slide=id.g8061b508ca_0_149">Presentation slides</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/redis-fingerprint-storage-plugin">Redis Fingerprint Storage Plugin</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-62344">Issue Tracker for Phase 1</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/blob/master/jep/226/README.adoc">JEP-226</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/jenkinsci/external-fingerprint-storage">Gitter Channel</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/external-fingerprint-storage/">Project Page</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/fingerprint/">
+fingerprint
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cloud-native/">
+cloud-native
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/external-storage/">
+external-storage
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/redis/">
+redis
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Sumit Sarin" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/stellargo.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/stellargo/">
+Sumit Sarin
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins Google Summer of Code 2020 student. Sumit is an engineering student (senior) at Netaji Subhas Institute of Technology, University of Delhi. He started his journey of contributing to Jenkins in December 2019. His tiny contribution revolved around the Jenkins Fingerprint engine. He is currently working on building <a href="/projects/gsoc/2020/projects/external-fingerprint-storage">External Fingerprint Storage for Jenkins</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/stellargo" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://medium.com/@sumitsarinofficial" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/sumit-sarin" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/06/2020-06-27-external-fingerprint-storage.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Declarative Pipeline at Jenkins World
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/08/18/declarative-pipelines-at-jenkinsworld/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Declarative Pipeline at Jenkins World" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Declarative Pipeline at Jenkins World" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Declarative Pipeline at Jenkins World" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/08/18/declarative-pipelines-at-jenkinsworld/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Declarative Pipeline at Jenkins World" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Declarative Pipeline at Jenkins World
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+August 18, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Declarative+Pipeline+at+Jenkins+World&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F08%2F18%2Fdeclarative-pipelines-at-jenkinsworld%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https://github.com/abayer">Andrew Bayer</a>, who is
+one of the authors of the
+<a href="https://plugins.jenkins.io/pipeline-model-definition">Declarative Pipeline plugin</a>,
+and is a software engineer on the Pipeline team at
+<a href="https://cloudbees.com">CloudBees, Inc.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A year ago at Jenkins World 2016, we unveiled Declarative Pipeline, a
+structured way to define your Pipeline. It&#8217;s been a great year for Declarative
+and Pipeline in general, with the release of Declarative Pipeline 1.0 in
+February, multiple releases since then, the introduction of
+<a href="/doc/book/pipeline/">documentation on Pipeline at jenkins.io</a>,
+with a focus on Declarative, and more. Given everything that&#8217;s happened over
+the last year, we thought it&#8217;d be good to let you all know what you can expect
+to see and hear about Declarative Pipeline at this year&#8217;s Jenkins World.</p>
+</div>
+<div class="paragraph">
+<p>First, on Thursday, August 31, I&#8217;ll be giving a talk on Declarative Pipeline
+with <a href="https://github.com/rsandell">Robert Sandell</a>, one of my coworkers
+here at CloudBees and another author of Declarative Pipeline. We&#8217;ll be
+covering what&#8217;s happened with Declarative over the last year, new features
+added since the 1.0 release, such as the <code>libraries</code> directive and more <code>when</code>
+conditions, what&#8217;s planned for the upcoming 1.2 release (which is planned for
+shortly after Jenkins World!), including parallel <code>stage</code>s, and what&#8217;s on the
+roadmap for the future. In addition, we&#8217;ll be demoing some of the features in
+1.2, and providing some pointers on best practices for writing your Declarative
+Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Also on Thursday, <a href="https://github.com/stephendonner">Stephen Donner from Mozilla</a>
+will be giving a demo showing Mozilla&#8217;s usage of Declarative Pipeline and
+shared libraries at the Community Booth - Mozilla has been doing great work
+with Declarative, and I&#8217;m excited to see their usage in more detail and hear
+Stephen talk about their experience!</p>
+</div>
+<div class="paragraph">
+<p>In addition, Robert, Stephen, and myself will all be at Jenkins World both days
+of the main sessions, and Robert and myself will also be at the
+<a href="https://www.meetup.com/jenkinsmeetup/events/241213280/">Contributor Summit</a>
+on Tuesday. We&#8217;d love to hear your thoughts on Declarative and will be happy to
+answer any questions that we can. Looking forward to seeing you all!</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Andrew Bayer and Robert Sandell will be talking about the latest on
+<a href="https://jenkinsworld20162017.sched.com/event/ALOd/declarative-pipelines-in-jenkins">Declarative Pipeline in Jenkins</a>
+ at <a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in August,
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/08/2017-08-18-declarative-pipelines-at-jenkinsworld.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

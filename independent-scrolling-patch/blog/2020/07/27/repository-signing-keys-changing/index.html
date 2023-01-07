@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins 2.235.3: New Linux Repository Signing Keys
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This article announces new Linux repository signing keys. Repository signing keys will change with the release of Jenkins LTS 2.235.3. The previous repository signing keys will not be used after the release of Jenkins LTS 2.235.3. The repository signing keys will be changed for Debian/Ubuntu and CentOS/Red Hat repositories.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/27/repository-signing-keys-changing/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins 2.235.3: New Linux Repository Signing Keys" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins 2.235.3: New Linux Repository Signing Keys" name="twitter:title">
+<meta content="This article announces new Linux repository signing keys. Repository signing keys will change with the release of Jenkins LTS 2.235.3. The previous repository signing keys will not be used after the release of Jenkins LTS 2.235.3. The repository signing keys will be changed for Debian/Ubuntu and CentOS/Red Hat repositories.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/07-repository-signing-keys-change/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins 2.235.3: New Linux Repository Signing Keys" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/27/repository-signing-keys-changing/" property="og:url">
+<meta content="This article announces new Linux repository signing keys. Repository signing keys will change with the release of Jenkins LTS 2.235.3. The previous repository signing keys will not be used after the release of Jenkins LTS 2.235.3. The repository signing keys will be changed for Debian/Ubuntu and CentOS/Red Hat repositories.
+" name="og:description">
+<meta content="Jenkins 2.235.3: New Linux Repository Signing Keys" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/07-repository-signing-keys-change/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins 2.235.3: New Linux Repository Signing Keys
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+July 27, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+2.235.3%3A+New+Linux+Repository+Signing+Keys&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F07%2F27%2Frepository-signing-keys-changing%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The Jenkins core release automation project has been delivering Jenkins weekly releases since <a href="/changelog/#v2.232">Jenkins 2.232</a>, April 16, 2020.
+The Linux repositories that deliver the weekly release were updated with new GPG keys with the release of Jenkins 2.232.</p>
+</div>
+<div class="paragraph">
+<p>Beginning with Jenkins LTS release <a href="/changelog-stable/#v2.235.3">2.235.3</a>, stable repositories will be signed with the same GPG keys that sign the weekly repositories.
+Administrators of Linux systems <strong>must</strong> install the new signing keys on their Linux servers <strong>before</strong> installing Jenkins 2.235.3.</p>
+</div>
+<div class="sect1">
+<h2 id="debianubuntu"><a class="anchor" href="#debianubuntu"></a>Debian/Ubuntu</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Update Debian compatible operating systems (Debian, Ubuntu, Linux Mint Debian Edition, etc.) with the command:</p>
+</div>
+<div class="listingblock">
+<div class="title">Debian/Ubuntu</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># wget -qO - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="red-hatcentos"><a class="anchor" href="#red-hatcentos"></a>Red Hat/CentOS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Update Red Hat compatible operating systems (Red Hat Enterprise Linux, CentOS, Fedora, Oracle Linux, Scientific Linux, etc.) with the command:</p>
+</div>
+<div class="listingblock">
+<div class="title">Red Hat/CentOS</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="frequently-asked-questions"><a class="anchor" href="#frequently-asked-questions"></a>Frequently Asked Questions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="what-if-i-dont-update-the-repository-signing-key"><a class="anchor" href="#what-if-i-dont-update-the-repository-signing-key"></a>What if I don&#8217;t update the repository signing key?</h3>
+<div class="paragraph">
+<p>Updates will be <strong>blocked</strong> by the operating system package manager (apt, yum, dnf) on operating systems that have not installed the new repository signing key.
+Sample messages from the operating system may look like:</p>
+</div>
+<div class="listingblock">
+<div class="title">Debian/Ubuntu</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">Reading package lists... Done
+W: GPG error: https://pkg.jenkins.io/debian-stable binary/ Release:
+    The following signatures couldn<span class="s1">'t be verified because the public key is not available:
+        NO_PUBKEY FCEF32E745F2C3D5
+E: The repository '</span>https://pkg.jenkins.io/debian-stable binary/ Release<span class="s1">' is not signed.
+N: Updating from such a repository can'</span>t be <span class="k">done </span>securely, and is therefore disabled by default.
+N: See apt-secure<span class="o">(</span>8<span class="o">)</span> manpage <span class="k">for </span>repository creation and user configuration details.</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Red Hat/CentOS</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">Downloading packages:
+warning: /var/cache/yum/x86_64/7/jenkins/packages/jenkins-2.235.3-1.1.noarch.rpm:
+    Header V4 RSA/SHA512 Signature, key ID 45f2c3d5: NOKEY
+Public key <span class="k">for </span>jenkins-2.235.3-1.1.noarch.rpm is not installed</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="why-is-the-repository-signing-key-being-updated"><a class="anchor" href="#why-is-the-repository-signing-key-being-updated"></a>Why is the repository signing key being updated?</h3>
+<div class="paragraph">
+<p>The original repository GPG signing key is owned by Kohsuke Kawaguchi.
+Rather than require that Kohsuke disclose his personal GPG signing key, the core release automation project has used a new repository signing key.
+The updated GPG repository signing key is used in the weekly repositories and the stable repositories.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="which-operating-systems-are-affected"><a class="anchor" href="#which-operating-systems-are-affected"></a>Which operating systems are affected?</h3>
+<div class="paragraph">
+<p>Operating systems that use Debian package management (apt) and operating systems that use Red Hat package management (yum and dnf) need the new repository signing key.</p>
+</div>
+<div class="paragraph">
+<p>Other operating systems like Windows, macOS, FreeBSD, OpenBSD, Solaris, and OpenIndiana are not affected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="are-there-other-signing-changes"><a class="anchor" href="#are-there-other-signing-changes"></a>Are there other signing changes?</h3>
+<div class="paragraph">
+<p>Yes, there are other signing changes, though they do not need specific action from users.</p>
+</div>
+<div class="paragraph">
+<p>The <code>jenkins.war</code> file is signed with a new code signing certificate.
+The new code signing certificate has been used on weekly releases since April 2020.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/linux/">
+linux
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform/">
+platform
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/07/2020-07-27-repository-signing-keys-changing.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

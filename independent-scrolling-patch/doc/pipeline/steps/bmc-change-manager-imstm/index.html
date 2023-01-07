@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+BMC AMI DevOps for Change Manager for IMS TM
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/bmc-change-manager-imstm/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="BMC AMI DevOps for Change Manager for IMS TM" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="BMC AMI DevOps for Change Manager for IMS TM" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="BMC AMI DevOps for Change Manager for IMS TM" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/bmc-change-manager-imstm/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="BMC AMI DevOps for Change Manager for IMS TM" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#bmc-ami-devops-for-change-manager-for-ims-tm">BMC AMI DevOps for Change Manager for IMS TM</a>
+<ul class="sectlevel2">
+<li><a href="#bmc-devops-for-bmc-ami-change-manager-for-ims-tm-plugin-bmc-ami-devops-for-change-manager-for-ims-tm"><code>BMC DevOps for BMC AMI Change Manager for IMS TM Plugin</code>: BMC AMI DevOps for Change Manager for IMS TM</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="bmc-ami-devops-for-change-manager-for-ims-tm"><a class="anchor" href="#bmc-ami-devops-for-change-manager-for-ims-tm"></a>BMC AMI DevOps for Change Manager for IMS TM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/bmc-change-manager-imstm">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="bmc-devops-for-bmc-ami-change-manager-for-ims-tm-plugin-bmc-ami-devops-for-change-manager-for-ims-tm"><a class="anchor" href="#bmc-devops-for-bmc-ami-change-manager-for-ims-tm-plugin-bmc-ami-devops-for-change-manager-for-ims-tm"></a><code>BMC DevOps for BMC AMI Change Manager for IMS TM Plugin</code>: BMC AMI DevOps for Change Manager for IMS TM</h3>
+<ul><li><code>server : String</code>
+<div><div>
+ URL or IP address.
+</div></div>
+
+</li>
+<li><code>port : String</code>
+<div><div>
+ z/OSMF Port
+</div></div>
+
+</li>
+<li><code>user : String</code>
+<div><div>
+ z/OS user name
+</div></div>
+
+</li>
+<li><code>pswd : String</code>
+</li>
+<li><code>jclContent : String</code>
+</li>
+<li><code>jclType : String</code>
+</li>
+<li><code>dlist : String</code>
+<div><div>
+ The DELTA List PDS member name is also the DELTA List name. Any valid PDS member name is acceptable to BMC AMI Change Manager for IMS TM.
+</div></div>
+
+</li>
+<li><code>jobCard : String</code>
+</li>
+<li><code>acctno : String</code>
+</li>
+<li><code>dPds : String</code>
+<div><div>
+ DELTA Lists for all BMC AMI Change Manager for IMS TM users are stored in the active DELTA List library (PDS). <br> The DELTA List PDS is normally allocated with RECFM=VB, LRECL=259, and BLKSIZE=23476. Although the block size could be shortened or lengthened as needed, half-track blocking is recommended.
+</div></div>
+
+</li>
+<li><code>dOptionsPds : String</code>
+<div><div>
+ <p>Specify the name of the data set where the BMC AMI Change Manager for IMS TM Global Options load module (DLP$GBL0) should be stored or retrieved.</p>
+ <p>It is recommended that you use the same data set that contains the IMSID options modules (DLP#iiii), and Group options modules (DLPZgggg).</p>
+ <p>This data set should have been created during BMC AMI Change Manager for IMS TM installation. JCL to allocate this data set is included in the BMC AMI Change Manager for IMS TM control library.</p>
+</div></div>
+
+</li>
+<li><code>target : String</code>
+<div><div>
+ IMSID or GROUP NAME in which to execute the DELTA List.
+</div></div>
+
+</li>
+<li><code>mode : String</code>
+<div><div>
+ Option 'Optimize execution', instructs DELTA PLUS to attempt execution of the ENTIRE DELTA List as a single unit-of-work in IMS. This is the recommended mode due to the speed in which the request is executed.
+ <p><b>Note:</b> You must select this option for a DELTA List that is defined as Dependent to execute in the fashion Dependent implies.</p>
+ <p></p>
+ <p>Option 'One element at a time', instructs BMC AMI Change Manager for IMS TM to execute the DELTA List sequentially, one element at a time. This mode is much slower than Optimize execution mode. However, there are certain occasions when one element at a time is desirable. For example, transactions T1, T2 and T3 all require the MAXRGN parameter be changed from 3 to 4. Since they must be stopped before they can be revised, you want them stopped for the shortest amount of time possible. With Optimized mode, ALL the /STOP commands are done BEFORE the DELTA revise is done, and ALL the /START commands are done AFTER the revise is done. Using 'One element at a time' mode, the /STOP is done for T1, T1 is revised, then the /START command for T1 is issued before any activity takes place for T2 or T3.</p>
+ <p></p>
+ <p>This mode contains suboption Pause after elements with errors which instructs BMC AMI Change Manager for IMS TM to stop the DELTA List execution when an error is encountered. For additional information on the Pause option, place the cursor on the phrase highlighted above, and press HELP (F1).</p>
+</div></div>
+
+</li>
+<li><code>ims_cmd : String</code>
+<div><div>
+ <p>It will process an EXECUTE input record to insert an IMS Command Element into the Delta List PDS Member.</p>
+ <p>The EXECUTE input record format is as follows: EXECUTE /CMD Command_Parameters</p>
+ <p>e.g.: EXECUTE /STO PROG PGMD</p>
+</div></div>
+
+</li>
+<li><code>title : String</code>
+<div><div>
+ Title of the DELTA List. A maximum of 28 characters is allowed.
+</div></div>
+
+</li>
+<li><code>notes : String</code>
+<div><div>
+ Notes for the Delta List Member
+</div></div>
+
+</li>
+<li><code>dlistRecords</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>action : String</code>
+</li>
+<li><code>elementType : String</code>
+</li>
+<li><code>elementName : String</code>
+</li>
+<li><code>ims_cmd : String</code>
+</li>
+<li><code>appnewname : String</code>
+</li>
+<li><code>appres : String</code>
+</li>
+<li><code>dbnewname : String</code>
+</li>
+<li><code>dbres : String</code>
+</li>
+<li><code>acc : String</code>
+</li>
+<li><code>auto : String</code>
+</li>
+<li><code>rand : String</code>
+</li>
+<li><code>randonly : String</code>
+</li>
+<li><code>rldareas : String</code>
+</li>
+<li><code>iovfext : String</code>
+</li>
+<li><code>dbrelgsam : String</code>
+</li>
+<li><code>dbcopyacb : String</code>
+</li>
+<li><code>apprelgsam : String</code>
+</li>
+<li><code>appcopyacb : String</code>
+</li>
+<li><code>ty : String</code>
+</li>
+<li><code>schd : String</code>
+</li>
+<li><code>appfp : String</code>
+</li>
+<li><code>dyn : String</code>
+</li>
+<li><code>gpsb : String</code>
+</li>
+<li><code>lang : String</code>
+</li>
+<li><code>apptls : String</code>
+</li>
+<li><code>rtcnewname : String</code>
+</li>
+<li><code>rtcinq : String</code>
+</li>
+<li><code>rtcpsbname : String</code>
+</li>
+<li><code>psb : String</code>
+</li>
+<li><code>trannewname : String</code>
+</li>
+<li><code>wfi : String</code>
+</li>
+<li><code>npri : String</code>
+</li>
+<li><code>lpri : String</code>
+</li>
+<li><code>lco : String</code>
+</li>
+<li><code>mseg : String</code>
+</li>
+<li><code>resp : String</code>
+</li>
+<li><code>cl : String</code>
+</li>
+<li><code>plc : String</code>
+</li>
+<li><code>time : String</code>
+</li>
+<li><code>para : String</code>
+</li>
+<li><code>uschd : String</code>
+</li>
+<li><code>traninq : String</code>
+</li>
+<li><code>recv : String</code>
+</li>
+<li><code>tranfp : String</code>
+</li>
+<li><code>emhs : String</code>
+</li>
+<li><code>mper : String</code>
+</li>
+<li><code>uc : String</code>
+</li>
+<li><code>edit : String</code>
+</li>
+<li><code>lsid : String</code>
+</li>
+<li><code>rsid : String</code>
+</li>
+<li><code>spa : String</code>
+</li>
+<li><code>spad : String</code>
+</li>
+<li><code>segs : String</code>
+</li>
+<li><code>oseg : String</code>
+</li>
+<li><code>msc : String</code>
+</li>
+<li><code>dc : String</code>
+</li>
+<li><code>mreg : String</code>
+</li>
+<li><code>ser : String</code>
+</li>
+<li><code>aoi : String</code>
+</li>
+<li><code>trantls : String</code>
+</li>
+<li><code>exptm : String</code>
+</li>
+<li><code>terminalmask : String</code>
+</li>
+<li><code>terminalnewname : String</code>
+</li>
+<li><code>sign : String</code>
+</li>
+<li><code>ltermmask : String</code>
+</li>
+<li><code>ltermnewname : String</code>
+</li>
+<li><code>ass : String</code>
+</li>
+<li><code>msn : String</code>
+</li>
+<li><code>l61 : String</code>
+</li>
+<li><code>subpoolmask : String</code>
+</li>
+<li><code>subpoolnewname : String</code>
+</li>
+<li><code>msg : String</code>
+</li>
+<li><code>bmcAppNew : boolean</code>
+</li>
+<li><code>bmcAppRes : boolean</code>
+</li>
+<li><code>bmcDbNewname : boolean</code>
+</li>
+<li><code>bmcDbRes : boolean</code>
+</li>
+<li><code>bmcAcc : boolean</code>
+</li>
+<li><code>bmcAuto : boolean</code>
+</li>
+<li><code>bmcRand : boolean</code>
+</li>
+<li><code>bmcRandOnly : boolean</code>
+</li>
+<li><code>bmcRldAreas : boolean</code>
+</li>
+<li><code>bmcIoVfExt : boolean</code>
+</li>
+<li><code>bmcDbCopyAcb : boolean</code>
+</li>
+<li><code>bmcDbRelGsam : boolean</code>
+</li>
+<li><code>bmcAppCopyAcb : boolean</code>
+</li>
+<li><code>bmcAppRelGsam : boolean</code>
+</li>
+<li><code>bmcTy : boolean</code>
+</li>
+<li><code>bmcSchd : boolean</code>
+</li>
+<li><code>bmcAppFp : boolean</code>
+</li>
+<li><code>bmcDyn : boolean</code>
+</li>
+<li><code>bmcGpsb : boolean</code>
+</li>
+<li><code>bmcLang : boolean</code>
+</li>
+<li><code>bmcApptls : boolean</code>
+</li>
+<li><code>bmcRtcsPsbName : boolean</code>
+</li>
+<li><code>bmcRtcInq : boolean</code>
+</li>
+<li><code>bmcRtcsNew : boolean</code>
+</li>
+<li><code>bmcPsb : boolean</code>
+</li>
+<li><code>bmcTranNewName : boolean</code>
+</li>
+<li><code>bmcWfi : boolean</code>
+</li>
+<li><code>bmcNpri : boolean</code>
+</li>
+<li><code>bmcLpri : boolean</code>
+</li>
+<li><code>bmcLco : boolean</code>
+</li>
+<li><code>bmcMseg : boolean</code>
+</li>
+<li><code>bmcResp : boolean</code>
+</li>
+<li><code>bmcCl : boolean</code>
+</li>
+<li><code>bmcPlc : boolean</code>
+</li>
+<li><code>bmcTime : boolean</code>
+</li>
+<li><code>bmcPara : boolean</code>
+</li>
+<li><code>bmcUschd : boolean</code>
+</li>
+<li><code>bmcTranInq : boolean</code>
+</li>
+<li><code>bmcRecv : boolean</code>
+</li>
+<li><code>bmcTranFp : boolean</code>
+</li>
+<li><code>bmcEmhs : boolean</code>
+</li>
+<li><code>bmcMper : boolean</code>
+</li>
+<li><code>bmcUc : boolean</code>
+</li>
+<li><code>bmcEdit : boolean</code>
+</li>
+<li><code>bmcLsid : boolean</code>
+</li>
+<li><code>bmcRsid : boolean</code>
+</li>
+<li><code>bmcSpa : boolean</code>
+</li>
+<li><code>bmcSpad : boolean</code>
+</li>
+<li><code>bmcSegs : boolean</code>
+</li>
+<li><code>bmcOseg : boolean</code>
+</li>
+<li><code>bmcMsc : boolean</code>
+</li>
+<li><code>bmcDc : boolean</code>
+</li>
+<li><code>bmcMreg : boolean</code>
+</li>
+<li><code>bmcSer : boolean</code>
+</li>
+<li><code>bmcAoi : boolean</code>
+</li>
+<li><code>bmcTls : boolean</code>
+</li>
+<li><code>bmcExptm : boolean</code>
+</li>
+<li><code>bmcTermMask : boolean</code>
+</li>
+<li><code>bmcTermNew : boolean</code>
+</li>
+<li><code>bmcSign : boolean</code>
+</li>
+<li><code>bmcLtermMask : boolean</code>
+</li>
+<li><code>bmcLtermNew : boolean</code>
+</li>
+<li><code>bmcAss : boolean</code>
+</li>
+<li><code>bmcMsn : boolean</code>
+</li>
+<li><code>bmcL61 : boolean</code>
+</li>
+<li><code>bmcSpMask : boolean</code>
+</li>
+<li><code>bmcSpNewName : boolean</code>
+</li>
+<li><code>bmcMsg : boolean</code>
+</li>
+</ul></li>
+<li><code>dlpLoadLibs</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>lib : String</code>
+</li>
+</ul></li>
+<li><code>vds : String</code>
+<div><div>
+ (Optional)<br> Specify the name of the member (the Variable Definition Set) in the Variable Definition Library that contains the variable definitions for this DELTA List. The Variable Definition Sets are members that contain the definitions for the symbolic variables used by BMC AMI Change Manager for IMS TM in DELTA List processing.
+</div></div>
+
+</li>
+<li><code>goodRC : String</code>
+<div><div>
+ Any value that is above the acceptable return code will be considered as FAILURE.
+</div></div>
+
+</li>
+<li><code>dependent : boolean</code>
+</li>
+<li><code>mark : boolean</code>
+<div><div>
+ <p>Select this field to inform BMC AMI Change Manager for IMS TM to execute Marked elements only.</p>
+ <p>A beneficial use of this function is a DELTA List containing many elements that has failed. Instead of creating another DELTA List that contains corrections for the failed element(s) from the previous DELTA List, simply correct the error(s) in the original DELTA List, Mark only those elements which require execution, and select the 'Execute Marked elements only' option at DELTA List execution.</p>
+</div></div>
+
+</li>
+<li><code>coord : boolean</code>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

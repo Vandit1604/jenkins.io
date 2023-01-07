@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Community Blog
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/jglick/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/jglick/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-8 main-content with-sidebar" id="content">
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">Jesse Glick</p>
+<div class="paragraph">
+<p>Jesse has been developing Jenkins core and plugins for years.
+He is the coauthor with Kohsuke of the core infrastructure of the Pipeline system.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/jglick" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/tyvole" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial blogcardlist.html.haml -->
+<div class="content blog-posts app-blog-page">
+<div class="item-list">
+<ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2020/11/10/spring-xstream/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Spring and XStream updates (breaking changes!)
+</h5>
+</div>
+<p class="teaser">
+Cleaning up technical debt is a perennial topic among Jenkins core developers,
+and one of the most visible issues is the use of obsolete and/or forked third-party libraries.
+In a world where Dependabot is offering updates to libraries released just hours before,
+it is unpleasant to be working with dependencies that are many years old.
+Since large organizations in particular are unhappy to install software using obsolete or...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2020/02/02/web-socket/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+02
+</div>
+</div>
+<h5 class="title">
+WebSocket
+</h5>
+</div>
+<p class="teaser">
+I am happy to report that JEP-222 has landed in Jenkins weeklies,
+starting in 2.217.
+This improvement brings experimental WebSocket support to Jenkins,
+available when connecting inbound agents or when running the CLI.
+The WebSocket protocol allows bidirectional, streaming communication over an HTTP(S) port.
+
+
+While many users of Jenkins could benefit,
+implementing this system was particularly important for CloudBees
+because of how CloudBees Core on modern cloud platforms
+(i.e., running on Kubernetes)...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/remoting/">
+remoting
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/agents/">
+agents
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cli/">
+cli
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2019/02/17/remoting-cli-removed/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+Remoting-based CLI removed from Jenkins
+</h5>
+</div>
+<p class="teaser">
+Close to two years ago, we announced in
+New, safer CLI in 2.54
+that the traditional “Remoting” operation mode of the Jenkins command-line interface
+was being deprecated for a variety of reasons, especially its very poor security record.
+Today in Jenkins 2.165 support for this mode is finally being removed altogether,
+in both the server and bundled jenkins-cli.jar client.
+The projected June 5th LTS release will reflect this removal,
+at which...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/remoting/">
+remoting
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/09/10/scaling-network-connections/">
+<div class="header">
+<div class="date">
+<div class="month">
+Sep
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Scaling Network Connections from the Jenkins Controller
+</h5>
+</div>
+<p class="teaser">
+Oleg Nenashev and I will be speaking at DevOps World | Jenkins World in San Francisco this year about
+Scaling Network Connections from the Jenkins Controller.
+Over the years there have been many efforts to analyze, optimize, and fortify the “Remoting channel”
+that allows a controller to orchestrate agent activity and receive build results.
+Techniques such as tuning the agent launcher can improve service,
+but qualitative change can only...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2018/">
+jenkinsworld2018
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cloud-native/">
+cloud-native
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/performance/">
+performance
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/scalability/">
+scalability
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/remoting/">
+remoting
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/05/15/incremental-deployment/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+15
+</div>
+</div>
+<h5 class="title">
+Automatic deployment of “incremental” commits to Jenkins core and plugins
+</h5>
+</div>
+<p class="teaser">
+A couple of weeks ago, Tyler mentioned some
+developer improvements in Essentials
+that had been recently introduced:
+the ability for
+ci.jenkins.io
+builds to get deployed automatically to an “Incrementals” Maven repository,
+as described in
+JEP-305.
+For a plugin maintainer, you just need to
+turn on this support
+and you are ready to both deploy individual Git commits from your repository
+without the need to run heavyweight traditional Maven releases,
+and to depend directly on similar commits...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/evergreen/">
+evergreen
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/04/30/using-the-beta-annotation/">
+<div class="header">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+30
+</div>
+</div>
+<h5 class="title">
+Using new core APIs with the Beta annotation
+</h5>
+</div>
+<p class="teaser">
+This sort of slid under the radar in the middle of some bigger changes
+for the JEP-202
+reference implementation, so I wanted to call it out now. Arguably this could
+deserve a retroactive JEP, though I would rather fold it into a JEP for
+JENKINS-49651 (see below).
+
+
+As of Jenkins 2.118, or plugin parent POM 3.7, you can mark any Java member
+(class, method, constructor, field, or I suppose also...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugin/">
+plugin
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/01/13/jep-200/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+13
+</div>
+</div>
+<h5 class="title">
+JEP-200: Remoting / XStream whitelist integrated into Jenkins core
+</h5>
+</div>
+<p class="teaser">
+There is a newer version of the announcement for Jenkins administrators.
+Please see this blogpost.
+
+
+
+
+
+
+Overview
+
+
+JEP-200 has been integrated into Jenkins weekly builds
+and (if all goes well) will be a part of the next LTS line.
+In a nutshell, this change is a security hardening measure
+to be less permissive about deserializing Java classes defined in the Java Platform or libraries bundled with Jenkins.
+For several years now, Jenkins...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/remoting/">
+remoting
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/upgrade/">
+upgrade
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/05/31/pipeline-snippetizer/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+31
+</div>
+</div>
+<h5 class="title">
+New display of Pipeline’s "snippet generator"
+</h5>
+</div>
+<p class="teaser">
+Those of you updating the Pipeline Groovy plugin
+to 2.3 or later will notice a change to the appearance of the configuration form.
+The Snippet Generator tool is no longer a checkbox enabled inside the configuration page.
+Rather, there is a link Pipeline Syntax which opens a separate page with several options.
+(The link appears in the project’s sidebar; Jenkins 2 users will not see the sidebar from...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/04/22/pipeline-2/">
+<div class="header">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+22
+</div>
+</div>
+<h5 class="title">
+Pipeline 2.x plugins
+</h5>
+</div>
+<p class="teaser">
+Those of you who routinely apply all plugin updates may already have noticed that the version numbers of the plugins in the Pipeline suite have switched to a 2.x scheme. Besides aligning better with the upcoming Jenkins 2.0 core release, the plugins are now being released with independent lifecycles.
+
+
+“Pipeline 1.15” (the last in the 1.x line) included simultaneous releases of a dozen or so...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jglick/"><div class="app-avatar"></div> Jesse Glick</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins2/">
+jenkins2
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<!-- ending partial blogcardlist.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
+<div class="content">
+<!-- starting partial events.html.haml -->
+<div class="item-list">
+<ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://fosdem.org/2023/" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+FOSDEM'23
+</h5>
+Brussels, Belgium
+</div>
+<p class="teaser">
+
+FOSDEM is a free event for software developers to meet, share ideas and collaborate. Visit us at the Jenkins stand.
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.socallinuxexpo.org/scale/20x" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+9
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+10:00 am
+</div>
+</div>
+<h5 class="title">
+SCALE 20X
+</h5>
+Pasadena, California
+</div>
+<p class="teaser">
+
+SCaLE is the largest community-run open-source and free software conference in North America. Visit us at the Jenkins booth!
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+</ul>
+</div>
+
+<!-- ending partial events.html.haml -->
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//node/index.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

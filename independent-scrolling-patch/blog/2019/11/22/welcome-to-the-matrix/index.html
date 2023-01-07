@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Welcome to the Matrix
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/11/22/welcome-to-the-matrix/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Welcome to the Matrix" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Welcome to the Matrix" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/plumber/plumber.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Welcome to the Matrix" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/11/22/welcome-to-the-matrix/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Welcome to the Matrix" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/plumber/plumber.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Welcome to the Matrix
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+November 22, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Welcome+to+the+Matrix&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F11%2F22%2Fwelcome-to-the-matrix%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I often find myself needing to run the same actions on a bunch of different configurations.
+Up to now, that meant I had to make multiple copies of the same stages in my pipelines.
+When I needed to make changes, I had to make the same changes in multiple places throughout my pipeline.
+Maintaining even a small number of configuration was difficult for larger pipelines.</p>
+</div>
+<div class="paragraph">
+<p>Declarative Pipeline 1.5.0-beta1 (now available from the
+<a href="https://updates.jenkins.io/experimental/">Jenkins Experimental Update site</a>) adds a new <code>matrix</code> section that lets me specify a list stages once and then run that same list in parallel on multiple configurations.
+Let&#8217;s take a look!</p>
+</div>
+<div class="sect1">
+<h2 id="single-configuration-pipeline"><a class="anchor" href="#single-configuration-pipeline"></a>Single configuration pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I&#8217;ll start with a simple pipeline with build and test stages.
+I&#8217;m using <code>echo</code> steps as placeholders for my build and test actions.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'BuildAndTest'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">agent</span> <span class="n">any</span>
+            <span class="n">stages</span> <span class="o">{</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">steps</span> <span class="o">{</span>
+                        <span class="n">echo</span> <span class="s1">'Do Build'</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">steps</span> <span class="o">{</span>
+                        <span class="n">echo</span> <span class="s1">'Do Test'</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-for-multiple-platforms-and-browsers"><a class="anchor" href="#pipeline-for-multiple-platforms-and-browsers"></a>Pipeline for multiple platforms and browsers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I&#8217;d like to run my build and tests on a combination of platforms and browsers.
+The new <code>matrix</code> directive lets me specify a set of <code>axes</code>.
+Each <code>axis</code> has a <code>name</code> and a list of one or more <code>values</code>.
+When the pipeline is run, Jenkins will take those and run my stages on all possible combinations of values from each axis.
+All cells in a matrix run in parallel (limited only by the number of available agents).
+Stages within each cell are run sequentially.</p>
+</div>
+<div class="paragraph">
+<p>My matrix has two axes: <code>PLATFORM</code> and <code>BROWSER</code>.
+I have three values for <code>PLATFORM</code> and four values for <code>BROWSER</code> resulting in my stages being run with twelve different combinations.
+I&#8217;ve changed my <code>echo</code> steps to use the axis values for each cell.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'BuildAndTest'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">matrix</span> <span class="o">{</span>
+                <span class="n">agent</span> <span class="n">any</span>
+                <span class="n">axes</span> <span class="o">{</span>
+                    <span class="n">axis</span> <span class="o">{</span>
+                        <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                        <span class="n">values</span> <span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span>
+                    <span class="o">}</span>
+                    <span class="n">axis</span> <span class="o">{</span>
+                        <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                        <span class="n">values</span> <span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">stages</span> <span class="o">{</span>
+                    <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">steps</span> <span class="o">{</span>
+                            <span class="n">echo</span> <span class="s2">"Do Build for ${PLATFORM} - ${BROWSER}"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">steps</span> <span class="o">{</span>
+                            <span class="n">echo</span> <span class="s2">"Do Test for ${PLATFORM} - ${BROWSER}"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Log output (truncated)</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>...
+[Pipeline] stage
+[Pipeline] { (BuildAndTest)
+[Pipeline] parallel
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'edge') (hide)
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'edge')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'edge')
+...
+Do Build for linux - safari
+Do Build for linux - firefox
+Do Build for windows - firefox
+Do Test for linux - firefox
+Do Build for mac - firefox
+Do Build for linux - chrome
+Do Test for windows - firefox
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="excluding-invalid-combinations"><a class="anchor" href="#excluding-invalid-combinations"></a>Excluding invalid combinations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that I have my basic matrix created, I&#8217;ve noticed that I have some invalid combinations.
+Microsoft Edge only runs on Windows and there isn&#8217;t a Linux version of Safari.</p>
+</div>
+<div class="paragraph">
+<p>I can remove invalid cells from my matrix using <code>exclude</code> directives. Each <code>exclude</code> has one or more <code>axis</code> directives with <code>name</code> and <code>values</code>.
+The <code>axis</code> directives inside an <code>exclude</code> generate a set of combinations (similar to generating the matrix cells).
+The matrix cells that match all the values from an <code>exclude</code> combination are removed from the matrix.
+If I have more than one <code>exclude</code> directive, each are evaluated separately to remove cells.</p>
+</div>
+<div class="paragraph">
+<p>When dealing with a long lists of values to exclude, I can use <code>notValues</code> instead of <code>values</code> to specify axis values we <strong>don&#8217;t</strong> want excluded.
+Yes, that&#8217;s a double negative, so it can get a little confusing.
+I try to use it only when I really need it.</p>
+</div>
+<div class="paragraph">
+<p>In my sample pipeline below, I specifically exclude the <code>linux, safari</code> combination and I also exclude any platform that is <strong>not</strong> <code>windows</code> with the <code>edge</code> browser.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This pipeline uses two axes but there is <strong>no limit</strong> on the number of <code>axis</code> directives.</p>
+</div>
+<div class="paragraph">
+<p>Also, in this pipeline each <code>exclude</code> specifies values for both axes, but that is not required.
+If we wanted to run only "linux" cells, we could use the following <code>exclude</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">exclude</span> <span class="o">{</span>
+    <span class="n">axis</span> <span class="o">{</span>
+        <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+        <span class="n">notValues</span> <span class="s1">'linux'</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'BuildAndTest'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">matrix</span> <span class="o">{</span>
+                <span class="n">agent</span> <span class="n">any</span>
+                <span class="n">axes</span> <span class="o">{</span>
+                    <span class="n">axis</span> <span class="o">{</span>
+                        <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                        <span class="n">values</span> <span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span>
+                    <span class="o">}</span>
+                    <span class="n">axis</span> <span class="o">{</span>
+                        <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                        <span class="n">values</span> <span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">excludes</span> <span class="o">{</span>
+                    <span class="n">exclude</span> <span class="o">{</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                            <span class="n">values</span> <span class="s1">'linux'</span>
+                        <span class="o">}</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                            <span class="n">values</span> <span class="s1">'safari'</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="n">exclude</span> <span class="o">{</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                            <span class="n">notValues</span> <span class="s1">'windows'</span>
+                        <span class="o">}</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                            <span class="n">values</span> <span class="s1">'edge'</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">stages</span> <span class="o">{</span>
+                    <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">steps</span> <span class="o">{</span>
+                            <span class="n">echo</span> <span class="s2">"Do Build for ${PLATFORM} - ${BROWSER}"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">steps</span> <span class="o">{</span>
+                            <span class="n">echo</span> <span class="s2">"Do Test for ${PLATFORM} - ${BROWSER}"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Log output (truncated)</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>...
+[Pipeline] stage
+[Pipeline] { (BuildAndTest)
+[Pipeline] parallel
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'edge')
+...
+Do Build for linux - firefox
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="controlling-cell-behavior-at-runtime"><a class="anchor" href="#controlling-cell-behavior-at-runtime"></a>Controlling cell behavior at runtime</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Inside the <code>matrix</code> directive I can also add "per-cell" directives.
+These are the same directives that I would add to a <code>stage</code> and they let me control the behavior of each cell in the matrix.
+These directives can use the axis values from their cell as part of their inputs, allowing me to customize the behavior of each cell to match its axis values.</p>
+</div>
+<div class="paragraph">
+<p>On my Jenkins server I have configured agents with labels that match the OS for each agent ("linux-agent", "windows-agent", and "mac-agent").
+To run each cell in my matrix on the appropriate operating system, I configure the label for that cell using Groovy string templating.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">matrix</span> <span class="o">{</span>
+    <span class="n">axes</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="n">excludes</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="n">agent</span> <span class="o">{</span>
+        <span class="n">label</span> <span class="s2">"${PLATFORM}-agent"</span>
+    <span class="o">}</span>
+    <span class="n">stages</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Occasionally I run my pipeline manually from the Jenkins Web UI.
+When I do that, I&#8217;d like to be able to select just one platform to run.
+The <code>axis</code> and <code>exclude</code> directives define the static set of cells that make up the matrix.
+That set of combinations is generated before the start of the run, before any parameters are processed.
+What this means is that I can&#8217;t add or remove cells from a matrix after the job has started.</p>
+</div>
+<div class="paragraph">
+<p>The "per-cell" directives, on the other hand, are evaluated at runtime.
+I can use the "per-cell" <code>when</code> directive inside <code>matrix</code> to control which cells in the matrix are executed.
+I&#8217;ll add a <code>choice</code> parameter with the list of platforms, and add conditions to the <code>when</code> directive, which will either let all platforms execute, or only execute cells that match my selected platform.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">parameters</span> <span class="o">{</span>
+        <span class="n">choice</span><span class="o">(</span><span class="nl">name:</span> <span class="s1">'PLATFORM_FILTER'</span><span class="o">,</span> <span class="nl">choices:</span> <span class="o">[</span><span class="s1">'all'</span><span class="o">,</span> <span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span> <span class="nl">description:</span> <span class="s1">'Run on specific platform'</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="n">agent</span> <span class="n">none</span>
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'BuildAndTest'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">matrix</span> <span class="o">{</span>
+                <span class="n">agent</span> <span class="o">{</span>
+                    <span class="n">label</span> <span class="s2">"${PLATFORM}-agent"</span>
+                <span class="o">}</span>
+                <span class="n">when</span> <span class="o">{</span> <span class="n">anyOf</span> <span class="o">{</span>
+                    <span class="n">expression</span> <span class="o">{</span> <span class="n">params</span><span class="o">.</span><span class="na">PLATFORM_FILTER</span> <span class="o">==</span> <span class="s1">'all'</span> <span class="o">}</span>
+                    <span class="n">expression</span> <span class="o">{</span> <span class="n">params</span><span class="o">.</span><span class="na">PLATFORM_FILTER</span> <span class="o">==</span> <span class="n">env</span><span class="o">.</span><span class="na">PLATFORM</span> <span class="o">}</span>
+                <span class="o">}</span> <span class="o">}</span>
+                <span class="n">axes</span> <span class="o">{</span>
+                    <span class="n">axis</span> <span class="o">{</span>
+                        <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                        <span class="n">values</span> <span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span>
+                    <span class="o">}</span>
+                    <span class="n">axis</span> <span class="o">{</span>
+                        <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                        <span class="n">values</span> <span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">excludes</span> <span class="o">{</span>
+                    <span class="n">exclude</span> <span class="o">{</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                            <span class="n">values</span> <span class="s1">'linux'</span>
+                        <span class="o">}</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                            <span class="n">values</span> <span class="s1">'safari'</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="n">exclude</span> <span class="o">{</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'PLATFORM'</span>
+                            <span class="n">notValues</span> <span class="s1">'windows'</span>
+                        <span class="o">}</span>
+                        <span class="n">axis</span> <span class="o">{</span>
+                            <span class="n">name</span> <span class="s1">'BROWSER'</span>
+                            <span class="n">values</span> <span class="s1">'edge'</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">stages</span> <span class="o">{</span>
+                    <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">steps</span> <span class="o">{</span>
+                            <span class="n">echo</span> <span class="s2">"Do Build for ${PLATFORM} - ${BROWSER}"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">steps</span> <span class="o">{</span>
+                            <span class="n">echo</span> <span class="s2">"Do Test for ${PLATFORM} - ${BROWSER}"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If I run this Pipeline from the Jenkins UI and set the <code>PLATFORM_FILTER</code> parameter to <code>mac</code>, I&#8217;ll get something like the output below:</p>
+</div>
+<div class="listingblock">
+<div class="title">Log output (truncated - PLATFORM_FILTER = 'mac' )</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>...
+[Pipeline] stage
+[Pipeline] { (BuildAndTest)
+[Pipeline] parallel
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'firefox')
+[Pipeline] { (Branch: Matrix - OS = 'linux', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'chrome')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'mac', BROWSER = 'safari')
+[Pipeline] { (Branch: Matrix - OS = 'windows', BROWSER = 'edge')
+...
+Stage "Matrix - OS = 'linux', BROWSER = 'chrome'" skipped due to when conditional
+Stage "Matrix - OS = 'linux', BROWSER = 'firefox'" skipped due to when conditional
+...
+Do Build for mac - firefox
+Do Build for mac - chrome
+Do Build for mac - safari
+...
+Stage "Matrix - OS = 'windows', BROWSER = 'chrome'" skipped due to when conditional
+Stage "Matrix - OS = 'windows', BROWSER = 'edge'" skipped due to when conditional
+...
+Do Test for mac - safari
+Do Test for mac - firefox
+Do Test for mac - chrome</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Come join me at <a href="https://www.cloudbees.com/devops-world/lisbon">DevOps World | Jenkins World 2019</a> for "<a href="https://sched.co/UeQe"><strong>Declarative Pipeline 2019: Tips, Tricks and What&#8217;s Next</strong></a>".
+I&#8217;ll go over what&#8217;s been added to Pipeline in the last year (including matrix) and discuss ideas about where pipeline should go next.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this blog post, we&#8217;ve looked at how to use the <code>matrix</code> directive to make concise but powerful declarative pipelines.
+An equivalent pipeline created without <code>matrix</code> would easily be several times larger, and much harder to understand and maintain.</p>
+</div>
+<div class="paragraph">
+<p>Matrix is now available from the experimental update center.
+It will be released to the main update center as soon as we&#8217;re done putting the finishing touches on the documentation and online help.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://updates.jenkins.io/experimental/">Jenkins Experimental Update Center</a></p>
+</li>
+<li>
+<p><a href="/doc/developer/publishing/releasing-experimental-updates/#using-the-experimental-update-center">Using the Jenkins Experimental Update Center</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/matrix/">
+matrix
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Liam Newman" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/lnewman.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/lnewman/">
+Liam Newman
+</a>
+</p>
+<div class="paragraph">
+<p>Liam started his software career as a tester, which might explain why he&#8217;s such a fan of CI/CD and Pipeline as Code.
+He has spent the majority of his software engineering career implementing Continuous Integration systems at companies big and small.
+He is a Jenkins project contributor and an expert in Jenkins Pipeline, both Scripted and Declarative.
+Liam currently works as a Jenkins Evangelist at <a href="https://cloudbees.com">CloudBees</a>.
+When not at work, he enjoys testing gravity by doing Aikido.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/bitwiseman" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bitwiseman" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/11/2019-11-22-welcome-to-the-matrix.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Automatic Specification Generator for Jenkins REST API
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/project-ideas/automatic-spec-generator-for-jenkins-rest-api/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Automatic Specification Generator for Jenkins REST API" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Automatic Specification Generator for Jenkins REST API" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Automatic Specification Generator for Jenkins REST API" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/project-ideas/automatic-spec-generator-for-jenkins-rest-api/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Automatic Specification Generator for Jenkins REST API" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Automatic Specification Generator for Jenkins REST API
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Find and implement the extraction of the REST APIs from the sources and generate and publish the REST APIs respective documentation
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+Java, REST API, OpenAPI / Swagger
+</p>
+<h2 class="title">
+Details
+</h2>
+<div class="sect2">
+<h3 id="background"><a class="anchor" href="#background"></a>Background</h3>
+<div class="paragraph">
+<p>Developers need to know what to expect in terms of responses for each REST API endpoint, so external tools like jenkins-rest can be developed with confidence, and possibly with the help of some REST specification automation.
+For example, this could be done using the <a href="https://www.openapis.org/">OpenAPI Specification</a> (formerly known as Swagger Specification).
+Users of the REST API most often want:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP responses and codes</p>
+</li>
+<li>
+<p>Body of message and its format (e.g. JSON, html, etc.)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins does not have automated REST API documentation at all at this time.
+A lot of APIs are contributed from extensions, so there are multiple REST APIs (core and plugins) of varying versions.
+The goal of this project is to find and implement the extraction of the REST APIs from the sources and generate and publish the REST APIs respective documentation.</p>
+</div>
+<div class="sect3">
+<h4 id="project-details"><a class="anchor" href="#project-details"></a>Project Details</h4>
+<div class="paragraph">
+<p>Generating the expected HTTP responses is a difficult task.
+The student is expected to study Jenkins core to identify ways to extract them.
+For example, they could be extracted from Javadocs and annotations.</p>
+</div>
+<div class="paragraph">
+<p>As part of the community bonding and student project proposal phase, the student is expected to make a few proposals on how to specify and generate the REST API for the Jenkins core and for the plugins.
+In the case the student finds that it is not possible to generate the REST API from a specification, the student should identify why this is not possible.
+We also ask the student to explore and propose a way to have REST API of plugins be generated from a REST API specification.
+For example, some auto-code could populate what the javadoc would look like in an empty-plugin used by the maven plugin generator.</p>
+</div>
+<div class="paragraph">
+<p>The student is also expected to study and propose how the REST API documentation generation could be part of the REST API generator.</p>
+</div>
+<div class="paragraph">
+<p>It might be helpful to automatically generate some code for the REST API when the plugin developer creates a plugin for the first time using the plugin skeleton generator.
+Any methodology created to handle the REST API should be built into the skeleton generator.</p>
+</div>
+<div class="paragraph">
+<p>The jenkins core REST API and the plugins own REST API need to be versioned separately.
+It is suggested to first focus first on generating the specification, then later look at the versioning of the REST API.
+Nested objects make versioning challenging.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins users should be easily able to see the REST APIs available for their installed Jenkins.
+For Jenkins core, this could be done with a URL like:  <code><a href="http://localhost/rest/api/1.0" class="bare">http://localhost/rest/api/1.0</a></code>.
+The plugins would have their own REST API path with a version number like: <code><a href="http://localhost/plugin/rest/api/1.0" class="bare">http://localhost/plugin/rest/api/1.0</a></code>.
+Plugins and the core would thus have their own version number, and an additional REST API version number.  Automated API documentation using the OpenAPI 3.0 specification is part of identifying the API specs.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="paragraph">
+<p>There are many examples of such documentation on the web:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.atlassian.com/bitbucket-server/rest/5.15.0/bitbucket-rest.html?utm_source=%2Fstatic%2Frest%2Fbitbucket-server%2Flatest%2Fbitbucket-rest.html&amp;utm_medium=301">Bitbucket REST API</a> (link to Bitbucket documentation)</p>
+</li>
+<li>
+<p><a href="https://www.jfrog.com/confluence/display/RTF/Artifactory+REST+API">Artifactory REST API </a>(link to Artifactory documentation)</p>
+</li>
+<li>
+<p>OpenAPI3 description of the Jenkins REST API: <a href="https://github.com/cliffano/swaggy-jenkins">swaggy jenkins</a> (note: the swaggy-jenkins author now recommends OpenAPI (explanation).</p>
+</li>
+<li>
+<p>This <a href="https://stackoverflow.com/questions/12405911/how-can-i-generate-wadl-for-rest-services">stackoverflow</a> question talks briefly about generating a REST API spec in WADL format</p>
+</li>
+<li>
+<p>A <a href="https://swagger.io/blog/api-development/getting-started-with-swagger-i-what-is-swagger/">blog post</a> that talks about swagger and WADL</p>
+</li>
+<li>
+<p>Making Stapler more declarative <a href="https://groups.google.com/d/msg/jenkinsci-dev/UrVVT8wbHIE/_1O35oU4AgAJ">discussion</a> leading to a comment on swagger.</p>
+</li>
+<li>
+<p>A <a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/mYeM5qA6tGM">google group discussion</a> on seeking help on clarifying this proposal</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/maven-hpi-plugin">Plugin skeleton generator</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-35808">Jira ticket JENKINS-35808</a> on generating spec for Jenkins REST API from 2016</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quick-start"><a class="anchor" href="#quick-start"></a>Quick-start</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Watch the <a href="https://www.youtube.com/watch?v=06E1usE6j1Q">project discussion meeting recording</a>.
+It summarizes the project and the first possible steps</p>
+</li>
+<li>
+<p>Study the <a href="https://swagger.io/docs/specification/about/">Open API specification</a>,
+go through examples for other services</p>
+</li>
+<li>
+<p>Explore ways to index the REST API endpoints in Jenkins and Stapler.
+It includes <code>@Exported</code> and <code>@ExportedBean</code> annotations, and other methods from the Stapler framework.
+See the video for the links.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="newbie-friendly-issues"><a class="anchor" href="#newbie-friendly-issues"></a>Newbie-friendly issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20and%20labels%20%3D%20REST">Jira Query</a></p>
+</li>
+<li>
+<p>Create an Open API specification for a Jenkins plugin with REST API,
+add it to the respective plugin repository</p>
+</li>
+<li>
+<p>Contribute to documentation of Jenkins REST API, e.g. see the <code>_api.jelly</code> files in the Jenkins Core and plugins</p>
+</li>
+<li>
+<p>Javadoc Landing Page — While Javadoc isn’t Rest API, user experience concerns described in <a href="https://issues.jenkins.io/browse/INFRA-1717">INFRA-1717</a> for Javadoc Landing Page could be re-considered when determining where to publish Rest API accordingly</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="skills-to-improvestudy"><a class="anchor" href="#skills-to-improvestudy"></a>Skills to improve/study</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Java</p>
+</li>
+<li>
+<p>REST API</p>
+</li>
+<li>
+<p>OpenAPI specification details and automatic generators</p>
+</li>
+<li>
+<p><a href="http://github.com/stapler/">Stapler</a> (more info:https://github.com/jenkins-infra/jenkins.io/pull/2157#issuecomment-471230609)</p>
+</li>
+</ul>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/linuxsuren/"><div class="app-avatar"><img alt="赵晓杰(Rick)" class="app-avatar__image" src="/images/avatars/linuxsuren.jpg"></div> 赵晓杰(Rick)</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/stellargo/"><div class="app-avatar"><img alt="Sumit Sarin" class="app-avatar__image" src="/images/avatars/stellargo.jpeg"></div> Sumit Sarin</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-docs" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="https://docs.google.com/document/d/1CYzV_w5SrA-npXEMwTkJ4E2QyJdd2cJm7eDpwhg4XPk" rel="noreferrer noopener" target="_blank">
+Project idea draft
+</a>
+</li>
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2021/project-ideas" target="_blank">
+> Go back to other GSoC
+2021
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#background">Background</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#quick-start">Quick-start</a></li>
+<li><a href="#newbie-friendly-issues">Newbie-friendly issues</a></li>
+<li><a href="#skills-to-improvestudy">Skills to improve/study</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-docs" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2021/project-ideas/automatic-spec-generator-for-jenkins-rest-api.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

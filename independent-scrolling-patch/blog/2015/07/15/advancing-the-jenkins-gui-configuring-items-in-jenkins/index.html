@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Advancing the Jenkins GUI: Configuring Items in Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/07/15/advancing-the-jenkins-gui-configuring-items-in-jenkins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Advancing the Jenkins GUI: Configuring Items in Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Advancing the Jenkins GUI: Configuring Items in Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Advancing the Jenkins GUI: Configuring Items in Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/07/15/advancing-the-jenkins-gui-configuring-items-in-jenkins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Advancing the Jenkins GUI: Configuring Items in Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Advancing the Jenkins GUI: Configuring Items in Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/gusreiber/"><div class="app-avatar"></div> Gus Reiber</a>
+July 15, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Advancing+the+Jenkins+GUI%3A+Configuring+Items+in+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F07%2F15%2Fadvancing-the-jenkins-gui-configuring-items-in-jenkins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><strong><a href="https://youtu.be/1Qn4jEwAeGc" class="bare">https://youtu.be/1Qn4jEwAeGc</a></strong><br>
+Above is the screencast associated with this blog post<br>
+If you have ever used Jenkins you are familiar with what I am about to described, wading your way through job configuration page, looking for the settings that are important, and, depending on your plugin use, wondering where all these other setting came from and what they do.<br></p>
+</div>
+<div class="paragraph">
+<p>Depending on how long you have used Jenkins, your negative opinion of this experience may vary. If you are a long-time user, you might even view the configuration page with that same reassuring nostalgia seeing a Facebook post from your ugly room mate induces. ‘Yup,he is still ugly and backwards, but we had some good times, back then.’ If you are a newer Jenkins user, it may well send you off to search the web for a viable alternative tool.<br></p>
+</div>
+<div class="paragraph">
+<p>The good news is that CloudBees, in cooperation with the greater Jenkins community, is looking to make some long overdue progress sorting through this user interaction in a way that is both approachable to new users and amenable to existing users who have grown comfortable with a great tool and a ‘stalwart friend’ in a world of otherwise clunky world of IT tools. ( that really is the swiss army knife of build automation.)<br></p>
+</div>
+<div class="paragraph">
+<p>If you happen to have had the opportunity to have attended any of the recent Jenkins User Conferences in Washington, DC, or London, you may have seen Tom and my presentation, which served as our initial introduction of this effort to the Jenkins Community. In this article and the associated video, I will be focusing specifically on the Create and Configuration screens in Jenkins, discussing some of the larger proposed changes, providing some context for the changes and examining their possible repercussions on existing plugins and future plugin development.</p>
+</div>
+<div class="sect1">
+<h2 id="history-of-jenkins"><a class="anchor" href="#history-of-jenkins"></a>History of Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For newer Jenkins users, I have found the following visual a helpful guide to understanding the history of Jenkins and how its graphical user interfaces has evolved:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/sites/default/files/images/history-jenkins_590.jpg" alt="Jenkins timeline: a long history"></span><br></p>
+</div>
+<div class="paragraph">
+<p>The first thing to notice here, is that Jenkins has been around for a long time and in a lot of ways is really fundamental to the art of creating software. Back in 2005, the then Hudson project was using pretty much the same cave chalk as everyone else. 6 years later, the code and community underwent its most substantial transformation to date, as Jenkins emerged as the dominant fork of the Hudson project. If you look closely, you will see the GUI reflected that transformation by….. changing the picture of the butler. In recent times, the interface has taken a few additional steps forward, most notably by moving to a responsive CSS driven layout from its table based origin, but the pace of these changes has been very much akin to the pace of evolution. Slow.<br></p>
+</div>
+<div class="paragraph">
+<p>In our next phase of graphic interface development, however, Tom and I are looking to be a little more directed in our efforts and push the GUI toward a blend of strategic and tactical advancements that will help Jenkins take advantage of some of the advances in web design and browser technologies that have happened over the last 10 years. Our first major push will be in the job creation and configuration tasks.<br></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-and-configuring"><a class="anchor" href="#creating-and-configuring"></a>Creating and Configuring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>In addition to a bit of a refresh of the look of these forms, this new effort focuses on the importance of dividing information and presentation into clear categories that ideally are meaningful to both new and veteran users of Jenkins alike.</p>
+</div>
+<div class="paragraph">
+<p>In some cases, Jenkins has these categories already in the GUI, but misses the mark in clarification and emphasis. In other cases, additional categorizing concepts will need to be added. Compare the above screens to the existing screens.<br></p>
+</div>
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>The first thing you are likely to notice when comparing these two sets of screens is that in the existing screens, there is very little in the way of visual markers segmenting the form input choices on either the item type selection screens (fig 4 vs 2) or the configuration pages (fig 5 vs 3). Adding each new plugin progressively aggravates the situation, and consequently, as your Jenkins installation grows in sophistication and robustness, the average users ability to find the fundamental configuration settings in the sea of ad-hoc options diminishes. While adding functionality typically adds some amount of additional complexity to a UI, by giving each configuration option a visually distinguishable space in the form, the challenge can be greatly diminished and the pattern of creating an ever growing scrolling of toilet paper list of form elements can be avoided.</p>
+</div>
+<div class="paragraph">
+<p>For figures 2 and 4, you might also notice that I have chosen Jenkins instances that already have several plugins installed as the basis for my example screens. You might rightly argue that for a basic install, there are not a lot of item types to create, so categorizing them adds a needless layer of complexity. Fair enough. It is my belief, though, that our software can be smart enough to count the item types available for creation and count the number within each category and handle the categorization as necessary. Counting and sorting is something that computers do incredibly well and is not the sort of thing busy people need to be overly burdened with.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the code being intelligent about when to present grouping categories to the user, The screen interaction can be similarly intelligent in how it enables the user to selectively show and hide the categories of interest. The following screenshot shows the configuration page focused in on CVS a particular option configuration in the source code management section of the configuration page. It, in turn, has its own sub settings for additional modules and locations (see fig 6).</p>
+</div>
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;and wait for it&#8230;&#8203; &#8230;&#8203;for comparison, here is today’s CVS settings page&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>Despite some serious indentation, the existing page offers significantly less clarity about which settings pertain specifically to CVS instead of other aspects of a Jenkins job.</p>
+</div>
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>Identifying which settings go with which segment becomes all the more confusing when sub-sections can be re-ordered. To show you what I mean and fit the screen on a single printed page, I am needing to muck with the aspect ratio of today’s screen.</p>
+</div>
+<div class="paragraph">
+<p>The image on the left (fig 7) shows a 2 step build process, each with sub parameters.</p>
+</div>
+<div class="paragraph">
+<p>There are some fascinating looking red delete buttons in here, I hope I know exactly what part of the build step I am about to blow away&#8230;&#8203;. Did I mention these segments can be re-ordered? Care to guess which form inputs will move with which steps?</p>
+</div>
+<div class="paragraph">
+<p>[image]</p>
+</div>
+<div class="paragraph">
+<p>By contrast, the above screen shows the same 2 build steps with the same parameters. We still have our friend, Mr. Red Delete button, but now it is a good bit clearer who will get blown away.<br>
+Also, it is considerably clearer which block will be reordered, should I choose to do so.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-about-plugins"><a class="anchor" href="#what-about-plugins"></a>What about plugins?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are a long-time Jenkins user, you may have a guess as to why some of these changes have been slow in coming, and if you are a plugin developer, you definitely know. These input controls have a lot of extension points in them that allow plugins to influence the content of this configuration screen. As a result, how plugins will respond to even the most minor layout changes is somewhat of a mystery. Further, the GUI control elements that make up the form are available to plugin authors to embed as they see fit in their own GUI elements. As a consequence, we have some serious compatibility issues ahead. These challenges are not at all trivial.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately, however, I believe with some careful manipulation and diligent testing we can overcome these challenges. The first set of changes are likely to revolve around a file called “hudson-behavior.js”. This file does most of the Jenkins client-side UI magic. If there is data to be bound to a control, this is the file that is likely to handle it. The difficulty with this file stems from two factors, its age (it is written following Yahoo UI framework patterns which have since been abandoned by Yahoo and the rest of the industry), and a presumption that the page layout will be governed by a single giant HTML table (likely due to the table renaissance happening around the same time, thanks to the emergence of GWT). Regardless of this bit of history trivia, these two issues combine to make changes to the HTML DOM structure of any Jenkins page problematic. Methods such as “findFollowingTR” assume a very rigid parent-child element positioning based on page layout rather than on the logical relationship between the data elements. The good news here is that despite some of their unfortunate names, can be refactored to both find the relevant element based on today’s table structure as well as a future logical nesting of related elements. With that change in place, Jenkins will continue to function as it always has and a future configuration DOM structure can share the same infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>The second step here will be finding efficient ways to integrate more modern Javascript libraries, such as JQuery and Bootstrap into the Jenkins GUI. We will want these libraries to be easier and cleaner for plugin authors to access than PrototypeJS and Yahoo UI are today. Likely this will involve using a Browserify/Requirejs like pattern to control script inclusion in page to avoid naming conflicts, excessively file attachment and global space pollution.</p>
+</div>
+<div class="paragraph">
+<p>The final step would then be to begin amending, replacing and augmenting the Jelly based form control set, and thus, transforming the look and behavior of the Jenkins UI. As always, Jenkins is an open community, and we at CloudBees view that as a cherished cornerstone of our own corporate culture. Thus, at every phase of this undertaking we are eager to solicit feedback from and encourage participation by you the members of the community. Feel free to comment directly on this article. Additionally, I am maintaining and active thread on the Jenkins Developer group (<a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/6BdWZt35dTQ" class="bare">https://groups.google.com/forum/#!topic/jenkinsci-dev/6BdWZt35dTQ</a>). I am looking forward to hearing from you.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/video/">
+video
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/screencast/">
+screencast
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/juc/">
+juc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/releases/">
+releases
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/feedback/">
+feedback
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/just for fun/">
+just for fun
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/gusreiber/">
+Gus Reiber
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/gusreiber" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-07-15-advancing-the-jenkins-gui-configuring-items-in-jenkins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins 2.0 Proposal: Split Groovy out of "core"
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/10/27/jenkins-2-0-proposal-split-groovy-out-of-core/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins 2.0 Proposal: Split Groovy out of &quot;core&quot;" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins 2.0 Proposal: Split Groovy out of &quot;core&quot;" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins 2.0 Proposal: Split Groovy out of &quot;core&quot;" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/10/27/jenkins-2-0-proposal-split-groovy-out-of-core/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins 2.0 Proposal: Split Groovy out of &quot;core&quot;" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins 2.0 Proposal: Split Groovy out of "core"
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+October 27, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+2.0+Proposal%3A+Split+Groovy+out+of+%22core%22&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F10%2F27%2Fjenkins-2-0-proposal-split-groovy-out-of-core%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>As I mentioned in <a href="/content/jenkins-20-proposal-introduce-policy-api-deprecation">yesterday&#8217;s post</a>, there&#8217;s been a lot of discussion recently about what "<a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+2.0">Jenkins
+2.0</a>" means. In a recent "Office Hours" session, <a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a> presented his
+vision for <strong>Jenkins 2.0</strong> in a <a href="https://www.youtube.com/watch?v=2eVyc_n8i1c">office
+hours</a> session, the slides for
+which can be found <a href="https://docs.google.com/presentation/d/12ikbbQoMvus_l_q23BxXhYXnW9S5zsVNwIKZ9N8udg4">in this Google
+Presentation</a>.
+Roughly paraphrasing Kohsuke&#8217;s vision, 2.0 is primarily about making things
+better for the thousands of users out there.</p>
+</div>
+<div class="paragraph">
+<p>This week, we&#8217;ll be reviewing some <em>key areas</em> of the "Jenkins 2.0" proposal.
+Asking you, the user community, to provide feedback on these proposals, going
+from Jenkins internals to user interface.</p>
+</div>
+<div class="paragraph">
+<p>Thus far we&#8217;ve covered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/content/jenkins-20-proposal-introduce-policy-api-deprecation">Introducing a policy for API deprecation</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Today&#8217;s post involves a proposal originally from community member <a href="https://github.com/jglick">Jesse Glick</a> who has proposed in <strong><a href="https://issues.jenkins.io/browse/JENKINS-29068">JENKINS-29068</a></strong> that <a href="http://groovy-lang.org">Groovy</a> be split out from the "core" Jenkins distribution. The linked issue expands on what the problem is here:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Currently Jenkins embeds a distribution of Groovy into "core" for a variety of scripting and management tasks. This version of Groovy is locked into core in such a way that users cannot upgrade Groovy independently from Jenkins itself. If the Jenkins-bundled version were upgraded to a different major version, it may break users' custom scripts as well as plugins that use Groovy due to API changes.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The proposal is relatively straight-forward and affects the many different users and use-cases for the embedded Groovy scripting support in Jenkins:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>For ease of maintenance and modularity it would be useful to split Jenkins' use of Groovy into a library plugin; different clients could request 1.x and 2.x simultaneously by using different versions of the library, etc.</p>
+</div>
+<div class="paragraph">
+<p>Stuff in core using Groovy that would need to either be put in this library (if infrastructure for other features) or put in another plugin depending on it (if first-class features themselves):</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>I selected this proposal to feature on this blog, despite its rather technical underpinnings, it will affect core developers, plugin developers, power and casual users alike. I encourage everybody to read through the proposal and its potential impact <a href="https://issues.jenkins.io/browse/JENKINS-29068">on the issue tracker</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="providing-feedback"><a class="anchor" href="#providing-feedback"></a>Providing Feedback</h3>
+<div class="paragraph">
+<p>We&#8217;re asking you to read the proposal in
+<a href="https://issues.jenkins.io/browse/JENKINS-29068">JENKINS-29068</a> and provide
+feedback if you have it.</p>
+</div>
+<div class="paragraph">
+<p>If you have ever logged in to the <a href="https://issues.jenkins.io">issue
+tracker</a> or the
+<a href="https://wiki.jenkins.io/">wiki</a>, you have a "Jenkins user account" which
+means you&#8217;ll be able to log into the issue tracker and vote for, or comment on
+the issue linked above.</p>
+</div>
+<div class="paragraph">
+<p>(<em>note</em>: if you have forgotten your password, use <a href="https://jenkins-ci.org/account/">the account
+app</a> to reset it.)</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;re going to review feedback, make any necessary adjustments and either
+approve or reject the proposal two weeks from today.</p>
+</div>
+<div class="paragraph">
+<p>Stay tuned for the rest of the week as we keep with our theme of going "from the inside out" and help us make Jenkins 2.0 great!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/feedback/">
+feedback
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-10-27-jenkins-2-0-proposal-split-groovy-out-of-core.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Parameterized Remote Trigger Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/Parameterized-Remote-Trigger/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Parameterized Remote Trigger Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Parameterized Remote Trigger Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Parameterized Remote Trigger Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/Parameterized-Remote-Trigger/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Parameterized Remote Trigger Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#parameterized-remote-trigger-plugin">Parameterized Remote Trigger Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#stepclass-remotebuildconfiguration-trigger-a-remote-parameterized-job"><code>step([$class: 'RemoteBuildConfiguration'])</code>: Trigger a remote parameterized job</a></li>
+<li><a href="#triggerremotejob-trigger-remote-job"><code>triggerRemoteJob</code>: Trigger Remote Job</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="parameterized-remote-trigger-plugin"><a class="anchor" href="#parameterized-remote-trigger-plugin"></a>Parameterized Remote Trigger Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/Parameterized-Remote-Trigger">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="stepclass-remotebuildconfiguration-trigger-a-remote-parameterized-job"><a class="anchor" href="#stepclass-remotebuildconfiguration-trigger-a-remote-parameterized-job"></a><code>step([$class: 'RemoteBuildConfiguration'])</code>: Trigger a remote parameterized job</h3>
+<ul><li><code>abortTriggeredJob : boolean</code> (optional)
+</li>
+<li><code>auth2</code> (optional)
+<div><div>
+ Using this parameter you can override the authentication used to connect to the selected remote Jenkins.
+ <ul>
+  <li><b>Don't Override</b><br> The authentication configured in the (global) settings of the selected 'remote host' is used.</li>
+  <li><b>Token Authentication</b><br> The specified user id and Jenkins API token is used.</li>
+  <li><b>Credentials Authentication</b><br> The specified Jenkins Credentials are used. This can be either user/password or user/API Token.</li>
+  <li><b>No Authentication</b><br> No Authorization header will be sent, independent of the global 'remote host' settings.</li>
+  <li><b>Bearer Authentication</b><br> The bearer token is used.</li>
+ </ul> <b>Note:</b> <i>Jenkins API Tokens</i> are recommended since, if stolen, they allow access only to a specific Jenkins while user and password typically provide access to many systems.
+</div></div>
+
+<ul><b>Nested Choice of Objects</b>
+<li><code>BearerTokenAuth</code><div>
+<ul><li><code>token</code> (optional)
+<ul><li><b>Type:</b> <code>class hudson.util.Secret</code></li>
+</ul></li>
+</ul></div></li>
+<li><code>CredentialsAuth</code><div>
+<ul><li><code>credentials : String</code> (optional)
+</li>
+</ul></div></li>
+<li><code>NoneAuth</code><div>
+<ul></ul></div></li>
+<li><code>NullAuth</code><div>
+<ul></ul></div></li>
+<li><code>TokenAuth</code><div>
+<ul><li><code>apiToken</code> (optional)
+<ul><li><b>Type:</b> <code>class hudson.util.Secret</code></li>
+</ul></li>
+<li><code>userName : String</code> (optional)
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>blockBuildUntilComplete : boolean</code> (optional)
+</li>
+<li><code>disabled : boolean</code> (optional)
+<div><div>
+ Set this field to disable the job step instead of removing it from job configuration.
+</div></div>
+
+</li>
+<li><code>enhancedLogging : boolean</code> (optional)
+<div><div>
+ <div>
+  Enable Enhanced Logging
+ </div> If this option is enabled, the console output of the remote job is also logged.
+</div></div>
+
+</li>
+<li><code>httpGetReadTimeout : int</code> (optional)
+</li>
+<li><code>httpPostReadTimeout : int</code> (optional)
+</li>
+<li><code>job : String</code> (optional)
+<div><div>
+ <div>
+  Remote Job Name or full URL.
+ </div> The name or URL of the job on the remote Jenkins host which you would like to trigger. If the full job URL is specified the URL of the remote Jenkins host configured above will be ignored.
+</div></div>
+
+</li>
+<li><code>maxConn : int</code> (optional)
+<div><div>
+ The max concurrent connections to the remote host, default is 1, max is 5. It'll be 5 even if you set it greater than 5. <b>Note:</b> Set this field with caution, too many concurrent requests will not only fail your local jobs,<br> but also block the remote server.
+</div></div>
+
+</li>
+<li><code>overrideTrustAllCertificates : boolean</code> (optional)
+</li>
+<li><code>parameters : String</code> (optional)
+</li>
+<li><code>parameters2</code> (optional)
+<div><div>
+ <div>
+  Job Parameters
+ </div> Parameters which will be used when triggering the remote job. <br> If no parameters are needed, then just leave this blank.
+ <ul>
+  <li><b>Map parameters</b><br> This is the recommended type. It allows you to provide parameters with key/value and supports multi-line parameters.</li>
+  <li><b>String parameters (legacy)</b><br> This type allows to describe parameters within a big string like in versions 3.1.5 and lower. It does not support multi-line parameters.</li>
+  <li><b>File parameters (legacy)</b><br> This type allows to describe parameters within a file like in versions 3.1.5 and lower. It does not support multi-line parameters.</li>
+ </ul>
+</div></div>
+
+<ul><b>Nested Choice of Objects</b>
+<li><code>FileParameters</code><div>
+<ul><li><code>filePath : String</code> (optional)
+</li>
+</ul></div></li>
+<li><code>MapParameters</code><div>
+<ul><li><code>parameters</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>name : String</code> (optional)
+</li>
+<li><code>value : String</code> (optional)
+</li>
+</ul></li>
+</ul></div></li>
+<li><code>StringParameters</code><div>
+<ul><li><code>parameters : String</code> (optional)
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>pollInterval : int</code> (optional)
+</li>
+<li><code>preventRemoteBuildQueue : boolean</code> (optional)
+</li>
+<li><code>remoteJenkinsName : String</code> (optional)
+</li>
+<li><code>remoteJenkinsUrl : String</code> (optional)
+<div><div>
+ It is possible to override the Remote Jenkins URL for each Job separately.
+</div></div>
+
+</li>
+<li><code>shouldNotFailBuild : boolean</code> (optional)
+<div><div>
+ <div>
+  Do Not Fail If Remote Fails
+ </div> If this option is enabled, the build will not fail even if the remote build fails.
+</div></div>
+
+</li>
+<li><code>token : String</code> (optional)
+<div><div>
+ <div>
+  Remote Job Token
+ </div> Security token which is defined on the job of the remote Jenkins host. <br> If no job token is needed to trigger this job, then just leave it blank
+</div></div>
+
+</li>
+<li><code>trustAllCertificates : boolean</code> (optional)
+<div><div>
+ <div>
+  Trust all certificates
+ </div>
+ <p>It is possible to override/rewrite the 'Trust all certificate'-setting for each Job separately. Setting this checkbox to 'true' will result in accepting all certificates for the given Job.</p>
+ <div>
+  If your remote Jenkins host has a <a href="https://en.wikipedia.org/wiki/Self-signed_certificate" rel="nofollow"> self-signed certificate </a> or its certificate is not trusted, you may want to enable this option. It will accept untrusted certificates for the given host.
+ </div>
+ <p><strong>This is unsafe and should only be used for testing or if you trust the host.</strong></p>
+</div></div>
+
+</li>
+<li><code>useCrumbCache : boolean</code> (optional)
+<div><div>
+ Set this field to enable cache of the crumb of remote server. <br> It'll be more efficient for the local job execution &amp; more stable for remote server when massive concurrent jobs are triggered.<br> This cache will be cleared every 10 minutes.
+</div></div>
+
+</li>
+<li><code>useJobInfoCache : boolean</code> (optional)
+<div><div>
+ Set this field to enable cache of the job info of remote server. <br> It'll be more efficient for the local job execution &amp; more stable for remote server when massive concurrent jobs are triggered.<br> This cache will be cleared every 10 minutes.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="triggerremotejob-trigger-remote-job"><a class="anchor" href="#triggerremotejob-trigger-remote-job"></a><code>triggerRemoteJob</code>: Trigger Remote Job</h3>
+<div><div>
+ The `triggerRemoteJob` pipeline step triggers a job on a remote Jenkins.<br> <b>The full documentation is <a href="https://github.com/jenkinsci/parameterized-remote-trigger-plugin" rel="nofollow">available in GitHub</a>.</b><br> <br> Example:
+ <pre>//Trigger remote job
+def handle = triggerRemoteJob(remoteJenkinsName: 'remoteJenkins', job: 'RemoteJob')
+
+//Get information from the handle
+def status = handle.getBuildStatus()
+def buildUrl = handle.getBuildUrl()
+echo buildUrl.toString() + " finished with " + status.toString()
+
+//Download and parse the archived "build-results.json" (if generated and archived by remote build)
+def results = handle.readJsonFileFromBuildArchive('build-results.json')
+echo results.urlToTestResults //only example
+
+
+//List other available methods
+echo handle.help()
+</pre>
+</div></div>
+<ul><li><code>job : String</code>
+<div><div>
+ <div>
+  Remote Job Name or full URL.
+ </div> The name or URL of the job on the remote Jenkins host which you would like to trigger. If the full job URL is specified the URL of the remote Jenkins host configured above will be ignored.
+ <p>mandatory: yes<br></p>
+</div></div>
+
+</li>
+<li><code>abortTriggeredJob : boolean</code> (optional)
+</li>
+<li><code>auth</code> (optional)
+<div><div>
+ Using this parameter you can override the authentication used to connect to the selected remote Jenkins.<br>
+ <ul>
+  <li><b>Don't Override</b><br> The authentication configured in the (global) settings of the selected 'remote host' is used.</li>
+  <li><b>Token Authentication</b><br> The specified user id and Jenkins API token is used.</li>
+  <li><b>Credentials Authentication</b><br> The specified Jenkins Credentials are used. This can be either user/password or user/API Token.</li>
+  <li><b>No Authentication</b><br> No Authorization header will be sent, independent of the global 'remote host' settings.</li>
+ </ul> <b>Note:</b> <i>Jenkins API Tokens</i> are recommended since, if stolen, they allow access only to a specific Jenkins while user and password typically provide access to many systems.
+</div></div>
+
+<ul><b>Nested Choice of Objects</b>
+<li><code>BearerTokenAuth</code><div>
+<ul><li><code>token</code> (optional)
+<ul><li><b>Type:</b> <code>class hudson.util.Secret</code></li>
+</ul></li>
+</ul></div></li>
+<li><code>CredentialsAuth</code><div>
+<ul><li><code>credentials : String</code> (optional)
+</li>
+</ul></div></li>
+<li><code>NoneAuth</code><div>
+<ul></ul></div></li>
+<li><code>NullAuth</code><div>
+<ul></ul></div></li>
+<li><code>TokenAuth</code><div>
+<ul><li><code>apiToken</code> (optional)
+<ul><li><b>Type:</b> <code>class hudson.util.Secret</code></li>
+</ul></li>
+<li><code>userName : String</code> (optional)
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>blockBuildUntilComplete : boolean</code> (optional)
+<div><div>
+ <div>
+  Wait/Block Until Remote Build Complete
+ </div> If enabled the remote job is called synchronously and the plugin waits until the remote job finished.<br> If disabled the plugin triggers the remote job and returns.<br> <br> In both cases a <code>handle</code> is returned for further tracking the remote job or getting the results (see plugin main help page).
+ <p>mandatory: no<br> default: true</p>
+</div></div>
+
+</li>
+<li><code>disabled : boolean</code> (optional)
+<div><div>
+ Set this field to disable the job step instead of removing it from job configuration.
+</div></div>
+
+</li>
+<li><code>enhancedLogging : boolean</code> (optional)
+<div><div>
+ <div>
+  Enable Enhanced Logging
+ </div> If this option is enabled, the console output of the remote job is also logged.
+ <p>mandatory: no<br> default: false</p>
+</div></div>
+
+</li>
+<li><code>httpGetReadTimeout : int</code> (optional)
+</li>
+<li><code>httpPostReadTimeout : int</code> (optional)
+</li>
+<li><code>maxConn : int</code> (optional)
+<div><div>
+ The max concurrent connections to the remote host, default is 1, max is 5. It'll be 5 even if you set it greater than 5. <b>Note:</b> Set this field with caution, too many concurrent requests will not only fail your local jobs, <br> but also block the remote server.
+</div></div>
+
+</li>
+<li><code>overrideTrustAllCertificates : boolean</code> (optional)
+</li>
+<li><code>parameterFile : String</code> (optional)
+</li>
+<li><code>parameters : <code>Object</code></code> (optional)
+<div><div>
+ <div>
+  Job Parameters
+ </div> Parameters which will be used when triggering the remote job. <br> If no parameters are needed, then just leave this blank. <br> In case of a String, the plugin uses String/File parameters depending on the parameter's content.
+ <ul>
+  <li><b>Map parameters</b><br> <p><code>Map&lt;String, Object&gt;</code></p> <p>This is the recommended type. It allows you to provide parameters with key/value and supports multi-line parameters.</p></li>
+  <li><b>String parameters (legacy)</b><br> <p><code>String</code></p> <p>This type allows to describe parameters within a big string like in versions 3.1.5 and lower. It does not support multi-line parameters.</p></li>
+  <li><b>File parameters (legacy)</b><br> <p><code>String</code></p> This type allows to describe parameters within a file like in versions 3.1.5 and lower. It does not support multi-line parameters.</li>
+ </ul>
+</div></div>
+
+</li>
+<li><code>pollInterval : int</code> (optional)
+<div><div>
+ <div>
+  Polling Interval
+ </div> The plugin identifies the status of the remote build by polling. Here you can specify how often the plugin shall poll the remote status.<br> Be aware that polling too often might cause an increased load on the remote Jenkins.
+ <p>mandatory: no<br> default: 10</p>
+</div></div>
+
+</li>
+<li><code>preventRemoteBuildQueue : boolean</code> (optional)
+<div><div>
+ <div>
+  Prevent Remote Build Queue
+ </div> Wait to trigger remote builds until no other builds are running.
+ <p>mandatory: no<br> default: false</p>
+</div></div>
+
+</li>
+<li><code>remoteJenkinsName : String</code> (optional)
+<div><div>
+ <div>
+  Remote Jenkins Name
+ </div> The name of the remote Jenkins as configured in the Jenkins global configuration (Manage Jenkins &gt; Configure System &gt; Parameterized Remote Trigger Configuration &gt; Remote Hosts).
+ <p>mandatory: yes</p>
+</div></div>
+
+</li>
+<li><code>remoteJenkinsUrl : String</code> (optional)
+<div><div>
+ It is possible to override the Remote Jenkins URL for each Pipeline separately.
+ <p>mandatory: no</p>
+</div></div>
+
+</li>
+<li><code>shouldNotFailBuild : boolean</code> (optional)
+<div><div>
+ <div>
+  Do Not Fail If Remote Fails
+ </div> If this option is enabled, the build will not fail even if the remote build fails.
+ <p>mandatory: no<br> default: false</p>
+</div></div>
+
+</li>
+<li><code>token : String</code> (optional)
+<div><div>
+ <div>
+  Remote Job Token
+ </div> Security token which is defined on the job of the remote Jenkins host. <br> If no job token is needed to trigger this job, then just leave it blank
+ <p>mandatory: no<br> default: ""</p>
+</div></div>
+
+</li>
+<li><code>trustAllCertificates : boolean</code> (optional)
+<div><div>
+ <div>
+  Trust all certificates
+ </div>
+ <p>It is possible to override/rewrite the 'Trust all certificate'-setting for each Job separately. Setting this checkbox to 'true' will result in accepting all certificates for the given Job.</p>
+ <div>
+  If your remote Jenkins host has a <a href="https://en.wikipedia.org/wiki/Self-signed_certificate" rel="nofollow"> self-signed certificate </a> or its certificate is not trusted, you may want to enable this option. It will accept untrusted certificates for the given host.
+ </div>
+ <p><strong>This is unsafe and should only be used for testing or if you trust the host.</strong></p>
+</div></div>
+
+</li>
+<li><code>useCrumbCache : boolean</code> (optional)
+<div><div>
+ Set this field to enable cache of the crumb of remote server. <br> It'll be more efficient for the local job execution &amp; more stable for remote server when massive concurrent jobs are triggered.<br> This cache will be cleared every 10 minutes.
+</div></div>
+
+</li>
+<li><code>useJobInfoCache : boolean</code> (optional)
+<div><div>
+ Set this field to enable cache of the job info of remote server. <br> It'll be more efficient for the local job execution &amp; more stable for remote server when massive concurrent jobs are triggered.<br> This cache will be cleared every 10 minutes.
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

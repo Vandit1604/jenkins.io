@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2018-04-16
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2018-04-16/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2018-04-16" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2018-04-16" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2018-04-16" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2018-04-16/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2018-04-16" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2018-04-16
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/email-ext">
+Email Extension
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/google-login">
+Google Login
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/htmlpublisher">
+HTML Publisher
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/s3">
+S3 publisher
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-442">
+Session fixation vulnerability in Google Login Plugin
+</h3>
+<strong>
+SECURITY-442
+/
+CVE-2018-1000173
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/google-login">
+<code>google-login</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Google Login Plugin did not invalidate the previous session and create a new one upon successful login, allowing attackers able to control or obtain another user&#8217;s pre-login session ID to impersonate them.</p>
+</div>
+<div class="paragraph">
+<p>Google Login Plugin now invalidates the previous session during login, and creates a new one.</p>
+</div>
+<h3 id="SECURITY-684">
+Open redirect vulnerability in Google Login Plugin
+</h3>
+<strong>
+SECURITY-684
+/
+CVE-2018-1000174
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/google-login">
+<code>google-login</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Google Login Plugin redirected users to an arbitrary URL specified as a query parameter after successful login, enabling phishing attacks.</p>
+</div>
+<div class="paragraph">
+<p>Google Login Plugin now only performs redirects to relative URLs.</p>
+</div>
+<h3 id="SECURITY-729">
+Email Extension Plugin showed plain text SMTP password in configuration form field
+</h3>
+<strong>
+SECURITY-729
+/
+CVE-2018-1000176
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/email-ext">
+<code>email-ext</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Email Extension Plugin stores an SMTP password in the global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the password is stored encrypted on disk, it was transmitted in plain text as part of the configuration form.
+This could result in exposure of the password through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>Email Extension now encrypts the SMTP password transmitted to administrators viewing the global configuration form.</p>
+</div>
+<h3 id="SECURITY-730">
+Stored XSS vulnerability in S3 Publisher Plugin
+</h3>
+<strong>
+SECURITY-730
+/
+CVE-2018-1000177
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/s3">
+<code>s3</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>S3 Publisher Plugin did not properly escape file names shown on the Jenkins UI.
+This resulted in a cross-site scripting vulnerability exploitable by users able to control the names of uploaded files.</p>
+</div>
+<div class="paragraph">
+<p>S3 Publisher Plugin now escapes file names shown on the Jenkins UI properly.</p>
+</div>
+<h3 id="SECURITY-784">
+Path traversal vulnerability allows arbitrary file writing in HTML Publisher Plugin
+</h3>
+<strong>
+SECURITY-784
+/
+CVE-2018-1000175
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/htmlpublisher">
+<code>htmlpublisher</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>HTML Publisher Plugin allows specifying a name for the HTML reports it publishes.
+This report name was used in the URL of the report and as a directory name on the Jenkins controller without further processing, resulting in a path traversal vulnerability that allowed overriding files outside the build directory.</p>
+</div>
+<div class="paragraph">
+<p>Non-alphanumeric characters in report names are now escaped for use as part of a URL and as a directory name.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-442:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-684:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-729:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+</li>
+<li>
+SECURITY-730:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-784:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N">
+medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Email Extension
+Plugin
+</strong>
+up to and including
+2.61
+</li>
+<li>
+<strong>
+Google Login
+Plugin
+</strong>
+up to and including
+1.3
+</li>
+<li>
+<strong>
+HTML Publisher
+Plugin
+</strong>
+up to and including
+1.15
+</li>
+<li>
+<strong>
+S3 publisher
+Plugin
+</strong>
+up to and including
+0.10.12
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Email Extension
+Plugin
+</strong>
+should be updated to version
+2.62
+</li>
+<li>
+<strong>
+Google Login
+Plugin
+</strong>
+should be updated to version
+1.3.1
+</li>
+<li>
+<strong>
+HTML Publisher
+Plugin
+</strong>
+should be updated to version
+1.16
+</li>
+<li>
+<strong>
+S3 publisher
+Plugin
+</strong>
+should be updated to version
+0.11.0
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Emeric Vernat
+</strong>
+for
+SECURITY-442
+</li>
+<li>
+<strong>
+Kalle Niemitalo, Procomp Solutions Oy
+</strong>
+for
+SECURITY-784
+</li>
+<li>
+<strong>
+Matthias Nodeland
+</strong>
+for
+SECURITY-729
+</li>
+<li>
+<strong>
+Oleg Nenashev, CloudBees, Inc.
+</strong>
+for
+SECURITY-730
+</li>
+<li>
+<strong>
+Suhas Sunil Gaikwad of Postman @postmanclient
+</strong>
+for
+SECURITY-684
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2018-04-16.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

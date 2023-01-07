@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Handling Vulnerabilities in Plugins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/plugins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Handling Vulnerabilities in Plugins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Handling Vulnerabilities in Plugins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Handling Vulnerabilities in Plugins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/plugins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Handling Vulnerabilities in Plugins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="active">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="active">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Handling Vulnerabilities in Plugins
+</h1>
+<div class="paragraph">
+<p>We strive to fix all security vulnerabilities in Jenkins and plugins in a timely manner.
+However, the structure of the Jenkins project, which gives plugin maintainers a lot of autonomy, and the number and diversity of plugins make this impossible to guarantee.</p>
+</div>
+<div class="sect1">
+<h2 id="unresolved"><a class="anchor" href="#unresolved"></a>Announcing Unresolved Vulnerabilities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In case of a plugin vulnerability, we try to contact the plugin maintainer(s) to inform them of it.
+If they decline (or otherwise fail) to fix the vulnerability, or don&#8217;t respond in a timely manner, and the security team doesn&#8217;t have the capacity to fix it, we follow the process outlined below in the interest of our users:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Publish a security advisory about the plugin, describing the nature of the vulnerability, but noting that there is no fix (other than no longer using the plugin).
+If there are workarounds, explain them.</p>
+</li>
+<li>
+<p>In some cases of particularly severe vulnerabilities, <a href="#suspensions">stop publishing the vulnerable plugin on the Jenkins update sites</a>.</p>
+</li>
+<li>
+<p>Add metadata to update sites to inform administrators on the Jenkins UI about vulnerable plugins they have installed.</p>
+</li>
+<li>
+<p>Display security warnings on <a href="https://plugins.jenkins.io/">the plugins site</a>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This allows Jenkins administrators to make an informed decision about their continued use of plugins with unresolved security vulnerabilities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="followup"><a class="anchor" href="#followup"></a>Following Up Later</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some maintainers end up fixing security vulnerabilities after we have announced it as unresolved in their plugin.
+This can be any time between hours and years after publication.</p>
+</div>
+<div class="paragraph">
+<p>In those cases, security advisories will <em>not</em> be amended, as the information provided was correct at the time of publication.
+Additionally, the security advisory will be clear that the lack of a fix is only known "<em>as of publication of this advisory</em>".</p>
+</div>
+<div class="paragraph">
+<p>We will update the security warnings metadata that is shown to administrators in Jenkins and on <a href="https://plugins.jenkins.io/">the plugins site</a>.
+Maintainers can inform us through Jira or email about a fix or <a href="https://github.com/jenkins-infra/update-center2/#security-warnings">file a pull request updating the warnings metadata</a> themselves.
+Once we confirm the fix is correct and complete, we will update the published warnings metadata.
+This will remove the active security warning from the plugin entry on the plugins site and from the plugin manager directly in Jenkins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="suspensions"><a class="anchor" href="#suspensions"></a>Suspended Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Distribution of the following plugins was suspended in conjunction with the publication of a security advisory announcing unresolved security issues.
+The Jenkins security team believes that most use cases would be negatively impacted by these security vulnerabilities and it is better for the Jenkins ecosystem to no longer distribute these plugins in their current form to prevent harm to users.
+This typically is the case when plugins have particularly severe security vulnerabilities, deliberately bypass or disable protection mechanisms, or offer little benefit to users anyway.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>360 FireLine (<code>fileline</code>): <a href="/security/advisory/2022-10-19/#SECURITY-2866">SECURITY-2866</a></p>
+</li>
+<li>
+<p>Adaptive DSL (<code>AdaptivePlugin</code>): <a href="/security/advisory/2017-04-10/#adaptive-dsl-plugin">SECURITY-457</a></p>
+</li>
+<li>
+<p>Autocomplete Parameter (<code>autocomplete-parameter</code>): <a href="/security/advisory/2022-05-17/">multiple vulnerabilities announced on 2022-05-17</a></p>
+</li>
+<li>
+<p>batch task (<code>batch-task</code>): <a href="/security/advisory/2022-01-12/#SECURITY-1025">SECURITY-1025</a></p>
+</li>
+<li>
+<p>Build Flow (<code>build-flow-plugin</code>): <a href="/security/advisory/2017-04-10/#build-flow-plugin">SECURITY-293</a></p>
+</li>
+<li>
+<p>CAS protocol version 1 (<code>cas1</code>): <a href="/security/advisory/2017-04-10/#cas-protocol-version-1-plugin">SECURITY-491</a></p>
+</li>
+<li>
+<p>Config Rotator (<code>config-rotator</code>): <a href="/security/advisory/2022-11-15/#SECURITY-2842">SECURITY-2842</a></p>
+</li>
+<li>
+<p>Copy To Slave (<code>copy-to-slave</code>): <a href="/security/advisory/2018-03-26/#SECURITY-545">SECURITY-545</a></p>
+</li>
+<li>
+<p>CryptoMove (<code>cryptomove</code>): <a href="/security/advisory/2020-03-09/#SECURITY-1635">SECURITY-1635</a></p>
+</li>
+<li>
+<p>CVS Tagging (<code>cvs-tag</code>): <a href="/security/advisory/2017-04-10/#cvs-tagging-plugin">SECURITY-459</a></p>
+</li>
+<li>
+<p>Debian Package Builder (<code>debian-package-builder</code>): <a href="/security/advisory/2022-01-12/#SECURITY-2546">SECURITY-2546</a></p>
+</li>
+<li>
+<p>DotCi (<code>DotCi</code>): <a href="/security/advisory/2022-09-21/#SECURITY-1737">SECURITY-1737</a></p>
+</li>
+<li>
+<p>Dynamic Parameter (<code>dynamicparameter</code>): <a href="/security/advisory/2017-04-10/#dynamic-parameter-plugin">SECURITY-462</a></p>
+</li>
+<li>
+<p>ElasticBox Jenkins Kubernetes CI/CD (<code>kubernetes-ci</code>): <a href="/security/advisory/2020-07-02/#SECURITY-1738">SECURITY-1738</a></p>
+</li>
+<li>
+<p>Grails (<code>grails</code>): <a href="/security/advisory/2017-04-10/#grails-plugin">SECURITY-458</a></p>
+</li>
+<li>
+<p>GroovyAxis (<code>groovyaxis</code>): <a href="/security/advisory/2017-04-10/#groovyaxis-plugin">SECURITY-460</a></p>
+</li>
+<li>
+<p>JS Games (<code>jsgames</code>): <a href="/security/advisory/2020-09-01/#SECURITY-1905">SECURITY-1905</a></p>
+</li>
+<li>
+<p>Kubernetes Continuous Deploy (<code>kubernetes-cd</code>): <a href="/security/advisory/2022-08-23/#SECURITY-2448">SECURITY-2448</a></p>
+</li>
+<li>
+<p>Kubernetes :: Pipeline :: Arquillian Steps (<code>kubernetes-pipeline-arquillian-steps</code>): <a href="/security/advisory/2019-09-25/#SECURITY-920%20(2)">SECURITY-920 (2)</a></p>
+</li>
+<li>
+<p>Kubernetes :: Pipeline :: Kubernetes Steps (<code>kubernetes-pipeline-steps</code>): <a href="/security/advisory/2019-09-25/#SECURITY-920%20(1)">SECURITY-920 (1)</a></p>
+</li>
+<li>
+<p>Literate (<code>literate</code>): <a href="/security/advisory/2020-03-09/#SECURITY-1750">SECURITY-1750</a></p>
+</li>
+<li>
+<p>Nerrvana (<code>nerrvana</code>): <a href="/security/advisory/2020-10-08/#SECURITY-2097">SECURITY-2097</a></p>
+</li>
+<li>
+<p>Persona (<code>persona</code>): <a href="/security/advisory/2020-10-08/#SECURITY-2046">SECURITY-2046</a></p>
+</li>
+<li>
+<p>Pipeline: Classpath Step (<code>pipeline-classpath</code>): <a href="https://www.jenkins.io/security/advisory/2017-03-20/#pipeline-classpath-step-plugin-allowed-script-security-sandbox-bypass">SECURITY-336</a></p>
+</li>
+<li>
+<p>Pipeline: Phoenix AutoTest (<code>phoenix-autotest</code>): <a href="/security/advisory/2022-03-29/">multiple vulnerabilities announced on 2022-03-29</a></p>
+</li>
+<li>
+<p>Puppet Enterprise Pipeline (<code>puppet-enterprise-pipeline</code>): <a href="/security/advisory/2019-10-16/#SECURITY-918">SECURITY-918</a></p>
+</li>
+<li>
+<p>Reactor (<code>reactor</code>): <a href="/security/advisory/2017-04-10/#reactor-plugin">SECURITY-487</a></p>
+</li>
+<li>
+<p>Script SCM (<code>scriptscm</code>): <a href="/security/advisory/2017-04-10/#script-scm-plugin">SECURITY-461</a></p>
+</li>
+<li>
+<p><code>scripttrigger</code>: <a href="/security/advisory/2017-04-10/#scripttrigger-plugin">SECURITY-456</a></p>
+</li>
+<li>
+<p>Simple Travis Pipeline Runner (<code>simple-travis-runner</code>): <a href="/security/advisory/2019-08-07/#SECURITY-922">SECURITY-922</a></p>
+</li>
+<li>
+<p>Chef Sinatra (<code>sinatra-chef-builder</code>): <a href="/security/advisory/2022-02-15/#SECURITY-1377">SECURITY-1377</a></p>
+</li>
+<li>
+<p>ScreenRecorder (<code>screenrecorder</code>): <a href="/security/advisory/2022-10-19/#SECURITY-2864">SECURITY-2864</a></p>
+</li>
+<li>
+<p>Speaks! (<code>speaks</code>): <a href="/security/advisory/2017-10-11/#arbitrary-code-execution-vulnerability-in-speaks-plugin">SECURITY-623</a></p>
+</li>
+<li>
+<p>Storable Configs (<code>storable-configs-plugin</code>): <a href="/security/advisory/2022-05-17/#SECURITY-1969">SECURITY-1969</a>, <a href="/security/advisory/2020-09-16/">multiple vulnerabilities announced on 2020-09-16</a></p>
+</li>
+<li>
+<p>Subversion Tagging (<code>svn-tag</code>): <a href="/security/advisory/2017-04-10/#subversion-tagging-plugin">SECURITY-298</a></p>
+</li>
+<li>
+<p><code>tcl</code>: <a href="/security/advisory/2017-04-10/#tcl-plugin">SECURITY-379</a></p>
+</li>
+<li>
+<p>Team Views (<code>team-views</code>): <a href="/security/advisory/2022-02-15/">multiple vulnerabilities announced on 2022-02-15</a></p>
+</li>
+<li>
+<p>XFramium Builder (<code>xframium</code>): <a href="/security/advisory/2022-10-19/#SECURITY-2863">SECURITY-2863</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unless the security issue is inherent to what the plugin does while not making this the sole <em>purpose</em> of the plugin, the Jenkins security team welcomes efforts to fix the vulnerabilities and have plugin distribution restored.</p>
+</div>
+<div class="paragraph">
+<p>In addition to plugins suspended for security reasons, the following plugins that require suspended plugins to run are also suspended, as they would not be installable:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build Automation Management Tool (<code>build-configurator</code>) depends on <code>copy-to-slave</code></p>
+</li>
+<li>
+<p><code>build-flow-extensions-plugin</code> depends on <code>build-flow-plugin</code></p>
+</li>
+<li>
+<p><code>build-flow-test-aggregator</code> depends on <code>build-flow-plugin</code></p>
+</li>
+<li>
+<p><code>build-flow-toolbox-plugin</code> depends on <code>build-flow-plugin</code></p>
+</li>
+<li>
+<p>DotCi DockerPublish (<code>DotCi-DockerPublish</code>) depends on <code>DotCi</code></p>
+</li>
+<li>
+<p>DotCi Fig template (<code>DotCi-Fig-template</code>) depends on <code>DotCi-InstallPackages</code></p>
+</li>
+<li>
+<p>DotCi InstallPackages (<code>DotCi-InstallPackages</code>) depends on <code>DotCi</code></p>
+</li>
+<li>
+<p>DotCiInstallPackages (<code>DotCiInstallPackages</code>) depends on <code>DotCi</code></p>
+</li>
+<li>
+<p>External Resource Dispatcher (<code>externalresource-dispatcher</code>) depends on <code>build-flow-plugin</code></p>
+</li>
+<li>
+<p>Kubernetes :: Pipeline :: Aggregator (<code>kubernetes-pipeline-aggregator</code>) depends on <code>kubernetes-pipeline-arquillian-steps</code> and <code>kubernetes-pipeline-steps</code></p>
+</li>
+<li>
+<p><code>lsf-cloud</code> depends on <code>copy-to-slave</code></p>
+</li>
+<li>
+<p>SGE Cloud Plugin (<code>sge-cloud-plugin</code>) depends on <code>copy-to-slave</code></p>
+</li>
+<li>
+<p>XTrigger (<code>xtrigger</code>) depends on <code>scripttrigger</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/plugins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

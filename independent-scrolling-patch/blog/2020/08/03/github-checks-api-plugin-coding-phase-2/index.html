@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GitHub Checks API Plugin Project - Coding Phase 2
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Google Summer of Code 2020 - GitHub Checks API Plugin project update for Coding Phase 2" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/03/github-checks-api-plugin-coding-phase-2/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 2" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 2" name="twitter:title">
+<meta content="Google Summer of Code 2020 - GitHub Checks API Plugin project update for Coding Phase 2" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GitHub Checks API Plugin Project - Coding Phase 2" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/03/github-checks-api-plugin-coding-phase-2/" property="og:url">
+<meta content="Google Summer of Code 2020 - GitHub Checks API Plugin project update for Coding Phase 2" name="og:description">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 2" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GitHub Checks API Plugin Project - Coding Phase 2
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/xiongkezhi/"><div class="app-avatar"><img alt="Kezhi Xiong" class="app-avatar__image" src="/images/avatars/XiongKezhi.jpeg"></div> Kezhi Xiong</a>
+August 03, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GitHub+Checks+API+Plugin+Project+-+Coding+Phase+2&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F08%2F03%2Fgithub-checks-api-plugin-coding-phase-2%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Another great coding phase for <a href="/projects/gsoc/2020/projects/github-checks/">GitHub Checks API Project</a> ends!
+In this phase, we focused on consuming the checks API in two widely used plugins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/warnings-ng/">Warnings NG Plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/code-coverage-api/">Code Coverage API Plugin</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Besides the external usage, we have also split the general checks API from its GitHub implementation and released both of the plugins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/checks-api/">Checks API Plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-checks/">GitHub Checks Plugin</a></p>
+</li>
+</ul>
+</div>
+<div class="videoblock">
+<div class="title">Coding Phase 2 Demo [starts from 25:20]</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/b67I6spBdTg?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="sect1">
+<h2 id="warning-checks"><a class="anchor" href="#warning-checks"></a>Warning Checks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The newly released <a href="https://github.com/jenkinsci/warnings-ng-plugin/releases/tag/warnings-ng-8.4.0">Warnings NG plugin 8.4.0</a> will use checks API to publish different check runs for different static analysis tools.
+Without leaving GitHub, users are now able to see the analysis report they interested in.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/warning-checks.png" alt="Warning Checks Summary">
+</div>
+</div>
+<div class="paragraph">
+<p>On GitHub&#8217;s conversation tab for each PR, users will see summaries for those checks like the screenshot above. The summaries will include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The status that indicates the quality gate</p>
+</li>
+<li>
+<p>The name of the analysis tool used</p>
+</li>
+<li>
+<p>A short message that indicates statistics of new and total issues</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More fine-grained statistics can be found in the <code>Details</code> page.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/severity-statistics.png" alt="Severity Statis">
+</div>
+</div>
+<div class="paragraph">
+<p>Another practical feature is the annotation for specific lines of code. Users can now review the code alone with the annotations.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/annotations.png" alt="Warning Annotations">
+</div>
+</div>
+<div class="sect2">
+<h3 id="try-it"><a class="anchor" href="#try-it"></a>Try It</h3>
+<div class="paragraph">
+<p>In <a href="https://github.com/jenkinsci/warnings-ng-plugin/releases/tag/warnings-ng-8.4.0">Wanings NG plugin 8.4.0</a>, the warning checks is set as a default feature only for GitHub.
+For other SCM platforms, a <code>NullPublisher</code> will be used which does nothing.
+Therefore, you can get those checks for your own GitHub project just in a few steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update Warnings NG plugin to 8.4.0</p>
+</li>
+<li>
+<p>Install <a href="https://plugins.jenkins.io/github-checks/">GitHub Checks plugin</a> on your Jenkins instance</p>
+</li>
+<li>
+<p>Follow the <a href="https://github.com/jenkinsci/github-branch-source-plugin/blob/master/docs/github-app.adoc">GitHub app authentication guide</a> to configure the credentials for the multi-branch project or GitHub organization project you are going to use</p>
+</li>
+<li>
+<p>Use warnings-ng plugin in your Jenkinsfile for the project you configured in the last step, e.g.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">stage</span> <span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkout</span> <span class="n">scm</span>
+    <span class="o">}</span>
+
+    <span class="n">stage</span> <span class="o">(</span><span class="s1">'Build and Static Analysis'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sh</span> <span class="s1">'mvn -V -e clean verify -Dmaven.test.failure.ignore'</span>
+
+        <span class="n">recordIssues</span> <span class="nl">tools:</span> <span class="o">[</span><span class="n">java</span><span class="o">(),</span> <span class="n">javaDoc</span><span class="o">()],</span> <span class="nl">aggregatingResults:</span> <span class="s1">'true'</span><span class="o">,</span> <span class="nl">id:</span> <span class="s1">'java'</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">'Java'</span>
+        <span class="n">recordIssues</span> <span class="nl">tool:</span> <span class="n">errorProne</span><span class="o">(),</span> <span class="nl">healthy:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">unhealthy:</span> <span class="mi">20</span>
+        <span class="n">recordIssues</span> <span class="nl">tools:</span> <span class="o">[</span><span class="n">checkStyle</span><span class="o">(</span><span class="nl">pattern:</span> <span class="s1">'target/checkstyle-result.xml'</span><span class="o">),</span>
+            <span class="n">spotBugs</span><span class="o">(</span><span class="nl">pattern:</span> <span class="s1">'target/spotbugsXml.xml'</span><span class="o">),</span>
+            <span class="n">pmdParser</span><span class="o">(</span><span class="nl">pattern:</span> <span class="s1">'target/pmd.xml'</span><span class="o">),</span>
+            <span class="n">cpd</span><span class="o">(</span><span class="nl">pattern:</span> <span class="s1">'target/cpd.xml'</span><span class="o">)],</span>
+            <span class="nl">qualityGates:</span> <span class="o">[[</span><span class="nl">threshold:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">type:</span> <span class="s1">'TOTAL'</span><span class="o">,</span> <span class="nl">unstable:</span> <span class="kc">true</span><span class="o">]]</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>For more about the pipeline usage of warnings-ng plugin, please see <a href="https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#pipeline-configuration">the official documentation</a>.</em></p>
+</div>
+<div class="paragraph">
+<p>However, if you don&#8217;t want to publish the warnings to GitHub, you can either uninstall the GitHub Checks plugin or disable it by adding <code>skipPublishingChecks: true</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">recordIssues</span> <span class="nl">enabledForFailure:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">tools:</span> <span class="o">[</span><span class="n">java</span><span class="o">(),</span> <span class="n">javaDoc</span><span class="o">()],</span> <span class="nl">skipPublishingChecks:</span> <span class="kc">true</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="coverage-checks"><a class="anchor" href="#coverage-checks"></a>Coverage Checks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The coverage checks are achieved by consuming the API in <a href="https://plugins.jenkins.io/code-coverage-api/">Code Coverage API plugin</a>.
+First, in the conversation tab of a PR, users will be able to see the summary about the coverage difference compared to previous builds.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/coverage-summary.png" alt="Coverage Summary">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Details</code> page will contain some other things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Links to the reference build, including the target branch build from the master branch and the last successful build from this branch</p>
+</li>
+<li>
+<p>Coverage healthy score (the default value is 100% if the threshold is not configured)</p>
+</li>
+<li>
+<p>Coverages and trends of different types in table format</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-2/coverage-details.png" alt="Coverage Details">
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://github.com/jenkinsci/code-coverage-api-plugin/pull/169">pull request</a> for this feature will soon be merged and will be included in the next release of Coverage Checks API plugin. After that, you can use it by adding the below section to your pipeline script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">stage</span> <span class="o">(</span><span class="s1">'Checkout'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkout</span> <span class="n">scm</span>
+    <span class="o">}</span>
+
+    <span class="n">stage</span> <span class="o">(</span><span class="s1">'Line and Branch Coverage'</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">publishCoverage</span> <span class="nl">adapters:</span> <span class="o">[</span><span class="n">jacoco</span><span class="o">(</span><span class="s1">'**/*/jacoco.xml'</span><span class="o">)],</span> <span class="nl">sourceFileResolver:</span> <span class="n">sourceFiles</span><span class="o">(</span><span class="s1">'STORE_ALL_BUILD'</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like the warning checks, you can also disable the coverage checks by setting the field <code>skipPublishingChecks</code>, e.g.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">publishCoverage</span> <span class="nl">adapters:</span> <span class="o">[</span><span class="n">jacoco</span><span class="o">(</span><span class="s1">'**/*/jacoco.xml'</span><span class="o">)],</span> <span class="nl">sourceFileResolver:</span> <span class="n">sourceFiles</span><span class="o">(</span><span class="s1">'STORE_ALL_BUILD'</span><span class="o">),</span> <span class="nl">skipPublishingChecks:</span> <span class="kc">true</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="next-phase"><a class="anchor" href="#next-phase"></a>Next Phase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the next phase, we will turn our attention back to <a href="https://plugins.jenkins.io/checks-api/">Checks API Plugin</a> and <a href="https://plugins.jenkins.io/github-checks/">GitHub Checks Plugin</a> and add the following features in future versions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline Support</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can publish checks directly in a pipeline script without requiring a consumer plugin that supports the checks.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Re-run Request</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can re-run Jenkins build through Checks API.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Lastly, it is exciting to inform that we are currently making the checks feature available on <a href="https://ci.jenkins.io">ci.jenkins.io</a> for all plugins hosted in the jenkinsci GitHub organization, please see <a href="https://issues.jenkins.io/browse/INFRA-2694">INFRA-2694</a> for more details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/checks-api-plugin">Checks API Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/github-checks-plugin">GitHub Checks Plugin</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/github-checks/">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/jenkinsci/github-checks-api">Gitter Channel</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/github/">
+github
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/api/">
+api
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kezhi Xiong" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/XiongKezhi.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/xiongkezhi/">
+Kezhi Xiong
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins Google Summer of Code 2020 Student. Kezhi is an open source enthusiast who enjoys sharing ideas with other developers. He started contributing to Jenkins in March 2020. Currently, he is working on <a href="https://github.com/XiongKezhi/checks-api-plugin">GitHub Checks API Plugin</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/XiongKezhi" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/AugustX_" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/kezhi-xiong-44234a188" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/08/2020-08-03-github-checks-api-plugin-coding-phase-2.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

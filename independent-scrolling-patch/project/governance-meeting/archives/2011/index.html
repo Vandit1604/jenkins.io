@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Governance Meeting Archive 2011
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/project/governance-meeting/archives/2011/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Governance Meeting Archive 2011" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Governance Meeting Archive 2011" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Governance Meeting Archive 2011" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/project/governance-meeting/archives/2011/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Governance Meeting Archive 2011" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins Governance Meeting Archive 2011
+</h1>
+<div class="paragraph">
+<p>This page is an archive of past meeting agendas, their minutes and IRC logs, for the year shown above.
+For current information, see the <a href="/project/governance-meeting">Governance Meeting</a> page.</p>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-Dec14thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-Dec14thMeeting"></a>Dec 14th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN
+<a href="http://www.timeanddate.com/worldclock/fixedtime.html?msg=Jenkins+Governance+Meeting&amp;iso=20111214T11&amp;p1=224&amp;ah=1&amp;sort=1">December
+14th 19:00 UTC</a>, which should be 11am PST, 2pm EST, 8pm CET, 4am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap last meeting&#8217;s action items</p>
+</li>
+<li>
+<p>Infra update (<a href="/blog/authors/rtyler/">
+(rtyler)</a>)</p>
+</li>
+<li>
+<p>Add <a href="/blog/authors/aheritier">
+(aheritier)</a> to the "users-core" puppet module, giving him administrator
+access on all Jenkins infrastructure machines.
+(<a href="/blog/authors/rtyler/">(rtyler)</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-12-14-19.03.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-12-14-19.03.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-Nov30thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-Nov30thMeeting"></a>Nov 30th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN
+<a href="http://www.timeanddate.com/worldclock/fixedtime.html?msg=Jenkins+Governance+Meeting&amp;iso=20111130T11&amp;p1=224&amp;ah=1&amp;sort=1">November
+30th 19:00 UTC</a>, which should be 11am PST, 2pm EST, 8pm CET, 4am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap last meeting action items</p>
+</li>
+<li>
+<p>infra update (<a href="/blog/authors/rtyler/">
+(rtyler)</a>)</p>
+</li>
+<li>
+<p>Discuss plans for exhibiting at
+<a href="http://www.socallinuxexpo.org/scale10x/jenkins-ci">SCALE 10x</a> on January
+20-22 in Los Angeles, CA.
+(<a href="/blog/authors/rtyler/">(rtyler)</a>)</p>
+</li>
+<li>
+<p>Discuss plans for <a href="http://www.fosdem.org/2012/">FOSDEM 2012</a>. What
+should we do (dev room talk? lightning talk? Jenkins stand?), and who
+will be going? (<a href="/blog/authors/rtyler/">
+(rtyler)</a>)</p>
+</li>
+<li>
+<p>Jenkins CIA program <a href="/blog/authors/kohsuke/">(kohsuke)</a></p>
+</li>
+<li>
+<p>Context: people like <a href="http://t.co/CYzvqOUB">those Jenkins stickers</a>.
+We&#8217;d like to use them well to spread words about Jenkins.</p>
+</li>
+<li>
+<p>LTS 1.424.1 release (vjuranek)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-11-30-19.01.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-11-30-19.01.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-Nov9thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-Nov9thMeeting"></a>Nov 9th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN
+<a href="http://www.timeanddate.com/worldclock/fixedtime.html?msg=Governance+Meeting&amp;iso=20111109T11&amp;p1=283">November
+9th 19:00 UTC</a>, which should be 11am PST, 2pm EST, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap last meeting action items</p>
+</li>
+<li>
+<p>(<strong>This was unaddressed in the last meeting</strong>) State of the Jenkins
+development environment (@kutzi)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the environment makes it hard for part time developers to work in the
+free time on Jenkins, because it&#8217;s often broken. See
+<a href="http://jenkins.361315.n4.nabble.com/Error-running-mvn-hudson-dev-run-td3906244.html">here</a>
+or
+<a href="http://jenkins.361315.n4.nabble.com/Error-building-Jenkins-core-java-lang-NoSuchMethodError-org-codehaus-groovy-ast-ModuleNode-getStarIm-td3868116.html">here</a> or
+<a href="http://jenkins.361315.n4.nabble.com/Error-launching-JNLP-slave-when-running-hudson-dev-run-td3772780.html">here</a></p>
+</li>
+<li>
+<p>What can we do about it?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Add (jieryn) to
+the "users-core" puppet module, giving him administrator access on all
+Jenkins infrastructure machines.
+(<a href="/blog/authors/rtyler/">(rtyler)</a>)</p>
+</li>
+<li>
+<p>Appprove CloudBees request for the "Jenkins Enterprise from CloudBees"
+use request as per
+<a href="https://wiki.jenkins.io/display/JENKINS/Governance+Document">Governance
+Document</a> (<a href="/blog/authors/kohsuke/">
+(kohsuke)</a>)</p>
+</li>
+<li>
+<p>LTS discussion. Branch is ready, I say time for RC
+(<a href="/blog/authors/kohsuke/">(kohsuke)</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Augmenting LTS Test Matrix with written test plans
+(ryan)</p>
+</li>
+<li>
+<p>Backport of JENKINS-10989 and SECURITY-17 as
+<a href="http://jenkins.361315.n4.nabble.com/LTS-1-424-1-RC-td4015360.html#a4015852">suggested
+by Romain</a> (vjuranek)</p>
+</li>
+<li>
+<p>Security advisory handling.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-11-09-19.00.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-11-09-19.00.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-Oct26thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-Oct26thMeeting"></a>Oct 26th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-10-26/18:00">October 26th 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CEST, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>State of the Jenkins development environment (@kutzi)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the environment makes it hard for part time developers to work in the
+free time on Jenkins, because it&#8217;s often broken. See
+<a href="http://jenkins.361315.n4.nabble.com/Error-running-mvn-hudson-dev-run-td3906244.html">here</a>
+or
+<a href="http://jenkins.361315.n4.nabble.com/Error-building-Jenkins-core-java-lang-NoSuchMethodError-org-codehaus-groovy-ast-ModuleNode-getStarIm-td3868116.html">here</a> or
+<a href="http://jenkins.361315.n4.nabble.com/Error-launching-JNLP-slave-when-running-hudson-dev-run-td3772780.html">here</a></p>
+</li>
+<li>
+<p>What can we do about it?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Bringing old Jenkins plugins up to a common requiredCore (@jieryn)</p>
+</li>
+<li>
+<p>Infra update (<a href="/blog/authors/rtyler/">
+(rtyler)</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>SPI donation status for cucumber</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-10-26-18.04.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-10-26-18.04.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForOct12thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForOct12thMeeting"></a>For Oct 12th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-10-12/18:00">October 12th 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CEST, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap of last meeting&#8217;s action items</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForSept28thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForSept28thMeeting"></a>For Sept 28th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-09-28/18:00">September 28th 18:00
+UTC</a>, which should be 11am PDT, 2pm EDT, 8pm CEST, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap of last meeting&#8217;s action items</p>
+</li>
+<li>
+<p>Donation status update (@orrc)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Awesome progress towards
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Donation">the goal</a></p>
+</li>
+<li>
+<p>Can we make donating easier for companies/Europeans/recurring
+payments? (see
+<a href="http://groups.google.com/group/jenkinsci-users/browse_thread/thread/9a21a1ec4ea2a1cd#6cd5e5a4aa5b0776">this
+thread</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Choosing next LTS baseline candidate (Yahoo! folk?)</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Governance+Document">Governance
+document</a> review/approval</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-09-28-18.02.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-09-28-18.02.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForSept14thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForSept14thMeeting"></a>For Sept 14th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-09-14/18:00">September 14th 18:00
+UTC</a>, which should be 11am PDT, 2pm EDT, 8pm CEST, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap of last meeting&#8217;s action items (@rtyler)</p>
+</li>
+<li>
+<p>Donation status update</p>
+</li>
+<li>
+<p><a href="https://groups.google.com/group/jenkinsci-dev/browse_frm/thread/04bbf72c3911ec99#">governance
+document review</a></p>
+</li>
+<li>
+<p>Choosing next LTS baseline candidate</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-09-14-18.01.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-09-14-18.01.log.html">raw</a></p>
+</div>
+<div class="paragraph">
+<p>[[GovernanceMeetingArchive2011-ForAug31stMeeting(rescheduledfromAugust24th)]]
+== For Aug 31st Meeting (rescheduled from August 24th)</p>
+</div>
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-08-31/18:00">August 31st 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CEST, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Plugin deprecations
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Proposed+Plugin+Deprecation" class="bare">https://wiki.jenkins-ci.org/display/JENKINS/Proposed+Plugin+Deprecation</a></p>
+</li>
+<li>
+<p>Jenkins User Conference
+<a href="http://jenkins-ci.org/content/jenkins-user-conference" class="bare">http://jenkins-ci.org/content/jenkins-user-conference</a></p>
+</li>
+<li>
+<p>Jenkins Mailing List SPAM - can we enable spam protection? This would
+require some trusted people to authorize first-time mail sources.
+See <a href="http://groups.google.com/support/bin/answer.py?hl=en&amp;answer=186997 for" class="bare">http://groups.google.com/support/bin/answer.py?hl=en&amp;answer=186997 for</a>
+further information. @jieryn</p>
+</li>
+<li>
+<p>There are about a dozen plugins with pull requests in excess of 30
+days - what should we do about this? See
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Pending+Pull+Requests" class="bare">https://wiki.jenkins-ci.org/display/JENKINS/Pending+Pull+Requests</a>
+@jieryn</p>
+</li>
+<li>
+<p>LTS 1.409.2 - test status, ready to release?, if yes, when will be
+release @vjuranek</p>
+</li>
+<li>
+<p>Official commit workflow for core committers @dty</p>
+</li>
+<li>
+<p>Can we link this
+page <a href="https://wiki.jenkins.io/display/JENKINS/Issue+Tracking">Issue
+Tracking</a> on a prominent place to get better bug reports? @kutzi</p>
+</li>
+<li>
+<p>Feedback on the request for official definitions of stable, unstable,
+failure: <a href="https://issues.jenkins.io/browse/JENKINS-10763 @kutzi" class="bare">https://issues.jenkins.io/browse/JENKINS-10763 @kutzi</a></p>
+</li>
+<li>
+<p>Donation drive to refill rtyler&#8217;s pocketbook @rtyler</p>
+</li>
+<li>
+<p>Infra update from rtyler</p>
+<div class="ulist">
+<ul>
+<li>
+<p>status of mirrors.jenkins-ci.org</p>
+</li>
+<li>
+<p>cabbage update</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-08-31-18.00.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-08-31-18.00.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForAug11thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForAug11thMeeting"></a>For Aug 11th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-08-11/18:00">August 11th 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Plugin deprecations
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Proposed+Plugin+Deprecation" class="bare">https://wiki.jenkins-ci.org/display/JENKINS/Proposed+Plugin+Deprecation</a></p>
+</li>
+<li>
+<p>Jenkins User Conference
+<a href="http://jenkins-ci.org/content/jenkins-user-conference" class="bare">http://jenkins-ci.org/content/jenkins-user-conference</a></p>
+</li>
+<li>
+<p>Trademark Registration Status</p>
+</li>
+<li>
+<p>Kohsuke wanted to discuss this (JENKINS-9488 - align topbar colors):
+<a href="https://github.com/jenkinsci/jenkins/pull/179" class="bare">https://github.com/jenkinsci/jenkins/pull/179</a></p>
+</li>
+<li>
+<p>Adding olamy as an owner for jenkinsci on GitHub for additional
+coverage/redundancy.</p>
+</li>
+<li>
+<p>When is it time to release a new LTS release?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-08-11-18.00.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-08-11-18.00.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForJul20thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForJul20thMeeting"></a>For Jul 20th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-07-20/18:00">July 20th 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="paragraph">
+<p>*</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForJul6thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForJul6thMeeting"></a>For Jul 6th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-07-06/18:00">July 6th 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How do we handle pull requests which are pending for a long time</p>
+<div class="ulist">
+<ul>
+<li>
+<p>see <a href="http://echelog.matzon.dk/logs/browse/jenkins/1309816800 (since" class="bare">http://echelog.matzon.dk/logs/browse/jenkins/1309816800 (since</a>
+~19:40) for a related discussion</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>What is the current state of the
+'<a href="https://wiki.jenkins.io/display/JENKINS/The+new+EMailer">The new
+EMailer</a>' ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maybe to get things going again, deprecate the built-in EMailer and
+deliver email-ext bundled?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Infra update from <a href="/blog/authors/rtyler/">
+(rtyler)</a> regarding new machines at the <a href="http://osuosl.org/">OSUOSL</a></p>
+</li>
+<li>
+<p>CLA discussion. We should start collecting CLA for core, and our
+current plan on the record was to reuse Apache CLA.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-07-06-18.02.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-07-06-18.02.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForJun22ndMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForJun22ndMeeting"></a>For Jun 22nd Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-06-22/18:00">June 22nd 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Commit message formatting</p>
+</li>
+<li>
+<p>Talk about
+the <a href="https://wiki.jenkins.io/display/JENKINS/Governance+Meeting+Archive+2011#">Test
+Support Proposal</a> by Christoph Kutzinski</p>
+</li>
+<li>
+<p>What is the current state of the
+'<a href="https://wiki.jenkins.io/display/JENKINS/The+new+EMailer">The new
+EMailer</a>' ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maybe to get things going again, deprecate the built-in EMailer and
+deliver email-ext bundled?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-06-22-18.05.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-06-22-18.05.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForJun8thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForJun8thMeeting"></a>For Jun 8th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/GMT/2011-06-08/18:00">June 8th 18:00 UTC</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Foundation update</p>
+</li>
+<li>
+<p>LTS update</p>
+</li>
+<li>
+<p>Discussion: fixing the test harness</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-06-08-18.04.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-06-08-18.04.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForMay24thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForMay24thMeeting"></a>For May 24th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN <a href="http://permatime.com/UTC/2011-05-24/16:00">May 24th 16:00 UTC</a>,
+which is 9am PDT, 12pm EDT, 6pm CEST, 1am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recap of
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-05-11-18.01.html">Action
+items</a> from last meeting</p>
+</li>
+<li>
+<p>Discussion of
+<a href="https://wiki.jenkins.io/display/JENKINS/Possible+Jenkins+Umbrella+Foundations">Possible
+Jenkins Umbrella Foundations</a> and
+<a href="https://wiki.jenkins.io/display/JENKINS/Governance+Meeting+Archive+2011#">Jenkins
+Hudson Reconciliation Requirements</a> community input, and what the next
+steps are in both areas.</p>
+</li>
+<li>
+<p>Discuss state of the Jenkins test harness:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests take ages to finish</p>
+</li>
+<li>
+<p>fail locally - with cryptic error messages - while succeeding on
+Jenkins-on-Jenkins. See e.g. <a href="http://pastebin.com/49N472Xu " class="bare">http://pastebin.com/49N472Xu </a></p>
+</li>
+<li>
+<p>unit testing often isn&#8217;t possible because of the Hudson god-class
+resp. final classes</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-05-24-16.09.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-05-24-16.09.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForMay11thMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForMay11thMeeting"></a>For May 11th Meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN: <a href="http://permatime.com/GMT/2011-05-11/18:00">May 11th 6pm GMT</a>, which
+should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Discuss progress with SFC/SPI/ASF/EF regarding an umbrella
+organization</p>
+</li>
+<li>
+<p>Decide whether a permalink from
+<a href="http://www.jenkins-ci.org/node">jenkins-ci.org</a> to John Smart&#8217;s "Jenkins:
+The Definitive Guide" book is okay</p>
+</li>
+<li>
+<p>Discuss hardware access for drulli and olamy (primarily eggplant)</p>
+</li>
+<li>
+<p>Can the localization committers push their changes directly? If so,
+please put the approval in the record(from tyuki39)</p>
+</li>
+<li>
+<p>Discuss status on the <a href="http://www.cafepress.com/jenkinsci">JenkinsCI
+cafe press</a> store</p>
+</li>
+<li>
+<p>Discuss whether to add the git plugin to the core release bundle.</p>
+</li>
+<li>
+<p>Updates:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Infra update from rtyler</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Status of new machines at the OSUOSL</p>
+</li>
+<li>
+<p>Status of MirrorBrain fixes/bandwidth allocation</p>
+</li>
+<li>
+<p>Status of proper backups at Contegix</p>
+</li>
+<li>
+<p>Discuss dealing with bandwidth issues and Debian APT clients (DNS
+round robin to OSUOSL?)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES:
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-05-11-18.01.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-05-11-18.01.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForApril27thmeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForApril27thmeeting"></a>For April 27th meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN: <a href="http://permatime.com/GMT/2011-04-27/18:00">April 27th 6pm GMT</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Updates</p>
+<div class="ulist">
+<ul>
+<li>
+<p>fcamblor to report the progress/status on plugin compat tester</p>
+</li>
+<li>
+<p>Trademark registration status</p>
+</li>
+<li>
+<p>Infra updates from rtyler</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES:
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-04-27-18.04.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-04-27-18.04.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForApril13thmeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForApril13thmeeting"></a>For April 13th meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN: <a href="http://permatime.com/GMT/2011-04-13/18:00">April 13th 6pm GMT</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Review/discussion of aheritier&#8217;s upcoming proposal for details of JIRA
+project split.</p>
+</li>
+<li>
+<p>Updates:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>"ULTIMATE ROBO LOGO SHOWDOWN" results</p>
+</li>
+<li>
+<p>Trademark registration status</p>
+</li>
+<li>
+<p>SFC/SPI/Apache status</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES:
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-04-13-18.02.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-04-13-18.02.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForMarch30thmeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForMarch30thmeeting"></a>For March 30th meeting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHEN: <a href="http://permatime.com/GMT/2011-03-30/18:00">March 30th 6pm GMT</a>,
+which should be 11am PDT, 2pm EDT, 8pm CET, 3am Tokyo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Review/discussion of aheritier&#8217;s upcoming proposal for details of JIRA
+project split.</p>
+</li>
+<li>
+<p>Updates:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logo contest status</p>
+</li>
+<li>
+<p>Trademark registration status</p>
+</li>
+<li>
+<p>SFC response?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CLA discussion continued</p>
+</li>
+<li>
+<p>Discussion on the way we can strengthen plugins and avoid unnecessary
+duplication/forks</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>MINUTES:
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-03-30-18.02.html">summary</a>
+and
+<a href="http://meetings.jenkins-ci.org/jenkins/2011/jenkins.2011-03-30-18.02.log.html">raw</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForMarch16thmeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForMarch16thmeeting"></a>For March 16th meeting</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>WHEN: March 16th, 2pm PST/4pm EST/9pm GMT/10pm CET</p>
+</li>
+<li>
+<p>Review/discussion of aheritier&#8217;s upcoming proposal for details of JIRA
+project split.</p>
+</li>
+<li>
+<p>Updates:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Trademark registration status</p>
+</li>
+<li>
+<p>SFC response?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Discussion whether requiring a CLA is beneficial or not.</p>
+</li>
+<li>
+<p>Logo contest status</p>
+</li>
+<li>
+<p>Infra hardware status</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="GovernanceMeetingArchive2011-ForMarch2ndMeeting"><a class="anchor" href="#GovernanceMeetingArchive2011-ForMarch2ndMeeting"></a>For March 2nd Meeting</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Discuss what updates should be made to
+<a href="https://wiki.jenkins.io/display/JENKINS/Governance+Meeting+Archive+2011#">Copyright
+on source code</a></p>
+</li>
+<li>
+<p>Any conclusions to the
+<a href="http://groups.google.com/group/jenkinsci-dev/browse_thread/thread/6896f52428556beb">stable-branch/endorsed-release</a>
+discussion</p>
+<div class="ulist">
+<ul>
+<li>
+<p>QA processes in core, e.g. introduction of code review?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Update on the long-term governance plans / progress on umbrella
+organisation</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//project/governance-meeting/archives/2011.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.361.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.361/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.361.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.361.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.361.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.361/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.361.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.361.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.361.1 covers the upgrade from  2.346.3.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-361-4">
+Upgrading to Jenkins 2.361.4
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-361-3">
+Upgrading to Jenkins 2.361.3
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-361-2">
+Upgrading to Jenkins 2.361.2
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-361-1">
+Upgrading to Jenkins 2.361.1
+</h3>
+<div class="sect3">
+<h4 id="jenkins-requires-java-11-or-newer"><a class="anchor" href="#jenkins-requires-java-11-or-newer"></a>Jenkins requires Java 11 or newer</h4>
+<div class="paragraph">
+<p>Beginning with Jenkins 2.361.1, Jenkins requires Java 11 or newer on both the controller JVM and agent JVMs.</p>
+</div>
+<div class="paragraph">
+<p>Prior to Jenkins 2.361.1, running the controller on Java 11 and agents on Java 8, though not recommended, did not result in errors.
+Beginning with Jenkins 2.361.1, running the controller on Java 11 and agents on Java 8 will result in the following error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.UnsupportedClassVersionError:
+hudson/remoting/Launcher has been compiled by a more recent version of
+the Java Runtime (class file version 55.0), this version of the Java
+Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:473)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:601)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Therefore, it is critical to upgrade both the controller <em>and</em> agents to Java 11 or newer prior to upgrading Jenkins to 2.361.1.
+Use the <a href="https://plugins.jenkins.io/versioncolumn/">Versions Node Monitors</a> plugin to verify that agents are running a compatible version of Java.</p>
+</div>
+<div class="paragraph">
+<p>The official Jenkins Docker images for <a href="https://hub.docker.com/r/jenkins/jenkins/">the controller</a> and <a href="https://hub.docker.com/r/jenkins/inbound-agent/">agents</a> have been based on Java 11 for many months, with Java 8 available as a fallback, and Java 17 available in preview mode.
+With the release of Jenkins 2.361.1, the Java 8 images have been retired and the Java 17 images have transitioned from preview to general availability.
+Users of the official Docker images do not need to install or configure Java on their own, as it comes preinstalled in the Docker images.</p>
+</div>
+<div class="paragraph">
+<p>If your application build still requires Java 8, and you are using a Docker image to run the agent Java process <code>remoting.jar</code> simultaneously, you will need to provide a Java 11 or newer runtime for the Jenkins agent process and a Java 8 environment for your application build.</p>
+</div>
+<div class="paragraph">
+<p>Users of the official Jenkins OS packages for Debian, Red Hat, and SUSE Linux distributions should note that these packages are agnostic to the Java vendor.
+This means you must bring your own Java package.
+One straightforward way to do this is installing Java 11 from your Linux distribution, as described on the package download site:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://pkg.jenkins.io/debian-stable/">Debian</a></p>
+</li>
+<li>
+<p><a href="https://pkg.jenkins.io/redhat-stable/">Red Hat</a></p>
+</li>
+<li>
+<p><a href="https://pkg.jenkins.io/opensuse-stable/">SUSE</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This does not require any custom repositories, so this is the simplest method and was used by the Jenkins project&#8217;s packaging tests.
+However, it does not give the user a high degree of control over the Java runtime environment.
+The official Jenkins Docker images and the Jenkins infrastructure project use Adoptium/Eclipse Temurin.
+Enthusiastic users can install Java from Adoptium or another vendor.
+Adoptium recently began providing Linux installation packages, as described in <a href="https://blog.adoptium.net/2021/12/eclipse-temurin-linux-installers-available/">a piece by George Adams</a>.
+The choice of Java vendor is up to you, as long as that vendor provides Java 11 or Java 17.
+Refer to your chosen Java vendor for installation instructions.</p>
+</div>
+<div class="paragraph">
+<p>Once you have installed a suitable version of Java, configuring Jenkins to use that Java runtime is easy.
+The most straightforward way is to configure that version of Java as the default version, is at the operating system (OS) level:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Debian</dt>
+<dd>
+<p><code>update-alternatives --config java</code></p>
+</dd>
+<dt class="hdlist1">Red Hat</dt>
+<dd>
+<p><code>alternatives --config java</code></p>
+</dd>
+<dt class="hdlist1">SUSE</dt>
+<dd>
+<p><code>update-alternatives --config java</code></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Alternatively, users who do not wish to change the default version of Java can customize the <code>JAVA_HOME</code> or <code>JENKINS_JAVA_CMD</code> environment variable as part of the Jenkins <code>systemd(1)</code> service unit.
+Refer to the <a href="/doc/book/system-administration/systemd-services/">Managing systemd services</a> section of the Jenkins documentation for more information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="openjdk-upgraded-to-11-0-16-1"><a class="anchor" href="#openjdk-upgraded-to-11-0-16-1"></a>OpenJDK upgraded to 11.0.16.1</h4>
+<div class="paragraph">
+<p>The version of OpenJDK in the official Docker image has been upgraded from 11.0.15 to 11.0.16.1.
+After upgrading Jenkins to 2.361.1, you must upgrade Pipeline: Groovy to 2705.v0449852ee36f or later.
+As always, make sure you use the <strong>Plugin Manager</strong> to upgrade all plugins before and after upgrading Jenkins core.
+This also applies if you are upgrading from a version prior to 2.346.3 directly to 2.361.1.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="openjdk-11-0-1617-0-4-and-the-c2-jit-compiler"><a class="anchor" href="#openjdk-11-0-1617-0-4-and-the-c2-jit-compiler"></a>OpenJDK 11.0.16/17.0.4 and the C2 JIT compiler</h4>
+<div class="paragraph">
+<p>OpenJDK 11.0.16 and 17.0.4 are susceptible to <a href="https://bugs.openjdk.org/browse/JDK-8292260">JDK-8292260</a>, a regression in the C2 JIT compiler which <a href="https://mail.openjdk.org/pipermail/jdk-updates-dev/2022-August/016460.html">may cause the JVM to crash unpredictably</a>.
+The OpenJDK project has released fixes for this in 11.0.16.1 and 17.0.4.1.
+As of August 26, 2022, the official Jenkins Docker images have been updated with OpenJDK 11.0.16.1 and 17.0.4.1.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="openjdk-11-0-16-117-0-4-1-and-the-metaspace"><a class="anchor" href="#openjdk-11-0-16-117-0-4-1-and-the-metaspace"></a>OpenJDK 11.0.16.1/17.0.4.1 and the metaspace</h4>
+<div class="paragraph">
+<p>The version of OpenJDK in the official Docker image has been upgraded from 11.0.15 to 11.0.16.1 and from 17.0.3 to 17.0.4.1.
+This exposes a metaspace memory leak in Pipeline: Groovy 2692.v76b_089ccd026 and earlier, and in Script Security 1172.v35f6a_0b_8207e and earlier.
+After upgrading Jenkins to 2.361.1, upgrade Pipeline: Groovy to 2705.v0449852ee36f or later and upgrade Script Security to 1175.v4b_d517d6db_f0 or later.
+Make sure you upgrade all plugins through the <strong>Plugin Manager</strong> after upgrading Jenkins core.</p>
+</div>
+<div class="paragraph">
+<p>For more information about recent JVM metaspace changes, see <a href="https://www.youtube.com/watch?v=XqaQ-z70sQs">Taming Metaspace: a look at the machinery, and a proposal for a better one | FOSDEM 2020</a> and the following blog posts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://stuefe.de/posts/metaspace/what-is-metaspace/">What is Metaspace?</a></p>
+</li>
+<li>
+<p><a href="https://stuefe.de/posts/metaspace/metaspace-architecture/">Metaspace Architecture</a></p>
+</li>
+<li>
+<p><a href="https://stuefe.de/posts/metaspace/what-is-compressed-class-space/">What is Compressed Class Space?</a></p>
+</li>
+<li>
+<p><a href="https://stuefe.de/posts/metaspace/sizing-metaspace/">Sizing Metaspace</a></p>
+</li>
+<li>
+<p><a href="https://stuefe.de/posts/metaspace/analyze-metaspace-with-jcmd/">Analyze Metaspace with <code>jcmd VM.metaspace</code></a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="openjdk-11-0-16-1-and-container-awareness-for-cgroups-v2"><a class="anchor" href="#openjdk-11-0-16-1-and-container-awareness-for-cgroups-v2"></a>OpenJDK 11.0.16.1 and container awareness for cgroups v2</h4>
+<div class="paragraph">
+<p>OpenJDK 11.0.16.1 contains a fix for <a href="https://bugs.openjdk.org/browse/JDK-8230305">JDK-8230305</a>, which is container awareness for <a href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html">cgroups v2</a>.</p>
+</div>
+<div class="paragraph">
+<p>Previously, there would be no container detection when running OpenJDK 11.0.15 on cgroups v2, and the limits from the container host would be used.
+As of OpenJDK 11.0.16.1, OpenJDK detects container limits through cgroups v2.
+For example, these limits affect the garbage collection (GC) algorithm selected by the JVM, the default size of the heap, the sizes of thread pools, and how default parallelism is determined for <code>ForkJoinPool</code>.</p>
+</div>
+<div class="paragraph">
+<p>For more information, refer to <a href="https://developers.redhat.com/articles/2022/04/19/java-17-whats-new-openjdks-container-awareness#tuning_defaults_for_containers">Java 17: What&#8217;s new in OpenJDK&#8217;s container awareness</a> and <a href="https://www.youtube.com/watch?v=ZmTUBKvSWzs">OpenJDK 17 | Container Detection Demo</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updated-jetty-version"><a class="anchor" href="#updated-jetty-version"></a>Updated Jetty version</h4>
+<div class="paragraph">
+<p>The Jetty version has been updated from 9.4.46.v20220331 to 10.0.11.
+Support for OpenSSL-style PEM-encoded RSA private keys has been removed when running Jenkins with the embedded Jetty (Winstone) container and TLS.
+Specifically, the <code>--httpsPrivateKey</code> and <code>--httpsCertificate</code> flags have been removed in favor of the <code>--httpsKeyStore</code> flag.
+The removed flags had printed deprecation warnings since 2016, and were implemented with non-standard APIs that have since been removed from Java 17.
+The recommendation is migrating to the <code>--httpsKeyStore</code> flag, which takes a keystore as described in <a href="/doc/book/installing/initial-settings/#https-with-an-existing-certificate">the documentation</a>.
+As of <a href="https://openjdk.org/jeps/229">JEP 229</a>, <a href="https://en.wikipedia.org/wiki/PKCS_12">PKCS12</a> is the recommended keystore type.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updated-minimum-supported-remoting-version"><a class="anchor" href="#updated-minimum-supported-remoting-version"></a>Updated minimum supported remoting version</h4>
+<div class="paragraph">
+<p>The minimum required Remoting version has been increased to 4.2.1.
+Ensure that all agents are running a recent version of Remoting prior to upgrading.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="converted-instance-identity-to-a-separate-plugin"><a class="anchor" href="#converted-instance-identity-to-a-separate-plugin"></a>Converted <code>instance-identity</code> to a separate plugin</h4>
+<div class="paragraph">
+<p>As <code>instance-identity</code> is normally a basic part of Jenkins core, this new plugin will be automatically installed.
+If using an “as-code” installation mechanism, for example a text file with a list of plugins, you need to add <code>instance-identity</code> version 3.1 or later to restore this functionality.
+In particular, inbound agents using TCP (but not WebSocket) transport require this plugin to be installed.
+Other cases may be identified by use of APIs in the <code>jenkins.model.identity</code> package, rather than directly accessing <code>org.jenkinsci.main.modules.instance_identity</code>.
+Make sure you use the <strong>Plugin Manager</strong> to upgrade all plugins before and after upgrading Jenkins core.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removed-java-web-start-support"><a class="anchor" href="#removed-java-web-start-support"></a>Removed Java Web Start support</h4>
+<div class="paragraph">
+<p>Jenkins no longer supports attaching a static inbound agent by selecting the <strong>Launch</strong> button from an agent machine&#8217;s web browser when running the controller on Java 8.
+Java Web Start has been removed from newer versions of most distributions.
+Instead, download the agent JAR file from the provided link and run the supplied command (<code>java -jar agent.jar -jnlpUrl …</code>) on the agent machine.
+The <strong>JVM options</strong> field was removed from the inbound launcher configuration, as it would not have any effect beyond adjusting the suggested command.</p>
+</div>
+<div class="paragraph">
+<p>The control window displayed when using a Java Web Start agent is also removed.
+Its main function was to be closed, which is now done by simply terminating the shell process.
+It also displayed a menu with platform-specific agent installers that offered to create system services to make the agent permanent.
+It is possible to accomplish a similar configuration in many ways without this GUI, according to your operating system.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2020-05-06
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-05-06/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2020-05-06" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2020-05-06" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2020-05-06" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-05-06/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2020-05-06" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2020-05-06
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/ec2">
+Amazon EC2
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/copyartifact">
+Copy Artifact
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/credentials-binding">
+Credentials Binding
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/cvs">
+CVS
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/scm-filter-jervis">
+SCM Filter Jervis
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1374">
+Secrets are not masked by Credentials Binding Plugin in builds without build steps
+</h3>
+<strong>
+SECURITY-1374
+/
+CVE-2020-2181
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/credentials-binding">
+<code>credentials-binding</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Credentials Binding Plugin 1.22 and earlier does not mask (i.e., replace with asterisks) secrets in the build log when the build contains no build steps.</p>
+</div>
+<div class="paragraph">
+<p>Credentials Binding Plugin 1.23 now masks secrets when the build contains no build steps.
+ </p>
+</div>
+<h3 id="SECURITY-1835">
+Improper masking of some secrets in Credentials Binding Plugin
+</h3>
+<strong>
+SECURITY-1835
+/
+CVE-2020-2182
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/credentials-binding">
+<code>credentials-binding</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Credentials Binding Plugin allows specifying passwords and other secrets as environment variables, and will hide them from console output in builds.
+As a side effect of the fix for <a href="/security/advisory/2018-02-05/#credentials-binding">SECURITY-698</a>, <code>$</code> characters in secrets are escaped to <code>$$</code>.
+This will then be expanded to <code>$</code> again once the secret is passed to (post) build steps.</p>
+</div>
+<div class="paragraph">
+<p>Credentials Binding Plugin 1.22 and earlier does not mask the escaped form of the secret (containing <code>$$</code>).
+This occurs for example in the "Execute Maven top-level targets" build step included in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Credentials Binding Plugin 1.23 now masks secrets both in their original form and with escaped <code>$</code> characters so they will be masked even if printed before value expansion.</p>
+</div>
+<h3 id="SECURITY-988">
+Improper permission checks in Copy Artifact Plugin
+</h3>
+<strong>
+SECURITY-988
+/
+CVE-2020-2183
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/copyartifact">
+<code>copyartifact</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Copy Artifact Plugin 1.43.1 and earlier performs improper permission checks when determining whether a build can copy artifacts from another project build.
+This allows attackers, usually with Job/Configure permission, to configure jobs to copy artifacts from jobs they have no permission to access.</p>
+</div>
+<div class="paragraph">
+<p>Copy Artifact Plugin 1.44 now properly performs permission checks when copying artifacts.
+When updating the plugin from a previous version, the previous behavior is retained ("Migration mode").
+To enable the additional protections, switch to the new "Production mode".
+Doing so may cause existing jobs to fail to copy artifacts.
+For more information see the <a href="https://github.com/jenkinsci/copyartifact-plugin">plugin documentation</a>.</p>
+</div>
+<h3 id="SECURITY-1094">
+CSRF vulnerability in CVS Plugin
+</h3>
+<strong>
+SECURITY-1094
+/
+CVE-2020-2184
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/cvs">
+<code>cvs</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>CVS Plugin 2.15 and earlier does not require POST requests in several HTTP endpoints, resulting in cross-site request forgery (CSRF) vulnerabilities.
+This allows attackers to create and manipulate tags, and to connect to an attacker-specified URL.</p>
+</div>
+<div class="paragraph">
+<p>CVS Plugin 2.16 now requires POST requests for the affected HTTP endpoints.</p>
+</div>
+<h3 id="SECURITY-381">
+Missing SSH host key validation in Amazon EC2 Plugin
+</h3>
+<strong>
+SECURITY-381
+/
+CVE-2020-2185
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/ec2">
+<code>ec2</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Amazon EC2 Plugin 1.50.1 and earlier does not use SSH host key validation when connecting to agents.
+This lack of validation could be abused using a man-in-the-middle attack to intercept these connections to build agents.</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Plugin 1.50.2 provides strategies for performing host key validation for administrators to select the one that meets their security needs.
+It includes assistance for administrators to migrate to a new, more secure strategy.
+For more information see <a href="https://github.com/jenkinsci/ec2-plugin/#securing-the-connection-to-unix-amis">the plugin documentation</a>.</p>
+</div>
+<h3 id="SECURITY-1408">
+CSRF vulnerability in Amazon EC2 Plugin
+</h3>
+<strong>
+SECURITY-1408
+/
+CVE-2020-2186
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/ec2">
+<code>ec2</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Amazon EC2 Plugin 1.50.1 and earlier does not require POST requests in several HTTP endpoints, resulting in cross-site request forgery (CSRF) vulnerabilities.
+This allows an attacker to provision instances with an attacker-specified template ID.</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Plugin 1.50.2 now requires POST requests for the affected HTTP endpoints.</p>
+</div>
+<h3 id="SECURITY-1528">
+Lack of SSL/TLS certificate and hostname validation in Amazon EC2 Plugin
+</h3>
+<strong>
+SECURITY-1528
+/
+CVE-2020-2187
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/ec2">
+<code>ec2</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Amazon EC2 Plugin connects to Windows agents via HTTPS.</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Plugin 1.50.1 and earlier unconditionally accepts self-signed HTTPS certificates and does not perform hostname validation when connecting to Windows agents.
+This lack of validation could be abused using a man-in-the-middle attack to intercept these connections to build agents.</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Plugin 1.50.2 by default no longer accepts self-signed HTTPS certificates and performs hostname validation.
+A new configuration option allows restoring the previous, unsafe behavior.
+For more information see <a href="https://github.com/jenkinsci/ec2-plugin/#securing-the-connection-to-windows-amis">the plugin documentation</a>.</p>
+</div>
+<h3 id="SECURITY-1844">
+Users with Overall/Read access can enumerate credentials IDs in Amazon EC2 Plugin
+</h3>
+<strong>
+SECURITY-1844
+/
+CVE-2020-2188
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/ec2">
+<code>ec2</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Amazon EC2 Plugin provides a list of applicable credentials IDs to allow users configuring the plugin to select the one to use.</p>
+</div>
+<div class="paragraph">
+<p>This functionality does not correctly check permissions in Amazon EC2 Plugin 1.50.1 and earlier, allowing any user with Overall/Read permission to get a list of valid credentials IDs.
+Those can be used as part of an attack to capture the credentials using another vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>An enumeration of credentials IDs in Amazon EC2 Plugin 1.50.2 now requires Overall/Administer permission.</p>
+</div>
+<h3 id="SECURITY-1826">
+RCE vulnerability in SCM Filter Jervis Plugin
+</h3>
+<strong>
+SECURITY-1826
+/
+CVE-2020-2189
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/scm-filter-jervis">
+<code>scm-filter-jervis</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>SCM Filter Jervis Plugin 0.2.1 and earlier does not configure its YAML parser to prevent the instantiation of arbitrary types.
+This results in a remote code execution (RCE) vulnerability exploitable by users able to configure jobs with the filter, or control the contents of a previously configured job&#8217;s SCM repository.</p>
+</div>
+<div class="paragraph">
+<p>SCM Filter Jervis Plugin 0.3 configures its YAML parser to only instantiate safe types.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-381:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L">
+Medium
+</a>
+</li>
+<li>
+SECURITY-988:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1094:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1374:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1408:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1528:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1826:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1835:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1844:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Amazon EC2
+Plugin
+</strong>
+up to and including
+1.50.1
+</li>
+<li>
+<strong>
+Copy Artifact
+Plugin
+</strong>
+up to and including
+1.43.1
+</li>
+<li>
+<strong>
+Credentials Binding
+Plugin
+</strong>
+up to and including
+1.22
+</li>
+<li>
+<strong>
+CVS
+Plugin
+</strong>
+up to and including
+2.15
+</li>
+<li>
+<strong>
+SCM Filter Jervis
+Plugin
+</strong>
+up to and including
+0.2.1
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Amazon EC2
+Plugin
+</strong>
+should be updated to version
+1.50.2
+</li>
+<li>
+<strong>
+Copy Artifact
+Plugin
+</strong>
+should be updated to version
+1.44
+</li>
+<li>
+<strong>
+Credentials Binding
+Plugin
+</strong>
+should be updated to version
+1.23
+</li>
+<li>
+<strong>
+CVS
+Plugin
+</strong>
+should be updated to version
+2.16
+</li>
+<li>
+<strong>
+SCM Filter Jervis
+Plugin
+</strong>
+should be updated to version
+0.3
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Jesse Glick, CloudBees, Inc.
+</strong>
+for
+SECURITY-381, SECURITY-988
+</li>
+<li>
+<strong>
+Oleg Nenashev, CloudBees, Inc.
+</strong>
+for
+SECURITY-1094, SECURITY-1408
+</li>
+<li>
+<strong>
+Raihaan Shouhell, Autodesk, Inc
+</strong>
+for
+SECURITY-1528
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-1844
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2020-05-06.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

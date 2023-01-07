@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Debian Pbuilder
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/debian-pbuilder/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Debian Pbuilder" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Debian Pbuilder" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Debian Pbuilder" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/debian-pbuilder/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Debian Pbuilder" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#debian-pbuilder">Debian Pbuilder</a>
+<ul class="sectlevel2">
+<li><a href="#debianpbuilder-build-debian-packages-in-a-pbuilder-environment"><code>debianPbuilder</code>: Build Debian packages in a pbuilder environment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="debian-pbuilder"><a class="anchor" href="#debian-pbuilder"></a>Debian Pbuilder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/debian-pbuilder">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="debianpbuilder-build-debian-packages-in-a-pbuilder-environment"><a class="anchor" href="#debianpbuilder-build-debian-packages-in-a-pbuilder-environment"></a><code>debianPbuilder</code>: Build Debian packages in a pbuilder environment</h3>
+<ul><li><code>additionalBuildResults : String</code> (optional)
+<div><p>When running a build in the chroot environment, there are occasionally files that you must retrieve from the chroot that are not part of the normal build. For example, some files that you may need to get back would include test results, auto-generated files, etc.<br> <br> Set this variable in order to get the files back from the chroot build environment.<br> <br> The files that are retrieved will also automatically be archived as well with the other build results.<br> <br> This must be a comma-separated list; spaces are allowed.</p></div>
+
+</li>
+<li><code>architecture : String</code> (optional)
+<div><p>The architecture to build this as. <br> <br> If the project is using the Matrix Build plugin, leave this blank (the architectures to build for are defined by the 'architecture' environment variable). <br> <br> This is mostly to support Pipeline, however it can be used as a normal parameter as well.</p></div>
+
+</li>
+<li><code>artifactoryRepoName : String</code> (optional)
+<div><p>If you are generating a spec file for use with Artifactory, this defines the repository that you would like to upload it to.</p></div>
+
+</li>
+<li><code>buildAsTag : boolean</code> (optional)
+<div><p>Set this to mark this as building a tag. When a build comes from a tag, the deb version does not get incremented(i.e. it is exactly as set in the debian/changelog file). If using SVN, this plugin automatically looks at the SVN_URL_1 environment variable to see if the string "tags/" exists. If it does, the build will act as though this parameter is set. If using Git, this plugin automatically looks at the GIT_BRANCH environment variable to see if the string "tags/" exists. If it does, the build will act as though this parameter is set. Alternatively, you can also set the environment variable DEB_PBUILDER_BUILDING_TAG to either true or false.</p></div>
+
+</li>
+<li><code>components : String</code> (optional)
+<div><p>The components to build with. By default, pbuilder sets this to 'main'. If you're building an Ubuntu package, you may need to set this to "main restricted universe multiverse"<br> <br> The setting guessComponents must be false for this setting to be honored.</p></div>
+
+</li>
+<li><code>debianDirLocation : String</code> (optional)
+<div><div>
+ <p>The location of the debian/ directory, relative to workspace root</p>
+ <p>This may also be set globally</p>
+</div></div>
+
+</li>
+<li><code>distribution : String</code> (optional)
+<div><div>
+ <p>The distribution to build for. By default, this checks the distribution that is set in debian/changelog. If the version in the changelog is UNRELEASED, it attempts to use the currently running distribution if this parameter is NULL or a 0-length string.</p>
+</div></div>
+
+</li>
+<li><code>extraPackages : String</code> (optional)
+<div><div>
+ <p>Extra packages to install in the chroot environment. Corresponds to EXTRAPACKAGES in the pbuilder configuration</p>
+</div></div>
+
+</li>
+<li><code>generateArtifactorySpecFile : boolean</code> (optional)
+<div><p>Generate a spec file to be used with Artifactory in order to upload files. By default, this will generate the file with the .deb, .tar* and .gz files for uploading. <br> <br> This will generate a spec file in the workspace called artifactory-spec-debian-pbuilder/debian-pbuilder.spec which you can then use to upload the binaries to Artifactory. This is intended to be used in conjunction with the Artifactory Jenkins plugin.</p></div>
+
+</li>
+<li><code>guessComponents : boolean</code> (optional)
+<div><p>If set to true, automatically try to guess the components. This means that if we think we are building an Ubuntu package on Debian, our components will be automatically set to "main restricted universe multiverse"<br></p></div>
+
+</li>
+<li><code>keyring : String</code> (optional)
+<div><div>
+ <p>The keyring to build with. By default, we will attempt to figure out if we are building a Debian package on Ubuntu, and if we think that we are this will be set to /usr/share/keyrings/debian-archive-keyring.gpg. This file is part of the debian-archive-keyring package. If you need to use a custom keyring, put it in here. If for some reason the auto-detection is not working properly, set this to the string 'disabled' and no keyring settings for pbuilder will be set.</p>
+</div></div>
+
+</li>
+<li><code>mirrorSite : String</code> (optional)
+<div><div>
+ <p>The mirror site to use. If this is not set or a 0-length string, then the default mirror site for this distribution will be used. The default mirror site is defined in /etc/pbuilderrc</p>
+</div></div>
+
+</li>
+<li><code>numberCores : int</code> (optional)
+<div><div>
+ <p>The number of cores to use when building. By default, this is 1. Set to -1 in order to use as many cores as possible when building. In order for this to take effect, you need to make sure that your debian/rules is setup properly. See <a href="http://askubuntu.com/questions/337093/how-to-run-parallel-make-with-debuild" rel="nofollow"> this post.</a></p>
+</div></div>
+
+</li>
+<li><code>otherMirror : String</code> (optional)
+<div><div>
+ <p>The extra mirror to use. Corresponds to OTHERMIRROR configuration option in pbuilder</p>
+</div></div>
+
+</li>
+<li><code>pbuilderType : String</code> (optional)
+</li>
+<li><code>pristineTarName : String</code> (optional)
+<div><p>If this field set, and if source/format indicates that this is a quilt package, we will attempt to checkout the given original tar file.</p></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

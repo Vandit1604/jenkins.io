@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Controlling the Flow with Stage, Lock, and Milestone
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/10/16/stage-lock-milestone/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Controlling the Flow with Stage, Lock, and Milestone" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Controlling the Flow with Stage, Lock, and Milestone" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Controlling the Flow with Stage, Lock, and Milestone" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/10/16/stage-lock-milestone/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Controlling the Flow with Stage, Lock, and Milestone" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Controlling the Flow with Stage, Lock, and Milestone
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hrmpw/"><div class="app-avatar"></div> Patrick Wolf</a>
+October 16, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Controlling+the+Flow+with+Stage%2C+Lock%2C+and+Milestone&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F10%2F16%2Fstage-lock-milestone%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/hrmpw">Patrick Wolf</a>,
+Director of Product Management at <a href="https://cloudbees.com">CloudBees</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Recently the Pipeline team began making several changes to improve the <code>stage</code> step and increase control of concurrent builds in Pipeline. Until now the <code>stage</code> step has been the catch-all for functionality related to the flow of builds through the Pipeline: grouping build steps into visualized stages, limiting concurrent builds, and discarding stale builds.</p>
+</div>
+<div class="paragraph">
+<p>In order to improve upon each of these areas independently we decided to break this functionality into discrete steps rather than push more and more features into an already packed <code>stage</code> step.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Pipeline+Stage+Step+Plugin">stage</a> - the <code>stage</code> step remains but is now focused on grouping steps and providing boundaries for Pipeline segments.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Lockable+Resources+Plugin">lock</a> - the <code>lock</code> step throttles the number of concurrent builds in a defined section of the Pipeline.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Pipeline+Milestone+Step+Plugin">milestone</a> - the <code>milestone</code> step automatically discards builds that will finish out of order and become stale.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Separating these concerns into explicit, independent steps allows for much greater control of Pipelines and broadens the set of possible use cases.</p>
+</div>
+<div class="sect2">
+<h3 id="stage"><a class="anchor" href="#stage"></a>Stage</h3>
+<div class="paragraph">
+<p>The <code>stage</code> step is a primary building block in Pipeline, dividing the steps of a Pipeline into explicit units and helping to visualize the progress using the "Stage View" plugin or <a href="/projects/blueocean/">"Blue Ocean"</a>. Beginning with version 2.2 of "Pipeline Stage Step" plugin, the <code>stage</code> step now requires a block argument, wrapping all steps within the defined stage. This makes the boundaries of where each <code>stage</code> begins and ends obvious and predictable. In addition, the concurrency argument of <code>stage</code> has now been removed to make this step more concise; responsibility for concurrency control has been delegated to the <code>lock</code> step.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">doSomething</span><span class="o">()</span>
+  <span class="n">sh</span> <span class="s2">"echo $PATH"</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Omitting the block from <code>stage</code> and using the concurrency argument are now deprecated in Pipeline. Pipelines using this syntax will continue to function but will produce a warning in the console log:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Using the 'stage' step without a block argument is deprecated</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This message is only a reminder to update your Pipeline scripts; none of your Pipelines will stop working. If we reach a point where the old syntax is to be removed we will make an announcement prior to the change. We do, however, recommend that you update your existing Pipelines to utilize the new syntax.</p>
+</div>
+<div class="paragraph">
+<p><strong>note:</strong> Stage View and Blue Ocean will both work with either the old <code>stage</code> syntax or the new.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lock"><a class="anchor" href="#lock"></a>Lock</h3>
+<div class="paragraph">
+<p>Rather than attempt to limit the number of concurrent builds of a job using the <code>stage</code>, we now rely on the "Lockable Resources" plugin and the <code>lock</code> step to control this. The <code>lock</code> step limits concurrency to a single build and it provides much greater flexibility in designating where the concurrency is limited.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lock</code> can be used to constrain an entire <code>stage</code> or just a segment:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">doSomething</span><span class="o">()</span>
+  <span class="n">lock</span><span class="o">(</span><span class="s1">'myResource'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"locked build"</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lock</code> can be also used to wrap multiple stages into a single concurrency unit:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">lock</span><span class="o">(</span><span class="s1">'myResource'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"Building"</span>
+  <span class="o">}</span>
+  <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"Testing"</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="milestone"><a class="anchor" href="#milestone"></a>Milestone</h3>
+<div class="paragraph">
+<p>The <code>milestone</code> step is the last piece of the puzzle to replace functionality originally intended for <code>stage</code> and adds even more control for handling concurrent builds of a job. The <code>lock</code> step limits the number of builds running concurrently in a section of your Pipeline while the <code>milestone</code> step ensures that older builds of a job will not overwrite a newer build.</p>
+</div>
+<div class="paragraph">
+<p>Concurrent builds of the same job do not always run at the same rate. Depending on the network, the node used, compilation times, test times, etc. it is always possible for a newer build to complete faster than an older build. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build 1 is triggered</p>
+</li>
+<li>
+<p>Build 2 is triggered</p>
+</li>
+<li>
+<p>Build 2 builds faster than Build 1 and enters the Test stage sooner.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Rather than allowing Build 1 to continue and possibly overwrite the newer artifact produced in Build 2, you can use the <code>milestone</code> step to abort Build 1:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">milestone</span><span class="o">()</span>
+  <span class="n">echo</span> <span class="s2">"Building"</span>
+<span class="o">}</span>
+<span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">milestone</span><span class="o">()</span>
+  <span class="n">echo</span> <span class="s2">"Testing"</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When using the <code>input</code> step or the <code>lock</code> step a backlog of concurrent builds can easily stack up, either waiting for user input or waiting for a resource to become free. The <code>milestone</code> step will automatically prune all older jobs that are waiting at these junctions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">milestone</span><span class="o">()</span>
+<span class="n">input</span> <span class="nl">message:</span> <span class="s2">"Proceed?"</span>
+<span class="n">milestone</span><span class="o">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bookending an <code>input</code> step like this allows you to select a specific build to proceed and automatically abort all antecedent builds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">milestone</span><span class="o">()</span>
+<span class="n">lock</span><span class="o">(</span><span class="nl">resource:</span> <span class="s1">'myResource'</span><span class="o">,</span> <span class="nl">inversePrecedence:</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">echo</span> <span class="s2">"locked step"</span>
+  <span class="n">milestone</span><span class="o">()</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly a pair of <code>milestone</code> steps used with a <code>lock</code> will discard all old builds waiting for a shared resource. In this example, <code>inversePrecedence: true</code> instructs the <code>lock</code> to begin most recent waiting build first, ensuring that the most recent code takes precedence.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="putting-it-all-together"><a class="anchor" href="#putting-it-all-together"></a>Putting it all together</h3>
+<div class="paragraph">
+<p>Each of these steps can be used independently of the others to control one aspect of a Pipeline or they can be combined to provide powerful, fine-grained control of every aspect of multiple concurrent builds flowing through a Pipeline. Here is a very simple example utilizing all three:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// The first milestone step starts tracking concurrent build order</span>
+  <span class="n">milestone</span><span class="o">()</span>
+  <span class="n">node</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"Building"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// This locked resource contains both Test stages as a single concurrency Unit.</span>
+<span class="c1">// Only 1 concurrent build is allowed to utilize the test resources at a time.</span>
+<span class="c1">// Newer builds are pulled off the queue first. When a build reaches the</span>
+<span class="c1">// milestone at the end of the lock, all jobs started prior to the current</span>
+<span class="c1">// build that are still waiting for the lock will be aborted</span>
+<span class="n">lock</span><span class="o">(</span><span class="nl">resource:</span> <span class="s1">'myResource'</span><span class="o">,</span> <span class="nl">inversePrecedence:</span> <span class="kc">true</span><span class="o">){</span>
+  <span class="n">node</span><span class="o">(</span><span class="s1">'test'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'Unit Tests'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">echo</span> <span class="s2">"Unit Tests"</span>
+    <span class="o">}</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'System Tests'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">echo</span> <span class="s2">"System Tests"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="n">milestone</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="c1">// The Deploy stage does not limit concurrency but requires manual input</span>
+<span class="c1">// from a user. Several builds might reach this step waiting for input.</span>
+<span class="c1">// When a user promotes a specific build all preceding builds are aborted,</span>
+<span class="c1">// ensuring that the latest code is always deployed.</span>
+<span class="n">stage</span><span class="o">(</span><span class="s1">'Deploy'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">input</span> <span class="s2">"Deploy?"</span>
+  <span class="n">milestone</span><span class="o">()</span>
+  <span class="n">node</span> <span class="o">{</span>
+    <span class="n">echo</span> <span class="s2">"Deploying"</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a more complete and complex example utilizing all these steps in a Pipeline check out the  <a href="https://github.com/jenkinsci/workflow-aggregator-plugin/blob/8a69bb4506d270c4a1fc58580519a0bcac1b8bce/demo/repo/Jenkinsfile">Jenkinsfile</a> provided with the <a href="https://github.com/jenkinsci/workflow-aggregator-plugin/tree/8a69bb4506d270c4a1fc58580519a0bcac1b8bce/demo">Docker image for demonstrating Pipeline</a>. This is a working demo that can be quickly set up and run.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/newfeatures/">
+newfeatures
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hrmpw/">
+Patrick Wolf
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/HRMPW" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/hrmpw" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-10-16-stage-lock-milestone.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

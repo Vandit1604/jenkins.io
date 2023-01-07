@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2017-04-26
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2017-04-26/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2017-04-26" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2017-04-26" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2017-04-26" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2017-04-26/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2017-04-26" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins Security Advisory 2017-04-26
+</h1>
+<div class="paragraph">
+<p>This advisory announces multiple vulnerabilities in Jenkins.</p>
+</div>
+<div class="sect1">
+<h2 id="description"><a class="anchor" href="#description"></a>Description</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="csrf-multiple-vulnerabilities"><a class="anchor" href="#csrf-multiple-vulnerabilities"></a>CSRF: Multiple vulnerabilities</h3>
+<div class="paragraph">
+<p><strong>SECURITY-412 through SECURITY-420 / CVE-2017-1000356</strong></p>
+</div>
+<div class="paragraph">
+<p>Multiple <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Request Forgery</a> vulnerabilities in Jenkins allowed malicious users to perform several administrative actions by tricking a victim into opening a web page.
+The most notable ones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SECURITY-412: Restart Jenkins immediately, after all builds are finished, or after all plugin installations and builds are finished</p>
+</li>
+<li>
+<p>SECURITY-412: Schedule a downgrade of Jenkins to a previously installed version if Jenkins previously upgraded itself</p>
+</li>
+<li>
+<p>SECURITY-413: Install and (optionally) dynamically load any plugin present on a configured update site</p>
+</li>
+<li>
+<p>SECURITY-414: Remove any update site from the Jenkins configuration</p>
+</li>
+<li>
+<p>SECURITY-415: Change a user&#8217;s API token</p>
+</li>
+<li>
+<p>SECURITY-416: Submit system configuration</p>
+</li>
+<li>
+<p>SECURITY-417: Submit global security configuration</p>
+</li>
+<li>
+<p>SECURITY-418, SECURITY-420: For Jenkins user database authentication realm: create an account if signup is enabled; or create an account if the victim is an administrator, possibly deleting the existing default "admin" user in the process</p>
+</li>
+<li>
+<p>SECURITY-419: Create a new agent, possibly executing arbitrary shell commands on the Jenkins controller by choosing the appropriate launch method</p>
+</li>
+<li>
+<p>SECURITY-420: Cancel a scheduled restart</p>
+</li>
+<li>
+<p>SECURITY-420: Configure the global logging levels</p>
+</li>
+<li>
+<p>SECURITY-420: Create a copy of an existing agent</p>
+</li>
+<li>
+<p>SECURITY-420: Create copies of views in users' "My Views" or as children of the experimental "Tree View" feature</p>
+</li>
+<li>
+<p>SECURITY-420: Enter "quiet down" mode in which no new builds are started</p>
+</li>
+<li>
+<p>SECURITY-420: On Windows, after successful installation as a service, restart</p>
+</li>
+<li>
+<p>SECURITY-420: On Windows, try to install Jenkins as a service</p>
+</li>
+<li>
+<p>SECURITY-420: Set the descriptions of items (jobs), builds, and users</p>
+</li>
+<li>
+<p>SECURITY-420: Submit global tools configuration (Jenkins 2.0 and up)</p>
+</li>
+<li>
+<p>SECURITY-420: Toggle keeping a build forever (i.e. exclude or include it in log rotation)</p>
+</li>
+<li>
+<p>SECURITY-420: Try to connect all disconnected agents simultaneously</p>
+</li>
+<li>
+<p>SECURITY-420: Update the node monitor data on all agents</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The above, as well as several other more minor issues, have all been fixed and these actions now require POST requests, and, if configured, a CSRF crumb, to work.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cli-unauthenticated-remote-code-execution"><a class="anchor" href="#cli-unauthenticated-remote-code-execution"></a>CLI: Unauthenticated remote code execution</h3>
+<div class="paragraph">
+<p><strong>SECURITY-429 / CVE-2017-1000353</strong></p>
+</div>
+<div class="paragraph">
+<p>An unauthenticated remote code execution vulnerability allowed attackers to transfer a serialized Java <code>SignedObject</code> object to the remoting-based Jenkins CLI, that would be deserialized using a new <code>ObjectInputStream</code>, bypassing the existing blocklist-based protection mechanism.</p>
+</div>
+<div class="paragraph">
+<p><code>SignedObject</code> has been added to the remoting blocklist.</p>
+</div>
+<div class="paragraph">
+<p>In Jenkins 2.54, the remoting-based CLI protocol was deprecated and a new, HTTP based protocol introduced as the new default, in addition to the existing SSH-based CLI.
+This feature has been backported to Jenkins 2.46.2.
+It is strongly recommended that users upgrading Jenkins disable the remoting-based CLI, and use the one of the other modes (HTTP or SSH) instead.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cli-login-command-allowed-impersonating-any-jenkins-user"><a class="anchor" href="#cli-login-command-allowed-impersonating-any-jenkins-user"></a>CLI: Login command allowed impersonating any Jenkins user</h3>
+<div class="paragraph">
+<p><strong>SECURITY-466 / CVE-2017-1000354</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>login</code> command available in the remoting-based CLI stored the encrypted user name of the successfully authenticated user in a cache file used to authenticate further commands.
+Users with sufficient permission to create secrets in Jenkins, and download their encrypted values (e.g. with Job/Configure permission), were able to impersonate any other Jenkins user on the same instance.</p>
+</div>
+<div class="paragraph">
+<p>This has been fixed by storing the cached authentication as a hash-based MAC with a key specific to the Jenkins instance and the CLI authentication cache.</p>
+</div>
+<div class="paragraph">
+<p>Previously cached authentications are invalidated when upgrading Jenkins to a version containing a fix for this.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="xstream-java-crash-when-trying-to-instantiate-voidvoid"><a class="anchor" href="#xstream-java-crash-when-trying-to-instantiate-voidvoid"></a>XStream: Java crash when trying to instantiate void/Void</h3>
+<div class="paragraph">
+<p><strong>SECURITY-503 / CVE-2017-1000355</strong></p>
+</div>
+<div class="paragraph">
+<p>Jenkins uses the XStream library to serialize and deserialize XML.
+Its maintainer <a href="https://www.openwall.com/lists/oss-security/2017/04/03/4">recently published a security vulnerability</a> that allows anyone able to provide XML to Jenkins for processing using XStream to crash the Java process.
+In Jenkins this typically applies to users with permission to create or configure items (jobs), views, or agents.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins now prohibits the attempted deserialization of <code>void</code> / <code>Void</code> that results in a crash.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="severity"><a class="anchor" href="#severity"></a>Severity</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>SECURITY-412 through SECURITY-420: <a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">high</a></p>
+</li>
+<li>
+<p>SECURITY-429: <a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H">critical</a></p>
+</li>
+<li>
+<p>SECURITY-466: <a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">high</a></p>
+</li>
+<li>
+<p>SECURITY-503: <a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H">medium</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="affected-versions"><a class="anchor" href="#affected-versions"></a>Affected versions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>All Jenkins main line releases up to and including 2.56</p>
+</li>
+<li>
+<p>All Jenkins LTS releases up to and including 2.46.1</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fix"><a class="anchor" href="#fix"></a>Fix</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins main line users should update to 2.57</p>
+</li>
+<li>
+<p>Jenkins LTS users should update to 2.46.2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These versions include fixes to all the vulnerabilities described above.
+All prior versions are affected by these vulnerabilities unless otherwise indicated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="credit"><a class="anchor" href="#credit"></a>Credit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project would like to thank the reporters for discovering and <a href="/security/#reporting-vulnerabilities">reporting</a> these vulnerabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>An independent security researcher who reported this vulnerability to Beyond Security’s SecuriTeam Secure Disclosure program</strong> for SECURITY-429</p>
+</li>
+<li>
+<p><strong>Jesse Glick, CloudBees, Inc.</strong> for SECURITY-466</p>
+</li>
+<li>
+<p><strong>Steve Marlowe &lt;<a href="mailto:smarlowe@cisco.com">smarlowe@cisco.com</a>&gt; of Cisco ASIG</strong> for SECURITY-412, SECURITY-413, SECURITY-414, SECURITY-415, SECURITY-416, SECURITY-417, SECURITY-418, and SECURITY-419</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-resources"><a class="anchor" href="#other-resources"></a>Other Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2017/04/26/security-advisory/">Announcement blog post</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2017-04-26.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

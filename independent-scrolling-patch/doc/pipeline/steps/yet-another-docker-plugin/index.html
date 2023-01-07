@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Yet Another Docker Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/yet-another-docker-plugin/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Yet Another Docker Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Yet Another Docker Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Yet Another Docker Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/yet-another-docker-plugin/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Yet Another Docker Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#yet-another-docker-plugin">Yet Another Docker Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#dockershell-experimental-docker-shell-step"><code>dockerShell</code>: [Experimental] Docker Shell Step</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="yet-another-docker-plugin"><a class="anchor" href="#yet-another-docker-plugin"></a>Yet Another Docker Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/yet-another-docker-plugin">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="dockershell-experimental-docker-shell-step"><a class="anchor" href="#dockershell-experimental-docker-shell-step"></a><code>dockerShell</code>: [Experimental] Docker Shell Step</h3>
+<ul><li><code>connector</code> (optional)
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'CloudNameDockerConnector'</code><div>
+<ul><li><code>cloudName : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'DockerConnector'</code><div>
+<ul><li><code>serverUrl : String</code>
+<div><div>
+ The URL to use to access your Docker server API (e.g: http://172.16.42.43:4243 or unix://).
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Docker Daemon API version. Should be set when plugin underlying library can't connect to new daemon because docker daemon API become backward incompatible.<br> Version in format "1.22". Connector will append "/v${VERSION}" to api url for connector, where ${VERSION} is entered string. For details see <a href="https://docs.docker.com/reference/api/docker_remote_api/" rel="nofollow">docker_remote_api</a>
+</div></div>
+
+</li>
+<li><code>connectTimeout : int</code> (optional)
+<div><div>
+ Timeout for opening connection to Docker API. 0 is infinity.<br> Works only for Jersey.
+</div></div>
+
+</li>
+<li><code>connectorType</code> (optional)
+<div>Docker-java provides different connection implementations based on different client libraries. In case you have some errors please try other.</div>
+
+<ul><li><b>Values:</b> <code>JERSEY</code>, <code>NETTY</code>, <code>OKHTTP</code></li></ul></li>
+<li><code>credentialsId : String</code> (optional)
+</li>
+<li><code>readTimeout : int</code> (optional)
+<div><div>
+ Read timeout to Docker API. In seconds. 0 is infinity.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>containerLifecycle</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>createContainer</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>bindAllPorts : boolean</code> (optional)
+</li>
+<li><code>bindPorts : String</code> (optional)
+<div><div>
+ Bind ports from inside the container to outside of the host, scheme is hostport:containerport. Same effect as the "-p" or "-P" option on the CLI. <a href="https://docs.docker.com/reference/run/#expose-incoming-ports" rel="nofollow">Docker documentation</a>
+</div></div>
+
+</li>
+<li><code>command : String</code> (optional)
+<div><div>
+ The command to run for this image, replaced by Jenkins Launchers
+</div></div>
+
+</li>
+<li><code>cpuShares : int</code> (optional)
+<div>Similarly the operator can increase the priority of this container. By default (no value), all containers run at the same priority and get the same proportion of CPU cycles, but you can tell the kernel to give more shares of CPU time to one or more containers when you start them via Docker. <br><br>Consult <a href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint" rel="nofollow">https://docs.docker.com/engine/reference/run/#cpu-share-constraint</a> for further information.</div>
+
+</li>
+<li><code>cpusetCpus : String</code> (optional)
+<div>Please follow format described at <a href="https://docs.docker.com/engine/reference/run/#cpuset-constraint" rel="nofollow">https://docs.docker.com/engine/reference/run/#cpuset-constraint</a></div>
+
+</li>
+<li><code>cpusetMems : String</code> (optional)
+<div><a href="https://docs.docker.com/engine/reference/run/#cpuset-constraint" rel="nofollow">https://docs.docker.com/engine/reference/run/#cpuset-constraint</a></div>
+
+</li>
+<li><code>devicesString : String</code> (optional)
+<div>Add host device to container. For format please refer to <a href="https://docs.docker.com/engine/reference/commandline/run/#add-host-device-to-container-device" rel="nofollow">Add host device to container (--device) documentation</a></div>
+
+</li>
+<li><code>dnsString : String</code> (optional)
+<div><div>
+ Set the DNS servers to use within your images, if not set Docker will use DNS settings of the host
+</div></div>
+
+</li>
+<li><code>dockerLabelsString : String</code> (optional)
+</li>
+<li><code>entrypoint : String</code> (optional)
+</li>
+<li><code>environmentString : String</code> (optional)
+</li>
+<li><code>extraHostsString : String</code> (optional)
+<div><div>
+ A list of new line separated hostnames/IP mappings to be added to the container’s /etc/hosts file. Specified in the form "hostname:IP".
+</div></div>
+
+</li>
+<li><code>hostname : String</code> (optional)
+</li>
+<li><code>linksString : String</code> (optional)
+<div>Add link to another container. Only the form container:alias is supported (e.g. the_db_container:db). <br> Consult <a href="https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/#communication-across-links" rel="nofollow">https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/#communication-across-links</a> for further information.</div>
+
+</li>
+<li><code>macAddress : String</code> (optional)
+<div><div>
+ Container MAC address (e.g. 92:d0:c6:0a:29:33)
+</div></div>
+
+</li>
+<li><code>memoryLimit : long</code> (optional)
+<div><div>
+ The operator can constrain the memory available to a container. If the host supports swap memory, then the setting can be larger than physical RAM. <br><br> Consult <a href="https://docs.docker.com/reference/run/" rel="nofollow">Docker Run Documentation</a> for further information.
+</div></div>
+
+</li>
+<li><code>networkMode : String</code> (optional)
+<div><a href="https://docs.docker.com/engine/reference/run/#network-settings" rel="nofollow">Set the Network mode for the container:</a>
+<ul>
+ <li>Empty: undefined, docker daemon defaults</li>
+ <li>'bridge': creates a new network stack for the container on the docker bridge</li>
+ <li>'none': no networking for this container</li>
+ <li>'container:&lt;name | id&gt;': reuses another container network stack</li>
+ <li>'host': use the host network stack inside the container. Note: the host mode gives the container full access to local system services such as D-bus and is therefore considered insecure.</li>
+</ul></div>
+
+</li>
+<li><code>privileged : boolean</code> (optional)
+</li>
+<li><code>restartPolicy</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>policyName</code>
+<ul><li><b>Values:</b> <code>NO</code>, <code>UNLESS_STOPPED</code>, <code>ALWAYS</code>, <code>ON_FAILURE</code></li></ul></li>
+<li><code>maximumRetryCount : int</code>
+</li>
+</ul></li>
+<li><code>shmSize : long</code> (optional)
+</li>
+<li><code>tty : boolean</code> (optional)
+</li>
+<li><code>user : String</code> (optional)
+</li>
+<li><code>volumesFromString : String</code> (optional)
+<div><div>
+ New line separated list of volumes to inherit from another container. Specified in the form &lt;container name&gt;[:&lt;ro|rw&gt;] <br> If accessmode not specified, then default rw will be used.
+</div></div>
+
+</li>
+<li><code>volumesString : String</code> (optional)
+<div><div>
+ New line separated list of host volume mounts : &lt;host/path&gt;[&lt;container/path&gt;[&lt;:mode&gt;]]
+ <ul>
+  <li>container/path create empty volume container/path</li>
+  <li>host/path:container/path will mount host/path from host to container's container/path, read/write</li>
+  <li>host/path:container/path:rw will mount host/path from host to container's container/path, read/write</li>
+  <li>host/path:container/path:ro will mount host/path from host to container's container/path, read-only</li>
+ </ul> Note: if access mode not specified, then default rw will be used.
+</div></div>
+
+</li>
+<li><code>workdir : String</code> (optional)
+</li>
+</ul></li>
+<li><code>image : String</code> (optional)
+<div><div>
+ The hash or tagged name of the image that you wish docker to run (e.g "docker run -i -t  /bin/bash")
+</div></div>
+
+</li>
+<li><code>pullImage</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>connector</code> (optional)
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'CloudNameDockerConnector'</code><div>
+<ul><li><code>cloudName : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'DockerConnector'</code><div>
+<ul><li><code>serverUrl : String</code>
+<div><div>
+ The URL to use to access your Docker server API (e.g: http://172.16.42.43:4243 or unix://).
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Docker Daemon API version. Should be set when plugin underlying library can't connect to new daemon because docker daemon API become backward incompatible.<br> Version in format "1.22". Connector will append "/v${VERSION}" to api url for connector, where ${VERSION} is entered string. For details see <a href="https://docs.docker.com/reference/api/docker_remote_api/" rel="nofollow">docker_remote_api</a>
+</div></div>
+
+</li>
+<li><code>connectTimeout : int</code> (optional)
+<div><div>
+ Timeout for opening connection to Docker API. 0 is infinity.<br> Works only for Jersey.
+</div></div>
+
+</li>
+<li><code>connectorType</code> (optional)
+<div>Docker-java provides different connection implementations based on different client libraries. In case you have some errors please try other.</div>
+
+<ul><li><b>Values:</b> <code>JERSEY</code>, <code>NETTY</code>, <code>OKHTTP</code></li></ul></li>
+<li><code>credentialsId : String</code> (optional)
+</li>
+<li><code>readTimeout : int</code> (optional)
+<div><div>
+ Read timeout to Docker API. In seconds. 0 is infinity.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>credentialsId : String</code> (optional)
+<div>Credentials for pulling docker image. Supported only "Docker Registry Auth" type.</div>
+
+</li>
+<li><code>pullStrategy</code> (optional)
+<ul><li><b>Values:</b> <code>PULL_ALWAYS</code>, <code>PULL_ONCE</code>, <code>PULL_LATEST</code>, <code>PULL_NEVER</code></li></ul></li>
+<li><code>registriesCreds</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>registryAddr : String</code>
+</li>
+<li><code>credentialsId : String</code>
+</li>
+</ul></li>
+</ul></li>
+<li><code>removeContainer</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>force : boolean</code> (optional)
+<div><div>
+ Force the removal of a running container (uses SIGKILL)
+</div></div>
+
+</li>
+<li><code>removeVolumes : boolean</code> (optional)
+<div><div>
+ Remove the volumes associated with the container
+</div></div>
+
+</li>
+</ul></li>
+<li><code>stopContainer</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>connector</code> (optional)
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'CloudNameDockerConnector'</code><div>
+<ul><li><code>cloudName : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'DockerConnector'</code><div>
+<ul><li><code>serverUrl : String</code>
+<div><div>
+ The URL to use to access your Docker server API (e.g: http://172.16.42.43:4243 or unix://).
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Docker Daemon API version. Should be set when plugin underlying library can't connect to new daemon because docker daemon API become backward incompatible.<br> Version in format "1.22". Connector will append "/v${VERSION}" to api url for connector, where ${VERSION} is entered string. For details see <a href="https://docs.docker.com/reference/api/docker_remote_api/" rel="nofollow">docker_remote_api</a>
+</div></div>
+
+</li>
+<li><code>connectTimeout : int</code> (optional)
+<div><div>
+ Timeout for opening connection to Docker API. 0 is infinity.<br> Works only for Jersey.
+</div></div>
+
+</li>
+<li><code>connectorType</code> (optional)
+<div>Docker-java provides different connection implementations based on different client libraries. In case you have some errors please try other.</div>
+
+<ul><li><b>Values:</b> <code>JERSEY</code>, <code>NETTY</code>, <code>OKHTTP</code></li></ul></li>
+<li><code>credentialsId : String</code> (optional)
+</li>
+<li><code>readTimeout : int</code> (optional)
+<div><div>
+ Read timeout to Docker API. In seconds. 0 is infinity.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>timeout : int</code> (optional)
+<div><div>
+ Sending SIGTERM and then SIGKILL after a grace period
+</div></div>
+
+</li>
+</ul></li>
+</ul></li>
+<li><code>executorScript : String</code> (optional)
+</li>
+<li><code>longConnector</code> (optional)
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'CloudNameDockerConnector'</code><div>
+<ul><li><code>cloudName : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'DockerConnector'</code><div>
+<ul><li><code>serverUrl : String</code>
+<div><div>
+ The URL to use to access your Docker server API (e.g: http://172.16.42.43:4243 or unix://).
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Docker Daemon API version. Should be set when plugin underlying library can't connect to new daemon because docker daemon API become backward incompatible.<br> Version in format "1.22". Connector will append "/v${VERSION}" to api url for connector, where ${VERSION} is entered string. For details see <a href="https://docs.docker.com/reference/api/docker_remote_api/" rel="nofollow">docker_remote_api</a>
+</div></div>
+
+</li>
+<li><code>connectTimeout : int</code> (optional)
+<div><div>
+ Timeout for opening connection to Docker API. 0 is infinity.<br> Works only for Jersey.
+</div></div>
+
+</li>
+<li><code>connectorType</code> (optional)
+<div>Docker-java provides different connection implementations based on different client libraries. In case you have some errors please try other.</div>
+
+<ul><li><b>Values:</b> <code>JERSEY</code>, <code>NETTY</code>, <code>OKHTTP</code></li></ul></li>
+<li><code>credentialsId : String</code> (optional)
+</li>
+<li><code>readTimeout : int</code> (optional)
+<div><div>
+ Read timeout to Docker API. In seconds. 0 is infinity.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>shellScript : String</code> (optional)
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

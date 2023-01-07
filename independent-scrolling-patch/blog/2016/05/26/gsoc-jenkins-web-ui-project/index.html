@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC Project Intro: Improving Job Creation/Configuration
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/05/26/gsoc-jenkins-web-ui-project/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC Project Intro: Improving Job Creation/Configuration" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC Project Intro: Improving Job Creation/Configuration" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC Project Intro: Improving Job Creation/Configuration" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/05/26/gsoc-jenkins-web-ui-project/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC Project Intro: Improving Job Creation/Configuration" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSoC Project Intro: Improving Job Creation/Configuration
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/samatdav/"><div class="app-avatar"></div> Samat Davletshin</a>
+May 26, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSoC+Project+Intro%3A+Improving+Job+Creation%2FConfiguration&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F05%2F26%2Fgsoc-jenkins-web-ui-project%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect2">
+<h3 id="about-me"><a class="anchor" href="#about-me"></a>About me</h3>
+<div class="paragraph">
+<p>My name is Samat Davletshin and I am from HSE University from Moscow, Russia. I
+interned at Intel and Yandex, and cofounded <a href="https://expfood.ru/">a startup
+project</a> where I personally developed front-end and back-end of the website.</p>
+</div>
+<div class="paragraph">
+<p>I am excited to participate in GSoC with Jenkins this summer as a chanсe to make
+a positive change for thousands of users as well as to learn from great mentors.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="abstract"><a class="anchor" href="#abstract"></a>Abstract</h3>
+<div class="paragraph">
+<p>Although powerful, Jenkins new job creation and configuration process may be non
+obvious and time consuming. This can be improved by making UI more intuitive,
+concise, and functional. I plan to achieve this by creating a simpler new job
+creation, configuration process focused on essential elements, and embedding new
+functionality.</p>
+</div>
+<div class="paragraph">
+<p>My mentors are <a href="https://github.com/lanwen">Kirill Merkushev</a> and
+<a href="https://github.com/michaelneale">Michael Neale</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deliverables"><a class="anchor" href="#deliverables"></a>Deliverables</h3>
+<div class="sect3">
+<h4 id="new-job-creation"><a class="anchor" href="#new-job-creation"></a>New job creation</h4>
+<div class="paragraph">
+<p><strong>New job name validation</strong></p>
+</div>
+<div class="paragraph">
+<p>Initially, job validation was unresponsive, job creation was still allowed with
+an invalid name, and some allowed characters even crashed Jenkins. Happily, two
+of this problems were fixed in recent improvements and I plan add only a real
+time name check for invalid characters.</p>
+</div>
+<div class="paragraph">
+<p><strong>Popup window</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-job-config/popup-window.gif" alt="Popup window"></span></p>
+</div>
+<div class="paragraph">
+<p>Jenkins has a lot of windows reloads that may time consuming. The creation of
+new job is a simple process requiring only job name and job type. This way UI
+may be improved by reducing page reloads and putting new job creation interface
+in a dialog window. Such popup would likely consist of three steps of
+implementation: rendering a dialog window, receiving JSON with job types,
+sending a POST request to create the job.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuration-page"><a class="anchor" href="#configuration-page"></a>Configuration page</h4>
+<div class="paragraph">
+<p><strong>Changing help information</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-job-config/changing-help.gif" alt="Changing help information"></span></p>
+</div>
+<div class="paragraph">
+<p>As reported by some users, it would be useful to have the functionality to
+change help information. Installation administrators would be able to change the
+help info and choose editing rights for other users. That would likely require a
+creation of extension points and a plugin using them. I also would like to
+include the ability to style the help information using markdown as shown above.</p>
+</div>
+<div class="paragraph">
+<p><strong>[Optional] The functionality is extended to creation of crowd sourced "wiki like" documentation</strong></p>
+</div>
+<div class="paragraph">
+<p>As in
+<a href="https://wiki.jenkins.io/display/JENKINS/Translation+Assistance+Plugin">localization
+plugin</a> the changes are gathered and applied beyond installation of a particular
+user.</p>
+</div>
+<div class="paragraph">
+<p><strong>More intuitive configuration page.</strong></p>
+</div>
+<div class="paragraph">
+<p>Pursuing to solve <a href="https://issues.jenkins.io/browse/JENKINS-32578">this  issue</a></p>
+</div>
+<div class="paragraph">
+<p>Although there are a lot improvements in new configuration page, there is always
+a room for improvements. An advanced job still has a very complicated and hard
+to read configuration page. It is still open to discussion, but I may approach
+it by better division of configuration parts such as an accordion based
+navigation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="home-page"><a class="anchor" href="#home-page"></a>Home page</h4>
+<div class="paragraph">
+<p><strong>[Optional] Removing "My Views" page</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-job-config/removing-views.jpg" alt="Removing My Views"></span></p>
+</div>
+<div class="paragraph">
+<p>"My Views" page may unnecessary complicate essential sidepanel navigation. Since
+it contains very small functionality, the functions may be moved to the home
+page and the whole page may be removed. That may be implemented by adding icons
+to "My Views" tabs. Additionally, the standard view creation page can create
+either of the types</p>
+</div>
+<div class="paragraph">
+<p><strong>[Optional] Reducing number of UI elements</strong></p>
+</div>
+<div class="paragraph">
+<p>The home page may contain some UI elements that are not essential and rarely
+used. This way elements "enable auto refresh", “edit description”, “icon sizes”,
+”legend”, “RSS” may be removed from home page and placed under "Manage Jenkins"
+or an upper menu. It is also possible to create new extension points to support
+new UI elements through plugins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="credentials-store-page"><a class="anchor" href="#credentials-store-page"></a>Credentials store page</h4>
+<div class="paragraph">
+<p><strong>[Optional] Grouping credentials and their domains</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-job-config/credentials-grouping.jpg" alt="Grouping credentials"></span></p>
+</div>
+<div class="paragraph">
+<p>Credentials page has too many reloads and requires many clicks to get to a
+required credentials page. That may be improved by removing the last page and
+showing credentials under domains.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="current-progress"><a class="anchor" href="#current-progress"></a>Current progress</h3>
+<div class="paragraph">
+<p>By May 25th I learned about the structure and tools of Jenkins and started
+working on the first project:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>I started with New Job Name validation first. Luckily, in last updates the
+<a href="https://github.com/jenkinsci/jenkins/pull/2324/files">changes of recena</a> there
+were implemented all of the changes I proposed except real time check on name
+validity. <a href="https://goo.gl/3tHDkI">Here I proposed the change</a> which fixes it by
+sending GET request on keyup event in addition to blur.</p>
+</li>
+<li>
+<p>I also made a New Job Popup with using existing interface.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="/images/post-images/gsoc-job-config/current-popup.gif"><strong>View the current
+pop-up progress</strong></a></p>
+</div>
+<div class="paragraph">
+<p>I used <a href="https://github.com/VodkaBears/Remodal">Remodal</a> library for popup and put
+there
+<a href="https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/model/View/newJob.jelly">existing
+New Job container</a>. Surprisingly, it was fully functional right away. On the GIF
+you can see that popup receives all job types and then successfully submits the
+post form creating a new job. I think that could be a good first step. Further I
+can start changing the window itself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/122ZGtEZ9aJtkvaV5lsH_ea-Ao1pmM44LL1YnHwvW9l8">Initial proposal of the project</a></p>
+</li>
+<li>
+<p><a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/fk5deO_SszU">The project discussion on mailing list</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Google+Summer+Of+Code+2016">Jenkins GSoC Page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/samatdav/GSOC-Jenkins-Web-UI-Project">Project repository</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/samatdav/">
+Samat Davletshin
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/samatdav" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-05-26-gsoc-jenkins-web-ui-project.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

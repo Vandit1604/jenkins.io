@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+My DevOps World - Jenkins World 2019 Experience
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/08/22/devops-world/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="My DevOps World - Jenkins World 2019 Experience" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="My DevOps World - Jenkins World 2019 Experience" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="My DevOps World - Jenkins World 2019 Experience" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/08/22/devops-world/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="My DevOps World - Jenkins World 2019 Experience" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+My DevOps World - Jenkins World 2019 Experience
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/stopalopa/"><div class="app-avatar"><img alt="Natasha Stopa" class="app-avatar__image" src="/images/avatars/stopalopa.jpg"></div> Natasha Stopa</a>
+August 22, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=My+DevOps+World+-+Jenkins+World+2019+Experience&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F08%2F22%2Fdevops-world%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Last week I had the privilege of attending <a href="https://www.cloudbees.com/devops-world/san-francisco">DevOps World - Jenkins World in San
+Francisco</a> to present <a href="/projects/gsoc/2019/plugin-installation-manager-tool-cli">my Google Summer of Code project</a> for plugin management. It was
+an amazing experience getting to meet people from all over world who are trying
+to make the development and release process easier and more efficient. I enjoyed
+learning more about industry tools, processes, and standards, and meeting CI/CD
+experts and contributors in the open source community.</p>
+</div>
+<div class="paragraph">
+<p>Below is a summary of my experience. Thank you to the Jenkins project and CloudBees for making
+ my trip and attendance possible!</p>
+</div>
+<div class="sect3">
+<h4 id="day-1"><a class="anchor" href="#day-1"></a>Day 1</h4>
+<div class="paragraph">
+<p>Monday was the Continuous Delivery Contributor Summit, which focused on projects
+under the CDF umbrella.  After checking in and grabbing my badge, I was able to
+meet up with some of the Google Summer of Code org admins. It was great
+being able to actually meet them in person after talking to them over video
+conferencing and chats all summer!</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/speakerbadge.jpg" alt="Speaker Badge" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Tracy Miranda started the summit out by introducing the <a href="https://cd.foundation/">Continuous Delivery Foundation</a>,
+which aims to provide a vendor neutral home to help and sustain open source projects
+focusing on all aspects of continuous delivery.  Currently, Jenkins, Tekton, Spinnaker,
+and JenkinsX have joined the foundation.  Project updates were given for Jenkins,
+Tekton, and JenkinsX.  In the afternoon, attendees split into different groups for
+unconference sessions.  I presented my project to the Jenkins group.  Afterwards,
+there was free time to chat with other attendees about my project and the other Jenkins
+projects. Lastly, lightning talks were given before everyone headed to the contributor
+appreciation event to grab some food and drinks.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/contributorsummit.jpg" alt="Contributor Summit" height="500">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="day-2"><a class="anchor" href="#day-2"></a>Day 2</h4>
+<div class="paragraph">
+<p>I attended the Jenkins Pipeline Fundamentals Short Course in the morning. Even
+though I&#8217;m working on a project for Jenkins, there&#8217;s still a lot I don&#8217;t know so
+I just wanted to try to learn more.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/pipeline.jpg" alt="Jenkins Pipeline Basics Session" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>A lot of the afternoon sessions filled up, so I spent the afternoon trying to meet
+other people at the conference, before heading to the keynote. The keynote
+talked more about the CDF and some of the backstory behind its origin.  This year is also a big anniversary for Jenkins - it has now been
+around for 15 years.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/cdfkeynote.jpg" alt="CDF Key Note" height="500">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/cdforigin.jpg" alt="CDF Origin" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>After the keynote, I checked out a Women in Tech mixer and
+the opening of the exhibition hall. Probably my favorite swag I picked up was the
+"Will Code for Beer" stickers and a bottle of hot sauce.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/jenkinssticker.jpg" alt="Jenkins Sticker" height="500">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/willcodeforbeer.jpg" alt="Will Code for Beer Sticker" height="500">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="day-3"><a class="anchor" href="#day-3"></a>Day 3</h3>
+<div class="paragraph">
+<p>The morning began with another keynote. Shawn Ahmed of CloudBees talked about the
+challenges of visibility into bottlenecks of the development process and Rajeev Mahajan
+discussed how HSBC tackled DevOps.  The rest of the day I attended different sessions
+on container tooling, implementing CI/CD in a cloud native environment, running
+Jenkins on Jenkins, and database DevOps.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/kubernetes.jpg" alt="Session on Containers" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>After the sessions finished, I wandered
+around the expo until it closed, then joined some of the other conference attendees
+to have some fun at a ping pong bar nearby.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="day-4"><a class="anchor" href="#day-4"></a>Day 4</h3>
+<div class="paragraph">
+<p>The final and last day of the conference was probably my favorite.  The morning
+keynote revealed that <a href="https://github.com/LinuxSuRen">Zhao Xiaojie</a> had won an award for his work on Jenkins advocacy,
+some other DevOps award panelists talked about their approaches to different challenges,
+then David Stanke gave an enjoyable presentation about cloud native CI/CD. I was
+able to present my summer project and attend a few more sessions, including one
+about DevOps at scale, and another about use cases for machine learning in CI/CD pipelines.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/presentation.jpg" alt="Plugin Management Tool Presentation" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>The last keynote given by James Governor was a thoughtful look into the current and
+future states of tech. How does tech look like it will scale in the coming years
+in the U.S. and across the world? How can we make tech more inclusive and accessible?
+What can we do to minimize our environmental footprint?  In particular, his points
+on welcoming people from a non-traditional computer science background resonated with
+me since I&#8217;m currently undergoing my own career transition to tech.</p>
+</div>
+<div class="paragraph">
+<p>After the conference ended, I said goodbye to the remaining GSoC org admins before
+meeting an old friend for dinner and bringing along some new friends I met at the
+conference.  I spent the remaining part of the night singing karaoke with
+them before heading out of San Francisco the next morning.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/gsoc-plugin-management-tool/orgadmins.jpg" alt="GSoC Mentors" height="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Thanks again to everyone who supported me and encouraged me leading up to and during
+my presentation, patiently answered my questions as I tried to gather more context
+about CI/CD tools and practices, and made my first DevOps conference so enjoyable!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pluginmanagement/">
+pluginmanagement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/devopsworld2019/">
+devopsworld2019
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2019/">
+gsoc2019
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Natasha Stopa" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/stopalopa.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/stopalopa/">
+Natasha Stopa
+</a>
+</p>
+<div class="paragraph">
+<p>Natasha is a Master&#8217;s student at Penn State University. She was accepted to Google Summer of Code 2019 for a project on creating <a href="/projects/gsoc/2019/plugin-installation-manager-tool-cli/">a plugin management tool</a>.
+In her spare time she enjoys spending time outdoors, listening to podcasts and cuddling with her cat.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/stopalopa" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/stopamine" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/08/2019-08-22-devops-world.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

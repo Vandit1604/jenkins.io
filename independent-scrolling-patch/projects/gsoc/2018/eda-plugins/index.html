@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC 2018. EDA Plugins for Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2018/eda-plugins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC 2018. EDA Plugins for Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC 2018. EDA Plugins for Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC 2018. EDA Plugins for Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2018/eda-plugins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC 2018. EDA Plugins for Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+GSoC 2018. EDA Plugins for Jenkins
+</h1>
+<p>
+<b>
+Goal:
+</b>
+
+</p>
+<p>
+<b>
+Status:
+</b>
+Cancelled (student withdrawn)
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Student:
+<a class="app-author-link" href="/blog/authors/udara28/"><div class="app-avatar"></div> Udara De Silva</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+, 
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>This project will enable Jenkins to be used as a CI platform for ASIC/FPGA designs.</p>
+</div>
+<div class="paragraph">
+<p>The desired features of a CI platform for IP cores includes reporting gate count, memory(flop) count and coverage.
+These plugins will report these values and incremental changes from last check-in.
+Three plugins will be developed for three EDA tools which will cover the simulation, coverage and synthesis status of the code base.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.google.com/document/d/1-6YeTcaWof5kwTxJ7q6og6Ixly4CwzhH1_ZrBOrbwYk/edit">More info about the project</a></p>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/hw-and-eda-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/hw-and-eda-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/hw-and-eda-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/hw-and-eda-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2018/11/13/martinda-gsoc-mentor-summit-experience/">
+Google Summer of Code Mentor Summit 2018
+</a>
+</li>
+<li>
+<a href="/blog/2018/10/14/gsoc2018-results/">
+Jenkins in Google Summer of Code 2018 Results
+</a>
+</li>
+<li>
+<a href="/blog/2018/08/17/code-coverage-api-plugin-1/">
+Code Coverage API plugin: 1.0 Release
+</a>
+</li>
+<li>
+<a href="/blog/2018/08/14/simple-pull-request-plugin-final-evaluation/">
+alpha-3 release Pipeline as YAML (Simple pull request plugin)
+</a>
+</li>
+<li>
+<a href="/blog/2018/07/23/remoting-kafka-plugin-1/">
+Remoting Kafka Plugin 1.0: A new method to connect agents
+</a>
+</li>
+<li>
+<a href="/blog/2018/07/17/simple-pull-request-plugin/">
+Pipeline as YAML: Alpha release
+</a>
+</li>
+<li>
+<a href="/blog/2018/07/05/remoting-over-message-bus-alpha-release/">
+GSoC Project Update: Alpha release of Remoting Kafka Plugin
+</a>
+</li>
+<li>
+<a href="/blog/2018/06/18/remoting-over-message-bus/">
+GSoC Project Intro: Jenkins Remoting over Message Bus/Queue
+</a>
+</li>
+<li>
+<a href="/blog/2018/06/15/simple-pull-request-plugin/">
+GSoC Project Intro: Pipeline as YAML
+</a>
+</li>
+<li>
+<a href="/blog/2018/06/13/code-coverage-api-plugin/">
+GSoC Project Intro: Code Coverage API Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2018/eda-plugins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

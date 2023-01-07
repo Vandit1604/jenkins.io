@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Sonar Gerrit Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/sonar-gerrit/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Sonar Gerrit Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Sonar Gerrit Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Sonar Gerrit Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/sonar-gerrit/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Sonar Gerrit Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#sonar-gerrit-plugin">Sonar Gerrit Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#sonartogerrit-post-sonarqube-issues-as-gerrit-comments"><code>sonarToGerrit</code>: Post SonarQube issues as Gerrit comments</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="sonar-gerrit-plugin"><a class="anchor" href="#sonar-gerrit-plugin"></a>Sonar Gerrit Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/sonar-gerrit">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="sonartogerrit-post-sonarqube-issues-as-gerrit-comments"><a class="anchor" href="#sonartogerrit-post-sonarqube-issues-as-gerrit-comments"></a><code>sonarToGerrit</code>: Post SonarQube issues as Gerrit comments</h3>
+<ul><li><code>authConfig</code> (optional)
+<div><div><b>Override</b> HTTP credentials specified in Gerrit Trigger settings to be used for review posting
+</div></div>
+
+<ul><b>Nested Object</b>
+<li><code>httpCredentialsId : String</code> (optional)
+</li>
+<li><code>password : String</code> (optional)
+<div><div>
+ This field will <b>override</b> the HTTP password from Gerrit Trigger settings and will be used for plugin purposes only.
+</div></div>
+
+</li>
+<li><code>secretPassword</code> (optional)
+<ul><li><b>Type:</b> <code>class hudson.util.Secret</code></li>
+</ul></li>
+<li><code>username : String</code> (optional)
+<div><div>
+ This field will <b>override</b> the HTTP username from Gerrit Trigger settings and will be used for plugin purposes only.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>category : String</code> (optional)
+</li>
+<li><code>changedLinesOnly : boolean</code> (optional)
+</li>
+<li><code>httpPassword : String</code> (optional)
+</li>
+<li><code>httpUsername : String</code> (optional)
+</li>
+<li><code>inspectionConfig</code> (optional)
+<div><div>
+ Configure accordance of SonarQube report(s) and project or module(s) path(s)
+</div></div>
+
+<ul><b>Nested Object</b>
+<li><code>analysisStrategy</code> (optional)
+<ul><b>Nested Choice of Objects</b>
+<li><code>previewMode</code><div>
+<ul><li><code>autoMatch : boolean</code> (optional)
+<div><div>
+ Allow plugin to match inspection and review system file names automatically (useful for projects with several nested modules)
+</div></div>
+
+</li>
+<li><code>baseConfig</code> (optional)
+<div><div>
+ Provides settings for the whole project
+</div></div>
+
+<ul><b>Nested Object</b>
+<li><code>autoMatch : boolean</code> (optional)
+</li>
+<li><code>projectPath : String</code> (optional)
+<div><div>
+ Provides module prefix for a file path for multi-module projects
+</div></div>
+
+</li>
+<li><code>sonarReportPath : String</code> (optional)
+<div><div>
+ Path to SonarQube report on Jenkins server. Default value is "target/sonar/sonar-report.json"
+</div></div>
+
+</li>
+</ul></li>
+<li><code>sonarQubeInstallationName : String</code> (optional)
+<div><div>
+ The <a href="https://plugins.jenkins.io/sonar/" rel="nofollow">SonarQube installation</a> to use.
+</div></div>
+
+</li>
+<li><code>subJobConfigs</code> (optional)
+<div><div>
+ Provides separate settings for each module
+</div></div>
+
+<ul><b>Array / List of Nested Object</b>
+<li><code>autoMatch : boolean</code> (optional)
+</li>
+<li><code>projectPath : String</code> (optional)
+<div><div>
+ Provides module prefix for a file path for multi-module projects
+</div></div>
+
+</li>
+<li><code>sonarReportPath : String</code> (optional)
+<div><div>
+ Path to SonarQube report on Jenkins server. Default value is "target/sonar/sonar-report.json"
+</div></div>
+
+</li>
+</ul></li>
+<li><code>type : String</code> (optional)
+</li>
+</ul></div></li>
+<li><code>pullRequest</code><div>
+<ul></ul></div></li>
+</ul></li>
+<li><code>autoMatch : boolean</code> (optional)
+</li>
+<li><code>baseConfig</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>autoMatch : boolean</code> (optional)
+</li>
+<li><code>projectPath : String</code> (optional)
+<div><div>
+ Provides module prefix for a file path for multi-module projects
+</div></div>
+
+</li>
+<li><code>sonarReportPath : String</code> (optional)
+<div><div>
+ Path to SonarQube report on Jenkins server. Default value is "target/sonar/sonar-report.json"
+</div></div>
+
+</li>
+</ul></li>
+<li><code>serverURL : String</code> (optional)
+</li>
+<li><code>sonarQubeInstallationName : String</code> (optional)
+</li>
+<li><code>subJobConfigs</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>autoMatch : boolean</code> (optional)
+</li>
+<li><code>projectPath : String</code> (optional)
+<div><div>
+ Provides module prefix for a file path for multi-module projects
+</div></div>
+
+</li>
+<li><code>sonarReportPath : String</code> (optional)
+<div><div>
+ Path to SonarQube report on Jenkins server. Default value is "target/sonar/sonar-report.json"
+</div></div>
+
+</li>
+</ul></li>
+<li><code>type : String</code> (optional)
+</li>
+</ul></li>
+<li><code>issueComment : String</code> (optional)
+</li>
+<li><code>issuesNotification : String</code> (optional)
+</li>
+<li><code>issuesScore : String</code> (optional)
+</li>
+<li><code>newIssuesOnly : boolean</code> (optional)
+</li>
+<li><code>noIssuesNotification : String</code> (optional)
+</li>
+<li><code>noIssuesScore : String</code> (optional)
+</li>
+<li><code>noIssuesToPostText : String</code> (optional)
+</li>
+<li><code>notificationConfig</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>commentedIssuesNotificationRecipient : String</code> (optional)
+<div><div>
+ This setting allow to determine who will be notified in case there are <b>several SonarQube issues matching filter settings</b> found in particular commit. <br> An e-mails sent to recipients will contain review information: title of review and list of comments (issues). Recipient settings: <br> <br> * None - No one;<br> * Owner - Owner (i.e. author of the commit);<br> * Owner and Reviewers - Owner (i.e. author of the commit) and all Reviewers (people who was added to reviewer list of the commit);<br> * All - everyone in the project list. <br> <br>
+</div></div>
+
+</li>
+<li><code>negativeScoreNotificationRecipient : String</code> (optional)
+<div><div>
+ This setting allow to determine who will be notified in case if the build got a negative score due to issues matching score filter settings are found. An e-mails sent to recipients will contain review information: title of review and list of comments (issues). Recipient settings: <br> <br> * None - No one;<br> * Owner - Owner (i.e. author of the commit);<br> * Owner and Reviewers - Owner (i.e. author of the commit) and all Reviewers (people who was added to reviewer list of the commit);<br> * All - everyone in the project list. <br> <br>
+</div></div>
+
+</li>
+<li><code>noIssuesNotificationRecipient : String</code> (optional)
+<div><div>
+ This setting allow to determine who will be notified in case there are <b>no SonarQube issues matching filter settings</b> found in particular commit. <br> An e-mails sent to recipients will contain review information: title of review. Recipient settings: <br> <br> * None - No one;<br> * Owner - Owner (i.e. author of the commit);<br> * Owner and Reviewers - Owner (i.e. author of the commit) and all Reviewers (people who was added to reviewer list of the commit);<br> * All - everyone in the project list. <br> <br>
+</div></div>
+
+</li>
+</ul></li>
+<li><code>overrideCredentials : boolean</code> (optional)
+</li>
+<li><code>path : String</code> (optional)
+</li>
+<li><code>postScore : boolean</code> (optional)
+</li>
+<li><code>projectPath : String</code> (optional)
+</li>
+<li><code>reviewConfig</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>commentType</code> (optional)
+<div><div>
+ Posted review comments can be of one of the following types :
+ <ul>
+  <li>Standard - The usual review comment that everyone use.</li>
+  <li>Robot - Available since Gerrit 2.14. Review comment type to be used by robots. See <a href="https://gerrit-review.googlesource.com/Documentation/config-robot-comments.html" rel="nofollow">robot comment documentation</a> for more details.</li>
+ </ul>
+</div></div>
+
+<ul><li><b>Values:</b> <code>STANDARD</code>, <code>ROBOT</code></li></ul></li>
+<li><code>issueCommentTemplate : String</code> (optional)
+<div><div>
+ This text will appear as comment for a line with SonarQube issue in Gerrit review. <br> There are some tags available: <br> <br> * &lt;key&gt; - will be replaced with <b>issue key</b>; <br> * &lt;component&gt; - will be replaced with <b>issue component info</b>; <br> * &lt;message&gt; - will be replaced with <b>issue message</b>; <br> * &lt;severity&gt; - will be replaced with <b>issue severity</b>; <br> * &lt;rule&gt; - will be replaced with <b>issue rule name</b>; <br> * &lt;rule_url&gt; - will be replaced with link to <b>rule description on SonarQube</b> if SonarQube URL is provided in SonarQube settings section or <b>rule name</b> if URL is not provided; <br> * &lt;status&gt; - will be replaced with <b>issue status</b>; <br> * &lt;creation_date&gt; - will be replaced with <b>issue creation date</b>. <br> <br> Please note that only <b>filtered</b> by severity level issues and their counts will be shown in report.
+</div></div>
+
+</li>
+<li><code>issueFilterConfig</code> (optional)
+<div><div>
+ Issue filter to specify issues to be <b>commented</b> in Gerrit
+</div></div>
+
+<ul><b>Nested Object</b>
+<li><code>changedLinesOnly : boolean</code> (optional)
+<div><div>
+ Only <b>changed in current commit</b> lines to be commented by Gerrit when checked. Modified files to be commented with <b>all issues</b> if this control unchecked.
+</div></div>
+
+</li>
+<li><code>excludedPathsGlobPattern : String</code> (optional)
+</li>
+<li><code>includedPathsGlobPattern : String</code> (optional)
+</li>
+<li><code>newIssuesOnly : boolean</code> (optional)
+<div><div>
+ Only <b>new</b> SonarQube issues to be commented in Gerrit when checked. Modified files to be commented with <b>all</b> corresponding issues when unchecked.
+</div></div>
+
+</li>
+<li><code>severity : String</code> (optional)
+<div><div>
+ Minimum level of SonarQube severity to be reported to Gerrit.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>noIssuesTitleTemplate : String</code> (optional)
+<div><div>
+ This text will appear as title of Gerrit review in case when <b>no issues matching filter settings</b> found. <br> There are some tags available: <br> <br> * &lt;info_count&gt; - will be replaced with count of issues having <b>INFO</b> severity level; <br> * &lt;minor_count&gt; - will be replaced with count of issues having <b>MINOR</b> severity level; <br> * &lt;major_count&gt; - will be replaced with count of issues having <b>MAJOR</b> severity level; <br> * &lt;critical_count&gt; - will be replaced with count of issues having <b>CRITICAL</b> severity level; <br> * &lt;blocker_count&gt; - will be replaced with count of issues having <b>BLOCKER</b> severity level; <br> * &lt;min_minor_count&gt; - will be replaced with count of issues having <b>MINOR</b> severity level <b>or higher</b>; <br> * &lt;min_major_count&gt; - will be replaced with count of issues having <b>MAJOR</b> severity level <b>or higher</b>; <br> * &lt;min_critical_count&gt; - will be replaced with count of issues having <b>CRITICAL</b> severity level <b>or higher</b>; <br> * &lt;total_count&gt; - will be replaced with <b>total count</b> of issues. <br> Please note that only <b>filtered</b> by severity level issues and their counts will be shown in report.
+</div></div>
+
+</li>
+<li><code>someIssuesTitleTemplate : String</code> (optional)
+<div><div>
+ This text will appear as title of Gerrit review in case when there are several issues matching filter settings found. <br> There are some tags available: <br> <br> * &lt;info_count&gt; - will be replaced with count of issues having <b>INFO</b> severity level; <br> * &lt;minor_count&gt; - will be replaced with count of issues having <b>MINOR</b> severity level; <br> * &lt;major_count&gt; - will be replaced with count of issues having <b>MAJOR</b> severity level; <br> * &lt;critical_count&gt; - will be replaced with count of issues having <b>CRITICAL</b> severity level; <br> * &lt;blocker_count&gt; - will be replaced with count of issues having <b>BLOCKER</b> severity level; <br> * &lt;min_minor_count&gt; - will be replaced with count of issues having <b>MINOR</b> severity level <b>or higher</b>; <br> * &lt;min_major_count&gt; - will be replaced with count of issues having <b>MAJOR</b> severity level <b>or higher</b>; <br> * &lt;min_critical_count&gt; - will be replaced with count of issues having <b>CRITICAL</b> severity level <b>or higher</b>; <br> * &lt;total_count&gt; - will be replaced with <b>total count</b> of issues. <br> Please note that only <b>filtered</b> by severity level issues and their counts will be shown in report.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>scoreConfig</code> (optional)
+<ul><b>Nested Object</b>
+<li><code>category : String</code> (optional)
+<div><div>
+ This field describes under what category score will appear in Gerrit. This category should match one of existent Gerrit categories.
+</div></div>
+
+</li>
+<li><code>issueFilterConfig</code> (optional)
+<div><div>
+ Issue filter to specify issues to affect <b>score</b> in Gerrit
+</div></div>
+
+<ul><b>Nested Object</b>
+<li><code>changedLinesOnly : boolean</code> (optional)
+<div><div>
+ Only <b>changed in current commit</b> lines to be commented by Gerrit when checked. Modified files to be commented with <b>all issues</b> if this control unchecked.
+</div></div>
+
+</li>
+<li><code>excludedPathsGlobPattern : String</code> (optional)
+</li>
+<li><code>includedPathsGlobPattern : String</code> (optional)
+</li>
+<li><code>newIssuesOnly : boolean</code> (optional)
+<div><div>
+ Only <b>new</b> SonarQube issues to be commented in Gerrit when checked. Modified files to be commented with <b>all</b> corresponding issues when unchecked.
+</div></div>
+
+</li>
+<li><code>severity : String</code> (optional)
+<div><div>
+ Minimum level of SonarQube severity to be reported to Gerrit.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>issuesScore : int</code> (optional)
+<div><div>
+ Score to be posted to Gerrit in case when there are SonarQube violations found
+</div></div>
+
+</li>
+<li><code>noIssuesScore : int</code> (optional)
+<div><div>
+ Score to be posted to Gerrit in case when there are no SonarQube violations found
+</div></div>
+
+</li>
+</ul></li>
+<li><code>severity : String</code> (optional)
+</li>
+<li><code>someIssuesToPostText : String</code> (optional)
+</li>
+<li><code>sonarURL : String</code> (optional)
+</li>
+<li><code>subJobConfigs</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>autoMatch : boolean</code> (optional)
+</li>
+<li><code>projectPath : String</code> (optional)
+<div><div>
+ Provides module prefix for a file path for multi-module projects
+</div></div>
+
+</li>
+<li><code>sonarReportPath : String</code> (optional)
+<div><div>
+ Path to SonarQube report on Jenkins server. Default value is "target/sonar/sonar-report.json"
+</div></div>
+
+</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

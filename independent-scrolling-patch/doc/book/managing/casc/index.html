@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Configuration as Code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Configuration as Code" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Configuration as Code" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Configuration as Code" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Configuration as Code" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="active">Managing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-configuration/" class="">Configuring the System</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" class="active">Configuration as Code</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/tools/" class="">Managing Tools</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" class="">Managing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/about-jenkins/" class="">About Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-info/" class="">System Information</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-properties/" class="">Jenkins Features Controlled with System Properties</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/change-system-timezone/" class="">Change System Time Zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-console/" class="">Script Console</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/groovy-hook-scripts/" class="">Groovy Hook Scripts</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" class="">Managing Nodes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-approval/" class="">In-process Script Approval</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/users/" class="">Manage Users</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" class="">Themes for user interface</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/user-content/" class="">User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/spawning-processes/" class="">Spawning Processes From Build</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../system-configuration">
+⇐ Configuring the System
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../tools">
+Managing Tools ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Configuration as Code
+</h1>
+<div class="paragraph">
+<p>The Jenkins Configuration as Code (JCasC) feature defines Jenkins configuration parameters
+in a human-readable YAML file that can be stored as source code.
+This essentially captures the configuration parameters and values that are used when configuring Jenkins from the web UI.
+The configuration can then be modified by editing this file and then applying it.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Traditionally, experienced Jenkins administrators
+created Apache Groovy <code>init</code> scripts
+to automate the configuration for their Jenkins instances.
+This works but requires in-depth understanding of Jenkins APIs
+and the ability to write Groovy scripts.
+Such scripts are powerful and can do almost anything,
+but they also provide few protections against configuration errors.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>JCasC provides the convenience and flexibility
+of configuring controllers without using the UI.
+It does not require more understanding of the configuration parameters
+than is required to configure Jenkins through the UI
+and it provides some checks on the values that are provided.</p>
+</div>
+<div class="paragraph">
+<p>The JCasC configuration file can be checked into an SCM,
+which enables you to determine who made what modifications to the configuration
+and to roll back to a previous configuration if necessary.</p>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://plugins.jenkins.io/configuration-as-code">Configuration as Code</a> plugin
+must be installed on the Jenkins controller
+that you will use to build out your JCasC configuration.
+If you do not see the <strong>Configuration as Code</strong> tile
+in the <strong>System Configuration</strong> section
+of the <strong>Manage Jenkins</strong> page on your dashboard,
+you need to install the plugin.</p>
+</div>
+<div class="sect1">
+<h2 id="viewing-the-jcasc-file"><a class="anchor" href="#viewing-the-jcasc-file"></a>Viewing the JCasC file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the Configuration as Code plugin is installed,
+you will see <strong>Configuration as Code</strong> in the <strong>System Configuration</strong> section
+of the <strong>Manage Jenkins</strong> page on your dashboard.
+Click on this link,
+then click on <strong>View Configuration</strong>
+to view the YAML file.</p>
+</div>
+<div class="paragraph">
+<p>This file is an export of the current configuration on this controller.
+In most cases, it is ready to use without modification
+although you usually want to customize it before deploying it.
+You may want to push the unmodified version to SCM
+so you have it as part of your history.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <strong>Configuration as Code</strong> UI page shows the full pathname of the YAML file being used
+and gives a box where you can specify a different file to use.
+See the information below about how to modify the location used for JCasC YAML files.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The default JCasC YAML file has four sections:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jenkins</code> section defines the root Jenkins object,
+with configurations that can be set with the
+<strong>Manage Jenkins &gt;&gt; Configure System</strong>
+and <strong>Manage Jenkins &gt;&gt; Configure Nodes and Clouds</strong> screens.</p>
+</li>
+<li>
+<p><code>tool</code> section defines build tools that can be set on the
+<strong>Manage Jenkins &gt;&gt; Global Tool Configuration</strong> screen.</p>
+</li>
+<li>
+<p><code>unclassified</code> section defines all other configurations,
+including configuration for installed plugins.</p>
+</li>
+<li>
+<p><code>credentials</code> section defines credentials that can be set on the
+<strong>Manage Jenkins &gt;&gt; Manage Credentials</strong> screen.
+You may want to delete this section from your YAML file;
+this is discussed in
+<a href="https://youtu.be/ANU7jkxbZSM?t=1673">How to Install Jenkins on CentOS 7 Using Ansible and JCasC</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="yaml-file-syntax"><a class="anchor" href="#yaml-file-syntax"></a>YAML file syntax</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JCasC defines the controller configuration in a YAML file.
+YAML is a popular serialization language for configuration information,
+with a syntax that is straight-forward and easy to read but precise.</p>
+</div>
+<div class="paragraph">
+<p>Some key points about YAML syntax:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YAML files are case sensitive.</p>
+</li>
+<li>
+<p>Indentation is very significant and specific.</p>
+</li>
+<li>
+<p>Each item is a key/value pair.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The key is followed by a colon (<code>:</code>) and a space.</p>
+</li>
+<li>
+<p>YAML converts certain strings into other types unless they are in quotes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Values such as <code>true</code>, <code>false</code>, <code>Yes</code>, and <code>No</code> are converted to Boolean values.</p>
+</li>
+<li>
+<p>Values such as <code>2</code> and <code>3.0</code> are converted to floating point values.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A value can be a list:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each list item is on a separate line starting with a dash (<code>-</code>).</p>
+</li>
+<li>
+<p>Each list item in the file must start at the same indentation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Use spaces, never tabs, for indentation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Never leave a blank line in a YAML file&#8201;&#8212;&#8201;things will break!</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the
+<a href="https://yaml.org/refcard.html">YAML Reference Card</a>
+for more details about YAML file syntax.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="checking-the-yaml-files-into-scm"><a class="anchor" href="#checking-the-yaml-files-into-scm"></a>Checking the YAML files into SCM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To get the maximum benefit of JCasC, the YAML files should be stored in SCM.
+This gives you a history that you can use to trace changes that are made
+and allow you to easily roll back to an earlier version of the file if necessary.</p>
+</div>
+<div class="paragraph">
+<p>JCasC does not require that the file be stored in SCM
+and so does not enforce any rules about how you do this.
+The most common practice is to create one SCM repository
+in which you store all of your JCasC files.</p>
+</div>
+<div class="paragraph">
+<p>If you are storing your JCasC YAML files in SCM,
+you should commit the first default file that is generated,
+before you make any modifications to the file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="modifying-the-jcasc-file"><a class="anchor" href="#modifying-the-jcasc-file"></a>Modifying the JCasC file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To modify the JCasC YAML file,
+use the text editor of your choice to edit the file
+that is listed on the <strong>Manage Jenkins &gt;&gt; Configuration as Code</strong> UI page.
+By default, this is <em>$JENKINS_HOME/jenkins.yaml</em>.</p>
+</div>
+<div class="paragraph">
+<p>For a simple exercise to work through the process,
+you can modify the value of the "System Message"
+that is displayed on the Jenkins dashboard.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the JCasC YAML file with the text editor of your choice.</p>
+</li>
+<li>
+<p>Find the <code>systemMessage</code> line near the top of the file:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">systemMessage</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Jenkins</span><span class="nv"> </span><span class="s">configured</span><span class="nv"> </span><span class="s">automatically</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Jenkins</span><span class="nv"> </span><span class="s">Configuration</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">Code</span><span class="nv"> </span><span class="s">plugin</span><span class="se">\n\n</span><span class="s">"</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Modify the text between the quotation marks to contain your new text</p>
+</li>
+<li>
+<p>Write/save the file</p>
+</li>
+<li>
+<p>Click the <strong>Reload existing configuration</strong> button to apply the changes</p>
+</li>
+<li>
+<p>View the modified "System Message" on your dashboard</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is not necessary to restart Jenkins to apply the JCasC changes,
+although you should try to restart Jenkins with the modifications
+before you check the modified YAML file into SCM,
+especially when making more substantive configuration changes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you have made and tested your desired changes,
+push the modified JCasC YAML file to your SCM.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-a-plugin-with-jcasc"><a class="anchor" href="#configuring-a-plugin-with-jcasc"></a>Configuring a plugin with JCasC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To configure a plugin with JCasC:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the UI of the current system to install and configure the plugin</p>
+</li>
+<li>
+<p>Click <strong>Apply &gt;&gt; Save</strong> to save the configuration</p>
+</li>
+<li>
+<p>Use <strong>Manage Jenkins &gt;&gt; Configuration as Code &gt;&gt; View Configuration</strong>
+to view the JCasC file with the plugin configured</p>
+</li>
+<li>
+<p>Click on <strong>Download Configuration</strong>  to save the modified configuration file locally</p>
+</li>
+<li>
+<p>Edit the JCasC YAML file to modify the configuration, if necessary</p>
+</li>
+<li>
+<p>Save the file</p>
+</li>
+<li>
+<p>Click <strong>Reload existing configuration</strong> to load the local changes onto the Jenkins server</p>
+</li>
+<li>
+<p>Verify the changes on the UI</p>
+</li>
+<li>
+<p>When you have thoroughly tested the plugin configuration,
+push the modified YAML file to your SCM</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>See the
+<a href="/blog/2021/05/20/configure-plugins-with-jcasc/">Configure Plugins with JCasC</a>
+blog for detailed instructions
+and an embedded video demonstration of this process.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="yaml-file-location"><a class="anchor" href="#yaml-file-location"></a>YAML file location</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, the YAML file for the CasC configuration
+is located in <code>$JENKINS_HOME/jenkins.yaml</code>.
+The location and name of the file being used is displayed
+on the <strong>Configuration as Code</strong> UI page.
+You can specify a different file to view by typing the full pathname
+into the <strong>Path or URL</strong> field.</p>
+</div>
+<div class="paragraph">
+<p>You can specify a different location or a different file name
+for the creation of the JCasC YAML file by doing either of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Populate the <code>CASC_JENKINS_CONFIG</code> environment variable to point to
+a comma-separated list that defines where configuration files are located.</p>
+</li>
+<li>
+<p>Use the <code>casc.jenkins.config</code> Java property to control the file name and location.
+This is useful when installing Jenkins via a package management tool.
+Most package management systems support configuration files that are retained across upgrades.
+It is best to not modify a file installed by a package manager
+because it could be overwritten by an update.</p>
+<div class="paragraph">
+<p>On Linux systems, you can run <code>systemctl edit jenkins</code> and add the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>[Service]
+Environment="JAVA_OPTS=-Dcasc.jenkins.config=/jenkins/casc_configs"</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The file location and name can be specified as any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Path to a folder containing a set of config files such as <code>/var/jenkins_home/casc_configs</code>.</p>
+</li>
+<li>
+<p>A full path to a single file such as <code>/var/jenkins_home/casc_configs/jenkins.yaml</code>.</p>
+</li>
+<li>
+<p>A URL pointing to a file served on the web such as <code><a href="https://acme.org/jenkins.yaml" class="bare">https://acme.org/jenkins.yaml</a></code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The value of the <code>CASC_JENKINS_CONFIG</code> variable is unpacked
+according to the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If an element of <code>CASC_JENKINS_CONFIG</code> points to a folder,
+the plugin recursively traverses the folder to find file(s)
+with the .yml, .yaml, .YAML, or .YML suffix.</p>
+</li>
+<li>
+<p>It excludes hidden files or files that contain a hidden folder
+(such as/ <code>jenkins/casc_configs/.dir1/config.yaml</code>)
+in <strong>any part</strong> of the full path.</p>
+</li>
+<li>
+<p>It follows symbolic links for both files and directories.</p>
+</li>
+<li>
+<p>The order of traversal does not matter to the final outcome
+because all configuration files that are discovered MUST be supplementary.
+If a file attempts to overwrite configuration values from another file,
+it creates a conflict and raises a <code>ConfiguratorException</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="casc-configuration-and-ui-modifications"><a class="anchor" href="#casc-configuration-and-ui-modifications"></a>CasC configuration and UI modifications</h3>
+<div class="paragraph">
+<p>Configuration for a Jenkins controller should be implemented
+either with CasC or with the UI, but not by both.
+The system allows administrators to modify configuration options on the UI
+even when they were configured by CasC,
+but these modifications are overwritten the next time the controller restarts.</p>
+</div>
+<div class="paragraph">
+<p>You can install the
+<a href="https://github.com/jenkinsci/extended-read-permission-plugin">Extended Read Permission Plugin</a>,
+which allows you to grant read-only access to configuration parameters to users.
+See
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/224/README.adoc">JEP-224: Readonly system configuration</a>
+for more details.</p>
+</div>
+<div class="paragraph">
+<p>A small group of administrators may have write access to the UI configuration fields.
+They should understand that JCasC will overwrite changes they make on the UI.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="for-more-information"><a class="anchor" href="#for-more-information"></a>For more information</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="general-information"><a class="anchor" href="#general-information"></a>General information</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=47D3H1BZi4o">Look Ma! No Hands!&#8201;&#8212;&#8201;Manage Jenkins Configuration as Code</a>
+is a video of the 2018 DevOps World presentation
+that introduced the JCasC feature.</p>
+</li>
+<li>
+<p><a href="/blog/2021/05/20/configure-plugins-with-jcasc/">Configure Plugins with JCasC</a>
+is a blog post with video that demonstrates how to configure a plugin with JCasC.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=ANU7jkxbZSM">How to Install Jenkins on CentOS 7 Using Ansible and JCasC</a>
+is a video presentation with details about using JCasc.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementation-details"><a class="anchor" href="#implementation-details"></a>Implementation details</h3>
+<div class="paragraph">
+<p>Much of the detailed JCasC documentation is provided in the
+<a href="https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/docs">Github repository</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/IMPLEMENTATION.md">Implementation details</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The
+<a href="https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos">demos</a>
+directory contains sample <em>*.yaml</em> files for configuring specific Jenkins components and plugins,
+with a <em>README</em> file in each directory that describes the configurations for that component.</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/seed-jobs.md">How to create the initial "seed" job with Job DSL</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/usageScenarios.md">Usage scenarios</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configurationReload.md">Triggering Configuration Reload</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/configExport.md">Exporting configurations</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="information-for-plugin-developers-and-maintainers"><a class="anchor" href="#information-for-plugin-developers-and-maintainers"></a>Information for plugin developers and maintainers</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/DEVELOPER.md">Developer documentation</a> for JCasC</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/REQUIREMENTS.md">JCasC Requirements - guide for plugin maintainers</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../system-configuration">
+⇐ Configuring the System
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../tools">
+Managing Tools ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/managing/casc.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

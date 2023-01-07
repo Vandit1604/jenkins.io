@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSOD Project Report: Document Jenkins on Kubernetes
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Google Season of Docs 2020 Project Report" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/12/04/gsod-project-report/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSOD Project Report: Document Jenkins on Kubernetes" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSOD Project Report: Document Jenkins on Kubernetes" name="twitter:title">
+<meta content="Google Season of Docs 2020 Project Report" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsod/gsod_opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSOD Project Report: Document Jenkins on Kubernetes" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/12/04/gsod-project-report/" property="og:url">
+<meta content="Google Season of Docs 2020 Project Report" name="og:description">
+<meta content="GSOD Project Report: Document Jenkins on Kubernetes" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsod/gsod_opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSOD Project Report: Document Jenkins on Kubernetes
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/zaycodes/"><div class="app-avatar"><img alt="Zainab Daodu" class="app-avatar__image" src="/images/avatars/zaycodes.jpg"></div> Zainab Daodu</a>
+December 04, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSOD+Project+Report%3A+Document+Jenkins+on+Kubernetes&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F12%2F04%2Fgsod-project-report%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Jenkins is the world&#8217;s leading open-source automation server used by companies large and small around the globe to implement continuous integration and continuous delivery.
+Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.
+Kubernetes is compatible with the majority of CI/CD tools which allow developers to run tests, deploy builds in Kubernetes and update applications with no downtime.
+One of the most popular CI/CD tools now is Jenkins thereby making Jenkins on Kubernetes a popular theme for Jenkins users.</p>
+</div>
+<div class="paragraph">
+<p>During the Google Season Of Docs program, I worked with the Jenkins organization on the project - Document Jenkins on Kubernetes.
+The original proposal for this project can be found <a href="https://docs.google.com/document/d/1zTEKtOp2i1K2fw5RQ_a_KVOB2z0gz9987NYzTnIS6G8/edit?usp=sharing">here</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="project-goals"><a class="anchor" href="#project-goals"></a>Project Goals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After my proposal was accepted by the Jenkins organization, my mentors and I agreed on the expectations for the Google Season of Docs project.
+The goal of this project was to create a new Kubernetes Volume which would describe the concepts, techniques, and choices for Kubernetes users running Jenkins thereby providing the following advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improve the user experience of Jenkins on Kubernetes users by giving them a one-stop-shop for information on Jenkins on Kubernetes.</p>
+</li>
+<li>
+<p>Make it easy to track, update and maintain information on Jenkins on Kubernetes</p>
+</li>
+<li>
+<p>Reference the existing community documentation for Jenkins on K8s (plugins and tools/integrations).</p>
+</li>
+<li>
+<p>How to guides, tutorials and explanations of concepts and techniques in Jenkins on Kubernetes.</p>
+</li>
+<li>
+<p>Just-In-Time documentation which means that rather than documenting every feature comprehensively, we produce and release documentation in bits but continuously based on popular questions, feedback and area of interests gathered from the community and users.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="community-bonding-planning-the-solution"><a class="anchor" href="#community-bonding-planning-the-solution"></a>Community Bonding: Planning the solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Find below an outline of my activities during the community bonding phase:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setting up communication channels: meetings, mailings, chats: My mentors and I agreed on the right time and channel for communication due to time difference.
+We agreed to meet twice weekly, on Mondays and Thursdays at 7:00 PM GMT +1 and use Jenkins documentation <a href="https://gitter.im/jenkinsci/docs">gitter</a> channel for other communications.</p>
+</li>
+<li>
+<p>Contacting Stakeholders and onboarding contributors: The project was  announced on social media and different Jenkins channels.
+I wrote a <a href="/blog/2020/09/25/document-jenkins-on-kubernetes-introduction/">blog post</a> to announce the project and created a <a href="/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/">project page</a> on Jenkins.io.</p>
+</li>
+<li>
+<p>Knowledge transfer: I and my mentors planned knowledge sharing sessions and fixed tentative dates based on the availability of the trainers.
+My mentors also shared useful resources to help me prepare for the project.</p>
+</li>
+<li>
+<p>Getting permissions: I and my mentors agreed I didn’t need any special permissions from the beginning, however, this topic was left open for discussion if the need arose later on in the project.</p>
+</li>
+<li>
+<p>Pre-planning of the project: I refined my goals and set expectations with my mentor and also learned more about the community(Jenkins).
+I also had to ensure that the proposed documentation structure I drafted was in line with the goals of the organization so my mentors vetted it and we finalized on the proposed sections that I was supposed to work on.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation-development-phase"><a class="anchor" href="#documentation-development-phase"></a>Documentation Development Phase</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="knowledge-sharing-sessions"><a class="anchor" href="#knowledge-sharing-sessions"></a>Knowledge Sharing Sessions</h3>
+<div class="paragraph">
+<p>During the development phase, my mentors hosted two knowledge sharing sessions:</p>
+</div>
+<div class="sect3">
+<h4 id="katacoda-and-helm-by-marky-jackson"><a class="anchor" href="#katacoda-and-helm-by-marky-jackson"></a>Katacoda and Helm by <a href="https://twitter.com/markyjackson5">Marky Jackson</a></h4>
+<div class="paragraph">
+<p>See the <a href="https://docs.google.com/presentation/d/1LD7btYQaSiI3R8226OIAI6EIUqRZHTyjefVMdF4ydSg/edit?usp=sharing">slides</a></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/BkIiGXDCEGA?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="helm-by-torsten-walter"><a class="anchor" href="#helm-by-torsten-walter"></a>Helm by <a href="https://twitter.com/torsten_walter">Torsten Walter</a></h4>
+<div class="paragraph">
+<p>See the <a href="https://docs.google.com/presentation/d/1RS8PwlR_FzxYypBlwtp4LcZls8hr3dG_4KJ65U00Xlo/edit#slide=id.gc6f80d1ff_0_0">slides</a></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/9WIGVLBIfNM?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p>These sessions gave me an in-depth understanding of concepts and tools needed for the project.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-on-kubernetes-documentation-skeleton"><a class="anchor" href="#jenkins-on-kubernetes-documentation-skeleton"></a>Jenkins on Kubernetes Documentation Skeleton</h3>
+<div class="paragraph">
+<p>At the application phase, I drafted a <a href="https://docs.google.com/document/d/1wMeeN4oA7AN4F3pfLBIAJZWXD7PdqSKHotdk76yCw68/edit?usp=sharing">structure</a> describing the proposed Jenkins on Kubernetes section.
+My intention was to use it as a guide during the implementation phase of the project, but when the development phase kicked off, my mentors and I thought of a better approach to creating a new Jenkins on Kubernetes section which was to add the Jenkins on Kubernetes contents to existing related sections for easier navigation and better user experience.
+An example of this approach would be creating the <a href="/doc/book/installing/kubernetes/">Installing Jenkins on Kubernetes</a> section under the <a href="/doc/book/installing/">Installing Jenkins</a> section rather than putting it under an entirely new section.
+With this new approach, I was assigned a task to create a skeleton with all the proposed Jenkins on Kubernetes sections on Jenkins.io and mark these sections as
+Work In Progress (WIP).
+The Plan was to use this skeleton as a guide throughout the GSOD Project.
+The Jenkins on Kubernetes skeleton PR can be found <a href="https://github.com/jenkins-infra/jenkins.io/pull/3845">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documenting-jenkins-on-kubernetes"><a class="anchor" href="#documenting-jenkins-on-kubernetes"></a>Documenting Jenkins on Kubernetes</h3>
+<div class="paragraph">
+<p>While working on this project, I had to do a lot of research and test all the documented steps locally before pushing the documentation out for review.
+I also made sure to use updated terms and terminologies where necessary like Controller instead of Master and Agents instead of Slave.</p>
+</div>
+<div class="paragraph">
+<p>During the documentation phase, I was able to work on documenting <a href="/doc/book/installing/kubernetes/">Installing Jenkins on Kubernetes</a> with three sections <a href="/doc/book/installing/kubernetes/#install-jenkins-with-helm-v3">Helm</a>, <a href="/doc/book/installing/kubernetes/#install-jenkins-with-yaml-files">Set of Yaml files</a> and <a href="/doc/book/installing/kubernetes/#install-jenkins-with-jenkins-operator">Jenkins Operator</a>.
+I also worked on creating a directory for Jenkins on kubernetes sample files in Jenkins.io repository, documenting <a href="https://github.com/jenkins-infra/jenkins.io/pull/3979">Scaling Jenkins on Kubernetes</a> and Jenkins on AWS which is still in progress.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="work-done"><a class="anchor" href="#work-done"></a>Work Done</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Pull Requests</strong>: All the pull requests I submitted to Jenkins.io documentation can be found <a href="https://github.com/jenkins-infra/jenkins.io/pulls?q=is%3Apr+author%3Azaycodes">here</a>.
+This <a href="https://docs.google.com/spreadsheets/d/1Jvu9HkWmNycjMkGxUkgCQXhkgX4gzvTQsFn7i7c9NUA/edit?usp=sharing">spreadsheet</a> contains links to the published documentation on <a href="/">Jenkins.io</a>.
+The <a href="https://docs.google.com/spreadsheets/d/1Jvu9HkWmNycjMkGxUkgCQXhkgX4gzvTQsFn7i7c9NUA/edit?usp=sharing">spreadsheet</a> also highlights the initial proposed tasks and the status of each of them.</p>
+</div>
+<div class="paragraph">
+<p>If you would like to contribute to the Jenkins on Kubernetes documentation, you can check out pending tasks <a href="https://docs.google.com/spreadsheets/d/1Jvu9HkWmNycjMkGxUkgCQXhkgX4gzvTQsFn7i7c9NUA/edit?usp=sharing">here</a> and reach out in the Jenkins documentation <a href="https://gitter.im/jenkinsci/docs">gitter</a> channel.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="challenges"><a class="anchor" href="#challenges"></a>Challenges</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using a Windows computer was a bit of a challenge for me.
+To run Jenkins.io locally, the project uses GNU/Make and Docker in order to generate the fully statically generated <a href="/">jenkins.io</a> web site.
+The key tool for converting source code into the site is the <a href="https://github.com/awestruct/awestruct">Awestruct</a> static site generator, which is downloaded automatically as part of the build process.
+To achieve this, I needed to have GNU/Make and Docker available on my machine.
+Docker was not a problem, but to achieve the latter, I needed to use <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> (WSL).
+WSL had two versions WSL1 and WSL2. Using WSL2 would have been much more convenient, but my version of windows wasn’t compatible with WSL2 as it required Version 1903 or higher, with Build 18362 or higher for x64 systems.
+With this obstacle, I had to stick to making WSL1 work but I still couldn’t get this to work, a series of issues came up which I was able to pass through with the help of my mentors until I got stuck at permission issues.
+I raised the issue with my mentor and after looking through the issue with me and trying to solve it to no avail, he suggested setting up an Ubuntu VM in Hyper-V.
+This <a href="https://www.nakivo.com/blog/run-linux-hyper-v/">article</a> helped me achieve this and that solved my problem.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-did-i-learn"><a class="anchor" href="#what-did-i-learn"></a>What did I learn?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I learned a lot more about the Jenkins project, Kubernetes, helm package manager, Jenkins Operator and much more.
+This project also gave me the opportunity to work with cloud providers like AWS which was totally new to me and also learn from field experts through knowledge sharing sessions and weekly meetings with my mentors and org admin.
+My technical writing skill and communication skill have definitely become better and I owe it to this project.</p>
+</div>
+<div class="paragraph">
+<p>Overall, contributing to the Jenkins.io project is an amazing experience for me.
+I have been using Jenkins, and the fact that I was able to contribute to the organization and collaborate with the community is an honor.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/kubernetes/">
+kubernetes
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/helm/">
+helm
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/documentation/">
+documentation
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsod/">
+gsod
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsod2020/">
+gsod2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Zainab Daodu" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/zaycodes.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/zaycodes/">
+Zainab Daodu
+</a>
+</p>
+<div class="paragraph">
+<p>Zainab is a Software Engineer and Technical Writer with over 4 years of experience developing, testing, and maintaining enterprise software applications.
+Passionate about contributing to open source, improving technical documentation and advocating for gender diversity in open source collaboration.</p>
+</div>
+<div class="paragraph">
+<p>She started contributing to Jenkins documentation during the technical writer exploration phase for <a href="https://developers.google.com/season-of-docs">Google Season of Docs</a> 2020.
+She completed the <a href="/sigs/docs/#jenkins-on-kubernetes">Documentation for Jenkins on Kubernetes</a> project as part of Google Season of Docs 2020.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/zaycodes" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/zaycodes" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/zaycodes" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/12/2020-12-04-gsod-project-report.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

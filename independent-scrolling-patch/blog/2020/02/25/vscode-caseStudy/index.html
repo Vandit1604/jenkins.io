@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Validating JCasC configuration files using Visual Studio Code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/02/25/vscode-caseStudy/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Validating JCasC configuration files using Visual Studio Code" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Validating JCasC configuration files using Visual Studio Code" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/JCasC/JCasC.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Validating JCasC configuration files using Visual Studio Code" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/02/25/vscode-caseStudy/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Validating JCasC configuration files using Visual Studio Code" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/JCasC/JCasC.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Validating JCasC configuration files using Visual Studio Code
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/sladyn98/"><div class="app-avatar"></div> Sladyn Nunes</a>
+February 25, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Validating+JCasC+configuration+files+using+Visual+Studio+Code&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F02%2F25%2Fvscode-caseStudy%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect3">
+<h4 id="configuration-as-code-plugin"><a class="anchor" href="#configuration-as-code-plugin"></a>Configuration-as-code plugin</h4>
+<div class="paragraph">
+<p>Problem Statement: Convert the existing schema validation workflow from the current scripting language in the <a href="https://plugins.jenkins.io/configuration-as-code">Jenkins Configuration as Code Plugin</a> to a Java based rewrite thereby enhancing its readablity and testability supported by a testing framework for the same. Enhance developer experience by developing a VSCode Plugin to facilitate autocompletion and validation which would help the developer write correct yaml files before application to a Jenkins Instance.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://plugins.jenkins.io/configuration-as-code">Configuration as Code plugin</a> has been designed as an opinionated way to configure Jenkins based on human-readable declarative configuration files. Writing such a file should be feasible without being a Jenkins expert, just translating into code a configuration process one is used to executing in the web UI. The plugin uses a schema to verify the files being applied to the Jenkins instance.</p>
+</div>
+<div class="paragraph">
+<p>With the new JSON Schema being enabled developers can now test their yaml file against it. The schema checks the <code>descriptors</code> i.e. configuration that can be applied to a plugin or Jenkins core, the correct type is used and help text is provided in some cases. VSCode allows us to test out the schema right out of the box with some modifications. This project was built as part of the <a href="https://communitybridge.org/">Community Bridge</a> initiative which is a platform created by the Linux Foundation to empower developers — and the individuals and companies who support them — to advance sustainability, security, and diversity in open source technology. You can take a look at the <a href="https://people.communitybridge.org/project/bce45251-1ff4-4131-9699-0a0017b31495">Jenkins Community Bridge Project Page</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="steps-to-enable-the-schema-validation"><a class="anchor" href="#steps-to-enable-the-schema-validation"></a>Steps to Enable the Schema Validation</h3>
+<div class="paragraph">
+<p>a) The first step includes installing the <a href="https://marketplace.visualstudio.com/items?itemName=jcasc-developers.jcasc-plugin">JCasC Plugin for Visual Studio Code</a> and opening up the extension via the extension list. Shortcut for opening the extension list in VSCode editor using <code>Ctrl + Shift + X</code>.</p>
+</div>
+<div class="paragraph">
+<p>b) In order to enable validation we need to include it in the workspace settings.
+Navigate to <code>File</code> and then <code>Preference</code> and then <code>Settings</code>. Inside settings search for <code>json</code> and inside <code>settings.json</code> include the following configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="json"><span class="p">{</span><span class="w">
+</span><span class="nl">"yaml.schemas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"schema.json"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y[a]?ml"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a glob pattern as the value for schema.json which is the file name for the schema. This would apply the schema to all yaml files. eg: <code>.[y[a]?ml]</code></p>
+</div>
+<div class="paragraph">
+<p>c) The following tasks can be done using VSCode:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">a) Auto completion (Ctrl + Space):
+  Auto completes on all commands.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">b) Document Outlining (Ctrl + Shift + O):
+Provides the document outlining of all completed nodes in the file.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>d) Create a new file under the work directory called <code>jenkins.yml</code>. For example consider the following contents for the file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">systemMessage</span><span class="pi">:</span> <span class="s">“Hello World”</span>
+  <span class="na">numExecutors</span><span class="pi">:</span> <span class="s">2</span></code></pre>
+</div>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman">
+<li>
+<p>The above yaml file is valid according to the schema and vscode should provide you with validation and autocompletion for the same.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="screenshots"><a class="anchor" href="#screenshots"></a>Screenshots</h3>
+<div class="paragraph">
+<p><span class="image"><img src="/images/projects/jcasc/VSCode/vscode.png" alt="vscode"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/projects/jcasc/VSCode/userDocs1.png" alt="userDocs1"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/projects/jcasc/VSCode/userDocs2.png" alt="userDocs2"></span></p>
+</div>
+<div class="paragraph">
+<p>We are holding an online <a href="https://www.meetup.com/Jenkins-online-meetup/events/268823268">meetup</a> on the 26th February regarding this plugin and how you could use it to validate your YAML configuration files.
+For any suggestions or discussions regarding the schema feel free to join our <a href="https://gitter.im/jenkinsci/jcasc-devtools-project">gitter channel</a>.
+Issues can be created on <a href="https://github.com/jenkinsci/configuration-as-code-plugin/issues">Github</a>.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community-bridge/">
+community-bridge
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/JCasC/">
+JCasC
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/VSCode/">
+VSCode
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/sladyn98/">
+Sladyn Nunes
+</a>
+</p>
+<div class="paragraph">
+<p>Sladyn is a Computer Science student at Mumbai University, India.
+He is participating in Community Bridge 2019 to provide development tools to JCasC plugin in the form of IDE integrations, schema architecture improvements and configuration extension points <a href="https://github.com/jenkinsci/configuration-as-code-plugin">Configuration as Code Plugin</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/sladyn98" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/SladynN" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/02/2020-02-25-vscode-caseStudy.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Create a new Jenkins node, and run your Jenkins agent as a service
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/12/27/run-jenkins-agent-as-a-service/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Create a new Jenkins node, and run your Jenkins agent as a service" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Create a new Jenkins node, and run your Jenkins agent as a service" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-12-27-run-jenkins-agent-as-a-service/curl-and-java-launch-agent.svg" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Create a new Jenkins node, and run your Jenkins agent as a service" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/12/27/run-jenkins-agent-as-a-service/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Create a new Jenkins node, and run your Jenkins agent as a service" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-12-27-run-jenkins-agent-as-a-service/curl-and-java-launch-agent.svg" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Create a new Jenkins node, and run your Jenkins agent as a service
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/gounthar/"><div class="app-avatar"><img alt="Bruno Verachten" class="app-avatar__image" src="/images/avatars/gounthar.png"></div> Bruno Verachten</a>
+December 27, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Create+a+new+Jenkins+node%2C+and+run+your+Jenkins+agent+as+a+service&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F12%2F27%2Frun-jenkins-agent-as-a-service%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#pre-requisites">Pre-requisites</a>
+<ul class="sectlevel2">
+<li><a href="#java">Java</a></li>
+<li><a href="#jenkins-user">Jenkins user</a></li>
+<li><a href="#docker">Docker</a></li>
+</ul>
+</li>
+<li><a href="#create-a-new-node-in-jenkins">Create a new node in Jenkins</a>
+<ul class="sectlevel2">
+<li><a href="#node-creation-in-the-ui">Node creation in the UI</a></li>
+<li><a href="#node-configuration">Node configuration</a></li>
+</ul>
+</li>
+<li><a href="#run-your-jenkins-agent-as-a-service">Run your Jenkins agent as a service</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial, we will review how to start a Jenkins agent as a Linux service with <code>systemd</code>.
+When using <code>Docker</code> for my agents, entering the correct options on the command line should cause the agents to restart automatically.
+Sometimes, such as when you want to use the famous <a href="https://www.jenkins.io/doc/book/pipeline/docker/"><code>Dockerfile: true</code></a> option, you need to start the agent manually with a <code>java</code> command and not with Docker (for various security reasons).
+Then you need to restart it manually if you have to reboot, or if you forget to use <code>nohup</code> to start it in the background, and then close the terminal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pre-requisites"><a class="anchor" href="#pre-requisites"></a>Pre-requisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s say we’re starting with a fresh Ubuntu 22.04 Linux installation.
+To get an agent working, we&#8217;ll need to do some preparation.
+Java is necessary for this process, and  Docker allows us to use Docker for our agents instead of installing everything directly on the machine.</p>
+</div>
+<div class="sect2">
+<h3 id="java"><a class="anchor" href="#java"></a>Java</h3>
+<div class="paragraph">
+<p>Currently, openjdk 11 is recommended, and openjdk 17 is supported.
+Let’s go with openjdk 17:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">--no-install-recommends</span> openjdk-17-jdk-headless</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let’s now verify if <code>java</code> works for us:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">java <span class="nt">-version</span>
+openjdk version <span class="s2">"17.0.3"</span> 2022-04-19
+OpenJDK Runtime Environment <span class="o">(</span>build 17.0.3+7-Ubuntu-0ubuntu0.22.04.1<span class="o">)</span>
+OpenJDK 64-Bit Server VM <span class="o">(</span>build 17.0.3+7-Ubuntu-0ubuntu0.22.04.1, mixed mode, sharing<span class="o">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-user"><a class="anchor" href="#jenkins-user"></a>Jenkins user</h3>
+<div class="paragraph">
+<p>While creating an agent, be sure to separate rights, permissions, and ownership for users.
+Let’s create a user for Jenkins:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>adduser <span class="nt">--group</span> <span class="nt">--home</span> /home/jenkins <span class="nt">--shell</span> /bin/bash jenkins</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker"><a class="anchor" href="#docker"></a>Docker</h3>
+<div class="paragraph">
+<p>Now, to get a recent version of Docker, we should install the <code>docker-ce</code> package and a few others with a particular repo.
+First, let’s add the needed dependencies to add the repo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>apt-get <span class="nb">install </span>ca-certificates curl gnupg lsb-release</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In my case, these packages were already installed and up to date.
+The next step is to add Docker’s official GPG key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/apt/keyrings
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, we can set up the repo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
+  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last thing to do is to update the list of available packages, and then install the latest version of Docker:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io docker-compose-plugin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you’re - like me - running a recent version of Ubuntu or Debian, you won’t need to create the <code>docker</code> group, because it has been created with the installation of Docker.
+On the contrary, you can then issue a <code>sudo groupadd docker</code> command to create the <code>docker</code> group.</p>
+</div>
+<div class="paragraph">
+<p>Now, let’s add our current user to the <code>docker</code> group:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And if you’re not using the default user, but <code>jenkins</code>, you can do the same:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker jenkins
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> <span class="nb">sudo </span>jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now log out, and log back in so that your group membership is updated.
+If you get any error, just reboot the machine, this sometimes happens.
+<code>¯_(ツ)_/¯</code></p>
+</div>
+<div class="paragraph">
+<p>Mandatory ``Hello World!'' Docker installation test:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">docker run hello-world
+Unable to find image <span class="s1">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull <span class="nb">complete
+</span>Digest: sha256:53f1bbee2f52c39e41682ee1d388285290c5c8a76cc92b42687eecf38e0af3f0
+Status: Downloaded newer image <span class="k">for </span>hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">"hello-world"</span> image from the Docker Hub.
+    <span class="o">(</span>amd64<span class="o">)</span>
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ <span class="nv">$ </span>docker run <span class="nt">-it</span> ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nice!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-a-new-node-in-jenkins"><a class="anchor" href="#create-a-new-node-in-jenkins"></a>Create a new node in Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Quoting the official <a href="https://www.jenkins.io/doc/book/managing/nodes/">documentation</a>,</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Nodes are the "machines" on which build agents run.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>and also:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Agents manage the task execution on behalf of the Jenkins controller by using executors.
+An agent is actually a small (170KB single jar) Java client process that connects to a Jenkins controller and is assumed to be unreliable.
+An agent can use any operating system that supports Java.
+Tools required for builds and tests are installed on the node where the agent runs; they can be installed directly or in a container (Docker or Kubernetes).</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>To conclude:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>In practice, nodes and agents are essentially the same but it is good to remember that they are conceptually distinct.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>We will now create a new node in Jenkins, using our Ubuntu machine as the node, and then launch an agent on this node.</p>
+</div>
+<div class="sect2">
+<h3 id="node-creation-in-the-ui"><a class="anchor" href="#node-creation-in-the-ui"></a>Node creation in the UI</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to your Jenkins dashboard</p>
+</li>
+<li>
+<p>Go to <em>Manage Jenkins</em> option in the main menu</p>
+</li>
+<li>
+<p>Go to <em>Manage Nodes and clouds</em> item</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-12-02-run-jenkins-agent-as-a-service/manage-nodes-and-clouds.png" alt="Jenkins UI" title="Manage Nodes and Clouds"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to New Node option in the side menu</p>
+</li>
+<li>
+<p>Fill in the <em>Node name</em> (<em>My New Ubuntu 22.04 Node with Java and Docker installed</em> for me) and type (<em>Permanent Agent</em> for me)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-12-02-run-jenkins-agent-as-a-service/new-node.png" alt="Jenkins UI" title="New node"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click on the <em>Create</em> button</p>
+</li>
+<li>
+<p>In the <em>Description</em> field, enter if you want a human-readable description of the node (<em>My New Ubuntu 22.04 Node with Java and Docker installed</em> for me) -</p>
+</li>
+<li>
+<p>Let <code>1</code> as the number of executors for the time being.
+A good value to start with would be the number of CPU cores on the machine (unfortunately for me, it’s <code>1</code>) - As <em>Remote root directory</em>, enter the directory where you want to install the agent (<code>/home/jenkins</code> for me)</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>An agent should have a directory dedicated to Jenkins.
+It is best to use an absolute path, such as <code>/var/jenkins</code> or <code>c:\jenkins</code>.
+This should be a path local to the agent machine.
+There is no need for this path to be visible from the controller.</p>
+</div>
+</blockquote>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Regarding the <em>Labels</em> field, enter the labels you want to assign to the node (<code>ubuntu linux docker jdk17</code> for me), which makes four labels.
+This will help you group multiple agents into one logical group)</p>
+</li>
+<li>
+<p>For the <em>Usage</em> now, choose <em>Use this node as much as possible</em> for the time being, you will be able to restrict later on the kind of jobs that can be run on this node.</p>
+</li>
+<li>
+<p>The last thing to set up now: choose <em>Launch agent by connecting it to the controller</em> .
+That means that you will have to launch the agent on the node itself and that the agent will then connect to the controller.
+That’s pretty handy when you want to build Docker images, or when your process will use Docker images…
+You could also have the controller launch an agent directly via Docker remotely, but then you would have to use Docker in Docker, which is complicated <em>and</em> insecure.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="node-configuration"><a class="anchor" href="#node-configuration"></a>Node configuration</h3>
+<div class="paragraph">
+<p>The <em>Save</em> button will create the node within Jenkins, and lead you to the <em>Manage nodes and clouds</em> page.
+Your new node will appear <em>brown</em> in the list, and you can click on it to see its details.
+The details page displays your java command line to start the agent.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-12-02-run-jenkins-agent-as-a-service/java-command-to-launch-the-agent.png" alt="Jenkins UI" title="Command to launch the agent"></span></p>
+</div>
+<div class="paragraph">
+<p>This command looks like that for me:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">curl <span class="nt">-sO</span> http://my_ip:8080/jnlpJars/agent.jar
+java <span class="nt">-jar</span> agent.jar <span class="nt">-jnlpUrl</span> http://my_ip:8080/computer/My%20New%20Ubuntu%2022%2E04%20Node%20with%20Java%20and%20Docker%20installed/jenkins-agent.jnlp <span class="nt">-secret</span> my_secret <span class="nt">-workDir</span> <span class="s2">"/home/jenkins"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-12-02-run-jenkins-agent-as-a-service/curl-and-java-launch-agent.svg" alt="Terminal" title="New agent starting"></span></p>
+</div>
+<div class="paragraph">
+<p>You can now go back into Jenkins’ UI, select the <strong>Back to List</strong> menu item on the left side of the screen, and see that your new agent is running.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-12-02-run-jenkins-agent-as-a-service/new-node-looks-fine.png" alt="Jenkins UI" title="New node looks fine"></span></p>
+</div>
+<div class="paragraph">
+<p>After this is running, there are a few more actions that need to be completed.
+Whenever you close the terminal you launched the agent with, the agent will stop.
+If you ever have to reboot the machine after a kernel update, you will have to restart the agent manually too.
+Therefore, you should keep the agent running by declaring it as a service.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-your-jenkins-agent-as-a-service"><a class="anchor" href="#run-your-jenkins-agent-as-a-service"></a>Run your Jenkins agent as a service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a directory called <code>jenkins</code> or <code>jenkins-service</code> in your home directory or anywhere else where you have access, for example <code>/usr/local/jenkins-service</code>.
+If the new directory does not belong to the current user home, give it the right owner and group after creation.
+For me, it would look like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /usr/local/jenkins-service
+<span class="nb">sudo chown </span>jenkins /usr/local/jenkins-service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Move the <code>agent.jar</code> file that you downloaded earlier with the <code>curl</code> command to this directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">mv </span>agent.jar /usr/local/jenkins-service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now (in <code>/usr/local/jenkins-service</code>) create a <code>start-agent.sh</code> file with the Jenkins <code>java</code> command we’ve seen earlier as the file’s content.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c">#!/bin/bash</span>
+<span class="nb">cd</span> /usr/local/jenkins-service
+<span class="c"># Just in case we would have upgraded the controller, we need to make sure that the agent is using the latest version of the agent.jar</span>
+curl <span class="nt">-sO</span> http://my_ip:8080/jnlpJars/agent.jar
+java <span class="nt">-jar</span> agent.jar <span class="nt">-jnlpUrl</span> http://my_ip:8080/computer/My%20New%20Ubuntu%2022%2E04%20Node%20with%20Java%20and%20Docker%20installed/jenkins-agent.jnlp <span class="nt">-secret</span> my_secret <span class="nt">-workDir</span> <span class="s2">"/home/jenkins"</span>
+<span class="nb">exit </span>0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make the script executable by executing <code>chmod +x start-agent.sh</code> in the directory.</p>
+</div>
+<div class="paragraph">
+<p>Now create a <code>/etc/systemd/system/jenkins-agent.service</code> file with the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>Unit]
+<span class="nv">Description</span><span class="o">=</span>Jenkins Agent
+
+<span class="o">[</span>Service]
+<span class="nv">User</span><span class="o">=</span>jenkins
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/home/jenkins
+<span class="nv">ExecStart</span><span class="o">=</span>/bin/bash /usr/local/jenkins-service/start-agent.sh
+<span class="nv">Restart</span><span class="o">=</span>always
+
+<span class="o">[</span>Install]
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We still have to enable the daemon with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>systemctl <span class="nb">enable </span>jenkins-agent.service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let’s have a look at the system logs before starting the daemon:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">journalctl <span class="nt">-f</span> &amp;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now start the daemon with the following command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>systemctl start jenkins-agent.service</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can see some interesting logs in the <code>journalctl</code> output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">Aug 03 19:37:27 ubuntu-machine systemd[1]: Started Jenkins Agent.
+Aug 03 19:37:27 ubuntu-machine <span class="nb">sudo</span><span class="o">[</span>8821]: pam_unix<span class="o">(</span><span class="nb">sudo</span>:session<span class="o">)</span>: session closed <span class="k">for </span>user root
+Aug 03 19:37:28 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:28 PM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+Aug 03 19:37:28 ubuntu-machine bash[8826]: INFO: Using /home/jenkins/remoting as a remoting work directory
+Aug 03 19:37:28 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:28 PM org.jenkinsci.remoting.engine.WorkDirManager setupLogging
+Aug 03 19:37:28 ubuntu-machine bash[8826]: INFO: Both error and output logs will be printed to /home/jenkins/remoting
+Aug 03 19:37:28 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:28 PM hudson.remoting.jnlp.Main createEngine
+Aug 03 19:37:28 ubuntu-machine bash[8826]: INFO: Setting up agent: My New Ubuntu 22.04 Node with Java and Docker installed
+Aug 03 19:37:28 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:28 PM hudson.remoting.Engine startEngine
+Aug 03 19:37:28 ubuntu-machine bash[8826]: INFO: Using Remoting version: 3046.v38db_38a_b_7a_86
+Aug 03 19:37:28 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:28 PM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+Aug 03 19:37:28 ubuntu-machine bash[8826]: INFO: Using /home/jenkins/remoting as a remoting work directory
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Locating server among <span class="o">[</span>http://controller_ip:58080/]
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM org.jenkinsci.remoting.engine.JnlpAgentEndpointResolver resolve
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Remoting server accepts the following protocols: <span class="o">[</span>JNLP4-connect, Ping]
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Agent discovery successful
+Aug 03 19:37:29 ubuntu-machine bash[8826]:   Agent address: controller_ip
+Aug 03 19:37:29 ubuntu-machine bash[8826]:   Agent port:    50000
+Aug 03 19:37:29 ubuntu-machine bash[8826]:   Identity:      31:c4:f9:31:46:c3:eb:72:64:a3:c7:d6:c7:ea:32:2f
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Handshaking
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Connecting to controller_ip:50000
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Trying protocol: JNLP4-connect
+Aug 03 19:37:29 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:29 PM org.jenkinsci.remoting.protocol.impl.BIONetworkLayer<span class="nv">$Reader</span> run
+Aug 03 19:37:29 ubuntu-machine bash[8826]: INFO: Waiting <span class="k">for </span>ProtocolStack to start.
+Aug 03 19:37:30 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:30 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:30 ubuntu-machine bash[8826]: INFO: Remote identity confirmed: 31:c4:f9:31:46:c3:eb:72:64:a3:c7:d6:c7:ea:32:2f
+Aug 03 19:37:30 ubuntu-machine bash[8826]: Aug 03, 2022 7:37:30 PM hudson.remoting.jnlp.Main<span class="nv">$CuiListener</span> status
+Aug 03 19:37:30 ubuntu-machine bash[8826]: INFO: Connected</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can now check the status with the command below, and the output should be similar to what is shown here.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>systemctl status jenkins-agent.service
+● jenkins-agent.service - Jenkins Agent
+     Loaded: loaded <span class="o">(</span>/etc/systemd/system/jenkins-agent.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+     Active: active <span class="o">(</span>running<span class="o">)</span> since Wed 2022-08-03 19:37:27 UTC<span class="p">;</span> 4min 0s ago
+   Main PID: 8825 <span class="o">(</span>bash<span class="o">)</span>
+      Tasks: 22 <span class="o">(</span>limit: 1080<span class="o">)</span>
+     Memory: 63.1M
+        CPU: 9.502s
+     CGroup: /system.slice/jenkins-agent.service
+             ├─8825 /bin/bash /usr/local/jenkins-service/start-agent.sh
+             └─8826 java <span class="nt">-jar</span> agent.jar <span class="nt">-jnlpUrl</span> http://controller_ip:8080/computer/My%20New%20Ubuntu%2022%2E04%20Node%20with%20Java%20and%20Docker%20installed/jenkins-agent.jnlp <span class="nt">-secret</span> my_secret&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Just for fun, we can now reboot the machine and see in the UI if the agent is still running once the boot is finished!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/systemd/">
+systemd
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/agent/">
+agent
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/node/">
+node
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Bruno Verachten" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/gounthar.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/gounthar/">
+Bruno Verachten
+</a>
+</p>
+<div class="paragraph">
+<p>Bruno is a father of two, husband of one, geek in denial, beekeeper, <a href="https://permies.com/">permie</a> and a Developer Relations for the Jenkins project. He&#8217;s been tinkering with continuous integration and continuous deployment since 2013, with various products/tools/platforms (Gitlab CI, Circle CI, Travis CI, Shippable, Github Actions, &#8230;&#8203;), mostly for mobile and embedded development.
+He&#8217;s passionate about embedded platforms, the ARM ecosystem, and Edge Computing. His main goal is to add FOSS projects and platforms to the ARM architecture, so that it becomes as <a href="https://twitter.com/jonmasters/status/1523041597683683328">boring</a> as X86_64.
+That&#8217;s why you&#8217;ll see lots of issue openings in his activity for projects that don&#8217;t support yet the ARM architecture. He forked tons of existing repos to bring the code to the ARM platform, built some Docker <a href="https://www.linkedin.com/feed/update/urn:li:activity:6900395211625771008/">containers</a> that were downloaded several million times, and made very modest contributions to <a href="https://github.com/armbian/documentation/pull/104">some</a> FOSS repos.
+He is also running the <a href="https://sbc-community.org/">SBC community</a> website which deals with the OrangePi SBCs.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/gounthar" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/poddingue" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kevin Martens" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/kmartens27.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kmartens27/">
+Kevin Martens
+</a>
+</p>
+<div class="paragraph">
+<p>Kevin Martens is part of the CloudBees Documentation team, helping with Jenkins documentation creation and maintenance.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kmartens27" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/12/2022-12-27-run-jenkins-agent-as-a-service.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

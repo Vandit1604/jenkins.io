@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GitHub Checks API Plugin Project - Coding Phase 1
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/09/github-checks-api-plugin-coding-phase-1/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 1" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 1" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GitHub Checks API Plugin Project - Coding Phase 1" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/09/github-checks-api-plugin-coding-phase-1/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 1" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GitHub Checks API Plugin Project - Coding Phase 1
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/xiongkezhi/"><div class="app-avatar"><img alt="Kezhi Xiong" class="app-avatar__image" src="/images/avatars/XiongKezhi.jpeg"></div> Kezhi Xiong</a>
+July 09, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GitHub+Checks+API+Plugin+Project+-+Coding+Phase+1&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F07%2F09%2Fgithub-checks-api-plugin-coding-phase-1%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>This blog post is about our coding phase 1 progress on GSoC project: <a href="/projects/gsoc/2020/projects/github-checks/">GitHub Checks API Plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p>The GitHub Checks API is a highly customized way to integrate CI tools to make reports for pull-requests (PRs).
+It allows users to see CI reports on GitHub pages directly.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/07-github-checks-api-plugin-coding-phase-1/github-check-run.png" alt="github check run">
+</div>
+<div class="title">Figure 1. GitHub Check Run Screenshot from GitHub Docs</div>
+</div>
+<div class="paragraph">
+<p>What&#8217;s more exciting is that it can leave annotations on specific lines of code, just as the comments people left while reviewing.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/07-github-checks-api-plugin-coding-phase-1/github-check-annotations.png" alt="github check annotations">
+</div>
+<div class="title">Figure 2. Check Run Annotation Screenshot from GitHub Docs</div>
+</div>
+<div class="paragraph">
+<p>While on Jenkins' side, the source code view provided by <a href="https://plugins.jenkins.io/warnings-ng/">Warnings Next Generation Plugin</a> does pretty much the same thing.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/07-github-checks-api-plugin-coding-phase-1/source-view.png" alt="source view">
+</div>
+<div class="title">Figure 3. Source Code View from Warnings Next Generation Plugin</div>
+</div>
+<div class="paragraph">
+<p>Utilizing such features through GitHub Checks API, it would make Jenkins more convenient to GitHub users.</p>
+</div>
+<div class="sect1">
+<h2 id="features-from-coding-phase-1"><a class="anchor" href="#features-from-coding-phase-1"></a>Features from Coding Phase 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the past month, our team was mostly working on the general checks API and an implementation for GitHub checks API.</p>
+</div>
+<div class="videoblock">
+<div class="title">GitHub Checks API Plugin Demo [starts from 50:15]</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/HQLhakpx5mk?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="sect2">
+<h3 id="general-checks-api"><a class="anchor" href="#general-checks-api"></a>General Checks API</h3>
+<div class="paragraph">
+<p>Although the general checks API is developed based on the semantic meaning of GitHub Checks API, we still want to prepare it for similar concepts on other platforms like <a href="https://docs.gitlab.com/ee/api/commits.html#commit-status">Commit Status API</a> from GitLab.
+Contributions for implementations on these platforms will be welcomed in the future.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="github-checks-api-implementation"><a class="anchor" href="#github-checks-api-implementation"></a>GitHub Checks API Implementation</h3>
+<div class="paragraph">
+<p>Our work on supporting GitHub Checks API is mostly done by now.
+Besides, we implemented a consumer to automatically create a check run that simply indicates the current stage of a Jenkins build.
+After the release, Jenkins developers (especially publisher plugin ones) can create their own GitHub checks for a GitHub branch source project by consuming our API.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> To create a check run like:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020/07-github-checks-api-plugin-coding-phase-1/created-check-run.png" alt="Created Check Run"></span></p>
+</div>
+<div class="paragraph">
+<p>Consumers need to use our API in this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="nc">ChecksDetails</span> <span class="n">details</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChecksDetailsBuilder</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withName</span><span class="o">(</span><span class="s">"Jenkins"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withStatus</span><span class="o">(</span><span class="nc">ChecksStatus</span><span class="o">.</span><span class="na">COMPLETED</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withDetailsURL</span><span class="o">(</span><span class="s">"https://ci.jenkins.io"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withStartedAt</span><span class="o">(</span><span class="nc">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">(</span><span class="nc">ZoneOffset</span><span class="o">.</span><span class="na">UTC</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">withCompletedAt</span><span class="o">(</span><span class="nc">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">(</span><span class="nc">ZoneOffset</span><span class="o">.</span><span class="na">UTC</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">withConclusion</span><span class="o">(</span><span class="nc">ChecksConclusion</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withOutput</span><span class="o">(</span><span class="k">new</span> <span class="nc">ChecksOutputBuilder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withTitle</span><span class="o">(</span><span class="s">"Jenkins Check"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withSummary</span><span class="o">(</span><span class="s">"# A Successful Build"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withText</span><span class="o">(</span><span class="s">"## 0 Failures"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withAnnotations</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+                        <span class="k">new</span> <span class="nf">ChecksAnnotationBuilder</span><span class="o">()</span>
+                                <span class="o">.</span><span class="na">withPath</span><span class="o">(</span><span class="s">"Jenkinsfile"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withLine</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withAnnotationLevel</span><span class="o">(</span><span class="nc">ChecksAnnotationLevel</span><span class="o">.</span><span class="na">NOTICE</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withMessage</span><span class="o">(</span><span class="s">"say hello to Jenkins"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withStartColumn</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withEndColumn</span><span class="o">(</span><span class="mi">20</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withTitle</span><span class="o">(</span><span class="s">"Hello Jenkins"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withRawDetails</span><span class="o">(</span><span class="s">"a simple echo command"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">build</span><span class="o">(),</span>
+                        <span class="k">new</span> <span class="nf">ChecksAnnotationBuilder</span><span class="o">()</span>
+                                <span class="o">.</span><span class="na">withPath</span><span class="o">(</span><span class="s">"Jenkinsfile"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withLine</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withAnnotationLevel</span><span class="o">(</span><span class="nc">ChecksAnnotationLevel</span><span class="o">.</span><span class="na">WARNING</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withMessage</span><span class="o">(</span><span class="s">"say hello to GitHub Checks API"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withStartColumn</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withEndColumn</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withTitle</span><span class="o">(</span><span class="s">"Hello GitHub Checks API"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withRawDetails</span><span class="o">(</span><span class="s">"a simple echo command"</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">build</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">withActions</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span>
+                <span class="k">new</span> <span class="nf">ChecksAction</span><span class="o">(</span><span class="s">"formatting"</span><span class="o">,</span> <span class="s">"format code"</span><span class="o">,</span> <span class="s">"#0"</span><span class="o">)))</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="nc">ChecksPublisher</span> <span class="n">publisher</span> <span class="o">=</span> <span class="nc">ChecksPublisherFactory</span><span class="o">.</span><span class="na">fromRun</span><span class="o">(</span><span class="n">run</span><span class="o">);</span>
+<span class="n">publisher</span><span class="o">.</span><span class="na">publish</span><span class="o">(</span><span class="n">details</span><span class="o">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-works"><a class="anchor" href="#future-works"></a>Future Works</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next step is integrating our API into <a href="https://plugins.jenkins.io/warnings-ng/">Warnings Next Generation Plugin</a> and <a href="https://plugins.jenkins.io/code-coverage-api/">Code Coverage API Plugin</a> consume our API.
+After that, pipeline support will be added: users can publish checks directly in a pipeline script without requiring a consumer plugin that support the checks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/checks-api-plugin">GitHub Repository</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/github-checks/">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/jenkinsci/github-checks-api">Gitter Channel</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="references"><a class="anchor" href="#references"></a>References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.github.com/en/developers/apps/creating-ci-tests-with-the-checks-api">GitHub Doc: Creating CI tests with the Checks API</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/warnings-ng-plugin/blob/master/doc/Documentation.md#source-code-view">Warnings Next Generation Plugin: Source Code View</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/github/">
+github
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/api/">
+api
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kezhi Xiong" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/XiongKezhi.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/xiongkezhi/">
+Kezhi Xiong
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins Google Summer of Code 2020 Student. Kezhi is an open source enthusiast who enjoys sharing ideas with other developers. He started contributing to Jenkins in March 2020. Currently, he is working on <a href="https://github.com/XiongKezhi/checks-api-plugin">GitHub Checks API Plugin</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/XiongKezhi" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/AugustX_" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/kezhi-xiong-44234a188" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/07/2020-07-09-github-checks-api-plugin-coding-phase-1.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Generic Webhook Trigger Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This post will describe some common problems I&#39;ve had with Jenkins and how I solved them by developing Generic Webhook Trigger Plugin." name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/12/14/generic-webhook-trigger-plugin/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Generic Webhook Trigger Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Generic Webhook Trigger Plugin" name="twitter:title">
+<meta content="This post will describe some common problems I&#39;ve had with Jenkins and how I solved them by developing Generic Webhook Trigger Plugin." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Generic Webhook Trigger Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/12/14/generic-webhook-trigger-plugin/" property="og:url">
+<meta content="This post will describe some common problems I&#39;ve had with Jenkins and how I solved them by developing Generic Webhook Trigger Plugin." name="og:description">
+<meta content="Generic Webhook Trigger Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Generic Webhook Trigger Plugin
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/tomasbjerre/"><div class="app-avatar"><img alt="Tomas Bjerre" class="app-avatar__image" src="/images/avatars/tomasbjerre.jpg"></div> Tomas Bjerre</a>
+December 14, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Generic+Webhook+Trigger+Plugin&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F12%2F14%2Fgeneric-webhook-trigger-plugin%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#the-problem">The Problem</a>
+<ul class="sectlevel2">
+<li><a href="#code-duplication-and-security">Code Duplication And Security</a></li>
+<li><a href="#a-branch-is-not-a-feature">A Branch Is Not A Feature</a></li>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li><a href="#the-solution">The Solution</a>
+<ul class="sectlevel2">
+<li><a href="#code-duplication-and-security-2">Code Duplication And Security</a></li>
+<li><a href="#a-branch-is-not-a-feature-2">A Branch Is Not A Feature</a></li>
+<li><a href="#documentation-2">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This post will describe some common problems I&#8217;ve had with Jenkins and how I solved them by developing <a href="https://plugins.jenkins.io/generic-webhook-trigger">Generic Webhook Trigger Plugin</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="the-problem"><a class="anchor" href="#the-problem"></a>The Problem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I was often struggling with the same issues when working with Jenkins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code duplication and security</strong> - <code>Jenkinsfiles</code> in every repository.</p>
+</li>
+<li>
+<p><strong>A branch is not a feature</strong> - Parameterized jobs on <code>master</code> branch often mix parameters relevant for different features.</p>
+</li>
+<li>
+<p><strong>Poorly documented trigger plugins</strong> - Proper documented services but poorly documented consuming plugins.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="code-duplication-and-security"><a class="anchor" href="#code-duplication-and-security"></a>Code Duplication And Security</h3>
+<div class="paragraph">
+<p>Having Jenkinsfiles in every Git repository allows developers to let those files diverge. Developers pushes forward with their projects and it is hard to maintain patterns to share code.</p>
+</div>
+<div class="paragraph">
+<p>I have, almost, solved code duplication with <a href="/doc/book/pipeline/shared-libraries/">shared libraries</a> but it does not allow me to setup a strict pattern that must be followed. Any developer can still decide to not invoke the features provided by the shared library.</p>
+</div>
+<div class="paragraph">
+<p>There is also the security aspect of letting developers run any code from the Jenkinsfiles. Developers might, for example, print passwords gathered from credentials. Letting developers execute any code on the Jenkins nodes just does not seem right to me.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-branch-is-not-a-feature"><a class="anchor" href="#a-branch-is-not-a-feature"></a>A Branch Is Not A Feature</h3>
+<div class="paragraph">
+<p>In Bitbucket there are projects and each project has a collection of git repositories. Something like this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PROJ_1</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>REPO_1</code></p>
+</li>
+<li>
+<p><code>REPO_2</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>PROJ_2</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>REPO_3</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Lets think about some features we want to provide for these repositories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pull request verification</p>
+</li>
+<li>
+<p>Building snapshot (or pre release if you will)</p>
+</li>
+<li>
+<p>Building releases</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the developers are use to the repositories being organized like this in Bitbucket, should we not organize them the same way in Jenkins? And if they browse Jenkins should they not find one job per feature, like <code>pull-request</code>, <code>snapshot</code> and <code>release</code>? Each job with parameters only relevant for that feature. I think so! Like this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/</code> - Jenkins root</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/PROJ_1</code> - A folder, lists git repositories</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/PROJ_1/REPO_1</code> - A folder, lists jobs relevant for that repo.</p>
+</li>
+<li>
+<p><code>/PROJ_1/REPO_1/release</code> - A job, performs releases.</p>
+</li>
+<li>
+<p><code>/PROJ_1/REPO_1/snapshot</code> - A job, performs snapshot releases.</p>
+</li>
+<li>
+<p><code>/PROJ_1/REPO_1/pull-request</code> - A job, verifies pull requests.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>&#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this example, both <code>snapshot</code> and <code>release</code> jobs might work with the same git branch. The difference is the feature they provide. Their parameters can be well documented as you don&#8217;t have to mix parameters relevant for releases and those relevant for snapshots. This cannot be done with <a href="https://plugins.jenkins.io/workflow-multibranch">Multibranch Pipeline Plugin</a> where you specify parameters as <code>properties</code> per branch.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation"><a class="anchor" href="#documentation"></a>Documentation</h3>
+<div class="paragraph">
+<p>Webhooks are often well documented in the services providing them. See:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html">Bitbucket Cloud</a></p>
+</li>
+<li>
+<p><a href="https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html">Bitbucket Server</a></p>
+</li>
+<li>
+<p><a href="https://developer.github.com/webhooks/">GitHub</a></p>
+</li>
+<li>
+<p><a href="https://docs.gitlab.com/ce/user/project/integrations/webhooks.html">GitLab</a></p>
+</li>
+<li>
+<p><a href="https://gogs.io/docs/features/webhook">Gogs</a> and <a href="https://docs.gitea.io/en-us/webhooks/">Gitea</a></p>
+</li>
+<li>
+<p><a href="https://portal.assembla.com/hc/en-us/articles/226889127-Post-information-to-external-systems-using-Webhooks">Assembla</a></p>
+</li>
+<li>
+<p><a href="https://developer.atlassian.com/server/jira/platform/webhooks/">Jira</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It bothered me that, even if I understood these webhooks, I was unable to use them. Because I needed to perform development in the plugin I was using in order to provide whatever value from the webhook to the build. That process could take months from PR to actual release. Such a simple thing should really not be an issue.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-solution"><a class="anchor" href="#the-solution"></a>The Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My solution is pretty much <strong>back to basics</strong>: We have an automation server (Jenkins) and we want to trigger it on external webhooks. We want to gather information from that webhook and provide it to our build. In order to support it I have created the <a href="https://plugins.jenkins.io/generic-webhook-trigger">Generic Webhook Trigger Plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p>The latest docs are available in <a href="https://github.com/jenkinsci/generic-webhook-trigger-plugin/">the repo</a> and I also have a fully working example with GitLab implemented using <code>configuration-as-code</code>. See the repository <a href="https://github.com/tomasbjerre/jenkins-configuration-as-code-sandbox">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="code-duplication-and-security-2"><a class="anchor" href="#code-duplication-and-security-2"></a>Code Duplication And Security</h3>
+<div class="paragraph">
+<p>I establish a convention that all developers must follow. Instead of letting the developers explicitly invoke the infrastructure from Jenkinsfiles. There are rules to follow, like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All git repositories should be built from the root of the repo.</p>
+</li>
+<li>
+<p>If it contains a <code>gradlew</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Build is done with <code>./gradlew build</code></p>
+</li>
+<li>
+<p>Release is done with <code>./gradlew release</code></p>
+</li>
+<li>
+<p>&#8230;&#8203; and so on</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If it contains a <code>package.json</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Build is done with <code>npm run build</code></p>
+</li>
+<li>
+<p>Release is done with <code>npm run release</code></p>
+</li>
+<li>
+<p>&#8230;&#8203; and so on</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With these rules, pipelines can be totally generic and no Jenkinsfiles are needed in the repositories. Some git repositories may, for some reason, need to disable test cases. That can be solved by allowing repositories to add a special file, perhaps <code>jenkins-settings.json</code>, let the infrastructure discover and <a href="https://github.com/tomasbjerre/jenkins-configuration-as-code-sandbox/blob/master/vars/buildRepo.groovy#L52">act on its content</a>.</p>
+</div>
+<div class="paragraph">
+<p>This also helps the developers even when not doing CI. When they clone a new, to them unknown, repository they will know what commands can be issued and their semantics.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-branch-is-not-a-feature-2"><a class="anchor" href="#a-branch-is-not-a-feature-2"></a>A Branch Is Not A Feature</h3>
+<div class="paragraph">
+<p>I implement:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins job configurations - With <a href="https://github.com/jenkinsci/job-dsl-plugin/wiki">Job DSL</a>.</p>
+</li>
+<li>
+<p>Jenkins build process - With <a href="/doc/book/pipeline/">Pipelines</a> and <a href="/doc/book/pipeline/shared-libraries/">Shared Library</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By integrating with the git service from <a href="https://github.com/jenkinsci/job-dsl-plugin/wiki">Job DSL</a> I can automatically find the git repositories. I create jobs dynamically organized in folders. Also invoking the git service to setup webhooks triggering those jobs. The jobs are ordinary pipelines, not multibranch, and they don&#8217;t use Jenkinsfile from Git but instead Jenksinfile configured in the job using <a href="https://github.com/jenkinsci/job-dsl-plugin/wiki">Job DSL</a>. So that all job configurations and pipelines are under version control. This is all happening <a href="https://github.com/tomasbjerre/jenkins-configuration-as-code-sandbox/blob/master/jobs/applicationRepo.groovy">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation-2"><a class="anchor" href="#documentation-2"></a>Documentation</h3>
+<div class="paragraph">
+<p>The plugin uses <code>JSONPath</code>, and also <code>XPath</code>, to extract values from JSON and provide them to the build. Letting the user pick whatever is needed from the webhook. It also has a regular expression filter to allow not triggering for some conditions.</p>
+</div>
+<div class="paragraph">
+<p>The plugin is not very big, just being the glue between the webhook, <code>JSONPath</code>/<code>XPath</code> and regular expression. All these parts are very well documented already and I do my best supporting the plugin. That way this is a very well documented solution to use!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/webhooks/">
+webhooks
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/trigger/">
+trigger
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/scalability/">
+scalability
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Tomas Bjerre" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/tomasbjerre.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/tomasbjerre/">
+Tomas Bjerre
+</a>
+</p>
+<div class="paragraph">
+<p>Tomas Bjerre is an experienced fullstack software developer. Been working full time since 2010 after graduating with a masters degree in computer science from Lund University (Faculty of Engineering, LTH). Is currently working full time and maintaining a bunch of Jenkins plugins on his spare time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/tomasbjerre" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://bjurr.com/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/tomasbjerre" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/12/2019-12-14-generic-webhook-trigger-plugin.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

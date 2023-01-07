@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+JUC Speaker Blog Series: Jamie O'Meara, JUC U.S. West
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/08/28/juc-speaker-blog-series-jamie-omeara-juc-u-s-west/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="JUC Speaker Blog Series: Jamie O&#39;Meara, JUC U.S. West" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="JUC Speaker Blog Series: Jamie O&#39;Meara, JUC U.S. West" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="JUC Speaker Blog Series: Jamie O&#39;Meara, JUC U.S. West" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/08/28/juc-speaker-blog-series-jamie-omeara-juc-u-s-west/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="JUC Speaker Blog Series: Jamie O&#39;Meara, JUC U.S. West" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+JUC Speaker Blog Series: Jamie O'Meara, JUC U.S. West
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+August 28, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=JUC+Speaker+Blog+Series%3A+Jamie+O%27Meara%2C+JUC+U.S.+West&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F08%2F28%2Fjuc-speaker-blog-series-jamie-omeara-juc-u-s-west%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/Jenkins_Butler_0.png" alt="image" width="114" height="128"></span><br></p>
+</div>
+<div class="sect1">
+<h2 id="cloud-native-and-the-benefits-to-continuous-delivery-cd-pipelines"><a class="anchor" href="#cloud-native-and-the-benefits-to-continuous-delivery-cd-pipelines"></a>Cloud Native and the benefits to Continuous Delivery (CD) Pipelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There’s a lot of discussion lately around Cloud Native. If this term is new to you, I suggest a quick read of <a href="https://www.informationweek.com/cloud/platform-as-a-service/cloud-native-what-it-means-why-it-matters/d/d-id/1321539">Cloud Native: What it Means and Why it Matters?</a> From my perspective, Cloud Native offers tremendous benefit to enterprise companies, startups and developers looking to add value quickly or capture market share. Cloud Native platforms, such as Cloud Foundry, provide a number of features to reduce the effort of developing software and operating it on or off premise. A few notable features include load balancing, application routing, cluster scheduling, and containerisation. Cloud Native also offers a significant advancement for building integrated pipelines to deliver software. Before we discuss these advancements, let’s consider the role of the container.</p>
+</div>
+<div class="sect2">
+<h3 id="containers"><a class="anchor" href="#containers"></a>Containers</h3>
+<div class="paragraph">
+<p>One of the most influential components of Cloud Native is the container. At this point, containers are fairly ubiquitous and most developers have experimented or used containers. For instance, if you&#8217;ve pushed an application to Cloud Foundry or Pivotal Web Services, you’ve used an container without knowing it.</p>
+</div>
+<div class="paragraph">
+<p>Initially containers were a place to automate the deployment and execution of your code, but over time customization became necessary to handle specific use cases. As a result, container creation now occurs earlier in the development and build phase. As applications are packaged within binaries and containers, validation of the application and container configuration needs to be validated before leaving the developer’s laptop. So what does this mean for the continuous delivery (CD) pipeline?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cd-pipelines"><a class="anchor" href="#cd-pipelines"></a>CD Pipelines</h3>
+<div class="paragraph">
+<p>Developers will tell you their role has expanded over the years as agile methodologies have changed the way software is engineered. Techniques like Test Driven Development (TDD) and CD pipelines encourage software teams to deliver higher quality code in every build. Of course, a good CD pipeline starts at the developer’s laptop. Building and testing the start of a pipeline requires the correct tools while preserving the developer’s choice of container.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below demonstrates a simple CD pipeline. As you can see, the pipeline starts from the developer’s IDE and uses Cloud Foundry’s <a href="https://lattice.cf/">Lattice</a>to provide a sandbox to validate the delivery artifacts. Lattice, based on Cloud Foundry’s container scheduler, delivers a small Cloud Native Platform that can be scaled up in the cloud or scaled down to a laptop. It includes a cluster scheduler, HTTP load balancing, log aggregation and health management for containers. Best part, it offers developer choice. Lattice provides support for both Docker containers and Cloud Foundry buildpacks.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/omeara-pic_0.png" alt="image" width="600" height="366"></span><br></p>
+</div>
+<div class="paragraph">
+<p>Lattice’s flexibility makes it extremely easy to test how the application, which runs in a Docker container, will function in a Cloud Native environment. It’s also extremely helpful for developers engaged in a spike (prototype phase) where they want to push, validate and demonstrate code and let the platform handle the container creation, runtime environment and deployment artifacts via Cloud Foundry buildpacks.</p>
+</div>
+<div class="paragraph">
+<p>Extending the CD pipeline beyond the developer’s laptop to deliver value to the organization will require additional tools like the <a href="https://www.cloudbees.com/products/cloudbees-jenkins-platform">CloudBees Jenkins Platform</a>, <a href="https://www.jfrog.com/artifactory/">Artifactory</a> and <a href="https://pivotal.io/platform-as-a-service/pivotal-cloud-foundry">Pivotal Cloud Foundry</a>. These enterprise build-and-deploy solutions help developers deliver to a Cloud Native platform and reduce the time to establish the feedback loop. If the enterprise maintains a Hybrid cloud strategy, these tools make it seamless to deploy across different cloud providers.</p>
+</div>
+<div class="paragraph">
+<p>As developers build more Cloud Native applications for Cloud Native platforms, it’s important to establish good tool chains and best practices early in the development phase. Interested to see these tools in action? Join us at Jenkins User Conference West on September 2nd to learn how I use these tools to build <a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/us-west/01-01-1400">Integrated Deployment Pipelines with Jenkins and Cloud Foundry</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/OMeara_0.jpg" alt="image" width="145" height="180"></span><br></p>
+</div>
+<div class="paragraph">
+<p>This post is by Jamie O&#8217;Meara, Field Engineer at Pivotal. If you have your ticket to <a href="https://www.cloudbees.com/jenkins/juc-2015/us-west">JUC U.S. West</a>, you can attend his talk <a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/us-west/01-01-1400">"An Integrated Deployment Pipeline with Jenkins and Cloud Foundry"</a> on Day 1.</p>
+</div>
+<div class="paragraph">
+<p><em>Still need your ticket to JUC? If you register with a friend you can get 2 tickets for the price of 1! <a href="https://www.cloudbees.com/jenkins/juc-2015/us-west">Register here for a JUC U.S. West, the last JUC of the year!</a></em></p>
+</div>
+<div class="paragraph">
+<p>Thank you to our <a href="https://www.cloudbees.com/jenkins/juc-2015/sponsors">sponsors</a> for the 2015 Jenkins User Conference World Tour:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/sponsors-06032015-02_0.png" alt="image" width="598" height="579"></span><br></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-08-28-juc-speaker-blog-series-jamie-omeara-juc-u-s-west.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

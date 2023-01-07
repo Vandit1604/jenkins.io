@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2020-10-08
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-10-08/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2020-10-08" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2020-10-08" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2020-10-08" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-10-08/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2020-10-08" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2020-10-08
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/uno-choice">
+Active Choices
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/audit-trail">
+Audit Trail
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/couchdb-statistics">
+couchdb-statistics
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/maven-release-cascade">
+Maven Cascade Release
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/nerrvana-plugin">
+Nerrvana
+Plugin
+</a>
+</li>
+<li>
+Persona
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/release">
+Release
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/role-strategy">
+Role-based Authorization Strategy
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/shared-objects">
+Shared Objects
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/sms">
+SMS Notification
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1767">
+Improper authorization due to caching in Role-based Authorization Strategy Plugin
+</h3>
+<strong>
+SECURITY-1767
+/
+CVE-2020-2286
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/role-strategy">
+<code>role-strategy</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Role-based Authorization Strategy Plugin 2.12 and newer uses a cache to speed up permission lookups.</p>
+</div>
+<div class="paragraph">
+<p>In Role-based Authorization Strategy Plugin 3.0 and earlier this cache is not invalidated properly when an administrator changes the permission configuration.
+This can result in permissions being granted long after the configuration was changed to no longer grant them.</p>
+</div>
+<div class="paragraph">
+<p>Role-based Authorization Strategy Plugin 3.1 properly invalidates the cache on configuration changes.</p>
+</div>
+<h3 id="SECURITY-1815">
+Request logging could be bypassed in Audit Trail Plugin
+</h3>
+<strong>
+SECURITY-1815
+/
+CVE-2020-2287
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/audit-trail">
+<code>audit-trail</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Audit Trail Plugin logs requests whose URL path matches an admin-configured regular expression.</p>
+</div>
+<div class="paragraph">
+<p>A discrepancy between the behavior of the plugin and the Stapler web framework in parsing URL paths allows attackers to craft URLs that would bypass request logging in Audit Trail Plugin 3.6 and earlier.
+This only applies to Jenkins 2.227 and earlier, LTS 2.204.5 and earlier, as the fix for <a href="/security/advisory/2020-03-25/#SECURITY-1774">SECURITY-1774</a> prohibits dispatch of affected requests.</p>
+</div>
+<div class="paragraph">
+<p>Audit Trail Plugin 3.7 processes request URL paths the same way as the Stapler web framework.</p>
+</div>
+<h3 id="SECURITY-1846">
+Incorrect default pattern in Audit Trail Plugin
+</h3>
+<strong>
+SECURITY-1846
+/
+CVE-2020-2288
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/audit-trail">
+<code>audit-trail</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Audit Trail Plugin uses regular expressions to match requested URLs whose dispatch should be logged.</p>
+</div>
+<div class="paragraph">
+<p>In Audit Trail Plugin 3.6 and earlier, the default regular expression pattern could be bypassed in many cases by adding a suffix to the URL that would be ignored during request handling.</p>
+</div>
+<div class="paragraph">
+<p>Audit Trail Plugin 3.7 changes the default regular expression pattern so that it allows for arbitrary suffixes.
+It automatically will replace previous default patterns with the new, more complete default pattern.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, an administrative monitor is shown if a user-specified pattern is found to be bypassable through crafted URLs and form validation was improved to recognize patterns that would not match requests with arbitrary suffixes.</p>
+</div>
+<h3 id="SECURITY-1954">
+Stored XSS vulnerability in Active Choices Plugin
+</h3>
+<strong>
+SECURITY-1954
+/
+CVE-2020-2289
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/uno-choice">
+<code>uno-choice</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Active Choices Plugin 2.4 and earlier does not escape the name and description of build parameters.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>Active Choices Plugin 2.5 escapes the name of build parameters and applies the configured markup formatter to the description of build parameters.</p>
+</div>
+<h3 id="SECURITY-2008">
+Stored XSS vulnerability in Active Choices Plugin
+</h3>
+<strong>
+SECURITY-2008
+/
+CVE-2020-2290
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/uno-choice">
+<code>uno-choice</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Active Choices Plugin 2.4 and earlier does not escape <code>List</code> and <code>Map</code> return values of sandboxed scripts for <em>Reactive Reference Parameter</em>.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>This issue is caused by an incomplete fix for <a href="/security/advisory/2017-10-23/#persisted-cross-site-scripting-vulnerability-in-active-choices-plugin">SECURITY-470</a>.</p>
+</div>
+<div class="paragraph">
+<p>Active Choices Plugin 2.5 escapes all legal return values of sandboxed scripts.</p>
+</div>
+<h3 id="SECURITY-2065">
+Password stored in plain text by couchdb-statistics Plugin
+</h3>
+<strong>
+SECURITY-2065
+/
+CVE-2020-2291
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/couchdb-statistics">
+<code>couchdb-statistics</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>couchdb-statistics Plugin 0.3 and earlier stores its server password unencrypted in its global configuration file <code>org.jenkinsci.plugins.couchstats.CouchStatsConfig.xml</code> on the Jenkins controller as part of its configuration.</p>
+</div>
+<div class="paragraph">
+<p>This password can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>couchdb-statistics Plugin 0.4 stores its server password encrypted once its configuration is saved again.</p>
+</div>
+<h3 id="SECURITY-1928">
+Stored XSS vulnerability in Release Plugin
+</h3>
+<strong>
+SECURITY-1928
+/
+CVE-2020-2292
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/release">
+<code>release</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Release Plugin 2.10.2 and earlier does not escape the release version in the badge tooltip.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Release/Release permission.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-2046">
+Arbitrary file read vulnerability in Persona Plugin
+</h3>
+<strong>
+SECURITY-2046
+/
+CVE-2020-2293
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/persona">
+<code>persona</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Persona Plugin 2.4 and earlier allows users with Overall/Read permission to read arbitrary files on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-2049">
+CSRF vulnerability and missing permission checks in Maven Cascade Release Plugin
+</h3>
+<strong>
+SECURITY-2049
+/
+CVE-2020-2294 (permission check), CVE-2020-2295 (CSRF)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/maven-release-cascade">
+<code>maven-release-cascade</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Maven Cascade Release Plugin 1.3.2 and earlier does not perform permission checks in several HTTP endpoints.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers with Overall/Read permission to start cascade builds and layout builds, and reconfigure the plugin.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, these endpoints do not require POST requests, resulting in a cross-site request forgery (CSRF) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-2052">
+CSRF vulnerability in Shared Objects Plugin
+</h3>
+<strong>
+SECURITY-2052
+/
+CVE-2020-2296
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/shared-objects">
+<code>shared-objects</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Shared Objects Plugin 0.44 and earlier does not require POST requests for an HTTP endpoint, resulting in a cross-site request forgery (CSRF) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This vulnerability allows attackers to configure shared objects.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-2054">
+Access token stored in plain text by SMS Notification Plugin
+</h3>
+<strong>
+SECURITY-2054
+/
+CVE-2020-2297
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/sms">
+<code>sms</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>SMS Notification Plugin 1.2 and earlier stores an access token unencrypted in its global configuration file <code>com.hoiio.jenkins.plugin.SMSNotification.xml</code> on the Jenkins controller as part of its configuration.</p>
+</div>
+<div class="paragraph">
+<p>This access token can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-2097">
+XXE vulnerability in Nerrvana Plugin
+</h3>
+<strong>
+SECURITY-2097
+/
+CVE-2020-2298
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/nerrvana-plugin">
+<code>nerrvana-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Nerrvana Plugin 1.02.06 and earlier does not configure its XML parser to prevent XML external entity (XXE) attacks.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers with Overall/Read permission to have Jenkins parse a crafted HTTP request with XML data that uses external entities for extraction of secrets from the Jenkins controller or server-side request forgery.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, XML parsing is exposed as a form validation endpoint that does not require POST requests, allowing exploitation by users without Overall/Read permission via CSRF.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-1767:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1815:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1846:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1928:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1954:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2008:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2046:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-2049:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-2052:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-2054:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-2065:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-2097:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Active Choices
+Plugin
+</strong>
+up to and including
+2.4
+</li>
+<li>
+<strong>
+Audit Trail
+Plugin
+</strong>
+up to and including
+3.6
+</li>
+<li>
+<strong>
+couchdb-statistics
+Plugin
+</strong>
+up to and including
+0.3
+</li>
+<li>
+<strong>
+Maven Cascade Release
+Plugin
+</strong>
+up to and including
+1.3.2
+</li>
+<li>
+<strong>
+Nerrvana
+Plugin
+</strong>
+up to and including
+1.02.06
+</li>
+<li>
+<strong>
+Persona
+Plugin
+</strong>
+up to and including
+2.4
+</li>
+<li>
+<strong>
+Release
+Plugin
+</strong>
+up to and including
+2.10.2
+</li>
+<li>
+<strong>
+Role-based Authorization Strategy
+Plugin
+</strong>
+up to and including
+3.0
+</li>
+<li>
+<strong>
+Shared Objects
+Plugin
+</strong>
+up to and including
+0.44
+</li>
+<li>
+<strong>
+SMS Notification
+Plugin
+</strong>
+up to and including
+1.2
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Active Choices
+Plugin
+</strong>
+should be updated to version
+2.5
+</li>
+<li>
+<strong>
+Audit Trail
+Plugin
+</strong>
+should be updated to version
+3.7
+</li>
+<li>
+<strong>
+couchdb-statistics
+Plugin
+</strong>
+should be updated to version
+0.4
+</li>
+<li>
+<strong>
+Role-based Authorization Strategy
+Plugin
+</strong>
+should be updated to version
+3.1
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Maven Cascade Release
+Plugin
+</li>
+<li>
+Nerrvana
+Plugin
+</li>
+<li>
+Persona
+Plugin
+</li>
+<li>
+Release
+Plugin
+</li>
+<li>
+Shared Objects
+Plugin
+</li>
+<li>
+SMS Notification
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-1846, SECURITY-2046, SECURITY-2097
+</li>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc. and Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-1815
+</li>
+<li>
+<strong>
+Jeff Thompson, CloudBees, Inc.
+</strong>
+for
+SECURITY-2052
+</li>
+<li>
+<strong>
+Long Nguyen, Viettel Cyber Security
+</strong>
+for
+SECURITY-2054, SECURITY-2065
+</li>
+<li>
+<strong>
+Raihaan Shouhell, Autodesk, Inc
+</strong>
+for
+SECURITY-1767
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-1928, SECURITY-1954, SECURITY-2008
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc. and Jeff Thompson, CloudBees, Inc.
+</strong>
+for
+SECURITY-2049
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2020-10-08.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

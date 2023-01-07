@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.32.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.32/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.32.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.32.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.32.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.32/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.32.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.32.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.32.1 covers the upgrade from  2.19.4.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-32-3">
+Upgrading to Jenkins 2.32.3
+</h3>
+<div class="sect3">
+<h4 id="removal-of-x-you-are-in-group-headers-on-permission-denied-pages"><a class="anchor" href="#removal-of-x-you-are-in-group-headers-on-permission-denied-pages"></a>Removal of <code>X-You-Are-In-Group</code> headers on "Permission denied" pages</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-39402">JENKINS-39402</a></p>
+</div>
+<div class="paragraph">
+<p>"Permission denied" pages will no longer include HTTP headers listing all the groups the current user is a member of, as a large number of headers could in some cases result in reverse proxies errors.</p>
+</div>
+<div class="paragraph">
+<p>Access URLs such as <code>/whoAmI</code> to get information about the currently logged in user and group memberships.</p>
+</div>
+<div class="paragraph">
+<p>To restore the previous behavior, set the system property <code>hudson.security.AccessDeniedException2.REPORT_GROUP_HEADERS</code> to <code>true</code>. This is not generally recommended.</p>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-32-2">
+Upgrading to Jenkins 2.32.2
+</h3>
+<div class="sect3">
+<h4 id="console-notes-security-fix"><a class="anchor" href="#console-notes-security-fix"></a>Console notes security fix</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins.io/display/SECURITY/Jenkins+Security+Advisory+2017-02-01">SECURITY-382</a></p>
+</div>
+<div class="paragraph">
+<p>Console notes, the often bold or colored additions to build logs by plugins such as <a href="https://plugins.jenkins.io/timestamper">Timestamper</a> or <a href="https://plugins.jenkins.io/ansicolor">AnsiColor</a>, that were created before you upgrade to Jenkins 2.43 or 2.32.2 will no longer be loaded for security reasons.
+To restore the previous (unsafe) behavior, set the system property <code>hudson.console.ConsoleNote.INSECURE</code> to <code>true</code> as described on <a href="/doc/book/managing/system-properties/">this page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Maven projects in <a href="https://plugins.jenkins.io/maven-plugin">Maven Integration Plugin</a> 2.14 and earlier that use Maven 3.0.x to build will create console notes that can no longer be read by Jenkins, therefore parts of their build output will not be colored/bold.
+This does not affect freestyle projects.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-encrypted-secrets-format"><a class="anchor" href="#new-encrypted-secrets-format"></a>New encrypted secrets format</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins.io/display/SECURITY/Jenkins+Security+Advisory+2017-02-01">SECURITY-304</a></p>
+</div>
+<div class="paragraph">
+<p>Encrypted secrets are no AES-128 CBC with random IV instead of AES-128 ECB without IV. Therefore the format of encrypted secrets has been changed.
+While existing secrets can still be read, saving configuration files will result in re-encryption of stored secrets in the new format.
+Repeatedly submitting the same form by clicking <em>Apply</em> after changing a password that is stored by Jenkins as a secret will now result in configuration files being changed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="re-keying-backup-files-removed"><a class="anchor" href="#re-keying-backup-files-removed"></a>Re-keying backup files removed</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins.io/display/SECURITY/Jenkins+Security+Advisory+2017-02-01">SECURITY-376</a></p>
+</div>
+<div class="paragraph">
+<p>Re-keying, a process implemented for the Jenkins 1.480.2 security update, and performed only when upgrading Jenkins from versions 1.480.1 or 1.497 or earlier, left behind backup files with no restrictive file access permissions.
+On the first restart after applying the 2.32.2 update, Jenkins will remove these backup files, if present.</p>
+</div>
+<div class="paragraph">
+<p>If you were relying on file system permissions to protect secrets stored in Jenkins, and are operating an instance that originally was running Jenkins 1.480.1 or 1.497 (or earlier), consider changing any secrets that were stored in Jenkins then.</p>
+</div>
+<div class="paragraph">
+<p>If you are relying on file system permissions to protect secrets stored in your Jenkins home directory backups, it is recommended that you remove the directory <code>JENKINS_HOME/jenkins.security.RekeySecretAdminMonitor/backups</code> from all backups.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remoting-blacklist-addition"><a class="anchor" href="#remoting-blacklist-addition"></a>Remoting blacklist addition</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins.io/display/SECURITY/Jenkins+Security+Advisory+2017-02-01">SECURITY-383</a></p>
+</div>
+<div class="paragraph">
+<p>The remoting blacklist of classes prohibited from being used in XStream and Java object serialization has been extended. These entries were added:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">^javax[.]imageio[.].*
+^java[.]util[.]ServiceLoader$
+^java[.]net[.]URLClassLoader$</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>No legitimate use of these types is expected, but possible. Previous advice in the <a href="/doc/upgrade-guide/2.19/#upgrading-to-jenkins-lts-2-19-3">upgrade guide for Jenkins 2.19.3</a> still applies.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="user-creation-via-get-no-longer-possible"><a class="anchor" href="#user-creation-via-get-no-longer-possible"></a>User creation via GET no longer possible</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins.io/display/SECURITY/Jenkins+Security+Advisory+2017-02-01">SECURITY-406</a></p>
+</div>
+<div class="paragraph">
+<p>Jenkins administrators were able to create users by accessing the URL <code>/user/example</code>. Doing so would create (for this URL) a new user with the ID <code>example</code>, if it did not exist before.</p>
+</div>
+<div class="paragraph">
+<p>While convenient, this constitutes a <a href="https://en.wikipedia.org/wiki/CSRF">cross-site request forgery</a> vulnerability, as Jenkins administrators may be tricked into creating hundreds of (not always ephemeral) users.
+Therefore this feature has been removed.</p>
+</div>
+<div class="paragraph">
+<p>When using the internal Jenkins user database, new users can be created via <em>Manage Jenkins » Manage Users</em> instead.</p>
+</div>
+<div class="paragraph">
+<p>To restore the previous (unsafe) behavior, set the system property <code>hudson.model.User.allowUserCreationViaUrl</code> to <code>true</code> as described on <a href="/doc/book/managing/system-properties/">this page</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="security-warnings-administrative-monitor"><a class="anchor" href="#security-warnings-administrative-monitor"></a>Security warnings administrative monitor</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-40494">JENKINS-40494</a></p>
+</div>
+<div class="paragraph">
+<p>Jenkins will now display warnings when installed components (plugins or core) have known security issues.
+These warnings are also shown in the plugin manager&#8217;s <em>Available</em> and <em>Updates</em> tabs to warn you before installing a vulnerable plugin, or updating to a vulnerable version.
+As these warnings are published by your configured update sites, they are generally updated once per day. Note that third party update sites may not support this functionality (yet).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="winstone-jetty-support-for-ad-hoc-certificate-creation-on-java-8"><a class="anchor" href="#winstone-jetty-support-for-ad-hoc-certificate-creation-on-java-8"></a>Winstone-Jetty support for ad-hoc certificate creation on Java 8</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-25333">JENKINS-25333</a></p>
+</div>
+<div class="paragraph">
+<p>The embedded Winstone-Jetty container now supports ad-hoc SSL certificate generation when run on Java 8.</p>
+</div>
+<div class="paragraph">
+<p>However, this feature uses internal Oracle JRE APIs, so may break at any time in the future.
+Therefore it is still recommended that admins manually create self-signed certificates and use these instead.</p>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-32-1">
+Upgrading to Jenkins 2.32.1
+</h3>
+<div class="sect3">
+<h4 id="remoting-3-upgrade"><a class="anchor" href="#remoting-3-upgrade"></a>Remoting 3 upgrade</h4>
+<div class="paragraph">
+<p>Remoting, the library handling the communication between Jenkins controller and agents, got a major upgrade that introduced a new communication protocol (JNLP4).</p>
+</div>
+<div class="paragraph">
+<p>With this upgrade comes a restriction on which <code>Launcher</code> implementations are allowed to connect.
+It is possible that some plugins (mostly <em>cloud</em> implementations) will fail to connect.
+If that happens, set the System property <code>jenkins.slaves.DefaultJnlpSlaveReceiver.disableStrictVerification</code> as a workaround.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">java -Djenkins.slaves.DefaultJnlpSlaveReceiver.disableStrictVerification=true … -jar jenkins.war</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="/doc/book/managing/system-properties/">Learn more about system properties in Jenkins.</a></p>
+</div>
+<div class="paragraph">
+<p>Additionally, this is the first remoting release that requires Java 7. While agents have needed Java 7 for a while now, remoting is also used to communicate with the Maven process in the Maven project type in the Maven Integration Plugin. These builds now needs a JDK 7 or newer to run. Use toolchains to compile with an older version of Java.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="administrative-monitors-are-now-shown-on-most-pages"><a class="anchor" href="#administrative-monitors-are-now-shown-on-most-pages"></a>Administrative monitors are now shown on most pages</h4>
+<div class="paragraph">
+<p><em>Administrative monitors</em> are the notifications only shown on the <em>Manage Jenkins</em> page so far.
+They are now also displayed to administrators on most other pages to increase visibility of important notifications.</p>
+</div>
+<div class="paragraph">
+<p>To allow finer-grained control over which administrative monitors are shown, they can now be disabled and enabled in <em>Configure Jenkins</em>.</p>
+</div>
+<div class="paragraph">
+<p>Please note that due to how it&#8217;s implemented, the <em>Reverse Proxy Setup</em> monitor will <em>not</em> be shown on every screen.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

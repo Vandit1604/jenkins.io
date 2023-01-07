@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins LTS Upgrade Guide
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins LTS Upgrade Guide" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins LTS Upgrade Guide" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins LTS Upgrade Guide" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins LTS Upgrade Guide" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins LTS Upgrade Guide
+</h1>
+<p>
+This section highlights important changes for administrators upgrading
+Jenkins LTS. Each section covers the upgrade from the previous LTS release,
+sections on versions x.y.1 cover the upgrade from the last release of the
+previous LTS line. if you are skipping LTS releases when upgrading, it is
+recommended to read the sections for all releases in between.
+</p>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.375">
+Upgrading to Jenkins 2.375.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.375#upgrading-to-jenkins-lts-2-375-1">
+Upgrading to Jenkins 2.375.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.361">
+Upgrading to Jenkins 2.361.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.361#upgrading-to-jenkins-lts-2-361-4">
+Upgrading to Jenkins 2.361.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.361#upgrading-to-jenkins-lts-2-361-3">
+Upgrading to Jenkins 2.361.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.361#upgrading-to-jenkins-lts-2-361-2">
+Upgrading to Jenkins 2.361.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.361#upgrading-to-jenkins-lts-2-361-1">
+Upgrading to Jenkins 2.361.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.346">
+Upgrading to Jenkins 2.346.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.346#upgrading-to-jenkins-lts-2-346-3">
+Upgrading to Jenkins 2.346.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.346#upgrading-to-jenkins-lts-2-346-2">
+Upgrading to Jenkins 2.346.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.346#upgrading-to-jenkins-lts-2-346-1">
+Upgrading to Jenkins 2.346.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.332">
+Upgrading to Jenkins 2.332.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.332#upgrading-to-jenkins-lts-2-332-4">
+Upgrading to Jenkins 2.332.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.332#upgrading-to-jenkins-lts-2-332-3">
+Upgrading to Jenkins 2.332.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.332#upgrading-to-jenkins-lts-2-332-2">
+Upgrading to Jenkins 2.332.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.332#upgrading-to-jenkins-lts-2-332-1">
+Upgrading to Jenkins 2.332.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.319">
+Upgrading to Jenkins 2.319.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.319#upgrading-to-jenkins-lts-2-319-3">
+Upgrading to Jenkins 2.319.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.319#upgrading-to-jenkins-lts-2-319-2">
+Upgrading to Jenkins 2.319.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.319#upgrading-to-jenkins-lts-2-319-1">
+Upgrading to Jenkins 2.319.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.303">
+Upgrading to Jenkins 2.303.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.303#upgrading-to-jenkins-lts-2-303-3">
+Upgrading to Jenkins 2.303.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.303#upgrading-to-jenkins-lts-2-303-2">
+Upgrading to Jenkins 2.303.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.303#upgrading-to-jenkins-lts-2-303-1">
+Upgrading to Jenkins 2.303.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.289">
+Upgrading to Jenkins 2.289.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.289#upgrading-to-jenkins-lts-2-289-3">
+Upgrading to Jenkins 2.289.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.289#upgrading-to-jenkins-lts-2-289-2">
+Upgrading to Jenkins 2.289.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.289#upgrading-to-jenkins-lts-2-289-1">
+Upgrading to Jenkins 2.289.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.277">
+Upgrading to Jenkins 2.277.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.277#upgrading-to-jenkins-lts-2-277-4">
+Upgrading to Jenkins 2.277.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.277#upgrading-to-jenkins-lts-2-277-3">
+Upgrading to Jenkins 2.277.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.277#upgrading-to-jenkins-lts-2-277-2">
+Upgrading to Jenkins 2.277.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.277#upgrading-to-jenkins-lts-2-277-1">
+Upgrading to Jenkins 2.277.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.263">
+Upgrading to Jenkins 2.263.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.263#upgrading-to-jenkins-lts-2-263-4">
+Upgrading to Jenkins 2.263.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.263#upgrading-to-jenkins-lts-2-263-3">
+Upgrading to Jenkins 2.263.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.263#upgrading-to-jenkins-lts-2-263-2">
+Upgrading to Jenkins 2.263.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.263#upgrading-to-jenkins-lts-2-263-1">
+Upgrading to Jenkins 2.263.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.249">
+Upgrading to Jenkins 2.249.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.249#upgrading-to-jenkins-lts-2-249-3">
+Upgrading to Jenkins 2.249.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.249#upgrading-to-jenkins-lts-2-249-2">
+Upgrading to Jenkins 2.249.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.249#upgrading-to-jenkins-lts-2-249-1">
+Upgrading to Jenkins 2.249.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.235">
+Upgrading to Jenkins 2.235.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.235#upgrading-to-jenkins-lts-2-235-5">
+Upgrading to Jenkins 2.235.5
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.235#upgrading-to-jenkins-lts-2-235-4">
+Upgrading to Jenkins 2.235.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.235#upgrading-to-jenkins-lts-2-235-3">
+Upgrading to Jenkins 2.235.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.235#upgrading-to-jenkins-lts-2-235-2">
+Upgrading to Jenkins 2.235.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.235#upgrading-to-jenkins-lts-2-235-1">
+Upgrading to Jenkins 2.235.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.222">
+Upgrading to Jenkins 2.222.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.222#upgrading-to-jenkins-lts-2-222-4">
+Upgrading to Jenkins 2.222.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.222#upgrading-to-jenkins-lts-2-222-3">
+Upgrading to Jenkins 2.222.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.222#upgrading-to-jenkins-lts-2-222-2">
+Upgrading to Jenkins 2.222.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.222#upgrading-to-jenkins-lts-2-222-1">
+Upgrading to Jenkins 2.222.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.204">
+Upgrading to Jenkins 2.204.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.204#upgrading-to-jenkins-lts-2-204-6">
+Upgrading to Jenkins 2.204.6
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.204#upgrading-to-jenkins-lts-2-204-5">
+Upgrading to Jenkins 2.204.5
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.204#upgrading-to-jenkins-lts-2-204-4">
+Upgrading to Jenkins 2.204.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.204#upgrading-to-jenkins-lts-2-204-3">
+Upgrading to Jenkins 2.204.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.204#upgrading-to-jenkins-lts-2-204-2">
+Upgrading to Jenkins 2.204.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.204#upgrading-to-jenkins-lts-2-204-1">
+Upgrading to Jenkins 2.204.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.190">
+Upgrading to Jenkins 2.190.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.190#upgrading-to-jenkins-lts-2-190-3">
+Upgrading to Jenkins 2.190.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.190#upgrading-to-jenkins-lts-2-190-2">
+Upgrading to Jenkins 2.190.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.190#upgrading-to-jenkins-lts-2-190-1">
+Upgrading to Jenkins 2.190.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.176">
+Upgrading to Jenkins 2.176.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.176#upgrading-to-jenkins-lts-2-176-4">
+Upgrading to Jenkins 2.176.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.176#upgrading-to-jenkins-lts-2-176-3">
+Upgrading to Jenkins 2.176.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.176#upgrading-to-jenkins-lts-2-176-2">
+Upgrading to Jenkins 2.176.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.176#upgrading-to-jenkins-lts-2-176-1">
+Upgrading to Jenkins 2.176.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.164">
+Upgrading to Jenkins 2.164.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.164#upgrading-to-jenkins-lts-2-164-3">
+Upgrading to Jenkins 2.164.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.164#upgrading-to-jenkins-lts-2-164-2">
+Upgrading to Jenkins 2.164.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.164#upgrading-to-jenkins-lts-2-164-1">
+Upgrading to Jenkins 2.164.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.150">
+Upgrading to Jenkins 2.150.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.150#upgrading-to-jenkins-lts-2-150-3">
+Upgrading to Jenkins 2.150.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.150#upgrading-to-jenkins-lts-2-150-2">
+Upgrading to Jenkins 2.150.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.150#upgrading-to-jenkins-lts-2-150-1">
+Upgrading to Jenkins 2.150.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.138">
+Upgrading to Jenkins 2.138.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.138#upgrading-to-jenkins-lts-2-138-4">
+Upgrading to Jenkins 2.138.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.138#upgrading-to-jenkins-lts-2-138-3">
+Upgrading to Jenkins 2.138.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.138#upgrading-to-jenkins-lts-2-138-2">
+Upgrading to Jenkins 2.138.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.138#upgrading-to-jenkins-lts-2-138-1">
+Upgrading to Jenkins 2.138.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.121">
+Upgrading to Jenkins 2.121.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.121#upgrading-to-jenkins-lts-2-121-3">
+Upgrading to Jenkins 2.121.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.121#upgrading-to-jenkins-lts-2-121-2">
+Upgrading to Jenkins 2.121.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.121#upgrading-to-jenkins-lts-2-121-1">
+Upgrading to Jenkins 2.121.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.107">
+Upgrading to Jenkins 2.107.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.107#upgrading-to-jenkins-lts-2-107-3">
+Upgrading to Jenkins 2.107.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.107#upgrading-to-jenkins-lts-2-107-2">
+Upgrading to Jenkins 2.107.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.107#upgrading-to-jenkins-lts-2-107-1">
+Upgrading to Jenkins 2.107.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.89">
+Upgrading to Jenkins 2.89.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.89#upgrading-to-jenkins-lts-2-89-4">
+Upgrading to Jenkins 2.89.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.89#upgrading-to-jenkins-lts-2-89-3">
+Upgrading to Jenkins 2.89.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.89#upgrading-to-jenkins-lts-2-89-2">
+Upgrading to Jenkins 2.89.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.89#upgrading-to-jenkins-lts-2-89-1">
+Upgrading to Jenkins 2.89.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.73">
+Upgrading to Jenkins 2.73.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.73#upgrading-to-jenkins-lts-2-73-3">
+Upgrading to Jenkins 2.73.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.73#upgrading-to-jenkins-lts-2-73-2">
+Upgrading to Jenkins 2.73.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.73#upgrading-to-jenkins-lts-2-73-1">
+Upgrading to Jenkins 2.73.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.60">
+Upgrading to Jenkins 2.60.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.60#upgrading-to-jenkins-lts-2-60-3">
+Upgrading to Jenkins 2.60.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.60#upgrading-to-jenkins-lts-2-60-2">
+Upgrading to Jenkins 2.60.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.60#upgrading-to-jenkins-lts-2-60-1">
+Upgrading to Jenkins 2.60.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.46">
+Upgrading to Jenkins 2.46.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.46#upgrading-to-jenkins-lts-2-46-3">
+Upgrading to Jenkins 2.46.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.46#upgrading-to-jenkins-lts-2-46-2">
+Upgrading to Jenkins 2.46.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.46#upgrading-to-jenkins-lts-2-46-1">
+Upgrading to Jenkins 2.46.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.32">
+Upgrading to Jenkins 2.32.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.32#upgrading-to-jenkins-lts-2-32-3">
+Upgrading to Jenkins 2.32.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.32#upgrading-to-jenkins-lts-2-32-2">
+Upgrading to Jenkins 2.32.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.32#upgrading-to-jenkins-lts-2-32-1">
+Upgrading to Jenkins 2.32.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.19">
+Upgrading to Jenkins 2.19.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.19#upgrading-to-jenkins-lts-2-19-4">
+Upgrading to Jenkins 2.19.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.19#upgrading-to-jenkins-lts-2-19-3">
+Upgrading to Jenkins 2.19.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.19#upgrading-to-jenkins-lts-2-19-2">
+Upgrading to Jenkins 2.19.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.19#upgrading-to-jenkins-lts-2-19-1">
+Upgrading to Jenkins 2.19.1
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.7">
+Upgrading to Jenkins 2.7.x
+</a>
+<ul>
+<li>
+<a href="/doc/upgrade-guide/2.7#upgrading-to-jenkins-lts-2-7-4">
+Upgrading to Jenkins 2.7.4
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.7#upgrading-to-jenkins-lts-2-7-3">
+Upgrading to Jenkins 2.7.3
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.7#upgrading-to-jenkins-lts-2-7-2">
+Upgrading to Jenkins 2.7.2
+</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/2.7#upgrading-to-jenkins-lts-2-7-1">
+Upgrading to Jenkins 2.7.1
+</a>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

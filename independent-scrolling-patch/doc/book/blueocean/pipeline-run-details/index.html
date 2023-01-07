@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Pipeline Run Details View
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-run-details/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Pipeline Run Details View" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Pipeline Run Details View" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Pipeline Run Details View" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-run-details/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Pipeline Run Details View" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="active">Blue Ocean</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/getting-started/" class="">Getting started with Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/creating-pipelines/" class="">Creating a Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/dashboard/" class="">Dashboard</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/activity/" class="">Activity View</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-run-details/" class="active">Pipeline Run Details View</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-editor/" class="">Pipeline Editor</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../activity">
+⇐ Activity View
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../pipeline-editor">
+Pipeline Editor ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Pipeline Run Details View
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#pipeline-run-status">Pipeline Run Status</a></li>
+<li><a href="#special-cases">Special cases</a>
+<ul class="sectlevel2">
+<li><a href="#pipelines-outside-of-source-control">Pipelines outside of Source Control</a></li>
+<li><a href="#freestyle-projects">Freestyle Projects</a></li>
+<li><a href="#matrix-projects">Matrix projects</a></li>
+</ul>
+</li>
+<li><a href="#tabs">Tabs</a>
+<ul class="sectlevel2">
+<li><a href="#pipeline">Pipeline</a></li>
+<li><a href="#changes">Changes</a></li>
+<li><a href="#tests">Tests</a></li>
+<li><a href="#artifacts">Artifacts</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Blue Ocean Pipeline Run Details view shows the information related to a single Pipeline Run, and allows users to edit or replay that run.
+Below is a detailed overview of the parts of the Run Details view.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Blue Ocean status</div>
+<div class="paragraph">
+<p>Blue Ocean will not receive further functionality updates.
+Blue Ocean will continue to provide easy-to-use Pipeline visualization, but it will not be enhanced further.
+It will only receive selective updates for significant security issues or functional defects.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/overview.png" alt="Overview of the Pipeline Run Details"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Run Status</strong> - An icon indicating the status of this Pipeline run.
+The color of the navigation bar matches the status icon.</p>
+</li>
+<li>
+<p><strong>Pipeline Name</strong> - The name of this run&#8217;s Pipeline.</p>
+</li>
+<li>
+<p><strong>Run Number</strong> - The id number for this Pipeline run.
+Id numbers are unique for each Branch and Pull Request of a Pipeline.</p>
+</li>
+<li>
+<p><strong>View Tabs</strong> - Access the <strong>Pipeline</strong>, <strong>Changes</strong>, <strong>Tests</strong>, and <strong>Artifacts</strong> views with one of the <a href="#tabs">tabs</a> for this run.
+The default view is "<a href="#pipeline">Pipeline</a>".</p>
+</li>
+<li>
+<p><strong>Re-run Pipeline</strong> - Execute this run&#8217;s Pipeline again.</p>
+</li>
+<li>
+<p><strong>Edit Pipeline</strong> - Open this run&#8217;s Pipeline in the <a href="../pipeline-editor/">Pipeline Editor</a>.</p>
+</li>
+<li>
+<p><strong>Configure</strong> - Open the Pipeline configuration page in Jenkins.</p>
+</li>
+<li>
+<p><strong>Go to Classic</strong> - Switch to the "Classic" UI view of the details for this run.</p>
+</li>
+<li>
+<p><strong>Close Details</strong> - Closes the Details view and returns the user to the <a href="../activity/">Activity view</a> for this Pipeline.</p>
+</li>
+<li>
+<p><strong>Branch</strong> or <strong>Pull Request</strong> - The branch or pull request for this run.</p>
+</li>
+<li>
+<p><strong>Commit Id</strong> - The commit id for this run.</p>
+</li>
+<li>
+<p><strong>Duration</strong> - The duration of this run.</p>
+</li>
+<li>
+<p><strong>Completed Time</strong> - When this run was completed.</p>
+</li>
+<li>
+<p><strong>Change Author</strong> - Names of the authors with changes in this run.</p>
+</li>
+<li>
+<p><strong>Tab View</strong> - Shows the information for the selected tab.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-run-status"><a class="anchor" href="#pipeline-run-status"></a>Pipeline Run Status</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean makes it easy to see the status of the current Pipeline Run, by changing the color of the top menu bar to match the status:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blue for "In progress"</p>
+</li>
+<li>
+<p>Green for "Passed"</p>
+</li>
+<li>
+<p>Yellow for "Unstable"</p>
+</li>
+<li>
+<p>Red for "Failed"</p>
+</li>
+<li>
+<p>Gray for "Aborted"</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="special-cases"><a class="anchor" href="#special-cases"></a>Special cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean is optimized for working with Pipelines in Source Control, but can display details for other kinds of projects.
+Blue Ocean offers the same <a href="#tabs">tabs</a> for all supported projects types, but those tabs display different information depending on the type.</p>
+</div>
+<div class="sect2">
+<h3 id="pipelines-outside-of-source-control"><a class="anchor" href="#pipelines-outside-of-source-control"></a>Pipelines outside of Source Control</h3>
+<div class="paragraph">
+<p>For Pipelines that are not based in Source Control, Blue Ocean shows the "Commit Id", "Branch", and "Changes", but those fields are left blank.
+In this case, the top menu bar does not include the "Edit" option.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="freestyle-projects"><a class="anchor" href="#freestyle-projects"></a>Freestyle Projects</h3>
+<div class="paragraph">
+<p>For Freestyle projects, Blue Ocean offers the same <a href="#tabs">tabs</a>, but the Pipeline tab only displays the console log output.
+The "Rerun" or "Edit" options are not available in the top menu bar.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="matrix-projects"><a class="anchor" href="#matrix-projects"></a>Matrix projects</h3>
+<div class="paragraph">
+<p>Matrix projects are not supported in Blue Ocean.
+Viewing a Matrix project will redirect to the "Classic UI" view for that project.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tabs"><a class="anchor" href="#tabs"></a>Tabs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each tab of the Run Detail view provides information on a specific aspect of a run.</p>
+</div>
+<div class="sect2">
+<h3 id="pipeline"><a class="anchor" href="#pipeline"></a>Pipeline</h3>
+<div class="paragraph">
+<p><strong>Pipeline</strong> is the default tab and gives an overall view of the flow of this Pipeline Run.
+It shows each stage and parallel branch, the steps in those stages, and the console output from those steps.
+The overview image above shows a successful Pipeline run.
+If a particular step during the run fails, this tab automatically defaults to showing the console log from the failed step.
+The image below shows a failed Run.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/pipeline-failed.png" alt="Failed Run"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changes"><a class="anchor" href="#changes"></a>Changes</h3>
+<div class="paragraph">
+<p>The <strong>Changes</strong> tab displays the information of any changes made between the most recently completed and current runs.
+This includes the commit id for the change, change author, message, and date completed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/changes-one-change.png" alt="List of Changes for a Run"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tests"><a class="anchor" href="#tests"></a>Tests</h3>
+<div class="paragraph">
+<p>The <strong>Tests</strong> tab shows information about test results for this run.
+This tab only contains information if a test result publishing step is present, such as the "Publish JUnit test results" (<code>junit</code>) step.
+If no results are recorded, this table displays a message.
+If all tests pass, this tab will report the total number of passing tests.
+If there are failures, the tab will display log details from the failures as shown below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/tests-unstable.png" alt="Test Results for Unstable Run"></span></p>
+</div>
+<div class="paragraph">
+<p>When a previous run has failures, and the current run fixes those failures, this tab notes the fixes and displays their logs.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/tests-fixed.png" alt="Test Results for Fixed Run"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="artifacts"><a class="anchor" href="#artifacts"></a>Artifacts</h3>
+<div class="paragraph">
+<p>The <strong>Artifacts</strong> tab shows a list of any artifacts saved using the "Archive Artifacts" (<code>archiveArtifacts</code>) step.
+Selecting an item in the list downloads it.
+The full output log from the Run can be downloaded from this list.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/artifacts-list.png" alt="List of Artifacts from a Run"></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../activity">
+⇐ Activity View
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../pipeline-editor">
+Pipeline Editor ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/blueocean/pipeline-run-details.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

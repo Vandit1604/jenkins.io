@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Read-only Jenkins Configuration
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/05/25/read-only-jenkins-announcement/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Read-only Jenkins Configuration" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Read-only Jenkins Configuration" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Read-only Jenkins Configuration" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/05/25/read-only-jenkins-announcement/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Read-only Jenkins Configuration" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Read-only Jenkins Configuration
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/timja/"><div class="app-avatar"><img alt="Tim Jacomb" class="app-avatar__image" src="/images/avatars/timja.jpg"></div> Tim Jacomb</a>
+May 25, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Read-only+Jenkins+Configuration&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F05%2F25%2Fread-only-jenkins-announcement%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I&#8217;m excited to announce that the 'read-only' Jenkins feature is now available for preview.
+This feature allows restricting configuration UIs and APIs while providing access to essential Jenkins system configuration, diagnostics, and self-monitoring tools through Web UI.
+Such mode is critical for instances managed as code, e.g. with <a href="https://plugins.jenkins.io/configuration-as-code">Jenkins Configuration-as-Code</a> plugin.
+It is delivered as a part of the <a href="https://github.com/jenkinsci/jep/blob/master/jep/224/README.adoc">JEP-224: Readonly system configuration</a> effort.</p>
+</div>
+<div class="paragraph">
+<p>You will want to use at least Jenkins 2.238 to have all the features mentioned in this post.</p>
+</div>
+<div class="paragraph">
+<p>Read-only Jenkins currently allows users to have access to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>job configuration</p>
+</li>
+<li>
+<p>system configuration</p>
+</li>
+<li>
+<p>plugin manager</p>
+</li>
+<li>
+<p>system logs</p>
+</li>
+<li>
+<p>cloud configuration</p>
+</li>
+<li>
+<p>agent configuration</p>
+</li>
+<li>
+<p>agent logs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more planned integrations see the <a href="https://issues.jenkins.io/browse/JENKINS-12548">JENKINS-12548</a> epic.</p>
+</div>
+<div class="paragraph">
+<p>Read-only Jenkins is split into three permissions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Job/ExtendedRead</strong> - Read-only access to job configurations</p>
+<div class="ulist">
+<ul>
+<li>
+<p>existed since 2009 but the UI didn&#8217;t do anything to indicate to the users
+that they couldn&#8217;t edit the job configuration page.
+This has now been adapted to the new read-only engine.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Agent/ExtendedRead</strong> - Read-only access to agent configurations</p>
+<div class="ulist">
+<ul>
+<li>
+<p>existed since 2013 but it was undocumented and only allowed access to API and no UI</p>
+</li>
+<li>
+<p>UI support added in Jenkins 2.238</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Overall/SystemRead</strong> - Read-only access to Jenkins system configuration.
+It is very useful for Jenkins instances managed as code, e.g. with help of the <a href="https://plugins.jenkins.io/configuration-as-code">Jenkins Configuration as Code Plugin</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introduced in Jenkins 2.222 as a part of <a href="https://github.com/jenkinsci/jep/blob/master/jep/224/README.adoc">JEP-224: Readonly system configuration</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can selectively grant the permission(s) as you wish.</p>
+</div>
+<div class="sect1">
+<h2 id="why-do-i-want-this"><a class="anchor" href="#why-do-i-want-this"></a>Why do I want this?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given the rise of the configuration-as-code plugin a lot of Jenkins instances are fully managed as code,
+which means that no changes are allowed through the UI.</p>
+</div>
+<div class="paragraph">
+<p>The problem with this is you don’t know when new plugin versions are available and in order to see what other configuration options are available to a plugin you currently need the 'Administer' permission.</p>
+</div>
+<div class="paragraph">
+<p>Read-only access to system administration information allows users who are not administrators to more easily debug build issues.
+For example, given a 'Jenkins' error message in a build the user can check:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>which plugins are installed</p>
+</li>
+<li>
+<p>the version of the plugin</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This can allow the user to solve their issue themselves and makes it easier for the user to report an issue with a plugin directly to the maintainers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-can-i-expect"><a class="anchor" href="#what-can-i-expect"></a>What can I expect</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All built in UI controls have been adapted to clearly distinguish between
+an editable control and a control you don&#8217;t have permission to edit:</p>
+</div>
+<div class="paragraph">
+<p>Editable:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020/05-read-only-jenkins-announcement/build-discarder-edit.png" alt="build discarder edit"></span></p>
+</div>
+<div class="paragraph">
+<p>Non editable:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020/05-read-only-jenkins-announcement/build-discarder-read.png" alt="build discarder read"></span></p>
+</div>
+<div class="paragraph">
+<p><em>Note: there are other controls such as in the credentials and pipeline plugins that have
+not been updated yet.</em></p>
+</div>
+<div class="paragraph">
+<p>Action buttons, (Such as 'Save' and 'Apply') have been hidden in most cases.</p>
+</div>
+<div class="paragraph">
+<p>Work will continue on read-only configuration.  Some plugins need support added and certain controls
+could have some improvements done to render better.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-can-i-use-it"><a class="anchor" href="#how-can-i-use-it"></a>How can I use it?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These permissions are currently available in beta and for now disabled by default.
+You can enable them by installing the <a href="https://plugins.jenkins.io/extended-read-permission">Extended read permission plugin</a> v3.2 or above.</p>
+</div>
+<div class="paragraph">
+<p>Then you will need to add the following permissions to a user / group depending on your use case:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Overall/SystemRead</p>
+</li>
+<li>
+<p>Job/ExtendedRead</p>
+</li>
+<li>
+<p>Agent/ExtendedRead</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Note: You will need to set the Overall/Read and Job/Read permissions as well.  You might
+want to consider creating a role containing the required permissions.</em></p>
+</div>
+<div class="paragraph">
+<p>Here is an example using the <a href="https://plugins.jenkins.io/configuration-as-code">Configuration as Code plugin</a> and the <a href="https://plugins.jenkins.io/folder-auth">Folder-based Authorization Strategy plugin</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">jenkins</span><span class="pi">:</span>
+  <span class="na">authorizationStrategy</span><span class="pi">:</span>
+    <span class="na">folderBased</span><span class="pi">:</span>
+      <span class="na">globalRoles</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">admin"</span>
+          <span class="na">permissions</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Overall/Administer"</span>
+          <span class="na">sids</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s2">"</span><span class="s">admin"</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">global</span><span class="nv"> </span><span class="s">read"</span>
+          <span class="na">permissions</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Agent/ExtendedRead"</span>
+            <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Overall/SystemRead"</span>
+            <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Overall/Read"</span>
+            <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Job/Read"</span>
+            <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Job/ExtendedRead"</span>
+          <span class="na">sids</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s2">"</span><span class="s">reader"</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="i-cant-see-a-configuration-that-i-think-should-be-allowed"><a class="anchor" href="#i-cant-see-a-configuration-that-i-think-should-be-allowed"></a>I can&#8217;t see a configuration that I think should be allowed</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most of Jenkins itself has been updated to support read-only Jenkins, but not very many plugins.
+Please create an enhancement issue on the plugins issue tracker.
+If the plugin uses Jira to track issues, then you can add it to the <a href="https://issues.jenkins.io/browse/JENKINS-12548">JENKINS-12548</a> epic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-do-i-update-my-plugin-to-support-it"><a class="anchor" href="#how-do-i-update-my-plugin-to-support-it"></a>How do I update my plugin to support it</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="/doc/developer/views/read-only/">Read only view</a> section of the developer documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this release we introduce a foundation feature which is already supported in all key Jenkins core controls and in some plugins.
+There are many plugins which contribute to global configurations and diagnostics which still need to be adapted to support the new mode.
+We will keep working on this feature and its adoption so that the next LTS baseline in September provides a full-fledged user experience for Jenkins admins.</p>
+</div>
+<div class="paragraph">
+<p>System read permission is a featured project in the <a href="/events/online-hackfest/2020-uiux/">UI/UX Hackfest</a>
+happening May 25-29 2020. If you want to get involved please check it out!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/system-read/">
+system-read
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/extended-read/">
+extended-read
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/configuration-as-code/">
+configuration-as-code
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Tim Jacomb" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/timja.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/timja/">
+Tim Jacomb
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer, along with slack, azure-keyvault and configuration-as-code plugins.
+Tim started using Jenkins in 2013 and became an active contributor in 2018.
+Tim enjoys working on open source software in his “free” time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/timja" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/Tjaynz" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/tim-jacomb-98043174" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/05/2020-05-25-read-only-jenkins-announcement.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+vSphere Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/vsphere-cloud/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="vSphere Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="vSphere Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="vSphere Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/vsphere-cloud/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="vSphere Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#vsphere-plugin">vSphere Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#stepclass-deletesnapshot-delete-a-snapshot"><code>step([$class: 'DeleteSnapshot'])</code>: Delete a Snapshot</a></li>
+<li><a href="#stepclass-deploy-deploy-vm-from-template"><code>step([$class: 'Deploy'])</code>: Deploy VM from template</a></li>
+<li><a href="#stepclass-exposeguestinfo-expose-guest-info"><code>step([$class: 'ExposeGuestInfo'])</code>: Expose Guest Info</a></li>
+<li><a href="#stepclass-poweroff-power-off-vm"><code>step([$class: 'PowerOff'])</code>: Power-Off VM</a></li>
+<li><a href="#stepclass-reconfigure-reconfigure-vm"><code>step([$class: 'Reconfigure'])</code>: Reconfigure VM</a></li>
+<li><a href="#stepclass-rename-rename-vm"><code>step([$class: 'Rename'])</code>: Rename VM</a></li>
+<li><a href="#stepclass-renamesnapshot-rename-snapshot"><code>step([$class: 'RenameSnapshot'])</code>: Rename Snapshot</a></li>
+<li><a href="#stepclass-reverttosnapshot-revert-to-snapshot"><code>step([$class: 'RevertToSnapshot'])</code>: Revert to Snapshot</a></li>
+<li><a href="#stepclass-suspendvm-suspend-vm"><code>step([$class: 'SuspendVm'])</code>: Suspend VM</a></li>
+<li><a href="#stepclass-takesnapshot-take-snapshot"><code>step([$class: 'TakeSnapshot'])</code>: Take Snapshot</a></li>
+<li><a href="#stepclass-vspherebuildstepcontainer-vsphere-build-step"><code>step([$class: 'VSphereBuildStepContainer'])</code>: vSphere Build Step</a></li>
+<li><a href="#vsphere-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions"><code>vSphere</code>: Invoke an vSphere action, exposing the VM IP under some actions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="vsphere-plugin"><a class="anchor" href="#vsphere-plugin"></a>vSphere Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/vsphere-cloud">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="stepclass-deletesnapshot-delete-a-snapshot"><a class="anchor" href="#stepclass-deletesnapshot-delete-a-snapshot"></a><code>step([$class: 'DeleteSnapshot'])</code>: Delete a Snapshot</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+<li><code>consolidate : boolean</code>
+<div><div>
+ Consolidate all redundant redo logs for this VM?
+</div></div>
+
+</li>
+<li><code>failOnNoExist : boolean</code>
+<div><div>
+ If the snapshot you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-deploy-deploy-vm-from-template"><a class="anchor" href="#stepclass-deploy-deploy-vm-from-template"></a><code>step([$class: 'Deploy'])</code>: Deploy VM from template</h3>
+<ul><li><code>template : String</code>
+<div><div>
+ The name of the vSphere template to clone.
+</div></div>
+
+</li>
+<li><code>clone : String</code>
+<div><div>
+ The name of the cloned VM.
+</div></div>
+
+</li>
+<li><code>linkedClone : boolean</code>
+<div><div>
+ Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM. If no resource pool is being used, then leave blank.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the VM.
+</div></div>
+
+</li>
+<li><code>folder : String</code>
+<div><div>
+ (Optional) VSphere folder path or unique folder name where VM is going to be created. <br> If blank, it will be created in the same folder as the original VM. <br>
+</div></div>
+
+</li>
+<li><code>customizationSpec : String</code>
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The length of time, in seconds, to wait for the new VirtualMachine to be assigned an IP address after it has been powered on. If this value is zero, no attempt will be made to determine the IP address.
+</div></div>
+
+</li>
+<li><code>powerOn : boolean</code>
+<div><div>
+ Specifies whether or not the new VirtualMachine should be powered on after creation.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-exposeguestinfo-expose-guest-info"><a class="anchor" href="#stepclass-exposeguestinfo-expose-guest-info"></a><code>step([$class: 'ExposeGuestInfo'])</code>: Expose Guest Info</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to expose guest info for.<br> Variables IpAddress, Hostname, ToolsStatus, ToolsRunningStatus, ToolsVersion, ToolsVersionStatus, GuestState, GuestId, GuestFamily, GuestFullName, AppHeartbeatStatus, GuestOperationsReady, InteractiveGuestOperationsReady are exposed.
+</div></div>
+
+</li>
+<li><code>envVariablePrefix : String</code>
+<div><div>
+ Prefix for guest info environmental variables. E.g. for prefix VM1, variables would be VM1_IpAddress, VM1_HostName etc.
+</div></div>
+
+</li>
+<li><code>waitForIp4 : boolean</code>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-poweroff-power-off-vm"><a class="anchor" href="#stepclass-poweroff-power-off-vm"></a><code>step([$class: 'PowerOff'])</code>: Power-Off VM</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to shut down.
+</div></div>
+
+</li>
+<li><code>evenIfSuspended : boolean</code>
+<div><div>
+ If the VM is currently suspended, it will still be shutdown.
+</div></div>
+
+</li>
+<li><code>shutdownGracefully : boolean</code>
+<div><div>
+ If the VM is powered on and VMware Tools is running, a graceful shutdown will be attempted by performing a Guest Shutdown. If the VM is still running after the timeout has been reached, a hard power off will be performed.
+</div></div>
+
+</li>
+<li><code>ignoreIfNotExists : boolean</code>
+</li>
+<li><code>gracefulShutdownTimeout : int</code> (optional)
+<div><div>
+ The number of seconds after which the graceful shutdown attempt is abandoned, and hard power off is performed.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-reconfigure-reconfigure-vm"><a class="anchor" href="#stepclass-reconfigure-reconfigure-vm"></a><code>step([$class: 'Reconfigure'])</code>: Reconfigure VM</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM or template to reconfigure.
+</div></div>
+
+</li>
+<li><code>reconfigureSteps</code>
+<ul><b>Array / List of Nested Choice of Objects</b>
+<li><code>$class: 'ReconfigureAnnotation'</code><div>
+<ul><li><code>annotation : String</code> (optional)
+<div><div>
+ The text that will be written into the "annotations" field on the VM. This typically shows up in the vSphere UI as the "Notes" for a VM.
+</div></div>
+
+</li>
+<li><code>append : boolean</code> (optional)
+<div><div>
+ If set then the text specified in this build step will be appended to the end of any existing text. If not set then the text specified will replace any existing text.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureCpu'</code><div>
+<ul><li><code>cpuCores : String</code>
+<div><div>
+ The number of CPU Cores.
+</div></div>
+
+</li>
+<li><code>coresPerSocket : String</code>
+<div><div>
+ The number of CPU Cores per Socket.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureDisk'</code><div>
+<ul><li><code>diskSize : String</code>
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the disk.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureMemory'</code><div>
+<ul><li><code>memorySize : String</code>
+<div><div>
+ The amount of memory (RAM) in megabytes.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureNetworkAdapters'</code><div>
+<ul><li><code>deviceAction</code>
+<ul><li><b>Values:</b> <code>ADD</code>, <code>EDIT</code>, <code>REMOVE</code></li></ul></li>
+<li><code>deviceLabel : String</code>
+<div><div>
+ The name of the network device, such as "Network adapter 1". If blank, the first network adapter will be used.
+</div></div>
+
+</li>
+<li><code>macAddress : String</code>
+<div><div>
+ The new MAC address for this network adapter. Leave blank to keep existing or default value.
+</div></div>
+
+</li>
+<li><code>standardSwitch : boolean</code>
+</li>
+<li><code>portGroup : String</code>
+<div><div>
+ The name of the network port group to use. Leave blank to keep existing or default value.
+</div></div>
+
+</li>
+<li><code>distributedSwitch : boolean</code>
+</li>
+<li><code>distributedPortGroup : String</code>
+<div><div>
+ Specifies the Distributed Switch Port Group.
+</div></div>
+
+</li>
+<li><code>distributedPortId : String</code>
+<div><div>
+ Port Id to be used from the specified Distributed Switch Port Group.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-rename-rename-vm"><a class="anchor" href="#stepclass-rename-rename-vm"></a><code>step([$class: 'Rename'])</code>: Rename VM</h3>
+<ul><li><code>oldName : String</code>
+<div><div>
+ The old name of the VM or template to be renamed.
+</div></div>
+
+</li>
+<li><code>newName : String</code>
+<div><div>
+ The new name of the VM or template.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-renamesnapshot-rename-snapshot"><a class="anchor" href="#stepclass-renamesnapshot-rename-snapshot"></a><code>step([$class: 'RenameSnapshot'])</code>: Rename Snapshot</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM or template.
+</div></div>
+
+</li>
+<li><code>oldName : String</code>
+<div><div>
+ The old name of the snapshot to be renamed.
+</div></div>
+
+</li>
+<li><code>newName : String</code>
+<div><div>
+ The new name of the snapshot.
+</div></div>
+
+</li>
+<li><code>newDescription : String</code>
+<div><div>
+ The new description of the snapshot.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-reverttosnapshot-revert-to-snapshot"><a class="anchor" href="#stepclass-reverttosnapshot-revert-to-snapshot"></a><code>step([$class: 'RevertToSnapshot'])</code>: Revert to Snapshot</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-suspendvm-suspend-vm"><a class="anchor" href="#stepclass-suspendvm-suspend-vm"></a><code>step([$class: 'SuspendVm'])</code>: Suspend VM</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to suspend.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-takesnapshot-take-snapshot"><a class="anchor" href="#stepclass-takesnapshot-take-snapshot"></a><code>step([$class: 'TakeSnapshot'])</code>: Take Snapshot</h3>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM you'd like to take a snapshot of.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+<li><code>description : String</code>
+<div><div>
+ The description to be saved with the snapshot.
+</div></div>
+
+</li>
+<li><code>includeMemory : boolean</code>
+<div><div>
+ Would you like to save the active memory in the snapshot?
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-vspherebuildstepcontainer-vsphere-build-step"><a class="anchor" href="#stepclass-vspherebuildstepcontainer-vsphere-build-step"></a><code>step([$class: 'VSphereBuildStepContainer'])</code>: vSphere Build Step</h3>
+<ul><li><code>buildStep</code>
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'Clone'</code><div>
+<ul><li><code>sourceName : String</code>
+<div><div>
+ The name of the vSphere VM or template to clone.
+</div></div>
+
+</li>
+<li><code>clone : String</code>
+<div><div>
+ The name of the cloned VM.
+</div></div>
+
+</li>
+<li><code>linkedClone : boolean</code>
+<div><div>
+ Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM. Leave it blank to use the same resource pool as the source VM. Must be specified if source VM is a template.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the VM.
+</div></div>
+
+</li>
+<li><code>folder : String</code>
+<div><div>
+ (Optional) VSphere folder path or unique folder name where VM is going to be created. <br> If blank, it will be created in the same folder as the original VM. <br>
+</div></div>
+
+</li>
+<li><code>powerOn : boolean</code>
+<div><div>
+ Specifies whether or not the new VirtualMachine should be powered on after creation.
+</div></div>
+
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The length of time, in seconds, to wait for the new VirtualMachine to be assigned an IP address after it has been powered on. If this value is zero, no attempt will be made to determine the IP address.
+</div></div>
+
+</li>
+<li><code>customizationSpec : String</code>
+<div><div>
+ The customization specification name, as defined under 'Policies and Profiles'
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ConvertToTemplate'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to be converted to a template.
+</div></div>
+
+</li>
+<li><code>force : boolean</code>
+<div><div>
+ Check this if you want to force the conversion in the case where the VM is not already powered down.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ConvertToVm'</code><div>
+<ul><li><code>template : String</code>
+<div><div>
+ The name of the template to be converted to a Virtual Machine.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Delete'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to be destroyed. This is a destructive operation that cannot be undone!
+</div></div>
+
+</li>
+<li><code>failOnNoExist : boolean</code>
+<div><div>
+ If the VM you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'DeleteSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+<li><code>consolidate : boolean</code>
+<div><div>
+ Consolidate all redundant redo logs for this VM?
+</div></div>
+
+</li>
+<li><code>failOnNoExist : boolean</code>
+<div><div>
+ If the snapshot you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Deploy'</code><div>
+<ul><li><code>template : String</code>
+<div><div>
+ The name of the vSphere template to clone.
+</div></div>
+
+</li>
+<li><code>clone : String</code>
+<div><div>
+ The name of the cloned VM.
+</div></div>
+
+</li>
+<li><code>linkedClone : boolean</code>
+<div><div>
+ Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM. If no resource pool is being used, then leave blank.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the VM.
+</div></div>
+
+</li>
+<li><code>folder : String</code>
+<div><div>
+ (Optional) VSphere folder path or unique folder name where VM is going to be created. <br> If blank, it will be created in the same folder as the original VM. <br>
+</div></div>
+
+</li>
+<li><code>customizationSpec : String</code>
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The length of time, in seconds, to wait for the new VirtualMachine to be assigned an IP address after it has been powered on. If this value is zero, no attempt will be made to determine the IP address.
+</div></div>
+
+</li>
+<li><code>powerOn : boolean</code>
+<div><div>
+ Specifies whether or not the new VirtualMachine should be powered on after creation.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ExposeGuestInfo'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to expose guest info for.<br> Variables IpAddress, Hostname, ToolsStatus, ToolsRunningStatus, ToolsVersion, ToolsVersionStatus, GuestState, GuestId, GuestFamily, GuestFullName, AppHeartbeatStatus, GuestOperationsReady, InteractiveGuestOperationsReady are exposed.
+</div></div>
+
+</li>
+<li><code>envVariablePrefix : String</code>
+<div><div>
+ Prefix for guest info environmental variables. E.g. for prefix VM1, variables would be VM1_IpAddress, VM1_HostName etc.
+</div></div>
+
+</li>
+<li><code>waitForIp4 : boolean</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'PowerOff'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to shut down.
+</div></div>
+
+</li>
+<li><code>evenIfSuspended : boolean</code>
+<div><div>
+ If the VM is currently suspended, it will still be shutdown.
+</div></div>
+
+</li>
+<li><code>shutdownGracefully : boolean</code>
+<div><div>
+ If the VM is powered on and VMware Tools is running, a graceful shutdown will be attempted by performing a Guest Shutdown. If the VM is still running after the timeout has been reached, a hard power off will be performed.
+</div></div>
+
+</li>
+<li><code>ignoreIfNotExists : boolean</code>
+</li>
+<li><code>gracefulShutdownTimeout : int</code> (optional)
+<div><div>
+ The number of seconds after which the graceful shutdown attempt is abandoned, and hard power off is performed.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'PowerOn'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to power on.
+</div></div>
+
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The maximum number of seconds to wait for the IP.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Reconfigure'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM or template to reconfigure.
+</div></div>
+
+</li>
+<li><code>reconfigureSteps</code>
+<ul><b>Array / List of Nested Choice of Objects</b>
+<li><code>$class: 'ReconfigureAnnotation'</code><div>
+<ul><li><code>annotation : String</code> (optional)
+<div><div>
+ The text that will be written into the "annotations" field on the VM. This typically shows up in the vSphere UI as the "Notes" for a VM.
+</div></div>
+
+</li>
+<li><code>append : boolean</code> (optional)
+<div><div>
+ If set then the text specified in this build step will be appended to the end of any existing text. If not set then the text specified will replace any existing text.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureCpu'</code><div>
+<ul><li><code>cpuCores : String</code>
+<div><div>
+ The number of CPU Cores.
+</div></div>
+
+</li>
+<li><code>coresPerSocket : String</code>
+<div><div>
+ The number of CPU Cores per Socket.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureDisk'</code><div>
+<ul><li><code>diskSize : String</code>
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the disk.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureMemory'</code><div>
+<ul><li><code>memorySize : String</code>
+<div><div>
+ The amount of memory (RAM) in megabytes.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureNetworkAdapters'</code><div>
+<ul><li><code>deviceAction</code>
+<ul><li><b>Values:</b> <code>ADD</code>, <code>EDIT</code>, <code>REMOVE</code></li></ul></li>
+<li><code>deviceLabel : String</code>
+<div><div>
+ The name of the network device, such as "Network adapter 1". If blank, the first network adapter will be used.
+</div></div>
+
+</li>
+<li><code>macAddress : String</code>
+<div><div>
+ The new MAC address for this network adapter. Leave blank to keep existing or default value.
+</div></div>
+
+</li>
+<li><code>standardSwitch : boolean</code>
+</li>
+<li><code>portGroup : String</code>
+<div><div>
+ The name of the network port group to use. Leave blank to keep existing or default value.
+</div></div>
+
+</li>
+<li><code>distributedSwitch : boolean</code>
+</li>
+<li><code>distributedPortGroup : String</code>
+<div><div>
+ Specifies the Distributed Switch Port Group.
+</div></div>
+
+</li>
+<li><code>distributedPortId : String</code>
+<div><div>
+ Port Id to be used from the specified Distributed Switch Port Group.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+</ul></div></li>
+<li><code>$class: 'Rename'</code><div>
+<ul><li><code>oldName : String</code>
+<div><div>
+ The old name of the VM or template to be renamed.
+</div></div>
+
+</li>
+<li><code>newName : String</code>
+<div><div>
+ The new name of the VM or template.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'RenameSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM or template.
+</div></div>
+
+</li>
+<li><code>oldName : String</code>
+<div><div>
+ The old name of the snapshot to be renamed.
+</div></div>
+
+</li>
+<li><code>newName : String</code>
+<div><div>
+ The new name of the snapshot.
+</div></div>
+
+</li>
+<li><code>newDescription : String</code>
+<div><div>
+ The new description of the snapshot.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'RevertToSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'SuspendVm'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to suspend.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'TakeSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM you'd like to take a snapshot of.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+<li><code>description : String</code>
+<div><div>
+ The description to be saved with the snapshot.
+</div></div>
+
+</li>
+<li><code>includeMemory : boolean</code>
+<div><div>
+ Would you like to save the active memory in the snapshot?
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>serverName : String</code>
+<div><div>
+ The vSphere configuration to use. Use ${VSPHERE_CLOUD_NAME} and create a vsphere selection parameter if you want to dynamically select the vSphere configuration.<br> A vsphere selection parameter is the same as a string parameter named VSPHERE_CLOUD_NAME but allows easy selection of a vsphere cloud.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="vsphere-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions"><a class="anchor" href="#vsphere-invoke-an-vsphere-action-exposing-the-vm-ip-under-some-actions"></a><code>vSphere</code>: Invoke an vSphere action, exposing the VM IP under some actions</h3>
+<div><div>
+ Execute vCenter actions. Reusing vSphereBuildStep forms, cut properly exposing VSPHERE_IP for PowerOn, Deploy and Clone options.
+</div></div>
+<ul><li><code>buildStep</code> (optional)
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'Clone'</code><div>
+<ul><li><code>sourceName : String</code>
+<div><div>
+ The name of the vSphere VM or template to clone.
+</div></div>
+
+</li>
+<li><code>clone : String</code>
+<div><div>
+ The name of the cloned VM.
+</div></div>
+
+</li>
+<li><code>linkedClone : boolean</code>
+<div><div>
+ Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM. Leave it blank to use the same resource pool as the source VM. Must be specified if source VM is a template.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the VM.
+</div></div>
+
+</li>
+<li><code>folder : String</code>
+<div><div>
+ (Optional) VSphere folder path or unique folder name where VM is going to be created. <br> If blank, it will be created in the same folder as the original VM. <br>
+</div></div>
+
+</li>
+<li><code>powerOn : boolean</code>
+<div><div>
+ Specifies whether or not the new VirtualMachine should be powered on after creation.
+</div></div>
+
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The length of time, in seconds, to wait for the new VirtualMachine to be assigned an IP address after it has been powered on. If this value is zero, no attempt will be made to determine the IP address.
+</div></div>
+
+</li>
+<li><code>customizationSpec : String</code>
+<div><div>
+ The customization specification name, as defined under 'Policies and Profiles'
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ConvertToTemplate'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to be converted to a template.
+</div></div>
+
+</li>
+<li><code>force : boolean</code>
+<div><div>
+ Check this if you want to force the conversion in the case where the VM is not already powered down.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ConvertToVm'</code><div>
+<ul><li><code>template : String</code>
+<div><div>
+ The name of the template to be converted to a Virtual Machine.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Delete'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to be destroyed. This is a destructive operation that cannot be undone!
+</div></div>
+
+</li>
+<li><code>failOnNoExist : boolean</code>
+<div><div>
+ If the VM you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'DeleteSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+<li><code>consolidate : boolean</code>
+<div><div>
+ Consolidate all redundant redo logs for this VM?
+</div></div>
+
+</li>
+<li><code>failOnNoExist : boolean</code>
+<div><div>
+ If the snapshot you are trying to delete doesnt exist, fail this build step. Sometimes, the job doesnt care if deletion was successful and only wants it gone---if this is the case, leave unchecked.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Deploy'</code><div>
+<ul><li><code>template : String</code>
+<div><div>
+ The name of the vSphere template to clone.
+</div></div>
+
+</li>
+<li><code>clone : String</code>
+<div><div>
+ The name of the cloned VM.
+</div></div>
+
+</li>
+<li><code>linkedClone : boolean</code>
+<div><div>
+ Linked clones will re-use any read-only disk backings (like snapshots) and create new children for your clone. This will drastically save time, but the disk backings will be shared.
+</div></div>
+
+</li>
+<li><code>resourcePool : String</code>
+<div><div>
+ The Resource Pool to be used by the VM. If no resource pool is being used, then leave blank.
+</div></div>
+
+</li>
+<li><code>cluster : String</code>
+<div><div>
+ The vCenter cluster to be used by the VM.
+</div></div>
+
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the VM.
+</div></div>
+
+</li>
+<li><code>folder : String</code>
+<div><div>
+ (Optional) VSphere folder path or unique folder name where VM is going to be created. <br> If blank, it will be created in the same folder as the original VM. <br>
+</div></div>
+
+</li>
+<li><code>customizationSpec : String</code>
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The length of time, in seconds, to wait for the new VirtualMachine to be assigned an IP address after it has been powered on. If this value is zero, no attempt will be made to determine the IP address.
+</div></div>
+
+</li>
+<li><code>powerOn : boolean</code>
+<div><div>
+ Specifies whether or not the new VirtualMachine should be powered on after creation.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ExposeGuestInfo'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to expose guest info for.<br> Variables IpAddress, Hostname, ToolsStatus, ToolsRunningStatus, ToolsVersion, ToolsVersionStatus, GuestState, GuestId, GuestFamily, GuestFullName, AppHeartbeatStatus, GuestOperationsReady, InteractiveGuestOperationsReady are exposed.
+</div></div>
+
+</li>
+<li><code>envVariablePrefix : String</code>
+<div><div>
+ Prefix for guest info environmental variables. E.g. for prefix VM1, variables would be VM1_IpAddress, VM1_HostName etc.
+</div></div>
+
+</li>
+<li><code>waitForIp4 : boolean</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'PowerOff'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to shut down.
+</div></div>
+
+</li>
+<li><code>evenIfSuspended : boolean</code>
+<div><div>
+ If the VM is currently suspended, it will still be shutdown.
+</div></div>
+
+</li>
+<li><code>shutdownGracefully : boolean</code>
+<div><div>
+ If the VM is powered on and VMware Tools is running, a graceful shutdown will be attempted by performing a Guest Shutdown. If the VM is still running after the timeout has been reached, a hard power off will be performed.
+</div></div>
+
+</li>
+<li><code>ignoreIfNotExists : boolean</code>
+</li>
+<li><code>gracefulShutdownTimeout : int</code> (optional)
+<div><div>
+ The number of seconds after which the graceful shutdown attempt is abandoned, and hard power off is performed.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'PowerOn'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to power on.
+</div></div>
+
+</li>
+<li><code>timeoutInSeconds : int</code>
+<div><div>
+ The maximum number of seconds to wait for the IP.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Reconfigure'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM or template to reconfigure.
+</div></div>
+
+</li>
+<li><code>reconfigureSteps</code>
+<ul><b>Array / List of Nested Choice of Objects</b>
+<li><code>$class: 'ReconfigureAnnotation'</code><div>
+<ul><li><code>annotation : String</code> (optional)
+<div><div>
+ The text that will be written into the "annotations" field on the VM. This typically shows up in the vSphere UI as the "Notes" for a VM.
+</div></div>
+
+</li>
+<li><code>append : boolean</code> (optional)
+<div><div>
+ If set then the text specified in this build step will be appended to the end of any existing text. If not set then the text specified will replace any existing text.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureCpu'</code><div>
+<ul><li><code>cpuCores : String</code>
+<div><div>
+ The number of CPU Cores.
+</div></div>
+
+</li>
+<li><code>coresPerSocket : String</code>
+<div><div>
+ The number of CPU Cores per Socket.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureDisk'</code><div>
+<ul><li><code>diskSize : String</code>
+</li>
+<li><code>datastore : String</code>
+<div><div>
+ The data store to be used by the disk.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureMemory'</code><div>
+<ul><li><code>memorySize : String</code>
+<div><div>
+ The amount of memory (RAM) in megabytes.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ReconfigureNetworkAdapters'</code><div>
+<ul><li><code>deviceAction</code>
+<ul><li><b>Values:</b> <code>ADD</code>, <code>EDIT</code>, <code>REMOVE</code></li></ul></li>
+<li><code>deviceLabel : String</code>
+<div><div>
+ The name of the network device, such as "Network adapter 1". If blank, the first network adapter will be used.
+</div></div>
+
+</li>
+<li><code>macAddress : String</code>
+<div><div>
+ The new MAC address for this network adapter. Leave blank to keep existing or default value.
+</div></div>
+
+</li>
+<li><code>standardSwitch : boolean</code>
+</li>
+<li><code>portGroup : String</code>
+<div><div>
+ The name of the network port group to use. Leave blank to keep existing or default value.
+</div></div>
+
+</li>
+<li><code>distributedSwitch : boolean</code>
+</li>
+<li><code>distributedPortGroup : String</code>
+<div><div>
+ Specifies the Distributed Switch Port Group.
+</div></div>
+
+</li>
+<li><code>distributedPortId : String</code>
+<div><div>
+ Port Id to be used from the specified Distributed Switch Port Group.
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+</ul></div></li>
+<li><code>$class: 'Rename'</code><div>
+<ul><li><code>oldName : String</code>
+<div><div>
+ The old name of the VM or template to be renamed.
+</div></div>
+
+</li>
+<li><code>newName : String</code>
+<div><div>
+ The new name of the VM or template.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'RenameSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM or template.
+</div></div>
+
+</li>
+<li><code>oldName : String</code>
+<div><div>
+ The old name of the snapshot to be renamed.
+</div></div>
+
+</li>
+<li><code>newName : String</code>
+<div><div>
+ The new name of the snapshot.
+</div></div>
+
+</li>
+<li><code>newDescription : String</code>
+<div><div>
+ The new description of the snapshot.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'RevertToSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'SuspendVm'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM to suspend.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'TakeSnapshot'</code><div>
+<ul><li><code>vm : String</code>
+<div><div>
+ The name of the VM you'd like to take a snapshot of.
+</div></div>
+
+</li>
+<li><code>snapshotName : String</code>
+<div><div>
+ The name of the snapshot.
+</div></div>
+
+</li>
+<li><code>description : String</code>
+<div><div>
+ The description to be saved with the snapshot.
+</div></div>
+
+</li>
+<li><code>includeMemory : boolean</code>
+<div><div>
+ Would you like to save the active memory in the snapshot?
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>serverName : String</code> (optional)
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

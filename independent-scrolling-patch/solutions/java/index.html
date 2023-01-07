@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins and Java
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/solutions/java/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins and Java" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins and Java" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins and Java" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/solutions/java/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins and Java" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial jumbotron.html.haml -->
+<div class="featured featured_562 jumbotron jumbotron-fluid">
+<div class="container">
+<div class="rog">
+<div class="col-md-1"></div>
+<div class="col-md-7">
+<a href="/solutions/java">
+<h2>
+Jenkins and Java
+</h2>
+<p>
+
+</p>
+</a>
+<div class="col-md-5"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ending partial jumbotron.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-8">
+<div class="solution_content">
+<div class="paragraph">
+<p>Jenkins supports building Java projects since its inception, and for a reason!
+It&#8217;s both the language Jenkins is written in, plus the language in use by many if not all the
+projects Kohsuke Kawaguchi wanted to watch out when he created the tool many years ago.</p>
+</div>
+<div class="paragraph">
+<p>If you want to build a Java project, there are a bunch of different options.
+The most typical ones nowadays are generally Apache Maven, or Gradle.</p>
+</div>
+<div class="sect1">
+<h2 id="apache-maven"><a class="anchor" href="#apache-maven"></a>Apache Maven</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In any FreeStyle job, as <strong>currently</strong> Maven is supported in standard, you can use the
+dedicated step. One advantage is, as for all Jenkins tools, that you can select a specific
+Maven version and have Jenkins automatically install it on the build node it&#8217;s going to run on.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/solution-images/jenkins-maven-step.png" alt="Jenkins Maven step">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gradle"><a class="anchor" href="#gradle"></a>Gradle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the associated plugin is not installed by default, first install the
+<a href="https://plugins.jenkins.io/gradle">Gradle plugin</a>.
+Once done, you should be able to add a Gradle step.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/solution-images/jenkins-gradle-step.png" alt="Jenkins Gradle step">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution_blogs">
+<!-- starting partial blogs.html.haml -->
+
+<!-- ending partial blogs.html.haml -->
+</div>
+</div>
+<div class="col-md-4">
+<!-- starting partial plugins.html.haml -->
+<div class="plugins-list">
+<h4>Java plugins for Jenkins</h4>
+<div class="content">
+<div class="item-list">
+<ul class="ji-dated-list ji-item-list plugins">
+<li class="post">
+<a class="article" href="https://plugins.jenkins.io/junit">
+<h6 class="title">JUnit plugin</h6>
+<p class="url">publishes JUnit XML formatted test reports for trending and analysis</p>
+</a>
+</li>
+<li class="post">
+<a class="article" href="https://plugins.jenkins.io/gradle">
+<h6 class="title">Gradle plugin</h6>
+<p class="url">support invoking Gradle as a build step and listing executing tasks per build</p>
+</a>
+</li>
+<li class="post">
+<a class="article" href="https://plugins.jenkins.io/warnings-ng">
+<h6 class="title">Warnings Next Generation plugin</h6>
+<p class="url">collects compiler warnings and issues from static analysis tools such as SpotBugs and PMD</p>
+</a>
+</li>
+<li class="post">
+<a class="article" href="https://plugins.jenkins.io/cobertura">
+<h6 class="title">Cobertura plugin</h6>
+<p class="url">publish and trend code coverage reports from Cobertura</p>
+</a>
+</li>
+<li class="post">
+<a class="article" href="https://plugins.jenkins.io/sonar">
+<h6 class="title">SonarQube plugin</h6>
+<p class="url">integrate reporting from the SonarQube code quality/inspection platform</p>
+</a>
+</li>
+<li class="post">
+<a class="article" href="https://plugins.jenkins.io/repository-connector">
+<h6 class="title">Repository Connector plugin</h6>
+<p class="url">adds features for resolving artifacts from a Maven repository such as Nexus or Artifactory.</p>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ending partial plugins.html.haml -->
+</div>
+</div>
+</div>
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//solutions/java.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

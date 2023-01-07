@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC Project Intro: Pipeline as YAML
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/06/15/simple-pull-request-plugin/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC Project Intro: Pipeline as YAML" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC Project Intro: Pipeline as YAML" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC Project Intro: Pipeline as YAML" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/06/15/simple-pull-request-plugin/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC Project Intro: Pipeline as YAML" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSoC Project Intro: Pipeline as YAML
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abhishek_gautam/"><div class="app-avatar"></div> Abhishek Gautam</a>
+June 15, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSoC+Project+Intro%3A+Pipeline+as+YAML&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F06%2F15%2Fsimple-pull-request-plugin%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect2">
+<h3 id="about-me"><a class="anchor" href="#about-me"></a>About me</h3>
+<div class="paragraph">
+<p>I am Abhishek Gautam, 3rd year student from Visvesvaraya National Institute of
+technology, India, Nagpur. I was a member of ACM Chapter and Google student developer club of my
+college. I am passionate about automation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mentors"><a class="anchor" href="#mentors"></a>Mentors</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a> (Org Admin)</p>
+</li>
+<li>
+<p><a href="https://github.com/martinda">Martin d&#8217;Anjou</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kwhetstone">Kristin Whetstone</a></p>
+</li>
+<li>
+<p><a href="https://github.com/grandvizier">Jeff Knurek</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-summary"><a class="anchor" href="#project-summary"></a>Project Summary</h3>
+<div class="paragraph">
+<p>This is a GSoC 2018 project.</p>
+</div>
+<div class="paragraph">
+<p>This project aims to develop a pull request Job Plugin. Users should be able to
+configure job type using YAML file placed in root directory of the
+Git repository being the subject of the pull request. The plugin should interact with various
+platforms like Bitbucket, Github, Gitlab, etc whenever a pull request is created or updated.</p>
+</div>
+<div class="paragraph">
+<p>Plugin detects the presence of certain types of the report at conventional locations,
+and publish them automatically. If the reports are not present at conventional location,
+can specify the location using the YAML file.</p>
+</div>
+<div class="sect3">
+<h4 id="benefits-to-the-community"><a class="anchor" href="#benefits-to-the-community"></a>Benefits to the community</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Project administrators will be able to handle builds for pull requests more easily.</p>
+</li>
+<li>
+<p>Build specifications for pull request can be written in a concise declarative format.</p>
+</li>
+<li>
+<p>Build reports will be automatically published to Github, Bitbucket, etc.</p>
+</li>
+<li>
+<p>Build status updates will be sent to git servers automatically.</p>
+</li>
+<li>
+<p>Users will not have to deal with pipeline code.</p>
+</li>
+<li>
+<p>If there will be no merge conflicts or build failures, the PR can be merged into target branch.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prior-work"><a class="anchor" href="#prior-work"></a>Prior work</h3>
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p><a href="https://github.com/Jenkinsci/travis-yml-plugin">Travis YML Plugin</a>:
+Designed to run .travis.yml as Jenkins pipeline job.
+Travis-CI does not support external pull requests. Jenkins environment
+is different than Travis and does not always make sense to use configurations
+defined for other environment in Jenkins. Also maintenance of this is slowed
+down and last commit for this plugin was on 14 Nov 2016.
+<a href="https://github.com/Jenkinsci/travis-yml-plugin/commits/master">Click here</a> to check.</p>
+</li>
+<li>
+<p><a href="https://github.com/ndeloof/codeship-plugin">CodeShip Plugin</a>:
+This plugin is designed to convert codeship "steps.yaml" and
+"services.yaml" to scripted pipeline code. This plugin has never been released.</p>
+</li>
+<li>
+<p><a href="https://github.com/constantcontact/jenkins_pipeline_builder">Jenkins pipeline builder</a>:
+This is a external non-Java-based tool, which cannot be easily converted to a Jenkins plugin.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design"><a class="anchor" href="#design"></a>Design</h3>
+<div class="paragraph">
+<p>This plugin will be developed on the top of the MultiBranch Pipeline plugin.</p>
+</div>
+<div class="paragraph">
+<p>For now the plugin is building branches and Pull request both using Jenkinsfile.yaml,
+but this plugin is inclined to use for pull requests. This will be fixed in next coding phase.</p>
+</div>
+<div class="paragraph">
+<p>This plugin is following below steps for now:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>clone target repo</p>
+</li>
+<li>
+<p>checkout to target branch</p>
+</li>
+<li>
+<p>fetch the source branch</p>
+</li>
+<li>
+<p>merge source-branch</p>
+</li>
+<li>
+<p>call user call user script to build the repo.</p>
+</li>
+<li>
+<p>push changes of pull request to target branch</p>
+</li>
+<li>
+<p>publish test reports</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Plugin will start above steps if and only if the pull request is
+mergeable, to avoid merge conflicts while merging the source branch to target
+branch. Pull request&#8217;s payload contains information if the pull request changes
+are mergeable or not hence, the pull request is mergebale or not can also be
+decided by the payload of webhook also.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-run-the-plugin"><a class="anchor" href="#how-to-run-the-plugin"></a>How to run the Plugin</h3>
+<div class="paragraph">
+<p>See <a href="https://github.com/Jenkinsci/simple-pull-request-job-plugin/blob/master/README.md">How to run the demo</a>
+and set credentials, owner and repository on your own and you will be good to go.</p>
+</div>
+<div class="sect3">
+<h4 id="example-branch-source-configuration"><a class="anchor" href="#example-branch-source-configuration"></a>Example branch-source configuration.</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-simple-pull-request-plugin/branch-source-configuration.png" alt="branch source configuration" title="Jenkinsfile.yaml"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="phase-1-features"><a class="anchor" href="#phase-1-features"></a>Phase 1 features</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Users are able to select the Jenkinsfile.yaml file as the source for the Pipeline configuration.</p>
+</li>
+<li>
+<p>Git Push step</p>
+</li>
+<li>
+<p>harvest results and reports (and post in the pull request)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>junit()</code></p>
+</li>
+<li>
+<p><code>findbugs()</code></p>
+</li>
+<li>
+<p><code>archiveArtifacts()</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Basic interface to parse and get build specifications from YAML file.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="things-decided"><a class="anchor" href="#things-decided"></a>Things decided</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To build the plugin on the top of multibranch pipeline plugin. As that plugin has implementation of</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Nice interface to show different branch and pull requests build separately with use of suitable plugins like Github, Bitbucket.</p>
+</li>
+<li>
+<p>Detect trusted revisions in a repository.</p>
+</li>
+<li>
+<p>Publishing of build status to the repository.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Convert the YAML configuration to declarative pipeline.</p>
+</li>
+<li>
+<p>User will provide path to the script relative to the root directory of the repository
+without extension (.sh or .bat) in the YAML file. The plugin will generate pipeline script to detect the
+platform and call .sh or .bat script.</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Example:
+  Path provided: ./scripts/hello
+  a. On UNIX machine “./scripts/hello.sh” will be called
+  b. On non-UNIX machine “./scripts/hello.bat” will be called.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementations-till-now"><a class="anchor" href="#implementations-till-now"></a>Implementations till now</h3>
+<div class="paragraph">
+<p>A first prototype of the plugin is ready. It supports all features of Multi-Branch Pipeline and offers the following features.</p>
+</div>
+<div class="paragraph">
+<p>Build description is defined via YAML file stored within the SCM repo. This plugin
+will depend on GitHub plugin, Bitbucket plugin, Gitlab plugin if users will be
+using respective paltfroms for their repositories.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Basic conversion of YAML to Declarative Pipeline: A class YamlToPipeline
+is written which will load the "Jenkinsfile.yaml" and make use of PipelineSnippetGenerator class
+to generate Declarative pipeline code.</p>
+</li>
+<li>
+<p>Reporting of results.</p>
+</li>
+<li>
+<p>Plugin is using Yaml from target branch right now. (Maybe this needs some discussion, example:
+what if pull request contains changes in Jenkinsfile.yaml)</p>
+</li>
+<li>
+<p>Git Push step: To push the changes of pull request to the target branch. This is implemented
+using git-plugin, PushCommand is used for this from git-plugin. credentialId,
+branch name and repository url for intracting with Github, Bitbucket, etc
+will be taken automatically from "Branch-Source" (Users have to fill the
+details of branch source in job configuration UI). (You can see
+<a href="https://github.com/Jenkinsci/simple-pull-request-job-plugin/blob/master/README.md">How to run the demo</a>)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkinsfile-yaml-example"><a class="anchor" href="#jenkinsfile-yaml-example"></a>Jenkinsfile.yaml example</h3>
+<div class="paragraph">
+<p>For the phase 1 prototype demonstration, the following yaml file was used.
+Note that this format is subject to change in the next phases of the project,
+as we formalise the yaml format definition.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">agent</span><span class="pi">:</span>
+    <span class="na">dockerImage</span><span class="pi">:</span> <span class="s">maven:3.5.3-jdk-8</span>
+    <span class="na">args</span><span class="pi">:</span> <span class="s">-v /tmp:/tmp</span>
+
+<span class="na">testResultPaths</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">target/surefire-reports/*.xml</span>
+
+<span class="na">findBugs</span><span class="pi">:</span> <span class="s">target/*.xml</span>
+
+<span class="na">stages</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">First</span>
+      <span class="na">scripts</span><span class="pi">:</span>
+        <span class="pi">-</span>   <span class="s">./scripts/hello</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
+      <span class="na">scripts</span><span class="pi">:</span>
+        <span class="pi">-</span>   <span class="s">./scripts/build</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Tests</span>
+      <span class="na">scripts</span><span class="pi">:</span>
+        <span class="pi">-</span>   <span class="s">./scripts/test</span>
+
+<span class="na">archiveArtifacts</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">Jenkinsfile.yaml</span>
+    <span class="pi">-</span> <span class="s">scripts/hello.sh</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="from-the-yaml-file-shown-above-the-plugin-generates-the-following-pipeline-code"><a class="anchor" href="#from-the-yaml-file-shown-above-the-plugin-generates-the-following-pipeline-code"></a>From the yaml file shown above, the plugin generates the following pipeline code:</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+  <span class="n">agent</span> <span class="o">{</span>
+    <span class="n">docker</span> <span class="o">{</span>
+      <span class="n">image</span> <span class="s1">'maven:3.5.3-jdk-8'</span>
+      <span class="n">args</span> <span class="s1">'-v /tmp:/tmp'</span>
+      <span class="n">alwaysPull</span> <span class="kc">false</span>
+      <span class="n">reuseNode</span> <span class="kc">false</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="n">stages</span> <span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'First'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">script</span> <span class="o">{</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">isUnix</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">sh</span> <span class="s1">'./scripts/hello.sh'</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">bat</span> <span class="s1">'./scripts/hello.bat'</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">script</span> <span class="o">{</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">isUnix</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">sh</span> <span class="s1">'./scripts/build.sh'</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">bat</span> <span class="s1">'./scripts/build.bat'</span>
+          <span class="o">}</span>
+        <span class="o">}</span><span class="n">pipeline</span>
+      <span class="o">}</span>
+      <span class="n">post</span> <span class="o">{</span>
+        <span class="n">success</span> <span class="o">{</span>
+          <span class="n">archiveArtifacts</span> <span class="nl">artifacts:</span> <span class="s1">'**/target/*.jar'</span>
+          <span class="n">archiveArtifacts</span> <span class="nl">artifacts:</span> <span class="s1">'Jenkinsfile.yaml'</span>
+          <span class="n">archiveArtifacts</span> <span class="nl">artifacts:</span> <span class="s1">'scripts/hello.sh'</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'Tests'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">script</span> <span class="o">{</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">isUnix</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">sh</span> <span class="s1">'./scripts/test.sh'</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">bat</span> <span class="s1">'./scripts/test.bat'</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="n">post</span> <span class="o">{</span>
+        <span class="n">success</span> <span class="o">{</span>
+          <span class="n">junit</span> <span class="s1">'target/surefire-reports/*.xml'</span>
+        <span class="o">}</span>
+        <span class="n">always</span> <span class="o">{</span>
+          <span class="n">findbugs</span> <span class="nl">pattern:</span> <span class="s1">'target/*.xml'</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pipeline-view-in-jenkins-instance"><a class="anchor" href="#pipeline-view-in-jenkins-instance"></a>Pipeline view in Jenkins instance</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-simple-pull-request-plugin/pipeline-view.png" alt="pipeline view" title="Jenkinsfile.yaml"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coding-phase-2-plans"><a class="anchor" href="#coding-phase-2-plans"></a>Coding Phase 2 plans</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Decide a proper YAML format to use for Jenkinsfile.yaml</p>
+</li>
+<li>
+<p>Create Step Configurator for SPRP plugin. <a href="https://issues.jenkins.io/browse/JENKINS-51637">Jenkins-51637</a>.
+This will enable users to use Pipeline steps in Jenkinsfile.yaml.</p>
+</li>
+<li>
+<p>Automatic indentation generation in the generated Pipeline SnipperGenerator class.</p>
+</li>
+<li>
+<p>Write tests for the plugin.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/Jenkins-51809">Jira Epic</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-reach-me"><a class="anchor" href="#how-to-reach-me"></a>How to reach me</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Email: <a href="mailto:gautamabhishek46@gmail.com">gautamabhishek46@gmail.com</a></p>
+</li>
+<li>
+<p>Gitter room: <a href="https://gitter.im/Jenkinsci/simple-pull-request-job-plugin" class="bare">https://gitter.im/Jenkinsci/simple-pull-request-job-plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references"><a class="anchor" href="#references"></a>References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/1cuC0AvQG3e4GCjIoCwK3J0tcJVAz1eNDKV8d_zXxlO8/edit">Initial proposal of the project</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Jenkinsci/simple-pull-request-job-plugin">Project repository</a></p>
+</li>
+<li>
+<p><a href="https://Jenkins.io/projects/gsoc/2018/simple-pull-request-job-plugin/">Project page</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/Jenkinsci/simple-pull-request-job-plugin?utm_source=share-link&amp;utm_medium=link&amp;utm_campaign=share-link">Gitter chat</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20Jenkins%20AND%20component%20%3D%20simple-pull-request-job-plugin">Bug Tracker</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gautamabhishek46/dummy">Demo Repository</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=qWHM8S0fzUw">Phase 1 Presentation video</a>(June 14, 2018)</p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1R63XK4Nmd5EBmMdF2rkevV1iZxjTom19XFHdgjY9qeA/edit?usp=sharing">Phase 1 Presentation Slides</a>(June 14, 2018)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2018/">
+gsoc2018
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugin/">
+plugin
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/yaml/">
+yaml
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abhishek_gautam/">
+Abhishek Gautam
+</a>
+</p>
+<div class="paragraph">
+<p>Abhishek is a 3rd year Computer Science student from Visvesvaraya National
+Institute of Technology, Nagpur, India. He has done some website projects for
+his college technical festival. He is also a regular competitive programmer
+(abhishekg1128 at codechef). He has done two internships as a Game Programmer
+as well. He was a member of ACM Chapter and Google student developer club of his
+college. His interest in automation motivated his participation in the Jenkins
+GSOC 2018 program.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/gautamabhishek46" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/06/2018-06-15-simple-pull-request-plugin.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

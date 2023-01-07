@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jelly form controls
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/forms/jelly-form-controls/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jelly form controls" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jelly form controls" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jelly form controls" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/forms/jelly-form-controls/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jelly form controls" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="active">Forms</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/form-validation/" class="">Form validation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/adding-tool-tips/" class="">Adding tool tips</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/jelly-form-controls/" class="active">Jelly form controls</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/structured-form-submission/" class="">Structured form submission</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Jelly form controls
+</h1>
+<div class="paragraph">
+<p>Most of the the jelly files in the Jenkins source have embedded documentation. See <a href="/doc/developer/development-environment/ide-configuration">IDE Configuration</a> for details on how to get this setup so you can click through to it in your IDE.</p>
+</div>
+<div class="paragraph">
+<p>For example you can see the embedded documentation of <a href="https://github.com/jenkinsci/jenkins/blob/63f80114e99f6692812c3039407652592bdf36fe/core/src/main/resources/lib/form/form.jelly"> the &lt;form&gt; tag </a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also have a look at the referenced <strong>ui-samples-plugin</strong>, this repository contains executable examples of user interface elements, including forms.</p>
+</div>
+<div class="sect1">
+<h2 id="validation-button"><a class="anchor" href="#validation-button"></a>Validation Button</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>jelly definition <a href="https://github.com/jenkinsci/jenkins/blob/63f80114e99f6692812c3039407652592bdf36fe/core/src/main/resources/lib/form/validateButton.jelly">form/validateButton.jelly</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This tag creates a right-aligned button for performing server-side validation. It is suitable for situations where the validation depends on the values of multiple input fields, such as credential check that uses both username and password.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"${%Access Key ID}"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;f:textbox</span> <span class="na">field=</span><span class="s">"accessId"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/f:entry&gt;</span>
+<span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"${%Secret Access Key}"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;f:password</span> <span class="na">field=</span><span class="s">"secretKey"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/f:entry&gt;</span>
+<span class="nt">&lt;f:validateButton</span>
+   <span class="na">title=</span><span class="s">"${%Test Connection}"</span> <span class="na">progress=</span><span class="s">"${%Testing...}"</span>
+   <span class="na">method=</span><span class="s">"testConnection"</span> <span class="na">with=</span><span class="s">"secretKey,accessId"</span> <span class="nt">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>title</code> attribute is used to determine the text written on the button. The <code>progress</code> attribute determines the message displayed while the server-side validation is in progress. The <code>method</code> attribute specifies the server-side method invoked by this button; this follows the stapler name mangling convention, so for example <code>method="testConnection"</code> will invoke the <code>doTestConnection</code> method. This method needs to be on the Descriptor class that owns this form fragment.</p>
+</div>
+<div class="paragraph">
+<p>The <code>with</code> attribute specifies the input fields sent to the server for the validation. They are matched against the <code>field</code> attribute or the <code>name</code> attribute of other input controls. The values of the nearest input fields above the <code>&lt;f:validateButton/&gt;</code> are sent to the server, so this means the button has to come after the input fields. Multiple fields can be specified by using ','.</p>
+</div>
+<div class="paragraph">
+<p>On the server side, this tag invokes the standard "do"-style method like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="nd">@POST</span>
+<span class="kd">public</span> <span class="nc">FormValidation</span> <span class="nf">doTestConnection</span><span class="o">(</span><span class="nd">@QueryParameter</span><span class="o">(</span><span class="s">"accessId"</span><span class="o">)</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">accessId</span><span class="o">,</span>
+        <span class="nd">@QueryParameter</span><span class="o">(</span><span class="s">"secretKey"</span><span class="o">)</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">,</span>
+        <span class="nd">@AncestorInPath</span> <span class="nc">Job</span> <span class="n">job</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+         <span class="k">if</span> <span class="o">(</span><span class="n">job</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+             <span class="nc">Jenkins</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">checkPermission</span><span class="o">(</span><span class="nc">Jenkins</span><span class="o">.</span><span class="na">ADMINISTER</span><span class="o">);</span>
+         <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+             <span class="n">job</span><span class="o">.</span><span class="na">checkPermission</span><span class="o">(</span><span class="nc">Item</span><span class="o">.</span><span class="na">CONFIGURE</span><span class="o">);</span>
+         <span class="o">}</span>
+        <span class="o">...</span> <span class="k">do</span> <span class="n">some</span> <span class="n">tests</span> <span class="o">...</span>
+        <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="s">"Success"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">EC2Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Client error : "</span><span class="o">+</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The doTestConnection method contains the validation logic. In the end, this method has to call either <code>FormValidation.ok</code>, <code>.warning</code>, or .error method. Depending on which method you use, the appropriate HTML will be rendered on the client side to indicate the status to the user.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="advanced"><a class="anchor" href="#advanced"></a>Advanced</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>jelly definition <a href="https://github.com/jenkinsci/jenkins/blob/63f80114e99f6692812c3039407652592bdf36fe/core/src/main/resources/lib/form/advanced.jelly">form/avanced.jelly</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Expandable section that shows "advanced&#8230;&#8203;" button by default. Upon clicking it, a section unfolds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:section</span> <span class="na">title=</span><span class="s">"Advanced Project Options"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;f:advanced&gt;</span>
+    <span class="nt">&lt;st:include</span> <span class="na">page=</span><span class="s">"configure-advanced.jelly"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/f:advanced&gt;</span>
+<span class="nt">&lt;/f:section&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="optionalblock"><a class="anchor" href="#optionalblock"></a>OptionalBlock</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>jelly definition <a href="https://github.com/jenkinsci/jenkins/blob/63f80114e99f6692812c3039407652592bdf36fe/core/src/main/resources/lib/form/optionalBlock.jelly">form/optionalBlock.jelly</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Foldable block expanded when the menu item is checked.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:block&gt;</span>
+  <span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;f:optionalBlock</span> <span class="na">name=</span><span class="s">"dynamic"</span> <span class="na">title=</span><span class="s">"Use existing dynamic view"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"View drive"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;f:textbox</span> <span class="na">name=</span><span class="s">"drive"</span> <span class="na">value=</span><span class="s">"${it.drive}"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/f:entry&gt;</span>
+    <span class="nt">&lt;/f:optionalBlock&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/f:block&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unchecked the text box will not be displayed
+Checked the text box is displayed</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="select-drop-down-menu"><a class="anchor" href="#select-drop-down-menu"></a>Select (drop-down menu)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use an <a href="https://github.com/jenkinsci/jenkins/blob/63f80114e99f6692812c3039407652592bdf36fe/core/src/main/resources/lib/form/entry.jelly">&lt;f:entry&gt;</a> tag to enclose the normal select tag.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:entry</span> <span class="na">name=</span><span class="s">"goalType"</span> <span class="na">title=</span><span class="s">"Choose Goal Type"</span> <span class="na">field=</span><span class="s">"goalType"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"goalType"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"buildGoal"</span><span class="nt">&gt;</span>Build Goal<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"spotBugsGoal"</span><span class="nt">&gt;</span>SpotBugs goal<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/f:entry&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="select-drop-down-menu-with-model-filled-values"><a class="anchor" href="#select-drop-down-menu-with-model-filled-values"></a>Select (drop-down menu) with model filled values</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Basically the same as above. You need to define the following method in the descriptor of your Describable instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="nc">ListBoxModel</span> <span class="nf">doFillGoalTypeItems</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">ListBoxModel</span> <span class="n">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListBoxModel</span><span class="o">();</span>
+
+    <span class="n">items</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Build Goal"</span><span class="o">,</span> <span class="s">"buildGoal"</span><span class="o">);</span>
+    <span class="n">items</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"SpotBugs goal"</span><span class="o">,</span> <span class="s">"spotBugsGoal"</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">items</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, use an <code>&lt;f:entry&gt;</code> tag to enclose the normal select tag.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:entry</span> <span class="na">field=</span><span class="s">"goalType"</span> <span class="na">title=</span><span class="s">"Choose Goal Type"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;f:select</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/f:entry&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="inline-help"><a class="anchor" href="#inline-help"></a>Inline help</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>jelly definition <a href="https://github.com/jenkinsci/jenkins/blob/63f80114e99f6692812c3039407652592bdf36fe/core/src/main/resources/lib/form/helpLink.jelly">form/helpLink.jelly</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="add-an-inline-help-to-a-form-element"><a class="anchor" href="#add-an-inline-help-to-a-form-element"></a>Add an inline help to a form element</h3>
+<div class="paragraph">
+<p>Most form elements allow you to have inline help generated by adding a small HTML file and following some conventions.</p>
+</div>
+<div class="paragraph">
+<p>For example the <code>&lt;f:entry&gt;</code> tag uses the <code>field</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>Given a file in src/main/resources/myForm.jelly with this content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"Name"</span> <span class="na">field=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;f:textbox</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/f:entry&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adding a src/main/resources/help-name.html:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="html"><span class="nt">&lt;div&gt;</span>
+This is my content to help the end user understanding how to use this field.
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Will automatically display the help button with the <code>&lt;div&gt;&#8230;&#8203;&lt;/div&gt;</code> content.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-notes-on-inline-help"><a class="anchor" href="#additional-notes-on-inline-help"></a>Additional notes on inline help</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Most controls support <code>help.html</code> as overall help for the <code>Describable</code>.</p>
+</li>
+<li>
+<p>The help message can be overridden in jelly with the <code>help</code> attribute, but please use the convention 'help-fieldName.html' as much as possible.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"This is a nice Title"</span>  <span class="na">help=</span><span class="s">"/plugin/my-plugin/help/custom-file.html"</span><span class="nt">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<h2>
+References
+</h2>
+<ul>
+<li><a href="https://github.com/jenkinsci/ui-samples-plugin">ui-samples-plugin</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/forms/jelly-form-controls.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

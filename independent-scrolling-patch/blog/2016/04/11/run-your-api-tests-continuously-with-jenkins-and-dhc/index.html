@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Run Your API Tests Continuously with Jenkins and DHC
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/04/11/run-your-api-tests-continuously-with-jenkins-and-dhc/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Run Your API Tests Continuously with Jenkins and DHC" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Run Your API Tests Continuously with Jenkins and DHC" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Run Your API Tests Continuously with Jenkins and DHC" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/04/11/run-your-api-tests-continuously-with-jenkins-and-dhc/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Run Your API Tests Continuously with Jenkins and DHC" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Run Your API Tests Continuously with Jenkins and DHC
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/glaforge/"><div class="app-avatar"></div> Guillaume Laforge</a>
+April 11, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Run+Your+API+Tests+Continuously+with+Jenkins+and+DHC&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F04%2F11%2Frun-your-api-tests-continuously-with-jenkins-and-dhc%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://twitter.com/glaforge">Guillaume Laforge</a>.
+Well known for his contribution to the <a href="http://www.groovy-lang.org/">Apache Groovy</a> project,
+Guillaume is also the "Product Ninja and Advocate" of <a href="https://restlet.com/">Restlet</a>,
+a company focusing on Web APIs:
+with <a href="https://restlet.com/products/dhc/">DHC</a> (an API testing client),
+<a href="https://restlet.com/products/restlet-studio/">Restlet Studio</a> (an API designer),
+<a href="https://restlet.com/products/apispark/">APISpark</a> (an API platform in the cloud),
+and the <a href="https://restlet.com/projects/restlet-framework/">Restlet Framework</a>
+open source project for developing APIs.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Modern mobile apps, single-page web sites and applications, are more and more relying on Web APIs,
+as the nexus of the interaction between the frontend and the backend services.
+Web APIs are also central to third-party integration, when you want to share your services with others,
+or when you need to consume existing APIs to build your own solution on top of their shoulders.</p>
+</div>
+<div class="paragraph">
+<p>With APIs being a key element of your architecture and big picture,
+it&#8217;s obviously important to assess that this API is functioning the way it should, thanks to proper testing.
+Your framework of choice, regardless of the technology stack or programming language used,
+will hopefully offer some facilities for testing your code,
+whether in the form of unit tests, or ideally with integration tests.</p>
+</div>
+<div class="sect1">
+<h2 id="coding-web-api-tests"><a class="anchor" href="#coding-web-api-tests"></a>Coding Web API tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>From a code perspective, as I said, most languages and frameworks provide approaches to testing APIs built with them.
+There&#8217;s one I wanted to highlight in particular, which is one developed with a DSL approach (Domain-Specific Language),
+using the <a href="http://groovy-lang.org">Apache Groovy</a> programming language, it&#8217;s
+<a href="https://github.com/Codearte/accurest/wiki/3.-Contract-DSL">AccuREST</a>.</p>
+</div>
+<div class="paragraph">
+<p>To get started, you can have a look at the <a href="https://github.com/Codearte/accurest/wiki/1.-Introduction">introduction</a>,
+and the <a href="https://github.com/Codearte/accurest/wiki/2.-Usage">usage</a> guide.
+If you use the <a href="https://github.com/Codearte/accurest/wiki/3.-Contract-DSL">contract DSL</a>,
+you&#8217;ll be able to write highly readable examples of requests you want to issue against your API,
+and the assertions that you expect to be true when getting the response from that call.
+Here&#8217;s a concrete example from the documentation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">GroovyDsl</span><span class="o">.</span><span class="na">make</span> <span class="o">{</span>
+    <span class="n">request</span> <span class="o">{</span>
+        <span class="n">method</span> <span class="s1">'POST'</span>
+        <span class="n">urlPath</span><span class="o">(</span><span class="s1">'/users'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">queryParameters</span> <span class="o">{</span>
+                <span class="n">parameter</span> <span class="s1">'limit'</span><span class="o">:</span> <span class="mi">100</span>
+                <span class="n">parameter</span> <span class="s1">'offset'</span><span class="o">:</span> <span class="n">containing</span><span class="o">(</span><span class="s2">"1"</span><span class="o">)</span>
+                <span class="n">parameter</span> <span class="s1">'filter'</span><span class="o">:</span> <span class="s2">"email"</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">headers</span> <span class="o">{</span>
+            <span class="n">header</span> <span class="s1">'Content-Type'</span><span class="o">:</span> <span class="s1">'application/json'</span>
+        <span class="o">}</span>
+        <span class="n">body</span> <span class="s1">'''{ "login" : "john", "name": "John The Contract" }'''</span>
+    <span class="o">}</span>
+    <span class="n">response</span> <span class="o">{</span>
+        <span class="n">status</span> <span class="mi">200</span>
+        <span class="n">headers</span> <span class="o">{</span>
+            <span class="n">header</span> <span class="s1">'Location'</span><span class="o">:</span> <span class="s1">'/users/john'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the response is expected to return a status code 200 OK, and a Location header pointing at <code>/users/john</code>.
+Indeed, a very readable way to express the requests and responses!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tooling-to-test-your-apis"><a class="anchor" href="#tooling-to-test-your-apis"></a>Tooling to test your APIs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>From a tooling perspective, there are some interesting tools that can be used to test Web APIs,
+like <a href="https://luckymarmot.com/paw">Paw</a> (on Macs),
+<a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US">Advanced REST client</a>,
+<a href="https://www.getpostman.com/">Postman</a> or
+<a href="https://insomnia.rest/">Insomnia</a>.</p>
+</div>
+<div class="paragraph">
+<p>But in this article, I&#8217;ll offer a quick look at <a href="https://restlet.com/products/dhc/">DHC</a>,
+a handy visual tool, that you can use both manually to craft your tests and assertions,
+and whose test scenarios you can export and integrate in your build and continuous integration pipeline,
+thanks to <a href="https://maven.apache.org/">Maven</a> and Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>At the end of this post, you should be able to see the following reporting in your Jenkins dashboard,
+when visualising the resulting API test execution:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="/images/post-images/dhc/dhc-5-jenkins-report-big.png"><img src="/images/post-images/dhc/dhc-5-jenkins-report.png" alt="Export a scenario"></a></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-dhc"><a class="anchor" href="#introducing-dhc"></a>Introducing DHC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>DHC is a Chrome extension, that you can
+<a href="https://chrome.google.com/webstore/detail/dhc-resthttp-api-client/aejoelaoggembcahagimdiliamlcdmfm">install from the Chrome Web Store</a>,
+in your Chrome browser. There&#8217;s also an <a href="https://dhc.restlet.com/">online service</a> available, with some limitations.
+For the purpose of this article, we&#8217;ll use the Chrome extension.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="/images/post-images/dhc/dhc-1-interface-big.png"><img src="/images/post-images/dhc/dhc-1-interface.png" alt="DHC interface"></a></span></p>
+</div>
+<div class="paragraph">
+<p>In the main area, you can create your request, define the URL to call, specify the various request headers or params,
+chose the method you want to use, and then, you can click the send button to issue the request.</p>
+</div>
+<div class="paragraph">
+<p>In the left pane, that&#8217;s where you&#8217;ll be able to see your request history, create and save your project in the cloud,
+or also set context variables.</p>
+</div>
+<div class="paragraph">
+<p>The latter is important when testing your Web API, as you&#8217;ll be able to insert variables like for example
+<code>{localhost}</code> for testing locally on your machine or <code>{staging}</code> and <code>{prod}</code> to run your tests in different environments.</p>
+</div>
+<div class="paragraph">
+<p>In the bottom pane, you have access to actual raw HTTP exchange, as well as the assertions pane.</p>
+</div>
+<div class="paragraph">
+<p>Again, a very important pane to look at! With assertions, you&#8217;ll be able to ensure that your Web API works as expected.
+For instance, you can check the status code of the call, check the payload contains a certain element,
+by using JSON Path or XPath to go through the JSON or XML payload respectively.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="/images/post-images/dhc/dhc-2-assertions-big.png"><img src="/images/post-images/dhc/dhc-2-assertions.png" alt="DHC interface"></a></span></p>
+</div>
+<div class="paragraph">
+<p>Beyond assertions, what&#8217;s also interesting is that you can chain requests together.
+A call request can depend on the outcome of a previous request!
+For example, in a new request, you could pass a query parameter whose value would be the value of some element
+of the JSON payload of a previously executed request.
+And by combining assertions, linked requests and context variables together, you can create full-blown test scenarios,
+that you can then save in the cloud, but also export as a JSON file.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="/images/post-images/dhc/dhc-4-scenario-big.png"><img src="/images/post-images/dhc/dhc-4-scenario.png" alt="Running a test scenario"></a></span></p>
+</div>
+<div class="paragraph">
+<p>To export that test scenario, you can click on the little export icon in the bottom left hand corner,
+and you&#8217;ll be able to select exactly what you want to export:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="/images/post-images/dhc/dhc-3-export-big.png"><img src="/images/post-images/dhc/dhc-3-export.png" alt="Export a scenario"></a></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-your-web-api-tests-with-maven"><a class="anchor" href="#running-your-web-api-tests-with-maven"></a>Running your Web API tests with Maven</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now things become even more interesting, as we&#8217;ll proceed to using Maven and Jenkins!
+As the saying goes, there&#8217;s a Maven plugin for that! For running those Web API tests in your build!
+Even if your Web API is developed in another technology than Java, you can still create a small Maven build
+just for your Web API tests.
+And the icing on the cake, when you configure Jenkins to run this build, as the plugin outputs JUnit-friendly test reports,
+you&#8217;ll be able to see the details of your successful and failed tests, just like you would see JUnit&#8217;s!</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s sketch your Maven POM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"https://maven.apache.org/POM/4.0.0"</span>
+         <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"https://maven.apache.org/POM/4.0.0
+                        https://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+  <span class="nt">&lt;groupId&gt;</span>com.example<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>my-first-api-test<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.2.3<span class="nt">&lt;/version&gt;</span>
+
+  <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>com.restlet.dhc<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>dhc-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+         <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>test<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+              <span class="nt">&lt;goal&gt;</span>test<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+              <span class="nt">&lt;file&gt;</span>companies-scenario.json<span class="nt">&lt;/file&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+          <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+
+  <span class="nt">&lt;pluginRepositories&gt;</span>
+    <span class="nt">&lt;pluginRepository&gt;</span>
+      <span class="nt">&lt;id&gt;</span>restlet-maven<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;name&gt;</span>Restlet public Maven repository Release Repository<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;url&gt;</span>https://maven.restlet.com<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;/pluginRepository&gt;</span>
+  <span class="nt">&lt;/pluginRepositories&gt;</span>
+<span class="nt">&lt;/project&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="visualizing-web-api-test-executions-in-jenkins"><a class="anchor" href="#visualizing-web-api-test-executions-in-jenkins"></a>Visualizing Web API test executions in Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you&#8217;ve configured your Jenkins server to launch the <code>test</code> goal of this Maven project,
+you&#8217;ll be able to see nice test reports for your Web API scenarios, like in the screenshot in introduction of this article!</p>
+</div>
+<div class="paragraph">
+<p>Next, you can easily run your Web API tests when developers commit changes to the API,
+or schedule regular builds with Jenkins to monitor an online Web API.</p>
+</div>
+<div class="paragraph">
+<p>For more information, be sure to read the tutorial on
+<a href="https://restlet.com/blog/2016/02/03/testing-web-apis-using-dhc-by-restlet/">testing Web APIs with DHC</a>.
+There are also some more resources like a
+<a href="https://restlet.com/blog/2016/02/19/screencast-testing-apis-with-dhc-by-restlet/">screencast</a>,
+as well as the
+<a href="https://restlet.com/technical-resources/dhc/guide">user guide</a>, if you want to learn more.
+And above all, happy testing!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/webapis/">
+webapis
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/testing/">
+testing
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/glaforge/">
+Guillaume Laforge
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/glaforge" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/glaforge" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://glaforge.appspot.com/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-04-11-run-your-api-tests-continuously-with-jenkins-and-dhc.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

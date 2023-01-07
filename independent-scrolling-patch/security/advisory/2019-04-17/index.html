@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2019-04-17
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-04-17/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2019-04-17" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2019-04-17" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2019-04-17" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-04-17/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2019-04-17" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2019-04-17
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/azure-publishersettings-credentials">
+Azure PublisherSettings Credentials
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/gitlab-plugin">
+GitLab
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/jira-ext">
+jira-ext
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/ontrack">
+ontrack Jenkins
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/deployit-plugin">
+XebiaLabs XL Deploy
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1357">
+CSRF vulnerability and missing permission checks in GitLab Plugin allowed capturing credentials
+</h3>
+<strong>
+SECURITY-1357
+/
+CVE-2019-10300 (CSRF) and CVE-2019-10301 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/gitlab-plugin">
+<code>gitlab-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>GitLab Plugin did not perform permission checks on a method implementing form validation.
+This allowed users with Overall/Read access to Jenkins to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this form validation method did not require POST requests, resulting in a cross-site request forgery vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This form validation method now requires POST requests and Overall/Administer permissions.</p>
+</div>
+<h3 id="SECURITY-836">
+jira-ext Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-836
+/
+CVE-2019-10302
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/jira-ext">
+<code>jira-ext</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>jira-ext Plugin stored credentials unencrypted in its global configuration file <code>hudson.plugins.jira.JiraProjectProperty.xml</code> on the Jenkins controller.
+These credentials could be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>jira-ext Plugin now stores credentials encrypted.</p>
+</div>
+<h3 id="SECURITY-844">
+Azure PublisherSettings Credentials Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-844
+/
+CVE-2019-10303
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/azure-publishersettings-credentials">
+<code>azure-publishersettings-credentials</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Azure PublisherSettings Credentials Plugin stored the service management certificate unencrypted in <code>credentials.xml</code> on the Jenkins controller.
+These credentials could be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Azure PublisherSettings Credentials Plugin has been deprecated.
+Azure PublisherSettings Credentials Plugin 1.5 no longer provides any user features and we recommend the plugin be uninstalled.</p>
+</div>
+<h3 id="SECURITY-983">
+CSRF vulnerability and missing permission check in XebiaLabs XL Deploy Plugin
+</h3>
+<strong>
+SECURITY-983
+/
+CVE-2019-10304 (CSRF) and CVE-2019-10305 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/deployit-plugin">
+<code>deployit-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>A missing permission check in a form validation method in XebiaLabs XL Deploy Plugin allows users with Overall/Read permission to initiate a connection test to an attacker-specified server with attacker-specified credentials.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form validation method does not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<h3 id="SECURITY-1341">
+Sandbox bypass in ontrack Jenkins Plugin
+</h3>
+<strong>
+SECURITY-1341
+/
+CVE-2019-10306
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/ontrack">
+<code>ontrack</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>ontrack Jenkins Plugin supports sandboxed Groovy expressions.
+Its sandbox protection could be circumvented during parsing, compilation, and script instantiation by providing a crafted Groovy script.</p>
+</div>
+<div class="paragraph">
+<p>This allowed users able to control the plugin’s job-specific configuration to bypass the sandbox protection and execute arbitrary code on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>ontrack Jenkins Plugin now uses Script Security APIs that apply sandbox protection during these phases.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-836:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-844:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-983:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1341:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1357:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Azure PublisherSettings Credentials
+Plugin
+</strong>
+up to and including
+1.2
+</li>
+<li>
+<strong>
+GitLab
+Plugin
+</strong>
+up to and including
+1.5.11
+</li>
+<li>
+<strong>
+jira-ext
+Plugin
+</strong>
+up to and including
+0.8
+</li>
+<li>
+<strong>
+ontrack Jenkins
+Plugin
+</strong>
+up to and including
+3.4
+</li>
+<li>
+<strong>
+XebiaLabs XL Deploy
+Plugin
+</strong>
+up to and including
+7.5.3
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Azure PublisherSettings Credentials
+Plugin
+</strong>
+should be updated to version
+1.5
+</li>
+<li>
+<strong>
+GitLab
+Plugin
+</strong>
+should be updated to version
+1.5.12
+</li>
+<li>
+<strong>
+jira-ext
+Plugin
+</strong>
+should be updated to version
+0.9
+</li>
+<li>
+<strong>
+ontrack Jenkins
+Plugin
+</strong>
+should be updated to version
+3.4.1
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+XebiaLabs XL Deploy
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Peter Adkins of Cisco Umbrella
+</strong>
+for
+SECURITY-1357
+</li>
+<li>
+<strong>
+Viktor Gazdag
+</strong>
+for
+SECURITY-836, SECURITY-844, SECURITY-983
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2019-04-17.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

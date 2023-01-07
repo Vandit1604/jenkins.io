@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+How-To Guides
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/guides/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="How-To Guides" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="How-To Guides" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="How-To Guides" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/guides/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="How-To Guides" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="active">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+How-To Guides
+</h1>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/action-for-all-projects/">
+Extensibility: How to show a menu item on all projects
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/serialization-of-anonymous-classes/">
+Extensibility: How to serialize anonymous classes
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/form-validation/">
+Security: Securely implementing form validation
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/xss-prevention/">
+Security: Preventing Cross-Site Scripting in Jelly views
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/rendering-user-content/">
+Security: Rendering User Content
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/remoting-callables/">
+Security: Remoting Callables
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/read-access/">
+Security: Restricting HTTP Access to <code>AccessControlled</code> Objects
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/csp/">
+Security: Content-Security-Policy Compatibility
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/misc/">
+Security: Miscellaneous API Usage Recommendations
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/table-to-div-migration/">
+Views: Table to div layout migration
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/exposing-bundled-resources/">
+Views: Exposing bundled resources
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/icon-path-to-icon-class-migration/">
+Views: Icon path to icon class migration
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/symbols/">
+Views: Symbols
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/prepare-a-java-source-file/">
+Internationalization and Localization: Prepare a Java Source File for Localization
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/writing-cli-commands/">
+Jenkins CLI: Writing CLI commands
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/updating-parent/">
+Plugin Development: Updating Your Maven Parent POM
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/mark-a-plugin-incompatible/">
+Plugin Development: Mark a new plugin version as incompatible with older versions
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/writing-an-scm-plugin/">
+Plugin Development: Writing an SCM Plugin
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/pipeline-integration/">
+Plugin Development: Writing Pipeline-Compatible Plugins
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/preparation/">
+Publishing Plugins: Before you start
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/new-plugin/">
+Publishing Plugins: Creating a new plugin
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/requesting-hosting/">
+Publishing Plugins: Guide to Plugin Hosting
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/releasing/">
+Publishing Plugins: Performing a Plugin Release
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/releasing-cd/">
+Publishing Plugins: Setting up automated plugin release
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/releasing-manually/">
+Publishing Plugins: Performing a Plugin Release manually
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/removing-from-distribution/">
+Publishing Plugins: Removing plugins from distribution
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/releasing-experimental-updates/">
+Publishing Plugins: Publishing Experimental Plugin Releases
+</a>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/guides.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

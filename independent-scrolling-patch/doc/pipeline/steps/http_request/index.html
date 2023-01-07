@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+HTTP Request Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/http_request/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="HTTP Request Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="HTTP Request Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="HTTP Request Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/http_request/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="HTTP Request Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#http-request-plugin">HTTP Request Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#httprequest-perform-an-http-request-and-return-a-response-object"><code>httpRequest</code>: Perform an HTTP Request and return a response object</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="http-request-plugin"><a class="anchor" href="#http-request-plugin"></a>HTTP Request Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/http_request">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="httprequest-perform-an-http-request-and-return-a-response-object"><a class="anchor" href="#httprequest-perform-an-http-request-and-return-a-response-object"></a><code>httpRequest</code>: Perform an HTTP Request and return a response object</h3>
+<div><div>
+ <p>Performs an HTTP request, and returns a response object.</p>
+ <p>Usage example:</p>
+ <pre>        def response = httpRequest 'http://localhost:8080/jenkins/api/json?pretty=true'
+        println("Status: "+response.status)
+        println("Content: "+response.content)
+        </pre>
+ <p>If Jenkins restarts after the HTTP request is made, but before the HTTP response is received, the HTTP request fails.</p>
+ <p>validResponseCodes is a comma-separated string of single values or from:to ranges. For example '200' to accept only 200 or '201,301:303' to accept 201 as well as the range from 301 to 303.</p>
+ <p></p>
+ <p>The methods of the response object are:</p>
+ <ul>
+  <li>String getContent(): The HTTP Response entity. This means the text of the response without the headers. If the response does not contain an entity, getContent() returns null.</li>
+  <li>int getStatus(): The HTTP status code.</li>
+ </ul>
+ <p></p>
+</div></div>
+<ul><li><code>url : String</code>
+<div><div>
+ Specify an URL to be requested.
+</div></div>
+
+</li>
+<li><code>acceptType</code> (optional)
+<div><div>
+ Add <code>Accept: foo</code> HTTP request header where <code>foo</code> is the HTTP content type to accept.
+</div></div>
+
+<ul><li><b>Values:</b> <code>NOT_SET</code>, <code>TEXT_HTML</code>, <code>TEXT_PLAIN</code>, <code>APPLICATION_FORM</code>, <code>APPLICATION_FORM_DATA</code>, <code>APPLICATION_JSON</code>, <code>APPLICATION_JSON_UTF8</code>, <code>APPLICATION_TAR</code>, <code>APPLICATION_ZIP</code>, <code>APPLICATION_OCTETSTREAM</code></li></ul></li>
+<li><code>authentication : String</code> (optional)
+<div><div>
+ Authentication that will be used before this request. Authentications are created in global configuration under a key name that is selected here.
+</div></div>
+
+</li>
+<li><code>consoleLogResponseBody : boolean</code> (optional)
+<div><div>
+ This allows to turn off writing the response body to the log.
+</div></div>
+
+</li>
+<li><code>contentType</code> (optional)
+<div><div>
+ Add <code>Content-Type: foo</code> HTTP request header where <code>foo</code> is the HTTP content type the request is using.
+</div></div>
+
+<ul><li><b>Values:</b> <code>NOT_SET</code>, <code>TEXT_HTML</code>, <code>TEXT_PLAIN</code>, <code>APPLICATION_FORM</code>, <code>APPLICATION_FORM_DATA</code>, <code>APPLICATION_JSON</code>, <code>APPLICATION_JSON_UTF8</code>, <code>APPLICATION_TAR</code>, <code>APPLICATION_ZIP</code>, <code>APPLICATION_OCTETSTREAM</code></li></ul></li>
+<li><code>customHeaders</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>name : String</code>
+</li>
+<li><code>value : String</code>
+</li>
+<li><code>maskValue : boolean</code>
+</li>
+</ul></li>
+<li><code>formData</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>uploadFile : String</code>
+</li>
+<li><code>name : String</code>
+</li>
+<li><code>fileName : String</code>
+</li>
+<li><code>contentType : String</code>
+</li>
+<li><code>body : String</code>
+</li>
+</ul></li>
+<li><code>httpMode</code> (optional)
+<div><div>
+ The HTTP mode of the request such as 'GET' or 'POST'.
+</div></div>
+
+<ul><li><b>Values:</b> <code>GET</code>, <code>HEAD</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, <code>OPTIONS</code>, <code>PATCH</code></li></ul></li>
+<li><code>httpProxy : String</code> (optional)
+<div><div>
+ Use a proxy to process the HTTP request. Example: http://mycorpproxy:80
+</div></div>
+
+</li>
+<li><code>ignoreSslErrors : boolean</code> (optional)
+<div><div>
+ If set to true, a request with HTTPS will trust in the certificate even when it is invalid or expired.
+</div></div>
+
+</li>
+<li><code>multipartName : String</code> (optional)
+<div><div>
+ Multipart entity name used in the <i>Content-Disposition</i> header in conjunction with the upload file path.
+</div></div>
+
+</li>
+<li><code>outputFile : String</code> (optional)
+<div><div>
+ Name of the file in which to write response data.
+</div></div>
+
+</li>
+<li><code>proxyAuthentication : String</code> (optional)
+</li>
+<li><code>quiet : boolean</code> (optional)
+<div><div>
+ This allows to turn off all logging output.
+</div></div>
+
+</li>
+<li><code>requestBody : String</code> (optional)
+<div><div>
+ <p>The raw body of the request.</p>
+ <p>Parameters will be resolved.</p>
+</div></div>
+
+</li>
+<li><code>responseHandle</code> (optional)
+<div><div>
+ How response should be handled.<br> STRING(default) will transform the response in string.<br> NONE will not read the response content and will close the response after the job execution.<br> LEAVE_OPEN will not read the response content but leaves an open input stream to be read outside the job execution. Using LEAVE_OPEN it is your responsibility to close it after use. 'response.close();'<br>
+</div></div>
+
+<ul><li><b>Values:</b> <code>NONE</code>, <code>LEAVE_OPEN</code>, <code>STRING</code></li></ul></li>
+<li><code>timeout : int</code> (optional)
+<div><div>
+ Specify a timeout value in seconds (default is 0 which implies no timeout).
+</div></div>
+
+</li>
+<li><code>uploadFile : String</code> (optional)
+<div><div>
+ Path to the upload file, relative to build workspace or absolute path.
+ <p></p> Can be used to upload a file as <i>multipart/form-data</i> <b>POST</b> request. The according content type should be set above, defaults to <i>application/octet-stream</i> otherwise.
+</div></div>
+
+</li>
+<li><code>useNtlm : boolean</code> (optional)
+</li>
+<li><code>useSystemProperties : boolean</code> (optional)
+<div><div>
+ Use <a href="https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/HttpClientBuilder.html" rel="nofollow">system properties</a> to configure the client.
+</div></div>
+
+</li>
+<li><code>validResponseCodes : String</code> (optional)
+<div><div>
+ Configure response code to mark an execution as <b>success</b>.<br> You can configure simple code such as "200" or multiple codes separeted by <b>comma(',')</b> e.g. "200,404,500"<br> Interval of codes should be in format <b>From:To</b> e.g. "100:399".<br> The default (as if empty) is to fail to 4xx and 5xx. That means success from 100 to 399 <b>"100:399"</b>.<br> To ignore any response code use "100:599".
+</div></div>
+
+</li>
+<li><code>validResponseContent : String</code> (optional)
+<div><div>
+ If set response must contain this string to mark an execution as <b>success</b>.<br>
+</div></div>
+
+</li>
+<li><code>wrapAsMultipart : boolean</code> (optional)
+<div><div>
+ If set to false an upload file will be set directly as body of the request and will not be wrapped as <i>multipart/form-data</i>.
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

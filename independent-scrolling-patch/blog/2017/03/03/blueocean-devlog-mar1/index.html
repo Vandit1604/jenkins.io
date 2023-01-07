@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Blue Ocean Dev Log: March Week #1
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/03/03/blueocean-devlog-mar1/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Blue Ocean Dev Log: March Week #1" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Blue Ocean Dev Log: March Week #1" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Blue Ocean Dev Log: March Week #1" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/03/03/blueocean-devlog-mar1/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Blue Ocean Dev Log: March Week #1" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Blue Ocean Dev Log: March Week #1
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/michaelneale/"><div class="app-avatar"><img alt="Michael Neale" class="app-avatar__image" src="/images/avatars/michaelneale.jpg"></div> Michael Neale</a>
+March 03, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Blue+Ocean+Dev+Log%3A+March+Week+%231&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F03%2F03%2Fblueocean-devlog-mar1%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>We&#8217;re counting down the weeks until <a href="/projects/blueocean">Blue Ocean</a> 1.0.
+This week was relatively quiet with a few people away for a few days, and
+mostly about consolidation. There was a beta late last week, so this week we
+thought we would let people have a rest from the upgrade treadmill for once.</p>
+</div>
+<div class="paragraph">
+<p>One notable feature that has recently landed is "escaping to Classic" When you
+see the exit symbol (door with arrow) it will take you to an equivalent page in
+classic Jenkins (if one exists). You will notice this in a few places in the
+app now.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/blueocean-dev-log/escape.png" alt="Escaping to Classic">
+</div>
+</div>
+<div class="paragraph">
+<p>Some other things that made it to <code>master</code> branch which have not yet been
+released in a beta:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An API to save/branch to GitHub was finished, and tested with "round
+tripping" with the Editor in some form</p>
+</li>
+<li>
+<p>New compact form of duration reporting (old style was too verbose for
+most screens)</p>
+</li>
+<li>
+<p>Fixed a bug with input submissions with concurrent browser sessions which was
+quite a tricky bug to chase down!</p>
+</li>
+<li>
+<p>Only show Admin link when appropriate.</p>
+</li>
+<li>
+<p>Many many bug fixes and polishing.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There has also been an uptick in activity on the
+<a href="https://gitter.im/jenkinsci/blueocean-plugin">Gitter channel</a> with an
+increased number of questions about usage and Pipelines. But also questions
+from people starting to extend, or add features, to Blue Ocean, which is very
+nice to see.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/halkeye">Gavin Mogan</a> has been looking at integrating
+the <a href="https://plugins.jenkins.io/sauce-ondemand">Sauce OnDemand</a> plugin into Blue Ocean for better
+browser-test reporting. Tangentially related, we also are planning to improve
+browser-testing in Blue Ocean as well. What is perhaps more exciting is that
+more people, like <a href="https://github.com/dragoonis">Paul Dragoonis</a> and
+<a href="https://github.com/m4dc4p">other folks</a>, are starting to contribute some
+fixes which have been lingering around for a while.</p>
+</div>
+<div class="paragraph">
+<p>Up Next:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Round trip Blue Ocean Pipeline Editor changes with load/save</p>
+</li>
+<li>
+<p>Bundling the Blue Ocean Pipeline Editor with the "aggregator" Blue Ocean
+plugin.</p>
+</li>
+<li>
+<p>Some release candidates!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Enjoy!</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>If you&#8217;re interested in helping to make Blue Ocean a great user experience for
+Jenkins, please join the Blue Ocean development team on
+<a href="https://gitter.im/jenkinsci/blueocean-plugin">Gitter</a>!</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Michael Neale" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/michaelneale.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/michaelneale/">
+Michael Neale
+</a>
+</p>
+<div class="paragraph">
+<p>Michael is a CD enthusiast with a interest in User Experience.
+He is a co-founder of CloudBees and a long time OSS developer, and can often be found
+lurking around the jenkins-dev mailing list or #jenkins on irc (same nick as twitter name).
+Before CloudBees he worked at Red Hat.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/michaelneale" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/michaelneale" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/03/2017-03-03-blueocean-devlog-mar1.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

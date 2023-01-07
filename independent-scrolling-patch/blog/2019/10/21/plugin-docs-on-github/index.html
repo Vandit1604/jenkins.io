@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Plugin Documentation-as-Code: Moving docs to GitHub
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/10/21/plugin-docs-on-github/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Plugin Documentation-as-Code: Moving docs to GitHub" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Plugin Documentation-as-Code: Moving docs to GitHub" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2019-github-documentation/thumbnail.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Plugin Documentation-as-Code: Moving docs to GitHub" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/10/21/plugin-docs-on-github/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Plugin Documentation-as-Code: Moving docs to GitHub" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2019-github-documentation/thumbnail.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Plugin Documentation-as-Code: Moving docs to GitHub
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+October 21, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Plugin+Documentation-as-Code%3A+Moving+docs+to+GitHub&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F10%2F21%2Fplugin-docs-on-github%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>In September 2019 we <a href="https://groups.google.com/forum/#!msg/jenkinsci-dev/VSdfVMDIW-A/vqXxJiI7AQAJ">announced</a>
+support of GitHub as a source of documentation for the <a href="https://plugins.jenkins.io">Jenkins Plugin Site</a>.
+Thanks to <a href="https://github.com/zbynek">Zbynek Konecny</a> and <a href="https://github.com/olblak">Olivier Vernin</a> and other contributors,
+now it is possible to store plugin documentation right inside plugin repositories instead of <a href="https://wiki.jenkins.io">Jenkins Wiki</a> which was historically difficult to maintain for plugin maintainers and for the Jenkins infrastructure team.</p>
+</div>
+<div class="paragraph">
+<p>This blogpost may be interesting to plugin maintainers and to those who want to contribute to the Jenkins documentation.
+I will describe how to migrate plugin documentation to GitHub and to get pages like this one:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2019-github-documentation/thumbnail.png" alt="GitHub Documentation example"></span></p>
+</div>
+<div class="sect1">
+<h2 id="why"><a class="anchor" href="#why"></a>Why?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By using plugin GitHub repositories for documentation,
+plugin maintainers can follow the <em>Documentation-as-code</em> approach and make documentation changes a part of the pull requests so that documentation follow-ups do not get forgotten.
+It also gives an opportunity to review the documentation changes and to add documentation contributor recognition, especially if the story is combined with <a href="https://github.com/jenkinsci/.github/blob/master/.github/release-drafter.adoc">Release Drafter</a>.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, before September 2019 usage of GitHub documentation was causing some issues.
+First of all, many plugin maintainers have already moved their documentation to GitHub, and it caused fragmentation of the documentation (Wiki, GitHub, jenkins.io).
+To address it, plugin maintainers still had to maintain stub Wiki pages with redirects,
+and users had to spend some time to find out where the real documentation is located.
+By supporting GitHub as a documentation source, we allow maintainers to phase out the plugin Wiki pages while improving the user experience.</p>
+</div>
+<div class="paragraph">
+<p>And there are even more pressing reasons to do the migration now&#8230;&#8203;
+If you are subscribed to the <a href="https://groups.google.com/d/forum/jenkinsci-dev">developer mailing list</a>,
+you may have also seen an announcement by <a href="https://github.com/rtyler">R. Tyler Croy</a> about Jenkins Wiki stability issues
+and making it read-only as a temporary measure to stabilize the instance
+(<a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/lNmas8aBRrI">mailing list thread</a>).
+Although the functionality has been partially restored afterwards,
+there is a consensus in the Infrastructure team that we should gradually move to alternate solutions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since the announcement in September, more than 50 plugins were moved from Wiki to GitHub.
+Few examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/configuration-as-code">Configuration as Code Plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/mailer">Mailer Plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/gradle">Gradle Plugin</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/role-strategy">Role Strategy Plugin</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2019-github-documentation/role-strategy-screenshot.png" alt="Role Strategy example"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-to-enable-github-documentation-for-your-plugin"><a class="anchor" href="#how-to-enable-github-documentation-for-your-plugin"></a>How to enable GitHub documentation for your plugin?</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Convert documentation from Wiki to GitHub Asciidoc or Markdown format if you have not done it yet.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It can be easily done in a semi-automatic way using <a href="https://jenkins-wiki-exporter.jenkins.io/">Jenkins Wiki Exporter</a></p>
+</li>
+<li>
+<p>See the guidelines
+<a href="/doc/developer/publishing/wiki-page/#migrating-from-wiki-to-github">here</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Change the <code>&lt;url&gt;</code> field in pom.xml so that it points to GitHub
+(<a href="/doc/developer/publishing/documentation/#referencing-the-documentation-page-from-the-project-file">guide</a>).
+ Examples of valid links:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="https://github.com/jenkinsci/mailer-plugin" class="bare">https://github.com/jenkinsci/mailer-plugin</a></code> - plugin site will use GitHub REST API to extract README</p>
+</li>
+<li>
+<p><code><a href="https://github.com/jenkinsci/ssh-credentials-plugin/blob/master/doc/README.md" class="bare">https://github.com/jenkinsci/ssh-credentials-plugin/blob/master/doc/README.md</a></code> - extraction of a plugin page from a custom location</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional: Add badges to the page to improve look&amp;feel and to provide quick links for users.
+There are standard badges for changelogs, chats, plugin site, and installation numbers.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://raw.githubusercontent.com/jenkinsci/role-strategy-plugin/master/README.md">Example for Markdown</a></p>
+</li>
+<li>
+<p><a href="https://raw.githubusercontent.com/jenkinsci/mailer-plugin/master/README.adoc">Example for Asciidoc</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Release the new plugin version</p>
+</li>
+<li>
+<p>Wait a few hours till the change propagates.
+After that, the <a href="https://plugins.jenkins.io">Jenkins Plugin Site</a> will show the new documentation from GitHub.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The story is tracked as <a href="https://issues.jenkins.io/browse/WEBSITE-406">WEBSITE-406</a> which is a part of the wider subproject for using GitHub as a source of data for the Jenkins plugin site and update managers (<a href="https://issues.jenkins.io/browse/WEBSITE-637">WEBSITE-637</a>).
+Later steps include support showing changelogs from GitHub releases, pulling plugin tags from GitHub, showing plugin logos, and using <a href="https://github.com/jenkins-infra/repository-permissions-updater">Repository Permission Updater</a> as a source of the maintainer information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-to-contribute"><a class="anchor" href="#how-to-contribute"></a>How to contribute?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>October is a great time to contribute!
+Plugin documentation is one of the featured projects for <a href="/events/hacktoberfest">Hacktoberfest</a>,
+and we will welcome all contributions to the documentation and to the codebase.</p>
+</div>
+<div class="sect2">
+<h3 id="contributing-to-documentation"><a class="anchor" href="#contributing-to-documentation"></a>Contributing to Documentation</h3>
+<div class="paragraph">
+<p>We are looking for contributors who are interested to improve plugin documentation and to help us with migration from Wiki to GitHub.
+For dozens of plugins the documentation is already in GitHub,
+and you are welcome to submit pull requests against any repository.</p>
+</div>
+<div class="paragraph">
+<p>Migrating documentation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/developer/publishing/wiki-page/#migrating-from-wiki-to-github">Migrating plugin documentation from Wiki to GitHub</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/jenkins.io/blob/master/CONTRIBUTING.adoc#moving-documentation-from-jenkins-wiki">Moving documentation from Jenkins Wiki to jenkins.io</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-59467">JENKINS-59467: Template issue for plugin docs migration</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/issues/?filter=18650&amp;jql=project%20%3D%20WEBSITE%20AND%20labels%20%3D%20newbie-friendly%20and%20status%20in%20(Open%2C%20Reopened%2C%20%22To%20Do%22)">Newbie-friendly documentation tasks</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have any questions about contributing to the documentation,
+please see <a href="/participate/#document">this page</a> or reach out to us in the <a href="https://gitter.im/jenkinsci/docs">Docs SIG Gitter chat</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-contributions"><a class="anchor" href="#code-contributions"></a>Code contributions</h3>
+<div class="paragraph">
+<p>Would you like to write some code in Java or JavaScript?
+Or would you like to work on CSS styles and improve Jenkins design?
+In such case you are welcome to contribute to the <a href="https://plugins.jenkins.io">Jenkins Plugin Site</a>.
+It is our own plugin marketplace implementation, and we invite contributions to this area.
+The plugin site is really easy to develop.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/browse/WEBSITE-637">WEBSITE-637</a> - EPIC for Plugin site and GitHub integrations</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/plugin-site">jenkins-infra/plugin-site</a> - Frontend (JavaScript, React, XSS, YARN)</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/plugin-site-api">jenkins-infra/plugin-site-api</a> - Plugin site API and Docker packaging (Java, Maven, Docker)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="useful-links"><a class="anchor" href="#useful-links"></a>Useful links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/developer/publishing/documentation/">Plugin Documentation</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io">Jenkins Plugin Site</a></p>
+</li>
+<li>
+<p><a href="https://jenkins-wiki-exporter.jenkins.io/">Jenkins Wiki Exporter tool</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/hacktoberfest/">
+hacktoberfest
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/documentation/">
+documentation
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/wiki/">
+wiki
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/contributors/">
+contributors
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/10/2019-10-21-plugin-docs-on-github.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

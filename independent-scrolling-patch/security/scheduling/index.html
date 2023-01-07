@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+How We Schedule Security Advisories
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/scheduling/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="How We Schedule Security Advisories" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="How We Schedule Security Advisories" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="How We Schedule Security Advisories" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/scheduling/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="How We Schedule Security Advisories" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="active">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+How We Schedule Security Advisories
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#security-advisories-involving-jenkins-core">Security Advisories Involving Jenkins core</a>
+<ul class="sectlevel2">
+<li><a href="#fixed-versions">Fixed Versions</a></li>
+<li><a href="#changes-in-security-updates">Changes in Security Updates</a></li>
+</ul>
+</li>
+<li><a href="#security-advisories-not-involving-jenkins-core">Security Advisories not involving Jenkins core</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>How Jenkins security advisories are scheduled depends on their content.
+Most Jenkins security advisories can broadly be categorized by content:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Security advisories that announce issues in Jenkins (core), and possibly Jenkins plugins</p>
+</li>
+<li>
+<p>Security advisories that announce issues in Jenkins plugins only</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The information on this page describes regularly scheduled security updates and security advisories.
+In very rare cases, the Jenkins project may deviate from the processes described here, e.g. to deliver urgent security fixes for vulnerabilities that were already known publicly.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="security-advisories-involving-jenkins-core"><a class="anchor" href="#security-advisories-involving-jenkins-core"></a>Security Advisories Involving Jenkins core</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We typically publish between four and eight advisories of this kind every year.</p>
+</div>
+<div class="paragraph">
+<p>The publication dates of these security advisories is tied to the <a href="/download/lts/">Jenkins LTS schedule</a>:
+They are usually published on Wednesdays, which corresponds to the scheduled regular release day for Jenkins LTS releases.
+In the case of the Jenkins weekly release line, the security update will be an additional mid-week release between regular releases typically scheduled for release on weekends.</p>
+</div>
+<div class="paragraph">
+<p><a href="/security/for-administrators/#pre-announcements">Pre-announcements</a> for these security advisories will be published several days in advance, sometimes up to a week.</p>
+</div>
+<div class="sect2">
+<h3 id="fixed-versions"><a class="anchor" href="#fixed-versions"></a>Fixed Versions</h3>
+<div class="paragraph">
+<p>Jenkins LTS lines typically consist of three releases: 2.xxx.1, 2.xxx.2, and 2.xxx.3, that are released four weeks apart.
+The first release of each LTS line is effectively a major update for Jenkins LTS users updating from a previous LTS release, while subsequent releases generally only contain few backported bug fixes.</p>
+</div>
+<div class="paragraph">
+<p>When publishing security fixes for Jenkins (core), we generally try to schedule these for the second or third release in an LTS line to make it easier for admins to update quickly.
+If we decide to publish security fixes for the first release in an LTS line, we will also publish an additional release for the previous LTS line.</p>
+</div>
+<div class="paragraph">
+<p>For example, <a href="/security/advisory/2019-09-25/">in September 2019</a>, we published a security advisory for Jenkins (core) and plugins that announced security fixes in 2.190.1.
+Since that was the first release of its LTS line, we also published an additional release for the previous LTS line, 2.176.4, so that admins could safely and quickly upgrade to a release containing these security fixes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changes-in-security-updates"><a class="anchor" href="#changes-in-security-updates"></a>Changes in Security Updates</h3>
+<div class="paragraph">
+<p>Security fixes for Jenkins LTS releases are integrated into regular LTS releases.
+This means that an LTS release will not only contain security fixes, but also regular bug fixes and improvements backported from weekly releases.
+An exception to this rule is additional LTS releases for the previous LTS line if 2.xxx.1 is a security update:
+As these are not regular LTS releases, they will only contain security fixes.</p>
+</div>
+<div class="paragraph">
+<p>In the case of security updates for weekly Jenkins releases, security fixes will be the only changes in that release.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="security-advisories-not-involving-jenkins-core"><a class="anchor" href="#security-advisories-not-involving-jenkins-core"></a>Security Advisories not involving Jenkins core</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These security advisories are published whenever there is a need.
+We try to balance the number of security advisories, and the timely delivery of security fixes, which means we typically publish 1-2 advisories of this kind every month.</p>
+</div>
+<div class="paragraph">
+<p>These advisories can be published on any weekday, but most of the time on Tuesdays, Wednesdays, or Thursdays.
+We generally try to avoid scheduling security advisories on major public holidays affecting the ability of a large number of Jenkins administrators to quickly apply updates.</p>
+</div>
+<div class="paragraph">
+<p><a href="/security/for-administrators/#pre-announcements">Pre-announcements</a> for these security advisories will generally be published at least a day in advance, but rarely more than three work days before publication.
+Plugin security updates have less lead time than those for Jenkins (core), and we only send out pre-announcements once we&#8217;re confident that the provided information will remain correct.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/scheduling.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

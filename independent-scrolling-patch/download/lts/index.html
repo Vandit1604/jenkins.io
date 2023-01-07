@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+LTS Release Line
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/download/lts/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="LTS Release Line" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="LTS Release Line" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="LTS Release Line" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/download/lts/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="LTS Release Line" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+LTS Release Line
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#model">Model</a></li>
+<li><a href="#backporting-process">Backporting Process</a></li>
+<li><a href="#switching-between-release-lines">Switching Between Release Lines</a>
+<ul class="sectlevel2">
+<li><a href="#switching-from-lts-to-weekly">Switching From LTS to Weekly</a></li>
+<li><a href="#switching-from-weekly-to-lts">Switching From Weekly to LTS</a></li>
+<li><a href="#switching-update-sites">Switching Update Sites</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The weekly Jenkins releases deliver bug fixes and new features rapidly to users and plugin developers who need them.
+But for more conservative users, it&#8217;s preferable to stick to a release line which changes less often and only receives important bug and security related fixes, even if such a release line lags behind in terms of features.
+Several companies maintain their own private branches off of Jenkins for stabilization and internal customizations.
+We encourage everybody to shift a part of the effort to this release line.</p>
+</div>
+<div class="paragraph">
+<p>This is called the Jenkins <strong>Long-Term Support</strong> release, or <strong>LTS</strong>. The concept is very similar to the <a href="https://wiki.ubuntu.com/LTS">LTS concepts in Ubuntu</a> and our model is described below.</p>
+</div>
+<div class="sect1">
+<h2 id="model"><a class="anchor" href="#model"></a>Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every 12 weeks, the community will pick one of the relatively recent releases by consensus and mark it as the baseline for the next "stable but older" release line.
+Let&#8217;s say this was version X.
+We&#8217;ll create a branch from X to produce stable but older patch releases of <strong>X.1</strong>, <strong>X.2</strong>, and <strong>X.3</strong>.
+Changes to this branch will be restricted to backported cherry-picked bug fixes from the trunk that are "battle-tested" — meaning those commits that have already been a part of a main line release for more than a week.
+There are 3 minor releases for a baseline published in four week cycles.
+A release candidate is published two weeks before a minor release.</p>
+</div>
+<div class="paragraph">
+<p>The following table demonstrates release dates within the 12 week cycle:</p>
+</div>
+<style>
+  table#process th, table#process td {
+    min-width: 60px;
+    border: 1px solid grey;
+    padding: 3px;
+  }
+</style>
+<table id="process">
+  <tr>
+    <th>Week</th>
+    <th>0</th>
+    <th>2</th>
+    <th>4</th>
+    <th>6</th>
+    <th>8</th>
+    <th>10</th>
+    <th>12</th>
+    <th>14</th>
+    <th>16</th>
+    <th>18</th>
+    <th>20</th>
+    <th>22</th>
+    <th>24</th>
+  </tr>
+  <tr>
+    <th>Release</th>
+    <td>W.3</td>
+    <td>X.1 RC</td>
+    <td>X.1</td>
+    <td>X.2 RC</td>
+    <td>X.2</td>
+    <td>X.3 RC</td>
+    <td>X.3</td>
+    <td>Y.1 RC</td>
+    <td>Y.1</td>
+    <td>Y.2 RC</td>
+    <td>Y.2</td>
+    <td>Y.3 RC</td>
+    <td>Y.3</td>
+  </tr>
+  <tr>
+    <th>Baseline Selection</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Y chosen</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Z chosen</td>
+    <td></td>
+  </tr>
+</table>
+<div class="paragraph">
+<p>There is a two week period for backporting followed by two weeks for testing the release candidate resulting in the release of X.1.
+Backporting and RC testing is repeated twice, producing X.2 and X.3.
+This concludes the cycle for a given baseline and the new one is started immediately based on the new baseline selected in week 10.</p>
+</div>
+<div class="paragraph">
+<p>The baseline release is typically between 0-3 weeks old when it is chosen, so X.1 LTS releases are published about 6-9 weeks after their baseline.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="/content/event-calendar">event calendar</a> for the specific LTS RC/release dates in the near future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="backporting-process"><a class="anchor" href="#backporting-process"></a>Backporting Process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Any user can propose that a issue is backported to LTS by labeling with <a href="https://issues.jenkins.io/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=labels+%3D+lts-candidate">lts-candidate</a>.
+For an issue to be eligible for backporting it should be a small, safe-looking, uncontroversial fix for an important bug with no change to API surface.
+Additionally library updates can also be considered if the library contains a public CVE that does not affect Jenkins (if Jenkins is vulnerable via a library then the <a href="/security">security</a> process applies).
+Backporters use <a href="https://issues.jenkins.io/issues/?filter=12146">this query</a> to list up issues that need to be attended once resolved.</p>
+</div>
+<div class="paragraph">
+<p>Aside from the model set out above, backporters apply some subjective selection — for example whether a fix is easy and safe to backport, confidence in the fix, importance/impact of the problem, how much time is left until the end of backporting window and so on.</p>
+</div>
+<div class="paragraph">
+<p>If backported, a label like <code>2.46.2-fixed</code> is applied to communicate to the user what LTS version(s) it&#8217;s going to be in.
+If the backport is rejected, a label like <code>2.46.2-rejected</code> is used to indicate that this ticket will not be backported to that specific release&#8201;&#8212;&#8201;but it may still be picked up in a later LTS release.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="switching-between-release-lines"><a class="anchor" href="#switching-between-release-lines"></a>Switching Between Release Lines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due to how Jenkins stores data internally, users are generally able to upgrade to newer releases, but not downgrade to older releases.
+In the context of LTS, the <em>baseline</em> is almost always the deciding factor that determines to which releases of the other line a Jenkins instance can be migrated.</p>
+</div>
+<div class="sect2">
+<h3 id="switching-from-lts-to-weekly"><a class="anchor" href="#switching-from-lts-to-weekly"></a>Switching From LTS to Weekly</h3>
+<div class="paragraph">
+<p>Make sure that the weekly release you&#8217;re migrating to has been released after the LTS version you&#8217;re migrating from.</p>
+</div>
+<div class="paragraph">
+<p>We recommend that users moving from LTS to weekly should use the most recent weekly release to assure they have the latest features and fixes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-from-weekly-to-lts"><a class="anchor" href="#switching-from-weekly-to-lts"></a>Switching From Weekly to LTS</h3>
+<div class="paragraph">
+<p>Make sure that the LTS baseline you&#8217;re migrating to is more recent (compared numerically) than the weekly release you&#8217;re migrating from.
+For example, if you&#8217;re using Jenkins 2.5, 2.18, or 2.46, you will be able to upgrade to Jenkins LTS 2.46.x without major problems.
+However, if you&#8217;re using Jenkins 2.47 or Jenkins 2.56, you may have problems downgrading to Jenkins LTS 2.46.x, even if the specific LTS releases were created at a later date than the weekly release you&#8217;re using.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-update-sites"><a class="anchor" href="#switching-update-sites"></a>Switching Update Sites</h3>
+<div class="paragraph">
+<p>The Jenkins project operates multiple update sites that inform Jenkins about available updates to Jenkins and plugins.
+As Jenkins sends its current version when requesting new data, the same <a href="https://updates.jenkins.io/update-center.json">URL</a> can be used for all releases of Jenkins, and will always serve the most appropriate update information.
+For example, instances running an LTS release of Jenkins will only be offered LTS versions of Jenkins to upgrade to.
+See <a href="https://updates.jenkins.io/">updates.jenkins.io</a> to learn more.</p>
+</div>
+<div class="paragraph">
+<p>After switching between release lines, it&#8217;s recommend to update the update site metadata cached in Jenkins by hitting the "Check now" button in the Plugins Manager (further instructions <a href="/doc/book/managing/plugins/#from-the-web-ui">here</a>).
+Otherwise, Jenkins may offer to update or install plugins whose newer versions are incompatible with the installed version.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//download/lts/index.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

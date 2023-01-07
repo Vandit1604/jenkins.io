@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins at FOSDEM 2016
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/events/fosdem/archive/2016/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins at FOSDEM 2016" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins at FOSDEM 2016" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins at FOSDEM 2016" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/events/fosdem/archive/2016/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins at FOSDEM 2016" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Jenkins at FOSDEM 2016
+</h1>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is an archive page. See <a href="/events/fosdem">this page</a> for the recent and incoming FOSDEM events.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Jenkins was at <a href="http://fosdem.org/2016/">FOSDEM</a>, in Brussels, on January 30-31st, 2016!
+We also had a <a href="http://www.meetup.com/jenkinsmeetup/events/227463345/">Jenkins 2.0 Contributor Summit</a> on February 1st.</p>
+</div>
+<div class="paragraph">
+<p>Join <a href="http://lists.jenkins-ci.org/mailman/listinfo/jenkins-fosdem">the
+mailing list</a> if you&#8217;re interested in helping with coordination</p>
+</div>
+<div class="sect2">
+<h3 id="FOSDEM2016-Activities"><a class="anchor" href="#FOSDEM2016-Activities"></a>Activities</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.meetup.com/jenkinsmeetup/events/228363236/">Friday night
+happy hour at Cafe LeRoy in Grand Place</a></p>
+</li>
+<li>
+<p>Staffing the Jenkins stand/table</p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/jenkinsmeetup/events/228052834/">Contributors
+Dinner</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/jenkinsmeetup/events/227463345/">Jenkins 2.0
+Contributors Summit</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Who&#8217;s coming?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rtyler">Tyler Croy (rtyler)</a>
+(attendance, organizing)</p>
+</li>
+<li>
+<p><a href="https://github.com/daniel-beck">Daniel Beck (danielbeck)</a>
+(attendance, organizing)</p>
+</li>
+<li>
+<p><a href="https://github.com/kohsuke">Kohsuke Kawaguchi (kohsuke)</a>
+(attendance, organizing)</p>
+</li>
+<li>
+<p><a href="https://github.com/alyssat">Alyssa Tong (atong)</a>
+(attendance, organizing)</p>
+</li>
+<li>
+<p><a href="https://github.com/orrc">Christopher Orr (orrc)</a>
+(attendance)</p>
+</li>
+<li>
+<p>(fredg)
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/aheritier">Arnaud Héritier (aheritier)</a>
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/alecharp">Adrien Lecharpentier (alecharp)</a>
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/ydubreuil">Yoann Dubreuil (ydubreuil)</a>
+(attendance)</p>
+</li>
+<li>
+<p>(jgbiii)
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/fbelzunc">Felix Belzunce Arcos (fbelzunc)</a>
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/escoem">Emilio Escobar Reyero</a>
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/olivergondza">Oliver Gondza
+(olivergondza)</a> (attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/oleg-nenashev">Oleg Nenashev
+(oleg_nenashev)</a> (attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/jglick">Jesse Glick (jglick)</a>
+(attendance)</p>
+</li>
+<li>
+<p><a href="https://github.com/rsandell">Robert Sandell (rsandell)</a>
+(attendance)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="FOSDEM2016-Jenkinsmerchandise"><a class="anchor" href="#FOSDEM2016-Jenkinsmerchandise"></a>Jenkins merchandise</h3>
+<div class="ulist">
+<ul>
+<li>
+<p> Star Wars t-shirts (50)</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+<div class="sect1">
+<h2 id="FOSDEM2016-PlanningMeetingNotes"><a class="anchor" href="#FOSDEM2016-PlanningMeetingNotes"></a>Planning Meeting Notes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="FOSDEM2016-2016-01-13Meeting"><a class="anchor" href="#FOSDEM2016-2016-01-13Meeting"></a>2016-01-13 Meeting</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins stand is located in building K, level 2</p>
+</li>
+<li>
+<p>Stand setup begins at 9am on Saturday. Attendees will begin to come in
+at 10am</p>
+</li>
+<li>
+<p>There will be wifi in the stand areas</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="FOSDEM2016-2015-10-21Meeting"><a class="anchor" href="#FOSDEM2016-2015-10-21Meeting"></a>2015-10-21 Meeting</h3>
+<div class="sect3">
+<h4 id="FOSDEM2016-Agenda"><a class="anchor" href="#FOSDEM2016-Agenda"></a>Agenda</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Gauge who can participate and at what capacity.</p>
+</li>
+<li>
+<p>Pre-FOSDEM Contributor Summit</p>
+</li>
+<li>
+<p>After-hours meetup/happy hour</p>
+</li>
+<li>
+<p>Plans for a Jenkins stand (assuming we&#8217;re accepted):</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What demo materials</p>
+</li>
+<li>
+<p>Schwag</p>
+</li>
+<li>
+<p>Revised Jenkins Flyer</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="FOSDEM2016-Notes"><a class="anchor" href="#FOSDEM2016-Notes"></a>Notes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Who’s coming?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>rtyler (attendance, organizing)</p>
+</li>
+<li>
+<p>danielbeck (attendance, organizing)</p>
+</li>
+<li>
+<p>kohsuke (attendance, organizing)</p>
+</li>
+<li>
+<p>atong (attendance, organizing)</p>
+</li>
+<li>
+<p>orrc (attendance)</p>
+</li>
+<li>
+<p>fredg (attendance)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Contributor Summit Notes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>We need a new moniker for the “Summit” series because the current
+event plan uses it for another purpose</p>
+</li>
+<li>
+<p>Reuse the “Scalability Summit” / “Workflow Summit” format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A day of unconference with some broad theme</p>
+</li>
+<li>
+<p>Target attendee: 20-40 people</p>
+</li>
+<li>
+<p>Day divided into a fixed time slots and 1-2 tracks</p>
+</li>
+<li>
+<p>The first few sessions are pre-announced to get the juice flowing</p>
+</li>
+<li>
+<p>The rest of the sessions are decided on the fly by people with
+postit notes</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Should be interesting enough for serious users that I expect some
+will come just for this.</p>
+</li>
+<li>
+<p>Pick a date: Friday vs Monday</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Meetup.com has a feature that helps us nail this down</p>
+</li>
+<li>
+<p>Needs to be decided soon to let people book travel soon</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Pick a theme</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User experience?</p>
+</li>
+<li>
+<p>Jenkins as Code?  (pipeline as code, deploy Jenkins via chef/puppet,
+Job DSL, …)</p>
+</li>
+<li>
+<p>Jenkins 2.0?</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>After-hour events notes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>tyler: Cafe Leroy friday before beer event?</p>
+</li>
+<li>
+<p>fred: pre-planned dinner on Saturday night would be ideal</p>
+<div class="ulist">
+<ul>
+<li>
+<p>alyssa: set up a meetup to get RSVPs to make a reservation in
+advance (according to orrc about 15-20 attend. should add ~5 people in
+case people bring a friend)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Stand planning</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Demo Materials</p>
+<div class="ulist">
+<ul>
+<li>
+<p>monitors</p>
+</li>
+<li>
+<p>at least one dedicated PC (with wireless) for demos</p>
+</li>
+<li>
+<p>canned demos around Jenkins 2.0 work?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>“new things that people don’t know”</p>
+</li>
+<li>
+<p>fred: maybe a little showreel (workflow, new UI, etc)</p>
+</li>
+<li>
+<p>a demo presentation, or interactive version of the flyer</p>
+</li>
+<li>
+<p>use-case driven points on the website (domain specific destination
+pages, e.g. mobile development)</p>
+</li>
+<li>
+<p>eitsch: hi there, if you want to be able to cater to different
+ "personas" of jenkins users &#8230;&#8203; you could prepare some
+               sd-cards-images for a raspberry pi and switch around to
+         show a running jenkins on monitor at stand</p>
+</li>
+<li>
+<p>eitsch: i definitely liked the stickers more which were more into
+the badass type ;) like the ninja and the je[di|nkins] master &#8230;&#8203; for
+the t-shirts you might be able to blend in the upcoming 2016 fosdem logo
+(if they are open to letting you use it)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p> </p>
+<div class="ulist">
+<ul>
+<li>
+<p>chris: people are usually coming to the stand asking for help,
+stickers and t-shirts</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Schwag</p>
+<div class="ulist">
+<ul>
+<li>
+<p>stickers (few thousand minimum)</p>
+</li>
+<li>
+<p>t-shirts always in high demand (more than 30, as many as we can sell)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>t-shirts maybe also with blended 2016 fosdem logo (need to check if
+possible)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>buttons (small round badges) with Jenkins headshot / weather symbols
+/ blue balls etc…</p>
+<div class="ulist">
+<ul>
+<li>
+<p>tyler: buttons for attendees: blue button + happy jenkins, red
+button + angry jenkins would be fun</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Jenkins bobble-heads?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p> </p>
+<div class="ulist">
+<ul>
+<li>
+<p>Flyer</p>
+<div class="ulist">
+<ul>
+<li>
+<p>perhaps this year we create little post-cards with permalinks to
+destination pages on the site “want to do mobile: go here”, etc. So
+stand visitors would have something tangible to remember where to find
+more information</p>
+<div class="ulist">
+<ul>
+<li>
+<p>more resilient to being out of date by the next time we have a
+conference than the flyer</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>fredg: flyer is a bonus not a necessity</p>
+</li>
+<li>
+<p>18:31 &lt; fredg02&gt; how about a set of "collectible" domain specific
+cards (Android, Java, Ruby, PHP, …)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Language-spoken type buttons for people manning the stand (e.g. Chris
+would have a Scottish flag, English flag and German flag buttons)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#FOSDEM2016-Activities">Activities</a></li>
+<li><a href="#FOSDEM2016-Jenkinsmerchandise">Jenkins merchandise</a></li>
+<li><a href="#FOSDEM2016-PlanningMeetingNotes">Planning Meeting Notes</a>
+<ul class="sectlevel2">
+<li><a href="#FOSDEM2016-2016-01-13Meeting">2016-01-13 Meeting</a></li>
+<li><a href="#FOSDEM2016-2015-10-21Meeting">2015-10-21 Meeting</a></li>
+</ul>
+</li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://gitter.im/jenkinsci/fosdem" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/fosdem.svg" title="Gitter">
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/04/jenkins-newsletter/">
+Jenkins October 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/10/20/jenkins-election-announcement/">
+Jenkins Board and Officer Elections 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/10/13/jenkins-newsletter/">
+Jenkins September 2022 Newsletter
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//events/fosdem/archive/2016.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

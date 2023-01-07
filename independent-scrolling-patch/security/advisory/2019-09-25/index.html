@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2019-09-25
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-09-25/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2019-09-25" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2019-09-25" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2019-09-25" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-09-25/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2019-09-25" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2019-09-25
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+Jenkins (core)
+</li>
+<li>
+<a href="https://plugins.jenkins.io/aqua-microscanner">
+Aqua MicroScanner
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/aqua-security-scanner">
+Aqua Security Scanner
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/assembla">
+Assembla
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/azure-event-grid-notifier">
+Azure Event Grid Build Notifier
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/call-remote-job-plugin">
+Call Remote Job
+Plugin
+</a>
+</li>
+<li>
+CodeScan
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/datatheorem-mobile-app-security">
+Data Theorem Mobile Security: CI/CD
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/elOyente">
+elOyente
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/gem-publisher">
+Gem Publisher
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/git-changelog">
+Git Changelog
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/gitlab-logo">
+GitLab Logo
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/gcal">
+Google Calendar
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/inedo-buildmaster">
+Inedo BuildMaster Plugin
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/inedo-proget">
+Inedo ProGet Plugin
+Plugin
+</a>
+</li>
+<li>
+Kubernetes Pipeline - Arquillian Steps
+
+Plugin
+</li>
+<li>
+Kubernetes Pipeline - Kubernetes Steps
+
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/log-parser">
+Log Parser
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/neuvector-vulnerability-scanner">
+NeuVector Vulnerability Scanner
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/project-inheritance">
+Project Inheritance
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/application-director-plugin">
+vFabric Application Director
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/violation-comments-to-gitlab">
+Violation Comments to GitLab
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1498">
+Stored XSS vulnerability in expandable textbox form control
+</h3>
+<strong>
+SECURITY-1498
+/
+CVE-2019-10401
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins form controls include an expandable textbox that can transform from a single-line text box to a multi-line text area.</p>
+</div>
+<div class="paragraph">
+<p>The implementation of this transformation interpreted the text content of the form field as HTML.
+This resulted in a cross-site scripting vulnerability exploitable by attackers able to control the contents of such <code>f:expandableTextbox</code> form controls.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins no longer interprets <code>f:expandableTextbox</code> text content as HTML when transforming it.</p>
+</div>
+<h3 id="SECURITY-1525">
+XSS vulnerability in combobox form control
+</h3>
+<strong>
+SECURITY-1525
+/
+CVE-2019-10402
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins interpreted items added to <code>f:combobox</code> form controls as HTML.
+This resulted in a cross-site scripting vulnerability exploitable by attackers able to control the contents of <code>f:combobox</code> form controls.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins no longer interprets items added to a combobox as HTML.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This might be a breaking change for plugins that relied on the previous, undocumented behavior to add formatting to <code>f:combobox</code> elements.
+This has been removed without replacement.
+Plugin developers are advised to only add plain text entries to <code>f:combobox</code> controls.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-1537 (1)">
+Stored XSS vulnerability in SCM tag action tooltip
+</h3>
+<strong>
+SECURITY-1537 (1)
+/
+CVE-2019-10403
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins did not escape the tag name on the tooltip for tag actions shown in the build history.
+This resulted in a cross-site scripting vulnerability exploitable by attackers able to control the SCM tag name for these actions.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins now escapes the SCM tag action.</p>
+</div>
+<h3 id="SECURITY-1537 (2)">
+Stored XSS vulnerability in queue item tooltip
+</h3>
+<strong>
+SECURITY-1537 (2)
+/
+CVE-2019-10404
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins did not escape the reason a queue item is blocked in tooltips.
+This resulted in a cross-site scripting vulnerability exploitable by attackers able to control the reason a queue item is blocked, for example a label expression that does not match idle executors.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins now escapes the reason a queue item is blocked in tooltips.</p>
+</div>
+<h3 id="SECURITY-1505">
+Diagnostic web page exposed Cookie HTTP header
+</h3>
+<strong>
+SECURITY-1505
+/
+CVE-2019-10405
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins shows various technical information about the current user on the <code>/whoAmI</code> URL.
+The information shown includes HTTP request headers.</p>
+</div>
+<div class="paragraph">
+<p>This allowed attackers able to exploit another cross-site scripting vulnerability to obtain the <code>Cookie</code> header&#8217;s value even if the <code>HttpOnly</code> flag would prevent direct access via JavaScript.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins no longer shows the value of the <code>Cookie</code> HTTP header on the <code>/whoAmI</code> URL.</p>
+</div>
+<h3 id="SECURITY-1471">
+XSS vulnerability in Jenkins URL setting
+</h3>
+<strong>
+SECURITY-1471
+/
+CVE-2019-10406
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins did not validate or otherwise limit the possible values administrators could specify as Jenkins root URL.</p>
+</div>
+<div class="paragraph">
+<p>This resulted in a cross-site scripting vulnerability exploitable by users with Overall/Administer permission.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins now prevents values other than HTTP/HTTPS URLs from being set as Jenkins root URL.
+Existing instances with invalid root URLs will behave as if no root URL was set.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In case this results in problems, e.g. a valid URL unexpectedly being rejected, set the system property <code>jenkins.model.JenkinsLocationConfiguration.disableUrlValidation</code> to <code>true</code> to disable this restriction.
+<a href="/doc/book/managing/system-properties/">Learn more about system properties in Jenkins</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-351">
+Project Inheritance Plugin showed secret environment variables defined in Mask Passwords Plugin
+
+</h3>
+<strong>
+SECURITY-351
+/
+CVE-2019-10407
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/project-inheritance">
+<code>project-inheritance</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Mask Passwords Plugin allows users to define secret environment variables (typically passwords) to be passed to builds, both globally, and for specific jobs.
+These environment variables are expected to not be shown.</p>
+</div>
+<div class="paragraph">
+<p>Project Inheritance Plugin showed the variable values on its <em>Full Build Flow</em> view and included them in the metadata download without masking.</p>
+</div>
+<div class="paragraph">
+<p>Project Inheritance Plugin no longer shows variables contributed from Mask Password Plugin without masking.</p>
+</div>
+<h3 id="SECURITY-401">
+CSRF vulnerability and missing permission check in Project Inheritance Plugin
+
+</h3>
+<strong>
+SECURITY-401
+/
+CVE-2019-10408 (CSRF), CVE-2019-10409 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/project-inheritance">
+<code>project-inheritance</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Project Inheritance Plugin allows the creation of projects based on templates defined in the plugin configuration.</p>
+</div>
+<div class="paragraph">
+<p>A missing permission check in the HTTP endpoint triggering project creation allowed users with Overall/Read permission to create these projects.
+Additionally, the HTTP endpoint did not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>The HTTP endpoint triggering project creation now requires Item/Create permission and submission of requests via POST.</p>
+</div>
+<h3 id="SECURITY-732">
+Stored XSS vulnerability in Log Parser Plugin
+</h3>
+<strong>
+SECURITY-732
+/
+CVE-2019-10410
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/log-parser">
+<code>log-parser</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Log Parser Plugin did not escape an error message shown when log parsing patterns are invalid.
+This resulted in a persisted cross-site scripting vulnerability exploitable by attackers able to control the log parsing rules configuration, typically users with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins applies the missing escaping by default since 2.146 and LTS 2.138.2, so newer Jenkins releases are not affected by this vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Log Parser Plugin now escapes all variables displayed in its views.</p>
+</div>
+<h3 id="SECURITY-1504">
+NeuVector Vulnerability Scanner Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1504
+/
+CVE-2019-10430
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/neuvector-vulnerability-scanner">
+<code>neuvector-vulnerability-scanner</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>NeuVector Vulnerability Scanner Plugin stored registry credentials unencrypted in its global configuration file <code>io.jenkins.plugins.neuvector.NeuVectorBuilder.xml</code> on the Jenkins controller.
+These credentials could be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>NeuVector Vulnerability Scanner Plugin now stores these credentials encrypted.</p>
+</div>
+<h3 id="SECURITY-1507">
+Aqua MicroScanner Plugin showed plain text credential in configuration form
+</h3>
+<strong>
+SECURITY-1507
+/
+CVE-2019-10427
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/aqua-microscanner">
+<code>aqua-microscanner</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Aqua MicroScanner Plugin stores a token credential in its global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the token is stored encrypted on disk, it was transmitted in plain text as part of the configuration form.
+This could result in exposure of the token through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>Aqua MicroScanner Plugin now encrypts the token transmitted to administrators viewing the global configuration form.</p>
+</div>
+<h3 id="SECURITY-1508">
+Aqua Security Scanner Plugin showed plain text password in configuration form
+</h3>
+<strong>
+SECURITY-1508
+/
+CVE-2019-10428
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/aqua-security-scanner">
+<code>aqua-security-scanner</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Aqua Security Scanner Plugin stores a password in its global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the password is stored encrypted on disk, it was transmitted in plain text as part of the configuration form.
+This could result in exposure of the password through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>Aqua Security Scanner Plugin now encrypts the password transmitted to administrators viewing the global configuration form.</p>
+</div>
+<h3 id="SECURITY-1513">
+Inedo BuildMaster Plugin Plugin showed plain text password in configuration form
+</h3>
+<strong>
+SECURITY-1513
+/
+CVE-2019-10411
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/inedo-buildmaster">
+<code>inedo-buildmaster</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Inedo BuildMaster Plugin Plugin stores a service password in its global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the password is stored encrypted on disk, it was transmitted in plain text as part of the configuration form.
+This could result in exposure of the password through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>Inedo BuildMaster Plugin Plugin now encrypts the password transmitted to administrators viewing the global configuration form.</p>
+</div>
+<h3 id="SECURITY-1514">
+Inedo ProGet Plugin Plugin showed plain text password in configuration form
+</h3>
+<strong>
+SECURITY-1514
+/
+CVE-2019-10412
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/inedo-proget">
+<code>inedo-proget</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Inedo ProGet Plugin Plugin stores a service password in its global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the password is stored encrypted on disk, it was transmitted in plain text as part of the configuration form.
+This could result in exposure of the password through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>Inedo ProGet Plugin Plugin now encrypts the password transmitted to administrators viewing the global configuration form.</p>
+</div>
+<h3 id="SECURITY-1557">
+Data Theorem Mobile Security: CI/CD Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1557
+/
+CVE-2019-10413
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/datatheorem-mobile-app-security">
+<code>datatheorem-mobile-app-security</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Data Theorem Mobile Security: CI/CD Plugin stored a proxy password unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+This password could be viewed by users with Extended Read permission, or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Data Theorem Mobile Security: CI/CD Plugin now stores the proxy password encrypted.
+Existing jobs need to have their configuration saved for existing plain text proxy passwords to be overwritten.</p>
+</div>
+<h3 id="SECURITY-1574">
+Git Changelog Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1574
+/
+CVE-2019-10414
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/git-changelog">
+<code>git-changelog</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Git Changelog Plugin stored MediaWiki and Jira passwords unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+These passwords could be viewed by users with Extended Read permission, or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Git Changelog Plugin now stores these passwords encrypted.
+Existing jobs need to have their configuration saved for existing plain text passwords to be overwritten.</p>
+</div>
+<h3 id="SECURITY-1575">
+GitLab Logo Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1575
+/
+CVE-2019-10429
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/gitlab-logo">
+<code>gitlab-logo</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>GitLab Logo Plugin stored a private token unencrypted in its global configuration file <code>org.jenkinsci.plugins.gitlablogo.GitlabLogoProperty.xml</code> on the Jenkins controller.
+This token could be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>GitLab Logo Plugin now stores the token encrypted.</p>
+</div>
+<h3 id="SECURITY-1577">
+Violation Comments to GitLab Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1577
+/
+CVE-2019-10415 (global password), CVE-2019-10416 (job password)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/violation-comments-to-gitlab">
+<code>violation-comments-to-gitlab</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Violation Comments to GitLab Plugin stored API tokens unencrypted in  job <code>config.xml</code> files and its global configuration file <code>org.jenkinsci.plugins.jvctgl.ViolationsToGitLabGlobalConfiguration.xml</code> on the Jenkins controller.
+These credentials could be viewed by users with Extended Read permission, or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Violation Comments to GitLab Plugin now stores these credentials encrypted.
+Existing jobs need to have their configuration saved for existing plain text credentials to be overwritten.</p>
+</div>
+<h3 id="SECURITY-920 (1)">
+Script sandbox bypass vulnerability in Kubernetes Pipeline - Kubernetes Steps Plugin
+</h3>
+<strong>
+SECURITY-920 (1)
+/
+CVE-2019-10417
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/kubernetes-pipeline-steps">
+<code>kubernetes-pipeline-steps</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Kubernetes Pipeline - Kubernetes Steps Plugin defines a custom list of pre-approved signatures for all scripts protected by the Script Security sandbox.</p>
+</div>
+<div class="paragraph">
+<p>This custom list of pre-approved signatures allows the use of methods that can be used to bypass Script Security sandbox protection.
+This results in arbitrary code execution on any Jenkins instance with this plugin installed.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-920 (2)">
+Script sandbox bypass vulnerability in Kubernetes Pipeline - Arquillian Steps Plugin
+</h3>
+<strong>
+SECURITY-920 (2)
+/
+CVE-2019-10418
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/kubernetes-pipeline-arquillian-steps">
+<code>kubernetes-pipeline-arquillian-steps</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Kubernetes Pipeline - Arquillian Steps Plugin defines a custom list of pre-approved signatures for all scripts protected by the Script Security sandbox.</p>
+</div>
+<div class="paragraph">
+<p>This custom list of pre-approved signatures allows the use of methods that can be used to bypass Script Security sandbox protection.
+This results in arbitrary code execution on any Jenkins instance with this plugin installed.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1541">
+vFabric Application Director Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1541
+/
+CVE-2019-10419
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/application-director-plugin">
+<code>application-director-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>vFabric Application Director Plugin stores the Application Director password unencrypted in its global configuration file <code>jfullam.vfabric.jenkins.plugin.ApplicationDirectorPostBuildDeployer.xml</code> on the Jenkins controller.
+This password can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1543">
+Assembla Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1543
+/
+CVE-2019-10420
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/assembla">
+<code>assembla</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Assembla Plugin stores the Assembla password unencrypted in its global configuration file <code>jenkins.plugin.assembla.AssemblaProjectProperty.xml</code> on the Jenkins controller.
+This password can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1544">
+Azure Event Grid Build Notifier Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1544
+/
+CVE-2019-10421
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/azure-event-grid-notifier">
+<code>azure-event-grid-notifier</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Azure Event Grid Build Notifier Plugin stores the Azure Event Grid secret key unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+This key can be viewed by users with Extended Read permission, or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1548">
+Call Remote Job Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1548
+/
+CVE-2019-10422
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/call-remote-job-plugin">
+<code>call-remote-job-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Call Remote Job Plugin stores a password unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+This password can be viewed by users with Extended Read permission, or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1551">
+CodeScan Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1551
+/
+CVE-2019-10423
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/codescan">
+<code>codescan</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>CodeScan Plugin stores an API key unencrypted in its global configuration file <code>com.villagechief.codescan.jenkins.CodeScanBuilder.xml</code> on the Jenkins controller.
+This API key can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1561">
+elOyente Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1561
+/
+CVE-2019-10424
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/elOyente">
+<code>elOyente</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>elOyente Plugin stores a password unencrypted in its global configuration file <code>com.technicolor.eloyente.ElOyente.xml</code> on the Jenkins controller.
+This password can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1572">
+Google Calendar Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1572
+/
+CVE-2019-10425
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/gcal">
+<code>gcal</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Google Calendar Plugin stores a calendar password unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+This password can be viewed by users with Extended Read permission, or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1573">
+Gem Publisher Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1573
+/
+CVE-2019-10426
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/gem-publisher">
+<code>gem-publisher</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Gem Publisher Plugin stores an API key unencrypted in its global configuration file <code>net.arangamani.jenkins.gempublisher.GemPublisher.xml</code> on the Jenkins controller.
+This API key can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-351:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-401:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-732:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-920 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-920 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1471:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1498:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1504:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1505:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1507:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1508:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1513:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1514:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1525:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1537 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1537 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1541:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1543:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1544:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1548:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1551:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1557:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1561:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1572:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1573:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1574:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1575:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1577:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+Jenkins weekly up to and including
+2.196
+</li>
+<li>
+Jenkins LTS up to and including
+2.176.3
+</li>
+<li>
+<strong>
+Aqua MicroScanner
+Plugin
+</strong>
+up to and including
+1.0.7
+</li>
+<li>
+<strong>
+Aqua Security Scanner
+Plugin
+</strong>
+up to and including
+3.0.17
+</li>
+<li>
+<strong>
+Assembla
+Plugin
+</strong>
+up to and including
+1.4
+</li>
+<li>
+<strong>
+Azure Event Grid Build Notifier
+Plugin
+</strong>
+up to and including
+0.1
+</li>
+<li>
+<strong>
+Call Remote Job
+Plugin
+</strong>
+up to and including
+1.0.21
+</li>
+<li>
+<strong>
+CodeScan
+Plugin
+</strong>
+up to and including
+0.11
+</li>
+<li>
+<strong>
+Data Theorem Mobile Security: CI/CD
+Plugin
+</strong>
+up to and including
+1.3
+</li>
+<li>
+<strong>
+elOyente
+Plugin
+</strong>
+up to and including
+1.3
+</li>
+<li>
+<strong>
+Gem Publisher
+Plugin
+</strong>
+up to and including
+1.0
+</li>
+<li>
+<strong>
+Git Changelog
+Plugin
+</strong>
+up to and including
+2.17
+</li>
+<li>
+<strong>
+GitLab Logo
+Plugin
+</strong>
+up to and including
+1.0.3
+</li>
+<li>
+<strong>
+Google Calendar
+Plugin
+</strong>
+up to and including
+0.4
+</li>
+<li>
+<strong>
+Inedo BuildMaster Plugin
+Plugin
+</strong>
+up to and including
+2.4.0
+</li>
+<li>
+<strong>
+Inedo ProGet Plugin
+Plugin
+</strong>
+up to and including
+1.2
+</li>
+<li>
+<strong>
+Kubernetes Pipeline - Arquillian Steps
+
+Plugin
+</strong>
+up to and including
+1.6
+</li>
+<li>
+<strong>
+Kubernetes Pipeline - Kubernetes Steps
+
+Plugin
+</strong>
+up to and including
+1.6
+</li>
+<li>
+<strong>
+Log Parser
+Plugin
+</strong>
+up to and including
+2.0
+</li>
+<li>
+<strong>
+NeuVector Vulnerability Scanner
+Plugin
+</strong>
+up to and including
+1.5
+</li>
+<li>
+<strong>
+Project Inheritance
+Plugin
+</strong>
+up to and including
+19.08.01
+</li>
+<li>
+<strong>
+vFabric Application Director
+Plugin
+</strong>
+up to and including
+1.3
+</li>
+<li>
+<strong>
+Violation Comments to GitLab
+Plugin
+</strong>
+up to and including
+2.28
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+Jenkins weekly should be updated to version
+2.197
+</li>
+<li>
+Jenkins LTS should be updated to version
+2.176.4 or 2.190.1
+</li>
+<li>
+<strong>
+Aqua MicroScanner
+Plugin
+</strong>
+should be updated to version
+1.0.8
+</li>
+<li>
+<strong>
+Aqua Security Scanner
+Plugin
+</strong>
+should be updated to version
+3.0.18
+</li>
+<li>
+<strong>
+Data Theorem Mobile Security: CI/CD
+Plugin
+</strong>
+should be updated to version
+1.4.0
+</li>
+<li>
+<strong>
+Git Changelog
+Plugin
+</strong>
+should be updated to version
+2.18
+</li>
+<li>
+<strong>
+GitLab Logo
+Plugin
+</strong>
+should be updated to version
+1.0.4
+</li>
+<li>
+<strong>
+Inedo BuildMaster Plugin
+Plugin
+</strong>
+should be updated to version
+2.5.0
+</li>
+<li>
+<strong>
+Inedo ProGet Plugin
+Plugin
+</strong>
+should be updated to version
+1.3
+</li>
+<li>
+<strong>
+Log Parser
+Plugin
+</strong>
+should be updated to version
+2.1
+</li>
+<li>
+<strong>
+NeuVector Vulnerability Scanner
+Plugin
+</strong>
+should be updated to version
+1.6
+</li>
+<li>
+<strong>
+Project Inheritance
+Plugin
+</strong>
+should be updated to version
+19.08.02
+</li>
+<li>
+<strong>
+Violation Comments to GitLab
+Plugin
+</strong>
+should be updated to version
+2.29
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Assembla
+Plugin
+</li>
+<li>
+Azure Event Grid Build Notifier
+Plugin
+</li>
+<li>
+Call Remote Job
+Plugin
+</li>
+<li>
+CodeScan
+Plugin
+</li>
+<li>
+elOyente
+Plugin
+</li>
+<li>
+Gem Publisher
+Plugin
+</li>
+<li>
+Google Calendar
+Plugin
+</li>
+<li>
+Kubernetes Pipeline - Arquillian Steps
+
+Plugin
+</li>
+<li>
+Kubernetes Pipeline - Kubernetes Steps
+
+Plugin
+</li>
+<li>
+vFabric Application Director
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-401
+</li>
+<li>
+<strong>
+James Holderness, IB Boost
+</strong>
+for
+SECURITY-1507, SECURITY-1508, SECURITY-1513, SECURITY-1514, SECURITY-1541, SECURITY-1543, SECURITY-1544, SECURITY-1548, SECURITY-1551, SECURITY-1557, SECURITY-1561, SECURITY-1572, SECURITY-1573, SECURITY-1574, SECURITY-1575, SECURITY-1577
+</li>
+<li>
+<strong>
+Jesse Glick, CloudBees, Inc.
+</strong>
+for
+SECURITY-920 (1), SECURITY-920 (2)
+</li>
+<li>
+<strong>
+Jonathan Leitschuh
+</strong>
+for
+SECURITY-1505
+</li>
+<li>
+<strong>
+Katherine Hough &lt;khough2@gmu.edu&gt; and Jonathan Bell &lt;bellj@gmu.edu&gt;
+</strong>
+for
+SECURITY-1471
+</li>
+<li>
+<strong>
+Matt Sicker, CloudBees Inc. and Wadeck Follonier, CloudBees Inc.
+</strong>
+for
+SECURITY-1498, SECURITY-1525
+</li>
+<li>
+<strong>
+Oleg Nenashev, CloudBees, Inc.
+</strong>
+for
+SECURITY-732
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-1537 (1), SECURITY-1537 (2)
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2019-09-25.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

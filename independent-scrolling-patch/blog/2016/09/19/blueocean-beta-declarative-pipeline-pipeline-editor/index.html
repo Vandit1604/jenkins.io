@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/09/19/blueocean-beta-declarative-pipeline-pipeline-editor/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Announcing the Blue Ocean beta, Declarative Pipeline and Pipeline Editor
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/i386/"><div class="app-avatar"></div> James Dumay</a>
+September 19, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Announcing+the+Blue+Ocean+beta%2C+Declarative+Pipeline+and+Pipeline+Editor&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F09%2F19%2Fblueocean-beta-declarative-pipeline-pipeline-editor%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>At Jenkins World on Wednesday 14th of September, the Jenkins project was happy to
+introduce the beta release of Blue Ocean. Blue Ocean is the new user experience
+for Jenkins, built from the ground up to take advantage of Jenkins Pipeline.
+It is an entire rethink of the the way that modern developers will use Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean is available today via the Jenkins Update Center for Jenkins users
+running 2.7.1 and above.</p>
+</div>
+<div class="sect2">
+<h3 id="get-the-beta"><a class="anchor" href="#get-the-beta"></a>Get the beta</h3>
+<div class="paragraph">
+<p>Just search for <em>BlueOcean beta</em> in the Update Center, install it,
+browse to the dashboard, and then click the <em>Try BlueOcean UI</em> button on the dashboard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="whats-included"><a class="anchor" href="#whats-included"></a>Whats included?</h3>
+<div class="paragraph">
+<p><a href="/blog/2016/05/26/introducing-blue-ocean/">Back in April we open sourced Blue Ocean</a>
+and shared our vision with the community. We&#8217;re very happy that all the things we showed you then have
+shipped in the beta (software projects run <strong>on time</strong>?!).</p>
+</div>
+<div class="paragraph">
+<p>For a refresher on Blue Ocean, watch this short video:</p>
+</div>
+<center>
+<iframe width="853" height="480"
+src="https://www.youtube-nocookie.com/embed/3dITffteCD4?rel=0" frameborder="0"
+allowfullscreen></iframe>
+</center>
+</div>
+<div class="sect2">
+<h3 id="declarative-pipeline"><a class="anchor" href="#declarative-pipeline"></a>Declarative Pipeline</h3>
+<div class="paragraph">
+<p>We have heard from the community about the usability of <a href="/doc/pipeline">Jenkins
+Pipeline</a>. Much of the feedback we received was to a desire to
+<strong>configure</strong> Pipelines rather than <strong>script</strong> them, and to make it easy for beginners
+to get started with their first Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>This is how <strong>Declarative Pipeline</strong> was born. We&#8217;ve introduced a new method whereby
+you declare how you want your Pipeline to look rather than using Pipeline Script
+ - it&#8217;s configuration rather than code.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a small example of a Declarative Pipeline for nodejs that runs the whole
+Pipeline inside a Docker container:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent <span style="color:#606">docker</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm install</span><span style="color:#710">'</span></span>
+    }
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm test</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">node:6.3</span><span style="color:#710">'</span></span>).inside {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm --version</span><span style="color:#710">'</span></span>
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm install</span><span style="color:#710">'</span></span>
+    }
+
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm test</span><span style="color:#710">'</span></span>
+    }
+  }
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>Docker support in Declarative Pipeline allows you to version your application code,
+Jenkins Pipeline configuration, and the environment where your pipeline will run,
+all in a single repository. It&#8217;s a crazy powerful combination.</p>
+</div>
+<div class="paragraph">
+<p>Declarative Pipeline introduces the <code>postBuild</code> section that makes it
+easy to run things conditionally at the end of your Pipeline without the
+complexity of the <code>try&#8230;&#8203; catch</code> of Pipeline script.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">postBuild {
+  always {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will always run&quot;</span><span style="color:#710">'</span></span>
+  }
+  success {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if successful&quot;</span><span style="color:#710">'</span></span>
+  }
+  failure {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if failed&quot;</span><span style="color:#710">'</span></span>
+  }
+  unstable {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if the run was marked as unstable&quot;</span><span style="color:#710">'</span></span>
+  }
+  changed {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if the state of the Pipeline has changed&quot;</span><span style="color:#710">'</span></span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;For example, the Pipeline was previously failing but is now successful&quot;</span><span style="color:#710">'</span></span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;... or the other way around :)&quot;</span><span style="color:#710">'</span></span>
+  }
+}
+</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+  <span style="color:#080;font-weight:bold">try</span> {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>) {
+      <span style="color:#777">/* .. snip .. */</span>
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test</span><span style="color:#710">'</span></span>) {
+      <span style="color:#777">/* .. snip .. */</span>
+    }
+
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if successful&quot;</span><span style="color:#710">'</span></span>
+  }
+  <span style="color:#080;font-weight:bold">catch</span> (exc) {
+    <span style="color:#080;font-weight:bold">if</span> (currentBuild.result == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">UNSTABLE</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if the run was marked as unstable&quot;</span><span style="color:#710">'</span></span>
+    }
+    <span style="color:#080;font-weight:bold">if</span> (currentBuild.result == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FAILURE</span><span style="color:#710">'</span></span>) {
+      sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will run only if failed&quot;</span><span style="color:#710">'</span></span>
+    }
+  }
+  <span style="color:#080;font-weight:bold">finally</span> {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">echo &quot;This will always run&quot;</span><span style="color:#710">'</span></span>
+  }
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>And there is so much more!</p>
+</div>
+<div class="paragraph">
+<p>If you have the Blue Ocean beta installed you already have Declarative Pipeline.
+While Declarative Pipeline is still alpha at the moment, we do encourage you to
+<a href="https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/getting%20started">follow our getting started guide</a>,
+ give us feedback on the <a href="/content/mailing-lists/">Jenkins Users mailing list</a>
+ or file bugs <a href="https://issues.jenkins.io">against the 'pipeline-model-definition' component in JIRA</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="introducing-the-pipeline-editor"><a class="anchor" href="#introducing-the-pipeline-editor"></a>Introducing the Pipeline Editor</h3>
+<div class="paragraph">
+<p>The Pipeline Editor is a graphical user interface that gives Jenkins users the
+simplest way yet to get started with creating Pipelines in Jenkins. It will also
+save a lot of time for intermediate and advanced Jenkins users as a way to author
+Pipelines.</p>
+</div>
+<div class="paragraph">
+<p>When you build your Pipeline in the Editor and click the save button, the editor
+will commit a new <strong>Jenkinsfile</strong> back to your repository in the form of the new
+Declarative Pipeline. When you want to edit again, Jenkins will read it from
+your repository exactly how you saw it previously.</p>
+</div>
+<div class="paragraph">
+<p>The Pipeline Editor is a work in progress and should arrive in a beta release soon.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pipeline-editor.png" alt="Personalized dashboard"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="thank-you"><a class="anchor" href="#thank-you"></a>Thank you</h3>
+<div class="paragraph">
+<p>Thanks for reading our news from Jenkins World and be sure to check the blog
+for regular updates!</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;d also like to thank our amazing community for their feedback and support
+as we change the way software teams around the world use Jenkins. We couldn&#8217;t
+do this without you.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ux/">
+ux
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2016/">
+jenkinsworld2016
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/i386/">
+James Dumay
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/i386" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/i386" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-09-19-blueocean-beta-declarative-pipeline-pipeline-editor.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

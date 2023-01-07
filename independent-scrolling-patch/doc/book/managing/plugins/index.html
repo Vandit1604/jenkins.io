@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Managing Plugins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Managing Plugins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Managing Plugins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Managing Plugins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Managing Plugins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="active">Managing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-configuration/" class="">Configuring the System</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" class="">Configuration as Code</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/tools/" class="">Managing Tools</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" class="active">Managing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/about-jenkins/" class="">About Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-info/" class="">System Information</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-properties/" class="">Jenkins Features Controlled with System Properties</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/change-system-timezone/" class="">Change System Time Zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-console/" class="">Script Console</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/groovy-hook-scripts/" class="">Groovy Hook Scripts</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" class="">Managing Nodes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-approval/" class="">In-process Script Approval</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/users/" class="">Manage Users</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" class="">Themes for user interface</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/user-content/" class="">User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/spawning-processes/" class="">Spawning Processes From Build</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../tools">
+⇐ Managing Tools
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../about-jenkins">
+About Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Managing Plugins
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#installing-a-plugin">Installing a plugin</a>
+<ul class="sectlevel2">
+<li><a href="#from-the-web-ui">From the web UI</a></li>
+<li><a href="#install-with-cli">Using the Jenkins CLI</a></li>
+<li><a href="#advanced-installation">Advanced installation</a></li>
+</ul>
+</li>
+<li><a href="#updating-a-plugin">Updating a plugin</a></li>
+<li><a href="#removing-a-plugin">Removing a plugin</a>
+<ul class="sectlevel2">
+<li><a href="#uninstalling-a-plugin">Uninstalling a plugin</a></li>
+<li><a href="#disabling-a-plugin">Disabling a plugin</a></li>
+</ul>
+</li>
+<li><a href="#pinned-plugins">Pinned plugins</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Plugins are the primary means of enhancing the functionality of a Jenkins
+environment to suit organization- or user-specific needs. There are
+<a href="https://plugins.jenkins.io">over a thousand different plugins</a>
+which can be installed on a Jenkins controller and to integrate various
+build tools, cloud providers, analysis tools, and much more.</p>
+</div>
+<div class="paragraph">
+<p>Plugins can be automatically downloaded, with their dependencies, from the
+<a href="../../glossary/#update-center">Update Center</a>. The Update Center is a service
+operated by the Jenkins project which provides an inventory of open source
+plugins which have been developed and maintained by various members of the
+Jenkins community.</p>
+</div>
+<div class="paragraph">
+<p>This section covers everything from the basics of managing plugins within
+the Jenkins web UI, to making changes on the <a href="../../glossary/#controller">controller&#8217;s</a>
+file system.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-a-plugin"><a class="anchor" href="#installing-a-plugin"></a>Installing a plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins provides two methods for installing plugins on the controller:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Using the "Plugin Manager" in the web UI.</p>
+</li>
+<li>
+<p>Using the <a href="#install-with-cli">Jenkins CLI</a> <code>install-plugin</code> command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each approach will result in the plugin being loaded by Jenkins but may require
+different levels of access and trade-offs in order to use.</p>
+</div>
+<div class="paragraph">
+<p>The two approaches require that the Jenkins controller be able to download
+meta-data from an Update Center, whether the primary Update Center operated by
+the Jenkins project
+<sup class="footnote" id="_footnote_uc">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>,
+or a custom Update Center.</p>
+</div>
+<div class="paragraph">
+<p>The plugins are packaged as self-contained <code>.hpi</code> files, which have all the
+necessary code, images, and other resources which the plugin needs to operate
+successfully.</p>
+</div>
+<div class="sect2">
+<h3 id="from-the-web-ui"><a class="anchor" href="#from-the-web-ui"></a>From the web UI</h3>
+<div class="paragraph">
+<p>The simplest and most common way of installing plugins is through the
+<strong>Manage Jenkins</strong> &gt; <strong>Manage Plugins</strong> view, available to administrators of a
+Jenkins environment.</p>
+</div>
+<div class="paragraph">
+<p>Under the <strong>Available</strong> tab, plugins available for download from the configured
+Update Center can be searched and considered:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/blueocean/intro/blueocean-plugins-filtered.png" alt="Available tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>Most plugins can be installed and used immediately by checking the box adjacent
+to the plugin and clicking <strong>Install without restart</strong>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the list of available plugins is empty, the controller may be incorrectly
+configured or has not yet downloaded plugin meta-data from the Update Center.
+Clicking the <strong>Check now</strong> button forces Jenkins to attempt to contact its
+configured Update Center.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-with-cli"><a class="anchor" href="#install-with-cli"></a>Using the Jenkins CLI</h3>
+<div class="videoblock">
+<div class="title">Installing Jenkins plugins using Jenkins CLI</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/bTFMvXIkNIg?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p>Administrators may also use the <a href="../cli/">Jenkins CLI</a> which provides a command
+to install plugins. Scripts to manage Jenkins environments, or configuration
+management code, may need to install plugins without direct user interaction in
+the web UI. The Jenkins CLI allows a command line user or automation tool to
+download a plugin and its dependencies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
+
+Installs a plugin either from a file, an URL, or from update center.
+
+ SOURCE    : If this points to a local file, that file will be installed. If
+             this is an URL, Jenkins downloads the URL and installs that as a
+             plugin.Otherwise the name is assumed to be the short name of the
+             plugin in the existing update center (like "findbugs"),and the
+             plugin will be installed from the update center.
+ -deploy   : Deploy plugins right away without postponing them until the reboot.
+ -name VAL : If specified, the plugin will be installed as this short name
+             (whereas normally the name is inferred from the source name
+             automatically).
+ -restart  : Restart Jenkins upon successful installation.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advanced-installation"><a class="anchor" href="#advanced-installation"></a>Advanced installation</h3>
+<div class="paragraph">
+<p>The Update Center only allows the installation of the most recently released
+version of a plugin. In cases where an older release of the plugin is desired,
+a Jenkins administrator can download an older <code>.hpi</code> archive and manually
+install that on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins stores plugins it has downloaded in the <code>plugins</code> directory with a <code>.jpi</code> suffix, whether the plugins originally had a <code>.jpi</code> or an <code>.hpi</code> suffix.</p>
+</div>
+<div class="paragraph">
+<p>If an administrator manually copies a plugin archive into the <code>plugins</code> directory, it should be named with a <code>.jpi</code> suffix to match the file names used by plugins installed from the update center.</p>
+</div>
+<div class="sect3">
+<h4 id="from-the-web-ui-2"><a class="anchor" href="#from-the-web-ui-2"></a>From the web UI</h4>
+<div class="paragraph">
+<p>Assuming a <code>.hpi</code> file has been downloaded, a logged-in Jenkins administrator
+may upload the file from within the web UI:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Manage Jenkins</strong> &gt; <strong>Manage Plugins</strong> page in the web UI.</p>
+</li>
+<li>
+<p>Click on the <strong>Advanced</strong> tab.</p>
+</li>
+<li>
+<p>Choose the <code>.hpi</code> file from your system or enter a URL to the archive file under the <strong>Deploy Plugin</strong> section.</p>
+</li>
+<li>
+<p><strong>Deploy</strong> the plugin file.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-upload.png" alt="Advanced tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>Once a plugin file has been uploaded, the Jenkins controller must be manually
+restarted in order for the changes to take effect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="on-the-controller"><a class="anchor" href="#on-the-controller"></a>On the controller</h4>
+<div class="paragraph">
+<p>Assuming a <code>.hpi</code> file has been explicitly downloaded by a system
+administrator, the administrator can manually place the file in a
+specific location on the file system.</p>
+</div>
+<div class="paragraph">
+<p>Copy the downloaded <code>.hpi`</code> file into the <code>JENKINS_HOME/plugins</code> directory on
+the Jenkins controller (for example, on Debian systems <code>JENKINS_HOME</code> is generally
+<code>/var/lib/jenkins</code>).
+If an administrator manually copies a plugin archive into the <code>plugins</code> directory, it should be named with a <code>.jpi</code> suffix to match the file names used by plugins installed from the update center.</p>
+</div>
+<div class="paragraph">
+<p>The controller must be restarted before the plugin is loaded and
+made available in the Jenkins environment.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The names of the plugin directories in the Update Site <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> are
+not always the same as the plugin&#8217;s display name. Searching
+<a href="https://plugins.jenkins.io/">plugins.jenkins.io</a>
+for the desired plugin will provide the appropriate link to the archive file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating-a-plugin"><a class="anchor" href="#updating-a-plugin"></a>Updating a plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Updates are listed in the <strong>Updates</strong> tab of the <strong>Manage Plugins</strong> page and can be
+installed by checking the checkboxes of the desired plugin updates and clicking
+the <strong>Download now and install after restart</strong> button.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-update.png" alt="Updates tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>By default, the Jenkins controller will check for updates from the Update Center
+once every 24 hours. To manually trigger a check for updates, simply click on
+the <strong>Check now</strong> button in the <strong>Updates</strong> tab.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="removing-a-plugin"><a class="anchor" href="#removing-a-plugin"></a>Removing a plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When a plugin is no longer used in a Jenkins environment, it is prudent to
+remove the plugin from the Jenkins controller. This provides a number of benefits
+such as reducing memory overhead at boot or runtime, reducing configuration
+options in the web UI, and removing the potential for future conflicts with new
+plugin updates.</p>
+</div>
+<div class="sect2">
+<h3 id="uninstalling-a-plugin"><a class="anchor" href="#uninstalling-a-plugin"></a>Uninstalling a plugin</h3>
+<div class="paragraph">
+<p>This video reviews the process of uninstalling a plugin from Jenkins.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/Keh6riX7574?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p>The simplest way to uninstall a plugin is to navigate to the <strong>Installed</strong> tab on
+the <strong>Manage Plugins</strong> page. From there, Jenkins will automatically determine
+which plugins are safe to uninstall, those which are not dependencies of other
+plugins, and present a button for doing so.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-uninstall.png" alt="Installed tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>A plugin may also be uninstalled by removing the corresponding <code>.jpi</code>
+file from the <code>JENKINS_HOME/plugins</code> directory on the controller. The plugin will
+continue to function until the controller has been restarted.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a plugin file is removed but required by other plugins, the Jenkins
+controller may fail to boot correctly.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Uninstalling a plugin does <strong>not</strong> remove the configuration that the plugin may
+have created. If there are existing jobs/nodes/views/builds/etc configurations
+that reference data created by the plugin, during boot Jenkins will warn that
+some configurations could not be fully loaded and ignore the unrecognized data.</p>
+</div>
+<div class="paragraph">
+<p>Since the configuration(s) will be preserved until they are overwritten,
+re-installing the plugin will result in those configuration values reappearing.</p>
+</div>
+<div class="sect3">
+<h4 id="removing-old-data"><a class="anchor" href="#removing-old-data"></a>Removing old data</h4>
+<div class="paragraph">
+<p>Jenkins provides a facility for purging configuration left behind by
+uninstalled plugins. Navigate to <strong>Manage Jenkins</strong> and then click on <strong>Manage
+Old Data</strong> to review and remove old data.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="disabling-a-plugin"><a class="anchor" href="#disabling-a-plugin"></a>Disabling a plugin</h3>
+<div class="paragraph">
+<p>Disabling a plugin is a softer way to retire a plugin. Jenkins will continue to
+recognize that the plugin is installed, but it will not start the plugin, and
+no extensions contributed from this plugin will be visible.</p>
+</div>
+<div class="paragraph">
+<p>A Jenkins administrator may disable a plugin by unchecking the box on the
+<strong>Installed</strong> tab of the <strong>Manage Plugins</strong> page (see below).</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-disable.png" alt="Installed tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>A systems administrator may also disable a plugin by creating a file on the
+Jenkins controller, such as: <code>JENKINS_HOME/plugins/PLUGIN_NAME.jpi.disabled</code>.</p>
+</div>
+<div class="paragraph">
+<p>The configuration(s) created by the disabled plugin behave as if the plugin
+were uninstalled, insofar that they result in warnings on boot but are
+otherwise ignored.</p>
+</div>
+<div class="sect3">
+<h4 id="using-the-jenkins-cli"><a class="anchor" href="#using-the-jenkins-cli"></a>Using the Jenkins CLI</h4>
+<div class="paragraph">
+<p>It is also possible to enable or disable plugins via the <a href="../cli/">Jenkins CLI</a>
+using the <code>enable-plugin</code> or <code>disable-plugin</code> commands.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>enable-plugin</code> command was added to Jenkins in <a href="/changelog/#v2.136">v2.136</a>.
+The <code>disable-plugin</code> command was added to Jenkins in <a href="/changelog/#v2.151">v2.151</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>enable-plugin</code> command receives a list of plugins to be enabled.
+Any plugins which a selected plugin depends on will also be enabled by this command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>java -jar jenkins-cli.jar -s http://localhost:8080/ enable-plugin PLUGIN ... [-restart]
+
+Enables one or more installed plugins transitively.
+
+ PLUGIN   : Enables the plugins with the given short names and their
+            dependencies.
+ -restart : Restart Jenkins after enabling plugins.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>disable-plugin</code> command receives a list of plugins to be disabled. The
+output will display messages for both successful and failed operations. If you
+only want to see error messages, the <code>-quiet</code> option can be specified.
+The <code>-strategy</code> option controls what action will be taken when one of the specified plugins
+is listed as an optional or mandatory dependency of another enabled plugin.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>java -jar jenkins-cli.jar -s http://localhost:8080/ disable-plugin PLUGIN ... [-quiet (-q)]
+[-restart (-r)] [-strategy (-s) strategy]
+
+Disable one or more installed plugins.
+Disable the plugins with the given short names. You can define how to proceed with the
+dependant plugins and if a restart after should be done. You can also set the quiet mode
+to avoid extra info in the console.
+
+ PLUGIN                  : Plugins to be disabled.
+ -quiet (-q)             : Be quiet, print only the error messages
+ -restart (-r)           : Restart Jenkins after disabling plugins.
+ -strategy (-s) strategy : How to process the dependant plugins.
+                           - none: if a mandatory dependant plugin exists and
+                           it is enabled, the plugin cannot be disabled
+                           (default value).
+                           - mandatory: all mandatory dependant plugins are
+                           also disabled, optional dependant plugins remain
+                           enabled.
+                           - all: all dependant plugins are also disabled, no
+                           matter if its dependency is optional or mandatory.</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the same way than enabling and disabling plugins from the UI requires a restart
+to complete the process, the changes made with the CLI commands will take effect
+once Jenkins is restarted. The <code>-restart</code> option forces a safe restart of the
+instance once the command has successfully finished, so the changes will be
+immediately applied.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pinned-plugins"><a class="anchor" href="#pinned-plugins"></a>Pinned plugins</h2>
+<div class="sectionbody">
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pinned plugins feature was removed in Jenkins 2.0. Versions later than Jenkins
+2.0 do not bundle plugins, instead providing a wizard to install the most
+useful plugins.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The notion of <strong>pinned plugins</strong> applies to plugins that are bundled with
+Jenkins 1.x, such as the
+<a href="https://plugins.jenkins.io/matrix-auth"><strong>Matrix Authorization plugin</strong></a>.</p>
+</div>
+<div class="paragraph">
+<p>By default, whenever Jenkins is upgraded, its bundled plugins overwrite the
+versions of the plugins that are currently installed in <code>JENKINS_HOME</code>.</p>
+</div>
+<div class="paragraph">
+<p>However, when a bundled plugin has been manually updated, Jenkins will mark
+that plugin as pinned to the particular version. On the file system, Jenkins
+creates an empty file called <code>JENKINS_HOME/plugins/PLUGIN_NAME.jpi.pinned</code>
+to indicate the pinning.</p>
+</div>
+<div class="paragraph">
+<p>Pinned plugins will never be overwritten by bundled plugins during Jenkins
+startup. (Newer versions of Jenkins do warn you if a pinned plugin is <em>older</em>
+than what is currently bundled.)</p>
+</div>
+<div class="paragraph">
+<p>It is safe to update a bundled plugin to a version offered by the Update
+Center. This is often necessary to pick up the newest features and fixes. The
+bundled version is occasionally updated, but not consistently.</p>
+</div>
+<div class="paragraph">
+<p>The Plugin Manager allows plugins to be explicitly unpinned. The
+<code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.pinned</code> file can also be manually
+created/deleted to control the pinning behavior. If the <code>pinned</code> file is
+present, Jenkins will use whatever plugin version the user has specified.
+If the file is absent, Jenkins will restore the plugin to the default version
+on startup.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://updates.jenkins.io" class="bare">updates.jenkins.io</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../tools">
+⇐ Managing Tools
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../about-jenkins">
+About Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/managing/plugins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Other Systems
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/installing/other/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Other Systems" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Other Systems" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Other Systems" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/installing/other/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Other Systems" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="active">Installing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/docker/" class="">Docker</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/kubernetes/" class="">Kubernetes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/linux/" class="">Linux</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/macos/" class="">macOS</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/windows/" class="">Windows</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/other/" class="active">Other Systems</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/war-file/" class="">WAR file</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/servlet-containers/" class="">Other Servlet Containers</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/offline/" class="">Offline Installations</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/initial-settings/" class="">Initial Settings</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../windows">
+⇐ Windows
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Installing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../war-file">
+WAR file ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Other Systems
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#other-operating-systems">FreeBSD</a>
+<ul class="sectlevel2">
+<li><a href="#long-term-support-release">Long Term Support release</a></li>
+<li><a href="#weekly-release">Weekly release</a></li>
+<li><a href="#start-jenkins">Start Jenkins</a></li>
+<li><a href="#enable-jenkins">Enable Jenkins</a></li>
+</ul>
+</li>
+<li><a href="#openindiana-hipster">OpenIndiana Hipster</a></li>
+<li><a href="#solaris-omnios-smartos-and-other-siblings">Solaris, OmniOS, SmartOS, and other siblings</a></li>
+<li><a href="#setup-wizard">Post-installation setup wizard</a>
+<ul class="sectlevel2">
+<li><a href="#unlocking-jenkins">Unlocking Jenkins</a></li>
+<li><a href="#customizing-jenkins-with-plugins">Customizing Jenkins with plugins</a></li>
+<li><a href="#creating-the-first-administrator-user">Creating the first administrator user</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="other-operating-systems"><a class="anchor" href="#other-operating-systems"></a>FreeBSD</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins can be installed on FreeBSD using the standard FreeBSD package manager, <code>pkg</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="long-term-support-release"><a class="anchor" href="#long-term-support-release"></a>Long Term Support release</h3>
+<div class="paragraph">
+<p>A <a href="/download/lts/">LTS (Long-Term Support) release</a> is chosen every 12 weeks from the stream of regular releases as the stable release for that time period.
+It can be installed from the FreeBSD <code>pkg</code> package manager.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># pkg install jenkins-lts</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Disclaimer: The <a href="https://www.freebsd.org/">FreeBSD project</a> maintains the Jenkins packaging for FreeBSD.
+The Jenkins package for FreeBSD is NOT officially supported by the Jenkins project,
+but it is actively used by the <a href="https://www.freebsd.org/">FreeBSD project</a> at <a href="https://ci.freebsd.org/" class="bare">ci.freebsd.org/</a> .</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="weekly-release"><a class="anchor" href="#weekly-release"></a>Weekly release</h3>
+<div class="paragraph">
+<p>A new release is produced weekly to deliver bug fixes and features to users and plugin developers.
+It can be installed from the FreeBSD <code>pkg</code> package manager.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># pkg install jenkins</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The long term support package <code>jenkins-lts</code> and the weekly package installation <code>jenkins</code> will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configure Jenkins as a daemon which may optionally be launched on start. See <code>/etc/rc.conf</code> for more details</p>
+</li>
+<li>
+<p>Create a &#8216;jenkins&#8217; user to run the service</p>
+</li>
+<li>
+<p>Direct console log output to the file <code>/var/log/jenkins.log</code>. Check this file when troubleshooting Jenkins</p>
+</li>
+<li>
+<p>Set Jenkins to listen on port 8180 from the path <code>/jenkins</code>.  Open http://localhost:8180/jenkins to login to Jenkins</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="start-jenkins"><a class="anchor" href="#start-jenkins"></a>Start Jenkins</h3>
+<div class="paragraph">
+<p>You can start the Jenkins service with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># service jenkins onestart</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can check the status of the Jenkins service using the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># service jenkins status</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can stop the Jenkins service with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># service jenkins stop</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enable-jenkins"><a class="anchor" href="#enable-jenkins"></a>Enable Jenkins</h3>
+<div class="paragraph">
+<p>Add the following to <code>/etc/rc.conf</code> to start Jenkins automatically on system boot:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nv">jenkins_enable</span><span class="o">=</span><span class="s2">"YES"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once Jenkins is enabled, it can be started with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># service jenkins start</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Other configuration values that can be set in <code>/etc/rc.conf</code> or in <code>/etc/rc.conf.d/jenkins</code> are described in <code>/usr/local/etc/rc.d/jenkins</code>.
+Refer to the <a href="https://wiki.freebsd.org/Jenkins">Jenkins page</a> on the <a href="https://wiki.freebsd.org/">FreeBSD wiki</a> for more information specific to Jenkins on FreeBSD.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="openindiana-hipster"><a class="anchor" href="#openindiana-hipster"></a>OpenIndiana Hipster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On a system running <a href="https://www.openindiana.org/">OpenIndiana Hipster</a>
+Jenkins can be installed in either the local or global zone using the
+<a href="https://en.wikipedia.org/wiki/Image_Packaging_System">Image Packaging
+System</a> (IPS).</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Disclaimer: This platform is NOT officially supported by the Jenkins team,
+use it at your own risk. Packaging and integration described in this section
+is maintained by the OpenIndiana Hipster team, bundling the generic <code>jenkins.war</code>
+to work in that operating environment.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For the common case of running the newest packaged weekly build as a standalone (Jetty) server, simply execute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">pkg <span class="nb">install </span>jenkins
+svcadm <span class="nb">enable </span>jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The common packaging integration for a standalone service will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a <code>jenkins</code> user to run the service and to own the directory structures under <code>/var/lib/jenkins</code>.</p>
+</li>
+<li>
+<p>Pull the Java package and other packages required to execute Jenkins, including
+the <code>jenkins-core-weekly</code> package with the latest <code>jenkins.war</code>.</p>
+</li>
+<li>
+<p>Set up Jenkins as an SMF service instance (<code>svc:/network/http:jenkins</code>) which
+can then be enabled with the <code>svcadm</code> command demonstrated above.</p>
+</li>
+<li>
+<p>Set up Jenkins to listen on port 8080.</p>
+</li>
+<li>
+<p>Configure the log output to be managed by SMF at <code>/var/svc/log/network-http:jenkins.log</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once Jenkins is running, consult the log
+(<code>/var/svc/log/network-http:jenkins.log</code>) to retrieve the generated
+administrator password for the initial set up of Jenkins, usually it will be
+found at <code>/var/lib/jenkins/home/secrets/initialAdminPassword</code>. Then navigate to
+<a href="http://localhost:8080">localhost:8080</a> to <a href="#setup-wizard">complete configuration of the
+Jenkins instance</a>.</p>
+</div>
+<div class="paragraph">
+<p>To change attributes of the service, such as environment variables like <code>JENKINS_HOME</code>
+or the port number used for the Jetty web server, use the <code>svccfg</code> utility:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">svccfg <span class="nt">-s</span> svc:/network/http:jenkins editprop
+svcadm refresh svc:/network/http:jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also refer to <code>/lib/svc/manifest/network/jenkins-standalone.xml</code> for more
+details and comments about currently supported tunables of the SMF service.
+Note that the <code>jenkins</code> user account created by the packaging is specially privileged
+to allow binding to port numbers under 1024.</p>
+</div>
+<div class="paragraph">
+<p>The current status of Jenkins-related packages available for the given release
+of OpenIndiana can be queried with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">pkg info <span class="nt">-r</span> <span class="s1">'*jenkins*'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Upgrades to the package can be performed by updating the entire operating
+environment with <code>pkg update</code>, or specifically for Jenkins core software with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">pkg update jenkins-core-weekly</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Procedure for updating the package will restart the currently running Jenkins
+process. Make sure to prepare it for shutdown and finish all running jobs
+before updating, if needed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solaris-omnios-smartos-and-other-siblings"><a class="anchor" href="#solaris-omnios-smartos-and-other-siblings"></a>Solaris, OmniOS, SmartOS, and other siblings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Generally it should suffice to install a <a href="/doc/administration/requirements/java/">supported Java version</a>, <a href="/download">download</a> the
+<code>jenkins.war</code>, and run it as a standalone process.</p>
+</div>
+<div class="paragraph">
+<p>Some caveats apply:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Headless JVM and fonts: For OpenJDK builds on minimalized-footprint systems,
+there may be
+<a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+got+java.awt.headless+problem">issues
+running the headless JVM</a>, because Jenkins needs some fonts to render certain
+pages.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setup-wizard"><a class="anchor" href="#setup-wizard"></a>Post-installation setup wizard</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After downloading, installing and running Jenkins using one of the procedures
+above (except for installation with Jenkins Operator), the post-installation setup wizard begins.</p>
+</div>
+<div class="paragraph">
+<p>This setup wizard takes you through a few quick "one-off" steps to unlock
+Jenkins, customize it with plugins and create the first administrator user
+through which you can continue accessing Jenkins.</p>
+</div>
+<div class="sect2">
+<h3 id="unlocking-jenkins"><a class="anchor" href="#unlocking-jenkins"></a>Unlocking Jenkins</h3>
+<div class="paragraph">
+<p>When you first access a new Jenkins instance, you are asked to unlock it using
+an automatically-generated password.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Browse to <code>http://localhost:8080</code> (or whichever port you configured for
+Jenkins when installing it) and wait until the <strong>Unlock Jenkins</strong> page appears.</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../resources/tutorials/setup-jenkins-01-unlock-jenkins-page.jpg" alt="Unlock Jenkins page" width="80%"></span></p>
+</div>
+</li>
+<li>
+<p>From the Jenkins console log output, copy the automatically-generated
+alphanumeric password (between the 2 sets of asterisks).</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../resources/tutorials/setup-jenkins-02-copying-initial-admin-password.png" alt="Copying initial admin password" width="80%"></span><br>
+  <strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The command: <code>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</code> will print the password at console.<br></p>
+</li>
+<li>
+<p>If you are running Jenkins in Docker using the official <code>jenkins/jenkins</code> image you can use <code>sudo docker exec ${CONTAINER_ID or CONTAINER_NAME} cat /var/jenkins_home/secrets/initialAdminPassword</code> to print the password in the console without having to exec into the container.<br></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>On the <strong>Unlock Jenkins</strong> page, paste this password into the <strong>Administrator
+password</strong> field and click <strong>Continue</strong>.<br>
+<strong>Notes:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>You can always access the Jenkins console log from the Docker logs
+(<a href="#accessing-the-jenkins-console-log-through-docker-logs">above</a>).</p>
+</li>
+<li>
+<p>The Jenkins console log indicates the location (in the Jenkins home directory)
+where this password can also be obtained. This password must be entered in the
+setup wizard on new Jenkins installations before you can access Jenkins&#8217;s main
+UI. This password also serves as the default administrator account&#8217;s password
+(with username "admin") if you happen to skip the subsequent user-creation
+step in the setup wizard.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customizing-jenkins-with-plugins"><a class="anchor" href="#customizing-jenkins-with-plugins"></a>Customizing Jenkins with plugins</h3>
+<div class="paragraph">
+<p>After <a href="#unlocking-jenkins">unlocking Jenkins</a>, the <strong>Customize Jenkins</strong> page
+appears. Here you can install any number of useful plugins as part of your
+initial setup.</p>
+</div>
+<div class="paragraph">
+<p>Click one of the two options shown:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Install suggested plugins</strong> - to install the recommended set of plugins, which
+are based on most common use cases.</p>
+</li>
+<li>
+<p><strong>Select plugins to install</strong> - to choose which set of plugins to initially
+install. When you first access the plugin selection page, the suggested
+plugins are selected by default.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are not sure what plugins you need, choose <strong>Install suggested
+plugins</strong>.
+You can install (or remove) additional Jenkins plugins at a later point in time
+via the
+<a href="/doc/book/managing"><strong>Manage Jenkins</strong></a> &gt;
+<a href="/doc/book/managing/plugins/"><strong>Manage Plugins</strong></a> page in Jenkins.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The setup wizard shows the progression of Jenkins being configured and your
+chosen set of Jenkins plugins being installed. This process may take a few
+minutes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-the-first-administrator-user"><a class="anchor" href="#creating-the-first-administrator-user"></a>Creating the first administrator user</h3>
+<div class="paragraph">
+<p>Finally, after <a href="#customizing-jenkins-with-plugins">customizing Jenkins with
+plugins</a>, Jenkins asks you to create your first administrator user.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the <strong>Create First Admin User</strong> page appears, specify the details for your
+administrator user in the respective fields and click <strong>Save and Finish</strong>.</p>
+</li>
+<li>
+<p>When the <strong>Jenkins is ready</strong> page appears, click <strong>Start using Jenkins</strong>.<br>
+<strong>Notes:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>This page may indicate <strong>Jenkins is almost ready!</strong> instead and if so, click
+<strong>Restart</strong>.</p>
+</li>
+<li>
+<p>If the page does not automatically refresh after a minute, use your web
+browser to refresh the page manually.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If required, log in to Jenkins with the credentials of the user you just
+created and you are ready to start using Jenkins!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../windows">
+⇐ Windows
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Installing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../war-file">
+WAR file ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/installing/other.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

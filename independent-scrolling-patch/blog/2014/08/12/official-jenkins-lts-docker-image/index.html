@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Official Jenkins LTS docker image
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2014/08/12/official-jenkins-lts-docker-image/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Official Jenkins LTS docker image" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Official Jenkins LTS docker image" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Official Jenkins LTS docker image" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2014/08/12/official-jenkins-lts-docker-image/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Official Jenkins LTS docker image" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Official Jenkins LTS docker image
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/kohsuke/"><div class="app-avatar"><img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/images/avatars/kohsuke.jpeg"></div> Kohsuke Kawaguchi</a>
+August 12, 2014
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Official+Jenkins+LTS+docker+image&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2014%2F08%2F12%2Fofficial-jenkins-lts-docker-image%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>(This is a guest post from <a href="https://twitter.com/michaelneale">Michael Neale</a>)<br></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Recently at the Docker Conference (DockerCon) the <a href="https://hub.docker.com">Docker Hub</a> was announced.</p>
+</div>
+<div class="paragraph">
+<p>The hub (which includes their image building and storage service) also provides some "official" <a href="https://registry.hub.docker.com/">images</a> (sometimes they call them repositories - they are really just sets of images).<br></p>
+</div>
+<div class="paragraph">
+<p>So after talking with all sorts of people we decided to create an official <a href="https://registry.hub.docker.com/_/jenkins/">Jenkins image</a> - which is hosted by the docker hub simply as "jenkins".</p>
+</div>
+<div class="paragraph">
+<p>So when you run "docker pull jenkins" - it will be grabbing this image. This is based on the current LTS (and will be kept up to date with the LTS) - but does not include the weekly releases (yet). Having a jenkins image that is fairly basic (it includes enough to run some basic builds, as well as jenkins itself) built on the LTS, on the latest LTS of Ubuntu seemed quite convenient - and easy to maintain using the official Ubuntu/Debian packaging of Jenkins.<br></p>
+</div>
+<div class="paragraph">
+<p>Docker is a great way to try and use server based systems - it brings all the dependencies needed and the images actually are portable (ie anywhere docker runs you can run docker images). There are official images for many popular server platforms (redis, mysql, all the linux distros and so on) so it seemed crazy to not include Jenkins along with this list.<br>
+"docker run -p 8080:8080 jenkins" is all you need to get going with LTS Jenkins now.<br>
+You can also use "docker run jenkins:1.554" to get the latest of that lineage of LTS releases, or pick a specific one: "docker run jenkins:1.554.3" if you like. Leaving off a version assumes the latest. Check the <a href="https://registry.hub.docker.com/_/jenkins/tags/manage/">tags</a> page to see what is available.<br></p>
+</div>
+<div class="paragraph">
+<p>You can read more and see how you <a href="https://registry.hub.docker.com/_/jenkins/">can use it here.</a><br></p>
+</div>
+<div class="paragraph">
+<p>There has been some questions and discussions on how to make use of Jenkins with the docker hub for creating new and interesting docker image based workflows for deployment.<br>
+In fact, Jenkins featured in one of the first slides of the first keynote of docker con:<br>
+<span class="image"><img src="https://3.bp.blogspot.com/-qAC-f6ceVho/U5rfqpzj3VI/AAAAAAAAC8w/Ta4pzEhm-8A/s1600/Screen+Shot+2014-06-13+at+8.34.10+pm.png" alt="image"></span><br>
+To make this dream a reality some additional <a href="https://wiki.jenkins.io/display/JENKINS/DockerHub+Plugin">plugins</a> had to be created - but this leaves the possibility of working with the docker hub (builds, stores images) and Jenkins (workflow, testing, deployment) to build out some kind of a continuous pipeline for handling docker based apps. I attempted to describe this more <a href="https://developer-blog.cloudbees.com/2014/07/announcing-dockerhub-jenkins-plugin.html">here</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>This image is maintained in this github <a href="https://github.com/cloudbees/jenkins-ci.org-docker">repo</a> and the official images are build by the <a href="https://github.com/docker/stackbrew">"stackbrew" system</a>. (We may move this repo to the jenkinsci github group shortly so keep an eye out).<br></p>
+</div>
+<div class="paragraph">
+<p>It will be interesting to watch this grow and change.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/lts/">
+lts
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/docker/">
+docker
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/kohsuke.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kohsuke/">
+Kohsuke Kawaguchi
+</a>
+</p>
+<div class="paragraph">
+<p>Kohsuke is the creator of Jenkins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kohsuke" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/kohsukekawa" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2014/2014-08-12-official-jenkins-lts-docker-image.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

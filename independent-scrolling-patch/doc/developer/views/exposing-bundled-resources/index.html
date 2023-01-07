@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Exposing bundled resources
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/views/exposing-bundled-resources/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Exposing bundled resources" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Exposing bundled resources" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Exposing bundled resources" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/views/exposing-bundled-resources/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Exposing bundled resources" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="active">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/read-only/" class="">Read only view</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Exposing bundled resources
+</h1>
+<div class="paragraph">
+<p>Resource files bundled with Jenkins and plugins are by default exposed through several different mechanisms.</p>
+</div>
+<div class="sect1">
+<h2 id="static-resource-files"><a class="anchor" href="#static-resource-files"></a>Static resource files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins exposes static resource files of allowed file types (<code>.js</code>, <code>.css</code>, <code>.jpeg</code>, <code>.jpg</code>, <code>.png</code>, <code>.gif</code>, <code>.html</code>, <code>.htm</code> as of Jenkins 2.290) in core and plugins at the <code>/resources/</code> URL.
+This is implemented by <a href="https://javadoc.jenkins.io/jenkins/model/Jenkins.html#doResources" title="Javadoc for jenkins.model.Jenkins"><code>Jenkins#doResources</code></a>.</p>
+</div>
+<div class="paragraph">
+<p>In views, the URL prefix to use is available as <code>app.VIEW_RESOURCE_PATH</code>.
+The full path can be computed using <a href="https://javadoc.jenkins.io/hudson/Functions.html#getViewResource-java.lang.Object-java.lang.String-" title="Javadoc for hudson.Functions"><code>h.getViewResource(&#8230;&#8203;)</code></a>.
+<code><a href="https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/lib/layout/breadcrumb.gif" class="bare">https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/lib/layout/breadcrumb.gif</a></code> is exposed at, e.g., <code><a href="https://ci.jenkins.io/resources/cachekey/lib/layout/breadcrumb.gif" class="bare">https://ci.jenkins.io/resources/cachekey/lib/layout/breadcrumb.gif</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The URL should not be hardcoded, as headers controlling caching are set; and the computed cache key will result in different Jenkins versions having a different prefix.</p>
+</div>
+<div class="paragraph">
+<p>These resources are available to users with <em>Overall/Read</em> permissions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adjuncts"><a class="anchor" href="#adjuncts"></a>Adjuncts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Stapler web framework provides a mechanism called <em>adjuncts</em> that is intended to be used to include CSS and JS files related to a view being rendered.
+Using this mechanism ensures that each adjunct file is only included once.
+Through the same URL space, some static resource files like images are accessible.
+See <a href="https://javadoc.jenkins.io/component/stapler/org/kohsuke/stapler/framework/adjunct/AdjunctManager.html#allowResourceToBeServed" title="Javadoc for org.kohsuke.stapler.framework.adjunct.AdjunctManager"><code>AdjunctManager#allowResourceToBeServed</code></a> for supported file types (<code>.css</code>, <code>.js</code>, <code>.gif</code>, <code>.png</code> as of Jenkins 2.290).
+These resources are typically exposed through the <code>st:adjunct</code> tag in Jelly or Groovy views, but the URLs are predictable:
+<code><a href="https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/lib/layout/breadcrumb.gif" class="bare">https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/lib/layout/breadcrumb.gif</a></code> is exposed at, e.g., <code><a href="https://ci.jenkins.io/adjuncts/cachekey/lib/layout/breadcrumb.gif" class="bare">https://ci.jenkins.io/adjuncts/cachekey/lib/layout/breadcrumb.gif</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The URL should not be hardcoded, as headers controlling caching are set; and the computed cache key will result in different Jenkins versions having a different prefix.</p>
+</div>
+<div class="paragraph">
+<p>These resources are available to any user without authentication, not requiring <em>Overall/Read</em> permission.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resource-bundles"><a class="anchor" href="#resource-bundles"></a>Resource bundles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>Messages_??.properties</code> (including <code>Messages.properties</code>) files contain localized message strings.</p>
+</div>
+<div class="paragraph">
+<p>For the classic Jenkins UI, they are generally used directly as described in <a href="/doc/developer/internationalization/">Internationalization and Localization</a>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally for modern web UIs, localized resources are exposed at <code>/i18n/resourceBundle/</code>, at URLs like <code><a href="https://ci.jenkins.io/i18n/resourceBundle?baseName=hudson.Messages" class="bare">https://ci.jenkins.io/i18n/resourceBundle?baseName=hudson.Messages</a></code>.
+See <a href="https://javadoc.jenkins.io/jenkins/I18n.html" title="Javadoc for jenkins.I18n">I18n</a> for details.</p>
+</div>
+<div class="paragraph">
+<p>These resources are available to users with <em>Overall/Read</em> permissions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="descriptor-help-files"><a class="anchor" href="#descriptor-help-files"></a>Descriptor help files</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="stapler-views"><a class="anchor" href="#stapler-views"></a>Stapler views</h3>
+<div class="paragraph">
+<p><code>Descriptor#doHelp</code> will serve corresponding <code>help.jelly</code> views, if they exist, and lets Stapler localize them (i.e. uses <code>help_??.jelly</code> with locale suffix, if it exists).</p>
+</div>
+<div class="paragraph">
+<p>An example of such a Stapler view is <code><a href="https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/tasks/Maven/help.jelly" class="bare">https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/tasks/Maven/help.jelly</a></code> available at <code><a href="https://ci.jenkins.io/descriptor/hudson.tasks.Maven/help" class="bare">https://ci.jenkins.io/descriptor/hudson.tasks.Maven/help</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>These are usually used by the automatically determined help URL corresponding to the descriptor (and optionally form field name), and a help link will be shown on the UI if this file exists.</p>
+</div>
+<div class="paragraph">
+<p>These help views are available to users with <em>Overall/Read</em> permissions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="html-files"><a class="anchor" href="#html-files"></a>HTML files</h3>
+<div class="paragraph">
+<p><code>Descriptor#doHelp</code> looks up <code>com/acme/package/MyDescribable/help-fieldname_??.html</code> HTML files and serves them at <code>/descriptor/myDescriptorSymbol/help/fieldname</code>, typically corresponding to specific fields in views. It also supports com/acme/package/MyDescribable/help_??.html at <code>/descriptor/myDescriptorSymbol/help</code>.</p>
+</div>
+<div class="paragraph">
+<p>An example of such an HTML file is <code><a href="https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/tasks/Shell/help.html" class="bare">https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/hudson/tasks/Shell/help.html</a></code>, which is exposed at <code><a href="https://ci.jenkins.io/descriptor/hudson.tasks.Shell/help" class="bare">https://ci.jenkins.io/descriptor/hudson.tasks.Shell/help</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>These are usually used by the automatically determined help URL corresponding to the descriptor (and optionally form field name), and a help link will be shown on the UI if this file exists.</p>
+</div>
+<div class="paragraph">
+<p>These help files are available to users with <em>Overall/Read</em> permissions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="webapp-resources"><a class="anchor" href="#webapp-resources"></a>Webapp Resources</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="jenkins-core"><a class="anchor" href="#jenkins-core"></a>Jenkins Core</h3>
+<div class="paragraph">
+<p>Jenkins core <code>webapp/</code> resources are exposed at their expected path relative to the context root directory.
+Example: <a href="https://github.com/jenkinsci/jenkins/blob/master/war/src/main/webapp/robots.txt" class="bare">https://github.com/jenkinsci/jenkins/blob/master/war/src/main/webapp/robots.txt</a> is exposed at <a href="https://ci.jenkins.io/robots.txt" class="bare">https://ci.jenkins.io/robots.txt</a></p>
+</div>
+<div class="paragraph">
+<p>This is implemented by <code>Stapler#service</code> invoking <code>#openResourcePathByLocale</code>.
+This in turn ends up invoking <code>LocaleDrivenResourceProvider#lookupResource</code>, an SPI implemented in Jenkins core as <code>MetaLocaleDrivenResourceProvider</code> from 2.173.
+This in turn looks up implementations of <code>PluginLocaleDrivenResourceProvider</code> in plugins.
+<a href="https://plugins.jenkins.io/localization-support">Localization Support Plugin</a> provides <code>PluginLocaleDrivenResourceProviderImpl</code>.</p>
+</div>
+<div class="paragraph">
+<p>These resources are available to any user without authentication, not requiring <em>Overall/Read</em> permission.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plugins"><a class="anchor" href="#plugins"></a>Plugins</h3>
+<div class="paragraph">
+<p>Plugins expose <code>src/main/webapp/</code> resource files directly packaged into the <code>jpi</code> file via <code>Plugin#doDynamic</code> at <code>/plugin/namehere/</code> invoking <code>StaplerResponse#serveLocalizedFile</code>.
+This calls <code>#selectResourceByLocale</code> which ends up invoking <code>LocaleDrivenResourceProvider#lookupResource</code>.
+See the section on core webapp resources for further details.</p>
+</div>
+<div class="paragraph">
+<p>These resources are available to users with <em>Overall/Read</em> permissions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jenkins-core-assets"><a class="anchor" href="#jenkins-core-assets"></a>Jenkins Core Assets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins core exposes <em>assets</em> (any static resource files visible to the Jenkins core classloader with the <code>asset/</code> package prefix) at the <code>/assets/</code> URL.
+This is implemented by the <a href="https://javadoc.jenkins.io/byShortName/AssetManager" title="Javadoc for AssetManager"><code>AssetManager</code></a> class.</p>
+</div>
+<div class="paragraph">
+<p>These resources are available to any user without authentication, not requiring <em>Overall/Read</em> permission.</p>
+</div>
+<div class="paragraph">
+<p>This was used from Jenkins 2.0 to 2.288 (inclusive) to serve JavaScript assets (jQuery, Handlebars, etc.).
+The infrastructure remains in place after 2.288.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Assets from plugins are served by reusing the plugin webapp resources serving feature <code>Plugin#doDynamic</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/views/exposing-bundled-resources.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

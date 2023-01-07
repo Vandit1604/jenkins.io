@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSOC Phase 1 Updates On Working Hours Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/07/09/Phase1-Updates-On-Working-Hours-Plugin/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSOC Phase 1 Updates On Working Hours Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSOC Phase 1 Updates On Working Hours Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSOC Phase 1 Updates On Working Hours Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/07/09/Phase1-Updates-On-Working-Hours-Plugin/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSOC Phase 1 Updates On Working Hours Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSOC Phase 1 Updates On Working Hours Plugin
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/jackshen/"><div class="app-avatar"><img alt="Jack Shen" class="app-avatar__image" src="/images/avatars/jackshen.jpg"></div> Jack Shen</a>
+July 09, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSOC+Phase+1+Updates+On+Working+Hours+Plugin&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F07%2F09%2FPhase1-Updates-On-Working-Hours-Plugin%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Working Hour Plugin provides an interface to set up a schedule of allowable build days and times.  Jobs that run outside of configured working hours are held until the next allowable build time.</p>
+</div>
+<div class="paragraph">
+<p>For the first code phase at Google Summer of Code, I&#8217;ve been working on <a href="/projects/gsoc/2019/working-hours-improvements/">Working Hours Project</a>, which needed improvements on usability.</p>
+</div>
+<div class="paragraph">
+<p>Rather than classical Jelly pages, React seems to be more preferred when we want to design a much customized UI with a huge amount of libraries we could use, especially the open source components such as date pickers.</p>
+</div>
+<div class="paragraph">
+<p>But we have to face a challenge of the integration of React and Jenkins, which I&#8217;m currently working on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="achievements-for-the-first-code-phase"><a class="anchor" href="#achievements-for-the-first-code-phase"></a>Achievements For The First Code Phase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the first code phase, we are focusing on the UI improvements, we&#8217;ve achieved following major improvements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A standalone webapp which could be then integrated.</p>
+</li>
+<li>
+<p>Slider for choosing a time range.</p>
+</li>
+<li>
+<p>More fields when setting a excluded date.</p>
+</li>
+<li>
+<p>Presets for choosing a excluded date.</p>
+</li>
+<li>
+<p>A Jenkins styling UI.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-we-integrate-react-into-jenkins"><a class="anchor" href="#how-we-integrate-react-into-jenkins"></a>How We Integrate React Into Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A solution doc for integration could be found at
+<a href="https://drive.google.com/open?id=1JLRCDg9JNBWR0Dfq8w3pTI9mrl6i9JU29pBoH6bO0J8" class="bare">https://drive.google.com/open?id=1JLRCDg9JNBWR0Dfq8w3pTI9mrl6i9JU29pBoH6bO0J8</a></p>
+</div>
+<div class="paragraph">
+<p>At first, we found BlueOcean is a great example for using React in Jenkins, but yet it&#8217;s not a choice for common development with plugins. So we need to find out another way to integrate.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps to do the integration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A mount point in your jelly file, usually it&#8217;s a element with a unique <code>id</code>.</p>
+</li>
+<li>
+<p>Write your React Application, but need to set the mount point to the id you set above.</p>
+</li>
+<li>
+<p>Copy the output after you build the Project into the plugin&#8217;s webapp dir.</p>
+</li>
+<li>
+<p>Add your files using a script tag in your jelly file.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">&lt;script type="text/javascript"
+        src="${resURL}/plugin/working-hours/js/main.js"&gt;&lt;/script&gt;</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Once we are using React, the traditional jelly request won&#8217;t be available anymore, another way to process requests will be using stapler. You can define a process function like below.
+[source, java]</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">public HttpResponse doDynamic(StaplerRequest request) {
+        if (config == null) {
+            config = ExtensionList.lookup(WorkingHoursPlugin.class).get(0);
+        }
+        String restOfPath = request.getRestOfPath();
+        String[] pathTokens = restOfPath.split("/");
+        List&lt;String&gt; params = new ArrayList&lt;&gt;();
+        switch (params.get(0)) {
+            case "list-excluded-dates":
+                return listExcludedDate(request);
+            case "set-excluded-dates":
+                return setExcludedDates(request);
+            case "list-time-ranges":
+                return listTimeRanges(request);
+            case "set-time-ranges":
+                return setTimeRanges(request);
+        }
+    }</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-our-application"><a class="anchor" href="#run-our-application"></a>Run Our Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you would like to take a look at our plugin, you can go to the repo
+<a href="https://github.com/jenkinsci/working-hours-plugin/tree/dev">working-hours-plugin</a></p>
+</div>
+<div class="paragraph">
+<p>Just follow the README file, then you could run a copy of your working hours plugin.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="screenshots"><a class="anchor" href="#screenshots"></a>Screenshots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current plugin&#8217;s outlook is a bit simple and the plugin is a bit unconvinient for use.</p>
+</div>
+<div class="paragraph">
+<p>One of the problems is that if we want to input a excluded date, it&#8217;ll be a string in a constant format like 15/9/2019, but we chose React for the new UI so we could use a datepicker to improve this.</p>
+</div>
+<div class="sect2">
+<h3 id="current-plugin"><a class="anchor" href="#current-plugin"></a>Current Plugin</h3>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/working-hours/working-hours-config.png" alt="Screenshot for Current Plugin"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-time-ranges"><a class="anchor" href="#new-time-ranges"></a>New (Time Ranges)</h3>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/working-hours/working-hours-example-time-range.png" alt="Time Ranges Example"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-exclude-dates"><a class="anchor" href="#new-exclude-dates"></a>New (Exclude Dates)</h3>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/working-hours/working-hours-exmaple-excluded-date.png" alt="Excluded Dates Example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="helpful-links"><a class="anchor" href="#helpful-links"></a>Helpful links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have any questions or advices, we are glad to hear from you.</p>
+</div>
+<div class="paragraph">
+<p>Several useful links are listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/working-hours-plugin/tree/dev">Develop Repo</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/working-hours-plugin">Main Repo</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1SezLtQejur2ji-KUur3dC3TXK8ivxrttiwHYbTkA8Yk/edit#">Design Doc</a></p>
+</li>
+<li>
+<p><a href="https://drive.google.com/open?id=1JLRCDg9JNBWR0Dfq8w3pTI9mrl6i9JU29pBoH6bO0J8">Doc for React Integration Solution </a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/jenkinsci/working-hours-plugin">
+    Gitter Chat
+</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1Psz6MrYvw81D_7d8pfW04FDoBtexlSVdgrbqp99Wjm0/edit?usp=sharing">
+    Slides for Phase 1 Demo
+</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=MDs0Vr7gnnA">
+    Video Recording for Phase 1
+</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/react/">
+react
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2019/">
+gsoc2019
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Jack Shen" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/jackshen.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/jackshen/">
+Jack Shen
+</a>
+</p>
+<div class="paragraph">
+<p>Shen is a student from Beijing Forestry University. One of the students accepted to GSoC 2019.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/ShenJack" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/07/2019-07-09-Phase1-Updates-On-Working-Hours-Plugin.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

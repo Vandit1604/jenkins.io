@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins GSoD application draft, 2020
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/2020/application/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins GSoD application draft, 2020" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins GSoD application draft, 2020" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins GSoD application draft, 2020" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/2020/application/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins GSoD application draft, 2020" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins GSoD application draft, 2020
+</h1>
+
+<!-- This file uses Markdown intentionally.
+     The application is actually a plain text, but we use Markdown to follow the GSoC format which is likely to be adopted by GSoD later.
+ -->
+
+<p>The data below represents the Google Season of Docs 2020 application draft.</p>
+
+<h3 id="organization-profile">Organization Profile</h3>
+
+<ul>
+  <li>Name: Jenkins project</li>
+  <li>Website: https://jenkins.io/</li>
+  <li>Contact email for GSoD: jenkinsci-docs@googlegroups.com</li>
+  <li>GSoD page link: http://jenkins.io/sigs/docs/gsod</li>
+  <li>Does your organization want to accept the mentor stipend? =&gt; Yes</li>
+  <li>Link to project ideas list: https://jenkins.io/sigs/docs/gsod#project-ideas</li>
+</ul>
+
+<h3 id="org-admins">Org admins</h3>
+
+<ul>
+  <li>Primary: Oleg Nenashev</li>
+  <li>Secondary: Marky Jackson</li>
+</ul>
+
+<h3 id="org-description">Org description</h3>
+
+<p>Jenkins, originally founded in 2006 as "Hudson", is one of the leading automation servers.
+The project’s motto is "Build great things at any scale".
+Using extensible, plugin-based architecture developers have created hundreds of plugins to adapt Jenkins to a multitude of build, test, and deployment automation workloads.
+Jenkins is open-source, MIT License is used for most of the components.</p>
+
+<p>The project has thousands of active contributors working on Jenkins core, plugins, website, project infrastructure, localization activities, and, of course, documentation.
+We invite technical writers to join the community and contribute to the documentation being used by millions of Jenkins users worldwide.</p>
+
+<h3 id="what-previous-experience-has-your-organization-had-in-the-documentation-or-collaborating-with-technical-writers">What previous experience has your organization had in the documentation or collaborating with technical writers?</h3>
+
+<blockquote>
+  <p>If you or any of your mentors have worked with technical writers before, or have developed documentation, mention this in your answer.
+Describe the documentation that you produced and the ways in which you worked with the technical writer.
+For example, describe any review processes that you used, or how the technical writer's skills were useful to your project.
+Explain how this previous experience may help you to work with a technical writer in Season of Docs.</p>
+</blockquote>
+
+<p>In the Jenkins project, we believe that documentation is as important as code.
+In 2019, we introduced an official Documentation Officer role and started a Documentation special interest group (https://jenkins.io/sigs/docs/) 
+which, among other things, coordinates the Google Season of Docs application in the project.
+We have several documentation initiatives listed on our project roadmap: https://jenkins.io/project/roadmap/.
+The Documentation SIG facilitates documentation improvement across the organization.
+In the last quarter, we had 219 unique documentation committers in the organization.</p>
+
+<p>We have extensive documentation on the jenkins.io website (https://jenkins.io/doc/) as well as the plugin site (http://plugins.jenkins.io/).
+This repository has a copy-editors team which assists submitters with reviews of their documentation.
+A large majority of Jenkins components and plugins also have documentation in GitHub and other resources, including user, administrator, developer, and contributor guidelines.
+The Jenkins project hosts a repository for technical specifications called the Jenkins Enhancement Proposals https://github.com/jenkinsci/jep.</p>
+
+<p>The Jenkins project follows the documentation-as-code approach for all new documentation,
+and we use industry-standard tools (Git/GitHub) and markup languages (AsciiDoc, GitHub Flavored Markdown) so that
+Jenkins contribution provides relevant and widely applicable experience to technical writers.</p>
+
+<p>The Jenkins project has a wealth of knowledge working with technical writers.
+A portion of the Jenkins documentation has been created by professional technical writers whose time was donated to the project by company contributors.
+We previously had several coordinated documentation initiatives, e.g. creation of new documentation for Jenkins Pipeline.
+We also facilitate documentation contributions and encourage newcomers to participate (https://jenkins.io/participate/#document), regardless of their experience with Jenkins and our tools.
+We also invest time in contributing guidelines for documentation contributors,
+e.g. here are our contributing guidelines for the website: https://github.com/jenkins-infra/jenkins.io/blob/master/CONTRIBUTING.adoc.</p>
+
+<p>Reviews: jenkins.io and GitHub documentation are managed and reviewed via pull requests.
+For example, there are contribution guidelines for jenkins.io: https://github.com/jenkins-infra/jenkins.io/blob/master/CONTRIBUTING.adoc.
+In the project, we also have a team of copy-editors who review the content: https://github.com/orgs/jenkins-infra/teams/copy-editors.
+Contributions to Jenkins component documentation (e.g. plugin docs) are usually reviewed by maintainers.</p>
+
+<p>We also have channels specifically dedicated to the documentation.
+These channels act as an additional contact point for technical writers in the community:</p>
+
+<ul>
+  <li>Mailing list: https://groups.google.com/forum/#!forum/jenkinsci-docs</li>
+  <li>Chat on Gitter: https://gitter.im/jenkinsci/docs</li>
+  <li>Regular Documentation SIG meetings: https://www.jenkins.io/sigs/docs/#meetings</li>
+</ul>
+
+<h3 id="what-previous-experience-has-your-organization-had-mentoring-individuals">What previous experience has your organization had mentoring individuals?</h3>
+
+<blockquote>
+  <p>Comment: If you or any of your mentors have taken part in Google Summer of Code or a similar program that mentors individuals, mention this in your answer.
+Describe your achievements in that program. Explain how this experience may influence the way you work in Season of Docs.</p>
+</blockquote>
+
+<p>Jenkins project has successfully participated in Google Summer of Code and Outreachy before, including both programs in 2019 (https://jenkins.io/projects/gsoc/).
+Last year we also ran our first mentorship on CommunityBridge: https://www.jenkins.io/projects/jcasc/dev-tools/.
+In 2019 we had 12 mentees in total.
+The Jenkins project has also been selected for Google Summer of Code 2020.
+The project also has many contributors whose roles at work include mentoring people (university professors and advisors, training leads, developer relations, senior engineers and tech writers).
+As an organization, we do not have particular experience in mentoring technical writers,
+but we do have experience in onboarding documentation contributors to the community.
+We also work on onboarding programs for documentation contributors, e.g. for website copy-editors: https://github.com/jenkins-infra/jenkins.io/blob/master/CONTRIBUTING.adoc#maintainer-guide.</p>
+
+<h3 id="how-many-technical-writers-does-your-organization-want-to-mentor-this-year">How many technical writers does your organization want to mentor this year?</h3>
+
+<p>1</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//sigs/docs/gsod/2020/application.md"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

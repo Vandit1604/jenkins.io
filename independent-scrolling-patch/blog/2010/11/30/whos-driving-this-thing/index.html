@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Who's driving this thing?
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/11/30/whos-driving-this-thing/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Who&#39;s driving this thing?" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Who&#39;s driving this thing?" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Who&#39;s driving this thing?" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/11/30/whos-driving-this-thing/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Who&#39;s driving this thing?" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Who's driving this thing?
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+November 30, 2010
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Who%27s+driving+this+thing%3F&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2010%2F11%2F30%2Fwhos-driving-this-thing%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image"><img src="https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/health-60to79.gif" alt="health 60to79"></span>There&#8217;s been a lot of discussion on the <a href="https://hudson-labs.org/content/new-hudson-mailing-lists">new mailing lists</a> as of late regarding some of the infrastructure and ownership of the Hudson project. In case you haven&#8217;t been following along at home, I&#8217;ll try to catch you up as impartially as possible.</p>
+</div>
+<div class="sect1">
+<h2 id="the-facts"><a class="anchor" href="#the-facts"></a>The Facts</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>2009.06.02</strong>: After substantial problems with Java.net infrastructure, the
+<a href="https://hudson.361315.n4.nabble.com/On-the-future-of-Hudson-hosting-and-infrastructure-td393278.html">dev community discusses new infrastructure
+options</a>,
+including SourceForge, Google Code, Kenai, Berlios, GitHub, etc. Instead of
+moving the entire project, some key components such as the
+<a href="https://issues.hudson-ci.org">issues.hudson-ci.org</a> are moved off of
+Java.net. Discussions about moving source code off of Java.net and onto other hosts like
+GitHub come up almost every four months on the mailing lists, typically
+coinciding with serious Java.net downtime or reliability issues..</p>
+</li>
+<li>
+<p><strong>2010.11.01</strong>: A discussion occurs on the developers mailing list about
+adding <a href="https://twitter.com/wjprakash">Winston Prakash</a>, the Oracle engineer re-assigned to replace <a href="https://twitter.com/kohsukekawa">Kohsuke Kawaguchi</a> (Hudson
+founder/lead developer), as a co-owner to the Java.net project. Winston
+mentions that his question was driven by Oracle management who felt he should
+"co-own the project." After a round of discussion, it&#8217;s decided by the devs
+list that it&#8217;s acceptable and grants Winston co-ownership of the project as a
+sign of good faith from the community towards Oracle.</p>
+</li>
+<li>
+<p><strong>2010.11.17</strong>: <a href="https://twitter.com/abayer">Andrew Bayer</a>, core contributor
+and maintainer of numerous plugins emails the users and devs list with a
+proposal to move the mailing lists off of Java.net which has had notorious
+reliability issues within the Java ecosystem and was scheduled for a series of
+downtimes and migrations over the coming weeks. Google Groups is selected as the
+most reasonable by the community.</p>
+</li>
+<li>
+<p><strong>2010.11.19</strong>: Hudson project is lumped into the same Java.net migration bucket as Glassfish. Emails are sent to project owners, the users and the developers list. The mail to users and developers never arrives due to the sender not being subscribed. Both project owners (Kohsuke, Winston) miss the message, leaving the Hudson community in the dark regarding the pending migration.</p>
+</li>
+<li>
+<p><strong>2010.11.22</strong>: Shortly after midnight, Jacob Robertson reports that his
+SVN credentials no longer work, Kohsuke informs the developers list that the project is
+locked due to the migration, SVN is inaccessible and mailing lists fail shortly after that. <span class="image"><img src="https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/health-40to59.gif" alt="health 40to59"></span>The Hudson Java.net project
+begins its migration from the legacy infrastructure to the newer
+Java.net infrastructure (formerly known as "Kenai"). A group of core Hudson
+community members accelerate the move to Google Groups, pushing out
+announcements via <a href="https://hudson-labs.org/content/new-hudson-mailing-lists">this
+blog</a> and
+<a href="https://twitter.com/hudsonci">twitter</a> hoping to keep as many members in the
+loop as possible.</p>
+</li>
+<li>
+<p><strong>2010.11.23</strong>: Frustrated by the locking down of Hudson&#8217;s source code,
+which sees between 3-8 commits to "core" a day, not counting the 300+
+plugins, Kohsuke <a href="https://groups.google.com/group/hudson-dev/browse_thread/thread/8d3cf0ca1240280a">proposes moving to
+GitHub</a>
+on the new developers mailing list. The general consensus amongst the plugin
+and core developers was to go forward with moving to GitHub, no major
+objections were raised by the developer community.</p>
+</li>
+<li>
+<p><strong>2010.11.27</strong>: After Thanksgiving, Andrew Bayer submits the "<a href="https://groups.google.com/group/hudson-dev/browse_thread/thread/c935a4740af0b920">formal
+proposal</a>"
+for migrating over to GitHub, Sets a deadline of the following tuesday
+(2010.11.30) for raising any major objections before "flipping the switch."</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Monday morning prior to the planned switchover to GitHub, Oracle Senior VP
+of Tools and Middleware <a href="https://www.oracle.com/us/corporate/press/Spokespeople/016474">Ted
+Farrell</a> sent <a href="https://groups.google.com/group/hudson-users/msg/cf0d72a7d97f2438">a
+message to the users list</a> expressing concerns he had regarding the migration of
+the Hudson codebase from Java.net to GitHub:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><em>Oracle&#8217;s goal is to grow the community and make hudson stronger. You all might not be aware of this, but the actual hudson user base is very large. Much bigger than what you see on the mailing lists or in the forums. The unfortunate part of that is how many of these users do not contribute to the core, and do not participate in these discussions. They want to do that, but don&#8217;t feel like they can be heard. We want them to be heard. We need to make the hudson community a place that will welcome all the hudson users and encourage its growth and longevity. We will be announcing some changes in the upcoming weeks that we believe will foster that.</em></p>
+</div>
+<div class="paragraph">
+<p>For now, however, we are going to stay on the java.net
+infrastructure.  We believe it is important for hudson to stay
+connected with the rest of the the java community, as well as take
+advantage of some of the cool changes we will have coming to
+java.net.  Moving to GIT can be done while staying on java.net.  It is
+not a requirement to move to github.</p>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Because it is open source, we can&#8217;t stop anybody from forking it.  We
+do however own the trademark to the name so you cannot use the name
+outside of the core community.  We acquired that as part of Sun.  We
+hope that everyone working on hudson today will do as they claim to
+want, and work with us to make hudson stronger.&lt;/em&gt;</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>(Ted&#8217;s message was rather long, you can read the <a href="https://groups.google.com/group/hudson-users/msg/cf0d72a7d97f2438">whole
+post here</a>)</p>
+</div>
+<div class="paragraph">
+<p>As one might expect, Ted&#8217;s response to the thread was received with
+mixed responses ranging from general confusion to obvious frustration.</p>
+</div>
+<div class="paragraph">
+<p>Long time contributor to Hudson&#8217;s Git plugin, <a href="https://github.com/magnayn">Nigel Magnay</a> tried to clarify the benefits of migrating to GitHub instead of using Git on the "new" Java.net as succinctly as possible:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><em>Just having git support != git support on github. They work full time on providing the best community development tools; I doubt kenai could even catch up, let alone surpass what they&#8217;re doing.</em></p>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;m confused.</p>
+</div>
+<div class="paragraph">
+<p>What things are you saying you will not let the Hudson developer community
+do?</p>
+</div>
+<div class="paragraph">
+<p>I.E: Are you saying that, as the holders of the Hudson 'name', you are
+prohibiting the developer community from choosing (for ourselves) to migrate
+the infrastructure (bug tracking / wiki)? The repositories ?</p>
+</div>
+<div class="paragraph">
+<p>So far the response from the developers has been pretty strongly in favour
+of the migration to google groups for mail, to github for code repositories
+and collaboration, and to a self-hosted site for bug tracking and
+information.&lt;/em&gt;</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/health-20to39.gif" alt="health 20to39"></span>
+Ted&#8217;s response to Nigel contained one of the most important nugget of
+information for the whole discussion nestled in the middle of <a href="https://groups.google.com/group/hudson-users/msg/5540655e05ef2982">the message</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><em>Nigel, what I am saying is that I believe the _final</em> decision of what to do w.r.t. infrastructure belongs to Oracle and that decision should be made according to the will of the community as it makes sense_</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-part-where-i-editorialize"><a class="anchor" href="#the-part-where-i-editorialize"></a>The part where I editorialize</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I readily admit, there is a lot of information to take in here, for clarification there are two distinct "communities" involved in Hudson:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>developers</strong>: the <em>hundreds</em> of developers actively communicating on the
+<a href="https://groups.google.com/group/hudson-dev">developers list</a> and
+contributing to the 300+ plugins</p>
+</li>
+<li>
+<p><strong>users</strong>: tens of thousands of individuals and companies using Hudson
+either as a straight <code>.war</code> file, or using the native packages provided by
+the community</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The fundamental issue here is that the <strong>developers</strong> want to make a change in
+how <em>they</em> contribute to Hudson, and have made their voices heard to that end.
+From the users' perspective, such a change would have literally <strong>zero</strong> impact
+on them, which makes Oracle&#8217;s conflation of the two sides of Hudson
+particularly frustrating.</p>
+</div>
+<div class="paragraph">
+<p>Part of the impasse between Oracle management and the developer community lies
+in an inherent meritocracy in any large open source project, whether it be the
+Linux kernel, the Python language and runtime, or the PostgreSQL database
+server, those that contribute carry more weight within the community
+<strong>because</strong> they are actively pushing things forward. On top of that, Oracle
+continues to cite a "larger community" that&#8217;s apparently larger than those
+active committing to Hudson on a daily or weekly basis, without naming names or
+citing specific contributions.</p>
+</div>
+<div class="paragraph">
+<p>Ted, and in turn, Oracle&#8217;s approach to the Hudson community seems to stem from
+a systematic misunderstanding of how most (if not all) major open source
+projects operate. Mentioning closed-door meetings between Sonatype and Oracle
+regarding "how to make Hudson better" do nothing to aid many developers'
+concerns about Oracle&#8217;s commitment to Hudson as an open source project or a
+community.</p>
+</div>
+<div class="paragraph">
+<p>In my humble opinion, we are being told one thing while Oracle&#8217;s actions speak
+to another. Insisting that Hudson development remain on Java.net, after the
+development community committed to GitHub, contradicts the words promising to
+work with the Hudson community and to help facilitate its growth. Asserting
+that Oracle isn&#8217;t trying to exert unwelcome control over the project, while
+doing exactly that.</p>
+</div>
+<div class="paragraph">
+<p>Personally, I do want Oracle to continue to be involved, along with CloudBees,
+Sonatype and many other companies that contribute to the ever-growing Hudson
+ecosystem. The involvement of a plethora of different companies only helps
+emphasize the importance of Hudson to the developer community and underline the
+value of Hudson as a community owned and operated project.</p>
+</div>
+<div class="paragraph">
+<p>December will be an interesting month, stay tuned.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2010/2010-11-30-whos-driving-this-thing.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Custom Distribution Service : Midterm Summary
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/27/custom-distribution-service/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Custom Distribution Service : Midterm Summary" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Custom Distribution Service : Midterm Summary" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/2020/custom_distribution_service/cds_gsoc.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Custom Distribution Service : Midterm Summary" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/27/custom-distribution-service/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Custom Distribution Service : Midterm Summary" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/2020/custom_distribution_service/cds_gsoc.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Custom Distribution Service : Midterm Summary
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/sladyn98/"><div class="app-avatar"></div> Sladyn Nunes</a>
+July 27, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Custom+Distribution+Service+%3A+Midterm+Summary&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F07%2F27%2Fcustom-distribution-service%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Hello,
+After an eventful community bonding period we finally entered into the coding phase. This blog post will summarize the work done till the midterm of the coding phases i.e. week 6. If some of the topics here require a more detailed explanation, I will write a separate blog post. These blogs posts will not have a very defined format but would cover all of the user stories or features implemented.</p>
+</div>
+<div class="sect2">
+<h3 id="project-summary"><a class="anchor" href="#project-summary"></a>Project Summary</h3>
+<div class="paragraph">
+<p>The main idea behind the project is to build a customizable jenkins distribution service that could be used to build tailor-made jenkins distributions. The service would provide users with a simple interface to select the configurations they want to build the instance with eg: plugins, authorization matrices etc. Furthermore it would include a section for sharing community created distros so that users can find and download already built jenkins war/configuration files to use out of the box.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quick-review"><a class="anchor" href="#quick-review"></a>Quick review</h3>
+<table class="tableblock frame-all grid-all" style="width: 25%;">
+<colgroup>
+<col style="width: 83.3333%;">
+<col style="width: 16.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pull Requests Opened</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">38</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Github Issues completed</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">36</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="details"><a class="anchor" href="#details"></a>Details</h3>
+<div class="paragraph">
+<p>I have written separate blog posts for every week in GSoC and the intricate details for each of them can be found at their respective blog pages. I am including a summary for every phase supported with the respective links.</p>
+</div>
+<div class="sect3">
+<h4 id="community-bonding"><a class="anchor" href="#community-bonding"></a>Community Bonding</h4>
+<div class="paragraph">
+<p>This year GSoC had a longer community bonding than any of the previous editions due to the Coronavirus pandemic and therefore this gave me a lot of time to explore, so I spent it by building a prototype for my project. I realised some of the blockages I might face early on, and therefore it gave me more clarity in terms of how I can proceed. I also spent this time preparing a design document which you can find <a href="https://docs.google.com/document/d/1-ujWVJ2a5VYkUF6UA7m4bEpSDxmb3mJZhCbmoKO716U/edit">here</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://sladyn98.netlify.app/blog/community_bonding/">Community Bonding Blog</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="week-1"><a class="anchor" href="#week-1"></a>Week 1</h4>
+<div class="paragraph">
+<p>In week one, I spent time getting used to the tech stack I would be using, I was pretty familiar with Spring Boot but React was something I was going to be using for the first time, so I spent time studying more about it. I also got the project page ready, the issues I was going to tackle and the milestones that I had to achieve before the evaluation. I also spent a bit of time setting up the home page and a bit of front-end components.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_week1/">Week 1 Blog</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="week-2"><a class="anchor" href="#week-2"></a>Week 2</h4>
+<div class="paragraph">
+<p>Once we were done with the initial setup, it was time to work on the core of the project.
+In the second week, I worked on generating the package configuration and the plugin list dummy display page setup.
+I also ran into issues with the Jenkinsfile so the majority of time was spent fixing it.
+Finally I managed to get around those problems.
+You can read more about it in the <a href="https://sladyn98.netlify.app/blog/gsoc_week2/">Week 2 Blog post</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_week2/">Week 2 Blog</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="week-3"><a class="anchor" href="#week-3"></a>Week 3</h4>
+<div class="paragraph">
+<p>The last week was spent cleaning up most of the code and getting the remaining milestones in. This was probably the hardest part of phase 1 because it involved connecting the front and back end of the project.You can read more about it here.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_week3/">Week 3</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="midterm-update"><a class="anchor" href="#midterm-update"></a>Midterm Update</h4>
+<div class="paragraph">
+<p>The second phase has been going on for the past 3 weeks and we have already accomplished a majority of the deliverables including community configurations, war downloading and filtering of plugins. More details about the mid term report can be found here.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_midterm/">Midterm Update</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-the-code"><a class="anchor" href="#getting-the-code"></a>Getting the Code</h3>
+<div class="paragraph">
+<p>The Custom Distribution Service was created from scratch during GSoC and can be found <a href="https://github.com/jenkinsci/custom-distribution-service">here on Github</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-links"><a class="anchor" href="#other-links"></a>Other links</h3>
+<div class="paragraph">
+<p><a href="https://docs.google.com/document/d/1C7VQJ92Yhr0KRDcNVHYxn4ri7OL9IGZmgxY6UFON6-g/edit?usp=sharing">GSoC Proposal</a><br>
+<a href="https://docs.google.com/document/d/1-ujWVJ2a5VYkUF6UA7m4bEpSDxmb3mJZhCbmoKO716U/edit?usp=sharing">Design Document</a><br>
+<a href="https://docs.google.com/document/d/1DSCH-3wh6uV9Rm_j8PcBzq2lvQPhZ31AIwmWkEaLxvc/edit?usp=sharing">Daily Notes</a><br>
+<a href="https://youtu.be/HQLhakpx5mk">Demo</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback-channel"><a class="anchor" href="#feedback-channel"></a>Feedback channel</h3>
+<div class="paragraph">
+<p><a href="https://gitter.im/jenkinsci/jenkins-custom-distribution-service">Gitter Channel Link</a>.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/service/">
+service
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/distribution/">
+distribution
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cloud-native/">
+cloud-native
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/packaging/">
+packaging
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/sladyn98/">
+Sladyn Nunes
+</a>
+</p>
+<div class="paragraph">
+<p>Sladyn is a Computer Science student at Mumbai University, India.
+He is participating in Community Bridge 2019 to provide development tools to JCasC plugin in the form of IDE integrations, schema architecture improvements and configuration extension points <a href="https://github.com/jenkinsci/configuration-as-code-plugin">Configuration as Code Plugin</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/sladyn98" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/SladynN" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/06/2020-07-27-custom-distribution-service.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

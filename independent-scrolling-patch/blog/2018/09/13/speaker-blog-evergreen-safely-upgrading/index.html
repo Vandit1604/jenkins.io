@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/09/13/speaker-blog-evergreen-safely-upgrading/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/09/13/speaker-blog-evergreen-safely-upgrading/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+September 13, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Speaker+blogpost%3A+Jenkins+Evergreen+At+DevOps+World+%7C+Jenkins+World+2018&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F09%2F13%2Fspeaker-blog-evergreen-safely-upgrading%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="imageblock right">
+<div class="content">
+<a class="image" href="https://www.cloudbees.com/devops-world"><img src="/images/conferences/devops-world-2018.jpg" alt="DevOps World | Jenkins World 2018"></a>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="/blog/2018/04/06/jenkins-essentials/">Evergreen is a distribution of Jenkins we are working on that provides an easy to use and automatically upgrading experience</a>.
+This year at the conference, there will be not just one, but two talks to present Evergreen to the Jenkins community:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://devopsworldjenkinsworld2018.sched.com/event/F9Nf/continuously-delivering-an-easy-to-use-jenkins-with-jenkins-essentials?iframe=no&amp;w=100%&amp;sidebar=yes&amp;bg=no">Continuously Delivering an Easy-to-Use Jenkins with Jenkins Evergreen</a>, by R. Tyler Croy.</p>
+</li>
+<li>
+<p><a href="https://devopsworldjenkinsworld2018.sched.com/event/F9Nn/safely-upgrading-jenkins-every-single-day?iframe=no&amp;w=100%&amp;sidebar=yes&amp;bg=no">Safely Upgrading Jenkins Every Single Day</a>, by Baptiste Mathus.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Tyler will present the overall Jenkins Evergreen architecture, its inception and how this aims at making it much simpler for people to just use Jenkins to build their projects, without having to become Jenkins admins.</p>
+</div>
+<div class="paragraph">
+<p>On the last conference day, during my own talk I will focus on the improved developer experience, and zoom into how we implemented some important features.</p>
+</div>
+<div class="paragraph">
+<p>We will dig together into the Error Telemetry system put in place, allowing us to actually fix errors and warnings people see in production environments.
+How instances are automatically reporting errors to the Evergreen backend, and how we then centralize and analyze them using Sentry.
+We will explain how the <a href="/blog/2018/05/15/incremental-deployment/"><em>Incrementals</em> system</a> allows developers a very short roundtrip, between a merged pull-request and a release we can push out to all instances.
+We will see concrete examples of issues we already fixed and released to Evergreen instances in just a few days after we opened an alpha version to the world.</p>
+</div>
+<div class="paragraph">
+<p>I will show you how an instance starts up and gets upgraded by discussing with the backend it’s constantly connected to.
+How the backend knows what it should instruct an instance to download and install, or how we trigger an automated data snapshot.</p>
+</div>
+<div class="paragraph">
+<p>You will obviously see a demo of all this showing in particular how Evergreen can already run on a Docker host, or on AWS (more environments to come!), using some of the so-called <em>flavors</em> for Jenkins Evergreen.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Come meet us at
+<a href="https://www.cloudbees.com/devops-world">DevOps World | Jenkins World 2018</a> on September 16-19th in San Francisco.
+We will be hanging out around the OSS space, eager to answer more questions.</p>
+</div>
+<div class="paragraph">
+<p>Register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2018/">
+jenkinsworld2018
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/evergreen/">
+evergreen
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Baptiste Mathus" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/batmat.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/batmat/">
+Baptiste Mathus
+</a>
+</p>
+<div class="paragraph">
+<p>Baptiste has been using and contributing to Jenkins since it was called differently, and is a huge proponent of the Agile, Devops &amp; Continuous Delivery movements.
+He loves to discuss not only the technical aspects, but also the even more essential cultural aspects of this all, working together to improve the value provided to customers in a great inclusive and blameless environment.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/batmat" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bmathus" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://batmat.net" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/09/2018-09-13-speaker-blog-evergreen-safely-upgrading.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

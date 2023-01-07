@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+First successful use of Jenkins telemetry
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/05/05/telemetry-success/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="First successful use of Jenkins telemetry" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="First successful use of Jenkins telemetry" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="First successful use of Jenkins telemetry" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/05/05/telemetry-success/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="First successful use of Jenkins telemetry" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+First successful use of Jenkins telemetry
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/daniel-beck/"><div class="app-avatar"></div> Daniel Beck</a>
+May 05, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=First+successful+use+of+Jenkins+telemetry&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F05%2F05%2Ftelemetry-success%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Half a year ago we delivered a security fix for Jenkins that had the potential to break the entire Jenkins UI.
+We needed to change how Jenkins, through the Stapler web framework, handled HTTP requests, tightening the rules around what requests would be processed by Jenkins.
+In the six months since, we didn&#8217;t receive notable reports of problems resulting from this change, and it&#8217;s thanks to the telemetry we gathered beforehand.</p>
+</div>
+<div class="sect1">
+<h2 id="the-problem"><a class="anchor" href="#the-problem"></a>The Problem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins uses the Stapler web framework for HTTP request handling.
+Stapler&#8217;s basic premise is that it uses reflective access to code elements matching its naming conventions.
+For example, any public method whose name starts with <code>get</code>, and that has a <code>String</code>, <code>int</code>, <code>long</code>, or no argument can be invoked this way on objects that are reachable through these means.
+As these naming conventions closely match common code patterns in Java, accessing crafted URLs could invoke methods never intended to be invoked this way.</p>
+</div>
+<div class="paragraph">
+<p>A simple example of that is a URL every Jenkins user would be familiar with: <code>/job/jobname</code>.
+This ends up invoking a method called <code>#getJob(String)</code>, with the argument being <code>"jobname"</code>, on the root application object, and having it handle the rest of the URL, if any.
+Of course, this is a URL intended to be accessed this way.
+How about invoking <code>Object#getClass()</code>, followed by <code>Class#getClassLoader()</code>, by accessing the URL <code>/class/classLoader</code>?
+While this particular chain would not result in a useful response, this doesn&#8217;t change that the methods were invoked.
+We identified a number of URLs that could be abused to access otherwise inaccessible jobs, or even invoke internal methods in the web application server to invalidate all sessions.
+<a href="https://jenkins.io/security/advisory/2018-12-05/">The security advisory</a> provides an overview of the issues we&#8217;d identified by then.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-idea"><a class="anchor" href="#the-idea"></a>The Idea</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To solve this problem inherent in the Stapler framework&#8217;s design, we defined rules that restrict invocation beyond what would be allowed by Stapler.
+For example, the declared return type of getters now needed to be one defined in Jenkins core or a Jenkins plugin and have either clearly Stapler-related methods (with Stapler annotations, parameter types, etc.) or Stapler-related resource files associated with it.
+Otherwise, the type wouldn&#8217;t be aware of Stapler, and couldn&#8217;t produce a meaningful response anyway.</p>
+</div>
+<div class="paragraph">
+<p>This meant that getters just declaring <code>Object</code> (or <code>List</code>, <code>Map</code>, etc.) would no longer be allowed by default.
+It was clear to the developers working on this problem that we needed the ability to be able to override the default rules for specific getters.
+But allowing plugin developers to adapt their plugins after we published the fix wasn&#8217;t going to cut it;
+Jenkins needed to ship with a comprehensive default whitelist for methods known to not conform to the new rules, so that updating would not result in problems for users.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-solution"><a class="anchor" href="#the-solution"></a>The Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While there is tooling like <a href="https://github.com/jenkinsci/plugin-compat-tester/">Plugin Compatibility Tester</a> and <a href="https://github.com/jenkinsci/acceptance-test-harness">Acceptance Test Harness</a>, many Jenkins plugins do not have comprehensive tests of their UI&#8201;&#8212;&#8201;the Jenkins UI is fairly stable after all.
+We did not expect to have sufficient test coverage to deliver a change like this with confidence.
+The only way we would be able to build such a comprehensive whitelist would be to add telemetry to Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>While Jenkins instances periodically report usage statistics to the Jenkins project, the information included is very bare bones and mostly useful to know the number of installations, the popularity of plugins, and the general size of Jenkins instances through number and types of jobs and agents.
+We also didn&#8217;t want to just collect data without a clear goal, so we set ourselves some limitations&#8201;&#8212;&#8201;collect as little data as possible, no personally identifiable information, have a specific purpose for each kind of information we would collect, and define an end date for the collection in advance.
+We defined all of this in <a href="https://github.com/jenkinsci/jep/blob/master/jep/214/README.adoc">JEP-214</a>, created the <a href="https://github.com/jenkins-infra/uplink">Uplink service that would receive submissions</a>, and added the basic client framework to Jenkins.
+The implementation is fairly basic&#8201;&#8212;&#8201;we just submit an arbitrary JSON object with some added metadata to a service.
+This system would inform tweaks to a security fix we were anxious to get out, after all.</p>
+</div>
+<div class="paragraph">
+<p>Starting in mid October for weekly releases, and early November for LTS, tens of thousands of Jenkins instances would submit Stapler request dispatch telemetry daily, and we would keep identifying code incompatible with the new rules and amending the fix.
+Ultimately, <a href="https://github.com/jenkinsci/jenkins/blob/44c4d3989232082c254d27ae360aa810669f44b7/core/src/main/resources/jenkins/security/stapler/default-whitelist.txt">the whitelist</a> would include a few dozen entries, preventing serious regressions in popular plugins like <a href="https://plugins.jenkins.io/credentials">Credentials Plugin</a>, <a href="https://plugins.jenkins.io/junit">JUnit Plugin</a>, or the Pipeline plugins suite, down to <a href="https://plugins.jenkins.io/google-cloud-health-check">Google Health Check Plugin</a>, a plugin with just 80 installations when we published the fix.</p>
+</div>
+<div class="paragraph">
+<p>Learning what requests would result in problems also allowed us to write better developer documentation&#8201;&#8212;&#8201;we already knew what code patterns would break, and how popular each of them was in the plugin ecosystem.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-overhaul"><a class="anchor" href="#the-overhaul"></a>The Overhaul</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I wrote above:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>For example, the declared return type of getters now needed to be one defined in Jenkins core or a Jenkins plugin and have either clearly Stapler-related methods (with Stapler annotations, parameter types, etc.) or Stapler-related resource files associated with it.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>While this was true for the fix during most of development, it isn&#8217;t how the fix that we published actually works.
+About a month before the intended release date, internal design/code review feedback criticized the complicated and time-consuming implementation that at the time required scanning the class path of Jenkins and all plugins and looking for related resources, and suggested a different approach.</p>
+</div>
+<div class="paragraph">
+<p>So we tried to require that the declared type or any of its ancestors be annotated with the new annotation <code>@StaplerAccessibleType</code>, annotated a bunch of types in Jenkins itself (<a href="https://javadoc.jenkins.io/hudson/model/ModelObject.html"><code>ModelObject</code></a> being the obvious first choice), and ran our scripts that check to see whether Stapler would be allowed to dispatch methods identified in telemetry.
+We&#8217;d long since automated the daily update of dispatch telemetry processing, so it was a simple matter of changing which Jenkins build we were working with.</p>
+</div>
+<div class="paragraph">
+<p>After a few iterations of adding the annotation to more classes, the results were very positive: Very few additional types needed whitelisting, while many more were no longer (unnecessarily) allowed to be dispatched to.
+This experiment, late during development, ended up being essentially the fix we delivered.
+We didn&#8217;t need to perform costly scanning of the class path on startup&#8201;&#8212;&#8201;we didn&#8217;t need to scan the class path at all&#8201;&#8212;&#8201;, and the rules governing request dispatch in Stapler, while different from before, are still pretty easy to understand and independent of how components are packaged.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-outcome"><a class="anchor" href="#the-outcome"></a>The Outcome</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As usual when delivering a fix we expect could result in regressions in plugins, we <a href="https://wiki.jenkins.io/display/JENKINS/Plugins+affected+by+the+SECURITY-595+fix">created a wiki page</a> that users could report problems on.
+Right now, there&#8217;s one entry on that wiki page.
+It is one we were aware of well before release, decided against whitelisting it, and the affected, undocumented feature in Git Plugin ended up being removed.
+The situation in our issue tracker is only slightly worse, with two apparently minor issues having been reported in Jira.</p>
+</div>
+<div class="paragraph">
+<p>Without telemetry, delivering a fix like this one would have been difficult to begin with.
+Tinkering with the implementation just a few weeks before release and having any confidence in the result?
+Not causing any significant regressions?
+I think this would simply be impossible.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/telemetry/">
+telemetry
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/daniel-beck/">
+Daniel Beck
+</a>
+</p>
+<div class="paragraph">
+<p>Daniel is a Jenkins core maintainer and member of the <a href="/security/#team">Jenkins security team</a>.
+He was the inaugural Jenkins security officer from 2015 to 2021.
+He sometimes contributes to developer documentation and project infrastructure in his spare time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/daniel-beck" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/05/2019-05-05-telemetry-success.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

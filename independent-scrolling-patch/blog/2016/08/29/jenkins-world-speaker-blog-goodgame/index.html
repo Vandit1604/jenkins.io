@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Enforcing Jenkins Best Practices
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Enforcing Jenkins Best Practices" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Enforcing Jenkins Best Practices" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Enforcing Jenkins Best Practices" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/08/29/jenkins-world-speaker-blog-goodgame/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Enforcing Jenkins Best Practices" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Enforcing Jenkins Best Practices
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+August 29, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Enforcing+Jenkins+Best+Practices&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F08%2F29%2Fjenkins-world-speaker-blog-goodgame%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by Jenkins World speaker David Hinske, Release
+Engineer at <a href="https://www.goodgamestudios.com/">Goodgame Studios</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/conferences/Jenkins-World_125x125.png" alt="Jenkins World"></span></p>
+</div>
+<div class="paragraph">
+<p>Hey there, my name is David Hinske and I work at Goodgame Studios (GGS), a game
+development company in Hamburg, Germany. As Release Engineer in a company with
+several development teams, it comes in handy using several Jenkins instances.
+While this approach works fine in our company and gives the developers a lot of
+freedom, we came across some long-term problems concerning maintenance and
+standards. These problems were mostly caused by misconfiguration or non-use of
+plugins. With “configuration as code” in mind, I took the approach to apply
+static code analysis with the help of SonarQube, a platform to manage code
+quality, for all of our Jenkins job configurations.</p>
+</div>
+<div class="paragraph">
+<p>As a small centralized team, we were looking for an easy way to control the
+health of our growing Jenkins infrastructure. With considering “configuration
+as code“, I developed a simple extension of SonarQube, to manage the quality
+and usage of all spawned Jenkins instances. The given SonarQube features (like
+customized rules/metrics, quality profiles and dashboards) allow us and the
+development teams to analyze and measure the quality of all created jobs in our
+company. Even though Jenkins configuration analysis cannot cover all
+SonarQube&#8217;s axes of code quality, I think there is still potential for
+conventions/standards, duplications, complexity, potential bugs
+(misconfiguration) and design and architecture.</p>
+</div>
+<div class="paragraph">
+<p>The results of this analysis can be used by all people working with Jenkins. To
+achieve this, I developed a simple extension of SonarQube, containing
+everything which is needed to hook up our SonarQube with our Jenkins
+environment. The implementation contains a new basic-language “Jenkins“ and an
+initial set of rules.</p>
+</div>
+<div class="paragraph">
+<p>Of course the needs depend strongly on the way Jenkins is being used, so not
+every rule implemented might be useful for every team, but this applies to all
+types of code analysis. The main inspirations for the rules were developer
+feedback and some articles found in the web. The different ways Jenkins can be
+configured provides the potential for many more rules. With this new approach
+of quality analysis, we can enforce best practices like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Polling must die (Better to triggerb uilds from pushes than poll the
+repository every x minutes).</p>
+</li>
+<li>
+<p>Use Log Rotator (Not using log-rotator can result in disk space problems on
+the controller).</p>
+</li>
+<li>
+<p>Use agents/labels (Jobs should be defined where to run).</p>
+</li>
+<li>
+<p>Don’t build on the controller (In larger systems, don&#8217;t build on the controller).</p>
+</li>
+<li>
+<p>Enforce plugin usage (For example: Timestamp, Mask-Passwords).</p>
+</li>
+<li>
+<p>Naming sanity (Limit project names to a sane (e.g. alphanumeric) character
+set).</p>
+</li>
+<li>
+<p>Analyze Groovy Scripts (For example: Prevent System.exit(0) in System Groovy
+Scripts).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/jw-speaker-blog-goodgame/jenkins1.png" alt="jenkins1"></span></p>
+</div>
+<div class="paragraph">
+<p>Besides taking control of all configuration of any Jenkins instance we want,
+there is also room for additional metrics, like measuring the amount and
+different types of jobs (Freestyle/Maven etc&#8230;&#8203;) to get an overview about the
+general load of the Jenkins instance. A more sophisticated idea is to measure
+complexity of jobs and even pipelines. As code, jobs configuration gets harder
+to understand the more steps are involved. On the one hand scripts, conditions
+and many parameters can negatively influence the readability, especially if you
+have external dependencies (like scripts) in different locations. On the other
+hand, pipelines can also grow very complex when many jobs are involved and
+chained for execution. It will be very interesting for us to see where and why
+too complex pipelines are being created.</p>
+</div>
+<div class="paragraph">
+<p>On visualization we rely on the data and its interpretation of SonarQube, which
+offers a big bandwidth of widgets. Everybody can use and customize the
+dashboards. Our centralized team for example has a separate dashboard where we
+can get a quick overview over all instances.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/jw-speaker-blog-goodgame/jenkins2.png" alt="jenkins2"></span></p>
+</div>
+<div class="paragraph">
+<p>The problem of "growing" Jenkins with maintenance problems is not new.
+Especially when you have many developers involved, including with the access to
+create jobs and pipelines themselves, an analysis like this SonarQube plugin
+provides can be useful for anyone who wants to keep their Jenkins in shape.
+Customization and standards are playing a big role in this scenario. This blog
+post surely is not an advertisement for my developed plugin, it is more about
+the crazy idea of using static code analysis for Jenkins job configuration. I
+haven’t seen anything like it so far and I feel that there might be some
+potential behind this idea.</p>
+</div>
+<div class="paragraph">
+<p>Join me at my Enforcing Jenkins Best Practices session at the 2016 Jenkins
+World to hear more!</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>David will be
+<a href="https://www.cloudbees.com/enforcing-jenkins-best-practices">presenting</a>
+more of this concept at
+<a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in September.
+Register with the code <code>JWFOSS</code> for 20% off your full conference pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2016/">
+jenkinsworld2016
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-08-29-jenkins-world-speaker-blog-goodgame.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

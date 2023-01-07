@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Juseppe, a custom update site for Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/07/14/juseppe-a-custom-update-site-for-jenkins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Juseppe, a custom update site for Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Juseppe, a custom update site for Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Juseppe, a custom update site for Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/07/14/juseppe-a-custom-update-site-for-jenkins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Juseppe, a custom update site for Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Juseppe, a custom update site for Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/daniel-beck/"><div class="app-avatar"></div> Daniel Beck</a>
+July 14, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Juseppe%2C+a+custom+update+site+for+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F07%2F14%2Fjuseppe-a-custom-update-site-for-jenkins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><em>This is a guest post by Kirill Merkushev at Yandex. I met him at JUC Europe where he showed me the project he was working on: Juseppe. It looked really interesting, so I asked him to write this guest post.</em></p>
+</div>
+<div class="paragraph">
+<p>When you write your first custom Jenkins plugin for internal use, it&#8217;s easy enough to deploy it on one or maybe two Jenkins instances. You can save it on your local drive and upload the HPI file via the Jenkins Plugin Manager as needed. It&#8217;s easy to do this for a few releases. But as your experience grows, the number of plugins and their releases grows as well. The plugins directory on your local drive soon looks like a garbage dump, and it&#8217;s difficult to find that most recent version of any plugin. And if you have a lot of Jenkins instances coordinating updates of your plugins may cause a lot of pain.</p>
+</div>
+<div class="paragraph">
+<p>A similar situation is when you contribute a much-needed patch to an existing plugin, but you don&#8217;t have the time to wait until your pull request is be merged and a new release is cut. Or you may need to patch a plugin in ways not suitable for distribution, and decide to effectively fork the plugin for use on your Jenkins instances. How are you going to do this?</p>
+</div>
+<div class="paragraph">
+<p>A solution avoiding the problems from these situations is to set up your own update site to serve your private plugin builds. Juseppe allows you to do this quickly and easily.</p>
+</div>
+<div class="sect1">
+<h2 id="what-is-juseppe"><a class="anchor" href="#what-is-juseppe"></a>What is Juseppe?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Juseppe</em> is an acronym for <em>Jenkins Update Site Embedded for Plugin Publishing Easily</em>. Juseppe can help you set up a Jenkins update site in just a few minutes.</p>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="anchor" href="#features"></a>Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Generates signed <code>update-center.json</code> and <code>release-history.json</code></p>
+</li>
+<li>
+<p>Works with HPI files directly (stored in one folder), no need to set up a Maven repository</p>
+</li>
+<li>
+<p>Watches for changes in the plugin folder and regenerates JSON files when changes are detected</p>
+</li>
+<li>
+<p>Serves generated files and plugin files with built-in Jetty web server</p>
+</li>
+<li>
+<p>Can be run in a "generate-only" mode when you want to use a different web server for these files.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-can-i-get-juseppe"><a class="anchor" href="#how-can-i-get-juseppe"></a>How can I get Juseppe?</h3>
+<div class="paragraph">
+<p>It ships as a Docker container, or can be built from source. Visit <a href="https://github.com/yandex-qatools/juseppe">the GitHub project page</a> to learn more. The complete user guide is available in <a href="https://github.com/yandex-qatools/juseppe/wiki/Complete-Guide-of-own-update-center-using-Juseppe">the GitHub project wiki</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/guest post/">
+guest post
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/daniel-beck/">
+Daniel Beck
+</a>
+</p>
+<div class="paragraph">
+<p>Daniel is a Jenkins core maintainer and member of the <a href="/security/#team">Jenkins security team</a>.
+He was the inaugural Jenkins security officer from 2015 to 2021.
+He sometimes contributes to developer documentation and project infrastructure in his spare time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/daniel-beck" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-07-14-juseppe-a-custom-update-site-for-jenkins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

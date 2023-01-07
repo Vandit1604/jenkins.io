@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Let's celebrate Java 11 Support on Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/03/11/let-s-celebrate-java-11-support/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Let&#39;s celebrate Java 11 Support on Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Let&#39;s celebrate Java 11 Support on Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Let&#39;s celebrate Java 11 Support on Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/03/11/let-s-celebrate-java-11-support/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Let&#39;s celebrate Java 11 Support on Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Let's celebrate Java 11 Support on Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/alecharp/"><div class="app-avatar"><img alt="Adrien Lecharpentier" class="app-avatar__image" src="/images/avatars/alecharp.jpg"></div> Adrien Lecharpentier</a>
+March 11, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Let%27s+celebrate+Java+11+Support+on+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F03%2F11%2Flet-s-celebrate-java-11-support%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a joint blog post prepared by the Java 11 Support Team: Adrien Lecharpentier, Ashton Treadway, Baptiste Mathus, Jenn Briden, Kevin Earls, María Isabel Vilacides, Mark Waite, Ramón León and Oleg Nenashev.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/logos/formal/256.png" alt="Jenkins Java"></span></p>
+</div>
+<div class="paragraph">
+<p>We have worked hard for this and it&#8217;s now here.
+We are thrilled to announce <strong>full support for Java 11 in Jenkins</strong> starting from Jenkins 2.164 (released on Feb 10, 2019) and LTS 2.164.1 (ETA: March 14th).
+This means you can now run your Jenkins controllers and agents with a Java 11 JVM.</p>
+</div>
+<div class="paragraph">
+<p>Starting in June 2018, many events were organized to improve Jenkins code base and add Java 11 support.
+Beyond these events, Core/Plugins maintainers and many other contributors have worked hard to make sure they discover and solve as many issues as possible related to Java 11 support.</p>
+</div>
+<div class="paragraph">
+<p>The effort to support Java 11 led to the creation of the <a href="https://github.com/jenkinsci/jep/blob/master/jep/211/README.adoc">JEP-211: Java 10+ support in Jenkins</a>.
+It also spurred the creation of the <a href="https://jenkins.io/sigs/platform">Platform Special Interest Group</a> to coordinate the Java 11 work and other platform support efforts.</p>
+</div>
+<div class="sect1">
+<h2 id="celebration"><a class="anchor" href="#celebration"></a>Celebration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;d like to take a moment to thank everyone involved in these tasks: code contributors, issue reporters, testers, event planners and attendees and all those in the community who have generously lent their time and support to this effort.
+Thank you all!</p>
+</div>
+<div class="paragraph">
+<p>Here are some of the contributors who helped with this task (alphabetical order):</p>
+</div>
+<div class="paragraph">
+<p>Alex Earl,
+Alyssa Tong,
+Ashton Treadway,
+Baptiste Mathus,
+Carlos Sanchez,
+Daniel Beck,
+David Aldrich,
+Denis Digtyar,
+Devin Nusbaum,
+Emeric Vernat,
+Evaristo Gutierrez,
+Gavin Mogan,
+Gianpaolo Macario,
+Isabel Vilacides,
+James Howe,
+Jeff Pearce,
+Jeff Thompson,
+Jenn Briden,
+Jesse Glick,
+Jonah Graham,
+Kevin Earls,
+Ksenia Nenasheva,
+Kohsuke Kawaguchi,
+Liam Newman,
+Mandy Chung,
+Mark Waite,
+Nicolas De Loof,
+Oleg Nenashev,
+Oliver Gondža,
+Olivier Lamy,
+Olivier Vernin,
+Parker Ennis,
+Paul Sandoz,
+Ramón León,
+Sam Van Oort,
+Tobias Getrost,
+Tracy Miranda,
+Ulli Hafner,
+Vincent Latombe,
+Wadeck Follonier</p>
+</div>
+<div class="paragraph">
+<p>(We are deeply sorry if we missed anyone in this list.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="guidelines"><a class="anchor" href="#guidelines"></a>Guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to keep it simple, here is how you can start Jenkins on Java 11 using the Docker image.
+You can select a Java 11 based image by suffixing the tag of the image with <code>-jdk11</code>.
+If you are upgrading an existing instance please read the <a href="/doc/administration/requirements/upgrade-java-guidelines/">Upgrading Jenkins Java version from 8 to 11</a> page before upgrading.</p>
+</div>
+<div class="paragraph">
+<p>So you can run Jenkins on Java 11 with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">docker run <span class="nt">-p</span> 50000:50000 <span class="nt">-p</span> 8080:8080 jenkins/jenkins:2.164-jdk11</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, and as always, you can still start Jenkins with other methods.
+Please see the more detailed documentation at <a href="/doc/book/installing/">Installing Jenkins</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developer-guidelines"><a class="anchor" href="#developer-guidelines"></a>Developer guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For developers involved in Jenkins development, you can find details on developing and testing Jenkins to run on Java 11 on the <a href="https://wiki.jenkins.io/display/JENKINS/Java+11+Developer+Guidelines">Java 11 Developer Guidelines</a>.</p>
+</div>
+<div class="paragraph">
+<p>This resource regroups the modifications which might need to be done in order to validate the compatibility of plugins for Java 11.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Even though this is a big achievement, we still have work to do.</p>
+</div>
+<div class="paragraph">
+<p>Our first priority is adding Java 11 support to <a href="https://github.com/jenkinsci/jenkinsfile-runner">JenkinsFile Runner</a> project.
+From there, we will move on to port Java 11 support to the <a href="https://github.com/jenkins-x">Jenkins X</a> project and the <a href="https://github.com/jenkins-infra/jenkins.io/blob/c0ba3cab7a7dfe398ec411d3271922bb98f04f8e/content/projects/evergreen/index.adoc">Evergreen</a> project.</p>
+</div>
+<div class="paragraph">
+<p>So, even if this is a big deal to us, this is not the end of the story.
+It is a major step that will benefit users, developers, and members of the Jenkins community.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-links"><a class="anchor" href="#reference-links"></a>Reference links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/administration/requirements/jenkins-on-java-11">Running Jenkins on Java 11</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Known+Java+11+Compatibility+issues" class="bare">https://wiki.jenkins.io/display/JENKINS/Known+Java+11+Compatibility+issues</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Java+11+Developer+Guidelines" class="bare">https://wiki.jenkins.io/display/JENKINS/Java+11+Developer+Guidelines</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/blob/master/jep/211/README.adoc">JEP-211: Java 11 support in Jenkins</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java11/">
+java11
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Adrien Lecharpentier" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/alecharp.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/alecharp/">
+Adrien Lecharpentier
+</a>
+</p>
+<div class="paragraph">
+<p>Adrien is a Jenkins user and plugins developer since 2009 and maintains several plugins.
+Currently, Adrien works at <a href="https://www.cloudbees.com">CloudBees</a> as a software engineer, involved in open-source code development.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/alecharp" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/alecharp" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://alecharp.fr" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/03/2019-03-11-let-s-celebrate-java-11-support.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

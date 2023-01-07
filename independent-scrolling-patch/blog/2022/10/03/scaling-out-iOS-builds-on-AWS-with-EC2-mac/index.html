@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Scaling out iOS builds on AWS with EC2 mac
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/10/03/scaling-out-iOS-builds-on-AWS-with-EC2-mac/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Scaling out iOS builds on AWS with EC2 mac" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Scaling out iOS builds on AWS with EC2 mac" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/Jenkins-DevOps.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Scaling out iOS builds on AWS with EC2 mac" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/10/03/scaling-out-iOS-builds-on-AWS-with-EC2-mac/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Scaling out iOS builds on AWS with EC2 mac" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/Jenkins-DevOps.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Scaling out iOS builds on AWS with EC2 mac
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/xparticle/"><div class="app-avatar"><img alt="Sudhir Reddy Maddulapally" class="app-avatar__image" src="/images/avatars/xparticle.png"></div> Sudhir Reddy Maddulapally</a>
+October 03, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Scaling+out+iOS+builds+on+AWS+with+EC2+mac&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F10%2F03%2Fscaling-out-iOS-builds-on-AWS-with-EC2-mac%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="imageblock right">
+<div class="content">
+<img src="/images/post-images/Jenkins-DevOps.png" alt="Jenkins DevOps">
+</div>
+</div>
+<div class="sect1">
+<h2 id="scaling-out-ios-builds-on-aws-with-ec2-mac"><a class="anchor" href="#scaling-out-ios-builds-on-aws-with-ec2-mac"></a>Scaling out iOS builds on AWS with EC2 mac</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h3>
+<div class="paragraph">
+<p>The number of mobile application subscriptions are
+<span class="underline">increasing</span> annually, trending towards 8 billion and
+combined number of apps in the app stores are close to <span class="underline">6
+million</span>. Mobile application development has become prevalent, not just
+for consumer facing businesses but also with the remote workforce. Many
+large enterprises also support an internal app store catering to
+organization specific functionalities. As a result of this growth
+combined with the cloud first approach, there is a need to deploy mobile
+application development infrastructure with scale in mind from day 1.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start by looking at a skeleton view of typical iOS continuous
+integration and continuous delivery (CI/CD) pipelines. For the purpose
+of this blog, we can split it into two distinct phases, (1) Local
+Integrated Development Environment (IDE) based design and development of
+the iOS app which typically takes place on a macOS device, and
+(2) Building, testing, and publishing the app to the Appstore. This can
+occur on the same macOS device if it is with a a single developer
+project, however team based development, typically runs on separate
+build and test infrastructure. Although some aspects of this discussion
+can be applied to stand up a fleet of developer machines for phase 1,
+the focus will be placed on the topic at hand which is scalable build
+pipelines for the second phase.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-30-scaling-out-iOS-builds-on-AWS-with-EC2-mac/image1.png" alt="image" width="622" height="194"></span></p>
+</div>
+<div class="paragraph">
+<p>Figure-1: iOS Application development steps</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Mac instances allow customers to bootstrap macOS environments
+in the cloud and use these for building, testing, signing, and
+publishing iOS applications with the security, scalability, and
+flexibility of the cloud. EC2 Mac instances are offered as bare-metal
+instances running on top of single-tenant, Dedicated Hosts in compliance
+with macOS licensing.</p>
+</div>
+<div class="paragraph">
+<p>Integration with services like AWS Auto Scaling and AWS Systems Manager
+with the SSM agent included in the Amazon Machine Images (AMIs), means
+that the fundamental building blocks to facilitate automation needed for
+setting up a CI/CD pipeline for iOS app builds is readily available. The
+AWS Partner Network (APN) is a global community of partners that
+leverages programs, expertise, and resources to build, market, and sell
+customer offerings. AWS Marketplace is built to accelerate innovation
+available via the cloud while balancing the needs for speed and agility
+with governance and control. Both software delivery automation products
+like CI from CloudBees and virtualization solution like Anka from Veertu
+are offered on AWS Marketplace. These products work with the fundamental
+building blocks to further remove the undifferentiated heavy lifting of
+scaling out the iOS app build workloads. Let’s look at the options to
+scale out build pipelines with EC2 Mac instances.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="queuing-builds-using-sqs-and-aws-systems-manager"><a class="anchor" href="#queuing-builds-using-sqs-and-aws-systems-manager"></a>Queuing builds using SQS and AWS Systems Manager</h3>
+<div class="paragraph">
+<p>EC2 Mac instances based AMIs have a Systems Manager agent included. This
+enables EC2 Mac instances to become a managed node under the Systems
+Manager inventory. We can then use “Run Command”, a capability of AWS
+Systems Manager, to remotely and securely run automation scripts on EC2
+Mac instances. In this case, we will use Run Command to execute our
+build scripts. Configuring the event source trigger for Run Command
+could be achieved by a simple well-known pattern utilizing CodeCommit,
+SNS topic, SQS queue and Lambda worker as depicted below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-30-scaling-out-iOS-builds-on-AWS-with-EC2-mac/image2.png" alt="image" width="625" height="272"></span></p>
+</div>
+<div class="paragraph">
+<p>Figure-2: Multiple Build Jobs invoked by SSM Agent on EC2 Mac.</p>
+</div>
+<div class="paragraph">
+<p>This pattern can be extended to a fleet of EC2 Macs instances all while
+relying on Systems Manager capabilities to retrieve the state of the
+fleet and invoke operations on individual nodes. Complex scenarios with
+multiple build pipelines would necessitate the need for a more feature
+rich build orchestrator than the rudimentary event-based sourcing
+pattern shown. For that, let’s look at what we can achieve with a
+popular automation server called Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="orchestrating-multiple-builds-with-jenkins"><a class="anchor" href="#orchestrating-multiple-builds-with-jenkins"></a>Orchestrating multiple builds with Jenkins</h3>
+<div class="paragraph">
+<p>Jenkins has a powerful extension and plugin system that allows
+developers to write plugins affecting nearly every aspect of Jenkins'
+behavior. Jenkins can be run on AWS in several different ways, directly
+on EC2, using ECS Fargate as serverless or even EKS. To focus more on
+the iOS builds let’s assume a simple single node Jenkins setup running
+on EC2 Linux like shown in Figure-3. Using plugins like
+<span class="underline">Configuration as code</span>, <span class="underline">SSH build agents</span> you
+can define several parameters that simplifies deploying Jenkins to AWS,
+more on this here</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-30-scaling-out-iOS-builds-on-AWS-with-EC2-mac/image3.png" alt="image" width="616" height="220"></span></p>
+</div>
+<div class="paragraph">
+<p>Figure-3: Multiple Build Jobs invoked by Jenkins Agent on EC2 Mac
+instances.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins has the notion of a node, which in this case is an EC2 Mac
+instance, and executors, think of them as multiple processes within the
+node. If you configure the number of executors on the node as 2, you can
+in theory run two Xcode build jobs on a single EC2 Mac instance. Jenkins
+will handle the job orchestration as well as queuing up multiple jobs
+for each executor on the node. You can have several iOS build pipelines
+consuming the same build infrastructure. However, once the amount of
+time the build jobs waiting in the queue for an executor to be available
+increases, you may want to scale out into another EC2 Mac instance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-scaling-with-ec2-mac-instances"><a class="anchor" href="#auto-scaling-with-ec2-mac-instances"></a>Auto-scaling with EC2 Mac instances</h3>
+<div class="paragraph">
+<p>AWS Auto Scaling lets you build scaling plans that automate how groups
+of different resources respond to changes in demand. One of the features
+includes manual scaling operations typically used when you want an
+external event to make the decision of scaling up or down the number of
+instances in the group. In the case of scaling out Jenkins iOS builds,
+the queue depth can be one of those variables. EC2 fleet plugin has
+several options, including scaling up based on jobs waiting in the queue
+and scaling down when nodes are idle.</p>
+</div>
+<div class="paragraph">
+<p>Adding a new launched EC2 Mac instance from the auto scaling group to
+the Jenkins controller is achieved by either SSH-based or JNLP-based
+registration. More on those <span class="underline">here</span>. Note however
+that EC2 Mac dedicated hosts require a 24-hour minimum allocation
+period, adhering to the macOS Software Licensing Agreement
+(<span class="underline">SLA</span>), before they can be released.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-30-scaling-out-iOS-builds-on-AWS-with-EC2-mac/image4.png" alt="image" width="620" height="282"></span></p>
+</div>
+<div class="paragraph">
+<p>Figure-4: Multiple EC2 Mac instance executor nodes under an Auto Scaling
+group.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="type-2-virtualization-with-ec2-mac-instances"><a class="anchor" href="#type-2-virtualization-with-ec2-mac-instances"></a>Type-2 virtualization with EC2 Mac instances</h3>
+<div class="paragraph">
+<p>Apple Silicon and macOS has virtualization and a hypervisor framework
+built into it that lets you create guest virtual machines (VM) on top of
+the host. EC2 Mac instances are bare metal EC2 instances and will let
+you use this virtualization features to run up to 2 guest VM’s adhering
+to the macOS SLA’s. <span class="underline">Anka build</span> is one option that lets you
+leverage this granularity along with their CI/CD plugin for Jenkins to
+orchestrate multiple build jobs across a fleet of EC2 Mac instances.
+Another option is <span class="underline">Tart</span> that integrates into Cirrus labs CI
+to accomplish similar goals. Here is a quick depiction on how this would
+work from a Jenkins perspective, removing the well documented additional
+components included in the individual products to make this happen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-30-scaling-out-iOS-builds-on-AWS-with-EC2-mac/image5.png" alt="image" width="622" height="442"></span></p>
+</div>
+<div class="paragraph">
+<p>Figure-4: Type-2 virtualization enabling two guest virtual machines on
+EC2 Mac.</p>
+</div>
+<div class="paragraph">
+<p>An example of how to combine the benefits of these several layers of
+scale out from AWS Autoscaling and macOS type-2 virtualization into one
+cohesive build fleet is illustrated in the diagram below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-09-30-scaling-out-iOS-builds-on-AWS-with-EC2-mac/image6.png" alt="image" width="615" height="291"></span></p>
+</div>
+<div class="paragraph">
+<p>Figure-5: Combining all scale-out options together.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion:</h3>
+<div class="paragraph">
+<p>In this blog post we have walked through several options available to
+scale out iOS builds using Amazon EC2 Mac instances. We have also looked
+at the integration options available with a popular automation tool,
+Jenkins. Several of the options discussed here are implemented as
+solutions published by AWS with links available in the reference section
+for further reading.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references"><a class="anchor" href="#references"></a>References</h3>
+<div class="paragraph">
+<p>Refer to these individual articles to dive deep into the many aspects
+and options discussed in this blog and some more.</p>
+</div>
+<div class="paragraph">
+<p>Anka Type-2 virtualization: <a href="https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/" class="bare">https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/</a></p>
+</div>
+<div class="paragraph">
+<p>SQS based build agent: <a href="https://github.com/sebsto/swift-build-agent-sqs" class="bare">https://github.com/sebsto/swift-build-agent-sqs</a></p>
+</div>
+<div class="paragraph">
+<p>iOS pipeline with ec2 mac: <a href="https://aws.amazon.com/blogs/compute/unify-your-ios-mobile-app-ci-cd-pipeline-with-amazon-ec2-mac-instances-2/" class="bare">https://aws.amazon.com/blogs/compute/unify-your-ios-mobile-app-ci-cd-pipeline-with-amazon-ec2-mac-instances-2/</a></p>
+</div>
+<div class="paragraph">
+<p>TeamCity: <a href="https://aws.amazon.com/blogs/apn/implementing-macos-build-agents-into-teamcity-using-amazon-ec2-mac-instances/" class="bare">https://aws.amazon.com/blogs/apn/implementing-macos-build-agents-into-teamcity-using-amazon-ec2-mac-instances/</a></p>
+</div>
+<div class="paragraph">
+<p>Auto-scaling: <a href="https://aws.amazon.com/blogs/compute/implementing-autoscaling-for-ec2-mac-instances/" class="bare">https://aws.amazon.com/blogs/compute/implementing-autoscaling-for-ec2-mac-instances/</a></p>
+</div>
+<div class="paragraph">
+<p>Virtualbuddy: <a href="https://github.com/insidegui/VirtualBuddy" class="bare">https://github.com/insidegui/VirtualBuddy</a></p>
+</div>
+<div class="paragraph">
+<p>Tart: <a href="https://github.com/cirruslabs/tart" class="bare">https://github.com/cirruslabs/tart</a></p>
+</div>
+<div class="paragraph">
+<p>Ec2-macos-init: <a href="https://github.com/aws/ec2-macos-init" class="bare">https://github.com/aws/ec2-macos-init</a></p>
+</div>
+<div class="paragraph">
+<p>Harness: <a href="https://docs.harness.io/article/mwzlb0x2mt-define-a-macos-build-infrastructure" class="bare">https://docs.harness.io/article/mwzlb0x2mt-define-a-macos-build-infrastructure</a></p>
+</div>
+<div class="paragraph">
+<p>Fastlane: <a href="https://docs.fastlane.tools/" class="bare">https://docs.fastlane.tools/</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/contribute/">
+contribute
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/aws/">
+aws
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/aws-ec2-mac/">
+aws-ec2-mac
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/mac/">
+mac
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/iOS/">
+iOS
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/baremetal/">
+baremetal
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/type-2-virtualization/">
+type-2-virtualization
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Sudhir Reddy Maddulapally" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/xparticle.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/xparticle/">
+Sudhir Reddy Maddulapally
+</a>
+</p>
+<div class="paragraph">
+<p>Experienced speaker on various things AWS, Confidential computing, SaaS,
+and in this context EC2 Mac. Loves playing with drones and Astro
+photography buff otherwise. <a href="https://github.com/xparticle">GitHub</a></p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/xparticle" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/10/2022-10-03-scaling-out-iOS-builds-on-AWS-with-EC2-mac.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

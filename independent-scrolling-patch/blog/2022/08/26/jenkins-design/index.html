@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+See what's next for the Jenkins user interface - DevOps World 2022
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="We&#39;ll be giving a talk on the history of the Jenkins user interface, where we stand today, and a look into the future of where we plan to take Jenkins." name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/08/26/jenkins-design/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="See what&#39;s next for the Jenkins user interface - DevOps World 2022" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="See what&#39;s next for the Jenkins user interface - DevOps World 2022" name="twitter:title">
+<meta content="We&#39;ll be giving a talk on the history of the Jenkins user interface, where we stand today, and a look into the future of where we plan to take Jenkins." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/jenkins-redesign-preview-social.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="See what&#39;s next for the Jenkins user interface - DevOps World 2022" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/08/26/jenkins-design/" property="og:url">
+<meta content="We&#39;ll be giving a talk on the history of the Jenkins user interface, where we stand today, and a look into the future of where we plan to take Jenkins." name="og:description">
+<meta content="See what&#39;s next for the Jenkins user interface - DevOps World 2022" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/jenkins-redesign-preview-social.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+See what's next for the Jenkins user interface - DevOps World 2022
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/janfaracik/"><div class="app-avatar"><img alt="Jan Faracik" class="app-avatar__image" src="/images/avatars/janfaracik.jpg"></div> Jan Faracik</a><a class="app-author-link" href="/blog/authors/timja/"><div class="app-avatar"><img alt="Tim Jacomb" class="app-avatar__image" src="/images/avatars/timja.jpg"></div> Tim Jacomb</a>
+August 26, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=See+what%27s+next+for+the+Jenkins+user+interface+-+DevOps+World+2022&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F08%2F26%2Fjenkins-design%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a speaker blogpost for a DevOps World 2022 talk in Orlando, Florida
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-redesign-preview.png" alt="jenkins redesign preview">
+</div>
+</div>
+<div class="paragraph">
+<p>... at the <em>'Transformation of the Jenkins User Interface and Where it’s Going Next'</em> talk at <a href="https://events.devopsworld.com/widget/cloudbees/devopsworld22/conferenceSessionDetails?tab.day=20220929&amp;search.tracks=1621547690784001M6Z8">DevOps World 2022</a>, Thursday, September 29 10:45 AM - 11:30 AM EDT.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll be giving a talk on the history of the Jenkins user interface, where we stand today, and a look into the future of where we plan to take Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Expect to hear about the lessons we&#8217;ve learned and the challenges we&#8217;re tackling as we update Jenkins for the modern web.</p>
+</div>
+<div class="paragraph">
+<p>Topics include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A brief history of the Jenkins UI</p>
+</li>
+<li>
+<p>What&#8217;s wrong with the current UI</p>
+</li>
+<li>
+<p>The work we&#8217;re doing currently</p>
+</li>
+<li>
+<p>Live demo showcasing a futuristic Jenkins</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>If you want to get involved in the UI/UX discussions of Jenkins please join the <a href="/sigs/ux">User Experience SIG</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can watch our monthly meetings on <a href="https://www.youtube.com/playlist?list=PLN7ajX_VdyaOnsIIsZHsv_fM9QhOcajWe">YouTube</a> and you can view in-progress work on <a href="https://github.com/jenkinsci/jenkins/pulls?q=is%3Apr+is%3Aopen+label%3Aweb-ui">GitHub</a>.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/contribute/">
+contribute
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/user-experience/">
+user-experience
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/devopsworld/">
+devopsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/devopsworld2022/">
+devopsworld2022
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Jan Faracik" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/janfaracik.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/janfaracik/">
+Jan Faracik
+</a>
+</p>
+<div class="paragraph">
+<p>Developer.
+Loves design, walking and the occasional pizza.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/janfaracik" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/janfaracik" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/janfaracik" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Tim Jacomb" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/timja.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/timja/">
+Tim Jacomb
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer, along with slack, azure-keyvault and configuration-as-code plugins.
+Tim started using Jenkins in 2013 and became an active contributor in 2018.
+Tim enjoys working on open source software in his “free” time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/timja" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/Tjaynz" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/tim-jacomb-98043174" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/08/2022-08-26-jenkins-design.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

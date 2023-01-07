@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Customizing Agent &rarr; Controller Security
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/agent-to-controller/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Customizing Agent &rarr; Controller Security" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Customizing Agent &rarr; Controller Security" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Customizing Agent &rarr; Controller Security" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/agent-to-controller/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Customizing Agent &rarr; Controller Security" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="active">Securing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" class="">Access Control</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/securing-jenkins/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/managing-security/" class="">Managing Security</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/" class="active">Controller Isolation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/csrf-protection/" class="">CSRF Protection</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/user-content/" class="">Rendering User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/build-authorization/" class="">Access Control for Builds</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/environment-variables/" class="">Handling Environment Variables</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/markup-formatter/" class="">Markup Formatters</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/services/" class="">Exposed Services and Ports</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Customizing Agent &rarr; Controller Security
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#customizing-rules">Customizing Rules</a>
+<ul class="sectlevel2">
+<li><a href="#commands">Commands</a>
+<ul class="sectlevel3">
+<li><a href="#advanced">Advanced</a></li>
+</ul>
+</li>
+<li><a href="#file-access-rules">File Access Rules</a>
+<ul class="sectlevel3">
+<li><a href="#advanced-2">Advanced</a></li>
+</ul>
+</li>
+<li><a href="#disabling">Disabling</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This section describes how to customize the rules restricting agents' access to the Jenkins controller in Jenkins 2.325 and earlier.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Jenkins 2.326, the ability to disable or customize the agent-to-controller security system has been removed without replacement.
+This documentation applies only to older releases of Jenkins.
+For documentation specific to the change in Jenkins 2.326, see <a href="../jep-235">Agent &rarr; Controller Security Changes in 2.326</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Sophisticated administrators can use the built-in access control rules to create specific exemptions for certain access patterns from the agents to the Jenkins controller.
+This should only be necessary when trying to run plugins that have not yet been adapted to be compatible.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For an introduction about the Agent &rarr; Controller Security system, see <a href="/doc/book/security/controller-isolation/#agent-controller-access-control">Isolating the Controller from Builds</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../../resources/security/configure-global-security-agent-controller-rules.png" alt="Configure Global Security - Enable Agent &#8658; Controller Access Control - Editing Rules">
+</div>
+</div>
+<div class="paragraph">
+<p>By following the link highlighted above, an administrator may edit <strong>Commands</strong> and <strong>File Access</strong> agent-to-controller access control rules.</p>
+</div>
+<div class="sect1">
+<h2 id="customizing-rules"><a class="anchor" href="#customizing-rules"></a>Customizing Rules</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="commands"><a class="anchor" href="#commands"></a>Commands</h3>
+<div class="paragraph">
+<p>"Commands" in Jenkins and its plugins are identified by their fully-qualified class names.
+The majority of these commands are intended to be executed on agents by a request of a controller, but some of them are intended to be executed on a controller by a request of an agent.</p>
+</div>
+<div class="paragraph">
+<p>Plugins not yet updated for this subsystem may not classify which category each command falls into, such that when an agent requests that the controller execute a command which is not explicitly allowed, Jenkins will err on the side of caution and refuse to execute the command.</p>
+</div>
+<div class="paragraph">
+<p>In such cases, Jenkins administrators may allow certain commands as acceptable for execution on the controller.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../../resources/security/configure-global-security-whitelist-commands.png" alt="Configure Global Security - Enable Agent &#8658; Master Access Control - Editing Rules - Command Whitelisting">
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced"><a class="anchor" href="#advanced"></a>Advanced</h4>
+<div class="paragraph">
+<p>Administrators may also allow classes by creating files with the <code>.conf</code> extension in the directory <code>JENKINS_HOME/secrets/whitelisted-callables.d/</code>.
+The contents of these <code>.conf</code> files should list command names on separate lines.</p>
+</div>
+<div class="paragraph">
+<p>The contents of all the <code>.conf</code> files in the directory will be read by Jenkins and combined to create a <code>default.conf</code> file in the directory which lists all known safe commands.
+The <code>default.conf</code> file will be re-written each time Jenkins boots.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins also manages a file named <code>gui.conf</code>, in the <code>whitelisted-callables.d</code> directory, where commands added via the web UI are written.
+In order to disable the ability of administrators to change whitelisted commands from the web UI, place an empty <code>gui.conf</code> file in the directory and change its permissions such that is not writeable by the operating system user Jenkins run as.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="file-access-rules"><a class="anchor" href="#file-access-rules"></a>File Access Rules</h3>
+<div class="paragraph">
+<p>The File Access Rules are used to validate file access requests made from agents to the controller.
+Each File Access Rule is a triplet which must contain each of the following elements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>allow</code> / <code>deny</code>: if the following two parameters match the current request being considered, an <code>allow</code> entry would allow the request to be carried out and a <code>deny</code> entry would deny the request to be rejected, regardless of what later rules might say.</p>
+</li>
+<li>
+<p><em>operation</em>: Type of the operation requested.
+The following 6 values exist.
+The operations can also be combined by comma-separating the values.
+The value of <code>all</code> indicates all the listed operations are allowed or denied.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>read</code>: read file content or list directory entries</p>
+</li>
+<li>
+<p><code>write</code>: write file content</p>
+</li>
+<li>
+<p><code>mkdirs</code>: create a new directory</p>
+</li>
+<li>
+<p><code>create</code>: create a file in an existing directory</p>
+</li>
+<li>
+<p><code>delete</code>: delete a file or directory</p>
+</li>
+<li>
+<p><code>stat</code>: read metadata of a file/directory, such as timestamp, length, file access modes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>file path</em>: regular expression that specifies file paths that matches this rule.
+In addition to the base regexp syntax, it supports the following tokens:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;JENKINS_HOME&gt;</code> can be used as a prefix to match the controller&#8217;s <code>JENKINS_HOME</code> directory.</p>
+</li>
+<li>
+<p><code>&lt;BUILDDIR&gt;</code> can be used as a prefix to match the build record directory, such as <code>/var/lib/jenkins/job/foo/builds/12345</code>.</p>
+</li>
+<li>
+<p><code>&lt;BUILDID&gt;</code> matches the timestamp-formatted build IDs, like <code>12345</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The rules are ordered, and applied in that order.
+The earliest match wins.
+For example, the following rules allow access to all files in <code>JENKINS_HOME</code> except the <code>secrets</code> folders:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code># To avoid hassle of escaping every '\' on Windows, you can use / even on Windows.
+deny all &lt;JENKINS_HOME&gt;/secrets/.*
+allow all &lt;JENKINS_HOME&gt;/.*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ordering is very important! The following rules are incorrectly written because the second rule will never match, and allow all agents to access all files and folders under <code>JENKINS_HOME</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>allow all &lt;JENKINS_HOME&gt;/.*
+deny all &lt;JENKINS_HOME&gt;/secrets/.*</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced-2"><a class="anchor" href="#advanced-2"></a>Advanced</h4>
+<div class="paragraph">
+<p>Administrators may also add File Access Rules by creating files with the <code>.conf.</code> extension in the directory <code>JENKINS_HOME/secrets/filepath-filters.d/</code>.
+Jenkins itself generates the <code>30-default.conf</code> file on boot in this directory which contains defaults considered the best balance between compatibility and security by the Jenkins project.
+In order to disable these built-in defaults, replace <code>30-default.conf</code> with an empty file which is not writable by the operating system user Jenkins run as.</p>
+</div>
+<div class="paragraph">
+<p>On each startup, Jenkins will read all <code>.conf</code> files in the <code>filepath-filters.d</code> directory in alphabetical order, therefore it is good practice to name files in a manner which indicates their load order.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins also manages <code>50-gui.conf</code>, in the <code>filepath-filters/</code> directory, where File Access Rules added via the web UI are written.
+In order to disable the ability of administrators to change the File Access Rules from the web UI, place an empty <code>50-gui.conf</code> file in the directory and change its permissions such that is not writeable by the operating system user Jenkins run as.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="disabling"><a class="anchor" href="#disabling"></a>Disabling</h3>
+<div class="paragraph">
+<p>While it is not recommended, if all agents in a Jenkins environment can be considered "trusted" to the same degree that the controller is trusted, the Agent/Master Access Control feature may be disabled.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, all the users in the Jenkins environment should have the same level of access to all configured projects.</p>
+</div>
+<div class="paragraph">
+<p>An administrator can disable Agent to Controller Access Control in the web UI by un-checking the box on the <strong>Configure Global Security</strong> page.
+Alternatively an administrator may create a file in <code>JENKINS_HOME/secrets</code> named <code>slave-to-master-security-kill-switch</code> with the contents of <code>true</code> and restart Jenkins.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Most Jenkins environments grow over time requiring their trust models to evolve as the environment grows.
+Please consider scheduling regular "check-ups" to review whether any disabled security settings should be re-enabled.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/security/controller-isolation/agent-to-controller.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

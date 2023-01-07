@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Testing Jenkins 2.249.1 on Windows
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="In this article, we share some insights from Jenkins 2.249.1 release candidate testing on Windows.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/09/12/new-jenkins-release-observations/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Testing Jenkins 2.249.1 on Windows" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Testing Jenkins 2.249.1 on Windows" name="twitter:title">
+<meta content="In this article, we share some insights from Jenkins 2.249.1 release candidate testing on Windows.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/2020-09-09-new-jenkins-release-observations/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Testing Jenkins 2.249.1 on Windows" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/09/12/new-jenkins-release-observations/" property="og:url">
+<meta content="In this article, we share some insights from Jenkins 2.249.1 release candidate testing on Windows.
+" name="og:description">
+<meta content="Testing Jenkins 2.249.1 on Windows" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/2020-09-09-new-jenkins-release-observations/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Testing Jenkins 2.249.1 on Windows
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a><a class="app-author-link" href="/blog/authors/vsilverman/"><div class="app-avatar"><img alt="Vlad Silverman" class="app-avatar__image" src="/images/avatars/vsilverman.jpg"></div> Vlad Silverman</a>
+September 12, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Testing+Jenkins+2.249.1+on+Windows&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F09%2F12%2Fnew-jenkins-release-observations%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>This article describes our observations during Windows testing of the Jenkins 2.249.1 release candidate.</p>
+</div>
+<div class="sect1">
+<h2 id="upgrade-testing"><a class="anchor" href="#upgrade-testing"></a>Upgrade testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins 2.249.1 is a new long term support release with user interface improvements and changes in Windows support.
+It is the first long term support release to drop support for Microsoft.NET framework 2.0.
+The end of support for Microsoft.NET framework 2.0 was announced in the <a href="/blog/2020/07/23/windows-support-updates/">Windows Support Updates blog post</a>.
+The Windows support <a href="/blog/2020/07/23/windows-support-updates/#upgrade-guidelines">upgrade guidelines</a> describe major things to consider when upgrading Jenkins controllers and agents on Windows.</p>
+</div>
+<div class="paragraph">
+<p>As part of our preparation for the release, we tested several configurations.
+This article describes our experiences with those configurations.</p>
+</div>
+<div class="sect2">
+<h3 id="upgrade-approaches"><a class="anchor" href="#upgrade-approaches"></a>Upgrade approaches</h3>
+<div class="paragraph">
+<p>We tested controller and agent upgrades from Jenkins 2.235.x to 2.249.1-rc on Windows.
+The tests included:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#32-bit-windows-msi">32 bit Windows MSI</a></p>
+</li>
+<li>
+<p><a href="#64-bit-windows-msi">64 bit Windows MSI</a></p>
+</li>
+<li>
+<p><a href="#war-file-on-windows">WAR (file) on Windows</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-process"><a class="anchor" href="#upgrade-process"></a>Upgrade process</h3>
+<div class="paragraph">
+<p>Our upgrade process included:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install a previous version of Jenkins controller on Windows</p>
+</li>
+<li>
+<p>Install a previous version of Jenkins agent on Windows and configure it as a service</p>
+</li>
+<li>
+<p>Upgrade Jenkins controller from "Manage Jenkins"</p>
+</li>
+<li>
+<p>Restart the Jenkins Windows service for the controller</p>
+</li>
+<li>
+<p>Upgrade the Jenkins agent on Windows with the latest <code>agent.jar</code></p>
+</li>
+<li>
+<p>Restart the Jenkins Windows service for the agent</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="testing-results"><a class="anchor" href="#testing-results"></a>Testing results</h3>
+<div class="paragraph">
+<p>We successfully tested</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Restarting Windows service for controller (<a href="https://issues.jenkins.io/browse/JENKINS-63198">JENKINS-63198</a>)</p>
+</li>
+<li>
+<p>Restarting Windows service for agents (<a href="https://issues.jenkins.io/browse/JENKINS-63223">JENKINS-63223</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We confirmed that we can continue our <a href="/blog/2020/07/23/windows-support-updates/#new-policy">Level 1 support policy</a> for Jenkins 2.249.1.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="32-bit-windows-msi"><a class="anchor" href="#32-bit-windows-msi"></a>32 bit Windows MSI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prior to Jenkins 2.235.3, the Jenkins LTS Windows installer was provided as a 32 bit MSI and included a bundled Java 8 runtime environment.
+The Jenkins agent can be downloaded and run through Java web start using the bundled Java 8 runtime environment.
+The agent can also be configured to run as a service using the bundled Java 8 runtime environment.</p>
+</div>
+<div class="sect2">
+<h3 id="jenkins-controller"><a class="anchor" href="#jenkins-controller"></a>Jenkins controller</h3>
+<div class="paragraph">
+<p>Jenkins 2.235.1 installs JRE 8u144 for 32 bit Windows.
+The installer configures the Jenkins controller to run as the SYSTEM user.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="/blog/2019/02/01/windows-installers/">Windows Installer Updates blog post</a> for details of the controller installation process with the 32 bit MSI.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-agent"><a class="anchor" href="#jenkins-agent"></a>Jenkins agent</h3>
+<div class="paragraph">
+<p>Jenkins agents on Windows are often configured to "Launch agent by connecting it to the master".
+The Jenkins agent configuration correctly warns that the controller must open the TCP port for inbound agents in the "Configure Global Security" page.
+It is easiest to allow Jenkins to choose the port (a "Random" port).
+Jenkins selects a random available port number and shares that port number with agents during their initial connection to the Jenkins http port.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/tcp-port-for-inbound-agents.png" alt="TCP port for inbound agents">
+</div>
+</div>
+<div class="sect3">
+<h4 id="configure-the-agent"><a class="anchor" href="#configure-the-agent"></a>Configure the agent</h4>
+<div class="paragraph">
+<p>Once the Jenkins TCP port is open for inbound agents, a new agent is configured from the Jenkins "Nodes" menu
+This creates an "inbound Jenkins agent" that uses the Jenkins <code>agent.jar</code> to initiate the connection to the Jenkins controller.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/inbound-agent-configuration.png" alt="Inbound agent configuration">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="download-the-agent"><a class="anchor" href="#download-the-agent"></a>Download the agent</h4>
+<div class="paragraph">
+<p>The agent starts the first time by clicking the "Launch" button on the agent configuration page (only available with Java 8).
+That downloads the "slave-agent.jnlp" file from the web browser.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/launch-inbound-agent-from-jenkins.png" alt="Launch inbound agent from Jenkins">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="start-the-agent"><a class="anchor" href="#start-the-agent"></a>Start the agent</h4>
+<div class="paragraph">
+<p>The downloaded file needs to be opened from a command prompt using the <code>javaws</code> command that is included with the bundled JRE:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">C:\&gt; "C:\Program Files (x86)\Jenkins\jre\bin\javaws.exe" -wait slave-agent.jnlp</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>javaws</code> program has been removed from  the most recent releases of Java 8 and from Java 11.
+Refer to <a href="#Jenkins agent and icedtea">[Jenkins agent and icedtea]</a> for a technique that can help users of the most recent releases of Java 8.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Java web start (javaws.exe) prompts for permission to run the program with this dialog:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/javaws-prompt-for-remoting-agent.png" alt="Java Web Start prompt for remoting agent">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="install-the-agent-as-a-service"><a class="anchor" href="#install-the-agent-as-a-service"></a>Install the agent as a service</h4>
+<div class="paragraph">
+<p>The agent runs and displays a window on the desktop with a single menu entry, "Install as a service".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/install-agent-as-a-service.png" alt="Install agent as a service">
+</div>
+</div>
+<div class="paragraph">
+<p>When the "Install as a service" menu item is clicked, the agent is adjusted to run as a Windows service using the SYSTEM account.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-the-controller"><a class="anchor" href="#upgrade-the-controller"></a>Upgrade the controller</h3>
+<div class="paragraph">
+<p>The Jenkins controller on Windows can be upgraded to Jenkins 2.249.1 from the "Manage Jenkins" page.
+The upgrade process downloads the new <code>jenkins.war</code> file, saves the current version in case of later downgrade, and offers to restart.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/upgrade-jenkins-from-manage-jenkins.png" alt="Upgrade Jenkins from Manage Jenkins">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-the-agent"><a class="anchor" href="#upgrade-the-agent"></a>Upgrade the agent</h3>
+<div class="paragraph">
+<p>The Jenkins inbound agent is not upgraded automatically.
+The agent administrator downloads the most recent <code>agent.jar</code> from their Jenkins controller, stops the running agent, and replaces the installed <code>agent.jar</code> with the downloaded version.
+The agent service will reconnect to the Jenkins controller after the administrator restarts it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="64-bit-windows-msi"><a class="anchor" href="#64-bit-windows-msi"></a>64 bit Windows MSI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Beginning with <a href="/blog/2020/08/12/windows-installers-upgrade/">Jenkins 2.235.3</a>, the Jenkins LTS Windows installer is a 64 bit MSI.
+It runs Jenkins with the 64 bit JDK (Java 8 or Java 11) selected by the user.</p>
+</div>
+<div class="sect2">
+<h3 id="jenkins-controller-2"><a class="anchor" href="#jenkins-controller-2"></a>Jenkins controller</h3>
+<div class="paragraph">
+<p>Jenkins 2.235.3 was installed using AdoptOpenJDK Java 8u262 in one test.
+It was installed using AdoptOpenJDK Java 11.0.8 in another test.
+In both cases, the installer configured the Jenkins controller to run with the Windows service account we had previously configured.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="/blog/2019/02/01/windows-installers/#screenshots">Windows Installer Updates blog post</a> for details of the controller installation process with the 64 bit MSI.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-agent-2"><a class="anchor" href="#jenkins-agent-2"></a>Jenkins agent</h3>
+<div class="paragraph">
+<p>Jenkins agents on Windows are often configured to "Launch agent by connecting it to the master".
+The Jenkins agent configuration correctly warns that the controller must open the TCP port for inbound agents in the "Configure Global Security" page.
+It is easiest to allow Jenkins to choose the port (a "Random" port).
+Jenkins selects a random available port number and shares that port number with agents during their initial connection to the Jenkins http port.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/tcp-port-for-inbound-agents.png" alt="TCP port for inbound agents">
+</div>
+</div>
+<div class="sect3">
+<h4 id="configure-the-agent-2"><a class="anchor" href="#configure-the-agent-2"></a>Configure the agent</h4>
+<div class="paragraph">
+<p>Once the Jenkins TCP port is open for inbound agents, a new agent is configured from the Jenkins "Nodes" menu
+This creates an "inbound Jenkins agent" that uses the Jenkins <code>agent.jar</code> to initiate the connection to the Jenkins controller.
+Once the Jenkins TCP port is open for inbound agents, a new agent is configured from the Jenkins "Nodes" menu
+This creates an "inbound Jenkins agent" that uses the Jenkins <code>agent.jar</code> to initiate the connection to the Jenkins controller.
+Once the Jenkins TCP port is open for inbound agents, a new agent is configured from the Jenkins "Nodes" menu
+This creates an "inbound Jenkins agent" that uses the Jenkins <code>agent.jar</code> to initiate the connection to the Jenkins controller.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/inbound-agent-configuration.png" alt="Inbound agent configuration">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="download-the-agent-2"><a class="anchor" href="#download-the-agent-2"></a>Download the agent</h4>
+<div class="paragraph">
+<p>The agent was started the first time by clicking the "Launch" button on the agent configuration page (only available with Java 8).
+That downloads the "slave-agent.jnlp" file from the web browser.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/launch-inbound-agent-from-jenkins.png" alt="Launch inbound agent from Jenkins">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="start-the-agent-with-icedtea-web"><a class="anchor" href="#start-the-agent-with-icedtea-web"></a>Start the agent with IcedTea-Web</h4>
+<div class="paragraph">
+<p>Recent versions of Java 8 and all versions of Java 11 have removed the <code>javaws</code> command.
+Jenkins agents for Java 8 can still be started with the <code>javaws</code> command, but it needs to be downloaded separately from the JVM.
+We open "slave-agent.jnlp" from a command prompt using the <code>javaws</code> command that is available from <a href="https://adoptopenjdk.net/icedtea-web.html">AdoptOpenJDK IcedTea</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">C:\&gt; C:\icedtea-web-1.8.3.win.bin\icedtea-web-image\bin\javaws.exe -wait slave-agent.jnlp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Java web start (javaws.exe) prompts for permission to run the program with this dialog:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/javaws-prompt-for-remoting-agent.png" alt="Java Web Start prompt for remoting agent">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="install-the-agent-as-a-service-2"><a class="anchor" href="#install-the-agent-as-a-service-2"></a>Install the agent as a service</h4>
+<div class="paragraph">
+<p>The agent runs and displays a window on the desktop with a single menu entry, "Install as a service".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/install-agent-as-a-service.png" alt="Install agent as a service">
+</div>
+</div>
+<div class="paragraph">
+<p>When the "Install as a service" menu item is clicked, the agent is installed and configured to run as a Windows service using the SYSTEM account.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-the-controller"><a class="anchor" href="#upgrading-the-controller"></a>Upgrading the controller</h3>
+<div class="paragraph">
+<p>The Jenkins controller on Windows was upgraded to Jenkins 2.249.1 from the "Manage Jenkins" page.
+The upgrade process downloads the new <code>jenkins.war</code> file, saves the current version in case of later downgrade, and offers to restart.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/upgrade-jenkins-from-manage-jenkins.png" alt="Upgrade Jenkins from Manage Jenkins">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-the-agent"><a class="anchor" href="#upgrading-the-agent"></a>Upgrading the agent</h3>
+<div class="paragraph">
+<p>The Jenkins inbound agent is not upgraded automatically or from a Jenkins user interface.
+The agent administrator downloads the most recent <code>agent.jar</code> from their Jenkins controller and replaces the installed <code>agent.jar</code> with the downloaded version.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="war-file-on-windows"><a class="anchor" href="#war-file-on-windows"></a>WAR (file) on Windows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins allows users to run the Jenkins web archive (WAR) file from a command line and then install it as a service from within Jenkins.
+This installation technique uses the Jenkins WAR file but does <strong>not</strong> use a Windows MSI package.
+The Jenkins WAR file includes the necessary components to install and configure Jenkins as a service.</p>
+</div>
+<div class="sect2">
+<h3 id="install-controller-as-a-service"><a class="anchor" href="#install-controller-as-a-service"></a>Install controller as a service</h3>
+<div class="paragraph">
+<p>When the Jenkins war file is started from a Windows command prompt, "Manage Jenkins" includes "Install as a service".
+An administrator selects that entry and Jenkins will configure itself to run as a service/
+The installer configures the Jenkins controller to run as the SYSTEM user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/install-controller-as-service-from-manage-jenkins.png" alt="Install Jenkins as a service from Manage Jenkins">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-agent-3"><a class="anchor" href="#jenkins-agent-3"></a>Jenkins agent</h3>
+<div class="paragraph">
+<p>Jenkins agents on Windows are often configured to "Launch agent by connecting it to the master".
+The Jenkins agent configuration correctly warns that the controller must open the TCP port for inbound agents in the "Configure Global Security" page.
+It is easiest to allow Jenkins to choose the port (a "Random" port).
+Jenkins selects a random available port number and shares that port number with agents during their initial connection to the Jenkins http port.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/tcp-port-for-inbound-agents.png" alt="TCP port for inbound agents">
+</div>
+</div>
+<div class="sect3">
+<h4 id="configure-the-agent-3"><a class="anchor" href="#configure-the-agent-3"></a>Configure the agent</h4>
+<div class="paragraph">
+<p>After opening the Jenkins TCP port for inbound agents, we configured a new agent from the "Nodes" menu
+This created an "inbound Jenkins agent" that uses the Jenkins <code>agent.jar</code> to initiate the connection to the Jenkins controller.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/inbound-agent-configuration.png" alt="Inbound agent configuration">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="download-the-agent-3"><a class="anchor" href="#download-the-agent-3"></a>Download the agent</h4>
+<div class="paragraph">
+<p>The agent was started the first time by clicking the "Launch" button on the agent configuration page (only available with Java 8).
+That downloads the "slave-agent.jnlp" file from the web browser.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/launch-inbound-agent-from-jenkins.png" alt="Launch inbound agent from Jenkins">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="start-the-agent-with-icedtea-web-2"><a class="anchor" href="#start-the-agent-with-icedtea-web-2"></a>Start the agent with IcedTea-Web</h4>
+<div class="paragraph">
+<p>Recent versions of Java 8 and all versions of Java 11 have removed the <code>javaws</code> command.
+Jenkins agents for Java 8 can still be started with the <code>javaws</code> command, but it needs to be downloaded separately from the JVM.
+Open "slave-agent.jnlp" from a command prompt using the <code>javaws</code> command that is available from <a href="https://adoptopenjdk.net/icedtea-web.html">AdoptOpenJDK IcedTea-Web</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">C:\&gt; C:\icedtea-web-1.8.3.win.bin\icedtea-web-image\bin\javaws.exe -wait slave-agent.jnlp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Java web start (javaws.exe) prompts for permission to run the program with this dialog:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/javaws-prompt-for-remoting-agent.png" alt="Java Web Start prompt for remoting agent">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="install-the-agent-as-a-service-3"><a class="anchor" href="#install-the-agent-as-a-service-3"></a>Install the agent as a service</h4>
+<div class="paragraph">
+<p>The agent runs and displays a window on the desktop with a single menu entry, "Install as a service".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/2020-09-09-new-jenkins-release-observations/install-agent-as-a-service.png" alt="Install agent as a service">
+</div>
+</div>
+<div class="paragraph">
+<p>When the "Install as a service" menu item is clicked, the agent is installed and configured to run as a Windows service using the SYSTEM account.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins controller installation is best done with the new 64 bit MSI package.
+Previous controller installations can be upgraded to the most recent Jenkins release from within Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins inbound agent installation is more complicated now that the <code>javaws.exe</code> program is not included in the JDK.
+The <a href="https://adoptopenjdk.net/icedtea-web.html">AdoptOpenJDK IcedTea-Web project</a> allows administrators to install and configure Jenkins inbound agents with most of the ease that was available in prior Java releases.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/windows/">
+windows
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/installers/">
+installers
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Vlad Silverman" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/vsilverman.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/vsilverman/">
+Vlad Silverman
+</a>
+</p>
+<div class="paragraph">
+<p>Vlad is an active user of Jenkins and at the beginning of 2020 he also started actively contributing to the Jenkins project. He resides in Silicon Valley and for 10+ years had been involved in building/testing business processes for large enterprises and mid-size companies.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/vsilverman" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/vsilverman" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/09/2020-09-12-new-jenkins-release-observations.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

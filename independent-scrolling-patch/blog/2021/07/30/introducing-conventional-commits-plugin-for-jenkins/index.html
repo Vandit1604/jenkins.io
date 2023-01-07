@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Introducing the Conventional Commits Plugin for Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/07/30/introducing-conventional-commits-plugin-for-jenkins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Introducing the Conventional Commits Plugin for Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Introducing the Conventional Commits Plugin for Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/2021/conventional-commits/conventionalCommitsPluginForJenkins.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Introducing the Conventional Commits Plugin for Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/07/30/introducing-conventional-commits-plugin-for-jenkins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Introducing the Conventional Commits Plugin for Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/2021/conventional-commits/conventionalCommitsPluginForJenkins.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Introducing the Conventional Commits Plugin for Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/adi10hero/"><div class="app-avatar"><img alt="Aditya Srivastava" class="app-avatar__image" src="/images/avatars/adi10hero.png"></div> Aditya Srivastava</a>
+July 30, 2021
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Introducing+the+Conventional+Commits+Plugin+for+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2021%2F07%2F30%2Fintroducing-conventional-commits-plugin-for-jenkins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image center center"><img src="/images/gsoc/2021/conventional-commits/conventionalCommitsPluginForJenkins.png" alt="GSoC" height="420"></span></p>
+</div>
+<div class="paragraph">
+<p>The conventional commits plugin is a Google Summer of Code project.
+Special thanks to the mentors Gareth Evans, Kristin Whetstone, Olivier Vernin and Allan Burdajewicz.</p>
+</div>
+<div class="sect2">
+<h3 id="what-are-conventional-commits"><a class="anchor" href="#what-are-conventional-commits"></a>What are Conventional Commits</h3>
+<div class="paragraph">
+<p>According to the <a href="https://www.conventionalcommits.org/">official website</a>, conventonal commits are, "A specification for adding human and machine readable meaning to commit messages."</p>
+</div>
+<div class="paragraph">
+<p>Conventional commits are a lightweight convention on top of commit messages.</p>
+</div>
+<div class="paragraph">
+<p>The following table shows major structural elements offered by the conventional commits convention.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Structural Element</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>chore: improve logging</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fix: minor bug fix</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>feat: add a new feature</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Breaking Change</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BREAKING CHANGE: reimplement</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="why-conventional-commits"><a class="anchor" href="#why-conventional-commits"></a>Why Conventional Commits</h3>
+<div class="paragraph">
+<p>As the CI/CD world is moving more towards complete automation and minimal human interaction, the ability to fully automate a release is desired.
+Conventional Commits enable the use of automated systems on top of commit messages.
+These systems can "truly" automate a release with almost no human interaction.</p>
+</div>
+<div class="paragraph">
+<p>The convention dovetails with <a href="https://semver.org/">semantic versioning</a>.
+Let&#8217;s take an example, a maven project is currently versioned at <code>1.2.0</code>.
+The following table shows how conventional commits would bump the version depending on the type of the commit.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Commit Message</th>
+<th class="tableblock halign-left valign-top">Version Bump</th>
+<th class="tableblock halign-left valign-top">SemVer Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>chore: improve logging</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2.0</code> &#8594; <code>1.2.0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No version bump</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fix: minor bug fix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2.0</code> &#8594; <code>1.2.1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Increment in the patch version</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>feat: add a new feature</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2.0</code> &#8594; <code>1.3.0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Increment in the minor version</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BREAKING CHANGE: reimplement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.2.0</code> &#8594; <code>2.0.0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Increment in the major version</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="the-conventional-commits-plugin"><a class="anchor" href="#the-conventional-commits-plugin"></a>The Conventional Commits Plugin</h3>
+<div class="paragraph">
+<p>The conventional commits plugin is a Jenkins plugin to programmatically determine the next semantic version of a git repository using:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Last tagged version</p>
+</li>
+<li>
+<p>Commit message log</p>
+</li>
+<li>
+<p>Current version of the project</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="how-it-works"><a class="anchor" href="#how-it-works"></a>How it works?</h4>
+<div class="paragraph">
+<p>The plugin will read the commit messages from the latest tag or the current version of the project till the latest commit.
+Using this information it will determine what would be the next semantic Version for that particular project.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="supported-project-types"><a class="anchor" href="#supported-project-types"></a>Supported Project Types?</h4>
+<div class="paragraph">
+<p>Currently the plugin can read the current version from various configuration files of the following project types:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Project Type</th>
+<th class="tableblock halign-left valign-top">Configuration File(s) Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maven</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pom.xml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gradle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build.gradle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Makefile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">setup.py</p>
+<p class="tableblock">setup.cfg</p>
+<p class="tableblock">pyproject.toml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Helm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Charts.yml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node (NPM)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">package.json</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="how-to-request-a-project-type-support"><a class="anchor" href="#how-to-request-a-project-type-support"></a>How to request a project type support?</h4>
+<div class="paragraph">
+<p>Please feel free to open an issue on the <a href="https://github.com/jenkinsci/conventional-commits-plugin/">GitHub repository</a> of the plugin.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-use-the-plugin"><a class="anchor" href="#how-to-use-the-plugin"></a>How to use the plugin</h3>
+<div class="paragraph">
+<p>Recommended way of using the plugin is to add a step in a <a href="/doc/pipeline/tour/hello-world/#what-is-a-jenkins-pipeline">Jenkins Pipeline Project</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>nextVersion()</code> is the pipeline step to be used.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>pipeline {
+    agent any
+
+    environment {
+        NEXT_VERSION = nextVersion()
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo "next version = ${NEXT_VERSION}"
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tip: <em>The pipeline step can also be generated with the help of the Snippet Generator.</em>
+<em>Please select "nextVersion" in the Sample Step drop down and then click on "Generate Pipeline Snippet"</em></p>
+</div>
+<div class="paragraph">
+<p>The plugin is released on every feature using JEP-229.</p>
+</div>
+<div class="paragraph">
+<p>The plugin is available to download from the <a href="https://plugins.jenkins.io/conventional-commits">plugins site</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="demo"><a class="anchor" href="#demo"></a>Demo</h3>
+<div class="paragraph">
+<p>You can watch the plugin in action in a demo presented at the GSoC Midterm Presentations</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/_D0hiA1Cgz8?rel=0&amp;start=3219" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="next-steps"><a class="anchor" href="#next-steps"></a>Next Steps</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Support for pre-release information. Example: <code>1.0.0-alpha</code>, <code>1.0.0-beta</code>, etc</p>
+</li>
+<li>
+<p>Support for build metadata. Example: <code>1.0.0-beta+exp.sha.5114f85</code></p>
+</li>
+<li>
+<p>Optionally writing the calculated "Next Version" into the project&#8217;s configuration file. Example: <code>pom.xml</code> for a maven project, <code>setup.py</code> for python.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback"><a class="anchor" href="#feedback"></a>Feedback</h3>
+<div class="paragraph">
+<p>We would love to hear your feedback &amp; suggestions for the plugin.</p>
+</div>
+<div class="paragraph">
+<p>Please reach out on the plugin&#8217;s <a href="https://github.com/jenkinsci/conventional-commits-plugin">GitHub</a> repository, the <a href="https://gitter.im/jenkinsci/conventional-commits-plugin">Gitter</a> channel or start a discussion on <a href="https://community.jenkins.io">community.jenkins.io</a>.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2021/">
+gsoc2021
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/conventionalcommits/">
+conventionalcommits
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugin/">
+plugin
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Aditya Srivastava" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/adi10hero.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/adi10hero/">
+Aditya Srivastava
+</a>
+</p>
+<div class="paragraph">
+<p>Aditya is a curiosity driven individual striving to find ingenious solutions to real-world problems. He is an open-source enthusiast and a life long learner.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/adi10hero" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/adi10hero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+<!-- / Support both topic IDs and full URLs -->
+<!-- / TODO: Check number validity -->
+<b class="title">
+Discuss
+</b>
+<div id="discourse-comments">
+<script>
+    window.DiscourseEmbed = {"discourseUrl":"https://community.jenkins.io/","topicId":"272"}; 
+    (function() {
+        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    })();
+</script>
+</div>
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2021/07/2021-07-30-introducing-conventional-commits-plugin-for-jenkins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

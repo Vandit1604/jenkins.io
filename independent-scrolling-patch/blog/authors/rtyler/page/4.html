@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Community Blog
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/rtyler/page/4.html" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/rtyler/page/4.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-8 main-content with-sidebar" id="content">
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">R. Tyler Croy</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial blogcardlist.html.haml -->
+<div class="content blog-posts app-blog-page">
+<div class="item-list">
+<ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/01/05/new-website/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+05
+</div>
+</div>
+<h5 class="title">
+A new Jenkins website
+</h5>
+</div>
+<p class="teaser">
+When I first started working on the Jenkins
+website, then called by a different name, I selected
+Drupal, an extensible content management system, to
+get the job done. Like Jenkins itself, Drupal is easy to set up, install
+plugins and authoring content is done in a web UI. For the past seven years Drupal
+has served us well, but it is time to move on to something better suited...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/www/">
+www
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/01/04/jenkins-at-scale14x/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+04
+</div>
+</div>
+<h5 class="title">
+Jenkins at SCaLE 14x
+</h5>
+</div>
+<p class="teaser">
+For the past few years, a couple members of the Jenkins project have made the
+trip to Los Angeles for the
+Southern California Linux Expo.
+Despite the name it&#8217;s a fairly broad open source technology conference and
+since it is hosted prior to FOSDEM, it&#8217;s also a good
+conference to get us in the open source mood after the holiday break.
+
+
+Unlike previous years, when SCaLE was hosted at the...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meetup/">
+meetup
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jam/">
+jam
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/12/18/join-us-at-the-jenkins-2-0-contributor-summit/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+18
+</div>
+</div>
+<h5 class="title">
+Join us at the Jenkins 2.0 Contributor Summit!
+</h5>
+</div>
+<p class="teaser">
+As I mentioned in yesterday&#8217;s post, we&#8217;re planning a "Contributor Summit" on February 1st, after FOSDEM 2016 (January 30th/31st), to focus on Jenkins 2.0. Since many of us are already planning, the Monday following the event turned out to be the ideal time to discuss 2.0.
+
+
+
+
+
+
+
+
+If you&#8217;re not already familiar with some of the key proposals that were put forth, you can review them...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meetup/">
+meetup
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/12/17/fosdem-2016-travel-grant-program/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+FOSDEM 2016 Travel Grant Program
+</h5>
+</div>
+<p class="teaser">
+While we are gearing up for FOSDEM 2016 early next year in Brussels, I wanted to remind the Jenkins community about our Travel Grant Program. We&#8217;re a little late on mentioning it, but the board has allocated the money to help Jenkins contributors travel to Brussels to participate in FOSDEM and the Jenkins Contributor Summit which we will be hosting the day after, Feb...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cia/">
+cia
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/12/03/pipeline-as-code-with-multibranch-workflows-in-jenkins/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+03
+</div>
+</div>
+<h5 class="title">
+Pipeline-as-code with Multibranch Workflows in Jenkins
+</h5>
+</div>
+<p class="teaser">
+Note: This is a guest post by Kishore Bhatia. Kishore works for CloudBees, building custom frameworks with Open Source software and helping customers solve engineering problems around continuous delivery and DevOps at scale.
+
+
+
+This year some great new Jenkins features came out of the butler&#8217;s goodie bag - amongst them, the most important one being the ability to realize continuous delivery pipeline as code!
+The features...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/guest post/">
+guest post
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/workflow/">
+workflow
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/12/02/hacksgiving-left-overs/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+02
+</div>
+</div>
+<h5 class="title">
+Hacksgiving Left-overs
+</h5>
+</div>
+<p class="teaser">
+Last week we hosted our first Hacksgiving event, a two-day virtual hackathon with a number of recorded sessions and plenty of pull requests submitted, I would say it was a success! I would like to thank everybody who took the time to watch, chat and present in the Hacker Hangout.
+
+
+Now that everybody has had time to recover from the turkey and travel, we have...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meetup/">
+meetup
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/video/">
+video
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/workflow/">
+workflow
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/11/16/celebrating-hacksgiving/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+16
+</div>
+</div>
+<h5 class="title">
+Celebrating Hacksgiving!
+</h5>
+</div>
+<p class="teaser">
+Next week in the US we have a national holiday where, generally speaking, lots of turkey gets converted into left-over turkey sandwiches. For many software developers the Thanksgiving holiday also represents a lull in project schedules, freeing up some time to hack on pet projects or even contribute to open source projects.
+
+
+Taking a cue from the Adopt a Plugin program that Daniel wrote about...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cia/">
+cia
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/just for fun/">
+just for fun
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/11/06/mitigating-unauthenticated-remote-code-execution-0-day-in-jenkins-cli/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+06
+</div>
+</div>
+<h5 class="title">
+Mitigating unauthenticated remote code execution 0-day in Jenkins CLI
+</h5>
+</div>
+<p class="teaser">
+Updated 2015-11-11 15:00 UTC: We have released Jenkins 1.638 and 1.625.2 which contain a fix for this vulnerability. See the security advisory for more information about these releases.
+
+
+
+Updated 2015-11-06 03:55 UTC: Included a updated mitigation script which doesn&#8217;t have a Jenkins boot race condition
+
+
+
+Earlier today we received numerous reports about a previously undisclosed "zero day" critical remote code execution vulnerability and exploit in Jenkins...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/news/">
+news
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/11/03/what-jvm-versions-are-running-jenkins/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+03
+</div>
+</div>
+<h5 class="title">
+What JVM versions are running Jenkins?
+</h5>
+</div>
+<p class="teaser">
+Preceding some of last week&#8217;s Jenkins 2.0 discussions, there had been some threads on whether we should move Jenkins to require Java 8. The introduction of Java 8 last year brought performance improvements and highly desirable API changes, which make developing Java-based applications (arguably) much easier than before. The release was followed earlier this year by the end-of-life announcement for Java 7; the writing...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/just for fun/">
+just for fun
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2015/10/30/jenkins-2-0-proposal-improved-out-of-the-box-user-experience/">
+<div class="header">
+<div class="date">
+<div class="month">
+Oct
+</div>
+<div class="day">
+30
+</div>
+</div>
+<h5 class="title">
+Jenkins 2.0 Proposal: Improved "Out of the box" user experience
+</h5>
+</div>
+<p class="teaser">
+This week we have featured a number of proposals for what we would like to see in "Jenkins
+2.0", the vision of which is to make Jenkins users more efficient, productive and happy. We started with some more internally facing changes and have slowly progressed from the "inside-out" to today&#8217;s topic: improving the out of the box user experience. That is to say, the experience...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/feedback/">
+feedback
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<!-- ending partial blogcardlist.html.haml -->
+<!-- starting partial pagination.html.haml -->
+<div>
+<nav>
+<ul class="pagination">
+<li class="page-item">
+<a class="page-link" href="/jenkins.io/independent-scrolling-patch/blog/authors/rtyler/page/3.html">
+&laquo;
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="..">
+1
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/2.html">
+2
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/3.html">
+3
+</a>
+</li>
+<li class="active page-item">
+<a class="page-link" href="../page/4.html">
+4
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/5.html">
+5
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/6.html">
+6
+</a>
+</li>
+<li class="page-item disabled">
+<a class="page-link" href="#">
+...
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/15.html">
+15
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/16.html">
+16
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/17.html">
+17
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="/jenkins.io/independent-scrolling-patch/blog/authors/rtyler/page/5.html">
+&raquo;
+</a>
+</li>
+</ul>
+</nav>
+</div>
+
+<!-- ending partial pagination.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
+<div class="content">
+<!-- starting partial events.html.haml -->
+<div class="item-list">
+<ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://fosdem.org/2023/" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+FOSDEM'23
+</h5>
+Brussels, Belgium
+</div>
+<p class="teaser">
+
+FOSDEM is a free event for software developers to meet, share ideas and collaborate. Visit us at the Jenkins stand.
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.socallinuxexpo.org/scale/20x" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+9
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+10:00 am
+</div>
+</div>
+<h5 class="title">
+SCALE 20X
+</h5>
+Pasadena, California
+</div>
+<p class="teaser">
+
+SCaLE is the largest community-run open-source and free software conference in North America. Visit us at the Jenkins booth!
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+</ul>
+</div>
+
+<!-- ending partial events.html.haml -->
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//node/index.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

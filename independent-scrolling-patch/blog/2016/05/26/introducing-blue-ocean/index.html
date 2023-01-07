@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Introducing Blue Ocean: a new user experience for Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/05/26/introducing-blue-ocean/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Introducing Blue Ocean: a new user experience for Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Introducing Blue Ocean: a new user experience for Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Introducing Blue Ocean: a new user experience for Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/05/26/introducing-blue-ocean/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Introducing Blue Ocean: a new user experience for Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Introducing Blue Ocean: a new user experience for Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/i386/"><div class="app-avatar"></div> James Dumay</a>
+May 26, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Introducing+Blue+Ocean%3A+a+new+user+experience+for+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F05%2F26%2Fintroducing-blue-ocean%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>In recent years developers have become rapidly attracted to tools that are not
+only functional but are designed to fit into their workflow seamlessly and are
+a joy to use. This shift represents a higher standard of design and user
+experience that Jenkins needs to rise to meet.</p>
+</div>
+<div class="paragraph">
+<p>We are excited to share and invite the community to join us on a project we’ve
+been thinking about over the last few months called Blue Ocean.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean is a project that rethinks the user experience of Jenkins, modelling
+and presenting the process of software delivery by surfacing information that&#8217;s
+important to development teams with as few clicks as possible, while still
+staying true to the extensibility that is core to Jenkins.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pipeline-run.png" alt="Pipeline execution"></span></p>
+</div>
+<div class="paragraph">
+<p>While this project is in the alpha stage of development, the intent is that
+Jenkins users can install Blue Ocean side-by-side with the Jenkins Classic UI
+via a plugin.</p>
+</div>
+<div class="paragraph">
+<p>Not all the features listed on this blog are complete but we will be hard at
+work over the next few months preparing Blue Ocean for general use. We intend
+to provide regular updates on this blog as progress is made.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean is <a href="https://github.com/cloudbees/blueocean">open source today</a>
+and we invite you to give us feedback and to contribute to the project.</p>
+</div>
+<center>
+<iframe width="853" height="480"
+src="https://www.youtube-nocookie.com/embed/3dITffteCD4?rel=0" frameborder="0"
+allowfullscreen></iframe>
+</center>
+<div class="paragraph">
+<p>Blue Ocean will provide development teams:</p>
+</div>
+<div class="sect3">
+<h4 id="new-modern-user-experience"><a class="anchor" href="#new-modern-user-experience"></a>New modern user experience</h4>
+<div class="paragraph">
+<p>The UI aims to improve clarity, reduce clutter and navigational depth to make
+the user experience very concise. A modern visual design gives developers much
+needed relief throughout their daily usage and screens respond instantly to
+changes on the server making manual page refreshes a thing of the past.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pipeline-dashboard.png" alt="Project dashboard"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced-pipeline-visualisations-with-built-in-failure-diagnosis"><a class="anchor" href="#advanced-pipeline-visualisations-with-built-in-failure-diagnosis"></a>Advanced Pipeline visualisations with built-in failure diagnosis</h4>
+<div class="paragraph">
+<p><a href="/solutions/pipeline">Pipelines</a> are visualised on screen along with the
+steps and logs to allow simplified comprehension of the continuous delivery
+pipeline – from the simple to the most sophisticated scenarios.</p>
+</div>
+<div class="paragraph">
+<p>Scrolling through 10,000 line log files is a thing of the past. Blue Ocean
+breaks down your log per step and calls out where your build failed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/failing-pipeline.png" alt="Failing Pipeline"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="branch-and-pull-request-awareness"><a class="anchor" href="#branch-and-pull-request-awareness"></a>Branch and Pull Request awareness</h4>
+<div class="paragraph">
+<p>Modern pipelines make use of multiple Git branches, and Blue Ocean is designed
+with this in mind. Drop a <a href="/doc/pipeline"><code>Jenkinsfile</code> into your Git
+repository</a> that defines your pipeline and Jenkins will automatically discover
+and start automating any  Branches and validating Pull Requests.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins will report the status of your pipeline right inside Github or
+Bitbucket on all your commits, branches or pull requests.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pr-view.png" alt="Pull request view"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="personalised-view"><a class="anchor" href="#personalised-view"></a>Personalised View</h4>
+<div class="paragraph">
+<p>Favourite any pipelines, branches or pull requests and see them appear on your
+personalised dashboard. Intelligence is being built into the dashboard. Jobs
+that need your attention, say a Pipeline waiting for approval or a failing job
+that you have recently changed, appear on the top of the dashboard.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/personalized-dashboard.png" alt="Personalized dashboard"></span></p>
+</div>
+<div class="paragraph">
+<p>You can read more about Blue Ocean and its goals on the
+<a href="/projects/blueocean">project page</a> and developers should watch the
+<a href="/content/mailing-lists">Developers list</a> for more information.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>For Jenkins developers and plugin authors:</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jenkins-design-language"><a class="anchor" href="#jenkins-design-language"></a>Jenkins Design “Language”</h4>
+<div class="paragraph">
+<p>The Jenkins Design Language (JDL) is a set of standardised React components and
+a style guide that help developers create plugins that retain the look and feel
+of Blue Ocean in an effortless way. We will be publishing more on the JDL,
+including the style guide and developer documentation, over the next few weeks.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="modern-javascript-toolchain"><a class="anchor" href="#modern-javascript-toolchain"></a>Modern JavaScript toolchain</h4>
+<div class="paragraph">
+<p>The Jenkins plugin tool chain has been extended so that developers can use
+<a href="https://medium.com/@rajaraodv/5-javascript-bad-parts-that-are-fixed-in-es6-c7c45d44fd81">ES6</a>,
+<a href="https://facebook.github.io/react/">React</a>, <a href="https://www.npmjs.com/">NPM</a>
+in their plugins without endless yak-shaving. Jenkins
+<a href="https://github.com/jenkinsci/js-modules">js-modules</a> are already in use in
+Jenkins today, and this builds on this, using the same tooling.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="client-side-extension-points"><a class="anchor" href="#client-side-extension-points"></a>Client side Extension points</h4>
+<div class="paragraph">
+<p>Client Side plugins use Jenkins plugin infrastructure. The Blue Ocean libraries
+built on ES6 and React.js provide an extensible client side component model
+that looks familiar to developers who have built Jenkins plugins before. Client
+side extension points can help isolate failure, so one bad plugin doesn’t take
+a whole page down.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="server-sent-events"><a class="anchor" href="#server-sent-events"></a>Server Sent Events</h4>
+<div class="paragraph">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server Sent Events</a>
+(SSE) allow plugin developers to tap into changes of state on the server and make
+their UI update in real time (<a href="https://www.youtube.com/watch?v=EttzK5OOpv0">watch this for a
+demo</a>).</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>To make Blue Ocean a success, we&#8217;re asking for help and support from Jenkins
+developers and plugin authors. Please join in our Blue Ocean discussions on the
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">Jenkins Developer
+mailing list</a> and the <code>#jenkins-ux</code> IRC channel on Freenode!</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/projects/blueocean">Blue Ocean project page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/cloudbees/blueocean">Blue Ocean GitHub repository</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ux/">
+ux
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/i386/">
+James Dumay
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/i386" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/i386" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-05-26-introducing-blue-ocean.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

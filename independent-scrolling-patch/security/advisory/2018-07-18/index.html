@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2018-07-18
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2018-07-18/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2018-07-18" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2018-07-18" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2018-07-18" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2018-07-18/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2018-07-18" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2018-07-18
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+Jenkins (core)
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-897">
+Users without Overall/Read permission can have Jenkins reset parts of global configuration on the next restart
+</h3>
+<strong>
+SECURITY-897
+/
+CVE-2018-1999001
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+high
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Unauthenticated users could provide maliciously crafted login credentials that cause Jenkins to move the <code>config.xml</code> file from the Jenkins home directory.
+This configuration file contains basic configuration of Jenkins, including the selected security realm and authorization strategy.
+If Jenkins is started without this file present, it will revert to the legacy defaults of granting administrator access to anonymous users.</p>
+</div>
+<div class="paragraph">
+<p>The fix prevents this behavior.</p>
+</div>
+<div class="paragraph">
+<p>To mitigate this problem, we strongly advise that administrators of Jenkins instances without this fix, that are reachable by untrusted users, save the global configuration shortly before shutting down Jenkins.
+Doing so will write the current configuration from memory to the config.xml file, which is only read on startup or when reloading configuration.</p>
+</div>
+<div class="paragraph">
+<p>If Jenkins has already been shut down after this issue has been exploited, the <code>config.xml</code> file can be found at <code>users/$002e$002e/config.xml</code> in the Jenkins home directory.</p>
+</div>
+<div class="paragraph">
+<p>This issue was caused by the fix for <a href="/security/advisory/2017-11-08/#SECURITY-499">SECURITY-499 in the 2017-11-08 security advisory</a>.</p>
+</div>
+<h3 id="SECURITY-914">
+Arbitrary file read vulnerability
+</h3>
+<strong>
+SECURITY-914
+/
+CVE-2018-1999002
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N">
+high
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>An arbitrary file read vulnerability in the Stapler web framework used by Jenkins allowed unauthenticated users to send crafted HTTP requests returning the contents of any file on the Jenkins controller file system that the Jenkins controller process has access to.</p>
+</div>
+<div class="paragraph">
+<p>Input validation in Stapler has been improved to prevent this.</p>
+</div>
+<h3 id="SECURITY-891">
+Unauthorized users could cancel queued builds
+</h3>
+<strong>
+SECURITY-891
+/
+CVE-2018-1999003
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The URLs handling cancellation of queued builds did not perform a permission check, allowing users with Overall/Read permission to cancel queued builds.</p>
+</div>
+<div class="paragraph">
+<p>The URLs handling cancellation of queued builds now ensure that the user has the Item/Cancel permission.</p>
+</div>
+<h3 id="SECURITY-892">
+Unauthorized users could initiate and abort agent launches
+</h3>
+<strong>
+SECURITY-892
+/
+CVE-2018-1999004
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L">
+medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The URL that initiates agent launches on the Jenkins controller did not perform a permission check, allowing users with Overall/Read permission to initiate agent launches.</p>
+</div>
+<div class="paragraph">
+<p>Doing so canceled all ongoing launches for the specified agent, so this allowed attackers to prevent an agent from launching indefinitely.</p>
+</div>
+<div class="paragraph">
+<p>The URL for agent launches now ensures that the user has the Agent/Connect permission.</p>
+</div>
+<h3 id="SECURITY-944">
+Stored XSS vulnerability
+</h3>
+<strong>
+SECURITY-944
+/
+CVE-2018-1999005
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The build timeline widget shown on URLs like <code>/view/…/builds</code> did not properly escape display names of items.
+This resulted in a cross-site scripting vulnerability exploitable by users able to control item display names.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins now escapes job display names shown on the timeline widget.</p>
+</div>
+<h3 id="SECURITY-925">
+Unauthorized users are able to determine when a plugin was extracted from its JPI package
+</h3>
+<strong>
+SECURITY-925
+/
+CVE-2018-1999006
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Files indicating when a plugin JPI file was last extracted into a subdirectory of <code>plugins/</code> in the Jenkins home directory were accessible via HTTP by users with Overall/Read permission.
+This allowed unauthorized users to determine the likely install date of a given plugin.</p>
+</div>
+<div class="paragraph">
+<p>The affected files are no longer available via HTTP.</p>
+</div>
+<h3 id="SECURITY-390">
+XSS vulnerability in Stapler debug mode
+</h3>
+<strong>
+SECURITY-390
+/
+CVE-2018-1999007
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Stapler is the web framework used by Jenkins to route HTTP requests.
+When its debug mode is enabled, HTTP 404 error pages display diagnostic information.
+Those error pages did not escape parts of URLs they displayed, in rare cases resulting in a cross-site scripting vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Parts of URLs displayed on these error pages are now properly escaped.</p>
+</div>
+<div class="paragraph">
+<p>As a workaround, Stapler debug mode should not be enabled on instances accessible to untrusted users.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-390:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-891:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-892:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L">
+medium
+</a>
+</li>
+<li>
+SECURITY-897:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+high
+</a>
+</li>
+<li>
+SECURITY-914:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N">
+high
+</a>
+</li>
+<li>
+SECURITY-925:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-944:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N">
+medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+Jenkins weekly up to and including
+2.132
+</li>
+<li>
+Jenkins LTS up to and including
+2.121.1
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+Jenkins weekly should be updated to version
+2.133
+</li>
+<li>
+Jenkins LTS should be updated to version
+2.121.2
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+AZZAZ Yasmine, IT Security Engineer
+</strong>
+for
+SECURITY-944
+</li>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-390, SECURITY-925
+</li>
+<li>
+<strong>
+Nimrod Stoler of CyberArk Labs
+</strong>
+for
+SECURITY-891, SECURITY-892, SECURITY-897
+</li>
+<li>
+<strong>
+Orange Tsai(@orange_8361) from DEVCORE
+</strong>
+for
+SECURITY-914
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2018-07-18.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

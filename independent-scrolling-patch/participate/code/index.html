@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Contribute code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/participate/code/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Contribute code" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Contribute code" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Contribute code" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/participate/code/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Contribute code" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Contribute code
+</h1>
+<div class="paragraph">
+<p>Jenkins project includes a lot of code, and we invite everyone to contribute to the project.
+There is a diverse set of programming languages used in Jenkins,
+including but not limited to: Java, JavaScript, Groovy, Golang, Ruby, Shell scripts.
+And, since Jenkins is an automation server with hundreds of plugins, there is a huge number of technologies involved.
+If you are an expert or just want to study something new while contributing,
+you may find interesting opportunities in our project.</p>
+</div>
+<div class="sect1">
+<h2 id="where-to-contribute"><a class="anchor" href="#where-to-contribute"></a>Where to contribute?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project is spread across multiple organizations on GitHub.
+You are welcome to contribute to <strong>any</strong> repository in <strong>any</strong> of those organizations, or to any other Jenkins-related repository on GitHub.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci">jenkinsci</a> - Main organization.
+Jenkins core, plugins and libraries reside there.
+To aid in classifying our 1000+ Git repositories, some naming conventions have been adopted:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>plugins are named "*-plugin"</p>
+</li>
+<li>
+<p>libraries are named "lib-*"</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra">jenkins-infra</a> - Jenkins infrastructure, including the website and other services</p>
+</li>
+<li>
+<p><a href="https://github.com/stapler/">stapler</a> - Stapler Web Framework which is currently maintained by the Jenkins community</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-zh">jenkins-zh</a> - organization of the <a href="/sigs/chinese-localization/">Chinese Localization SIG</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Various components in Jenkins have differing review and delivery policies,
+so please see the repositories for specific contributing guidelines.</p>
+</div>
+<div class="sect2">
+<h3 id="plugins"><a class="anchor" href="#plugins"></a>Plugins</h3>
+<div class="paragraph">
+<p>There are more than <a href="https://plugins.jenkins.io">1800 plugins</a> in Jenkins,
+and these plugins implement the majority of Jenkins functionality.
+Every plugin is an isolated component which can be developed independently of other parts of the project,
+with help of the APIs and development tools provided by the project.</p>
+</div>
+<div class="paragraph">
+<p>Most Jenkins contributors work on plugins and it is often the best way to start contributing to the project.
+Here are some documentation links:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/developer/">Jenkins developer documentation</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Plugin+tutorial">The plugin tutorial will get you started with Jenkins plugin development</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Hosting+Plugins">The complete guide to hosting and publishing plugins</a></p>
+</li>
+<li>
+<p><a href="/doc/developer/plugin-governance/adopt-a-plugin/">Adopt a plugin</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Before+starting+a+new+plugin">Advice before creating a new plugin</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Pull+Request+to+Repositories">How we handle pull requests to plugin repositories</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-core"><a class="anchor" href="#jenkins-core"></a>Jenkins core</h3>
+<div class="paragraph">
+<p>Jenkins core is the heart of any Jenkins installation. It provides the kernel functionality and extension APIs used by Jenkins plugins.
+Written mostly in Java, it includes multiple components and frameworks.
+The core also includes the standard Web container and acts as an executable WAR file which can be run in the instance.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://github.com/jenkinsci/jenkins">jenkinsci/jenkins</a> repository for the overview and documentation links.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="infrastructure"><a class="anchor" href="#infrastructure"></a>Infrastructure</h3>
+<div class="paragraph">
+<p>As an independent open source project, the Jenkins project maintains most of its own infrastructure including services which help to keep the project running.
+The kind of things that fall into "infrastructure" can span from operating virtual machines, containers, configuring network or developing and maintaining project-specific applications to make the development of Jenkins core and plugins more efficient.</p>
+</div>
+<div class="paragraph">
+<p>Because we strongly believe in Open Source principles, we also apply them to our infrastructure.
+As such we consider ourself as an open infrastructure project where everybody is invited to learn, share, contribute.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="/projects/infrastructure/">Infrastructure sub-project</a> for more information and contributing guidelines.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-components"><a class="anchor" href="#other-components"></a>Other components</h3>
+<div class="paragraph">
+<p>There are hundreds of repositories which do not fall under categories below:
+libraries, packaging, developer tools, etc.
+You can discover these components by looking into <a href="/sigs">special interest groups</a> and <a href="/projects">sub-projects</a> pages.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="newcomers"><a class="anchor" href="#newcomers"></a>Newcomers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project always welcomes newcomer contributors.
+We maintain lists of newbie-friendly issues and encourage new contributors to work on those issues.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/issues/?jql=labels%20%3D%20newbie-friendly%20and%20status%20in%20(Open%2C%20%22To%20Do%22%2C%20Reopened)">Newbie-friendly issues in Jenkins JIRA</a></p>
+</li>
+<li>
+<p><a href="https://github.com/search?q=org%3Ajenkinsci+org%3Ajenkins-infra+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">Good first issues on GitHub</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Useful links:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Beginners+Guide+to+Contributing#BeginnersGuidetoContributing-Areyouinterestedinwritingcode%3F">Beginners Guide to Contributing</a></p>
+</li>
+<li>
+<p>Presentation: Contributing to Jenkins (<a href="https://docs.google.com/presentation/d/1JHgVzWZAx95IsUAZp8OoyCQGGkrCjzUd7eblwd1Y-hA/edit?usp=sharing">slides</a>)</p>
+</li>
+<li>
+<p><a href="/sigs/advocacy-and-outreach/outreach-programs/">Outreach programs</a> - Google Summer of Code, Outreachy, Hacktoberfest may be a good opportunity to start contributing to the project</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Video:</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/ivMBMuZXdBA?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="experienced-contributors"><a class="anchor" href="#experienced-contributors"></a>Experienced contributors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Are you an established contributor to Jenkins and looking for a new challenge?
+The <a href="/security#team">Jenkins Security Team</a> is looking for members willing to help improve Jenkins security.
+Also, there are many <a href="/sigs">special interest groups</a> and <a href="/projects">sub-projects</a> which are seeking contributors
+in order to push bigger projects forward.</p>
+</div>
+</div>
+</div>
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel1">
+<li><a href="#where-to-contribute">Where to contribute?</a>
+<ul class="sectlevel2">
+<li><a href="#plugins">Plugins</a></li>
+<li><a href="#jenkins-core">Jenkins core</a></li>
+<li><a href="#infrastructure">Infrastructure</a></li>
+<li><a href="#other-components">Other components</a></li>
+</ul>
+</li>
+<li><a href="#newcomers">Newcomers</a></li>
+<li><a href="#experienced-contributors">Experienced contributors</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2022/09/21/improve-a-plugin-tutorial/">
+Improve a plugin tutorial
+</a>
+</li>
+<li>
+<a href="/blog/2022/09/15/preptember/">
+Hacktoberfest Preptember
+</a>
+</li>
+<li>
+<a href="/blog/2022/08/04/expanding-open-source-in-Africa/">
+Expanding Open Source in Africa
+</a>
+</li>
+<li>
+<a href="/blog/2022/06/28/require-java-11/">
+Jenkins requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/04/11/She-Code-Africa-contributhon/">
+She Code Africa Contributhon 2022!
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//participate/code.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

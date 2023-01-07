@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+The new things arriving in Declarative Pipeline!
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/09/whats-in-declarative/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="The new things arriving in Declarative Pipeline!" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="The new things arriving in Declarative Pipeline!" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="The new things arriving in Declarative Pipeline!" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/09/whats-in-declarative/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="The new things arriving in Declarative Pipeline!" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+The new things arriving in Declarative Pipeline!
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+April 09, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=The+new+things+arriving+in+Declarative+Pipeline%21&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F04%2F09%2Fwhats-in-declarative%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Last week we released the latest version of Declarative Pipelines, version
+1.2.8. With that out, we thought now would be a good time to introduce you to
+the new features and options that have been added to Declarative since the
+beginning of 2018. These are all available <em>now</em> in the Update Center, with
+version 1.2.8.</p>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/declarative-1.2.8/directive-generator-link.png" alt="Accessing the new Declarative Directive Generator"></span></p>
+</div>
+<div class="sect1">
+<h2 id="declarative-directive-generator"><a class="anchor" href="#declarative-directive-generator"></a>Declarative Directive Generator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is something we&#8217;re really happy about - if you go to the "Pipeline Syntax"
+link from your Pipeline&#8217;s page in Jenkins, you&#8217;ll see a couple new links on the
+left, including "Declarative Directive Generator". The Directive Generator is
+much like the Snippet Generator that&#8217;s been in Pipeline for a couple years now,
+but where the Snippet Generator is just for filling out a form for a step and
+generating the Pipeline code that configuration maps to, the Directive
+Generator is built to help you write your Declarative Pipeline directives, like
+<code>agent</code>, <code>options</code>, <code>stage</code>, and more!</p>
+</div>
+<div class="paragraph">
+<p>This is the first release to include the Directive Generator, and it&#8217;s
+definitely going to see more polish going forward, but we think it should be
+quite helpful for you already. We&#8217;ll be putting up another blog post looking at
+the Directive Generator in more detail in the near future.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-when-conditions"><a class="anchor" href="#new-when-conditions"></a>New <code>when</code> conditions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve added a number of new <code>when</code> conditions, providing you more control over
+whether your stages get executed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>equals</code> - Compares two values - strings, variables, numbers, booleans - and
+returns true if they&#8217;re equal. I&#8217;m honestly not sure how we missed adding
+this earlier! You can do "not equals" comparisons using the <code>not { equals &#8230;&#8203;
+}</code> combination too.</p>
+</li>
+<li>
+<p><code>changeRequest</code> - In its simplest form, this will return true if this
+Pipeline is building a change request, such as a GitHub pull request. You can
+also do more detailed checks against the change request, allowing you to ask
+"is this a change request against the master branch?" and much more.</p>
+</li>
+<li>
+<p><code>buildingTag</code> - A simple condition that just checks if the Pipeline is
+running against a tag in SCM, rather than a branch or a specific commit
+reference.</p>
+</li>
+<li>
+<p><code>tag</code> - A more detailed equivalent of <code>buildingTag</code>, allowing you to check
+against the tag name itself.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, we&#8217;ve added a new option to <code>when</code>: <code>beforeAgent</code>. This allows you
+to specify that the <code>when</code> conditions should be evaluated before entering the
+<code>agent</code> for the <code>stage</code>, rather than the normal behavior of evaluating <code>when</code>
+conditions after entering the <code>agent</code>. When <code>beforeAgent true</code> is specified,
+you will not have access to the <code>agent&#8217;s workspace, but you can avoid
+unnecessary SCM checkouts and waiting for a valid `agent</code> to be available. This
+can speed up your Pipeline&#8217;s execution in some cases.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/declarative-1.2.8/directive-generator.png" alt="Using the new Declarative Directive Generator">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-post-conditions"><a class="anchor" href="#new-post-conditions"></a>New <code>post</code> conditions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>changed</code> condition has always been a bit confusing, and to be
+honest, it wasn&#8217;t our best work. <code>changed</code> will fire any time the current run&#8217;s
+status is different than the previous run&#8217;s status - whether the current run is
+healthier than the previous one, or the other way around. That&#8217;s&#8230;&#8203;not actually
+very useful. So now we&#8217;ve added two new <code>post</code> conditions that should provide
+you with a lot more value than <code>changed</code> has.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>fixed</code> - This will check to see if the current run is successful, and if the
+previous run was either failed or unstable.</p>
+</li>
+<li>
+<p><code>regression</code> - This will check to see if the current run&#8217;s status is worse
+than the previous run&#8217;s status. So if the previous run was successful, and
+the current run is unstable, this will fire and its block of steps will
+execute. It will also run if the previous run was unstable, and the current
+run is a failure, etc.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-options"><a class="anchor" href="#new-options"></a>New <code>options</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>options</code> directive in Declarative can contain a number of different kinds
+of configuration: traditional Jenkins job properties, like <code>buildDiscarder</code>,
+wrapper steps to execute the entire Pipeline within, like <code>timeout</code>, and
+Declarative-specific options that can switch from some default behaviors of
+Declarative execution. We&#8217;ve added two new Declarative-specific options in the
+last few releases.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>checkoutToSubdirectory</code> - Allows you to override the location that the
+automatic SCM checkout will use. Using <code>checkoutToSubdirectory("foo")</code>, your
+Pipeline will checkout your repository to <code>"$WORKSPACE/foo"</code>, rather than the
+default of <code>"$WORKSPACE"</code>.</p>
+</li>
+<li>
+<p><code>newContainerPerStage</code> - If you&#8217;re using a top-level <code>docker</code> or <code>dockerfile</code>
+<code>agent</code>, and want to ensure that each of your stages run in a fresh container
+of the same image, you can use this option. Any <code>stage</code> without its own
+<code>agent</code> specified will run in a new container using the image you&#8217;ve
+specified or built, on the same computer and with access to the same
+workspace.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="stage-options"><a class="anchor" href="#stage-options"></a>Stage options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes, you may only want to disable automatic checkout of your repository,
+using the <code>skipDefaultCheckout(true)</code> option, for one specific stage in your
+Pipeline. Or perhaps you want to have a <code>timeout</code> that covers an entire
+<code>stage</code>, including time spent waiting for a valid <code>agent</code>, <code>post</code> condition
+execution, or the new <code>input</code> directive for stages (see further down for more
+details on that!). To make those things possible, we&#8217;ve added a new <code>options</code>
+direction to <code>stage</code>. You can use a subset of the top-level <code>options</code> content
+in a <code>stage&#8217;s `options</code> - wrapper steps, and Declarative-specific options that
+are marked as legal in a <code>stage</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="input"><a class="anchor" href="#input"></a>Input</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You&#8217;ve always been able to run the <code>input</code> step inside a <code>stage&#8217;s `steps</code>
+block, but we&#8217;ve found that approach can lose out on some of the value that the
+<code>input</code> step provides.</p>
+</div>
+<div class="paragraph">
+<p>To help with that, we&#8217;ve added a new <code>input</code> directive
+to <code>stage</code>, with the same parameters as the <code>input</code> step. When you use the
+<code>stage</code> <code>input</code> directive rather than using the step directly, any parameters
+you&#8217;ve specified for the <code>input</code> will be made available in the <code>stage&#8217;s
+environment, meaning you can reference parameters from the `input</code> in <code>when</code>
+conditions, or in <code>environment</code> variables.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent none
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            input {
+                message <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Should we continue?</span><span style="color:#710">&quot;</span></span>
+                ok <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Yes, we should.</span><span style="color:#710">&quot;</span></span>
+                submitter <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alice,bob</span><span style="color:#710">&quot;</span></span>
+                parameters {
+                    string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">PERSON</span><span style="color:#710">'</span></span>, <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Mr Jenkins</span><span style="color:#710">'</span></span>, <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Who should I say hello to?</span><span style="color:#710">'</span></span>)
+                }
+            }
+            agent any
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>PERSON<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">, nice to meet you.</span><span style="color:#710">&quot;</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>Also, the <code>input</code> directive is evaluated before you enter any <code>agent</code> specified
+on this <code>stage</code>, so if you are using a top-level <code>agent none</code> and each <code>stage</code>
+has its own <code>agent</code> specified, you can avoid consuming an executor while
+waiting for the <code>input</code> to be submitted.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, you can use <code>timeout</code> in the <code>stage</code> <code>options</code>, as
+mentioned above, to time-out the <code>input</code> if too much time has passed without a
+response.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>I hope you find these new features and options for Declarative Pipelines
+helpful, and I look forward to the rest of 2018 as we continue to invest and
+improve in <a href="/doc/book/pipeline">Jenkins Pipeline</a>!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/04/2018-04-09-whats-in-declarative.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

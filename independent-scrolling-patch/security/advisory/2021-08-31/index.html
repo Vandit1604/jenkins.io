@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2021-08-31
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-08-31/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2021-08-31" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2021-08-31" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2021-08-31" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-08-31/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2021-08-31" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2021-08-31
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/azure-ad">
+Azure AD
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/code-coverage-api">
+Code Coverage API
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/nested-view">
+Nested View
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/nomad">
+Nomad
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/saml">
+SAML
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-2376">
+RCE vulnerability in Code Coverage API Plugin
+</h3>
+<strong>
+SECURITY-2376
+/
+CVE-2021-21677
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/code-coverage-api">
+<code>code-coverage-api</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Code Coverage API Plugin 1.4.0 and earlier does not apply <a href="https://github.com/jenkinsci/jep/tree/master/jep/200">JEP-200 deserialization protection</a> to Java objects it deserializes from disk.</p>
+</div>
+<div class="paragraph">
+<p>This results in a remote code execution (RCE) vulnerability exploitable by attackers able to control agent processes.</p>
+</div>
+<div class="paragraph">
+<p>Code Coverage API Plugin 1.4.1 configures its Java object deserialization to only deserialize safe types.</p>
+</div>
+<h3 id="SECURITY-2469">
+SAML Plugin allows bypassing CSRF protection for any URL
+</h3>
+<strong>
+SECURITY-2469
+/
+CVE-2021-21678
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/saml">
+<code>saml</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>An extension point in Jenkins allows selectively disabling cross-site request forgery (CSRF) protection for specific URLs.
+SAML Plugin implements this extension point for the URL that users are redirected to after login.</p>
+</div>
+<div class="paragraph">
+<p>In SAML Plugin 2.0.7 and earlier this implementation is too permissive, allowing attackers to craft URLs that would bypass the CSRF protection of any target URL.</p>
+</div>
+<div class="paragraph">
+<p>This vulnerability was originally introduced in SAML Plugin 1.1.3.</p>
+</div>
+<div class="paragraph">
+<p>SAML Plugin 2.0.8 restricts which URLs it disables cross-site request forgery (CSRF) protection for to the one URL that needs it.</p>
+</div>
+<h3 id="SECURITY-2470">
+Azure AD Plugin allows bypassing CSRF protection for any URL
+</h3>
+<strong>
+SECURITY-2470
+/
+CVE-2021-21679
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/azure-ad">
+<code>azure-ad</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>An extension point in Jenkins allows selectively disabling cross-site request forgery (CSRF) protection for specific URLs.
+Azure AD Plugin implements this extension point for URLs used by a JavaScript component.</p>
+</div>
+<div class="paragraph">
+<p>In Azure AD Plugin 179.vf6841393099e and earlier this implementation is too permissive, allowing attackers to craft URLs that would bypass the CSRF protection of any target URL.</p>
+</div>
+<div class="paragraph">
+<p>This vulnerability was originally introduced in Azure AD Plugin 164.v5b48baa961d2.</p>
+</div>
+<div class="paragraph">
+<p>Azure AD Plugin 180.v8b1e80e6f242 no longer allows bypassing CSRF protection for URLs used by the JavaScript component.
+Instead, that component was reconfigured to pass the expected CSRF token.</p>
+</div>
+<h3 id="SECURITY-2411">
+XXE vulnerability in Nested View Plugin
+</h3>
+<strong>
+SECURITY-2411
+/
+CVE-2021-21680
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/nested-view">
+<code>nested-view</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Nested View Plugin 1.20 and earlier does not configure its XML transformer to prevent XML external entity (XXE) attacks.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers able to configure views to have Jenkins parse a crafted view XML definition that uses external entities for extraction of secrets from the Jenkins controller or server-side request forgery.</p>
+</div>
+<div class="paragraph">
+<p>Nested View Plugin 1.21 disables external entity resolution for its XML transformer.</p>
+</div>
+<h3 id="SECURITY-2396">
+Password stored in plain text by Nomad Plugin
+</h3>
+<strong>
+SECURITY-2396
+/
+CVE-2021-21681
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/nomad">
+<code>nomad</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Nomad Plugin 0.7.4 and earlier stores the passwords to authenticate against the Docker registry unencrypted in the global <code>config.xml</code> file on the Jenkins controller as part of its worker templates configuration.</p>
+</div>
+<div class="paragraph">
+<p>These passwords can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Nomad Plugin 0.7.5 stores the Docker passwords encrypted.
+This change is effective after Jenkins restarts.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-2376:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2396:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-2411:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+</li>
+<li>
+SECURITY-2469:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2470:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Azure AD
+Plugin
+</strong>
+up to and including
+179.vf6841393099e
+</li>
+<li>
+<strong>
+Code Coverage API
+Plugin
+</strong>
+up to and including
+1.4.0
+</li>
+<li>
+<strong>
+Nested View
+Plugin
+</strong>
+up to and including
+1.20
+</li>
+<li>
+<strong>
+Nomad
+Plugin
+</strong>
+up to and including
+0.7.4
+</li>
+<li>
+<strong>
+SAML
+Plugin
+</strong>
+up to and including
+2.0.7
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Azure AD
+Plugin
+</strong>
+should be updated to version
+180.v8b1e80e6f242
+</li>
+<li>
+<strong>
+Code Coverage API
+Plugin
+</strong>
+should be updated to version
+1.4.1
+</li>
+<li>
+<strong>
+Nested View
+Plugin
+</strong>
+should be updated to version
+1.21
+</li>
+<li>
+<strong>
+Nomad
+Plugin
+</strong>
+should be updated to version
+0.7.5
+</li>
+<li>
+<strong>
+SAML
+Plugin
+</strong>
+should be updated to version
+2.0.8
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Brian Hysell, Synopsys Software Integrity Group
+</strong>
+for
+SECURITY-2411
+</li>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-2469, SECURITY-2470
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2021-08-31.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

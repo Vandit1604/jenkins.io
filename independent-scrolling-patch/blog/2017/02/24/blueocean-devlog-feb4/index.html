@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Blue Ocean Dev Log: February Week #4
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/02/24/blueocean-devlog-feb4/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Blue Ocean Dev Log: February Week #4" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Blue Ocean Dev Log: February Week #4" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Blue Ocean Dev Log: February Week #4" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/02/24/blueocean-devlog-feb4/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Blue Ocean Dev Log: February Week #4" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Blue Ocean Dev Log: February Week #4
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/michaelneale/"><div class="app-avatar"><img alt="Michael Neale" class="app-avatar__image" src="/images/avatars/michaelneale.jpg"></div> Michael Neale</a>
+February 24, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Blue+Ocean+Dev+Log%3A+February+Week+%234&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F02%2F24%2Fblueocean-devlog-feb4%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>We&#8217;re counting down the weeks until <a href="/projects/blueocean">Blue Ocean</a> 1.0.
+<a href="https://lh3.googleusercontent.com/-bjL2WHXNstg/WK9nTFR2ydI/AAAAAAAABtI/L01g534dxcM_Ya3jYgvyxcipmTerRoqYwCLcB/s1600/clint.jpg">In all the excitement I forgot to post</a>
+a dev log last week, so I will make up for it this week.</p>
+</div>
+<div class="paragraph">
+<p>In the last 10 days, 2 betas went out: b22 and b23, and a preview release of
+the editor. We expect the next release will be named a release candidate (we
+know there is still more to go in, but want to signal that things are getting
+into the final stages!). The
+<a href="https://gitter.im/jenkinsci/blueocean-plugin">Gitter chat room</a> is
+getting busier, so join in!</p>
+</div>
+<div class="paragraph">
+<p>Also last week, the Blue Ocean Pipeline Editor was presented at the
+<a href="https://www.meetup.com/Jenkins-online-meetup/">Jenkins Online Meetup</a>,
+embedded below.</p>
+</div>
+<center>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0suw2NaBFus?start=1960&rel=0" frameborder="0" allowfullscreen></iframe>
+</center>
+<div class="sect2">
+<h3 id="feature-highlights"><a class="anchor" href="#feature-highlights"></a>Feature Highlights</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>You can now create Pipelines from GitHub in Blue Ocean. Either one
+Pipeline at a time, or let it discover all your Pipelines for a GitHub Organization.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean-dev-log/creating-pipeline-from-github.png" alt="Creating a Pipeline from GitHub"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When you press the "Create" button, it will open the new creation flow
+by default now; the feature was previously hidden behind a feature switch.</p>
+</li>
+<li>
+<p>You can filter the activity screen by branch! That way you can see a
+history of Pipeline runs for just one branch.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/blueocean-dev-log/branch-filtering.png" alt="Filtering a branch">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you like long names for stages - it now won&#8217;t pollute the screen
+when space is at a premium (truncated names on screen).</p>
+</li>
+<li>
+<p>Blue Ocean events (<a href="https://github.com/jenkinsci/sse-gateway-plugin">SSE</a>) should now work on Microsoft Edge again</p>
+</li>
+<li>
+<p>You can see durations when you hover the mouse over indicators</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Up next:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A release candidate is expected soon</p>
+</li>
+<li>
+<p>Integration work with the Editor to save to branches</p>
+</li>
+<li>
+<p>Some updates to the design around tables</p>
+</li>
+<li>
+<p>Bundling of the Editor with Blue Ocean</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Don&#8217;t forget, there is also a Blue Ocean Docker image published weekly with
+usually the latest released version. If you have Docker installed, this can
+be as simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>docker run -p 8080:8080 jenkinsci/blueocean*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then browse to <a href="http://localhost:8080/blue">localhost:8080/blue</a> - possibly
+the quickest way to try things.</p>
+</div>
+<div class="paragraph">
+<p>Enjoy!</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>If you&#8217;re interested in helping to make Blue Ocean a great user experience for
+Jenkins, please join the Blue Ocean development team on
+<a href="https://gitter.im/jenkinsci/blueocean-plugin">Gitter</a>!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Michael Neale" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/michaelneale.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/michaelneale/">
+Michael Neale
+</a>
+</p>
+<div class="paragraph">
+<p>Michael is a CD enthusiast with a interest in User Experience.
+He is a co-founder of CloudBees and a long time OSS developer, and can often be found
+lurking around the jenkins-dev mailing list or #jenkins on irc (same nick as twitter name).
+Before CloudBees he worked at Red Hat.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/michaelneale" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/michaelneale" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/02/2017-02-24-blueocean-devlog-feb4.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

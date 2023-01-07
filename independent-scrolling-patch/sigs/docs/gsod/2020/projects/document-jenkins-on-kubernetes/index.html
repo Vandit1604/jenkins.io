@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Document Jenkins on Kubernetes
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Document Jenkins on Kubernetes" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Document Jenkins on Kubernetes" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Document Jenkins on Kubernetes" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Document Jenkins on Kubernetes" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Document Jenkins on Kubernetes
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Create a new Kubernetes Volume which would describe the concepts, techniques, and choices for Kubernetes users running Jenkins.
+</p>
+<p>
+<b>
+Status:
+</b>
+Active
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Technical Writer:
+<a class="app-author-link" href="/blog/authors/zaycodes/"><div class="app-avatar"><img alt="Zainab Daodu" class="app-avatar__image" src="/images/avatars/zaycodes.jpg"></div> Zainab Daodu</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+, 
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+, 
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+, 
+<a class="app-author-link" href="/blog/authors/markyjackson-taulia/"><div class="app-avatar"><img alt="Marky Jackson" class="app-avatar__image" src="/images/avatars/markyjackson-taulia.png"></div> Marky Jackson</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="sect2">
+<h3 id="abstract"><a class="anchor" href="#abstract"></a>Abstract</h3>
+<div class="paragraph">
+<p>Kubernetes is a platform-agnostic container orchestration tool created by Google and heavily
+supported by the open-source community as a project of the Cloud Native Computing Foundation.
+It allows you to use container instances and manage them for scaling and fault tolerance.
+It also handles a wide range of management activities that would otherwise require separate solutions or custom code,
+including request routing, container discovery, health checks, and rolling updates.</p>
+</div>
+<div class="paragraph">
+<p>Kubernetes is compatible with the majority of CI/CD tools which allow developers to run tests,
+deploy builds in Kubernetes and update applications with no downtime.
+One of the most popular CI/CD tools now is Jenkins for the following reasons:
+It is open-source and free.
+it is user-friendly, easy to install and does not require additional installations or components.
+Jenkins is also quite easy to configure, modify and extend.
+It deploys code instantly, generates test reports.
+Jenkins can be configured according to the requirements for continuous integrations and continuous delivery.
+Jenkins is available for all platforms and different operating systems, whether it is OS X, Windows or Linux.
+It also boasts a rich plugin ecosystem.
+The extensive pool of plugins makes Jenkins flexible and allows building,
+deploying and automating across various platforms.
+Most of the integration work is automated.
+Hence fewer integration issues.
+This saves both time and money over the lifespan of a project.</p>
+</div>
+<div class="paragraph">
+<p>The following reasons have made Jenkins on Kubernetes a popular theme for Jenkins users,
+however, there’s currently no central location for documentation describing Jenkins on Kubernetes,
+thereby making it difficult for Jenkins on Kubernetes users to navigate and find information.
+This project would create a new Kubernetes Solutions page which would describe the concepts,
+techniques, and choices for Kubernetes users running Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="current-state"><a class="anchor" href="#current-state"></a>Current State</h3>
+<div class="paragraph">
+<p>There are a lot of presentations and articles about running Jenkins on Kubernetes,
+however, there’s no central location for describing Jenkins on Kubernetes.
+This makes it difficult for:
+Jenkins on Kubernetes users to navigate and find informationTrack,
+update and maintain information on Jenkins on Kubernetes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deliverables"><a class="anchor" href="#deliverables"></a>Deliverables</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new Kubernetes Volume which would describe the concepts,
+techniques, and choices for Kubernetes users running Jenkins.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reaching-out"><a class="anchor" href="#reaching-out"></a>Reaching Out</h3>
+<div class="paragraph">
+<p>Feel free to reach out to us for any questions, feedback, etc. on the project&#8217;s
+<a href="https://gitter.im/jenkinsci/docs">Gitter Channel</a> or the
+<a href="mailto:jenkinsci-docs@googlegroups.com">Jenkins Documentation Mailing list</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-links"><a class="anchor" href="#other-links"></a>Other Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/1zTEKtOp2i1K2fw5RQ_a_KVOB2z0gz9987NYzTnIS6G8/edit?usp=sharing">GSoD Proposal</a><br></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/17cPLUrJ4Ul4Y8MREjDyfWBEN7PlnlrmPh6wuKMPFmPg/edit?usp=sharing">GSoD Office Hours Notes</a><br></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1m0rTrXk7WisPXUeaKGj81dOFO2CcW4o_Nvo7NvcoL98/edit?usp=sharing">Google Season of Docs - Startup</a><br></p>
+</li>
+</ul>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://gitter.im/jenkinsci/docs" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/docs.svg" title="Gitter">
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/sigs/docs/#jenkins-on-kubernetes" rel="noreferrer noopener" target="_blank">
+Original GSoD project idea
+</a>
+</li>
+<li>
+<a href="/sigs/docs/gsod/" target="_blank">
+Jenkins GSoD page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#current-state">Current State</a></li>
+<li><a href="#deliverables">Deliverables</a></li>
+<li><a href="#reaching-out">Reaching Out</a></li>
+<li><a href="#other-links">Other Links</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://gitter.im/jenkinsci/docs" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/docs.svg" title="Gitter">
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/10/10/pipeline-steps-improvement-gsoc-report/">
+Pipeline Steps Documentation Generator Improvements
+</a>
+</li>
+<li>
+<a href="/blog/2022/08/04/expanding-open-source-in-Africa/">
+Expanding Open Source in Africa
+</a>
+</li>
+<li>
+<a href="/blog/2022/05/04/DigitalOcean/">
+DigitalOcean sponsors the Jenkins project
+</a>
+</li>
+<li>
+<a href="/blog/2022/04/11/She-Code-Africa-contributhon/">
+She Code Africa Contributhon 2022!
+</a>
+</li>
+<li>
+<a href="/blog/2021/08/23/jenkins-operator-security-work-report/">
+Security Validator for Jenkins Operator for Kubernetes
+</a>
+</li>
+<li>
+<a href="/blog/2021/04/21/tekton-plugin/">
+Easily reuse Tekton and Jenkins X from Jenkins
+</a>
+</li>
+<li>
+<a href="/blog/2021/04/15/jenkins-operator-sub-project/">
+Jenkins Operator becomes an official sub-project!
+</a>
+</li>
+<li>
+<a href="/blog/2021/04/07/contributhon-participants/">
+Welcome the She Code Africa Contributhon participants!
+</a>
+</li>
+<li>
+<a href="/blog/2020/12/04/gsod-project-report/">
+GSOD Project Report: Document Jenkins on Kubernetes
+</a>
+</li>
+<li>
+<a href="/blog/2020/11/05/installing-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes: Installing Jenkins on Kubernetes Documentation Release
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//sigs/docs/gsod/2020/projects/document-jenkins-on-kubernetes.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

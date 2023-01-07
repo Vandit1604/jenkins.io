@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC 2019 Project Ideas
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/project-ideas/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC 2019 Project Ideas" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC 2019 Project Ideas" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC 2019 Project Ideas" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/project-ideas/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC 2019 Project Ideas" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+GSoC 2019 Project Ideas
+</h1>
+<style>
+  .pi_table {
+    width: 100%;
+  }
+  .pi_table_header {
+    text-align: center;
+  }
+  .pi_table_category {
+    width: 100px;
+  }
+  .pi_table_skills {
+    width: 175px;
+  }
+</style>
+<img src="/jenkins.io/independent-scrolling-patch/images/gsoc/jenkins-gsoc-logo_small.png" style="float:right" title="Jenkins GSoC" width="128">
+<p>
+This page aggregates project ideas for Google Summer of Code
+2019.
+See more information about this project and applications
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/">
+on the Jenkins Google Summer of Code page
+</a>.
+</p>
+<p>
+Below you can find project ideas which have been proposed by potential mentors for this year.
+Other ideas may be proposed by interested mentors and students (e.g. new features in the core, "write a plugin for MY_TOOL_OR_SERVICE", etc.).
+Such project applications will be considered though applicants may need to work
+with the community and GSoC org admins to find potential mentors.
+More info:
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/proposing-project-ideas/">
+proposing project ideas
+</a>.
+</p>
+<table class="pi_table grid-all">
+<thead>
+<tr class="pi_table_header">
+<th>Project</th>
+<th>Category</th>
+<th>Skills to study/improve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/advanced-build-discard-strategy-plugin/">
+<strong>
+Advanced Build Discard Strategy Plugin
+</strong>
+</a>
+<br>
+Improve the existing Discard old builds feature with an Advanced Build Discarder Strategy plugin.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/arnab1896/"><div class="app-avatar"></div> Arnab Banerjee</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/artifact-promotion-plugin-for-jenkins-pipeline/">
+<strong>
+Artifact Promotion plugin for Jenkins Pipeline
+</strong>
+</a>
+<br>
+Create a new highly anticipated engine for managing promotions in Jenkins Pipeline, with modern UIs and REST APIs.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/bicschneider/"><div class="app-avatar"><img alt="Claus Schneider" class="app-avatar__image" src="/images/avatars/bicschneider.jpg"></div> Claus Schneider</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/jonbrohauge/"><div class="app-avatar"></div> Jon Brohauge</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, JavaScript, REST API
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/artifactory-rest-plugin/">
+<strong>
+Artifactory REST Plugin
+</strong>
+</a>
+<br>
+Create a new plugin to give Jenkins users the ability to make REST API calls to Artifactory natively.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/cdancy/"><div class="app-avatar"></div> Christopher Dancy</a>
+</td>
+<td class="pi_table_category">
+Plugin
+</td>
+<td class="pi_table_skills">
+Java, REST API, Artifactory, Jenkins Pipeline
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/ath-improvements/">
+<strong>
+Improvements to the Jenkins Acceptance Test Harness
+</strong>
+</a>
+<br>
+Improve performance of the framework for WebUI and Integration testing.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/olivergondza/"><div class="app-avatar"><img alt="Oliver Gondža" class="app-avatar__image" src="/images/avatars/olivergondza.png"></div> Oliver Gondža</a>
+<a class="app-author-link" href="/blog/authors/mramonleon/"><div class="app-avatar"></div> Ramon Leon</a>
+</td>
+<td class="pi_table_category">
+Dev Tools
+</td>
+<td class="pi_table_skills">
+Java, Docker, Selenium
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/automatic-spec-generator-for-jenkins-rest-api/">
+<strong>
+Automatic Specification Generator for Jenkins REST API
+</strong>
+</a>
+<br>
+Find and implement the extraction of the REST APIs from the sources and generate and publish the REST APIs respective documentation.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/supun94/"><div class="app-avatar"></div> Supun Wanniarachchi</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, REST API, OpenAPI / Swagger
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/bitbucket-rest-plugin/">
+<strong>
+Bitbucket REST Plugin
+</strong>
+</a>
+<br>
+Create a new plugin to give Jenkins users the ability to make REST API calls to Bitbucket natively.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/cdancy/"><div class="app-avatar"></div> Christopher Dancy</a>
+<a class="app-author-link" href="/blog/authors/shenyu_zheng/"><div class="app-avatar"></div> Shenyu Zheng</a>
+</td>
+<td class="pi_table_category">
+Plugin
+</td>
+<td class="pi_table_skills">
+Java, REST API, Bitbucket, Jenkins Pipeline
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/code-coverage-api-improvements/">
+<strong>
+Code Coverage API Plugin Improvements
+</strong>
+</a>
+<br>
+Improve the new Jenkins Code Coverage API plugin and enhance its performance and extensibility.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/shenyu_zheng/"><div class="app-avatar"></div> Shenyu Zheng</a>
+<a class="app-author-link" href="/blog/authors/jeffpearce/"><div class="app-avatar"><img alt="Jeff Pearce" class="app-avatar__image" src="/images/avatars/jeffpearce.png"></div> Jeff Pearce</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, JavaScript, Coverage
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/configuration-as-code-compatibility/">
+<strong>
+Configuration as Code Plugin Compatibility
+</strong>
+</a>
+<br>
+Update Jenkins plugins to make them compatible with the emerging Configuration-as-Code plugin which allows configuring Jenkins with YAML.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/ewelinawilkosz/"><div class="app-avatar"><img alt="Ewelina Wilkosz" class="app-avatar__image" src="/images/avatars/ewelinawilkosz.jpg"></div> Ewelina Wilkosz</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/timja/"><div class="app-avatar"><img alt="Tim Jacomb" class="app-avatar__image" src="/images/avatars/timja.jpg"></div> Tim Jacomb</a>
+<a class="app-author-link" href="/blog/authors/jonbrohauge/"><div class="app-avatar"></div> Jon Brohauge</a>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, YAML, Configuration Management
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/docker-registries-polling-plugin/">
+<strong>
+Polling Docker Registries for Image Changes
+</strong>
+</a>
+<br>
+Create a new Jenkins plugin to automate polling of image changes and security scans.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/afalko/"><div class="app-avatar"><img alt="Andrey Falko" class="app-avatar__image" src="/images/avatars/afalko.jpg"></div> Andrey Falko</a>
+<a class="app-author-link" href="/blog/authors/justinharringa/"><div class="app-avatar"><img alt="Justin Harringa" class="app-avatar__image" src="/images/avatars/justinharringa.jpeg"></div> Justin Harringa</a>
+<a class="app-author-link" href="/blog/authors/ankit-jain/"><div class="app-avatar"></div> Ankit Jain</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, Docker
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/eda-coverage-adapters/">
+<strong>
+EDA Coverage Adapters
+</strong>
+</a>
+<br>
+Create Jenkins plugins for various Electronic Design Automation coverage reports.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/udara28/"><div class="app-avatar"></div> Udara De Silva</a>
+<a class="app-author-link" href="/blog/authors/shenyu_zheng/"><div class="app-avatar"></div> Shenyu Zheng</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, EDA Tools, FPGA, ASIC, Coverage
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/eda-plugins/">
+<strong>
+Plugin(s) for Electronic Design Automation tools
+</strong>
+</a>
+<br>
+Create a new Jenkins plugin for one of widely used EDA tools.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, EDA Tools
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/ext-workspace-manager-cloud-features/">
+<strong>
+Cloud Features for External Workspace Manager Plugin
+</strong>
+</a>
+<br>
+Add support of provisioning workspaces from cloud services.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/hynespm/"><div class="app-avatar"></div> Patrick Hynes</a>
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+<a class="app-author-link" href="/blog/authors/linuxsuren/"><div class="app-avatar"><img alt="赵晓杰(Rick)" class="app-avatar__image" src="/images/avatars/linuxsuren.jpg"></div> 赵晓杰(Rick)</a>
+<a class="app-author-link" href="/blog/authors/alexsomai/"><div class="app-avatar"></div> Alexandru Somai</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, Cloud-based storage (e.g. Amazon EFS)
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/external-fingerprint-storage-for-jenkins/">
+<strong>
+External Fingerprint Storage for Jenkins
+</strong>
+</a>
+<br>
+Extend Jenkins to support storing artifact usage history in external databases.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+<a class="app-author-link" href="/blog/authors/meekrosoft/"><div class="app-avatar"></div> Mike Long</a>
+</td>
+<td class="pi_table_category">
+Core
+</td>
+<td class="pi_table_skills">
+Java, Databases (PostgreSQL/Elasticsearch), REST API, JavaScript
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/freestyle-to-pipeline-converter/">
+<strong>
+Freestyle job to Pipeline job converter
+</strong>
+</a>
+<br>
+Offer new plugins and tools to simplify migration from Freestyle projects to the new Pipeline job type.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/rodrigc/"><div class="app-avatar"></div> Craig Rodrigues</a>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, XML, Python, Groovy, Jenkins Pipeline
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/gitlab-support-for-multibranch-pipeline/">
+<strong>
+Multi-branch Pipeline support for Gitlab SCM
+</strong>
+</a>
+<br>
+Add Multi-branch Pipeline support for Gitlab SCM private and SaaS instances so that Jenkins can automatically build branches and pull requests with Jenkinsfile.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/linuxsuren/"><div class="app-avatar"><img alt="赵晓杰(Rick)" class="app-avatar__image" src="/images/avatars/linuxsuren.jpg"></div> 赵晓杰(Rick)</a>
+<a class="app-author-link" href="/blog/authors/jeffpearce/"><div class="app-avatar"><img alt="Jeff Pearce" class="app-avatar__image" src="/images/avatars/jeffpearce.png"></div> Jeff Pearce</a>
+<a class="app-author-link" href="/blog/authors/jetersen/"><div class="app-avatar"></div> Joseph Petersen</a>
+</td>
+<td class="pi_table_category">
+Plugin
+</td>
+<td class="pi_table_skills">
+Java, Gitlab SCM
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/jenkins-rest-plugin/">
+<strong>
+Jenkins REST Plugin
+</strong>
+</a>
+<br>
+Create a new plugin to give Jenkins users the ability to make calls to other Jenkins instances via their REST API.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/cdancy/"><div class="app-avatar"></div> Christopher Dancy</a>
+</td>
+<td class="pi_table_category">
+Plugin
+</td>
+<td class="pi_table_skills">
+Java, REST API, Jenkins Pipeline
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/machine-learning/">
+<strong>
+Jenkins and Machine Learning Plugins for Data Science
+</strong>
+</a>
+<br>
+Create a new plugin for integrating Jenkins with one of Machine Learning tools (e.g. Jupyter Python, TensorBoard, or Sacred).
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/darthholi/"><div class="app-avatar"></div> Martin Holeček</a>
+<a class="app-author-link" href="/blog/authors/denisj44/"><div class="app-avatar"></div> Denis Joubert</a>
+<a class="app-author-link" href="/blog/authors/imoutsatsos/"><div class="app-avatar"></div> Ioannis Moutsatsos</a>
+<a class="app-author-link" href="/blog/authors/kinow/"><div class="app-avatar"></div> Bruno P. Kinoshita</a>
+<a class="app-author-link" href="/blog/authors/markyjackson-taulia/"><div class="app-avatar"><img alt="Marky Jackson" class="app-avatar__image" src="/images/avatars/markyjackson-taulia.png"></div> Marky Jackson</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, Python, Machine Learning & Tools, Jenkins Pipeline, Data Science
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/pipeline-step-documentation-generator/">
+<strong>
+Pipeline Step Documentation Generator improvements
+</strong>
+</a>
+<br>
+Enhance the Jenkins Pipeline documentation generator to produce better documentation for thousands of Pipeline developers.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+</td>
+<td class="pi_table_category">
+Dev Tools
+</td>
+<td class="pi_table_skills">
+Java, Jenkins Pipeline, HTML, CSS, Asciidoc, JavaScript
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/plugin-installation-manager-tool-cli/">
+<strong>
+Plugin Installation Manager CLI Tool / Library
+</strong>
+</a>
+<br>
+Create a new tool to unify plugin management across the Jenkins ecosystem .
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java, Maven, Go, Dependency Management, Docker, Configuration-as-code
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/remoting-monitoring/">
+<strong>
+Jenkins Remoting Monitoring
+</strong>
+</a>
+<br>
+Support monitoring of Jenkins remoting networking with open source monitoring tools such as Prometheus, Grafana, etc..
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/supun94/"><div class="app-avatar"></div> Supun Wanniarachchi</a>
+<a class="app-author-link" href="/blog/authors/jeffret-b/"><div class="app-avatar"><img alt="Jeff Thompson" class="app-avatar__image" src="/images/avatars/jeffret-b.jpg"></div> Jeff Thompson</a>
+<a class="app-author-link" href="/blog/authors/linuxsuren/"><div class="app-avatar"><img alt="赵晓杰(Rick)" class="app-avatar__image" src="/images/avatars/linuxsuren.jpg"></div> 赵晓杰(Rick)</a>
+<a class="app-author-link" href="/blog/authors/ankit-jain/"><div class="app-avatar"></div> Ankit Jain</a>
+</td>
+<td class="pi_table_category">
+Plugins, Core
+</td>
+<td class="pi_table_skills">
+Java, Networking, Docker, Prometheus/Grafana/etc.
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/remoting-over-apache-kafka-docker-k8s-features/">
+<strong>
+Remoting over Apache Kafka. Docker/K8s Features
+</strong>
+</a>
+<br>
+Enhance the plugin and to provide out-of-the box management in Docker and especially Kubernetes environments.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/afalko/"><div class="app-avatar"><img alt="Andrey Falko" class="app-avatar__image" src="/images/avatars/afalko.jpg"></div> Andrey Falko</a>
+<a class="app-author-link" href="/blog/authors/supun94/"><div class="app-avatar"></div> Supun Wanniarachchi</a>
+<a class="app-author-link" href="/blog/authors/jeffret-b/"><div class="app-avatar"><img alt="Jeff Thompson" class="app-avatar__image" src="/images/avatars/jeffret-b.jpg"></div> Jeff Thompson</a>
+<a class="app-author-link" href="/blog/authors/jeffpearce/"><div class="app-avatar"><img alt="Jeff Pearce" class="app-avatar__image" src="/images/avatars/jeffpearce.png"></div> Jeff Pearce</a>
+</td>
+<td class="pi_table_category">
+Plugins, Core
+</td>
+<td class="pi_table_skills">
+Java, Apache Kafka, Docker, Kubernetes
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/role-strategy-performance/">
+<strong>
+Role Strategy Plugin performance
+</strong>
+</a>
+<br>
+Improve performance of one of the most popular authorization plugins in Jenkins.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/runzexia/"><div class="app-avatar"><img alt="夏润泽(RunZe Xia)" class="app-avatar__image" src="/images/avatars/runzexia.jpg"></div> 夏润泽(RunZe Xia)</a>
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, Performance Testing
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/role-strategy-ux/">
+<strong>
+Role Strategy Plugin: user experience
+</strong>
+</a>
+<br>
+Improve UI and REST APIs using new technologies to make it more user-friendly.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/supun94/"><div class="app-avatar"></div> Supun Wanniarachchi</a>
+<a class="app-author-link" href="/blog/authors/runzexia/"><div class="app-avatar"><img alt="夏润泽(RunZe Xia)" class="app-avatar__image" src="/images/avatars/runzexia.jpg"></div> 夏润泽(RunZe Xia)</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, JavaScript, REST/GraphQL
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/winsw-yaml-config-support/">
+<strong>
+Jenkins Windows Services: YAML Configuration Support
+</strong>
+</a>
+<br>
+Enhance Jenkins controller and agent service management on Windows by offering new configuration file formats and improving settings validation.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+<a class="app-author-link" href="/blog/authors/arnab1896/"><div class="app-avatar"></div> Arnab Banerjee</a>
+</td>
+<td class="pi_table_category">
+Core, Tools
+</td>
+<td class="pi_table_skills">
+C#, .NET, Windows, Windows Services, YAML, Java (optional)
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2019/project-ideas/working-hours-improvements/">
+<strong>
+Working Hours Plugin - UI Improvements
+</strong>
+</a>
+<br>
+Rewrite Working Hours plugin UI in React, providing much needed usability Improvements.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/jeffpearce/"><div class="app-avatar"><img alt="Jeff Pearce" class="app-avatar__image" src="/images/avatars/jeffpearce.png"></div> Jeff Pearce</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, JavaScript, React
+</td>
+</tr>
+</tbody>
+</table>
+<h3>
+Draft project ideas
+</h3>
+<p class="markdown">
+Below you can see draft project ideas, which are currently under review.
+The scope of such ideas may change significantly during the discussions until the first coding period starts.
+You are welcome to comment on the draft and to join the project as a mentor.
+If you are a student, it is also fine to apply to the draft project ideas.
+</p>
+<table class="pi_table grid-all">
+<tbody>
+<tr class="pi_table_header">
+<th>Project</th>
+<th>Category</th>
+<th>Skills to study/improve</th>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2019/project-ideas.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

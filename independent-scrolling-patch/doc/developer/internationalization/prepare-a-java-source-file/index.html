@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Prepare a Java Source File for Localization
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/prepare-a-java-source-file/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Prepare a Java Source File for Localization" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Prepare a Java Source File for Localization" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Prepare a Java Source File for Localization" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/prepare-a-java-source-file/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Prepare a Java Source File for Localization" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="active">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/i18n-source-code/" class="">Internationalizing Messages in Java Source Code</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/i18n-jelly-views/" class="">Internationalizing Messages in Jelly Views</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/i18n-groovy-views/" class="">Internationalizing Messages in Groovy Views</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/advanced-localization/" class="">Advanced Localization</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Prepare a Java Source File for Localization
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#step-1-identify-messages">Step 1: Identify messages</a></li>
+<li><a href="#step-2-prepare-the-messages-properties-file">Step 2: Prepare the <code>Messages.properties</code> file</a></li>
+<li><a href="#step-3-build-the-project-once">Step 3: Build the project once</a></li>
+<li><a href="#step-4-reference-messages-strings">Step 4: Reference <code>Messages</code> strings</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This guide explains how to prepare a Java source file in Jenkins core or a plugin for localization.</p>
+</div>
+<div class="sect1">
+<h2 id="step-1-identify-messages"><a class="anchor" href="#step-1-identify-messages"></a>Step 1: Identify messages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, we need to identify the localizable strings that should be translated.
+In general, everything shown on any user interface should be internationalized (i.e. prepared for localization into the user&#8217;s language).</p>
+</div>
+<div class="paragraph">
+<p>Historically, log messages to be written to the Jenkins server log file from a logger aren&#8217;t translated, but could also be.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s consider the following example, taken from the sample <code>HelloWorldBuilder</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">HelloWorldBuilder.java (excerpt)</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="nc">FormValidation</span> <span class="nf">doCheckName</span><span class="o">(</span><span class="nd">@QueryParameter</span> <span class="nc">String</span> <span class="n">value</span><span class="o">)</span>
+        <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Please set a name"</span><span class="o">);</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="k">if</span> <span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">)</span>
+        <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">warning</span><span class="o">(</span><span class="s">"Isn't the name too short?"</span><span class="o">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">ok</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="o">...</span>
+
+<span class="cm">/**
+ * This human readable name is used in the configuration screen.
+ */</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDisplayName</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"Say hello world"</span><span class="o">;</span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">configure</span><span class="o">(</span><span class="nc">StaplerRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">JSONObject</span> <span class="n">formData</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">FormException</span> <span class="o">{</span>
+    <span class="c1">// To persist global configuration information,</span>
+    <span class="c1">// set that to properties and call save().</span>
+    <span class="n">useFrench</span> <span class="o">=</span> <span class="n">formData</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="s">"useFrench"</span><span class="o">);</span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="c1">// ^Can also use req.bindJSON(this, formData);</span>
+    <span class="c1">//  (easier when there are many fields; need set* methods for this, like setUseFrench)</span>
+    <span class="n">save</span><span class="o">();</span>
+    <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">formData</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This string should be internationalized, as it is used as a form validation response.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This string should also be internationalized, as it is another form validation response.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>This is the display name of the build step on the UI, and should also be internationalized.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This is an internal identifier for a form configuration option and must not be internationalized.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step-2-prepare-the-messages-properties-file"><a class="anchor" href="#step-2-prepare-the-messages-properties-file"></a>Step 2: Prepare the <code>Messages.properties</code> file</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>See <a href="/doc/developer/development-environment/ide-configuration/">IDE Configuration</a> for plugins that make this and the following steps easier.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The localized strings for the default language (typically English), unless they are reused within the same component, are typically added to a <code>Messages.properties</code> file in the same package as the class that uses it.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not reference other components (e.g. core&#8217;s) <code>Messages</code> classes.
+They typically do not consider their localized messages stable API, so your plugin might break if they change their messages.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Using the default Maven project layout, the <code>HelloWorldBuilder</code> class stored in the source file <code>src/main/java/org/jenkinsci/plugins/example/HelloWorldBuilder.java</code> would use the localized strings in the resources file <code>src/main/resources/org/jenkinsci/plugins/example/Messages.properties</code> (basically, in the same package).
+Create that file if it doesn&#8217;t exist.</p>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s add entries for the localizable strings identified above to that file:</p>
+</div>
+<div class="listingblock">
+<div class="title">Messages.properties</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>HelloWorldBuilder.NoName=Please set a name <i class="conum" data-value="1"></i><b>(1)</b>
+HelloWorldBuilder.ShortName=\<i class="conum" data-value="2"></i><b>(2)</b>
+  Isn''t the name too short? <i class="conum" data-value="3"></i><b>(3)</b>
+# Unicode variant of the line above: <i class="conum" data-value="4"></i><b>(4)</b>
+# Isn\u2019t the name too short? <i class="conum" data-value="5"></i><b>(5)</b>
+HelloWorldBuilder.DisplayName=Say hello world</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This sets the value for the key <code>HelloWorldBuilder.NoName</code>.
+While the key can be freely chosen, it&#8217;s typically a good idea to indicate where it&#8217;s used, as multiple files may share the same <code>Messages.properties</code> file.
+This is also the format generated by the Stapler Plugins for IntelliJ IDEA and NetBeans.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Line breaks, mostly useful with very long values, e.g. usage instructions, can be escaped with a back slash.
+Make sure to not add whitespace after it.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>In properties files, single quotes need to be escaped with another single quote.
+Alternatively, a Unicode apostrophe could be used here as well.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Lines starting with the <code>#</code> character are comments.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The file encoding for .properties files is ISO-8859-1 (Latin 1), so characters not in that set need to be specified using their Unicode code point, e.g. <code>\u2019</code> for the apostrophe.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step-3-build-the-project-once"><a class="anchor" href="#step-3-build-the-project-once"></a>Step 3: Build the project once</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After adding new entries to any <code>Messages.properties</code> file (or renaming existing ones), the project needs to be rebuilt so the localizer can generate source code from it.
+While we can refer to them in source code without that, we only get autocompletion once the <code>Messages</code> class has been generated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step-4-reference-messages-strings"><a class="anchor" href="#step-4-reference-messages-strings"></a>Step 4: Reference <code>Messages</code> strings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After code generation has run, we can add references to the generated class to the source code.
+Example:</p>
+</div>
+<div class="listingblock">
+<div class="title">HelloWorldBuilder.java (excerpt)</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="nc">FormValidation</span> <span class="nf">doCheckName</span><span class="o">(</span><span class="nd">@QueryParameter</span> <span class="nc">String</span> <span class="n">value</span><span class="o">)</span>
+        <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="nc">Messages</span><span class="o">.</span><span class="na">HelloWorldBuilder_NoName</span><span class="o">());</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">)</span>
+        <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">warning</span><span class="o">(</span><span class="nc">Messages</span><span class="o">.</span><span class="na">HelloWorldBuilder_ShortName</span><span class="o">());</span>
+    <span class="k">return</span> <span class="nc">FormValidation</span><span class="o">.</span><span class="na">ok</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your IDE doesn&#8217;t offer autocompletion even after building the project once, make sure the output folder of the localizer, <code>target/generated-sources/localizer</code>, is configured and recognized as a directory containing generated source code.</p>
+</div>
+</div>
+</div>
+<h2>
+References
+</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/.properties">.properties file format on Wikipedia</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/internationalization/prepare-a-java-source-file.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

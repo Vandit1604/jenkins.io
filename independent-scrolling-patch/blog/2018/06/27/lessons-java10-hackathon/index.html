@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+What I learned from the Jenkins & Java 10+ Hackathon
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/06/27/lessons-java10-hackathon/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="What I learned from the Jenkins &amp; Java 10+ Hackathon" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="What I learned from the Jenkins &amp; Java 10+ Hackathon" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="What I learned from the Jenkins &amp; Java 10+ Hackathon" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/06/27/lessons-java10-hackathon/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="What I learned from the Jenkins &amp; Java 10+ Hackathon" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+What I learned from the Jenkins & Java 10+ Hackathon
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/tracymiranda/"><div class="app-avatar"><img alt="Tracy Miranda" class="app-avatar__image" src="/images/avatars/tracymiranda.jpg"></div> Tracy Miranda</a>
+June 27, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=What+I+learned+from+the+Jenkins+%26+Java+10%2B+Hackathon&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F06%2F27%2Flessons-java10-hackathon%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Last week I participated in the
+<a href="/blog/2018/06/08/jenkins-java10-hackathon/">Jenkins &amp; Java 10 Online Hackathon</a>.
+It was my first Jenkins hackathon and I roped in
+<a href="https://github.com/jonahgraham">Jonah Graham</a> to do some pair-programming.
+The hackathon featured JDK Project Jigsaw committers Mandy Chung and Paul Sandoz,
+as well as Jenkins creator Kohsuke Kawaguchi.
+It was a great opportunity for me to learn a lot about Jenkins and Java 10.</p>
+</div>
+<div class="sect2">
+<h3 id="why-java-10"><a class="anchor" href="#why-java-10"></a>Why Java 10?</h3>
+<div class="paragraph">
+<p>With the
+<a href="https://www.oracle.com/technetwork/java/eol-135779.html">Java 8 EoL data looming</a>,
+the focus was on the current available version of Java, Java 10.
+Java 10 offers some nice new features and APIs, not least
+<a href="https://blog.docker.com/2018/04/improved-docker-container-integration-with-java-10/">improved docker container integration</a>.
+We learned from Paul of a number of projects with Java 10 migration success stories including Elasticsearch, Kafka &amp; Netty.</p>
+</div>
+<div class="paragraph">
+<p>At the beginning of the hackathon week, the Jenkins Pipeline feature would crash out when using Java 10.
+This was resolved with a number of fixes including the upgrade of the
+<a href="https://asm.ow2.io/">ASM library</a>.
+Then it was nice to see things
+<a href="/blog/2018/06/19/jenkins-java10-hackathon-day2/">up and running with Java 10</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-up-running"><a class="anchor" href="#getting-up-running"></a>Getting up &amp; running</h3>
+<div class="paragraph">
+<p>The first steps were to do some exploratory testing using
+<a href="/blog/2018/06/17/running-jenkins-with-java10-11">Jenkins with Java 10 via Docker</a>, thanks to
+<a href="https://github.com/oleg-nenashev">Oleg</a> for providing clear instructions.
+This was boringly straightforward as most things worked and we only found one
+<a href="https://issues.jenkins.io/browse/JENKINS-52069">issue</a> to report.
+Next to try to get some patches in, we needed to set-up a dev environment.
+The live session gave us what we needed to set up a
+<a href="https://wiki.jenkins.io/display/JENKINS/Plugin+tutorial">plugin</a> or
+<a href="https://github.com/jenkinsci/jenkins/blob/master/CONTRIBUTING.md">core</a> dev environment.
+One open question we had was whether Jenkins has semantic versioning and
+<a href="https://help.eclipse.org/oxygen/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Ftasks%2Fapi_tooling_setup.htm">API tools</a>
+to help identify when you might be breaking backwards compatibility.
+Overall it was straightforward to get a dev environment up and running.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-10-new-apis"><a class="anchor" href="#java-10-new-apis"></a>Java 10 New APIs</h3>
+<div class="paragraph">
+<p>The next step was to find an issue which we could help resolve.
+Many of the Java 10 issues were related to 'Illegal reflective access' from various plugins or third-party libraries.
+However after investigating a couple, removing these warnings required a good architectural knowledge of the plugin or core code itself.
+In the end we decided that messing around with classloaders or attempting to upgrade version of jdom was not one for the newbies.</p>
+</div>
+<div class="paragraph">
+<p>Instead we looked at
+<a href="https://github.com/jenkinsci/parameterized-scheduler-plugin/pull/10">removing reflection</a>
+in cases of isAccessible calls.
+We found the
+<a href="https://www.javaworld.com/article/3176874/java-language/java-9s-other-new-enhancements-part-3.html"><code>ProcessHandle</code></a>
+api very useful and a good replacement for some misuse of reflection, and even better it made the code work on Windows too.
+Mandy also pointed us to look at the
+<a href="https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/MethodHandles.Lookup.html"><code>Lookup</code> api</a>
+as possible alternate to findClass calls.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multi-release-jar-builds"><a class="anchor" href="#multi-release-jar-builds"></a>Multi-Release JAR Builds</h3>
+<div class="paragraph">
+<p>Using new APIs is all well and good but presents a problem when you want to maintain backwards compatibility with Java 8.
+Hence the need for some sort of multi-jar solution -
+<a href="https://github.com/ndeloof">Nicolas De loof</a> proposed one such solution for
+<a href="https://blog.loof.fr/2018/06/multi-release-jar-with-maven.html">multi-release jars with Maven</a> for this case.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sun-misc-signal"><a class="anchor" href="#sun-misc-signal"></a>sun.misc.Signal</h3>
+<div class="paragraph">
+<p>The Java Signal API is being deprecated, but so far <a href="https://wiki.openjdk.java.net/display/JDK8/Java+Dependency+Analysis+Tool">no replacement APIs</a>
+are available for signal handling.
+Jenkins makes use of the Signal APIs so a big question for the Jigsaw team was whether this would be replaced going forward.
+Kohsuke pointed out how it is important for Java to maintain this UNIX like behaviour as it shouldn&#8217;t matter to end users that Jenkins is written in Java.
+It seems these APIs will be replaced in due course, they just
+<a href="https://bugs.openjdk.java.net/browse/JDK-8087286">aren&#8217;t there right now</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="collaboration-collaboration-collaboration"><a class="anchor" href="#collaboration-collaboration-collaboration"></a>Collaboration, Collaboration, Collaboration</h3>
+<div class="paragraph">
+<p>It was great to have the discussions with the Jigsaw team.
+They reminded us how they need to know the Java use cases out there and how their team uses these to feed into their development process.
+In turn, the hackathon had Jenkins community members participate, for instance
+<a href="https://github.com/gmacario/easy-jenkins">easy-jenkins</a> was up and running with Java 10 by the end of the week.
+The hackathon had a great feeling of community spirit and was a reminder why collaborations with communities and also between different communities can be powerful and fun for all involved.</p>
+</div>
+<div class="paragraph">
+<p>At the end of the week Jonah and I were both happy that we made our first Jenkins contributions (which were reviewed and merged quickly).
+Thanks to all who participated and made it highly enjoyable, especially Oleg for great organization.
+I look forward to the next one!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java10/">
+java10
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java11/">
+java11
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Tracy Miranda" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/tracymiranda.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/tracymiranda/">
+Tracy Miranda
+</a>
+</p>
+<div class="paragraph">
+<p>Tracy is the Director of Open Source Community at CloudBees, long time open source contributor and evangelist.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/tracymiranda" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/tracymiranda" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://tracymiranda.com/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/06/2018-06-27-lessons-java10-hackathon.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Essentials: five minutes, five clicks
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/06/jenkins-essentials/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Essentials: five minutes, five clicks" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Essentials: five minutes, five clicks" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Essentials: five minutes, five clicks" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/06/jenkins-essentials/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Essentials: five minutes, five clicks" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins Essentials: five minutes, five clicks
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+April 06, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+Essentials%3A+five+minutes%2C+five+clicks&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F04%2F06%2Fjenkins-essentials%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<em>Jenkins Essentials</em> has been renamed to <em>Jenkins <strong>Evergreen</strong></em> since this was written.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In his presentation at the 2017 <a href="https://jenkinsworld.com">Jenkins World</a> Contributor Summit,
+<a href="https://github.com/kohsuke">Kohsuke</a>
+challenged us to continue the work started with Jenkins 2 of making Jenkins
+easier to install and easier to use. "A user should be successful with Jenkins
+in under five minutes and five clicks." At that same Contributor Summit, a few
+of us discussed the idea of a distribution which had "batteries
+included", which
+<a href="https://github.com/abayer">Andrew</a>
+proudly named "Jenkins Essentials." At the time I was certainly not as excited
+about the project as I am now, I thought to myself "we built a Setup Wizard in
+Jenkins 2, nobody needs a Setup Wizard++."</p>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/logos/magician/256.png" alt="Jenkins Essentials"></span></p>
+</div>
+<div class="paragraph">
+<p>As Kohsuke and I continued to discuss the idea, more and more ideas came up.
+Towards the end of 2017 the picture became much clearer: <strong>Jenkins Essentials
+would be a comprehensive, low-maintenance distribution</strong> to help new and
+existing users be successful with Jenkins, without needing to be Jenkins
+<em>experts</em>. This will of course not replace the existing distribution of Jenkins core and
+its plugins, which allow many of us large amounts of flexibility, but rather it
+will make Jenkins easier for users who don&#8217;t want to "build it themselves."</p>
+</div>
+<div class="paragraph">
+<p>The more I thought about it, the more excited about the idea I became: Jenkins
+Essentials could open the door to new improvements and features in Jenkins
+which had been left in the "idea and design" phase going back almost <em>two
+years</em>! Really, I checked, some of the concepts adopted into the design of
+Jenkins Essentials were first conceived of in early 2016!</p>
+</div>
+<div class="paragraph">
+<p>Kohsuke briefly discussed the project in
+<a href="/blog/2018/03/20/evolving-mission-of-jenkins/">his previous blog post</a>
+but in post I wanted to expand on <a href="#what">what</a> Jenkins Essentials is, and our
+<a href="#progress">progress</a> has been in its development.</p>
+</div>
+<div class="sect1">
+<h2 id="what"><a class="anchor" href="#what"></a>What&#8217;s in Jenkins Essentials</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A few months ago I prepared
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/300/jenkins-essentials-and-evergreen-fosdem-2018.pdf">this presentation</a>
+for the
+<a href="https://fosdem.org/2018/">FOSDEM 2018</a>
+Jenkins Contributor Summit, which outlines the following "pillars" or Jenkins
+Essentials, which are also described in
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#auto-update">Automatically Updated Distribution</a></p>
+</li>
+<li>
+<p><a href="#sane-defaults">Automatic Sane Defaults</a></p>
+</li>
+<li>
+<p><a href="#connected">Connected</a></p>
+</li>
+<li>
+<p><a href="#obvious-path">Obvious Path to User Success</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="auto-update"><a class="anchor" href="#auto-update"></a>Automatically Updated Distribution</h3>
+<div class="paragraph">
+<p>In order to provide an easier-to-use and easier-to-manage Jenkins environment,
+Jenkins Essentials will be distributed as an automatically self-updating
+distribution, containing Jenkins core and a version-locked set of plugins
+considered "essential." Rather than attempting to mirror the existing Weekly
+and LTS release lines for core, plus some plugin version matrix, Jenkins
+Essentials will update in a manner similar to Google Chrome.</p>
+</div>
+<div class="paragraph">
+<p>This automatically updating distribution will mean that Jenkins Essentials will
+require significantly less overhead to manage, receiving improvements and bug
+fixes without any user involvement. From the user perspective, their Jenkins
+will appear to automatically improve over time.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is really interesting work being pioneered by
+<a href="https://github.com/batmat">Baptiste Mathus</a>
+with
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/302">JEP-302</a>
+to ensure that these automatic upgrades can be performed safely.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sane-defaults"><a class="anchor" href="#sane-defaults"></a>Automatic Sane Defaults</h3>
+<div class="paragraph">
+<p>Providing a core along with "essential" plugins is a good first step to helping
+Jenkins users successfully automate their CI/CD workloads, but requires
+additional "smoothing" over some of the numerous options and configurations
+plugins. Jenkins Essentials will perform some amount of "automatic
+environment-based self-configuration."</p>
+</div>
+<div class="paragraph">
+<p>For example, clicking a "Launch Stack" button from the <a href="/download">Download</a>
+page would launch an AWS-flavored Jenkins Essentials which, out of the box
+attempts to set up AWS-specific configuration with S3 and EC2 services.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="connected"><a class="anchor" href="#connected"></a>Connected</h3>
+<div class="paragraph">
+<p>In order to provide a more seamless experience for end-users, and ensure that
+Jenkins project developers receive useful error and usage telemetry to drive
+further improvements in Jenkins, Jenkins Essentials must necessarily be viewed
+as a "<strong>Connected</strong>" application. This means some yet-to-be-specified number of
+server-side applications to coordinate updates, receive and process telemetry,
+broker 3rd-party service authentications, relay webhooks, etc.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="obvious-path"><a class="anchor" href="#obvious-path"></a>Obvious Path to User Success</h3>
+<div class="paragraph">
+<p>The final pillar in Jenkins Essentials, is to ensure that Jenkins provides an
+obvious path for a user to configure and use it successfully. This largely
+entails in-application documentation, examples, and disabling legacy
+functionality within the application. All with the end goal of preventing users
+from inadvertently choosing legacy, or poorly supported, options when
+configuring their CI/CD workloads.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="progress"><a class="anchor" href="#progress"></a>Progress thus far</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Suffice it to say, Jenkins Essentials is a hugely ambitious project! We have
+been making steady progress however, as you can see in the
+<a href="https://github.com/jenkins-infra/evergreen">jenkins-infra/evergreen</a>
+repository on GitHub. We have been adamantly following the
+<a href="https://github.com/jenkinsci/jep">Jenkins Enhancement Proposal</a>
+process, and have been making sure our designs and implementations are clear as
+we build them. Thus far we&#8217;ve written designs and implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JEP-300: <a href="https://github.com/jenkinsci/jep/tree/master/jep/300">Jenkins Essentials</a></p>
+</li>
+<li>
+<p>JEP-301: <a href="https://github.com/jenkinsci/jep/tree/master/jep/301">Evergreen packaging for Jenkins Essentials</a></p>
+</li>
+<li>
+<p>JEP-302: <a href="https://github.com/jenkinsci/jep/tree/master/jep/302">Evergreen snapshotting data safety system</a></p>
+</li>
+<li>
+<p>JEP-303: <a href="https://github.com/jenkinsci/jep/blob/master/jep/303">Evergreen Client Registration and Authentication</a></p>
+</li>
+<li>
+<p>JEP-304: <a href="https://github.com/jenkinsci/jep/tree/master/jep/304">Essentials Client Error Telemetry Logging</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unfortunately we don&#8217;t yet have the first parts of the <a href="#auto-update">Automatically Updated Distribution</a> working,
+which means you cannot download Jenkins Essentials <em>today</em> and get started with
+it. We&#8217;re still building the Jenkins-side and server-side components necessary
+to make the full feedback loop operate, without which we would not be able to
+safely deliver new upgrades to Jenkins Essentials installations.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re interested in getting involved, you can check out our
+<a href="https://gitter.im/jenkins-infra/evergreen?">Gitter channel</a>
+or our
+<a href="https://issues.jenkins.io/secure/RapidBoard.jspa?rapidView=406">Jira issues board</a>.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Essentials is just one major initiative going on in the Jenkins project
+this year, so I hope you&#8217;re as excited as I am for the future of Jenkins!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/evergreen/">
+evergreen
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/04/2018-04-06-jenkins-essentials.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

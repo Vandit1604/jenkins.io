@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+JUC Speaker Blog Series: Damien Coraboeuf, JUC Europe
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/06/09/juc-speaker-blog-series-damien-coraboeuf-juc-europe/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="JUC Speaker Blog Series: Damien Coraboeuf, JUC Europe" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="JUC Speaker Blog Series: Damien Coraboeuf, JUC Europe" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="JUC Speaker Blog Series: Damien Coraboeuf, JUC Europe" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/06/09/juc-speaker-blog-series-damien-coraboeuf-juc-europe/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="JUC Speaker Blog Series: Damien Coraboeuf, JUC Europe" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+JUC Speaker Blog Series: Damien Coraboeuf, JUC Europe
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+June 09, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=JUC+Speaker+Blog+Series%3A+Damien+Coraboeuf%2C+JUC+Europe&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F06%2F09%2Fjuc-speaker-blog-series-damien-coraboeuf-juc-europe%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/Jenkins_Butler_0.png" alt="image" width="114"></span><br></p>
+</div>
+<div class="sect1">
+<h2 id="scaling-and-maintenance-of-thousands-of-jenkins-jobs"><a class="anchor" href="#scaling-and-maintenance-of-thousands-of-jenkins-jobs"></a>Scaling and maintenance of thousands of Jenkins jobs</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="how-to-avoid-creating-of-a-jungle-of-jobs-when-dealing-with-thousands-of-them"><a class="anchor" href="#how-to-avoid-creating-of-a-jungle-of-jobs-when-dealing-with-thousands-of-them"></a>How to avoid creating of a jungle of jobs when dealing with thousands of them?</h3>
+<div class="paragraph">
+<p>In our organisation, we have one framework, which is used to develop products. Those products are themselves used to develop end user projects. Maintenance and support are needed at each level of delivery and we use branches for this. This creates hundreds of combinations.</p>
+</div>
+<div class="paragraph">
+<p>Now, for each product or project version (or branch), we have a delivery pipeline. We start by compiling, testing, packaging, publishing. Then we deploy the application on the different supported platforms and go through different levels of validation, until we’re ready for delivery. Aside from a few details and configuration elements, most of the pipelines are identical from one branch to the other, from one project to the other.</p>
+</div>
+<div class="paragraph">
+<p>So, one framework, some products, several projects, maintenance branches, complex pipelines… We end up having many many jobs to create, duplicate and maintain. Before even going into this direction, we saw this as a blocking issue - there was no way we could maintain manually thousands of jobs on a day to day basis.</p>
+</div>
+<div class="paragraph">
+<p>The solution we were looking for should have the following characteristics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Self service - our goal being to delegate the job and branch administration in Jenkins to the projects, in order to reduce the support time</p>
+</li>
+<li>
+<p>Security - we didn’t want to open Jenkins to the projects at configuration level - not acceptable in our context</p>
+</li>
+<li>
+<p>Simplicity - the solution should be simple enough to be manageable by people not knowledgeable about the core technologies of Jenkins</p>
+</li>
+<li>
+<p>Extensibility - the solution must be flexible enough to allow extensions when needed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When we thought about using the Job DSL plug-in, delegating the creation of the pipeline to the project teams was OK from a self service point of view, but was not secure and definitely not simple for people not knowing Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>In the end, we opted for a solution where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A project team would edit a simple property file listing the characteristics of the current branch, like which type of platform is supported, which version of the <em>pipeline library</em> to use, etc.</p>
+</li>
+<li>
+<p>Upon commit of this shopping list, the complete branch pipeline is regenerated using the given version of the <em>pipeline library</em></p>
+</li>
+<li>
+<p>The <em>pipeline library</em> code reads the “shopping list” property file and runs a Job DSL script to generate the branch pipeline according to those parameters</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By default, the pipeline library generates a classic pipeline, suitable for most needs. It is also possible to define and use extensions, like having additional jobs in the pipelines.</p>
+</div>
+<div class="paragraph">
+<p>In case of new features or defects, we develop or branch a new version of the pipeline library and projects or branches can use it by changing the version of their shopping list file.</p>
+</div>
+<div class="paragraph">
+<p>A project gets injected into the system by having only a project seed being generated. From it, the authorised members can generate the branch seed and any branch pipeline at any time. Those seed jobs and the pipelines themselves can also be driven directly from the SCM using our plugin.</p>
+</div>
+<div class="paragraph">
+<p>The project teams are now autonomous and can pilot their pipelines without requesting any support. They act in a secure and isolated way, and cannot compromise the shared environment. The “shopping list” file is simple and well documented. The system is not rigid and allows for extensions.</p>
+</div>
+<div class="paragraph">
+<p>This platform has been developed initially for a very specific framework and a set of projects which depend on it, but has been extended since to be able to support other stacks. It is structured in two different parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The seed platform itself - generation of branch structures in Jenkins and trigger end points for being piloted from the SCM</p>
+</li>
+<li>
+<p>The pipeline libraries, referenced from the shopping list files</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We still allow some small tools and applications to define directly their pipeline by providing a Job DSL script.</p>
+</div>
+<div class="paragraph">
+<p>Using the same principle, we can also pilot other tools in the ecosystem - like Artifactory or Ontrack.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll talk about this seed platform on June 24th, in the Jenkins User Conference in London.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/dcoraboeuf_0.preview.jpg" alt="image" width="150"></span><br></p>
+</div>
+<div class="paragraph">
+<p>This post is by Damien Coraboeuf, Continuous Delivery Expert at Clear2Pay. If you have your ticket to <a href="https://www.cloudbees.com/jenkins/juc-2015/europe">JUC Europe</a>, you can attend his talk <a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/europe/02-03-1515-coraboeuf">"Scaling of Jenkins Pipeline Creation and Maintenance"</a> on Day 2.</p>
+</div>
+<div class="paragraph">
+<p><em>Still need your ticket to JUC? If you register with a friend you can get 2 tickets for the price of 1! <a href="https://www.cloudbees.com/jenkins/juc-2015/">Register here for a JUC near you.</a></em></p>
+</div>
+<div class="paragraph">
+<p><strong>Thank you to our <a href="https://www.cloudbees.com/jenkins/juc-2015/sponsors">sponsors</a> for the 2015 Jenkins User Conference World Tour:</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/sponsors-06032015-02_0.png" alt="image" width="598"></span><br></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-06-09-juc-speaker-blog-series-damien-coraboeuf-juc-europe.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

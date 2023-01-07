@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Faster sailing on Blue Ocean 1.5.0
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/18/blueocean-1-5-0/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Faster sailing on Blue Ocean 1.5.0" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Faster sailing on Blue Ocean 1.5.0" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Faster sailing on Blue Ocean 1.5.0" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/18/blueocean-1-5-0/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Faster sailing on Blue Ocean 1.5.0" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Faster sailing on Blue Ocean 1.5.0
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/jennbriden/"><div class="app-avatar"></div> Jenn Briden</a>
+April 18, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Faster+sailing+on+Blue+Ocean+1.5.0&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F04%2F18%2Fblueocean-1-5-0%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Hello, I am Jenn, the new Product Manager for Blue Ocean and Jenkins
+Pipeline at CloudBees. I am based out of the Seattle area and am excited to be
+working on Jenkins. :D We released version 1.5.0 of the Blue Ocean plugin late last week. If you&#8217;re
+using Blue Ocean, you&#8217;ll want to grab this update since it includes many
+improvements and bug fixes!</p>
+</div>
+<div class="sect1">
+<h2 id="new-features"><a class="anchor" href="#new-features"></a>New Features</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean now includes a user interface update to show the downstream jobs
+launched with the 'build' step
+(link: <a href="https://issues.jenkins.io/browse/JENKINS-38339">JENKINS-38339</a>)</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/blueocean-1.5.0/downstream-jobs.png" alt="Visualizing Downstream Jobs">
+</div>
+</div>
+<div class="paragraph">
+<p>With Blue Ocean 1.5.0, users can now <strong>Reorder Steps in the Blue Ocean Pipeline
+Editor</strong> simply by dragging and dropping steps to reorder them in the list of
+steps.
+(<a href="https://issues.jenkins.io/browse/JENKINS-38323">JENKINS-38323</a>)</p>
+</div>
+<div class="paragraph">
+<p>The "Artifacts" tab also now supports pagination, which allows developers to
+paginate through the Artifacts tab. Previously, this list
+was cut off at 100 entries.
+(<a href="https://issues.jenkins.io/browse/JENKINS-43588">JENKINS-43588</a>)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="improvements"><a class="anchor" href="#improvements"></a>Improvements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We were able to include two performance improvements in 1.5.0 which reduce the
+<strong>Dashboard</strong> loading time in Blue Ocean:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-44995">JENKINS-44995</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-48868">JENKINS-48868</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Support for viewing output for failed runs with no stages is also included in
+this release. For developers who have no stages/steps defined in their
+pipelines, they can now see the full log output for failed runs. This update
+helps with Pipeline debugging in Jenkins.
+(<a href="https://issues.jenkins.io/browse/JENKINS-48074">JENKINS-48074</a>)</p>
+</div>
+<div class="paragraph">
+<p>Further improving the log output for Pipeline Runs, 1.5.0 also improves viewing
+of long log output lines with wrapping.  Previously, a single, long line of
+output in the log wouldn&#8217;t be fully visible in the log window.
+(<a href="https://issues.jenkins.io/browse/JENKINS-49036">JENKINS-49036</a>)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fixes"><a class="anchor" href="#fixes"></a>Fixes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One notable bug fix we addressed in this release was that <code>input</code> steps in
+<code>post</code> directives would not properly prompt for input. By fixing
+<a href="https://issues.jenkins.io/browse/JENKINS-49297">JENKINS-49297</a>
+users of Declarative Pipeline with Blue Ocean can include <code>input</code> steps in
+their <code>post</code> directives.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>The full detailed change log can be viewed on the
+<a href="https://plugins.jenkins.io/blueocean">Blue Ocean plugin page</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="update-your-plugin"><a class="anchor" href="#update-your-plugin"></a>Update Your Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Plugin updates in Jenkins are available in the Plugin Manager Update Center. This page includes instructions for using the UI and CLI to update your plugins: <a href="https://jenkins.io/doc/book/managing/plugins/" class="bare">https://jenkins.io/doc/book/managing/plugins/</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you are using the Blue Ocean UI, click Administration in the page&#8217;s header to open Plugin Manager.</p>
+</div>
+<div class="paragraph">
+<p>Installing the primary Blue Ocean plugin will update its dependencies as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="providing-feedback"><a class="anchor" href="#providing-feedback"></a>Providing Feedback</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Chat with us at Gitter: <a href="https://gitter.im/jenkinsci/blueocean-plugin" class="bare">https://gitter.im/jenkinsci/blueocean-plugin</a></p>
+</li>
+<li>
+<p>Report issues at <a href="https://issues.jenkins.io/" class="bare">https://issues.jenkins.io/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/jennbriden/">
+Jenn Briden
+</a>
+</p>
+<div class="paragraph">
+<p>Jenn Briden is located in the Seattle area and is the Product Manager for the Blue Ocean plugin and the Jenkins pipeline. She has previously worked at Microsoft and ExtraHop Networks. Jenn likes drinking coffee but hasn&#8217;t ever seen a bigfoot.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/jennbriden" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jennbriden" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/04/2018-04-18-blueocean-1-5-0.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

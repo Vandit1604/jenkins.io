@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GitHub App authentication support released
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/04/16/github-app-authentication/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GitHub App authentication support released" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GitHub App authentication support released" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/jenkins-and-github.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GitHub App authentication support released" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/04/16/github-app-authentication/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GitHub App authentication support released" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/jenkins-and-github.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GitHub App authentication support released
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/timja/"><div class="app-avatar"><img alt="Tim Jacomb" class="app-avatar__image" src="/images/avatars/timja.jpg"></div> Tim Jacomb</a>
+April 16, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GitHub+App+authentication+support+released&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F04%2F16%2Fgithub-app-authentication%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This blogpost was updated to reflect the general availability of the feature after the release of GitHub Branch Source 2.7.1 on April 26th, 2020.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>I&#8217;m excited to announce support for authenticating as a GitHub app in Jenkins.
+This has been a long awaited feature by many users.
+It has been released in <a href="https://github.com/jenkinsci/github-branch-source-plugin/releases/tag/github-branch-source-2.7.1">GitHub Branch Source 2.7.1</a> which is now available in the Jenkins update centers.</p>
+</div>
+<div class="paragraph">
+<p>Authenticating as a GitHub app brings many benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Larger rate limits</strong> - The rate limit for a GitHub app scales with your organization size,
+whereas a user based token has a limit of 5000 regardless of how many repositories you have.</p>
+</li>
+<li>
+<p><strong> User-independent authentication</strong> - Each GitHub app has its own user-independent authentication. No more need for 'bot' users or figuring out who should be the owner of 2FA or OAuth tokens.</p>
+</li>
+<li>
+<p><strong>Improved security and tighter permissions</strong> - GitHub Apps offer much finer-grained permissions compared to a service user and its personal access tokens. This lets the Jenkins GitHub app require a much smaller set of privileges to run properly.</p>
+</li>
+<li>
+<p><strong>Access to GitHub Checks API</strong> - GitHub Apps can access the the  <a href="https://developer.github.com/v3/checks/">GitHub Checks API</a> to create check runs and check suites from Jenkins jobs and provide detailed feedback on commits as well as code annotation</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Install the <a href="https://plugins.jenkins.io/github-branch-source/">GitHub Branch Source plugin</a>,
+make sure the version is <code>2.7.1</code> or above.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-the-github-organization-folder"><a class="anchor" href="#configuring-the-github-organization-folder"></a>Configuring the GitHub Organization Folder</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Follow the <a href="https://github.com/jenkinsci/github-branch-source-plugin/blob/master/docs/github-app.adoc">GitHub App Authentication setup guide</a>.  These instructions are also linked from the plugin’s README on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve finished setting it up, Jenkins will validate your credential and you should see your new rate limit.
+Here&#8217;s an example on a large org:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/github-app-rate-limit.png" alt="GitHub app rate limit"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-do-i-get-an-api-token-in-my-pipeline"><a class="anchor" href="#how-do-i-get-an-api-token-in-my-pipeline"></a>How do I get an API token in my pipeline?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to usage of GitHub App authentication for Multi-Branch Pipeline, you can also use app authentication directly in your Pipelines.
+You can access the Bearer token for the GitHub API by just loading a 'Username/Password' credential as usual,
+the plugin will handle authenticating with GitHub in the background.</p>
+</div>
+<div class="paragraph">
+<p>This could be used to call additional GitHub API endpoints from your pipeline, possibly the
+<a href="https://developer.github.com/v3/repos/deployments/">deployments api</a> or you may wish to implement your own
+<a href="https://developer.github.com/v3/checks/">checks api</a> integration until Jenkins supports this out of the box.</p>
+</div>
+<div class="paragraph">
+<p><em>Note: the API token you get will only be valid for one hour, don&#8217;t get it at the start of the pipeline and assume it will be valid all the way through</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> Let&#8217;s submit a check run to Jenkins from our Pipeline:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+  <span class="n">agent</span> <span class="n">any</span>
+
+  <span class="n">stages</span><span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'Check run'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">withCredentials</span><span class="o">([</span><span class="n">usernamePassword</span><span class="o">(</span><span class="nl">credentialsId:</span> <span class="s1">'githubapp-jenkins'</span><span class="o">,</span>
+                                          <span class="nl">usernameVariable:</span> <span class="s1">'GITHUB_APP'</span><span class="o">,</span>
+                                          <span class="nl">passwordVariable:</span> <span class="s1">'GITHUB_ACCESS_TOKEN'</span><span class="o">)])</span> <span class="o">{</span>
+            <span class="n">sh</span> <span class="s1">'''
+            curl -H "Content-Type: application/json" \
+                 -H "Accept: application/vnd.github.antiope-preview+json" \
+                 -H "authorization: Bearer ${GITHUB_ACCESS_TOKEN}" \
+                 -d '{ "name": "check_run", \
+                       "head_sha": "'${GIT_COMMIT}'", \
+                       "status": "in_progress", \
+                       "external_id": "42", \
+                       "started_at": "2020-03-05T11:14:52Z", \
+                       "output": { "title": "Check run from Jenkins!", \
+                                   "summary": "This is a check run which has been generated from Jenkins as GitHub App", \
+                                   "text": "...and that is awesome"}}' https://api.github.com/repos/&lt;org&gt;/&lt;repo&gt;/check-runs
+            '''</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GitHub Apps authentication in Jenkins is a huge improvement.  Many teams have already started using it and have helped improve it by giving pre-release feedback. There are more improvements on the way.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s a proposed Google Summer of Code project: <a href="/projects/gsoc/2020/project-ideas/github-checks/">GitHub Checks API for Jenkins Plugins</a>.
+It will look at integrating with the <a href="https://developer.github.com/v3/checks/">Checks API</a>,
+with a focus on reporting issues found using the <a href="https://plugins.jenkins.io/warnings-ng/">warnings-ng plugin</a>
+directly onto the GitHub pull requests, along with test results summary on GitHub.
+Hopefully it will make the Pipeline example below much simpler for Jenkins users :)
+If you want to get involved with this, join the <a href="https://gitter.im/jenkinsci/gsoc-sig">GSoC Gitter channel</a>
+and ask how you can help.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/github/">
+github
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/github-branch-source/">
+github-branch-source
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Tim Jacomb" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/timja.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/timja/">
+Tim Jacomb
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer, along with slack, azure-keyvault and configuration-as-code plugins.
+Tim started using Jenkins in 2013 and became an active contributor in 2018.
+Tim enjoys working on open source software in his “free” time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/timja" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/Tjaynz" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/tim-jacomb-98043174" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/04/2020-04-16-github-app-authentication.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

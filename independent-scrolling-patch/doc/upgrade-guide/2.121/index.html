@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.121.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.121/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.121.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.121.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.121.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.121/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.121.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.121.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.121.1 covers the upgrade from  2.107.3.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-121-3">
+Upgrading to Jenkins 2.121.3
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-121-2">
+Upgrading to Jenkins 2.121.2
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-121-1">
+Upgrading to Jenkins 2.121.1
+</h3>
+<div class="sect3">
+<h4 id="remoting-update"><a class="anchor" href="#remoting-update"></a>Remoting update</h4>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/remoting/blob/master/CHANGELOG.md#320">Remoting changelog</a>,
+<a href="https://issues.jenkins.io/browse/JENKINS-50237">JENKINS-50237</a></p>
+</div>
+<div class="paragraph">
+<p>The Remoting library has been updated to improve diagnosability and reliability.
+One of those changes ensures that exceptions are always properly serialized over the channel, even if some exception fields are blocked by <a href="https://jenkins.io/redirect/class-filter/">JEP-200 class filters</a>.</p>
+</div>
+<div class="paragraph">
+<p>In order to get this fix applied, Remoting needs to be updated to version 3.13 or newer on the agent side.
+Without this upgrade, some remote operations on agents may fail if the call results in an exception, even if a the exception could be handled.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/ssh-slaves">SSH Slaves</a> based agents will always use the latest <code>agent.jar</code>, but other agent types may need to have their <code>agent.jar</code> updated manually.
+The following agent types should be updated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java Web Start agents with <code>agent.jar</code> / <code>slave.jar</code> JARs on the disk need to update those to version 3.19 or above.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/swarm">Swarm Plugin</a> Client needs to be updated to version 3.11 or above.</p>
+</li>
+<li>
+<p>Agent Docker Packages offered by the Jenkins project (<a href="https://hub.docker.com/r/jenkins/agent/">jenkins/agent</a> and <a href="https://hub.docker.com/r/jenkins/inbound-agent/">jenkins/inbound-agent</a>) need to be updated to version 3.19-1 or above.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jobbuild-permission-no-longer-implies-jobcancel-permission"><a class="anchor" href="#jobbuild-permission-no-longer-implies-jobcancel-permission"></a>Job/Build permission no longer implies Job/Cancel permission</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-14713">JENKINS-14713</a></p>
+</div>
+<div class="paragraph">
+<p>To allow greater flexibility in configuring permissions, the 'implies' relationship between Job/Build and Job/Cancel has been removed.
+Users now need to be granted the Job/Cancel permission explicitly to cancel builds, even those they started themselves.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ui-for-renaming-jobs-has-been-changed"><a class="anchor" href="#ui-for-renaming-jobs-has-been-changed"></a>UI for renaming jobs has been changed</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-22936">JENKINS-22936</a></p>
+</div>
+<div class="paragraph">
+<p>It is no longer possible to rename jobs from their configuration page.
+Jobs now have a link in the side panel titled "Rename" that links to a page specifically dedicated to renaming jobs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-administrative-monitor-warns-about-undefined-root-url"><a class="anchor" href="#new-administrative-monitor-warns-about-undefined-root-url"></a>New administrative monitor warns about undefined root URL</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-31661">JENKINS-31661</a></p>
+</div>
+<div class="paragraph">
+<p>If you have not defined a root URL, various Jenkins features will not work correctly.
+To ensure to the extent possible that a root URL is configured, an administative monitor will show when it&#8217;s not.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jdk-tool-plugin-detached-from-jenkins-core"><a class="anchor" href="#jdk-tool-plugin-detached-from-jenkins-core"></a>JDK Tool Plugin detached from Jenkins core</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-22367">JENKINS-22367</a></p>
+</div>
+<div class="paragraph">
+<p>The automatic installer for JDKs has been moved into a plugin to have a lifecycle independent from Jenkins core.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ui-option-for-custom-builds-and-workspace-directories-on-the-master-has-been-removed"><a class="anchor" href="#ui-option-for-custom-builds-and-workspace-directories-on-the-master-has-been-removed"></a>UI option for custom builds and workspace directories on the master has been removed</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-50164">JENKINS-50164</a></p>
+</div>
+<div class="paragraph">
+<p>Build Record Root Directory and Workspace Root Directory can no longer be configured through the UI as these options were generally unsafe to use while Jenkins was running.
+Instead, these locations can now be customized using system properties on startup.
+Existing changes to these options will be retained unless and until overridden at startup.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pipeline-improvements"><a class="anchor" href="#pipeline-improvements"></a>Pipeline improvements</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-46652">JENKINS-46652</a>
+<a href="https://issues.jenkins.io/browse/JENKINS-47142">JENKINS-47142</a>
+<a href="https://issues.jenkins.io/browse/JENKINS-26143">JENKINS-26143</a></p>
+</div>
+<div class="paragraph">
+<p>Various changes to Jenkins core make it easier to use Pipelines:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Choice parameters now allow the use of a list of options instead of a string of options separated by line breaks.</p>
+</li>
+<li>
+<p><code>archiveArtifacts</code> now throws a normal exception when no matching files could be found.</p>
+</li>
+<li>
+<p>Jenkins no longer prevents the execution of pipelines running as a user without Job/Build permission on the master node with Authorize Project Plugin.</p>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

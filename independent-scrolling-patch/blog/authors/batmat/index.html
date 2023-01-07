@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Community Blog
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/batmat/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/batmat/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-8 main-content with-sidebar" id="content">
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Baptiste Mathus" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/batmat.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">Baptiste Mathus</p>
+<div class="paragraph">
+<p>Baptiste has been using and contributing to Jenkins since it was called differently, and is a huge proponent of the Agile, Devops &amp; Continuous Delivery movements.
+He loves to discuss not only the technical aspects, but also the even more essential cultural aspects of this all, working together to improve the value provided to customers in a great inclusive and blameless environment.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/batmat" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bmathus" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://batmat.net" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial blogcardlist.html.haml -->
+<div class="content blog-posts app-blog-page">
+<div class="item-list">
+<ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2021/06/04/digester-removal/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jun
+</div>
+<div class="day">
+04
+</div>
+</div>
+<h5 class="title">
+Apache Commons Digester library removal (breaking changes!)
+</h5>
+</div>
+<p class="teaser">
+Keeping up with our goal to clean up some of the technical debt inside Jenkins Core and reduce the maintenance overheads, we are happy to report we were able to remove a long-deprecated Apache Commons Digester library.
+
+
+Jenkins Core does not depend anymore on Apache Commons Digester v.2.1, a version that has been released in 2010.
+
+
+Some plugins will require update to operate properly after the...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/12/10/the-official-Docker-image/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Official Jenkins image to use from Docker Hub
+</h5>
+</div>
+<p class="teaser">
+There are now three different Docker Hub repositories that are or have been used as the "official" Jenkins image.
+This article aims at providing a clarification about which one is the current official one (as of December 2018 :-)).
+
+
+The official one
+
+
+
+docker pull jenkins/jenkins
+
+
+
+i.e. https://hub.docker.com/r/jenkins/jenkins/ is the right repository to use.
+
+
+I also documented some time ago on my blog the recommended way to run Jenkins using...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/docker/">
+docker
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/09/13/speaker-blog-evergreen-safely-upgrading/">
+<div class="header">
+<div class="date">
+<div class="month">
+Sep
+</div>
+<div class="day">
+13
+</div>
+</div>
+<h5 class="title">
+Speaker blogpost: Jenkins Evergreen At DevOps World | Jenkins World 2018
+</h5>
+</div>
+<p class="teaser">
+Evergreen is a distribution of Jenkins we are working on that provides an easy to use and automatically upgrading experience.
+This year at the conference, there will be not just one, but two talks to present Evergreen to the Jenkins community:
+
+
+
+
+Continuously Delivering an Easy-to-Use Jenkins with Jenkins Evergreen, by R. Tyler Croy.
+
+
+Safely Upgrading Jenkins Every Single Day, by Baptiste Mathus.
+
+
+
+
+Tyler will present the overall Jenkins...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2018/">
+jenkinsworld2018
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/evergreen/">
+evergreen
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2018/07/10/jenkins-essentials-on-aws/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jul
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Jenkins Essentials flavor for AWS
+</h5>
+</div>
+<p class="teaser">
+Jenkins Essentials has been renamed to Jenkins Evergreen since this was written.
+
+
+
+
+
+
+
+
+Jenkins Essentials is about providing a distribution of Jenkins in less than five minutes and five clicks.
+One of the main ideas to make this a reality is that Jenkins will be autoconfigured with sane defaults for the environment it is running in.
+
+
+We are happy to report we recently merged the change that provides...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsevergreen/">
+jenkinsevergreen
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/evergreen/">
+evergreen
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/04/10/jenkins-has-upgraded-to-java-8/">
+<div class="header">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Starting with 2.54, Jenkins now requires Java 8
+</h5>
+</div>
+<p class="teaser">
+We announced in January
+that Jenkins would be upgrading its Java runtime dependency to Java 8 this
+year. After a sizable amount of preparation, this week&#8217;s release of
+Jenkins 2.54 is the first weekly release to require
+a Java 8 runtime.
+
+
+For users of the weekly release, this means that Jenkins 2.54 must have
+a Java 8 runtime installed on the system in order to
+run. Those using the
+jenkinsci/jenkins:latest
+Docker container won&#8217;t...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java8/">
+java8
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/03/21/toulousejam-pipeline-workshop/">
+<div class="header">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+21
+</div>
+</div>
+<h5 class="title">
+Pipeline Workshop & Hackergarten @ ToulouseJAM Feedback
+</h5>
+</div>
+<p class="teaser">
+Earlier this month, a full-day event about Jenkins Pipeline was organized in Toulouse, France with the Toulouse JAM.
+
+
+After a warm-up on the previous Tuesday where Michaël Pailloncy had given a talk at the local Toulouse Devops user group about Jenkins Pipeline ecosystem, we were ready for more digging :-).
+
+
+
+
+
+
+
+The agenda
+
+
+We had planned the day in two parts:
+
+
+
+
+Morning would be a more driven workshop with...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/hackergarten/">
+hackergarten
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jam/">
+jam
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meetup/">
+meetup
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/feedback/">
+feedback
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/01/17/Jenkins-is-upgrading-to-Java-8/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+Jenkins Upgrades To Java 8
+</h5>
+</div>
+<p class="teaser">
+In the next few months, Jenkins will require Java 8 as its runtime.
+
+
+Back in
+last November,
+we discussed interesting statistics showing that Jenkins was now running Java 8
+on a majority of its running instances.
+
+
+Timeline
+
+
+Here is how we plan to roll that baseline upgrade in the next few months.
+
+
+
+
+Now: Announce the intention publicly.
+
+
+April, 2017: Drop support for Java 7 in Jenkins weekly.
+With the current rhythm, that means...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java8/">
+java8
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/upgrade/">
+upgrade
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+22
+</div>
+</div>
+<h5 class="title">
+What JVM versions are running Jenkins? 2016 Update!
+</h5>
+</div>
+<p class="teaser">
+Like for last year&#8217;s article about the same subject, yet another recent discussion about finally requiring Java 8 to run future versions Jenkins pushed me to gather some more factual data around it.
+
+
+
+
+
+
+
+
+What follows contains some opinions or statements which may not be seen as purely factual or neutral. Note that this represents by no mean the general position of the Jenkins governance board....
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/statistics/">
+statistics
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/03/02/toulousejam-hackergarten/">
+<div class="header">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+02
+</div>
+</div>
+<h5 class="title">
+Jenkins Hackergarten : mercredi 9 mars 2016 à Toulouse
+</h5>
+</div>
+<p class="teaser">
+Vous êtes développeuse ou développeur, vous avez envie de découvrir le projet
+Jenkins de l&#8217;intérieur, en bricolant sur un sujet qui vous intéresse, lisez
+la suite !
+
+
+Mercredi 9 mars, le Toulouse Jenkins Area Meetup
+organise à Toulouse un Hackergarten Jenkins, occasion idéale pour faire ses
+premiers pas dans la communauté assisté(e) d&#8217;un contributeur au projet.
+
+
+Hackergart quoi ?
+
+
+Hackergarten est un mot qui provient de la contraction des mots Hacker...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/hackergarten/">
+hackergarten
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jam/">
+jam
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meetup/">
+meetup
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<!-- ending partial blogcardlist.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
+<div class="content">
+<!-- starting partial events.html.haml -->
+<div class="item-list">
+<ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://fosdem.org/2023/" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+FOSDEM'23
+</h5>
+Brussels, Belgium
+</div>
+<p class="teaser">
+
+FOSDEM is a free event for software developers to meet, share ideas and collaborate. Visit us at the Jenkins stand.
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.socallinuxexpo.org/scale/20x" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+9
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+10:00 am
+</div>
+</div>
+<h5 class="title">
+SCALE 20X
+</h5>
+Pasadena, California
+</div>
+<p class="teaser">
+
+SCaLE is the largest community-run open-source and free software conference in North America. Visit us at the Jenkins booth!
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+</ul>
+</div>
+
+<!-- ending partial events.html.haml -->
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//node/index.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

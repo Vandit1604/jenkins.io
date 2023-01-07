@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Introducing Jenkins Certification
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/03/15/jenkins-certification/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Introducing Jenkins Certification" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Introducing Jenkins Certification" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Introducing Jenkins Certification" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/03/15/jenkins-certification/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Introducing Jenkins Certification" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Introducing Jenkins Certification
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/fdechery/"><div class="app-avatar"></div> Francois Dechery</a>
+March 15, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Introducing+Jenkins+Certification&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F03%2F15%2Fjenkins-certification%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://twitter.com/francoisdechery">Francois
+Dechery</a>, he works at CloudBees managing Customer Engagement/Support, Consulting
+and Training. He is also leading the Jenkins Certification program at CloudBees
+which has been discussed in some of our previous (<a href="http://meetings.jenkins-ci.org/jenkins/2015/jenkins.2015-08-05-18.00.html">1</a>,
+<a href="http://meetings.jenkins-ci.org/jenkins-meeting/2016/jenkins-meeting.2016-02-17-19.00.html">2</a>,
+<a href="http://meetings.jenkins-ci.org/jenkins-meeting/2016/jenkins-meeting.2016-03-02-19.00.html">3</a>)
+<a href="https://wiki.jenkins.io/display/JENKINS/Governance+Meeting+Agenda">governance
+meetings</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the IT world, namely in software, "certification" is used in many different
+ways and for many different purposes. From very simple and light certifications
+to very heavy and complex ones. In the "light" category you can usually be
+certified on the basis of a short quiz at the end of an online training. At the
+other end of the spectrum, certifications are based on a proctored
+multiple-choice questionnaire-based exam and/or hands-on labs. In some
+industries, certifications are even more demanding. For instance, to become a
+Certified Public Accountant in the US, you have to pass a standard examination
+and, on top of this, each state/jurisdiction has its own set of education and
+experience requirements that individuals must meet.</p>
+</div>
+<div class="sect1">
+<h2 id="creating-the-jenkins-certification"><a class="anchor" href="#creating-the-jenkins-certification"></a>Creating the Jenkins certification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When we started our internal discussions at CloudBees regarding a certification
+program for Jenkins, we were aware of this broad set of certification
+definitions. Therefore, our first goal was to define what type of certification
+we wanted to develop and for what purpose. We quickly agreed on the fact that it
+should be <em>a professional-grade certification, whose purpose would be to provide
+a professional standard for the Jenkins ecosystem,</em> benefiting both individuals
+and organizations, thanks to a common, respected and well-known body of
+knowledge and practice. "Professional" means that you have the expected level of
+skills and experience in order to leverage them in a professional environment,
+for example in enterprise projects or as a consultant.</p>
+</div>
+<div class="paragraph">
+<p>Many members of the CloudBees team have firsthand experience with certification
+programs developed in other IT ecosystems such as telecoms (Cisco),
+infrastructure (Microsoft, Red Hat) or business applications (SAP), to name a
+few. This was definitely the type of professional certification we wanted to
+bring to Jenkins. We knew it would represent a substantial investment but we
+also knew that the whole Jenkins ecosystem would benefit. Whether at the overall
+community or individual level, as well as IT organizations, system integrators
+or recruiting firms looking for qualified Jenkins personnel.</p>
+</div>
+<div class="paragraph">
+<p>I have had the privilege to supervise the creation and implementation of the
+<a href="https://www.cloudbees.com/jenkins-certification">Jenkins Certification Program</a>
+at CloudBees. The program is comprised of two certifications: "Certified Jenkins
+Engineer" (CJE) for Jenkins certification, and Certified CloudBees Jenkins
+Platform Engineer (CCJPE) for certification on the CloudBees Jenkins Platform.</p>
+</div>
+<div class="paragraph">
+<p>We started by creating a Certification Advisory Board whose members are:
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>, Jenkins creator and CTO at
+CloudBees; <a href="https://github.com/harpreetsingh">Harpreet Singh</a>, VP Products at
+CloudBees; <a href="https://github.com/olivergondza">Oliver Gondža</a>, initially
+representing the Jenkins community; <a href="https://twitter.com/jsin">Jason Shawn</a>,
+senior director DevOps at Ellucian, representing the CloudBees customer
+constituency; and <a href="https://twitter.com/alvarezjj1">Jose Alvarez</a>,
+managing director at Zivra, representing the CloudBees partner ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>This dedicated group helped us first to create the certification blueprint which
+defines the main sections of the exam and their relative importance in the
+overall scoring. This blueprint also provides the high-level table of contents
+of the certification
+<a href="https://www.cloudbees.com/sites/default/files/cje_study_guide_final.pdf">study guides</a>.
+They also helped to define the Jenkins Engineer profile that the certification
+assesses.</p>
+</div>
+<div class="paragraph">
+<p>With this blueprint in hand, we put together a team of 40 Jenkins subject-matter
+experts (SMEs), mostly from CloudBees with a few from partners. Together they
+worked for several months on the creation of hundreds of exam questions, doing
+iterative peer reviews, filtering out any irrelevant or ambiguous questions and
+narrowing down the pool of questions to the best questions for each section.
+All this, plus a thorough analysis and balancing exercise to make sure the level
+of difficulty was evenly distributed across each section of the exam.</p>
+</div>
+<div class="paragraph">
+<p>The big lesson from the exam creation experience is that creating a
+professional-grade exam is hard! And it requires very specific experience. In
+short, being a subject-matter expert is definitely not enough and we&#8217;re glad to
+have collaborated with <a href="https://www.prometric.com/">Prometric</a>'s
+certification specialists who guided us through this process. The result is
+definitely worth the effort. Either of the two certifications offered within the
+Jenkins Certification Program are truly what we would consider
+"professional-grade certifications."</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-does-certification-get-you"><a class="anchor" href="#what-does-certification-get-you"></a>What does certification get you?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Getting certified means being recognized for your skills and experience as a
+Jenkins professional. However, like any exam-based recognition, its actual value
+depends on three criteria: the level of difficulty of the exam, its quality and
+its integrity.</p>
+</div>
+<div class="paragraph">
+<p>As far as <strong>difficulty</strong> is concerned, it is clear that not everyone will pass and
+that is expected from a professional-grade certification, as mentioned earlier.
+We have definitely created an exam that is demanding. It does not only measure
+your theoretical knowledge of Jenkins but also your hands-on practical
+experience. To ensure its <strong>quality</strong>, we have applied best-industry practices
+regarding the exam&#8217;s creation and review process, working with certification
+specialists. It includes the weighing of questions, the distribution of easy,
+medium and difficult ones, the removal of any ambiguous wording, as well as
+alpha and beta final test procedures, in order to only keep the most appropriate
+questions. We are also putting in place a formal maintenance process to capture
+any "bug" in the exam and adapt the questions to Jenkins evolutions over time.
+Last but not least, we ensure the exam&#8217;s <strong>integrity</strong> by working with Prometric
+for the administration of exams. Tests are taken in fully secured and proctored
+test rooms, without any access to any human or electronic resource and
+without any doubt about who takes the test. Thanks to Prometric&#8217;s hundreds
+of test centers around the world, this integrity is ensured in any location.</p>
+</div>
+<div class="paragraph">
+<p>Beyond this external recognition, getting certified is also a process that lets
+you take a step back from your day-to-day practice of Jenkins and assess your
+skills and knowledge. You start this reassessment process by reading the Study
+Guides for the certifications. Then, by taking the test itself, you can identify
+your strengths and weaknesses in a very practical way. In short, a certification
+gives you a measurable goal to achieve.</p>
+</div>
+<div class="paragraph">
+<p>Click <a href="https://www.cloudbees.com/jenkins-certification">here</a> for more
+information on the Jenkins Certification Program by CloudBees.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/certification/">
+certification
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/fdechery/">
+Francois Dechery
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/fdechery" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/francoisdechery" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-03-15-jenkins-certification.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

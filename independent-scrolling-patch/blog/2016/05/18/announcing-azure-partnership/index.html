@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Partnering with Microsoft to run Jenkins infrastructure on Azure
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/05/18/announcing-azure-partnership/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Partnering with Microsoft to run Jenkins infrastructure on Azure" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Partnering with Microsoft to run Jenkins infrastructure on Azure" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Partnering with Microsoft to run Jenkins infrastructure on Azure" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/05/18/announcing-azure-partnership/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Partnering with Microsoft to run Jenkins infrastructure on Azure" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Partnering with Microsoft to run Jenkins infrastructure on Azure
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+May 18, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Partnering+with+Microsoft+to+run+Jenkins+infrastructure+on+Azure&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F05%2F18%2Fannouncing-azure-partnership%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I am pleased to announce that we have partnered with Microsoft to migrate and
+power the Jenkins project&#8217;s infrastructure with
+<a href="https://azure.microsoft.com/en-us/">Microsoft Azure</a>. The partnership comes
+at an important time, after the recent launch of <a href="/2.0/">Jenkins 2.0</a>,
+Jenkins users are more readily adopting <a href="/solutions/pipeline">Pipeline as
+Code</a> and many other plugins at an increasing rate, elevating the importance of
+Jenkins infrastructure to the overall success of the project. That strong and
+continued growth has brought new demands to our infrastructure&#8217;s design and
+implementation, requiring the next step in its evolution. This partnership helps
+us grow with the rest of the project by unifying our existing infrastructure
+under one comprehensive, modern and scalable platform.</p>
+</div>
+<div class="paragraph">
+<p>In March we
+<a href="http://meetings.jenkins-ci.org/jenkins-meeting/2016/jenkins-meeting.2016-03-30-18.00.html">discussed
+the potential partnership</a> in our regularly scheduled
+<a href="https://wiki.jenkins.io/display/JENKINS/Governance+Meeting+Agenda">project
+meeting</a>,
+highlighting some of the infrastructure challenges that we face:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Currently we have infrastructure in four different locations, with four
+different infrastructure providers, each with their own APIs and tools for
+managing resources, each with varying capabilities and capacities.</p>
+</li>
+<li>
+<p>Project infrastructure is managed by a team of volunteers, operating
+more than 15 different services and managing a number of additional external
+services.</p>
+</li>
+<li>
+<p>Our current download/mirror network, while geographically distributed, is
+relatively primitive and its implementation prevents us from using more modern
+distribution best practices.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In essence, five years of tremendous growth for Jenkins has outpaced our
+organically grown, unnecessarily complex, project infrastructure. Migrating to
+Azure simplifies and improves our infrastructure in a dramatic way that would
+not be possible without a comprehensive platform consisting of: compute, CDN,
+storage and data-store services. Our partnership covers, at minimum, the next
+three years of the project&#8217;s infrastructure needs, giving us a great home for
+the future.</p>
+</div>
+<div class="paragraph">
+<p>Azure also enables a couple of projects that <a href="https://github.com/rtyler">I</a>
+have long been dreaming of providing to Jenkins users and contributors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>End-to-end TLS encrypted distribution of Jenkins packages, plugins and
+metadata via the <a href="https://azure.microsoft.com/en-us/services/cdn/">Azure CDN</a>.</p>
+</li>
+<li>
+<p>More complete build/test/release support and capacity on
+<a href="https://ci.jenkins.io">ci.jenkins.io</a> for plugin developers using
+<a href="https://azure.microsoft.com/en-us/services/container-service/">Azure
+Container Service</a> and generic VMs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Jenkins infrastructure is <a href="https://github.com/jenkins-infra">all open
+source</a> which means  all of our Docker containers, Puppet code and many of our
+tools are all available <a href="https://github.com/jenkins-infra">on GitHub</a>. Not
+only can you watch the migration process to Azure as it happens, but I also
+invite you to <strong>participate</strong> in making our project&#8217;s infrastructure better (join
+us in the <code>#jenkins-infra</code> channel on <a href="https://freenode.net">Freenode</a> or our
+<a href="http://lists.jenkins-ci.org/mailman/listinfo/jenkins-infra">mailing list</a>).</p>
+</div>
+<div class="paragraph">
+<p>Suffice it to say, I&#8217;m very excited about the bright [blue] future for the
+Jenkins project and the infrastructure that powers it!</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/azure/">
+azure
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/infra/">
+infra
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/infrastructure/">
+infrastructure
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-05-18-announcing-azure-partnership.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

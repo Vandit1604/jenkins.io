@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Plugin Health Scoring system
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2022/projects/plugin-health-scoring-system/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Plugin Health Scoring system" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Plugin Health Scoring system" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Plugin Health Scoring system" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2022/projects/plugin-health-scoring-system/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Plugin Health Scoring system" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Plugin Health Scoring system
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Provide a 'plugin health indicator' for plugin maintainers and Jenkins administrators
+</p>
+<p>
+<b>
+Status:
+</b>
+Selected
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Contributor:
+<a class="app-author-link" href="/blog/authors/dheerajodha/"><div class="app-avatar"><img alt="Dheeraj Singh Jodha" class="app-avatar__image" src="/images/avatars/dheerajodha.jpg"></div> Dheeraj Singh Jodha</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/alecharp/"><div class="app-avatar"><img alt="Adrien Lecharpentier" class="app-avatar__image" src="/images/avatars/alecharp.jpg"></div> Adrien Lecharpentier</a>
+, 
+<a class="app-author-link" href="/blog/authors/adi10hero/"><div class="app-avatar"><img alt="Aditya Srivastava" class="app-avatar__image" src="/images/avatars/adi10hero.png"></div> Aditya Srivastava</a>
+, 
+<a class="app-author-link" href="/blog/authors/jleon/"><div class="app-avatar"><img alt="Jake Leon" class="app-avatar__image" src="/images/avatars/jleon.jpg"></div> Jake Leon</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="sect2">
+<h3 id="abstract"><a class="anchor" href="#abstract"></a>Abstract</h3>
+<div class="paragraph">
+<p>This project aims to introduce a metric system to calculate the health score of each plugin within the Jenkins ecosystem and reflect the final scores on the Plugin Site for the plugin maintainers and users.
+The health score of each plugin would be shown on the UI with a detailed report of strengths and areas of improvement, making it easier for maintainers to maintain their plugins, and for users to decide if they should install/use a plugin.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rationale"><a class="anchor" href="#rationale"></a>Rationale</h3>
+<div class="paragraph">
+<p>Plugin maintenance is an extremely important phase of a plugin’s lifecycle.
+Keeping a plugin current with the ongoing development of Jenkins is key for a smooth operation.
+Keeping it current can require user interface improvements, dependency updates, and more.
+Measurements of the plugin’s "health" will help maintainers as they decide how to invest their development time, and will also help the users to decide if they should install and use a plugin.
+Plugins with a lower health score may be less likely to meet the user’s reliability needs.
+The plugin health score attempts to provide an accurate picture of how much care and help a plugin needs and makes it easier for every interested potential contributor to have an in-depth look at how they can fulfill those needs based on their expertise.
+This score also allows users to make a conscious decision before installing and/or using a plugin.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementation"><a class="anchor" href="#implementation"></a>Implementation</h3>
+<div class="paragraph">
+<p>A backend maven project which generates and deploys a JSON file containing the health score details of the plugins.
+Scrape each plugin’s repository and run some probes and collect the observations.
+Calculate Plugin Health score with the help of the above observations.
+Deploy the health scores via a JSON file similar to how Jenkins Update Center does it.
+A separate section on the Jenkins Plugin Site which displays the detailed report of the health score of each plugin by fetching the JSON data generated above.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="office-hours"><a class="anchor" href="#office-hours"></a>Office hours</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>(General) Official weekly Jenkins office hours: Thursdays 3pm to 3:30pm UTC</p>
+</li>
+<li>
+<p>(Project-based) Details regarding the Weekly project-specific office hours can be found inside our <a href="https://docs.google.com/document/d/1YZr527mYmEYmGy00RaDEbi1bi1gpdVR13031KSi_NmM/">Meeting Document</a>, along with the past recordings and important links.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-links"><a class="anchor" href="#project-links"></a>Project Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/plugin-site">Jenkins Plugin Site</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1PKYIpPlRVGsBqrz0Ob1Cv3cefOZ5j2xtGZdWs27kLuw/edit#">Contributing to Open Source</a></p>
+</li>
+</ul>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/GSoC-Plugin_Health_Score" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/GSoC-Plugin_Health_Score.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2022/projects/plugin-health-scoring-system/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc/2022/project-ideas/plugin-health-scoring-system" rel="noreferrer noopener" target="_blank">
+Original GSoC project idea
+</a>
+</li>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#rationale">Rationale</a></li>
+<li><a href="#implementation">Implementation</a></li>
+<li><a href="#office-hours">Office hours</a></li>
+<li><a href="#project-links">Project Links</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/GSoC-Plugin_Health_Score" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/GSoC-Plugin_Health_Score.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2022/projects/plugin-health-scoring-system/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2022/10/10/plugin-health-scoring-system-report/">
+Plugin Health Scoring System
+</a>
+</li>
+<li>
+<a href="/blog/2022/10/10/pipeline-steps-improvement-gsoc-report/">
+Pipeline Steps Documentation Generator Improvements
+</a>
+</li>
+<li>
+<a href="/blog/2022/09/07/jenkinsfile-runner-as-github-actions/">
+A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions
+</a>
+</li>
+<li>
+<a href="/blog/2022/06/13/Let-the-coding-start/">
+Let the (GSoC) coding start !
+</a>
+</li>
+<li>
+<a href="/blog/2022/05/20/gsoc2022-projects-announcement/">
+Welcome Google Summer of Code 2022 Contributors!
+</a>
+</li>
+<li>
+<a href="/blog/2022/03/08/gsoc2022-announcement/">
+Google Summer of Code 2022… Here We Come!
+</a>
+</li>
+<li>
+<a href="/blog/2022/02/16/return_of_students_as_mentors/">
+Jenkins GSoC 2022: The Return of Students as Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2022/01/07/gsoc-2022/">
+Google Summer of Code 2022 Call for Project Ideas and Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2021/12/22/deprecated-ruby-runtime/">
+Deprecating non-Java plugins
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2022/projects/plugin-health-scoring-system.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

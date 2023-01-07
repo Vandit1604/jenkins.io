@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.303.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.303/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.303.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.303.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.303.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.303/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.303.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.303.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.303.1 covers the upgrade from  2.289.3.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-303-3">
+Upgrading to Jenkins 2.303.3
+</h3>
+<div class="paragraph">
+<p>Multiple changes related to the agent-to-controller security subsystem may result in problems.</p>
+</div>
+<div class="sect3">
+<h4 id="SECURITY-2458"><a class="anchor" href="#SECURITY-2458"></a>Agent-to-controller security hardening (role checks)</h4>
+<div class="paragraph">
+<p>Jenkins agents communicate with the controller using the <a href="https://github.com/jenkinsci/remoting/">remoting library</a>.
+Individual messages (implementations of the <code>Callable</code> interface) instruct the other side to perform operations and/or provide information.
+To restrict what agents can instruct controllers to do, <code>Callable</code> implementations are expected to implement a <em>role check</em>, i.e. a declaration on which side of the communication channel they can be executed.</p>
+</div>
+<div class="paragraph">
+<p>To prevent plugins from (unintentionally) not implementing an effective role check, Jenkins will reject <code>Callables</code> with unimplemented role checks starting with 2.319 and LTS 2.303.3.
+See <a href="/doc/book/security/controller-isolation/required-role-check/">the Required Role Check page for more details, including a list of known affected plugins and workarounds</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="/doc/developer/security/remoting-callables/">developer documentation</a> contains guidelines for the safe and correct implementation of the <code>Callable</code> interface.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="SECURITY-2455"><a class="anchor" href="#SECURITY-2455"></a>Agent-to-controller file path filter security fixes</h4>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-11-04/#SECURITY-2455">SECURITY-2455</a></p>
+</div>
+<div class="paragraph">
+<p>Jenkins agents communicate with the controller using the <a href="https://github.com/jenkinsci/remoting/">remoting library</a>.
+For compatibility with existing plugins, agents are allowed some limited access to files on the Jenkins controller file system.
+Jenkins 2.303.3 and 2.319 fix multiple vulnerabilities that resulted in incomplete access control enforcement.</p>
+</div>
+<div class="paragraph">
+<p>Any plugins that access files on the Jenkins controller from code running on agents may be affected by these security fixes.
+Beyond previously allowed operations now being prohibited, the newly introduced path canonicalization means that instances using a custom builds directory (<a href="/doc/book/managing/system-properties/#jenkins-model-jenkins-buildsdir">Java system property <code>jenkins.model.Jenkins.buildsDir</code></a>) or partitioning <code>JENKINS_HOME</code> using symbolic links may fail access control checks to files that are intended to be accessible.</p>
+</div>
+<div class="paragraph">
+<p>If access to a file is rejected, an exception with the following message is made available to agents; this is typically what also will show up in build logs and similar output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Agent may not access a file path. See the system log for more details about the error ID ↵
+    '&lt;UUID here&gt;' and https://www.jenkins.io/redirect/security-144 for more information</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="/doc/book/system-administration/viewing-logs/">Jenkins system log</a> will contain more details.</p>
+</div>
+<div class="paragraph">
+<p>As of 2021-11-04, no plugins are known to be affected by this security fix.</p>
+</div>
+<div class="paragraph">
+<p>In case of problems, you can temporarily <a href="/doc/book/security/controller-isolation/agent-to-controller/#file-access-rules">customize the file access rules</a> to allow specific, intended agent-to-controller file path accesses to pass.
+Applying custom rules is also the recommended workaround when using a custom builds directory or using symbolic links to distribute <code>JENKINS_HOME</code> across multiple volumes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Due to a bug in current releases of Jenkins discovered only shortly before release of Jenkins 2.319 and 2.303.3 (<a href="https://issues.jenkins.io/browse/JENKINS-67061">JENKINS-67061</a>), Jenkins will only consider the additional rules defined through the UI from the time that the form is submitted until Jenkins is restarted.
+To work around this bug and load both bundled and custom rules, run the following script in the <a href="/doc/book/managing/script-console/">script console</a> after submitting rules through the UI:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">ExtensionList</span><span class="o">.</span><span class="na">lookupSingleton</span><span class="o">(</span>
+    <span class="n">jenkins</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">s2m</span><span class="o">.</span><span class="na">AdminWhitelistRule</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">filePathRules</span><span class="o">.</span><span class="na">load</span><span class="o">()</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are unable to immediately upgrade Jenkins, you can install the <a href="/redirect/remoting-security-workaround/">Remoting Security Workaround Plugin</a>.
+It will prevent all agent-to-controller file access using <code>FilePath</code> APIs.
+Because it is more restrictive than the Jenkins security fixes, more plugins are incompatible with it.
+Make sure to read the plugin documentation before installing it.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="SECURITY-2428"><a class="anchor" href="#SECURITY-2428"></a>Agent-to-controller security fix related to build directory access</h4>
+<div class="paragraph">
+<p>Jenkins agents communicate with the controller using the <a href="https://github.com/jenkinsci/remoting/">remoting library</a>.
+For compatibility with existing plugins, agents are allowed some limited access to files on the Jenkins controller file system.
+The directories agents are allowed to access include the directories storing build-related information, intended to allow agents to store build-related metadata during build execution.
+As a consequence, this allowed <em>any</em> agent to read and write the contents of <em>any</em> build directory on the Jenkins controller file system with very few restrictions (<code>build.xml</code> and some Pipeline-related metadata).</p>
+</div>
+<div class="paragraph">
+<p>Since Jenkins 2.319 and LTS 2.303.3, agents are only allowed to access contents of build directories related to builds currently running on the agent attempting to access the directory.</p>
+</div>
+<div class="paragraph">
+<p>Plugins that implement functionality executing on agents that accesses build directories on the Jenkins controller file system may be impacted by this change.
+Plugins accessing directories of builds not currently running on the agent accessing the directory will need to be adapted to no longer do that.
+Jenkins will not associate Pipeline <code>node</code> blocks with the agents they&#8217;re running on unless <a href="https://plugins.jenkins.io/workflow-durable-task-step/">Pipeline: Nodes and Processes</a> has been updated to version 2.40 or newer.</p>
+</div>
+<div class="paragraph">
+<p>If access to a file by an agent is rejected, an exception with the following message is thrown instead; this is typically what also will show up in build logs and similar output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Agent tried to access build directory of a build not currently running on this system. ↵
+    Learn more: https://www.jenkins.io/redirect/security-144/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="/doc/book/system-administration/viewing-logs/">Jenkins system log</a> will contain more detailed information.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, plugins opening a direct channel between the controller and a process, like <a href="https://plugins.jenkins.io/maven-plugin/">Maven Integration Plugin</a>, are completely prohibited from accessing build directories.</p>
+</div>
+<div class="paragraph">
+<p>If access to a file by a process is rejected, an exception with the following message is thrown instead; this is typically what also will show up in build logs and similar output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Failed to discover context of access to build directory</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <a href="/doc/book/system-administration/viewing-logs/">Jenkins system log</a> will contain more detailed information.</p>
+</div>
+<div class="paragraph">
+<p>As of 2021-11-08, no plugins are known to be affected by this security fix.</p>
+</div>
+<div class="paragraph">
+<p>This security fix can be disabled by setting the Java system property <a href="/doc/book/managing/system-properties/#jenkins-security-s2m-runningbuildfilepathfilter-skip"><code>jenkins.security.s2m.RunningBuildFilePathFilter.SKIP</code></a> to <code>true</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are unable to immediately upgrade Jenkins, you can install the <a href="/redirect/remoting-security-workaround/">Remoting Security Workaround Plugin</a>.
+It will prevent all agent-to-controller file access using <code>FilePath</code> APIs.
+Because it is more restrictive than the Jenkins security fixes, more plugins are incompatible with it.
+Make sure to read the plugin documentation before installing it.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-303-2">
+Upgrading to Jenkins 2.303.2
+</h3>
+<div class="sect3">
+<h4 id="SECURITY-2452"><a class="anchor" href="#SECURITY-2452"></a>Redefinition of build cause description property</h4>
+<div class="paragraph">
+<p>The short description of build causes  was defined as a short snippet of HTML in Jenkins 2.314 and earlier, LTS 2.303.1 and earlier.
+It is exposed as the <code>shortDescription</code> field of build causes in the <a href="/doc/book/using/remote-access-api/">Remote Access API</a> of Jenkins, and rendered on the UI on the overview page of builds, unless a build cause provides a custom UI.</p>
+</div>
+<div class="paragraph">
+<p>To prevent further security vulnerabilities like <a href="/security/advisory/2021-10-06/#SECURITY-2499">SECURITY-2499</a> from having an impact on Jenkins users, the method has been redefined to return plain text in Jenkins 2.315 and LTS 2.303.2, and its output is no longer rendered as HTML on the UI.</p>
+</div>
+<div class="paragraph">
+<p>Users of the remote API who are currently rendering this field as HTML on their custom dashboards or similar API clients are advised to no longer do so.
+With the redefinition, any content that could be interpreted as HTML would be unsafe to render that way, as plugins may no longer escape it.</p>
+</div>
+<div class="paragraph">
+<p>Advice for maintainers has been added to the <a href="/doc/developer/security/xss-prevention/Cause-getShortDescription/">developer documentation</a>.</p>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-303-1">
+Upgrading to Jenkins 2.303.1
+</h3>
+<div class="sect3">
+<h4 id="default-docker-images-use-java-11"><a class="anchor" href="#default-docker-images-use-java-11"></a>Default Docker images use Java 11</h4>
+<div class="paragraph">
+<p>The Jenkins Docker images with tags that do not specify a Java version now use Java 11 instead of Java 8.
+Jenkins controller images with the following tags will use Java 11 beginning with 2.303.1:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jenkins/jenkins:lts</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:lts-alpine</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:lts-centos7</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:lts-slim</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-alpine</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-centos7</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-slim</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional controller images and tags have been added for those users who need to remain on Java 8.
+The new Java 8 tags include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jenkins/jenkins:lts-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:lts-alpine-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:lts-centos7-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:lts-slim-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-alpine-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-centos7-jdk8</code></p>
+</li>
+<li>
+<p><code>jenkins/jenkins:2.303.1-slim-jdk8</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins agents should be run with the same Java version as the controller.
+With the controller upgrade from Java 8 to Java 11, Jenkins agents need to be updated to run with Java 11.
+When using Docker images for the agent, that can generally be done by appending the <code>-jdk11</code> suffix to the agent tag.
+Cloud agents and static agents will need to be configured to launch with Java 11 instead of Java 8.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="obsolete-docker-images-and-tags-no-longer-published"><a class="anchor" href="#obsolete-docker-images-and-tags-no-longer-published"></a>Obsolete Docker images and tags no longer published</h4>
+<div class="paragraph">
+<p>Jenkins Docker images for new releases are not published for <code>centos</code>.
+The <code>centos</code> images use CentOS 8 as a baseline and CentOS 8 is no longer receiving updates from the Red Hat Enterprise Linux upstream.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Docker Windows images for new releases are not published for the <code>1809</code> images.
+Microsoft has ended mainstream support for <code>1809</code>.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Docker tags that include a version number are no longer published with the redundant <code>-lts</code> tag.
+The transition looks like this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2.303.1-lts is replaced with 2.303.1</p>
+</li>
+<li>
+<p>2.303.1-lts-alpine is replaced with 2.303.1-alpine</p>
+</li>
+<li>
+<p>2.303.1-lts-centos7 is replaced with 2.303.1-centos7</p>
+</li>
+<li>
+<p>2.303.1-lts-slim is replaced with 2.303.1-slim</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="multi-architecture-docker-images"><a class="anchor" href="#multi-architecture-docker-images"></a>Multi-architecture Docker images</h4>
+<div class="paragraph">
+<p>Jenkins Docker images now support multiple architectures, including <code>amd64</code> and <code>arm64</code> from selected images.
+The images with support for multiple architectures include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2.303.1 and 2.303.1-jdk11</p>
+</li>
+<li>
+<p>2.303.1-rhel-ubi8-jdk11</p>
+</li>
+<li>
+<p>2.303.1-almalinux</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="plugins-that-do-not-support-java-11"><a class="anchor" href="#plugins-that-do-not-support-java-11"></a>Plugins that do not support Java 11</h4>
+<div class="paragraph">
+<p>Some Jenkins plugins do not support Java 11.
+Plugins that do not support Java 11 also tend to be unmaintained.
+Users should remove those plugins before running Jenkins with Java 11.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://plugins.jenkins.io/ruby-rubtime">ruby runtime plugin</a> is not supported with Java 11.
+Plugins that depend on the ruby runtime plugin do not load in Jenkins running with Java 11.</p>
+</div>
+<div class="paragraph">
+<p>Plugins that depend on the ruby runtime include:</p>
+</div>
+<div class="paragraph">
+<p>Ruby runtime plugins with more than 1000 installations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/gitlab-hook">Gitlab Hook</a> (multiple security vulnerabilities)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cucumber">Cucumber</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/rvm">Rvm</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/pyenv">pyenv</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ruby runtime plugins with less than 700 installations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/capitomcat">Capitomcat</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/chef">Chef</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/ci-skip">Ci Skip</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/commit-message-trigger-plugin">Commit Message Trigger</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/git-notes">git-notes</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/mysql-job-databases">MySQL Job Databases</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/Pathignore">Pathignore</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/perl">Perl</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/rbenv">rbenv</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/singleuseslave">Single Use Agent</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/travis-yml">Travis YML</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ruby runtime plugins with less than 100 installations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/buddycloud">buddycloud</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/devstack">DevStack</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/ikachan">Ikachan</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/jenkinspider">Jenkinspider</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/perl-smoke-test">Perl Smoke Test</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/pry">pry</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/Yammer">Yammer</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-rpm-package-manager-dependency"><a class="anchor" href="#new-rpm-package-manager-dependency"></a>New RPM package manager dependency</h4>
+<div class="paragraph">
+<p>The Jenkins 2.303.1 RPM package has been made more consistent with the Debian Jenkins packaging.
+It uses the <code>daemonize</code> program to run the Java process of the Jenkins controller as a daemon.
+The <code>daemonize</code> program is available from the <code>epel-release</code> repository for most RPM based distributions.</p>
+</div>
+<div class="paragraph">
+<p>Some distributions based on the RPM package manager do not enable the 'epel-release' repository by default.
+Instructions to enable the epel-release repository are included in the Jenkins installation guide instructions for <a href="/doc/book/installing/linux/#red-hat-centos">Red Hat Enterprise Linux / CentOS</a>.</p>
+</div>
+<div class="paragraph">
+<p>Before updating to Jenkins 2.303.1, run the command:</p>
+</div>
+<div class="listingblock">
+<div class="title">Red Hat Enterprise Linux / CentOS</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># yum install epel-release</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="debian-upgrade-in-docker-images"><a class="anchor" href="#debian-upgrade-in-docker-images"></a>Debian upgrade in Docker images</h4>
+<div class="paragraph">
+<p>Docker controller images based on Debian, including <code>jenkins/jenkins:lts</code>, <code>jenkins/jenkins:lts-slim</code>, <code>jenkins/jenkins:2.303.1</code>, and <code>jenkins/jenkins:2.303.1-slim</code> are now based on <a href="https://www.debian.org/releases/bullseye/">Debian bullseye</a>, the most recent Debian release.
+Debian bullseye was released August 14, 2021 after a long period of stabilization and testing.</p>
+</div>
+<div class="paragraph">
+<p>Some packages that had been included in the Debian buster images may not be installed in these images.
+If your installation needs one of those packages, you&#8217;ll need to install it from inside your custom Dockerfile.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removed-apache-commons-digester-from-the-jenkins-core"><a class="anchor" href="#removed-apache-commons-digester-from-the-jenkins-core"></a>Removed Apache Commons Digester from the Jenkins core</h4>
+<div class="paragraph">
+<p>The Apache Commons Digester v2.1 has been removed from Jenkins core.
+The library was last released in 2010.
+Plugins that depend on the library need to be updated to remove that dependency.</p>
+</div>
+<div class="paragraph">
+<p>Plugins that are affected include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/vs-code-metrics/">Visual Studio Code Metrics</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/BlameSubversion/">Blame Subversion</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/javatest-report/">JavaTest report</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/vss/">Visual SourceSafe</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/synergy/">Synergy</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/config-rotator/">Config Rotator</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/harvest/">Harvest SCM</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cmvc/">CMVC</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Suspended plugins (no longer distributed by the Jenkins update center) that are affected include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/tfs/">TFS</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins-ci.org/browse/INFRA-2487">svn-release-mgr</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cpptest/">cpptest</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/CFLint/">CFLint</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stop-bundling-external-monitor-job-type-ldap-and-pam-plugins-with-jenkins"><a class="anchor" href="#stop-bundling-external-monitor-job-type-ldap-and-pam-plugins-with-jenkins"></a>Stop bundling External Monitor Job Type, LDAP, and PAM plugins with Jenkins</h4>
+<div class="paragraph">
+<p>Certain key Jenkins capabilities were initially created inside the Jenkins core.
+As Jenkins has developed further, capabilities moved from inside Jenkins core to dedicated Jenkins plugins, like the <a href="https://plugins.jenkins.io/external-monitor-job">External Monitor Job plugin</a>, the <a href="https://plugins.jenkins.io/ldap">LDAP plugin</a>, and the <a href="https://plugins.jenkins.io/pam">PAM authentication plugin</a>.
+When those plugins were created, the plugins were "bundled" inside the jenkins.war file to retain compatibility for plugins that depended on their functionality to be inside Jenkins core.
+The <a href="https://plugins.jenkins.io/external-monitor-job">External Monitor Job plugin</a>, the <a href="https://plugins.jenkins.io/ldap">LDAP plugin</a>, and the <a href="https://plugins.jenkins.io/pam">PAM authentication plugin</a> are no longer bundled with Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>In very rare cases, this could result in problems when attempting to install plugins compatible with Jenkins before 1.467.
+If you use a plugin that relies on the functionality provided by the <a href="https://plugins.jenkins.io/external-monitor-job">External Monitor Job plugin</a>, the <a href="https://plugins.jenkins.io/ldap">LDAP plugin</a>, or the <a href="https://plugins.jenkins.io/pam">PAM authentication plugin</a> and manage plugins outside the Jenkins plugin manager, you will now need to ensure yourself that a recent release of those plugins are installed.
+Jenkins will attempt to load such plugins but may fail at any time during startup or afterwards with <code>ClassNotFoundException</code> or similar.
+In these cases, the best path forward is usually to modify the plugin that has the problem so that it requires a newer version of Jenkins core.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removed-jep-200-compatibility-workarounds"><a class="anchor" href="#removed-jep-200-compatibility-workarounds"></a>Removed JEP-200 compatibility workarounds</h4>
+<div class="paragraph">
+<p>Workarounds that assured older plugin compatibility with the <a href="/blog/2018/03/15/jep-200-lts/">security hardening improvements</a> of <a href="https://github.com/jenkinsci/jep/blob/master/jep/200/README.adoc">JEP-200</a> have been removed.
+If you are using any of the following plugins, make sure you use at least the versions specified:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven Integration 3.1 (released Jan 2018)</p>
+</li>
+<li>
+<p>Job DSL 1.67 (released Jan 2018)</p>
+</li>
+<li>
+<p>Monitoring 1.71.0 (released Feb 2018)</p>
+</li>
+<li>
+<p>Git Client 2.7.1 (released Jan 2018)</p>
+</li>
+<li>
+<p>Pipeline: Supporting APIs 2.17 (released Jan 2018)</p>
+</li>
+<li>
+<p>OWASP Dependency-Check 3.1.1 (released Jan 2018)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removed-jna-posix-from-jenkins-core"><a class="anchor" href="#removed-jna-posix-from-jenkins-core"></a>Removed <code>jna-posix</code> from Jenkins core</h4>
+<div class="paragraph">
+<p>The <code>jna-posix</code> dependency has been removed from Jenkins core.
+Plugins that use <code>jna-posix</code> functionality, including
+<a href="https://plugins.jenkins.io/maven-repo-cleaner">Maven Repository Scheduled Cleanup</a>,
+<a href="https://plugins.jenkins.io/sicci_for_xcode">SICCI for Xcode</a>, and
+<a href="https://plugins.jenkins.io/tmpcleaner">java.io.tmpdir cleaner</a>
+are no longer supported and must be removed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removed-jtidy-from-jenkins-core"><a class="anchor" href="#removed-jtidy-from-jenkins-core"></a>Removed <code>JTidy</code> from Jenkins core</h4>
+<div class="paragraph">
+<p>The <code>JTidy</code> dependency has been removed from Jenkins core.
+Users of the <a href="https://plugins.jenkins.io/jdepend">JDepend plugin</a> must upgrade to the latest version.
+Other plugins that use JTidy functionality, including <a href="https://plugins.jenkins.io/nis-notification-lamp">NIS notification lamp</a>, must be updated to explicitly declare a dependency on JTidy rather than relying on Jenkins core to provide this library.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removed-bytecode-compatibility-transformer-from-jenkins-core"><a class="anchor" href="#removed-bytecode-compatibility-transformer-from-jenkins-core"></a>Removed Bytecode Compatibility Transformer from Jenkins core</h4>
+<div class="paragraph">
+<p>Support for plugins that rely on the <code>hudson.model.Queue$Item#id</code> or <code>hudson.model.AbstractProject#triggers fields</code>, including <a href="https://plugins.jenkins.io/slave-prerequisites">Slave Prerequisites plugin</a> and <a href="https://plugins.jenkins.io/vertx">vertx plugin</a>, has been dropped.
+Any such plugins must be removed prior to upgrading Jenkins.
+If you have customized the hudson.ClassicPluginStrategy.noBytecodeTransformer system property, you should remove this customization.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

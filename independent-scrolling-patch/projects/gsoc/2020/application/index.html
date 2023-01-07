@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins GSoC application draft, 2020
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/application/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins GSoC application draft, 2020" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins GSoC application draft, 2020" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins GSoC application draft, 2020" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/application/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins GSoC application draft, 2020" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins GSoC application draft, 2020
+</h1>
+
+<!-- This file uses Markdown intentionally.
+     Google's GSoC site uses Markdown as an engine, using Markdown here allows copy-pasting
+ -->
+
+<p>The data below represents the 2020 GSoC application.</p>
+
+<h3 id="organization-profile">Organization Profile</h3>
+
+<ul>
+  <li>Website URL: https://jenkins.io/</li>
+  <li>Tagline (up to 80 symbols): Open-source automation server for building great things at any scale</li>
+  <li>Technology tags (max 5):
+    <ul>
+      <li>java</li>
+      <li>javascript</li>
+      <li>docker</li>
+      <li>kubernetes</li>
+      <li>go</li>
+    </ul>
+  </li>
+  <li>Topic Tags (max 5)
+    <ul>
+      <li>continuous integration</li>
+      <li>continuous delivery</li>
+      <li>developer tools</li>
+      <li>devops</li>
+      <li>automation</li>
+    </ul>
+  </li>
+  <li>Ideas list: https://jenkins.io/projects/gsoc/2020/project-ideas/</li>
+  <li>Primary open-source license: MIT License</li>
+  <li>Category: Programming Languages and Development tools</li>
+  <li>Logo: https://wiki.jenkins.io/download/attachments/2916393/logo-title.png</li>
+</ul>
+
+<h4 id="short-description">Short description</h4>
+
+<p>Jenkins is a popular open source automation server which used is for building, testing, CI/CD, deployment and many other use-cases.
+Our motto is "Build great things at any scale".</p>
+
+<h4 id="long-description-markdown">Long description (Markdown)</h4>
+
+<p><a href="https://jenkins.io/">Jenkins</a>, originally founded in 2006 as "Hudson", is one of the leading automation servers. 
+Jenkins' motto is "Build great things at any scale".
+Using an extensible, plugin-based architecture developers have created hundreds of plugins to adapt Jenkins to a multitude of build, test, and deployment automation workloads. 
+Jenkins is open-source, <a href="https://www.opensource.org/licenses/mit-license.php">MIT License</a> is used for most of the components.</p>
+
+<p>This year we invite students to join the Jenkins community and to work together to improve Jenkins user experience and reliability.
+We have many strategic project ideas which are important to hundreds of thousands of Jenkins users.</p>
+
+<p>The project has about 600 active contributors working on Jenkins core, plugins, website, project infrastructure, localization activities, etc.
+In total we have more than 2000 components including plugins, libraries, and various utilities. 
+The main languages in the project are Java, Groovy and JavaScript,
+but we also have components written in other languages (Go, C/C++, C#, etc.).
+Jenkins project includes multiple
+<a href="https://jenkins.io/projects/">sub-projects</a> (including 
+<a href="https://jenkins.io/projects/jcasc/">Configuration-as-Code</a>,
+<a href="https://jenkins.io/projects/infrastructure/">Infrastructure</a>
+and <a href="https://jenkins.io/projects/remoting/">Remoting</a>) and 
+<a href="https://jenkins.io/sigs/">special interest groups</a>.
+These entities participate in GSoC as a part of the Jenkins project.
+<a href="https://jenkins-x.io/">Jenkins X</a> also participates in GSoC under umbrella of the Jenkins project.</p>
+
+<p>Jenkins project is a part of <a href="https://cd.foundation/">Continuous Delivery Foundation (CDF)</a>.
+CDF also participates in Google Summer of Code this year as an umbrella organization for all its projects except Jenkins and Jenkins X (<a href="https://summerofcode.withgoogle.com/organizations/5550056498790400/">org profile</a>).</p>
+
+<h4 id="proposal-process">Proposal process</h4>
+
+<p>First of all, thanks for your interest!
+In order to apply to the organization, please follow the <a href="https://jenkins.io/projects/gsoc/students/#student-application-process">guidelines on our website</a>.</p>
+
+<p>Before submitting please go through the <a href="https://google.github.io/gsocgides/student/">GSoC student guide</a>
+and through <a href="https://jenkins.io/projects/gsoc/students/">our student guide</a> which documents the Jenkins specifics.
+Participating in Google Summer of Code is a major time commitment requiring an almost full-time dedication over several months.
+If it may overlap with your study, internship, work or other commitments, we recommend to think twice before applying.</p>
+
+<p>If you have any questions about the application process,
+please feel free to contact us via the <a href="https://groups.google.com/forum/#!forum/jenkinsci-gsoc-all-public">mailing list</a> or in the <a href="https://gitter.im/jenkinsci/gsoc-sig">jenkinsci/gsoc-sig Gitter chat</a>.
+We also have <a href="https://jenkins.io/projects/gsoc/#office-hours">weekly meetings</a> which are open to everyone.</p>
+
+<h4 id="proposal-tags-max---10">Proposal tags (max - 10)</h4>
+
+<p>TODO: Adjust according to project ideas</p>
+
+<ul>
+  <li>user experience</li>
+  <li>plugins</li>
+  <li>performance</li>
+  <li>tools</li>
+  <li>REST API</li>
+  <li>cloud technologies</li>
+  <li>configuration-as-code</li>
+  <li>Jenkins X</li>
+  <li>machine learning</li>
+  <li>electronic design automation</li>
+</ul>
+
+<h4 id="contacts">Contacts</h4>
+
+<ul>
+  <li>Chat page URL: https://gitter.im/jenkinsci/gsoc-sig</li>
+  <li>Mailing list page URL: https://jenkins.io/projects/gsoc/#contacts</li>
+  <li>General-purpose e-mail: jenkinsci-gsoc-all-public@googlegroups.com</li>
+  <li>Twitter: https://twitter.com/jenkinsci</li>
+  <li>Blog: https://jenkins.io/node/</li>
+</ul>
+
+<h3 id="application">Application</h3>
+
+<h4 id="why-does-your-org-want-to-participate-in-google-summer-of-code">Why does your org want to participate in Google Summer of Code?</h4>
+
+<p>In our community we are interested to have more contributors in both the Jenkins core and 1,700+ existing plugins. 
+We consider GSoC as an opportunity to find new contributors and students interested in software development automation (continuous integration and continuous delivery).
+It also helps to get existing contributors more involved into the community work.
+We have previously participated in GSoC 2016-2019 and got much experience from it, especially regarding the student selection process.
+We hope this will help us to improve student/mentor experience and overall results this year.</p>
+
+<h4 id="how-many-potential-mentors-have-agreed-to-participate">How many potential mentors have agreed to participate?</h4>
+
+<p>16-20</p>
+
+<h4 id="how-will-you-keep-mentors-engaged-with-their-students">How will you keep mentors engaged with their students?</h4>
+
+<ul>
+  <li>We have explicit expectations from mentors, they are documented in <a href="https://jenkins.io/projects/gsoc/mentors">our mentor guidelines</a>. All mentors commit on these expectations during the project selection.</li>
+  <li>Each student project will have at least 2+ mentors AND an org admin advisor assigned to the project.</li>
+  <li>Mentors are expected to be accomplished Jenkins contributors, who are passionate about the community/mentorship work.</li>
+  <li>Mentors bring their own project, and they are expected to have a high interest in it</li>
+  <li>Mentors will be directly involved into student selection and interview processes so they will establish connection with successful students early</li>
+  <li>We conduct <a href="https://jenkins.io//projects/gsoc/#office-hours">weekly meetings</a> between mentors and org admins to sync-up on progress and any issues</li>
+  <li>Org admins will be monitoring mentor/student interaction starting from the application phase and intervene if needed</li>
+  <li>There will be regular sync-ups between org admins and mentors</li>
+</ul>
+
+<h4 id="how-will-you-help-your-students-stay-on-schedule-to-complete-their-projects">How will you help your students stay on schedule to complete their projects?</h4>
+
+<ul>
+  <li>During the Application phase and Community Bonding phase mentors will share their expertise to define realistic project plans.</li>
+  <li>The student project milestones will be discussed and confirmed between mentors and students. 
+Milestones will be aligned with student evaluations and will have clear expectations set up.</li>
+  <li>Mentors will set up regular meetings with students (at least twice per week) in order to sync-up on projects. 
+We expect retrospectives with students after each evaluation.</li>
+  <li>Mentors should be available for questions. 
+They should also provide a periodic feedback on the progress and on the performance of particular students (1x1).</li>
+  <li>We will set up weekly public office-hours with students (or two meetings if time-zones require it) and private ones between mentors and org admins to sync-up</li>
+  <li>We will be requiring a daily push to branches so that the students always show the progress and keep changes atomic.</li>
+</ul>
+
+<!-- DOES NOT FIT form size 
+* During the coding period, mentors will participate in the code reviews of their student and report to org admins if the project stalls.
+-->
+
+<h4 id="how-will-you-get-your-students-involved-in-your-community-during-gsoc">How will you get your students involved in your community during GSoC?</h4>
+
+<ul>
+  <li>Students will cooperate with Jenkins community during the project.
+Community Bonding will be a critical phase for us.</li>
+  <li>Projects will handled under an umbrella of
+<a href="https://jenkins.io/sigs">SIGs</a> or <a href="https://jenkins.io/projects">sub-projects</a>
+so that there is a number of non-mentor stakeholders and early adopters</li>
+  <li>Students will be participating in sub-project/SIG meetings and presenting their work on a regular basis</li>
+  <li>Org Admins will provide an introductory training (community overview, code-of-conduct, etc.), 
+then mentors will help students to establish contacts with experts from the community</li>
+  <li>We expect students to be around in public chats and other communication channels during the “working days”</li>
+  <li>Students will be involved into all standard processes in our community (pull requests, code reviews, chats and mailing lists, test automation, documentation, online meetups, etc.).</li>
+  <li>Students will be encouraged to give updates to the wider community in the Jenkins blog</li>
+</ul>
+
+<h4 id="how-will-you-keep-students-involved-with-your-community-after-gsoc">How will you keep students involved with your community after GSoC?</h4>
+
+<ul>
+  <li>We plan to sponsor successful students' travel and attendance at a Jenkins-focused conference and/or contributor summit.
+The projects will be also presented at the <a href="https://www.meetup.com/Jenkins-online-meetup/">Jenkins Online Meetup</a>.</li>
+  <li>Students will be developing their own modules for Jenkins and effectively they will retain ownership of these modules after GSoC (they can opt-out, of course).
+Public presentations will attract attention, and the students will be periodically contacted by users.</li>
+  <li>Students will be also advised to present their projects at local meetups</li>
+  <li>Each project will have a strict Definition Of Done: public availability, Q&amp;A chats, <a href="https://jenkins.io/node/">blog posts on the project website</a>.</li>
+  <li>We recommend mentors to have monthly sync-ups with the students to follow-up on projects and other events in Jenkins</li>
+  <li>We will invite students to participate in other community outreach activities like GSoC or Hacktoberfest</li>
+</ul>
+
+<h4 id="has-your-org-been-accepted-as-a-mentoring-org-in-google-summer-of-code-before">Has your org been accepted as a mentoring org in Google Summer of Code before?</h4>
+
+<p>Yes, in 2016, 2018 and 2019</p>
+
+<ul>
+  <li>2019: 5/7</li>
+  <li>2018: 2/3 (+1 cancelled project during community bonding)</li>
+  <li>2016: 1/5 (3 students have been failed due to major undisclosed time commitments, which impacted the project quality at the first coding phase)</li>
+</ul>
+
+<h3 id="is-there-an-organization-new-to-gsoc-that-you-would-like-to-refer-to-the-program-for-2020-feel-free-to-add-a-few-words-about-why-theyd-be-a-good-fit">Is there an organization new to GSoC that you would like to refer to the program for 2020? Feel free to add a few words about why they'd be a good fit.</h3>
+
+<p>TODO</p>
+
+<h4 id="if-your-org-has-applied-for-gsoc-before-but-not-been-accepted-select-the-years">If your org has applied for GSoC before but not been accepted, select the years</h4>
+<p>2009, 2017</p>
+
+<h4 id="if-you-are-a-new-organization-to-gsoc-is-there-a-google-employee-or-previously-participating-organization-who-will-vouch-for-you-if-so-please-enter-their-name-contact-email-and-relationship-to-your-organization-optional">If you are a new organization to GSoC, is there a Google employee or previously participating organization who will vouch for you? If so, please enter their name, contact email, and relationship to your organization. (optional)</h4>
+
+<p>EMPTY</p>
+
+<h4 id="what-year-was-your-project-started">What year was your project started?</h4>
+
+<p>2006</p>
+
+<h4 id="where-does-your-source-code-live">Where does your source code live</h4>
+
+<p>https://github.com/jenkinsci/ ,
+https://github.com/jenkins-x/ ,
+https://github.com/jenkins-infra/ ,
+https://github.com/jenkins-zh/</p>
+
+<h4 id="is-your-organization-part-of-any-government">Is your organization part of any government?</h4>
+
+<p>No</p>
+
+<h4 id="are-you-part-of-a-foundationumbrella-organization">Are you part of a foundation/umbrella organization?</h4>
+<p>Yes, Jenkins is transitioning between two organizations at this time:</p>
+
+<ul>
+  <li>Software in the Public Interest, Inc. (https://spi-inc.org) a 501 (c) (3) non-profit organization</li>
+  <li>Continuous Delivery foundation (https://cd.foundation/about/), a non-profit Linux Foundation organization</li>
+</ul>
+
+<h4 id="anything-else-we-should-know-optional">Anything else we should know (optional)?</h4>
+
+<p>The Jenkins project is migrating from Software in the Public Interest, Inc. (https://spi-inc.org) to Continuous Delivery Foundation (https://cd.foundation/about/) this year. 
+GSoC org admins closely monitor this topic, 
+and we will change the payment instructions for the project.</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2020/application.md"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

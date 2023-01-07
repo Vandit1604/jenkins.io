@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Enforced HTTPS for 'mirrors.jenkins.io' and consolidation of the Jenkins Mirrors
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="The 19th of May 2022, the domain `mirrors.jenkins.io` will be forced to HTTPS and consolidated into the same system as `get.jenkins.io`.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/05/13/mirrors/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Enforced HTTPS for &#39;mirrors.jenkins.io&#39; and consolidation of the Jenkins Mirrors" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Enforced HTTPS for &#39;mirrors.jenkins.io&#39; and consolidation of the Jenkins Mirrors" name="twitter:title">
+<meta content="The 19th of May 2022, the domain `mirrors.jenkins.io` will be forced to HTTPS and consolidated into the same system as `get.jenkins.io`.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Enforced HTTPS for &#39;mirrors.jenkins.io&#39; and consolidation of the Jenkins Mirrors" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/05/13/mirrors/" property="og:url">
+<meta content="The 19th of May 2022, the domain `mirrors.jenkins.io` will be forced to HTTPS and consolidated into the same system as `get.jenkins.io`.
+" name="og:description">
+<meta content="Enforced HTTPS for &#39;mirrors.jenkins.io&#39; and consolidation of the Jenkins Mirrors" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Enforced HTTPS for 'mirrors.jenkins.io' and consolidation of the Jenkins Mirrors
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/dduportal/"><div class="app-avatar"><img alt="Damien DUPORTAL" class="app-avatar__image" src="/images/avatars/dduportal.jpg"></div> Damien DUPORTAL</a>
+May 13, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Enforced+HTTPS+for+%27mirrors.jenkins.io%27+and+consolidation+of+the+Jenkins+Mirrors&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F05%2F13%2Fmirrors%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The Jenkins project provides a download mirror infrastructure allowing to download Jenkins packages and plugins from a download server close to your location.</p>
+</div>
+<div class="sect1">
+<h2 id="how-does-it-work"><a class="anchor" href="#how-does-it-work"></a>How Does it Work?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When a download request is emitted to either <code>mirrors.jenkins.io</code> or <code>get.jenkins.io</code>, an HTTP redirect response to a mirror download server is answered.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins infrastructure uses a database of existing mirror servers provided by volunteers and donators to select the closest mirror to your location:
+this is currently the role of the distinct <code>mirrors.jenkins.io</code> and <code>get.jenkins.io</code> services.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="consolidation"><a class="anchor" href="#consolidation"></a>Consolidation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The system behind <code>mirrors.jenkins.io</code> is using a software named <a href="https://mirrorbrain.org/">"mirrorbrain"</a> and was originally used by the Jenkins infrastructure to provide download redirections to mirrors.</p>
+</div>
+<div class="paragraph">
+<p>A new system was introduced in 2020: <code>get.jenkins.io</code>, using <a href="https://github.com/etix/mirrorbits">"mirrorbits"</a> which is a great fit for a Kubernetes environment (lightweight, horizontally scalable) and provides a set of nice WebUI features to see the mirror list and grading.</p>
+</div>
+<div class="paragraph">
+<p>INFO: Try it by yourself, check the mirrors providing the latest Jenkins LTS distribution: <a href="https://get.jenkins.io/war-stable/2.332.3/jenkins.war?mirrorlist" class="bare">https://get.jenkins.io/war-stable/2.332.3/jenkins.war?mirrorlist</a></p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s been 2 years and the new system is clearly the most reliable: that&#8217;s why we, the Jenkins Infrastructure team, want to retire the "mirrorbrain" system.</p>
+</div>
+<div class="paragraph">
+<p>In consequence, the 19th of May 2022, the domain name <code>mirrors.jenkins.io</code> will be changed to point to the actual "mirrorbits" system already available at <code>get.jenkins.io</code>.</p>
+</div>
+<div class="paragraph">
+<p>This consolidation ensures all users downloading a Jenkins package or a plugin will use the closest download mirror to their location, without having to maintain 2 distinct systems.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enforced-https"><a class="anchor" href="#enforced-https"></a>Enforced HTTPS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main consequence is that the HTTPS protocol will be enforced for the request to the domain <code>mirrors.jenkins.io</code>.</p>
+</div>
+<div class="paragraph">
+<p>The "mirrorbrain" system currently serving requests behind the domain <code>mirrors.jenkins.io</code> is not available through HTTPS, which is a safety issue for users downloading files.</p>
+</div>
+<div class="paragraph">
+<p>The 19th of May 2022, that won&#8217;t be the case anymore: like <code>get.jenkins.io</code>, HTTPS will be available and enforced for the requests going through the domain <code>mirrors.jenkins.io</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-does-it-change-for-me"><a class="anchor" href="#what-does-it-change-for-me"></a>What Does It Change for Me?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Short answer: nothing. You should already be using the domain <code>get.jenkins.io</code> as it&#8217;s been the default since almost 2 years, and the content served by both system is the same.</p>
+</li>
+<li>
+<p>Long answer: if you are still using the former <code>mirrors.jenkins.io</code> and are not able to switch to <code>get.jenkins.io</code>, you&#8217;ll see the following changes:</p>
+</li>
+<li>
+<p>🌍 The mirror usually selected might change as the grading system on mirrorbits is different (and covers way more mirrors): faster downloads for you!</p>
+</li>
+<li>
+<p>🔐 Your HTTP requests will be redirected to their corresponding URL using the HTTPS protocol with a valid TLS certificate signed by the Let&#8217;s Encrypt authority: improved safety!</p>
+</li>
+<li>
+<p>⚠️ The IP pointed by the DNS record <code>mirrors.jenkins.io</code> will change from <code>52.202.51.185</code> to <code>52.167.253.43</code>: upgrade your proxies!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/infrastructure/">
+infrastructure
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/mirrors/">
+mirrors
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Damien DUPORTAL" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/dduportal.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/dduportal/">
+Damien DUPORTAL
+</a>
+</p>
+<div class="paragraph">
+<p>Damien is the <a href="/project/team-leads/#infrastructure">Jenkins Infrastructure officer</a>
+and a software engineer at <a href="https://www.cloudbees.com">CloudBees</a> working as a Site Reliability Engineer for the <a href="/projects/infrastructure/">Jenkins Infrastructure project</a>.
+Not only he is a decade-old Hudson/Jenkins user but also an open-source citizen who participates in <a href="https://www.updatecli.io/">Updatecli</a>,
+<a href="https://asciidoctor.org/">Asciidoctor</a>,
+<a href="https://traefik.io/">Traefik</a> and many others.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/dduportal" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/DamienDuportal" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/05/2022-05-13-mirrors.jenkins.io-HTTPS.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

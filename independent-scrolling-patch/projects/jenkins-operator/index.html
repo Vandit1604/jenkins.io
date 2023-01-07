@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Operator
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/jenkins-operator/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Operator" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Operator" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/kubernetes-operator/kubernetes-operator.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Operator" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/jenkins-operator/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Operator" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/kubernetes-operator/kubernetes-operator.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Jenkins Operator
+</h1>
+<div class="paragraph">
+<p>The Jenkins Operator is a <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/"><strong>Kubernetes Native Operator</strong></a> which manages operations for Jenkins on Kubernetes. It has been built with Immutability and declarative Configuration as Code in mind.</p>
+</div>
+<div class="sect1">
+<h2 id="project-vision"><a class="anchor" href="#project-vision"></a>Project Vision</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With Jenkins Operator project we want to enable community to run Jenkins in cloud-native environments like Kubernetes. Also, support most of the public cloud providers (AWS, Azure, GCP) in terms of additional capabilities like backups, observability and cloud security.</p>
+</div>
+<div class="paragraph">
+<p>With declarative configuration and full lifecycle management based on the <a href="https://operatorframework.io/">Operator Framework</a> this can become the de facto standard for running Jenkins on top of Kubernetes.</p>
+</div>
+<div class="sect2">
+<h3 id="notable-features"><a class="anchor" href="#notable-features"></a>Notable Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Full lifecycle-management of Jenkins using <a href="https://sdk.operatorframework.io/"><strong>Operator SDK</strong></a></p>
+</li>
+<li>
+<p>Integration with Kubernetes <a href="https://plugins.jenkins.io/kubernetes-plugin"><strong>Jenkins plugin for Kubernetes</strong></a></p>
+</li>
+<li>
+<p>Pipelines as Code <a href="/doc/book/pipeline/"><strong>Jenkins pipelines</strong></a></p>
+</li>
+<li>
+<p>Extensibility via <a href="/doc/book/managing/groovy-hook-scripts/"><strong>Groovy Init Hook Scripts</strong></a> or <a href="https://plugins.jenkins.io/configuration-as-code"><strong>Configuration as Code plugin</strong></a></p>
+</li>
+<li>
+<p>Secure Defaults and Hardening <a href="https://jenkinsci.github.io/kubernetes-operator/docs/security/"><strong>see the security section of the documentation</strong></a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting started</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jenkinsci.github.io/kubernetes-operator"><strong>Documentation and getting started</strong></a> guide</p>
+</li>
+<li>
+<p>Questions about the <strong>use</strong> of Jenkins Operator should be asked on <code>##jenkins-operator</code> <a href="https://virtuslab-oss.slack.com/"><strong>virtuslab-oss.slack.com</strong></a> slack channel</p>
+</li>
+<li>
+<p>The <a href="https://github.com/jenkinsci/kubernetes-operator">source code</a></p>
+</li>
+<li>
+<p>Feature requests, bugs and so on are currently tracked via the GitHub <a href="https://github.com/jenkinsci/kubernetes-operator/issues">issue tracker</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contribution"><a class="anchor" href="#contribution"></a>Contribution</h3>
+<div class="paragraph">
+<p>Any contributions to both codebase and documentation are more than welcome. See <a href="https://github.com/jenkinsci/kubernetes-operator/blob/master/CONTRIBUTING.md"><strong>Contribution Model</strong></a> for more details.
+Also see <a href="https://github.com/jenkinsci/kubernetes-operator#community">this page</a> for information about the project chat and regular meetings.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="roadmap-and-future-plans"><a class="anchor" href="#roadmap-and-future-plans"></a>Roadmap and Future Plans</h3>
+<div class="paragraph">
+<p>This <a href="https://github.com/jenkinsci/kubernetes-operator/blob/master/ROADMAP.md"><strong>document</strong></a> outlines the vision and technical roadmap for <a href="https://github.com/jenkinsci/kubernetes-operator"><strong>jenkinsci/kubernetes-operator</strong></a> project.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel1">
+<li><a href="#project-vision">Project Vision</a>
+<ul class="sectlevel2">
+<li><a href="#notable-features">Notable Features</a></li>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#contribution">Contribution</a></li>
+<li><a href="#roadmap-and-future-plans">Roadmap and Future Plans</a></li>
+</ul>
+</li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://github.com/jenkinsci/kubernetes-operator#community" rel="noreferrer noopener" target="_blank">
+Chat
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci/kubernetes-operator" rel="noreferrer noopener" target="_blank">
+Github
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/05/13/mirrors/">
+Enforced HTTPS for 'mirrors.jenkins.io' and consolidation of the Jenkins Mirrors
+</a>
+</li>
+<li>
+<a href="/blog/2022/03/31/spring-rce-CVE-2022-22965/">
+Spring Framework RCE, CVE-2022-22965
+</a>
+</li>
+<li>
+<a href="/blog/2021/12/10/log4j2-rce-CVE-2021-44228/">
+Apache Log4j 2 vulnerability CVE-2021-44228
+</a>
+</li>
+<li>
+<a href="/blog/2021/09/04/wiki-attacked/">
+Jenkins project Confluence instance attacked
+</a>
+</li>
+<li>
+<a href="/blog/2021/08/23/jenkins-operator-security-work-report/">
+Security Validator for Jenkins Operator for Kubernetes
+</a>
+</li>
+<li>
+<a href="/blog/2021/04/21/tekton-plugin/">
+Easily reuse Tekton and Jenkins X from Jenkins
+</a>
+</li>
+<li>
+<a href="/blog/2021/04/15/jenkins-operator-sub-project/">
+Jenkins Operator becomes an official sub-project!
+</a>
+</li>
+<li>
+<a href="/blog/2020/12/17/jira-upgrade-for-the-jenkins-project/">
+Jira upgrade for the Jenkins project
+</a>
+</li>
+<li>
+<a href="/blog/2020/12/04/gsod-project-report/">
+GSOD Project Report: Document Jenkins on Kubernetes
+</a>
+</li>
+<li>
+<a href="/blog/2020/11/05/installing-jenkins-on-kubernetes/">
+Document Jenkins on Kubernetes: Installing Jenkins on Kubernetes Documentation Release
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/jenkins-operator/index.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

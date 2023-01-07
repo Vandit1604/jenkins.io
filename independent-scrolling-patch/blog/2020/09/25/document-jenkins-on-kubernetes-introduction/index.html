@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Documenting Jenkins on Kubernetes Introduction
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Google Season of Docs 2020 - Documenting Jenkins on Kubernetes Introductory blog post" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/09/25/document-jenkins-on-kubernetes-introduction/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Documenting Jenkins on Kubernetes Introduction" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Documenting Jenkins on Kubernetes Introduction" name="twitter:title">
+<meta content="Google Season of Docs 2020 - Documenting Jenkins on Kubernetes Introductory blog post" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsod/gsod_opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Documenting Jenkins on Kubernetes Introduction" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/09/25/document-jenkins-on-kubernetes-introduction/" property="og:url">
+<meta content="Google Season of Docs 2020 - Documenting Jenkins on Kubernetes Introductory blog post" name="og:description">
+<meta content="Documenting Jenkins on Kubernetes Introduction" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsod/gsod_opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Documenting Jenkins on Kubernetes Introduction
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/zaycodes/"><div class="app-avatar"><img alt="Zainab Daodu" class="app-avatar__image" src="/images/avatars/zaycodes.jpg"></div> Zainab Daodu</a>
+September 25, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Documenting+Jenkins+on+Kubernetes+Introduction&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F09%2F25%2Fdocument-jenkins-on-kubernetes-introduction%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I&#8217;m thrilled to announce that I will be participating in <a href="https://developers.google.com/season-of-docs/">Google Season of Docs (GSoD)</a>
+2020 with the <a href="/">Jenkins</a> project. I started contributing to Jenkins documentation during the technical writer
+exploration phase for <a href="https://developers.google.com/season-of-docs">Google Season of Docs</a> 2020 and I must say, my journey so far
+has been nothing short of amazing majorly because of the supportive community behind this project.
+I chose the Jenkins project because I understood this project from a user point of view as I had been exposed to setting up, configuring,
+and using Jenkins to automate CI/CD processes. I piqued interest in two of Jenkins <a href="/sigs/docs/gsod/">project ideas</a>,
+<a href="/sigs/docs/#plugin-documentation-on-github">Plugin documentation migration and update</a> and <a href="/sigs/docs/#jenkins-on-kubernetes">Document Jenkins on Kubernetes</a>, submitted proposals for these two projects and to my utmost joy, the latter was selected.</p>
+</div>
+<div class="paragraph">
+<p>In this article, I&#8217;m going to be explaining what my selected project is about and why this project is important to the Jenkins community and its users.</p>
+</div>
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a><strong>Introduction</strong></h3>
+<div class="paragraph">
+<p>Kubernetes is a platform-agnostic container orchestration tool created by Google and heavily supported
+by the open-source community as a project of the Cloud Native Computing Foundation.
+It allows you to use container instances and manage them for scaling and fault tolerance.
+It also handles a wide range of management activities that would otherwise require separate solutions or custom code,
+including request routing, container discovery, health checks, and rolling updates.</p>
+</div>
+<div class="paragraph">
+<p>Kubernetes is compatible with the majority of CI/CD tools which allow developers to run tests,
+deploy builds in Kubernetes and update applications with no downtime.
+One of the most popular CI/CD tools now is Jenkins for the following reasons:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It is open-source and free.</p>
+</li>
+<li>
+<p>it is user-friendly, easy to install and does not require additional installations or components.</p>
+</li>
+<li>
+<p>Jenkins is also quite easy to configure, modify and extend.</p>
+</li>
+<li>
+<p>It deploys code and generates test reports.</p>
+</li>
+<li>
+<p>It also boasts a rich plugin ecosystem. The extensive pool of plugins makes Jenkins flexible and allows building, deploying and automating across various platforms.</p>
+</li>
+<li>
+<p>Jenkins can be configured according to the requirements for continuous integrations and continuous delivery.</p>
+</li>
+<li>
+<p>Jenkins is available for all platforms and different operating systems, whether it is OS X, Windows or Linux.</p>
+</li>
+<li>
+<p>Most of the integration work is automated. Hence fewer integration issues. This saves both time and money over the lifespan of a project.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following reasons have made Jenkins on Kubernetes a popular theme for Jenkins users, however,
+there&#8217;s currently no central location for documentation describing Jenkins on Kubernetes,
+thereby making it difficult for Jenkins on Kubernetes users to navigate and find information.
+This project would create a new Kubernetes Volume on <a href="/solutions/">Jenkins.io</a> which would describe the concepts,
+techniques, and choices for Kubernetes users running Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="current-state"><a class="anchor" href="#current-state"></a><strong>Current State</strong></h3>
+<div class="paragraph">
+<p>There are a lot of presentations and articles about running Jenkins on Kubernetes, however,
+there&#8217;s no central location for describing Jenkins on Kubernetes. This makes it difficult for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins on Kubernetes users to navigate and find information</p>
+</li>
+<li>
+<p>Track, update and maintain information on Jenkins on Kubernetes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-improvements"><a class="anchor" href="#project-improvements"></a><strong>Project Improvements</strong></h3>
+<div class="paragraph">
+<p>To solve the existing issue with Jenkins on Kubernetes documentation,
+a new Kubernetes volume will be created on <a href="/solutions/">Jenkins.io</a>.
+This Volume is going to aggregate user guides, information on cloud providers and demos on Jenkins on Kubernetes.
+You can find the proposed contents for the new volume <a href="https://docs.google.com/document/d/1wMeeN4oA7AN4F3pfLBIAJZWXD7PdqSKHotdk76yCw68/edit?usp=sharing">here</a>.
+Feel free to comment on any suggestions you might have in the proposed content doc.</p>
+</div>
+<div class="paragraph">
+<p>This project will also provide the following advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Improve the user experience of Jenkins on Kubernetes users by giving them a one-stop-shop for information on Jenkins on Kubernetes.</p>
+</li>
+<li>
+<p>Make it easy to track, update and maintain information on Jenkins on Kubernetes using the Solutions page</p>
+</li>
+<li>
+<p>Reference the existing community documentation for Jenkins on K8s (plugins and tools/integrations).</p>
+</li>
+<li>
+<p>How to guides, tutorials and explanations of concepts and techniques in Jenkins on Kubernetes.</p>
+</li>
+<li>
+<p>Just-In-Time documentation which means that rather than documenting every feature comprehensively,
+we will produce and release documentation in bits but continuously based on popular questions,
+feedback and area of interests gathered from the community and users.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="project-timeline"><a class="anchor" href="#project-timeline"></a><strong>Project Timeline</strong></h4>
+<div class="paragraph">
+<p>Find below a summary of the project timeline.</p>
+</div>
+<div class="paragraph">
+<p><strong>Community bonding (</strong><strong>August 17 - September 13</strong><strong>)</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up a communication channel and time (due to time difference).</p>
+</li>
+<li>
+<p>Refine my goals and set expectations on both sides.</p>
+</li>
+<li>
+<p>Learn more about the community and Jenkins.</p>
+</li>
+<li>
+<p>Gather and thoroughly study existing resources that will be useful and helpful to the project.</p>
+</li>
+<li>
+<p>Pre-planning of the project</p>
+</li>
+<li>
+<p>Contacting Stakeholders and onboarding contributors</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Documentation Period</strong></p>
+</div>
+<div class="paragraph">
+<p>This period is going to be focused on creating contents which include user guides,
+tutorials, demos, etc. for Jenkins on Kubernetes.
+Some of the topics to be covered include Installing Jenkins on Kubernetes,
+Administering Jenkins on Kubernetes, Cloud providers and much more.</p>
+</div>
+<div class="paragraph">
+<p><strong><strong>Documentation Timeline</strong></strong></p>
+</div>
+<div class="paragraph">
+<p><strong>1st Month (September - October)</strong></p>
+</div>
+<div class="paragraph">
+<p>Some basic prerequisites for installing jenkins on kubernetes include docker, a kubernetes cluster, and optionally Helm or the Jenkins Operator for Kubernetes.</p>
+</div>
+<div class="paragraph">
+<p>Helm is a package manager which automates the process of installing, configuring, upgrading, and removing complex Kubernetes application. A Helm chart defines several Kubernetes resources as a set. Helm can make deployments easier and repeatable because all resources for an application are deployed by running one command.</p>
+</div>
+<div class="paragraph">
+<p>Helm has two elements, a client (helm) and a server (Tiller). The server element runs inside a Kubernetes cluster and manages the installation of charts. With Helm, configuration settings are kept in values.yaml file separate from the manifest formats. The configuration values can be changed according to application need without touching the rest of the manifest.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, the Jenkins operator is a Kubernetes native operator which fully manages Jenkins on Kubernetes. It is easy to install with just a few manifests and allows users to configure and manage Jenkins on Kubernetes. To run jenkins-operator, you need to have a running Kubernetes cluster and kubectl installed.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins Operator provides out of the box:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integration with Kubernetes — preconfigured kubernetes-plugin for provisioning dynamic Jenkins Slaves as Pods</p>
+</li>
+<li>
+<p>Pipelines as Code — declarative way to version your pipelines in VCS</p>
+</li>
+<li>
+<p>Extensibility via Groovy scripts or Configuration as Code plugin-customize your Jenkins, configure OAuth authorization and more</p>
+</li>
+<li>
+<p>Security and Hardening — an initial security hardening of Jenkins instance via Groovy scripts to prevent security vulnerabilities</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the first month, the focus will be on documenting an introductory section.
+This section will include but is not limited to Setting up Kubernetes cluster, Installing Jenkins on Kubernetes, exploring the various approaches by which this can be achieved such as using helm package manager or the Jenkins Operator as explained above and Administering Jenkins on Kubernetes.</p>
+</div>
+<div class="paragraph">
+<p><strong>2nd Month (October - November)</strong></p>
+</div>
+<div class="paragraph">
+<p>In the second month, the focus will be on documenting how to setup up CI/CD pipelines using Jenkins and Kubernetes on different cloud providers.
+Some of the cloud providers we will be looking at include but are not limited to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Amazon Web Service (AWS)</p>
+</li>
+<li>
+<p>Azure Kubernetes Service</p>
+</li>
+<li>
+<p>Google Cloud</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>3rd Month (November - December)</strong></p>
+</div>
+<div class="paragraph">
+<p>In the final month, the focus will be on creating demos and tutorials,
+submitting project report, evaluation of mentors and finally,
+publishing a report of my experience as a participant in Season of Docs.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a><strong>Conclusion</strong></h3>
+<div class="paragraph">
+<p>Jenkins community is actively working towards improving its documentation to create a better
+experience for Jenkins users and invites technical writers to join the community and contribute to the Jenkins on Kubernetes project.</p>
+</div>
+<div class="paragraph">
+<p>To contribute to the Jenkins on Kubernetes project, simply join the Jenkins documentation <a href="https://gitter.im/jenkinsci/docs">Gitter</a> channel and drop a message,
+you can also find the Google season of docs office hour notes and recordings for Jenkins on Kubernetes <a href="https://docs.google.com/document/d/17cPLUrJ4Ul4Y8MREjDyfWBEN7PlnlrmPh6wuKMPFmPg/edit?usp=sharing">here</a>.
+GSOD office hours take place twice a week on Mondays and Thursdays between 6pm GMT+1 and 7pm GMT+1,
+if you would like to be part of these meetings, you can indicate interest in the Jenkins Documentation
+<a href="https://gitter.im/jenkinsci/docs">Gitter</a> channel and we would be happy to have you.</p>
+</div>
+<div class="paragraph">
+<p>If you are also a newcomer and would like to contribute to Jenkins, documentation is a great place to contribute.
+A lot of small patches can be done from the GitHub web interface even without cloning repositories locally.
+You can find some good first issues to get started with <a href="https://github.com/jenkins-infra/jenkins.io/labels/good%20first%20issue">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Find more information on contributing to Jenkins documentation <a href="/participate/document">here</a>.
+If you have further questions about the Jenkins on Kubernetes project or contributing to Jenkins,
+you can reach out on the Jenkins documentation <a href="https://gitter.im/jenkinsci/docs">Gitter</a> channel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-resources"><a class="anchor" href="#additional-resources"></a><strong>Additional Resources</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/1zTEKtOp2i1K2fw5RQ_a_KVOB2z0gz9987NYzTnIS6G8/edit?usp=sharing">GSoD Proposal</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/17cPLUrJ4Ul4Y8MREjDyfWBEN7PlnlrmPh6wuKMPFmPg/edit?usp=sharing">GSoD Office Hours Notes</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1m0rTrXk7WisPXUeaKGj81dOFO2CcW4o_Nvo7NvcoL98/edit?usp=sharing">Google Season of Docs - Startup</a></p>
+</li>
+<li>
+<p><a href="/sigs/docs/gsod/">Google Season of Docs</a> on jenkins.io</p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1uNNo0QJKPHnNp8PGr_jLI8p3K_94ZYD-M0evZOEZ93c/edit#heading=h.8q8l1ah569xk">Docs SIG</a> for Google Season of Docs startup (<a href="https://www.youtube.com/watch?v=sY2gI47zho8&amp;list=PLN7ajX_VdyaNp0lk5BmyAgqPS52u_4tC8">video</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/kubernetes/">
+kubernetes
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/documentation/">
+documentation
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsod/">
+gsod
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsod2020/">
+gsod2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Zainab Daodu" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/zaycodes.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/zaycodes/">
+Zainab Daodu
+</a>
+</p>
+<div class="paragraph">
+<p>Zainab is a Software Engineer and Technical Writer with over 4 years of experience developing, testing, and maintaining enterprise software applications.
+Passionate about contributing to open source, improving technical documentation and advocating for gender diversity in open source collaboration.</p>
+</div>
+<div class="paragraph">
+<p>She started contributing to Jenkins documentation during the technical writer exploration phase for <a href="https://developers.google.com/season-of-docs">Google Season of Docs</a> 2020.
+She completed the <a href="/sigs/docs/#jenkins-on-kubernetes">Documentation for Jenkins on Kubernetes</a> project as part of Google Season of Docs 2020.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/zaycodes" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/zaycodes" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/zaycodes" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/09/2020-09-25-document-jenkins-on-kubernetes-introduction.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

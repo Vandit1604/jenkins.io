@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Pipeline Editor
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-editor/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Pipeline Editor" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Pipeline Editor" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Pipeline Editor" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-editor/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Pipeline Editor" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="active">Blue Ocean</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/getting-started/" class="">Getting started with Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/creating-pipelines/" class="">Creating a Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/dashboard/" class="">Dashboard</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/activity/" class="">Activity View</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-run-details/" class="">Pipeline Run Details View</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/pipeline-editor/" class="active">Pipeline Editor</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../pipeline-run-details">
+⇐ Pipeline Run Details View
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../../managing">
+Managing Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Pipeline Editor
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#starting-the-editor">Starting the editor</a></li>
+<li><a href="#navigation-bar">Navigation bar</a></li>
+<li><a href="#pipeline-settings">Pipeline Settings</a>
+<ul class="sectlevel2">
+<li><a href="#agent">Agent</a></li>
+<li><a href="#environment">Environment</a></li>
+</ul>
+</li>
+<li><a href="#stage-editor">Stage editor</a></li>
+<li><a href="#stage-configuration">Stage configuration</a></li>
+<li><a href="#step-configuration">Step configuration</a></li>
+<li><a href="#save-pipeline-dialog">Save Pipeline dialog</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Blue Ocean Pipeline Editor is an easy way for anyone to get started with creating Pipelines in Jenkins.
+It&#8217;s also great for existing Jenkins users to start adopting Pipeline.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Blue Ocean status</div>
+<div class="paragraph">
+<p>Blue Ocean will not receive further functionality updates.
+Blue Ocean will continue to provide easy-to-use Pipeline visualization, but it will not be enhanced further.
+It will only receive selective updates for significant security issues or functional defects.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="/doc/book/pipeline/getting-started/#snippet-generator">Pipeline syntax snippet generator</a> assists users as they define Pipeline steps with their arguments.
+It is the preferred tool for Jenkins Pipeline creation, as it provides online help for the Pipeline steps available in your Jenkins controller.
+It uses the plugins installed on your Jenkins controller to generate the Pipeline syntax.
+Refer to the <a href="/doc/pipeline/steps/">Pipeline steps reference</a> page for information on all available Pipeline steps.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The editor allows users to create and edit Declarative Pipelines and perform actions such as adding stages or configuring parallel tasks, depending on their needs.
+When the user completes their configuration, the editor saves the Pipeline to a source code repository as a <code>Jenkinsfile</code>.
+If the Pipeline requires further modification, Blue Ocean makes it easy to jump back into the visual editor to modify the Pipeline at any time.</p>
+</div>
+<div class="videoblock text-center">
+<div class="content">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/FhDomw6BaHU?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Blue Ocean Pipeline Editor limitations</div>
+<div class="paragraph">
+<p>The Blue Ocean Pipeline Editor is a great alternative for Jenkins users, but there are some limitations to its functionality:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The editor utilizes SCM-based Declarative Pipelines only.</p>
+</li>
+<li>
+<p>User credentials must have write permission.</p>
+</li>
+<li>
+<p>The editor does not have full parity with Declarative Pipeline.</p>
+</li>
+<li>
+<p>The Pipeline is re-ordered and comments are removed.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="starting-the-editor"><a class="anchor" href="#starting-the-editor"></a>Starting the editor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use the editor, a user must first <a href="#creating-pipelines">create a Pipeline in Blue Ocean</a> or have at least one existing Pipeline in Jenkins.
+If editing an existing Pipeline, the credentials for that Pipeline must allow pushing changes to the target repository.</p>
+</div>
+<div class="paragraph">
+<p>The editor can be launched through the:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>New Pipeline</strong> option from the <a href="/doc/book/blueocean/dashboard/">Blue Ocean dashboard</a>.</p>
+</li>
+<li>
+<p><strong>Branches</strong> tab within the <a href="/doc/book/blueocean/activity/#branches">Activity view</a>.</p>
+</li>
+<li>
+<p><strong>Edit</strong> (<span class="icon"><i class="fa fa-pencil"></i></span>) in the Pipeline run details view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="navigation-bar"><a class="anchor" href="#navigation-bar"></a>Navigation bar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Pipeline editor includes the <a href="../getting-started/#navigation-bar">standard navigation bar</a> at the top, with a local navigation bar below it.
+The local navigation bar includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pipeline Name</strong> - This also includes the branch name.</p>
+</li>
+<li>
+<p><strong>Cancel</strong> - Discards changes made to the pipeline.</p>
+</li>
+<li>
+<p><strong>Save</strong> - Opens the <a href="#save-pipeline-dialog">save Pipeline dialog</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-settings"><a class="anchor" href="#pipeline-settings"></a>Pipeline Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, the pane on the right side of the editor displays the <strong>Pipeline Settings</strong>.
+Selecting an existing stage or adding a stage displays the <a href="/doc/book/blueocean/pipeline-editor/#stage-configuration">stage configuration</a> pane instead.
+To navigate back to the <strong>Pipeline Settings</strong> pane, select any empty space in the background of the editor.
+Within the Pipeline Settings pane, there are two sections that are configurable.</p>
+</div>
+<div class="sect2">
+<h3 id="agent"><a class="anchor" href="#agent"></a>Agent</h3>
+<div class="paragraph">
+<p>The <strong>Agent</strong> section controls which agent the Pipeline uses.
+This performs the same process as the <a href="../../pipeline/syntax/#agent">agent directive</a>.
+The <strong>Image</strong> field allows users to configure which container image runs when the Pipeline is active.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="environment"><a class="anchor" href="#environment"></a>Environment</h3>
+<div class="paragraph">
+<p>The <strong>Environment</strong> section allows users to configure environment variables for the Pipeline.
+This is the same process as the <a href="../../pipeline/syntax/#environment">environment directive</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="stage-editor"><a class="anchor" href="#stage-editor"></a>Stage editor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The left pane displays the stage editor UI, which allows users to create or add stages of a Pipeline.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/stage-editor-basic.png" alt="Stage editor view of new pipeline."></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To add a stage to the Pipeline, select the <span class="icon"><i class="fa fa-plus"></i></span> icon to the right of an existing stage.
+Selecting the <span class="icon"><i class="fa fa-plus"></i></span> icon below an existing stage adds a parallel stage.</p>
+</li>
+<li>
+<p>To delete unwanted stages, use the <a href="#stage-configuration">more menu in the stage configuration pane</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After setting the stage name and saving, the name displays above the stage.
+Stages that contain incomplete or invalid information display a <span class="icon"><i class="fa fa-warning"></i></span>.
+Pipelines can have validation errors during editing, but saving is blocked until the errors are fixed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/stage-editor-error.png" alt="Stage editor with error displayed."></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="stage-configuration"><a class="anchor" href="#stage-configuration"></a>Stage configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Selecting a stage in the editor displays the <strong>Stage Configuration</strong> pane on the right side of the screen.
+Here, you can modify the name of the stage, delete the stage, and add steps to a stage.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/stage-configuration.png" alt="Stage configuration pane"></span></p>
+</div>
+<div class="paragraph">
+<p>The name of the stage can be set at the top of the stage configuration pane.
+The more menu, represented by three dots to the right of the stage name, allows users to delete the currently selected stage.
+Selecting <strong>Add step</strong> displays the list of available step types.
+After selecting a step type, the page displays the step configuration pane.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/step-list.png" alt="Step list filtered by 'file'"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="step-configuration"><a class="anchor" href="#step-configuration"></a>Step configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This pane display is based on the step type selected, and contains the necessary fields or controls.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/step-configuration.png" alt="Step configuration for JUnit step"></span></p>
+</div>
+<div class="paragraph">
+<p>Be sure to provide a strong name for the step, as the name retains its original configuration.
+Deleting the step and recreating it is the only way to provide a different name.
+The more menu, represented by three dots to the right of the step name, allows users to delete the current step.
+Fields that contain incomplete or invalid information display a <span class="icon"><i class="fa fa-exclamation"></i></span>.
+Any validation errors must be addressed before saving.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/step-error.png" alt="Step configuration with error"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="save-pipeline-dialog"><a class="anchor" href="#save-pipeline-dialog"></a>Save Pipeline dialog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Changes to a Pipeline must be saved in source control before running.
+The <strong>Save Pipeline</strong> dialog controls the saving of changes to source control.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/save-pipeline.png" alt="Save Pipeline dialog"></span></p>
+</div>
+<div class="paragraph">
+<p>You can optionally enter a description of the changes before saving.
+The dialog also provides options for saving changes to the same branch or creating a new branch to save to.
+Selecting <strong>Save &amp; run</strong> saves any changes to the Pipeline as a new commit, starts a new Pipeline run based on those changes, and navigates to the <a href="../activity/">Activity view</a> for this pipeline.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../pipeline-run-details">
+⇐ Pipeline Run Details View
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../../managing">
+Managing Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/blueocean/pipeline-editor.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

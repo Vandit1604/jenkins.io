@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Good bye Java6
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/04/06/good-bye-java6/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Good bye Java6" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Good bye Java6" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Good bye Java6" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/04/06/good-bye-java6/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Good bye Java6" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Good bye Java6
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/kohsuke/"><div class="app-avatar"><img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/images/avatars/kohsuke.jpeg"></div> Kohsuke Kawaguchi</a>
+April 06, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Good+bye+Java6&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F04%2F06%2Fgood-bye-java6%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/6_(number)">+ <span class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/U%2B2678_DejaVu_Sans.svg/200px-U%2B2678_DejaVu_Sans.svg.png" alt="image"></span> +</a><br></p>
+</div>
+<div class="paragraph">
+<p>About two years ago, we bumped our runtime JRE requirement <a href="https://github.com/jenkinsci/jenkins/commit/3431a7cba">from Java5 to Java6</a>. And so the time has come once again for us to finally move on to Java7. Because of all the new language features, <a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/sw_WepGw0Pk">many of us the developers really wanted to move right on to Java8</a>, but after much discussion we settled to move to Java7 first and then to Java8.<br></p>
+</div>
+<div class="paragraph">
+<p>So here is the plan:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Starting Jenkins 1.608, we start advertising that we will be moving on to Java7, which is why you are reading this.<br></p>
+</li>
+<li>
+<p>Starting Jenkins 1.610 (2 weeks from now), we will ship so-called 51.0 class files that will only load on Java7+. This gives some more warnings to those who don&#8217;t read our blog.<br></p>
+</li>
+<li>
+<p>Unless we hear uproar from users, starting around 1.614 (6 weeks from now), core developers will start linking directly to new Java7 APIs. <a href="https://jenkins-ci.org/content/thinking-about-moving-servlet-30">We will move on to servlet 3.0 at this time as well</a>.<br></p>
+</li>
+<li>
+<p>The current 1.596 line of LTS will remain compatible with Java6, and most likely the next LTS line will also remain compatible with Java6. So LTS users have additional 3 months before upgrading to Java7.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Java7 has more NIO improvements that allow us to do some file I/O in more portable manner. Similarly, servlet 3.0 will help us build more interactive UI.<br></p>
+</div>
+<div class="paragraph">
+<p>Your Jenkins controller and all the build agents need to be running on Java7+. Similarly, those who are using the Maven2 job type must also run Maven with Java7+. However, this does not prevent you from using Jenkins to build your applications that are targeted to earlier versions of Java. According to our research, most platforms people run Jenkins on has been already shipping Java7 for quite some time now. But if you have a good reason why we shouldn&#8217;t force everyone to Java7, please let us know ASAP.<br></p>
+</div>
+<div class="paragraph">
+<p>To put this into context, <a href="https://www.java.com/en/download/faq/java_7.xml">Oracle will not release updates to Java7 past April 2015</a>. We have always recommended users to run the latest general release according to Oracle, which is currently Java8. As I said, I suspect we will be requiring Java8 pretty soon. So if you are still running Java6, you should definitely upgrade to Java8.<br></p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/feedback/">
+feedback
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/kohsuke.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kohsuke/">
+Kohsuke Kawaguchi
+</a>
+</p>
+<div class="paragraph">
+<p>Kohsuke is the creator of Jenkins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kohsuke" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/kohsukekawa" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-04-06-good-bye-java6.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

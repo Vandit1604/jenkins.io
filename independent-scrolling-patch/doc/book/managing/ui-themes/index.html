@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Themes for user interface
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Themes for user interface" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Themes for user interface" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Themes for user interface" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Themes for user interface" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="active">Managing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-configuration/" class="">Configuring the System</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" class="">Configuration as Code</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/tools/" class="">Managing Tools</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" class="">Managing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/about-jenkins/" class="">About Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-info/" class="">System Information</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-properties/" class="">Jenkins Features Controlled with System Properties</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/change-system-timezone/" class="">Change System Time Zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-console/" class="">Script Console</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/groovy-hook-scripts/" class="">Groovy Hook Scripts</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" class="">Managing Nodes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-approval/" class="">In-process Script Approval</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/users/" class="">Manage Users</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" class="active">Themes for user interface</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/user-content/" class="">User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/spawning-processes/" class="">Spawning Processes From Build</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../users">
+⇐ Manage Users
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../user-content">
+User Content ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Themes for user interface
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#using-built-in-themes">Using built-in themes</a></li>
+<li><a href="#using-custom-themes">Using custom themes</a>
+<ul class="sectlevel2">
+<li><a href="#customizing-the-login-screen">Customizing the login screen</a></li>
+</ul>
+</li>
+<li><a href="#themes-support-policy">Themes support policy</a>
+<ul class="sectlevel2">
+<li><a href="#why">Why?</a></li>
+</ul>
+</li>
+<li><a href="#reporting-and-fixing-issues">Reporting and fixing issues</a></li>
+<li><a href="#information-for-theme-developers">Information for theme developers</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is possible to customize Jenkins' appearance with custom themes.
+This feature is not a part of the Jenkins core, but it is supported through plugins.</p>
+</div>
+<div class="sect1">
+<h2 id="using-built-in-themes"><a class="anchor" href="#using-built-in-themes"></a>Using built-in themes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several plugins that provide built-in themes, the most popular are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/dark-theme">Dark Theme Plugin</a> -
+provides a dark theme for Jenkins.
+Supports configuration as code to select the theme configuration.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/material-theme">Material Theme Plugin</a> -
+port of Afonso F&#8217;s <a href="http://afonsof.com/jenkins-material-theme/">Jenkins material theme</a> to use Theme Manager.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/solarized-theme">Solarized Theme Plugin</a> -
+provides Solarized (light and dark) themes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Installing any of these will also install their common dependency: the <a href="https://plugins.jenkins.io/theme-manager">Theme Manager Plugin</a>.
+This plugin allows administrators to set the default theme for a Jenkins installation via <em>Manage Jenkins &gt; Configure System &gt; Built-in Themes</em>
+and users can set their preferred theme in their personal settings.
+You can also configure this plugin using <a href="https://plugins.jenkins.io/configuration-as-code">Configuration-as-Code Plugin</a>.
+See the plugin documentation for more details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-custom-themes"><a class="anchor" href="#using-custom-themes"></a>Using custom themes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To be able to fully customize Jenkins appearance you can install the <a href="https://plugins.jenkins.io/simple-theme-plugin">Simple Theme Plugin</a>.
+It allows customizing the Jenkins UI by providing custom CSS and Javascript files.
+It also supports replacing the Favicon.</p>
+</div>
+<div class="paragraph">
+<p>To configure a theme, you can go to <em>Manage Jenkins &gt; Configure System &gt; Theme</em> and enter the URL of your stylesheet and/or Javascript file.
+You can also configure this plugin using <a href="https://plugins.jenkins.io/configuration-as-code">Configuration-as-Code Plugin</a>.
+See the plugin documentation for the detailed usage guidelines and links to sample themes.</p>
+</div>
+<div class="sect2">
+<h3 id="customizing-the-login-screen"><a class="anchor" href="#customizing-the-login-screen"></a>Customizing the login screen</h3>
+<div class="paragraph">
+<p>Since Jenkins 2.128 themes configured using Simple Theme Plugin do not allow you to customize the login screen
+(<a href="/blog/2018/06/27/new-login-page/">announcement</a>).
+To customize the login screen you can install the <a href="https://plugins.jenkins.io/login-theme">Login Theme Plugin</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="themes-support-policy"><a class="anchor" href="#themes-support-policy"></a>Themes support policy</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Jenkins themes are provided “as is”, without warranty of any kind, implicit or explicit.
+The Jenkins core, plugins and other component updates may break theme compatibility without notice.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>At the moment, the Jenkins project does not provide specification for layouts/CSS,
+and we cannot guarantee backward or forward compatibility.
+We try to reflect major changes in changelogs
+(e.g. see the ‘developer’ changes in the <a href="/changelog/">Jenkins changelog</a>),
+but minor changes may not be included there.</p>
+</div>
+<div class="sect2">
+<h3 id="why"><a class="anchor" href="#why"></a>Why?</h3>
+<div class="paragraph">
+<p>There is an ongoing effort focused on improving Jenkins look-and-feel, accessibility, and user experience.
+This area is mission-critical to the project.
+There are multiple initiatives in the <a href="/project/roadmap/">Jenkins Roadmap</a> being coordinated by the <a href="/sigs/ux/">Jenkins User Experience SIG</a>.</p>
+</div>
+<div class="paragraph">
+<p>Major UI changes imply incompatible changes in layouts and the CSS structure which is critical for theme plugins.
+Historically Jenkins had no explicit support policy for themes,
+and we do not want to provide compatibility requirements which would create obstacles for reworking the main Jenkins interface.
+Later, once the Jenkins UI rework reaches its destination and the UI becomes more stable, we could consider creating specifications for theme extensibility so that we could make themes more stable and maintain compatibility.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reporting-and-fixing-issues"><a class="anchor" href="#reporting-and-fixing-issues"></a>Reporting and fixing issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For built-in themes, users are welcome to report discovered compatibility issues to theme maintainers,
+and to submit patches there.</p>
+</div>
+<div class="paragraph">
+<p>We will generally reject bug reports to the Jenkins core/plugins involving broken UI elements with a custom theme.
+We will consider pull requests which restore compatibility and do not block further Web UI evolvement.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a theme outside the <a href="https://github.com/jenkinsci">jenkinsci</a> GitHub organization is no longer maintained,
+it is fine to fork it and to create a new version.
+For themes hosted within the <code>jenkinsci</code> organization,
+we have an <a href="/doc/developer/plugin-governance/adopt-a-plugin/">adoption process</a> which also applies to themes.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="information-for-theme-developers"><a class="anchor" href="#information-for-theme-developers"></a>Information for theme developers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We encourage Jenkins users to create themes and to share them.
+Such themes could be a great way to experiment with UI enhancements,
+and we would be happy to consider enhancements from them for a default Jenkins theme.</p>
+</div>
+<div class="paragraph">
+<p>To improve the user experience,
+please consider the following recommendations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explicitly document compatibility for themes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Compatibility documentation should include: required theme plugins and versions,
+target Jenkins core version,
+plugin requirements and versions if applicable (UI/CSS are overridden), and
+browser compatibility.</p>
+</li>
+<li>
+<p>Examples of such documentation: <a href="https://github.com/djonsson/jenkins-atlassian-theme#compatibility">Jenkins Atlassian Theme</a>, <a href="https://github.com/TobiX/jenkins-neo2-theme#compatibility">Neo2</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Version themes with tags on Git and to maintain changelogs with explicit references to changes in the supported versions (e.g. see our release drafter documentation as one of the ways to automate changelogs).</p>
+</li>
+<li>
+<p>Explicitly define an <a href="https://opensource.org/licenses">OSI-approved open source license</a> so that users can freely modify and redistribute them.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is also a prerequisite for hosting themes in Jenkins GitHub organizations and, in the future, theme marketplaces or other similar promotion engines.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you would like to share a story about Jenkins themes,
+please let the <a href="/sigs/advocacy-and-outreach/">Advocacy&amp;Outreach SIG</a> know!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../users">
+⇐ Manage Users
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../user-content">
+User Content ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/managing/ui-themes.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Community Blog
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/lnewman/page/2.html" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/authors/lnewman/page/2.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-8 main-content with-sidebar" id="content">
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Liam Newman" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/lnewman.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">Liam Newman</p>
+<div class="paragraph">
+<p>Liam started his software career as a tester, which might explain why he&#8217;s such a fan of CI/CD and Pipeline as Code.
+He has spent the majority of his software engineering career implementing Continuous Integration systems at companies big and small.
+He is a Jenkins project contributor and an expert in Jenkins Pipeline, both Scripted and Declarative.
+Liam currently works as a Jenkins Evangelist at <a href="https://cloudbees.com">CloudBees</a>.
+When not at work, he enjoys testing gravity by doing Aikido.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/bitwiseman" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bitwiseman" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial blogcardlist.html.haml -->
+<div class="content blog-posts app-blog-page">
+<div class="item-list">
+<ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/04/05/welcome-to-blue-ocean/">
+<div class="header">
+<div class="date">
+<div class="month">
+Apr
+</div>
+<div class="day">
+05
+</div>
+</div>
+<h5 class="title">
+Getting Started with Blue Ocean
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Welcome to Blue Ocean 1.0!
+
+
+In case you&#8217;ve been heads down on other projects
+for the past 10 months,
+Blue Ocean is a new user experience for Jenkins,
+and version 1.0 was released today!
+Blue Ocean makes Jenkins, and continuous delivery, approachable to all team members.
+I&#8217;ve been working with it for the past several months, and I can tell...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ux/">
+ux
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/02/23/declarative-saucelabs-xunit/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+23
+</div>
+</div>
+<h5 class="title">
+Browser testing and conditional logic in Declarative Pipeline
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Declare Your Pipelines!
+Declarative Pipeline 1.0 is here!
+This is the fourth post in a series showing some of the cool features of
+Declarative Pipeline.
+
+
+In the
+previous post,
+we integrated several notification services into a Declarative Pipeline.
+We kept our Pipeline clean and easy to understand
+by using a shared library to make a custom step called sendNotifications
+that we called at...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/xunit/">
+xunit
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/nightwatch/">
+nightwatch
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/saucelabs/">
+saucelabs
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/selenium/">
+selenium
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/02/15/declarative-notifications/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+15
+</div>
+</div>
+<h5 class="title">
+Declarative Pipeline: Notifications and Shared Libraries
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Declare Your Pipelines!
+Declarative Pipeline 1.0 is here!
+This is the third post in a series showing some of the cool features of
+Declarative Pipeline.
+
+
+In the
+previous post,
+we converted a Scripted Pipeline to a Declarative Pipeline, adding descriptive stages
+and post sections.  In one of those post blocks, we included a placeholder for
+sending notifications.
+
+
+In this blog post, we&#8217;ll...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/notifications/">
+notifications
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/slack/">
+slack
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/hipchat/">
+hipchat
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/emailext/">
+emailext
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/02/10/declarative-html-publisher/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+10
+</div>
+</div>
+<h5 class="title">
+Declarative Pipeline: Publishing HTML Reports
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Declare Your Pipelines!
+Declarative Pipeline 1.0 is here!
+This is the second post in a series showing some of the cool features of
+Declarative Pipeline.
+
+
+In the
+previous blog post,
+we created a simple Declarative Pipeline.
+In this blog post, we&#8217;ll go back and look at the Scripted Pipeline for the
+Publishing HTML Reports in Pipeline blog post.
+We&#8217;ll convert that Pipeline to...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ruby/">
+ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/02/07/declarative-maven-project/">
+<div class="header">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+07
+</div>
+</div>
+<h5 class="title">
+Declarative Pipeline for Maven Projects
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Declare Your Pipelines!
+Declarative Pipeline 1.0 is here!
+This is first in a series of blog posts that will show some of the cool features of
+Declarative Pipeline.
+For several of these posts, I&#8217;ll be revisiting some of my
+previous posts
+on using various plugins with (Scripted) Pipeline,
+and seeing how those are implemented in Declarative Pipeline.
+
+
+To start though, let&#8217;s get...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/maven/">
+maven
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java/">
+java
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2017/01/19/converting-conditional-to-pipeline/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jan
+</div>
+<div class="day">
+19
+</div>
+</div>
+<h5 class="title">
+Converting Conditional Build Steps to Jenkins Pipeline
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+Introduction
+
+
+With all the new developments in
+Jenkins Pipeline (and
+Declarative Pipeline on the horizon),
+it&#8217;s easy to forget what we did to create "pipelines" before
+Pipeline.
+There are number of plugins, some that have been around since the very beginning,
+that enable users to create "pipelines" in Jenkins.
+For example, basic job chaining worked well in many cases, and the
+Parameterized Trigger...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/freestyle/">
+freestyle
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/conditional-build-step/">
+conditional-build-step
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/10/31/xunit-reporting/">
+<div class="header">
+<div class="date">
+<div class="month">
+Oct
+</div>
+<div class="day">
+31
+</div>
+</div>
+<h5 class="title">
+xUnit and Pipeline
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+The
+JUnit plugin
+is the go-to test result reporter for many Jenkins projects,
+but the it is not the only one available.  The
+xUnit plugin
+is a viable alternative that supports JUnit and many other test result file formats.
+
+
+Introduction
+
+No matter the project, you need to gather and report test results.
+JUnit is one of the most widely supported formats...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/xunit/">
+xunit
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/nightwatch/">
+nightwatch
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/10/18/jenkins-world-2016-videos/">
+<div class="header">
+<div class="date">
+<div class="month">
+Oct
+</div>
+<div class="day">
+18
+</div>
+</div>
+<h5 class="title">
+Jenkins World 2016 Session Videos
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+The videos of the sessions from
+Jenkins World 2016 are up!
+
+
+I&#8217;ve updated the wrap-up posts with links to each of the sessions mentioned:
+
+
+
+
+Jenkins Pipeline
+
+
+Scaling Jenkins
+
+
+Ask the Experts &amp; Demos
+
+
+
+
+You can also find video from all the sessions
+here.  Enjoy!...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2016/">
+jenkinsworld2016
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/09/30/jenkins-world-2016-wrap-up-complete/">
+<div class="header">
+<div class="date">
+<div class="month">
+Sep
+</div>
+<div class="day">
+30
+</div>
+</div>
+<h5 class="title">
+Jenkins World 2016, That's a Wrap!
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+
+
+
+This year&#8217;s Jenkins World conference
+was a huge milestone for the Jenkins project - the first global event for the Jenkins community.
+It brought users and contributors together to exchange ideas on the current state
+of the project, celebrate accomplishments of the past year, and look ahead at all the exiting enhancements
+coming down the pipe(line).
+
+
+Contributor Summit
+
+To kick...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2016/">
+jenkinsworld2016
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/">
+<div class="header">
+<div class="date">
+<div class="month">
+Sep
+</div>
+<div class="day">
+29
+</div>
+</div>
+<h5 class="title">
+Jenkins World 2016 Wrap-up - Ask the Experts & Demos
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Liam Newman,
+Technical Evangelist at CloudBees.
+
+
+
+
+
+
+
+
+As I mentioned in my
+previous post,
+Jenkins World brought together
+Jenkins users from organizations of all sizes.  It also brought together Jenkins
+users of all skill levels; from beginners to experts (including to JAM
+organizers, board members, and long time contributors).  A number
+of those experts also volunteered to staff the Open Source Hub&#8217;s
+"Ask the Experts" desk...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2016/">
+jenkinsworld2016
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<!-- ending partial blogcardlist.html.haml -->
+<!-- starting partial pagination.html.haml -->
+<div>
+<nav>
+<ul class="pagination">
+<li class="page-item">
+<a class="page-link" href="/jenkins.io/independent-scrolling-patch/blog/authors/lnewman/">
+&laquo;
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="..">
+1
+</a>
+</li>
+<li class="active page-item">
+<a class="page-link" href="../page/2.html">
+2
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/3.html">
+3
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="/jenkins.io/independent-scrolling-patch/blog/authors/lnewman/page/3.html">
+&raquo;
+</a>
+</li>
+</ul>
+</nav>
+</div>
+
+<!-- ending partial pagination.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
+<div class="content">
+<!-- starting partial events.html.haml -->
+<div class="item-list">
+<ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://fosdem.org/2023/" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+FOSDEM'23
+</h5>
+Brussels, Belgium
+</div>
+<p class="teaser">
+
+FOSDEM is a free event for software developers to meet, share ideas and collaborate. Visit us at the Jenkins stand.
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.socallinuxexpo.org/scale/20x" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+9
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+10:00 am
+</div>
+</div>
+<h5 class="title">
+SCALE 20X
+</h5>
+Pasadena, California
+</div>
+<p class="teaser">
+
+SCaLE is the largest community-run open-source and free software conference in North America. Visit us at the Jenkins booth!
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+</ul>
+</div>
+
+<!-- ending partial events.html.haml -->
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//node/index.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

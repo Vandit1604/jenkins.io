@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Security hardening: Jenkins LTS 2.107.1 switches XStream / Remoting blacklists to whitelists (JEP-200)
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/03/15/jep-200-lts/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Security hardening: Jenkins LTS 2.107.1 switches XStream / Remoting blacklists to whitelists (JEP-200)" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Security hardening: Jenkins LTS 2.107.1 switches XStream / Remoting blacklists to whitelists (JEP-200)" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Security hardening: Jenkins LTS 2.107.1 switches XStream / Remoting blacklists to whitelists (JEP-200)" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/03/15/jep-200-lts/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Security hardening: Jenkins LTS 2.107.1 switches XStream / Remoting blacklists to whitelists (JEP-200)" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Security hardening: Jenkins LTS 2.107.1 switches XStream / Remoting blacklists to whitelists (JEP-200)
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+March 15, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Security+hardening%3A+Jenkins+LTS+2.107.1+switches+XStream+%2F+Remoting+blacklists+to+whitelists+%28JEP-200%29&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F03%2F15%2Fjep-200-lts%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a post about a major change in Jenkins, which is available starting
+from Jenkins 2.102 and Jenkins LTS 2.107.1.
+This is a change with a serious risk of regressions in plugins.
+If you are a Jenkins administrator, please read this blogpost and
+<a href="/doc/upgrade-guide/2.107/#upgrading-to-jenkins-lts-2-107-1">upgrade guidelines</a>
+<strong>BEFORE</strong> upgrading.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>I would like to provide some heads-up about the
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/200/README.adoc">JEP-200</a> change,
+which is included into the new Jenkins LTS 2.107.x baseline.</p>
+</div>
+<div class="sect1">
+<h2 id="background"><a class="anchor" href="#background"></a>Background</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For many years Jenkins used to specifically <em>blacklist</em> certain classes and packages according to known or suspected exploits.
+This approach has been proven unsustainable due to the risk of deserialization attacks via unknown classes
+from 3rd-party components, after the
+<a href="/security/advisory/2017-04-26/#cli-unauthenticated-remote-code-execution">SECURITY-429/CVE-2017-1000353</a> fix in 2.46.2
+it was decided to replace blacklists by more restrictive whitelists.
+In October 2017 <a href="https://github.com/jglick">Jesse Glick</a> proposed a Jenkins Enhancement Proposal,
+which finally got accepted as <a href="https://github.com/jenkinsci/jep/blob/master/jep/200/README.adoc">JEP-200</a>.</p>
+</div>
+<div class="paragraph">
+<p>The change implies a risk of regressions in plugins serializing non-whitelisted Java-internal and 3rd-party classes,
+and that&#8217;s why it is so important to follow the upgrade guidelines for this release.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="current-state"><a class="anchor" href="#current-state"></a>Current state</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JEP-200 was first integrated in Jenkins 2.102 (released in January 2018), and it has got a lot of testing since that.
+See <a href="/blog/2018/01/13/jep-200/">this blogpost</a> for the original announcement.</p>
+</div>
+<div class="paragraph">
+<p>Over the last two months we received more than <strong>75 issues</strong> from users of Jenkins weekly releases.
+All these issues have been triaged, and we have released most of the fixes.
+More than <strong>50 plugins</strong> were fixed in total, and many more plugins were updated in order to enable compatibility testing.
+A significant part of the discovered regressions were caused by real defects which were causing performance and stability
+issues in plugins.
+Thanks a lot to all the Jenkins contributors and plugin maintainers who helped deliver timely changes for this effort!</p>
+</div>
+<div class="paragraph">
+<p>Over last 6 weeks Jenkins weekly releases had positive community ratings,
+the overall JEP-200 adoption reached ~12% of all Jenkins installations on March 01.
+All major plugins have been also tested directly or verified in the wild on weekly releases.
+So we are confident that the change is ready to be released in LTS.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, we continue to receive JEP-200 regression reports.
+They are mostly caused by niche plugins which are not widely used in weekly releases,
+and unfortunately not all fixes have been released yet (see <a href="https://wiki.jenkins.io/display/JENKINS/Plugins+affected+by+fix+for+JEP-200">the Wiki page</a> for up-to-date info).
+We anticipate more regressions to be reported after the LTS release and broader adoption.</p>
+</div>
+<div class="paragraph">
+<p>In order to simplify the upgrade to the new LTS baseline,
+I have prepared some helpful materials together with <a href="https://github.com/bitwiseman">Liam Newman</a>
+and <a href="https://github.com/jglick">Jesse Glick</a>.
+Below you can find the embedded slide deck and video, or scroll down to see the key information
+in the text form.</p>
+</div>
+<center>
+  <iframe width="720" height="400" frameborder="0"
+  src="https://speakerdeck.com/player/f2b7e049ec46424b98ec4f0b58fd33bf"></iframe>
+</center>
+<div class="paragraph">
+<p>Video:</p>
+</div>
+<center>
+  <iframe width="720" height="400" frameborder="0"
+    src="https://www.youtube-nocookie.com/embed/Vfnc9t1RuYA?rel=0"></iframe>
+</center>
+</div>
+</div>
+<div class="sect1">
+<h2 id="for-jenkins-administrators"><a class="anchor" href="#for-jenkins-administrators"></a>For Jenkins administrators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Upgrading to a core with JEP-200 requires a special update procedure, which is described below.</p>
+</div>
+<div class="sect2">
+<h3 id="upgrading-jenkins"><a class="anchor" href="#upgrading-jenkins"></a>Upgrading Jenkins</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>JEP-200 is not the only major change in 2.107.1, please read
+the <a href="/doc/upgrade-guide/2.107/#upgrading-to-jenkins-lts-2-107-1">full upgrade guide</a> carefully</p>
+</li>
+<li>
+<p>If you have a way of testing the upgrade before applying it to production, do it</p>
+</li>
+<li>
+<p>Back up your instance so you have any easy way of rolling back</p>
+</li>
+<li>
+<p>Update all affected plugins.
+See <a href="https://wiki.jenkins.io/display/JENKINS/Plugins+affected+by+fix+for+JEP-200">this Wiki page</a> for the list of affected plugins,
+fix statuses and workarounds</p>
+</li>
+<li>
+<p>Apply workarounds for non-released patches if needed (see below)</p>
+</li>
+<li>
+<p>Update to the new version of the Jenkins core</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Using backups and staging servers is good advice before <em>any</em> upgrade but especially this one,
+given the relatively high risk of regression.
+Due to the nature of the changes, some plugins may refuse to load after the upgrade and cause your Jenkins service to fail to start.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="after-the-upgrade"><a class="anchor" href="#after-the-upgrade"></a>After the upgrade</h3>
+<div class="paragraph">
+<p>To the extent that advance testing of the impact of this change on popular plugins has been completed,
+most users (and even plugin developers) should not notice any difference.
+Still, it is highly advised to monitor your system after the upgrade, especially the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins System log (especially during the startup)</p>
+</li>
+<li>
+<p>Job/Build logs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you do encounter a log message referencing the <code><a href="https://jenkins.io/redirect/class-filter/" class="bare">https://jenkins.io/redirect/class-filter/</a></code> URL,
+most likely it is a JEP-200 regression.
+Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>some.pkg.and.ClassName in file:/var/lib/jenkins/plugins/some-plugin-name/WEB-INF/lib/some-library-1.2.jar might be dangerous, so rejecting; see https://jenkins.io/redirect/class-filter/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you see this kind of message, we highly recommend reporting it so that it can be investigated and probably fixed quickly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reporting-jep-200-issues"><a class="anchor" href="#reporting-jep-200-issues"></a>Reporting JEP-200 issues</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Starting from May 01, JEP-200 issues are triaged by plugin and core maintainers.
+JEP-200 maintainers are available for code reviews if needed,
+but they will not be reviewing cases in JIRA and searching for miscategorized issues on a daily basis.
+If you experience new JEP-200 regressions, please follow the guidelines below.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Please report any issues you encounter matching the above pattern in the
+<a href="https://issues.jenkins.io/">Jenkins issue tracker</a>, under the appropriate plugin component.
+Before reporting please check whether this issue has already been reported.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the <code>JEP-200</code> label</p>
+</li>
+<li>
+<p>Include the stacktrace you see in the log</p>
+</li>
+<li>
+<p>If possible, include complete steps to reproduce the problem from scratch</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can find examples of previously reported issues using <a href="https://issues.jenkins.io/issues/?jql=labels%20%3D%20JEP-200">this query</a>.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins developers will evaluate issues and strive to offer a fix in the form of a core and/or plugin update.
+Right after the feature release there was be a special team triaging the reports.
+Starting from May 01 the issues will be triaged by plugin and core maintainers.
+See <a href="https://github.com/jenkinsci/jep/tree/master/jep/200#rollout-plan">JEP-200 Maintenance plan</a> for more info.</p>
+</div>
+<div class="paragraph">
+<p>For more details and current status, see
+<a href="https://wiki.jenkins.io/display/JENKINS/Plugins+affected+by+fix+for+JEP-200">Plugins affected by fix for JEP-200</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="applying-workarounds"><a class="anchor" href="#applying-workarounds"></a>Applying workarounds</h3>
+<div class="paragraph">
+<p>Assuming you see no particular reason to think that the class in question has dangerous deserialization semantics, which is rare,
+it is possible to work around the problem in your own installation as a temporary expedient.
+Note the class name(s) mentioned in the JEP-200 log messages,
+and run Jenkins with the <code>hudson.remoting.ClassFilter</code> startup option, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">java <span class="nt">-Dhudson</span>.remoting.ClassFilter<span class="o">=</span>some.pkg.and.ClassName,some.pkg.and.OtherClassName <span class="nt">-jar</span> jenkins.war ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This workaround process may require several iterations, because classes whitelisted in the workaround may also
+include fields with types requiring whitelisting.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="for-plugin-developers"><a class="anchor" href="#for-plugin-developers"></a>For plugin developers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are a plugin developer, please see <a href="/blog/2018/01/13/jep-200/">the original JEP-200 announcement</a>.
+That blog post provides guidelines for testing and fixing plugin compatibility after the JEP-200 changes.
+The presentation above also provides some information about what needs to be tested.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/remoting/">
+remoting
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/upgrade/">
+upgrade
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/03/2018-03-15-jep-200-lts.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

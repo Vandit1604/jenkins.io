@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+CI/CD with Postman and Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This blogpost highlights the new Jenkins CICD integration in Postman.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/05/02/cicd-with-postman-and-jenkins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="CI/CD with Postman and Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="CI/CD with Postman and Jenkins" name="twitter:title">
+<meta content="This blogpost highlights the new Jenkins CICD integration in Postman.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-05-02-cicd-with-postman-and-jenkins/jenkinspostman.jpg" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="CI/CD with Postman and Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/05/02/cicd-with-postman-and-jenkins/" property="og:url">
+<meta content="This blogpost highlights the new Jenkins CICD integration in Postman.
+" name="og:description">
+<meta content="CI/CD with Postman and Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-05-02-cicd-with-postman-and-jenkins/jenkinspostman.jpg" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+CI/CD with Postman and Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/shashankawasthi88/"><div class="app-avatar"><img alt="Shashank Awasthi" class="app-avatar__image" src="/images/avatars/shashankawasthi88.jpg"></div> Shashank Awasthi</a>
+May 02, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=CI%2FCD+with+Postman+and+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F05%2F02%2Fcicd-with-postman-and-jenkins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The <a href="https://www.postman.com/downloads/">Postman API Platform</a> is redefining how APIs are built, managed, and consumed.
+An important aspect of API management is continuous building, testing, and deployment with CI/CD tools.
+With the latest release of Postman, we bring the API builds closer to your API by integrating with <a href="/">Jenkins</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="observe-your-jenkins-builds"><a class="anchor" href="#observe-your-jenkins-builds"></a>Observe your Jenkins builds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While you iterate over your APIs, the Jenkins builds are triggered multiple times.
+While some of you may be looking at builds closely in Jenkins, not everyone in your team has access to the Jenkins instance.
+Team members often depend upon other means such as emails and slack messages to get informed of the recent builds and their status.
+With the Jenkins Integration, the build information can now be seen within Postman under the Test tab of the API.</p>
+</div>
+<div class="paragraph">
+<p>This allows you to actively monitor your API builds along with the other components of the API.
+You can also trigger a build from Postman itself, allowing you to quickly test any changes in the API.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-05-02-cicd-with-postman-and-jenkins/jenkinsbuilds.png" alt="pluginView"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="get-automation-test-reports-from-anywhere-in-postman"><a class="anchor" href="#get-automation-test-reports-from-anywhere-in-postman"></a>Get automation test reports from anywhere in Postman</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/">Newman</a> is a CLI tool that is used to run the collections outside Postman.
+Teams use it to run their tests in CI/ CD pipelines, test environments, etc.
+While you could pull tests from Postman using APIs to run via Newman, the test reports had to be consumed outside Postman.
+This creates multiple sources for you to refer to while checking the automation test status of your APIs.</p>
+</div>
+<div class="paragraph">
+<p>With the latest release, you now get the reports of automation tests running anywhere in Postman.
+The <a href="https://www.npmjs.com/package/newman-reporter-postman-cloud">Newman reporter</a> posts the results as a <a href="https://learning.postman.com/docs/running-collections/intro-to-collection-runs/">collection run</a> in the <a href="https://learning.postman.com/docs/getting-started/navigating-postman/#history">History</a>.
+The results can also be seen combined with your build reports from the CI/CD, giving you a single place to analyze your builds and associated tests.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-05-02-cicd-with-postman-and-jenkins/newmanruns.gif" alt="pluginView"></span></p>
+</div>
+<div class="paragraph">
+<p>A version of this post appeared on the <a href="https://blog.postman.com/stay-on-top-of-your-api-builds-witih-postmans-jenkins-integration/">Postman Blog</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/postman/">
+postman
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/api/">
+api
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cicd/">
+cicd
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Shashank Awasthi" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/shashankawasthi88.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/shashankawasthi88/">
+Shashank Awasthi
+</a>
+</p>
+<div class="paragraph">
+<p>Shashank is a Product Manager at Postman working on the Integrations domain.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/shashankawasthi88" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/awashashank" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/awasthi-shashank" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/05/2022-05-02-cicd-with-postman-and-jenkins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

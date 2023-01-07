@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Artifact Promotion plugin for Jenkins Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/artifact-promotion-plugin-for-jenkins-pipeline/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Artifact Promotion plugin for Jenkins Pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Artifact Promotion plugin for Jenkins Pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Artifact Promotion plugin for Jenkins Pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/artifact-promotion-plugin-for-jenkins-pipeline/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Artifact Promotion plugin for Jenkins Pipeline" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Artifact Promotion plugin for Jenkins Pipeline
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Create a new highly anticipated engine for managing promotions in Jenkins Pipeline, with modern UIs and REST APIs
+</p>
+<p>
+<b>
+Status:
+</b>
+Cancelled
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Student:
+<a class="app-author-link" href="/blog/authors/derndren161/"><div class="app-avatar"><img alt="Prastik Gyawali" class="app-avatar__image" src="/images/avatars/dernDren161.jpg"></div> Prastik Gyawali</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/bicschneider/"><div class="app-avatar"><img alt="Claus Schneider" class="app-avatar__image" src="/images/avatars/bicschneider.jpg"></div> Claus Schneider</a>
+, 
+<a class="app-author-link" href="/blog/authors/jonbrohauge/"><div class="app-avatar"></div> Jon Brohauge</a>
+, 
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+, 
+<a class="app-author-link" href="/blog/authors/madsnielsen/"><div class="app-avatar"></div> Mads Nielsen</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>The popular promoted-builds-plugin in Jenkins currently supports Freestyle/Abstract Projects but however is incompatible with the
+Pipeline structure. The existing plugin was developed before the introduction of pipelines which makes the current design archaic enough
+to not support the pipeline builds. Thus, this project aims at reviving Promotion into the pipelines by introducing a new plugin which
+includes major updates and redesigns done on a copy of the existing plugin(promoted-builds).
+The end result here would be a robust plugin which can run an on-demand promotion when the pipeline build is completed along
+with other artifact tracking and job triggering functions.</p>
+</div>
+<div class="paragraph">
+<p>Sub-tasks to complete the project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Refactor the selected extension points (if possible) inside the promoted-builds-plugin and make them pipeline compatible.</p>
+</li>
+<li>
+<p>If the extension points seem to be tightly coupled and look to often break the API/binary compatibility then create new classes for the same.</p>
+</li>
+<li>
+<p>For core modules (for example, PromotionProcess) opt to create new analogous classes within the promoted-builds-plugin.</p>
+</li>
+<li>
+<p>Create new Custom "steps" for Declarative Pipeline script for Job promotion definition.</p>
+</li>
+<li>
+<p>Use the parameterized-trigger plugin as an inspiration to trigger the new Promotion Job.</p>
+</li>
+<li>
+<p>Avail from the run-Selector/copyArtifacts plugin to copy/send build information as parameters to the new Promotion Job.</p>
+</li>
+<li>
+<p>Use fingerprinting to trace the flow of the promoted pipeline jobs within Jenkins.(Other applications of fingerprinting yet to be discussed)</p>
+</li>
+<li>
+<p>Update the Jenkins release plugin(to share the common APIs)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Project Specific JIRA track link:
+  <a href="https://issues.jenkins.io/browse/JENKINS-57457">Community Bonding</a>
+  <a href="https://issues.jenkins.io/browse/JENKINS-36089">Project Epic</a>
+  <a href="https://issues.jenkins.io/browse/JENKINS-57634">Coding Phase -I</a>
+  <a href="https://issues.jenkins.io/secure/Dashboard.jspa?selectPageId=18742">Project Dashboard</a></p>
+</div>
+<div class="paragraph">
+<p>Project Proposal:
+  More information on the Project can be found through this
+  <a href="https://docs.google.com/document/d/1y6rStYSPAH3oB2cl6yw0KaVMd7pRDNmP2ljdYxS9qDM/edit">link</a></p>
+</div>
+<div class="paragraph">
+<p>Meeting Notes:
+  <a href="https://docs.google.com/document/d/1SRLb8IeIKy3Ih83de0bDSHdJQdtmygloPfMMNRArkvo/edit#heading=h.d32s79oq7spv">link</a></p>
+</div>
+<div class="sect4">
+<h5 id="weekly-meetings"><a class="anchor" href="#weekly-meetings"></a>Weekly Meetings:</h5>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">General Weekly Meeting:  Wednesdays at 2:00 PM UTC</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Project Specific Meeting: Tuesdays and Thursdays at 10:00 AM UTC</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Expected deliveries for Coding Phase-I:
+. Create new analogous classes for core modules such as PromotionProcess,JobPropertyImpl,etc.
+. Subsequently refactor the required Promotion Condition Extension points inside
+  the promoted-builds-plugin.
+. In this way, almost all the Promotion conditions/definitions can be made pipeline compatible.
+. Create new custom steps for all the Promotion definitions.
+. Pass on the inputs from these DSL steps to the respective promotion modules for future promotions.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Updates on the Project:
+. As mentioned these new classes are currently being committed to the "promoted-builds-plugin".
+. Though the prior design was to make a different plugin for this implementation, a thorough
+  discussion with the mentors led to the conclusion that the new features be integrated into the
+  same old plugin and have a monolithic code for promotion as a whole.
+. Some core modules as part of the refactoring process have been committed but are still
+  evolving as we add in more features.
+. New Custom steps are also being built and are still in the ongoing development process.
+. With all the dependent modules aligned, the final Promotion Condition modules can be submitted
+  so that they adhere to Pipeline compatibility.</pre>
+</div>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://gitter.im/jenkinsci/promoted-builds-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/promoted-builds-plugin.svg" title="Gitter">
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel4">
+<li><a href="#weekly-meetings">Weekly Meetings:</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://gitter.im/jenkinsci/promoted-builds-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/promoted-builds-plugin.svg" title="Gitter">
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2020/02/19/jenkins-world-lisbon-with-love-from-india/">
+My DevOps World | Jenkins World Lisbon Experience
+</a>
+</li>
+<li>
+<a href="/blog/2020/02/07/trip-to-dwjw/">
+Trip to DevOps World | Jenkins World
+</a>
+</li>
+<li>
+<a href="/blog/2020/01/29/gsoc-report/">
+Google Summer of Code 2019 Report
+</a>
+</li>
+<li>
+<a href="/blog/2019/10/08/google-summer-of-code-mentor-and-org-admin-perspective/">
+Google Summer of Code Mentor and Org Admin Perspective
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/26/role-strategy-performance/">
+Performance Improvements to Role Strategy Plugin
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/25/jenkinsworld-contrib-summit-ask-the-expert-booth/">
+Jenkins World Contributor Summit and Ask the Expert booth
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/23/introducing-gitlab-branch-source-plugin/">
+Introducing new GitLab Branch Source Plugin
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/23/introduce-react-plugin-template/">
+Introduce React Plugin Template
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/22/devops-world/">
+My DevOps World - Jenkins World 2019 Experience
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/19/remoting-kafka-kubernetes-release-2/">
+Remoting over Apache Kafka 2.0: Built-in Kubernetes support
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2019/artifact-promotion-plugin-for-jenkins-pipeline.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

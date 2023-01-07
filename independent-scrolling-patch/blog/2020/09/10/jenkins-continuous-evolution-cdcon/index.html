@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Learn more about Jenkins' continuous evolution at CDCon
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Don&#39;t miss the Jenkins talk at CDCon, October 7-8, 2020." name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/09/10/jenkins-continuous-evolution-cdcon/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Learn more about Jenkins&#39; continuous evolution at CDCon" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Learn more about Jenkins&#39; continuous evolution at CDCon" name="twitter:title">
+<meta content="Don&#39;t miss the Jenkins talk at CDCon, October 7-8, 2020." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/jenkins-cdcon.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Learn more about Jenkins&#39; continuous evolution at CDCon" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/09/10/jenkins-continuous-evolution-cdcon/" property="og:url">
+<meta content="Don&#39;t miss the Jenkins talk at CDCon, October 7-8, 2020." name="og:description">
+<meta content="Learn more about Jenkins&#39; continuous evolution at CDCon" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/jenkins-cdcon.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Learn more about Jenkins' continuous evolution at CDCon
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/cdfoundation/"><div class="app-avatar"><img alt="Continuous Delivery Foundation" class="app-avatar__image" src="/images/avatars/cdfoundation.jpg"></div> Continuous Delivery Foundation</a>
+September 10, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Learn+more+about+Jenkins%27+continuous+evolution+at+CDCon&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F09%2F10%2Fjenkins-continuous-evolution-cdcon%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The Jenkins project has been around for over fifteen years and is the defacto platform for CI/CD. One of the reasons it continues to be so ubiquitous is that Jenkins constantly evolves and offers flexibility to integrate other tools that work well for your solution.</p>
+</div>
+<div class="paragraph">
+<p>At <a href="https://events.linuxfoundation.org/cdcon/">CDCon</a>, on October 7-8, there are two particular Jenkins talks that will focus on new directions that the Jenkins platform is evolving too and getting better and better for users.</p>
+</div>
+<div class="sect1">
+<h2 id="heard-of-jcasc-and-not-sure-where-to-start-let-me-help-you"><a class="anchor" href="#heard-of-jcasc-and-not-sure-where-to-start-let-me-help-you"></a><a href="https://sched.co/dqOc">Heard of JCasC and Not Sure Where to Start? Let me Help You!</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration as code is a best practice for your CI/CD setup as it makes the complex process of setting up Jenkins simpler and more reproducible. Jenkins Configuration as Code (JCasc) enables Jenkins users to define the whole configuration as a simple, plain text YAML syntax. With JCasc, setting up a new Jenkins controller is easier than ever before. To get started with JCasC some initial effort is required. This talk walks you through a basic setup for easily spinning up new Jenkins instances.</p>
+</div>
+<div class="paragraph">
+<p>October 7 at 2:20 PM PST
+Speaker: Ewelina Wilkosz, Eficode</p>
+</div>
+<div class="paragraph">
+<p>Ewelina W is passionate about making sure that her customers' software is being built, tested and released in the best possible way. And, most importantly, that software developers don’t hate the process. Ewelina has been involved in Jenkins Configuration as Code plugin development from the very beginning. This is a must-see talk where Ewelina will also share some tips and tricks. The talk will feature using Docker, Jenkins and GitHub Actions as a quick way to build… Jenkins!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bridging-the-gap-with-tekton-client-plugin-for-jenkins"><a class="anchor" href="#bridging-the-gap-with-tekton-client-plugin-for-jenkins"></a><a href="https://sched.co/dpvN">Bridging the Gap with Tekton-client-plugin for Jenkins</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tekton provides Kubernetes-native CI/CD building blocks. It enables users to take full advantage of cloud-native features around scalability and high availability. Jenkins flexibility enables integration with Tekton. This talk showcases the new tekton-client-plugin for Jenkins that enables Jenkins to interact with Tekton pipelines on a Kubernetes cluster. Tekton and Jenkins are both CDF projects and this talk highlights the first steps towards better Tekton and Jenkins interoperability, a key goal of the CD Foundation.</p>
+</div>
+<div class="paragraph">
+<p>October 7 at 11:40 AM PST
+Speaker: Vibhav Bobade, Red Hat</p>
+</div>
+<div class="sect2">
+<h3 id="register-for-cdcon"><a class="anchor" href="#register-for-cdcon"></a><a href="https://events.linuxfoundation.org/cdcon/">Register for CDCon</a></h3>
+<div class="paragraph">
+<p>Both these talks showcase the ultimate flexibility and power of the Jenkins platform and how it continues to evolve to meet the challenges of modern-day CI/CD. Don&#8217;t miss out; <a href="https://events.linuxfoundation.org/cdcon/">register for CDCon</a> to attend.</p>
+</div>
+<div class="paragraph">
+<p>CDCon has pledged to donate 100% of the proceeds received from CDCon 2020 registration to charitable causes: Black Girls Code, Women Who Code and the CDF Diversity Fund. Registrants indicate which charitable fund they want their 25 USD registration fees to go to during registration. If you can’t afford the registration cost, please apply for the <a href="https://events.linuxfoundation.org/cdcon/attend/scholarships/">diversity scholarship</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://events.linuxfoundation.org/cdcon/"><img src="/images/post-images/2020/cdcon-register.png" alt="Register for CDCon"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cdcon/">
+cdcon
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/talks/">
+talks
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jcasc/">
+jcasc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cicd/">
+cicd
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tekton/">
+tekton
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Continuous Delivery Foundation" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/cdfoundation.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/cdfoundation/">
+Continuous Delivery Foundation
+</a>
+</p>
+<div class="paragraph">
+<p>The Continuous Delivery Foundation (CDF) serves as the vendor-neutral home of many of the fastest-growing projects for continuous delivery, including Jenkins, Jenkins X, Spinnaker, and Tekton.
+CDF supports DevOps practitioners with an open model, training, industry guidelines, and a portability focus.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/cdfoundation" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/cdeliveryfdn" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://cd.foundation/news/blog/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/09/2020-09-10-jenkins-continuous-evolution-cdcon.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Build your own Jenkins! Introducing Custom WAR/Docker Packager
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/10/16/custom-war-packager/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Build your own Jenkins! Introducing Custom WAR/Docker Packager" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Build your own Jenkins! Introducing Custom WAR/Docker Packager" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Build your own Jenkins! Introducing Custom WAR/Docker Packager" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/10/16/custom-war-packager/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Build your own Jenkins! Introducing Custom WAR/Docker Packager" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Build your own Jenkins! Introducing Custom WAR/Docker Packager
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+October 16, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Build+your+own+Jenkins%21+Introducing+Custom+WAR%2FDocker+Packager&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F10%2F16%2Fcustom-war-packager%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I would like to introduce <a href="https://github.com/jenkinsci/custom-war-packager">Custom WAR Packager</a> -
+a new tool for Jenkins administrators and developers.
+This tool allows packaging custom Jenkins distributions as WAR files,
+<a href="https://github.com/jenkinsci/docker">Docker images</a>
+and <a href="https://github.com/jenkinsci/jenkinsfile-runner">Jenkinsfile Runner</a> bundles.
+This tool allows packaging Jenkins, plugins, and configurations in a ready-to-fly distribution.
+Custom WAR packager is a part of the Ephemeral Jenkins controller toolchain
+which we presented in our <a href="/blog/2018/09/12/speaker-blog-a-cloud-native-jenkins/">A Cloud Native Jenkins</a> blogpost.
+This toolchain is already used in <a href="https://jenkins-x.io">Jenkins X</a> to package <a href="https://github.com/jenkins-x/jenkins-x-serverless">serverless images</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this blogpost I will show some common use-cases for Custom WAR Packager.</p>
+</div>
+<div class="sect1">
+<h2 id="history"><a class="anchor" href="#history"></a>History</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with Jenkins itself, Custom WAR Packager started as a small development tool.
+For a long time it was a problem to run integration testing in Jenkins.
+We have 3 main frameworks for it:
+    <a href="https://github.com/jenkinsci/jenkins-test-harness">Jenkins Test Harness</a>,
+    <a href="https://github.com/jenkinsci/acceptance-test-harness">Acceptance Test Harness</a>,
+    and <a href="https://github.com/jenkinsci/plugin-compat-tester">Plugin Compatibility Tester</a>.
+All these frameworks require a Jenkins WAR file to be passed to them to run tests.
+What if you want to run Jenkins tests in a custom environment like AWS?
+Or what if you want to reuse existing Jenkins Pipeline tests and to run them against
+<a href="/sigs/cloud-native/pluggable-storage/">Pluggable Storage</a> to ensure there are no regressions?</p>
+</div>
+<div class="paragraph">
+<p>And it was not just an idle question.
+There were major activities happening in the Jenkins project: Cloud-Native Jenkins, Jenkins Evergreen, and Jenkins X.
+All these activities required a lot of integration testing  to enable Continuous Delivery flows.
+In order to do this in existing test frameworks, we needed to package a self-configuring WAR file so that it would be possible to run integration tests in existing frameworks.
+That is why Custom WAR Packager was created in April 2018.
+Later it got support for packaging Docker images,
+and in September 2018 it also got support for Jenkinsfile Runner
+which was created by <a href="https://github.com/kohsuke/">Kohsuke Kawaguchi</a>
+and then improved by <a href="https://github.com/ndeloof">Nicolas de Loof</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-inside"><a class="anchor" href="#whats-inside"></a>What&#8217;s inside?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Custom WAR packager is a tool which is available as CLI Executable, Maven Plugin, or Docker package.
+This tool takes input definitions and packages them as requested by the user.
+Everything is managed by a YAML configuration file:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-10-16-cwp/cwp_flow.png" alt="Custom WAR Packager build flow">
+</div>
+</div>
+<div class="paragraph">
+<p>The tool supports various types of inputs.
+The list of plugins can be passed via YAML itself, <code>pom.xml</code>, or a BOM file from <a href="https://github.com/jenkinsci/jep/blob/master/jep/309/README.adoc">JEP-309</a>.
+Custom WAR Packager supports not only released versions,
+but also builds deployed to the <a href="/blog/2018/05/15/incremental-deployment/">Incremental repository</a> (CD flow for Jenkins core and plugins - <a href="https://github.com/jenkinsci/jep/blob/master/jep/305/README.adoc">JEP-305</a>) and
+even direct builds by Git or directory path specifications.
+It allows building packages from any source, without waiting for official releases.
+The builds are also pretty fast, because the plugin does caching in the local Maven repository by using commit IDs.</p>
+</div>
+<div class="paragraph">
+<p>Custom WAR packager also supports the following self-configuration options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YAML files for <a href="https://github.com/jenkinsci/configuration-as-code-plugin">Jenkins Configuration as Code</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Groovy+Hook+Script">Groovy Hooks</a> (e.g. init hooks for pre-configuration)</p>
+</li>
+<li>
+<p>System properties</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="war-packaging"><a class="anchor" href="#war-packaging"></a>WAR Packaging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WAR packaging happens by default every time the repo is built.
+Generally Custom WAR Packager repackages all inputs into a single WAR file by following conventions defined in the Jenkins core and the JCasC plugin.</p>
+</div>
+<div class="paragraph">
+<p>Sample configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">bundle</span><span class="pi">:</span>
+  <span class="na">groupId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">io.jenkins.tools.war-packager.demo"</span>
+  <span class="na">artifactId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">blogpost-demo"</span>
+  <span class="na">vendor</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Jenkins</span><span class="nv"> </span><span class="s">project"</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Just</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">demo</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">blogpost"</span>
+<span class="na">war</span><span class="pi">:</span>
+  <span class="na">groupId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.jenkins-ci.main"</span>
+  <span class="na">artifactId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins-war"</span>
+  <span class="na">source</span><span class="pi">:</span>
+    <span class="na">version</span><span class="pi">:</span> <span class="s">2.138.2</span>
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">groupId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">io.jenkins"</span>
+    <span class="na">artifactId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">configuration-as-code"</span>
+    <span class="na">source</span><span class="pi">:</span>
+      <span class="c1"># Common release</span>
+      <span class="na">version</span><span class="pi">:</span> <span class="s">1.0-rc2</span>
+  <span class="pi">-</span> <span class="na">groupId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">io.jenkins"</span>
+    <span class="na">artifactId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">artifact-manager-s3"</span>
+    <span class="na">source</span><span class="pi">:</span>
+      <span class="c1"># Incrementals</span>
+      <span class="na">version</span><span class="pi">:</span> <span class="s">1.2-rc259.c9d60bf2f88c</span>
+  <span class="pi">-</span> <span class="na">groupId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.jenkins-ci.plugins.workflow"</span>
+    <span class="na">artifactId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">workflow-job"</span>
+    <span class="na">source</span><span class="pi">:</span>
+      <span class="c1"># Git</span>
+      <span class="na">git</span><span class="pi">:</span> <span class="s">https://github.com/jglick/workflow-job-plugin.git</span>
+      <span class="na">commit</span><span class="pi">:</span> <span class="s">18d78f305a4526af9cdf3a7b68eb9caf97c7cfbc</span>
+  <span class="c1"># etc.</span>
+<span class="na">systemProperties</span><span class="pi">:</span>
+    <span class="na">jenkins.model.Jenkins.slaveAgentPort</span><span class="pi">:</span> <span class="s2">"</span><span class="s">9000"</span>
+    <span class="na">jenkins.model.Jenkins.slaveAgentPortEnforce</span><span class="pi">:</span> <span class="s2">"</span><span class="s">true"</span>
+<span class="na">groovyHooks</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">init"</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">initScripts"</span>
+    <span class="na">source</span><span class="pi">:</span>
+      <span class="na">dir</span><span class="pi">:</span> <span class="s">src/main/groovy</span>
+<span class="na">casc</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jcasc"</span>
+    <span class="na">source</span><span class="pi">:</span>
+      <span class="na">dir</span><span class="pi">:</span> <span class="s">casc.yml</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="docker-packaging"><a class="anchor" href="#docker-packaging"></a>Docker packaging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to do the Docker packaging, Custom WAR Packager uses the official
+<a href="https://hub.docker.com/r/jenkins/jenkins/">jenkins/jenkins</a>
+Docker images or other images using the same format.
+During the build the WAR file just gets replaced by the one built by the tool.
+It means that <strong>ALL</strong> image features are available for such custom builds: <code>plugins.txt</code>, Java options, Groovy hooks, etc., etc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="c1">## ...</span>
+<span class="c1">## WAR configuration from above</span>
+<span class="c1">## ...</span>
+
+<span class="na">buildSettings</span><span class="pi">:</span>
+  <span class="na">docker</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="c1"># Base image</span>
+    <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins/jenkins:2.138.2"</span>
+    <span class="c1"># Tag to set for the produced image</span>
+    <span class="na">tag</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins/custom-war-packager-casc-demo"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, <a href="https://github.com/jenkinsci/custom-war-packager/tree/master/demo/external-logging-elasticsearch">this demo</a>
+shows packaging of a Docker image with External Build Logging to Elasticsearch.
+Although the implementations have been improved as a part of <a href="https://github.com/jenkinsci/jep/blob/master/jep/207/README.adoc">JEP-207</a> and <a href="https://github.com/jenkinsci/jep/blob/master/jep/210/README.adoc">JEP-210</a>,
+you can check out this demo to see how the Docker image does self-configuration, connects to a Elasicsearch, and then starts externally storing logs without changes in build log UIs.
+A Docker Compose file for running the entire cluster is included.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jenkinsfile-runner-packaging"><a class="anchor" href="#jenkinsfile-runner-packaging"></a>Jenkinsfile Runner packaging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is probably the most tricky mode of Jenkinsfile Runner.
+In March a new <a href="https://github.com/jenkinsci/jenkinsfile-runner">Jenkinsfile Runner</a> project
+<a href="https://groups.google.com/d/msg/jenkinsci-dev/gjz3CDhi-kk/1mwi_oa0AQAJ">was announced</a> in the developer mailing list.
+The main idea is to support running Jenkins Pipeline in a single-shot controller mode when the instance just executes a single run and prints outputs to the console.
+Jenkinsfile Runner runs as CLI or as a Docker image.
+Custom WAR Packager is able to produce both, though only Docker run mode is recommended.
+With Jenkinsfile Runner you can run Pipelines simply as&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="sh">docker run <span class="nt">--rm</span> <span class="nt">-v</span> <span class="nv">$PWD</span>/Jenkinsfile:/workspace/Jenkinsfile acmeorg/jenkinsfile-runner</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When we started working on Ephemeral (aka "single-shot") controllers in the Cloud Native SIG,
+there was an idea to use Custom WAR Packager and other existing tools (Jenkinsfile Runner, Jenkins Configuration as Code, etc.) to implement it.
+It would be possible to just replace Jenkins core JAR and add plugins to Jenkinsfile Runner, but it is not enough.
+To be efficient, Jenkinsfile Runner images should start up <strong>FAST</strong>, really fast.
+In the build flow implementation we used some experimental options available in Jenkins and Jenkinsfile Runner, including classloader precaching, plugin unarchiving, etc, etc.
+With such patches Jenkins starts up in few seconds with configuration-as-code and dozens of bundled plugins.</p>
+</div>
+<div class="paragraph">
+<p>So, how to build custom Jenkinsfile Runner images?
+Although there is no release so far, it is not something which can stop us as you see above.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="c1">##...</span>
+<span class="c1">## WAR Configuration from above</span>
+<span class="c1">##...</span>
+
+<span class="na">buildSettings</span><span class="pi">:</span>
+  <span class="na">jenkinsfileRunner</span><span class="pi">:</span>
+    <span class="na">source</span><span class="pi">:</span>
+      <span class="na">groupId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">io.jenkins"</span>
+      <span class="na">artifactId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkinsfile-runner"</span>
+      <span class="na">build</span><span class="pi">:</span>
+        <span class="na">noCache</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">source</span><span class="pi">:</span>
+        <span class="na">git</span><span class="pi">:</span> <span class="s">https://github.com/jenkinsci/jenkinsfile-runner.git</span>
+        <span class="na">commit</span><span class="pi">:</span> <span class="s">8ff9b1e9a097e629c5fbffca9a3d69750097ecc4</span>
+    <span class="na">docker</span><span class="pi">:</span>
+      <span class="na">base</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins/jenkins:2.138.2"</span>
+      <span class="na">tag</span><span class="pi">:</span> <span class="s2">"</span><span class="s">onenashev/cwp-jenkinsfile-runner-demo"</span>
+      <span class="na">build</span><span class="pi">:</span> <span class="no">true</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can find a Demo of Jenkinsfile Runner packaging with Custom WAR Packager
+<a href="https://github.com/jenkinsci/custom-war-packager/tree/master/demo/jenkinsfile-runner">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="more-info"><a class="anchor" href="#more-info"></a>More info</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are many other features which are not described in this blogpost.
+For example, it is possible to alter Maven build settings or to add/replace libraries within the Jenkins core (e.g. Remoting).
+Please see the <a href="https://github.com/jenkinsci/custom-war-packager/blob/master/README.md">Custom WAR Packager documentation</a> for more information.
+There are a number of demos available in the repository.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested to contribute to the repository,
+please create pull requests and CC <a href="https://github.com/oleg-nenashev/">@oleg-nenashev</a>
+and <a href="https://github.com/raul-arabaolaza">Raul Arabaolaza</a> who is the second maintainer now working on Jenkins test automation flows.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are still many improvements that could be made to the tool to make it more efficient:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add upper bounds checks for transitive plugin dependencies so that the conflicts are discovered during the build</p>
+</li>
+<li>
+<p>Allow passing all kinds of system properties and Java options via configuration YAML</p>
+</li>
+<li>
+<p>Improve Jenkinsfile Runner to improve performance</p>
+</li>
+<li>
+<p>Integrate the tool into Jenkins Integration test flows
+(see <a href="https://github.com/jenkins-infra/pipeline-library/blob/master/vars/essentialsTest.groovy">essentialsTest()</a>
+ in the Jenkins Pipeline library)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Many other tasks could be implemented in Custom WAR Packager,
+but even now it is available to all Jenkins users so that they can build their own Jenkins bundles with it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="want-to-know-more"><a class="anchor" href="#want-to-know-more"></a>Want to know more?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are going to <a href="https://www.cloudbees.com/devops-world/nice">DevOps World - Jenkins World in Nice</a> on Oct 22-25,
+I will be presenting Custom WAR Packager at the Community Booth during the lunch demo sessions.
+We will be also repeating our <a href="https://sched.co/FIox">A Cloud Native Jenkins</a> talk together with Carlos Sanchez where we will show how Ephemeral Jenkins works with Pluggable Storage.
+Jenkins X team is also going to present their project using Custom WAR Packager.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Come meet Oleg and other Cloud Native SIG members at
+<a href="https://www.cloudbees.com/devops-world/nice">DevOps World - Jenkins World</a> on October 22-25 in Nice.
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tools/">
+tools
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/docker/">
+docker
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins-x/">
+jenkins-x
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cloud-native/">
+cloud-native
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/10/2018-10-16-custom-war-packager.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

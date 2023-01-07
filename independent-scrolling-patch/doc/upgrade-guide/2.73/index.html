@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.73.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.73/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.73.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.73.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.73.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.73/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.73.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.73.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.73.1 covers the upgrade from  2.60.3.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-73-3">
+Upgrading to Jenkins 2.73.3
+</h3>
+<div class="sect3">
+<h4 id="changes-to-on-disk-storage-layout-for-user-records"><a class="anchor" href="#changes-to-on-disk-storage-layout-for-user-records"></a>Changes to on-disk storage layout for user records</h4>
+<div class="paragraph">
+<p><a href="/security/advisory/2017-11-08/">SECURITY-499</a></p>
+</div>
+<div class="paragraph">
+<p>The fix for SECURITY-499 renames the directories containing user records in <code>JENKINS_HOME/users/</code>:
+Directories with unsafe names, like reserved names such as <code>NUL</code> (Windows) or using unsafe characters such as <code>\</code> will be renamed to filesystem-safe representations of those user names, with problematic characters or sequences escaped.</p>
+</div>
+<div class="paragraph">
+<p>Downgrading Jenkins to versions older than 2.73.3 would result in a mismatch between the name widely used to reference a user in Jenkins (such as assigned permissions), and what user name is associated with the user&#8217;s metadata (password record for Jenkins user database, SSH public key, and various preferences)&#8201;&#8212;&#8201;as the latter might change to the filesystem-safe representation of the intended user name&#8201;&#8212;&#8201;and is therefore discouraged.</p>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-73-2">
+Upgrading to Jenkins 2.73.2
+</h3>
+<div class="sect3">
+<h4 id="low-privilege-users-may-not-be-able-to-reconfigure-some-agents-anymore"><a class="anchor" href="#low-privilege-users-may-not-be-able-to-reconfigure-some-agents-anymore"></a>Low-privilege users may not be able to reconfigure some agents anymore</h4>
+<div class="paragraph">
+<p><a href="/security/advisory/2017-10-11/">SECURITY-478</a></p>
+</div>
+<div class="paragraph">
+<p>The launch method <em>Launch agent via execution of command on master</em> did not properly check the permission to run commands of the configuring user.
+This has been fixed, and this launch method can now only be configured by Jenkins administrators (or, more specifically, users with the <em>Run Scripts</em> permission).</p>
+</div>
+<div class="paragraph">
+<p>A known limitation of this fix is that users without the <em>Run Scripts</em> permission (typically everyone who isn&#8217;t an administrator) are no longer able to configure agents with this launch method at all, even if the launch method and the script remain unchanged.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="restrictions-to-remote-api-output"><a class="anchor" href="#restrictions-to-remote-api-output"></a>Restrictions to remote API output</h4>
+<div class="paragraph">
+<p><a href="/security/advisory/2017-10-11/">SECURITY-514, SECURITY-611, SECURITY-617, SECURITY-618</a></p>
+</div>
+<div class="paragraph">
+<p>Multiple remote API endpoints had the content they provide restricted.
+More detailed information can be found in the security advisory linked above.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All <em>user properties</em> got removed from <code>/user/(username)/api/</code> and other APIs returning users except when accessed by administrators or the users themselves.</p>
+</li>
+<li>
+<p>APIs returning queue items and tasks (builds) now only return them when requested by users with read permission for them.</p>
+</li>
+<li>
+<p>The <code>/queue/item/(ID)/api/</code> is now only accessible by users with read permission for the specified item.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="fixes-for-regressions-in-2-73-1"><a class="anchor" href="#fixes-for-regressions-in-2-73-1"></a>Fixes for regressions in 2.73.1</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-45755">JENKINS-45755</a>,
+<a href="https://issues.jenkins.io/browse/JENKINS-46754">JENKINS-46754</a></p>
+</div>
+<div class="paragraph">
+<p>The regressions in 2.73.1 listed below have been fixed in 2.73.2.</p>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-73-1">
+Upgrading to Jenkins 2.73.1
+</h3>
+<div class="sect3">
+<h4 id="known-issue-agent-connection-failures-involving-jenkins-controllers-with-undefined-or-non-writable-home-directory"><a class="anchor" href="#known-issue-agent-connection-failures-involving-jenkins-controllers-with-undefined-or-non-writable-home-directory"></a>Known Issue: Agent connection failures involving Jenkins controllers with undefined or non-writable home directory</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-45755">JENKINS-45755</a></p>
+</div>
+<div class="paragraph">
+<p>A regression involving agent connections has been identified.
+If the user home directory (<code>HOME</code>, not <code>JENKINS_HOME</code>) on the Jenkins controller is undefined, or not writable, no remoting connections can be established.</p>
+</div>
+<div class="paragraph">
+<p>The following features are known to impacted:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Agent connections</p>
+</li>
+<li>
+<p>Remoting-based CLI connections (deprecated since 2.46.2)</p>
+</li>
+<li>
+<p>Building Maven projects (Maven Integration Plugin)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The error shown will include the path to a directory <code>.jenkins/cache/jars</code> inside the home directory, and its stack trace will reference <code>hudson.remoting.FileSystemJarCache</code>.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins Docker image has been changed to have a defined, writable home directory for the Jenkins user.
+Typical web application container (e.g. Tomcat) setups may not have a writable home directory for the user the container is running as, and may need to be adapted to work around this issue.</p>
+</div>
+<div class="paragraph">
+<p>Possible workarounds:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make the specified home directory writable to the Jenkins user.</p>
+</li>
+<li>
+<p>Define a home directory that is writable for the user Jenkins is running as.</p>
+</li>
+<li>
+<p>Override it for the process running Jenkins, for example using the <code>-Duser.home=/path/to/directory</code> parameter to the <code>java</code> command, pointing to a writable directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="known-issue-randomly-occurring-connection-failures-with-passphrase-protected-ed25519-ssh-keys"><a class="anchor" href="#known-issue-randomly-occurring-connection-failures-with-passphrase-protected-ed25519-ssh-keys"></a>Known Issue: Randomly occurring connection failures with passphrase-protected ed25519 SSH keys</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-46754">JENKINS-46754</a></p>
+</div>
+<div class="paragraph">
+<p>A regression involving authentication using passphrase-protected ed25519 SSH keys has been identified in 2.73.
+It randomly causes failures in features using these keys, such as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>SSH Slaves Plugin connections</p>
+</li>
+<li>
+<p>Accessing Git repositories with the JGit implementation</p>
+</li>
+<li>
+<p>Accessing Subversion repositories (unconfirmed)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Workarounds for this issue:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Do not use ed25519 for SSH keys in Jenkins</p>
+</li>
+<li>
+<p>Do not protect ed25519 SSH keys in Jenkins with a passphrase</p>
+</li>
+<li>
+<p>In the case of Git Plugin, switch to the Git CLI implementation</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="https://gist.github.com/rtyler/cd3a3f759c46f308bf7151819f5538a0">This Groovy Script</a>, when executed in the "Script Console" (located at <code>/script</code>) can be used to determine if the instance contains any passphrase-proteced ed25519 SSH keys before upgrading.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="groovy-2-4-11-upgrade"><a class="anchor" href="#groovy-2-4-11-upgrade"></a>Groovy 2.4.11 Upgrade</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-43197">JENKINS-43197</a></p>
+</div>
+<div class="paragraph">
+<p>Groovy was updated from 2.4.8 to 2.4.11.
+This may resolve existing Groovy-related memory problems, as 2.4.9 contains the fix for <a href="https://issues.apache.org/jira/browse/GROOVY-8067">GROOVY-8067</a>.
+It may no longer be necessary to apply the <code>groovy.use.classvalue</code> workaround.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="winstone-4-1-upgrade"><a class="anchor" href="#winstone-4-1-upgrade"></a>Winstone 4.1 Upgrade</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-43713">JENKINS-43713</a>,
+<a href="https://issues.jenkins.io/browse/JENKINS-46968">JENKINS-46968</a></p>
+</div>
+<div class="paragraph">
+<p>The embedded Jetty container has been updated from version 9.2.15 to version 9.4.5.
+For a detailed list of changes, see <a href="https://github.com/eclipse/jetty.project/blob/master/VERSION.txt">the Jetty changelog</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this update, support for the optional <code>--spdy</code> parameter has been dropped.
+Jenkins will now refuse to start if the <code>---spdy</code> parameter is specified.
+It needs to be removed from any Jenkins init scripts.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, support for all TLS versions before 1.2 has been dropped.
+If you&#8217;re using the embedded Jetty container&#8217;s HTTPS functionality, it will no longer accept TLS 1.0 or 1.1 connections.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="build-authorization"><a class="anchor" href="#build-authorization"></a>Build Authorization</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-22949">JENKINS-22949</a>,
+<a href="https://issues.jenkins.io/browse/JENKINS-30574">JENKINS-30574</a></p>
+</div>
+<div class="paragraph">
+<p>This change affects only users of Authorize Project Plugin.</p>
+</div>
+<div class="paragraph">
+<p>Previous releases of Jenkins implemented a special permission fallback when Authorize Project Plugin did not specify a global default configuration:
+For the purposes of <strong>Build other projects</strong> and <strong>Build after other projects are built</strong>, if Authorize Project configuration did not specify a build authorization for the job in question, it fell back to acting with the permissions of the <em>anonymous</em> user.
+This ensured a secure default, but only for these trigger-related permission checks.</p>
+</div>
+<div class="paragraph">
+<p>This behavior has been changed, and Jenkins will now perform the permission check as SYSTEM (i.e. with full permissions) to determine whether a project should be built.</p>
+</div>
+<div class="paragraph">
+<p>To restore the previous behavior, configure a global <strong>Project default Build Authorization</strong> setting the default authorization to that of the anonymous user.
+This feature has been implemented in Authorize Project Plugin version 1.2.0.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remoting-work-directories"><a class="anchor" href="#remoting-work-directories"></a>Remoting Work Directories</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins.io/browse/JENKINS-44108">JENKINS-44108</a>,
+<a href="https://issues.jenkins.io/browse/JENKINS-44112">JENKINS-44112</a></p>
+</div>
+<div class="paragraph">
+<p>The embedded <a href="/projects/remoting/">Jenkins Remoting</a> version has been updated from 3.7 to 3.10.
+It introduces support of work directories, which may be used by Remoting to store caches, logs and other metadata.</p>
+</div>
+<div class="paragraph">
+<p>Once work directory mode is enabled, Jenkins agents start writing logs to the disk and change the default destination of the filesystem JAR Cache.
+In Remoting this opt-in feature can be enabled using the <code>-workDir=${ROOT_DIR}</code> command-line option, but the Jenkins defines custom behavior for some agent launchers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java Web Start Launcher (aka <em>JNLP agent</em>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Old agents: Work directory needs to be enabled manually</p>
+</li>
+<li>
+<p>New agents created from Web UI: Work directory is enabled by default, work directory points to <em>Remote root directory</em> of the agent.</p>
+</li>
+<li>
+<p>New agents created from CLI/API: Behavior depends on the passed configuration file, work directory is disabled by default</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Command Launcher</p>
+<div class="ulist">
+<ul>
+<li>
+<p>No changes, work directory should be manually enabled in launch settings if required</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other Launcher types (e.g. SSH Launcher)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The behavior is defined in plugins, which have independent release cycle</p>
+</li>
+<li>
+<p>Follow updates in tickets linked to <a href="https://issues.jenkins.io/browse/JENKINS-44108">JENKINS-44108</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can find more information, examples and upgrade guides in <a href="https://github.com/jenkinsci/remoting/blob/master/docs/workDir.md">Jenkins Remoting documentation</a>.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

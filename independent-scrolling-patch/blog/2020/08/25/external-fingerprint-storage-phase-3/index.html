@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/25/external-fingerprint-storage-phase-3/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/08-external-fingerprint-storage-phase-3/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/25/external-fingerprint-storage-phase-3/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/08-external-fingerprint-storage-phase-3/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/stellargo/"><div class="app-avatar"><img alt="Sumit Sarin" class="app-avatar__image" src="/images/avatars/stellargo.jpeg"></div> Sumit Sarin</a>
+August 25, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=External+Fingerprint+Storage+Phase-3+Update%3A+Introducing+the+PostgreSQL+Fingerprint+Storage+Plugin&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F08%2F25%2Fexternal-fingerprint-storage-phase-3%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The final phase for the <a href="/projects/gsoc/2020/projects/external-fingerprint-storage/">External Fingerprint Storage
+Project</a> has come to an end and to finish off, we release one more fingerprint storage plugin:
+the <a href="https://github.com/jenkinsci/postgresql-fingerprint-storage-plugin">PostgreSQL Fingerprint Storage Plugin</a>!</p>
+</div>
+<div class="paragraph">
+<p>This post highlights the progress made during phase-3.
+To understand what the project is about and the past progress, please refer to the
+<a href="/blog/2020/06/27/external-fingerprint-storage/">phase-1 post</a> and the
+<a href="/blog/2020/06/27/external-fingerprint-storage/">phase-2 post</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="introducing-the-postgresql-fingerprint-storage-plugin"><a class="anchor" href="#introducing-the-postgresql-fingerprint-storage-plugin"></a>Introducing the PostgreSQL Fingerprint Storage Plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="why-postgresql"><a class="anchor" href="#why-postgresql"></a>Why PostgreSQL?</h3>
+<div class="paragraph">
+<p>There were several reasons why it made sense to build another reference implementation, especially backed by PostgreSQL.</p>
+</div>
+<div class="paragraph">
+<p>Redis is a key-value storage, and hence stores the fingerprints as blobs.
+The PostgreSQL plugin defines a relational structure for fingerprints.
+This offers a more powerful way to query the database for fingerprint information.
+Fingerprint facets can store extra information inside the fingerprints, which cannot be queried in Redis directly.
+PostgreSQL plugin allows powerful (indexing) and efficient querying strategies which can even query the facet metadata.</p>
+</div>
+<div class="paragraph">
+<p>Another reason for building this plugin was to provide a basis for other relational database plugins to be built.
+It also validates the flexibility and design of our external fingerprint storage API.</p>
+</div>
+<div class="paragraph">
+<p>Since PostgreSQL is a traditional disk storage database, it is more suitable for systems storing a massive number of
+fingerprints.</p>
+</div>
+<div class="paragraph">
+<p>Among relational databases, PostgreSQL is quite popular, has extensive support, and is open-source.
+We expect the new implementation to drive more adoption, and prove to be beneficial to the community.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="installation"><a class="anchor" href="#installation"></a>Installation:</h3>
+<div class="paragraph">
+<p>The plugin can be installed using the
+<a href="/doc/developer/publishing/releasing-experimental-updates/">experimental update center</a>.
+Follow along the following steps after running Jenkins to download and install the plugin:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select <code>Manage Jenkins</code></p>
+</li>
+<li>
+<p>Select <code>Manage Plugins</code></p>
+</li>
+<li>
+<p>Go to <code>Advanced</code> tab</p>
+</li>
+<li>
+<p>Configure the Update Site URL as: <code><a href="https://updates.jenkins.io/experimental/update-center.json" class="bare">https://updates.jenkins.io/experimental/update-center.json</a></code></p>
+</li>
+<li>
+<p>Click on <code>Submit</code>, and then press the <code>Check Now</code> button.</p>
+</li>
+<li>
+<p>Go to <code>Available</code> tab.</p>
+</li>
+<li>
+<p>Search for <code>PostgreSQL Fingerprint Storage Plugin</code> and check the box along it.</p>
+</li>
+<li>
+<p>Click on <code>Install without restart</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The plugin should now be installed on the system.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the plugin has been installed, you can configure the PostgreSQL server details by following the steps below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select <code>Manage Jenkins</code></p>
+</li>
+<li>
+<p>Select <code>Configure System</code></p>
+</li>
+<li>
+<p>Scroll to the section <code>Fingerprints</code> and choose <code>PostgreSQL Fingerprint Storage</code> in the dropdown for
+<code>Fingerprint Storage Engine</code>.</p>
+</li>
+<li>
+<p>Configure the following parameters to connect to your PostgreSQL instance:</p>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020/08-external-fingerprint-storage-phase-3/configure.png" alt="Configure Redis"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Host</code> - Enter hostname where PostgreSQL is running</p>
+</li>
+<li>
+<p><code>Port</code> - Specify the port on which PostgreSQL is running</p>
+</li>
+<li>
+<p><code>SSL</code> - Click if SSL is enabled</p>
+</li>
+<li>
+<p><code>Database Name</code> - Specify the database name inside the PostgreSQL instance to be used. Please note that the database
+will not be created by the plugin, the user has to create the database.</p>
+</li>
+<li>
+<p><code>Connection Timeout</code> - Set the connection timeout duration in seconds.</p>
+</li>
+<li>
+<p><code>Socket Timeout</code> - Set the socket timeout duration in seconds.</p>
+</li>
+<li>
+<p><code>Credentials</code> - Configure authentication using username and password to the PostgreSQL instance.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use the <code>Test PostgreSQL Connection</code> button to verify that the details are correct and Jenkins is able to connect to
+the PostgreSQL instance.</p>
+</li>
+<li>
+<p>[IMPORTANT] When configuring the plugin for the first time, it is highly important to press the Perform PostgreSQL
+Schema Initialization button. It will automatically perform schema initialization and create the necessary indexes.
+The button can also be used in the case the database is wiped out and schema needs to be recreated.</p>
+</li>
+<li>
+<p>Press the <code>Save</code> button.</p>
+</li>
+<li>
+<p>Now, all the fingerprints produced by this Jenkins instance should be saved in the configured PostgreSQL instance!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="querying-the-fingerprint-database"><a class="anchor" href="#querying-the-fingerprint-database"></a>Querying the Fingerprint Database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due to the relational structure defined by PostgreSQL, it allows users/developers to query the fingerprint data which
+was not possible using the Redis fingerprint storage plugin.</p>
+</div>
+<div class="paragraph">
+<p>The fingerprint storage can act as a consolidated storage for multiple Jenkins instances.
+For example, to search for a fingerprint id across Jenkins instances using the file name, the following query could be
+used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>SELECT fingerprint_id FROM fingerprint.fingerprint
+WHERE filename = 'random_file';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A sample query is provided which can be tweaked depending on the parameters to be searched:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>SELECT * FROM fingerprint.fingerprint
+WHERE fingerprint_id = 'random_id'
+        AND instance_id = 'random_jenkins_instance_id'
+        AND filename = 'random_file'
+        AND original_job_name = 'random_job'
+        AND original_job_build_number = 'random_build_number'
+        AND timestamp BETWEEN '2019-12-01 23:59:59'::timestamp AND now()::timestamp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The facets are stored in the database as <code>jsonb</code>.
+PostgreSQL offers support to query <code>jsonb</code>.
+This is especially useful for querying the information stored inside fingerprint facets.
+As an example, the <a href="https://plugins.jenkins.io/docker-traceability">Docker Traceability Plugin</a> stores information like the name of Docker images inside these
+facets.
+These can be queried across Jenkins instances like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>SELECT * FROM fingerprint.fingerprint_facet_relation
+WHERE facet_entry-&gt;&gt;'imageName' = 'random_container';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At the moment these queries require working knowledge of the database.
+In future, these queries can be abstracted away by plugins and the features made available to users directly inside
+Jenkins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="demo"><a class="anchor" href="#demo"></a>Demo</h2>
+<div class="sectionbody">
+<div class="videoblock">
+<div class="title">External Fingerprint Storage Demo</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/HvbbsoljLyg?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.google.com/presentation/d/1QL5m-7QGtep_G1ysEYKRauAHzDq8nTtOdcnE1t4aYE8/edit?usp=sharing">Slide deck</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="releases"><a class="anchor" href="#releases"></a>Releases 🚀</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We released the <code>0.1-alpha-1</code> version for the <a href="https://github.com/jenkinsci/postgresql-fingerprint-storage-plugin">
+PostgreSQL Fingerprint Storage Plugin</a>.
+Please refer to the
+<a href="https://github.com/jenkinsci/postgresql-fingerprint-storage-plugin/releases/tag/postgresql-fingerprint-storage-0.1-alpha-1">
+changelog</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/redis-fingerprint-storage/">Redis Fingerprint Storage Plugin</a> <code>1.0-rc-3</code> was also
+released.
+The
+<a href="https://github.com/jenkinsci/redis-fingerprint-storage-plugin/releases/tag/redis-fingerprint-storage-parent-1.0-rc-3">
+changelog</a> provides more details.</p>
+</div>
+<div class="paragraph">
+<p>A few API changes made in the Jenkins core were released in <a href="/changelog/#v2.253">Jenkins-2.253</a>.
+It mainly includes exposing fingerprint range set serialization methods for plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-directions"><a class="anchor" href="#future-directions"></a>Future Directions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The relational structure of the plugin allows some performance improvements that can be made when implementing
+cleanup, as well as improving the performance of <code>Fingerprint#add(String job, int buildNumber)</code>.
+These designs were discussed and are a scope of future improvement.</p>
+</div>
+<div class="paragraph">
+<p>The current external fingerprint storage API supports configuring multiple Jenkins instances to a single storage.
+This opens up the possibility of developing traceability plugins which can track fingerprints across Jenkins instances.</p>
+</div>
+<div class="paragraph">
+<p>Please consider reaching out to us if you feel any of the use cases would benefit you, or if you would like to share
+some new use cases.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="acknowledgements"><a class="anchor" href="#acknowledgements"></a>Acknowledgements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The PostgreSQL Fingerprint Storage Plugin and the Redis Fingerprint Storage plugin are maintained by the
+Google Summer of Code (GSoC) Team for <a href="/projects/gsoc/2020/projects/external-fingerprint-storage/">External
+Fingerprint Storage for Jenkins</a>.
+Special thanks to <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a>,
+<a href="https://github.com/afalko">Andrey Falko</a>, <a href="https://github.com/mikecirioli">Mike Cirioli</a>,
+<a href="https://github.com/timja">Tim Jacomb</a>, and the entire Jenkins community for all the contribution to this project.</p>
+</div>
+<div class="paragraph">
+<p>As we wrap up, we would like to point out that there are plenty of future directions and use cases for the externalized
+fingerprint storage, as mentioned in the previous section, and we welcome everybody to contribute.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reaching-out"><a class="anchor" href="#reaching-out"></a>Reaching Out</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Feel free to reach out to us for any questions, feedback, etc. on the project&#8217;s
+<a href="https://gitter.im/jenkinsci/external-fingerprint-storage">Gitter Channel</a> or the
+<a href="mailto:jenkinsci-dev@googlegroups.com">Jenkins Developer Mailing list</a>.
+We use Jenkins <a href="https://issues.jenkins.io/">Jira</a> to track issues.
+Feel free to file issues under either the <code>postgresql-fingerprint-storage-plugin</code> or the
+<code>redis-fingerprint-storage-plugin</code> component depending on the plugin.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-links"><a class="anchor" href="#other-links"></a>Other Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2020/06/27/external-fingerprint-storage/">Phase 1 Post</a></p>
+</li>
+<li>
+<p><a href="/blog/2020/06/27/external-fingerprint-storage/">Phase 2 Post</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/postgresql-fingerprint-storage-plugin">PostgreSQL Fingerprint Storage Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/redis-fingerprint-storage-plugin">Redis Fingerprint Storage Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/blob/master/jep/226/README.adoc">JEP-226</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/jenkinsci/external-fingerprint-storage">Gitter Channel</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/external-fingerprint-storage/">Project Page</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/fingerprint/">
+fingerprint
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cloud-native/">
+cloud-native
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/external-storage/">
+external-storage
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/PostgreSQL/">
+PostgreSQL
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Sumit Sarin" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/stellargo.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/stellargo/">
+Sumit Sarin
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins Google Summer of Code 2020 student. Sumit is an engineering student (senior) at Netaji Subhas Institute of Technology, University of Delhi. He started his journey of contributing to Jenkins in December 2019. His tiny contribution revolved around the Jenkins Fingerprint engine. He is currently working on building <a href="/projects/gsoc/2020/projects/external-fingerprint-storage">External Fingerprint Storage for Jenkins</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/stellargo" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://medium.com/@sumitsarinofficial" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/sumit-sarin" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/08/2020-08-25-external-fingerprint-storage-phase-3.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

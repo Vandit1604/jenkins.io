@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Google Summer of Code 2020 summary
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This blog post summarizes Google Summer of Code 2020. We will overview the key project results and the events associated with the program.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/12/22/gsoc-report/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Google Summer of Code 2020 summary" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Google Summer of Code 2020 summary" name="twitter:title">
+<meta content="This blog post summarizes Google Summer of Code 2020. We will overview the key project results and the events associated with the program.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Google Summer of Code 2020 summary" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/12/22/gsoc-report/" property="og:url">
+<meta content="This blog post summarizes Google Summer of Code 2020. We will overview the key project results and the events associated with the program.
+" name="og:description">
+<meta content="Google Summer of Code 2020 summary" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Google Summer of Code 2020 summary
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+December 22, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Google+Summer+of+Code+2020+summary&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F12%2F22%2Fgsoc-report%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>With the mentor summit and the project retrospectives finished in October,
+now we can call Google Summer of Code 2020 officially over in the Jenkins community.
+On behalf of the Jenkins org team, we would like to thank all participants: students, mentors, applicants, and dozens of other contributors who participated in the project this year.
+Google Summer of Code would not be successful without the active participation of the Jenkins community.</p>
+</div>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/jenkins-gsoc-logo_small.png" alt="Jenkins GSoC"></span></p>
+</div>
+<div class="paragraph">
+<p>If you follow the Jenkins blog, you may have already seen <a href="/node/tags/gsoc2020/">many GSoC 2020 articles</a> created by the project teams.
+Here I would like to focus on the key highlights from the project.</p>
+</div>
+<div class="sect1">
+<h2 id="projects"><a class="anchor" href="#projects"></a>Projects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In 2020 we had seven students working in the Jenkins mentoring organization.
+We had 6 projects focused on Jenkins and one project focused on Jenkins X.
+As usual, in GSoC we focused on problems important to the Jenkins users and community members.
+The projects delivered highly anticipated new features and key architecture changes
+needed for long-term evolution of Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Here are the projects we had this year:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/projects/gsoc/2020/projects/custom-jenkins-distribution-build-service">Custom Jenkins distribution build service</a> by <a href="/blog/authors/sladyn98">Sladyn Nunes</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/external-fingerprint-storage">External Fingerprint Storage</a> by <a href="/blog/authors/stellargo">Sumit Sarin</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/git-plugin-performance">Git Plugin Performance Improvements</a> by <a href="/blog/authors/rishabhbudhouliya">Rishabh Budhouliya</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/github-checks">GitHub Checks API for Jenkins Plugins</a> by <a href="/blog/authors/XiongKezhi">Kezhi Xiong</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/jenkins-x-apps-consolidation">Jenkins X: Apps/Addons consolidation</a> by <a href="/blog/authors/nodece">Zixuan Liu</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/machine-learning">Machine Learning Plugins for Data Science</a> by <a href="/blog/authors/loghijiaha">Loghi Perinpanayagam</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/winsw-yaml-configs">Jenkins Windows Services: YAML Configuration Support</a> by <a href="/blog/authors/buddhikac96">Buddhika Chathuranga</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please refer to the project pages for more information, links to the blog posts, and project demos.
+Let&#8217;s focus on the results instead.
+This is the <strong>first ever</strong> time in Jenkins when all GSoC students have reached the final evaluation and successfully passed it.
+It was an incredible effort by all the project members and, most importantly, by the students. Thanks a lot to them!</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/gsoc/2020/summary_report/student_photos.png" alt="GSoC 2020 students"></span>.</p>
+</div>
+<div class="paragraph">
+<p>Thanks a lot to all mentors who were guiding students during their projects:
+<a href="/blog/authors/linuxsuren">Zhao Xiaojie</a>,
+<a href="/blog/authors/kwhetstone">Kristin Whetstone</a>,
+<a href="/blog/authors/baymac">Parichay Barpanda</a>,
+<a href="/blog/authors/martinda">Martin d&#8217;Anjou</a>,
+<a href="/blog/authors/oleg_nenashev">Oleg Nenashev</a>,
+<a href="/blog/authors/afalko">Andrey Falko</a>,
+<a href="/blog/authors/mikecirioli">Mike Cirioli</a>,
+<a href="/blog/authors/markewaite">Mark Waite</a>,
+<a href="/blog/authors/fcojfernandez">Francisco Fernandez</a>,
+<a href="/blog/authors/justinharringa">Justin Harringa</a>,
+<a href="/blog/authors/omkar_dsd">Omkar Deshpande</a>,
+<a href="/blog/authors/uhafner">Ulli Hafner</a>,
+<a href="/blog/authors/timja">Tim Jacomb</a>,
+<a href="/blog/authors/marckk">Kara de la Marck</a>,
+<a href="/blog/authors/jstrachan">James Strachan</a>,
+<a href="/blog/authors/nehagup">Neha Gupta</a>,
+<a href="/blog/authors/sharepointoscar">Oscar Medina</a>,
+<a href="/blog/authors/nikhildarocha">Nikhil Da Rocha</a>,
+<a href="/blog/authors/sahilrkalra">Sahil Kalra</a>,
+<a href="/blog/authors/kinow">Bruno P. Kinoshita</a>,
+<a href="/blog/authors/imoutsatsos">Ioannis Moutsatsos</a>,
+<a href="/blog/authors/markyjackson-taulia">Marky Jackson</a>,
+<a href="/blog/authors/shivaylamba">Shivay Lamba</a>, and
+<a href="/blog/authors/nextturn">Next Turn</a>.</p>
+</div>
+<div class="paragraph">
+<p>GSoC 2020 Org admin team:
+<a href="/blog/authors/marckk/">Kara de la Marck</a>,
+<a href="/blog/authors/martinda">Martin d&#8217;Anjou</a>,
+<a href="/blog/authors/markyjackson-taulia">Marky Jackson</a>,
+<a href="/blog/authors/oleg_nenashev">Oleg Nenashev</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="events"><a class="anchor" href="#events"></a>Events</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Thanks to the GSoC organization stipend from Google and other donations,
+the Jenkins project usually provides travel grants to successful students so that they can visit a major community event, meet their mentors and community members in person, and present their work there.
+Here are some notes about the <a href="/blog/2020/01/29/gsoc-report/#gsoc-team-at-devops-world-jenkins-world">GSoC 2019 travel</a>.
+Unfortunately this year it was not possible, and GSoC went completely virtual this year.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Online meetups</dt>
+<dd>
+<p>In August we organized Jenkins Online Meetups where students have presented their projects
+(<a href="https://www.meetup.com/Jenkins-online-meetup/events/272722782/">part 1</a>, <a href="https://www.meetup.com/Jenkins-online-meetup/events/272722843/">part 2</a>).
+You can find recordings of these presentations in <a href="https://www.youtube.com/playlist?list=PLN7ajX_VdyaNZ9rU46k0uT14KAcq3_z68">this playlist</a> on the Jenkins YouTube channel.</p>
+</dd>
+<dt class="hdlist1">DevOps World</dt>
+<dd>
+<p>This year CloudBees, one of the Jenkins corporate sponsors, invited all students to participate in the <a href="https://www.cloudbees.com/devops-world">DevOps World</a> virtual conference on September 23-25.
+GSoC students did lighting talks about their projects, attended other conference talks, and joined the Continuous Delivery Foundation booth which represented the project at the conference.
+You can find recordings of the talks and all materials <a href="https://www.cloudbees.com/devops-world/sessions?additional=Community">here</a>.
+Although the conference was in September, the talks were pre-recorded in early August.
+Please refer to the Jenkins online meetup recordings for the recent versions.</p>
+</dd>
+<dt class="hdlist1">GSoC Mentor summit</dt>
+<dd>
+<p>This is a regular gathering for Google Summer of Code mentors and org admins where they share their experiences about GSoC, outreach programs, community management, and tools.
+Usually it is organized as a multi-day unconference after the end of GSoC, with 2-3 representatives from each project.
+It has been a great learning experience to participate in it.
+This year it was a single-day virtual event, and all mentors were able to attend.
+<a href="/blog/authors/shivaylamba/">Shivay Lamba</a>, one of the GSoC 2020 mentors, also did a lightning talk about the GSoC projects he was working on in Jenkins and CNCF (<a href="https://drive.google.com/file/d/1Ian5JvKp9UuAg3k7NnGPefgFwIxQfpJm/view">slides</a>).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="swag"><a class="anchor" href="#swag"></a>Swag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All Google Summer of Code students and mentors get swag from Google.
+This year, <a href="https://cd.foundation/">Contrinuos Delivery Foundation (CDF)</a> has sponsored swag for 50 most active GSoC participants:
+all students, mentors, and many other contributors who participated and helped the projects to succeed.
+This is the third year when the Jenkins organization sends extra GSoC swag,
+In the previous years the swag logistics was one of the most challenging tasks for org admins during the entire project.
+and we highly appreciate help from CDF with this part.
+As DevOps World presenters, the students have also received special edition speaker swag from CloudBees.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/gsoc/2020/summary_report/swag.jpg" alt="GSoC swag by the Jenkins project"></span></p>
+</div>
+<div class="paragraph">
+<p>Thanks a lot to <a href="https://opensource.google/">Google</a>, <a href="https://cd.foundation/">Contrinuos Delivery Foundation (CDF)</a> and <a href="https://www.cloudbees.com/">CloudBees</a>!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="retrospective"><a class="anchor" href="#retrospective"></a>Retrospective</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After completion of the coding phases,
+org admins have reached out to all GSoC 2020 participants to gather their feedback and suggestions.
+We also recommended that project teams hold their own retrospective meetings.
+Such information is instrumental to continuously improving GSoC in the Jenkins community.
+We thank all contributors who shared their feedback!</p>
+</div>
+<div class="paragraph">
+<p>The organization-wide retrospective was organized as a survey and a series of retrospective meetings.
+You can find aggregated results in <a href="https://docs.google.com/document/d/1NIszUtuXmHiu8X2WrgAEQFK6aVodsmM4I0RSNRf4TS0/edit?usp=sharing">this Google Doc</a>.
+Overall, we received very positive feedback from students and mentors.
+The GSoC framework in Jenkins has matured significantly during the previous years.
+The effort we invested to create guidelines and recommendations for all parties helped a lot because all the expectations were known in advance.
+As usual, there is much to improve, especially with regards to the community bonding phases and cross-project communications.
+We are processing the feedback, and we will expand our documentation and the contributor onboarding plans next year.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="some-personal-notes"><a class="anchor" href="#some-personal-notes"></a>Some personal notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I have been involved in leading and coordinating Google Summer of Code in open source projects since 2016.
+This year I visited the GSoC stand at FOSDEM and met a few organizers and former students.
+A few days after, I proposed participating in GSoC at the Jenkins contributor summit in Brussels,
+and several contributors supported this idea.
+We spent several hours to create the first Jenkins GSoC page and brainstorm on project ideas.
+We submitted our application and were accepted.
+Thanks a lot to the Google team that gave us a chance!</p>
+</div>
+<div class="paragraph">
+<p>It is great to work with the students and see how they explore the open source community and grow professionally as engineers.
+It is also awesome to see how some of them stay in the project and keep contributing,
+including becoming plugin maintainers and GSoC mentors.
+But, for me, Google Summer of Code is not just about mentoring.
+It also helps a lot with the community bonding&#8230;&#8203; for the existing community like Jenkins which has a lot of isolated sub-communities in plugins.
+Many maintainers work alone, and it can be quite lonely working to maintain a plugin without feedback, developer ideas, and user interactions.
+When plugin contributors become project mentors, they join the wider community effort and work in teams.
+In many cases they start contributing to the organization-wide activities and goals,
+and it grows the "backbone" of the Jenkins community.
+Like other community-driven projects, we need such backbone to scale the community and onboard more contributors to the countless Jenkins components.
+So far it works really well and GSoC excels among outreach programs in this regard.</p>
+</div>
+<div class="paragraph">
+<p>I would like to thank the Google Open Source team, students and all Jenkins community members for the great Google Summer of Code this year.
+We also thank the Continuous Delivery Foundation for their help to recognize contributors and allow organization administrators to focus on projects.
+Last but not least, I would like to thank the Jenkins org admin team:
+<a href="/blog/authors/martinda">Martin d&#8217;Anjou</a>,
+<a href="/blog/authors/markyjackson-taulia">Marky Jackson</a>, and
+<a href="/blog/authors/marckk/">Kara de la Marck</a>.
+This was a crazy year for everyone. Regardless of that, the org admins stepped up and took responsibility for students and mentors involved in the project, with a serious time commitment.
+Not all work by the organizers is publicly visible (applications, project selection, resolving conflicts),
+but this work is essential to the project&#8217;s success.
+Thanks a lot to org admins and mentors who helped with the administrative tasks this year!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-about-gsoc-2021"><a class="anchor" href="#whats-about-gsoc-2021"></a>What&#8217;s about GSoC 2021?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Yes, we plan to participate in Google Summer of Code 2021.
+The application period for organizations will start in a few months,
+but we have already started preparing for the next GSoC session.
+We are looking for mentors, org admins and project ideas.
+Please <a href="/projects/gsoc/#contacts">contact us</a> if you are interested!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2020/12/16/call-for-mentors/">Call for Mentors and Project Ideas</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2021/project-ideas">GSoC 2021 project ideas</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/proposing-project-ideas">HOWTO: Propose a project idea</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/mentors">Information for mentors</a>: guidelines and expectations</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We invite potential students to start exploring the project and the available project ideas.
+Original ideas are always welcome in the project, and starting early is a great opportunity to
+get introduced to the Jenkins community, collect more information about the problem areas,
+and to create a good proposal.
+"Start early" is the most popular recommendation from GSoC 2020 participants to future GSoC students,
+and we encourage you to follow this advice!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/mentor/">
+mentor
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/12/2020-12-22-gsoc-report.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

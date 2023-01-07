@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2015-11-11
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2015-11-11/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2015-11-11" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2015-11-11" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2015-11-11" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2015-11-11/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2015-11-11" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins Security Advisory 2015-11-11
+</h1>
+<div class="paragraph">
+<p>This advisory announces multiple vulnerabilities in Jenkins.</p>
+</div>
+<div class="sect1">
+<h2 id="description"><a class="anchor" href="#description"></a>Description</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="project-name-disclosure-via-fingerprints"><a class="anchor" href="#project-name-disclosure-via-fingerprints"></a>Project name disclosure via fingerprints</h3>
+<div class="paragraph">
+<p><strong>SECURITY-153 / CVE-2015-5317</strong></p>
+</div>
+<div class="paragraph">
+<p>The Jenkins UI allowed users to see the names of jobs and builds otherwise inaccessible to them on the "Fingerprints" pages if those shared file fingerprints with fingerprinted files in accessible jobs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="public-value-used-for-csrf-protection-salt"><a class="anchor" href="#public-value-used-for-csrf-protection-salt"></a>Public value used for CSRF protection salt</h3>
+<div class="paragraph">
+<p><strong>SECURITY-169 / CVE-2015-5318</strong></p>
+</div>
+<div class="paragraph">
+<p>The salt used to generate the CSRF protection tokens was a publicly accessible value, allowing malicious users to circumvent CSRF protection by generating the correct token.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="xxe-injection-into-job-configurations-via-cli"><a class="anchor" href="#xxe-injection-into-job-configurations-via-cli"></a>XXE injection into job configurations via CLI</h3>
+<div class="paragraph">
+<p><strong>SECURITY-173 / CVE-2015-5319</strong></p>
+</div>
+<div class="paragraph">
+<p>When creating a job using the create-job CLI command, external entities are not discarded (nor processed). If these job configurations are processed by another user with an XML-aware tool (e.g. using get-job/update-job), information from that user&#8217;s computer may be disclosed to Jenkins and the attacker.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="secret-key-not-verified-when-connecting-an-agent"><a class="anchor" href="#secret-key-not-verified-when-connecting-an-agent"></a>Secret key not verified when connecting an agent</h3>
+<div class="paragraph">
+<p><strong>SECURITY-184 / CVE-2015-5320</strong></p>
+</div>
+<div class="paragraph">
+<p>JNLP agent connections did not verify that the correct secret was supplied, which allowed malicious users to connect their own machines as agents to Jenkins knowing only the name of the agent. This enables attackers to take over Jenkins (unless the agent-to-controller security subsystem is enabled) or gain access to private data like keys and source code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="queue-api-did-show-items-not-visible-to-the-current-user"><a class="anchor" href="#queue-api-did-show-items-not-visible-to-the-current-user"></a>Queue API did show items not visible to the current user</h3>
+<div class="paragraph">
+<p><strong>SECURITY-186 / CVE-2015-5324</strong></p>
+</div>
+<div class="paragraph">
+<p>The /queue/api URL could return information about items not accessible to the current user (such as parameter names and values, build names, project descriptions, …).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="information-disclosure-via-sidepanel"><a class="anchor" href="#information-disclosure-via-sidepanel"></a>Information disclosure via sidepanel</h3>
+<div class="paragraph">
+<p><strong>SECURITY-192 / CVE-2015-5321</strong></p>
+</div>
+<div class="paragraph">
+<p>The CLI command overview and help pages in Jenkins were accessible without Overall/Read permission, resulting in disclosure of the names of configured agents (and contents of other sidepanel widgets, if present) to unauthorized users.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="local-file-inclusion-vulnerability"><a class="anchor" href="#local-file-inclusion-vulnerability"></a>Local file inclusion vulnerability</h3>
+<div class="paragraph">
+<p><strong>SECURITY-195 / CVE-2015-5322</strong></p>
+</div>
+<div class="paragraph">
+<p>Access to the <code>/jnlpJars/</code> URL was not limited to the specific JAR files users needed to access, allowing browsing directories and downloading other files in the Jenkins servlet resources, such as <code>web.xml</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api-tokens-of-other-users-available-to-admins"><a class="anchor" href="#api-tokens-of-other-users-available-to-admins"></a>API tokens of other users available to admins</h3>
+<div class="paragraph">
+<p><strong>SECURITY-200 / CVE-2015-5323</strong></p>
+</div>
+<div class="paragraph">
+<p>API tokens of other users were exposed to admins by default. On instances that don&#8217;t implicitly grant RunScripts permission to admins, this allowed admins to run scripts with another user&#8217;s credentials.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jnlp-agents-not-subject-to-agent-to-controller-access-control"><a class="anchor" href="#jnlp-agents-not-subject-to-agent-to-controller-access-control"></a>JNLP agents not subject to agent-to-controller access control</h3>
+<div class="paragraph">
+<p><strong>SECURITY-206 / CVE-2015-5325</strong></p>
+</div>
+<div class="paragraph">
+<p>Agents connecting via JNLP were not subject to the optional agent-to-controller access control documented at <a href="https://www.jenkins.io/security-144" class="bare">https://www.jenkins.io/security-144</a> (CVE-2014-3665).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stored-xss-vulnerability-in-agent-offline-status-message"><a class="anchor" href="#stored-xss-vulnerability-in-agent-offline-status-message"></a>Stored XSS vulnerability in agent offline status message</h3>
+<div class="paragraph">
+<p><strong>SECURITY-214 / CVE-2015-5326</strong></p>
+</div>
+<div class="paragraph">
+<p>Users with the permission to take agent nodes offline can enter arbitrary HTML that gets shown unescaped to users visiting the agent overview page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remote-code-execution-vulnerability-due-to-unsafe-deserialization-in-jenkins-remoting"><a class="anchor" href="#remote-code-execution-vulnerability-due-to-unsafe-deserialization-in-jenkins-remoting"></a>Remote code execution vulnerability due to unsafe deserialization in Jenkins remoting</h3>
+<div class="paragraph">
+<p><strong>SECURITY-218 / CVE-2015-8103</strong></p>
+</div>
+<div class="paragraph">
+<p>Unsafe deserialization allows unauthenticated remote attackers to run arbitrary code on the Jenkins controller.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="severity"><a class="anchor" href="#severity"></a>Severity</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>SECURITY-153 is considered <strong>low</strong> as users have no control over which information they see, and the kind of information revealed is very limited.</p>
+</li>
+<li>
+<p>SECURITY-169 is considered <strong>critical</strong> as it allows attackers to circumvent CSRF protection.</p>
+</li>
+<li>
+<p>SECURITY-173 is considered <strong>low</strong> due to the high degree of specific user interaction required, and the limited information that can be gained this way.</p>
+</li>
+<li>
+<p>SECURITY-184 is considered <strong>critical</strong>: It enables several different attacks, compromising integrity, stability and confidentiality.</p>
+</li>
+<li>
+<p>SECURITY-186 is considered <strong>medium</strong>: Low privileged users can gain some limited information about items they should not have access to.</p>
+</li>
+<li>
+<p>SECURITY-192 is considered <strong>medium</strong>: While the amount of information disclosed is very limited, it is trivial to exploit.</p>
+</li>
+<li>
+<p>SECURITY-195 is considered <strong>low</strong>: The information gained is very limited, and it requires a specific setup to gain any non-public information this way.</p>
+</li>
+<li>
+<p>SECURITY-200 is considered <strong>medium</strong>: In very specific circumstances, it allows admins to gain permissions they would not otherwise have.</p>
+</li>
+<li>
+<p>SECURITY-206 is considered <strong>high</strong> as it allows to circumvent the major protection against less trusted node admins.</p>
+</li>
+<li>
+<p>SECURITY-214 is considered <strong>medium</strong> as allows admins and users with significant privileges to circumvent XSS protection.</p>
+</li>
+<li>
+<p>SECURITY-218 is considered <strong>critical</strong> as it allows unauthenticated remote attackers to run arbitrary code on Jenkins.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="affected-versions"><a class="anchor" href="#affected-versions"></a>Affected versions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>All Jenkins main line releases up to and including 1.637</p>
+</li>
+<li>
+<p>All Jenkins LTS releases up to and including 1.625.1</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fix"><a class="anchor" href="#fix"></a>Fix</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins main line users should update to 1.638</p>
+</li>
+<li>
+<p>Jenkins LTS users should update to 1.625.2</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These versions include fixes to all the vulnerabilities described above. All prior versions are affected by these vulnerabilities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="credit"><a class="anchor" href="#credit"></a>Credit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project would like to thank the following people for discovering and <a href="/security/#reporting-vulnerabilities">reporting</a> these vulnerabilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Akshay Dayal (from Google)</strong> for SECURITY-184</p>
+</li>
+<li>
+<p><strong>Ari Rubinstein</strong> for SECURITY-195</p>
+</li>
+<li>
+<p><strong>Ben Walding, CloudBees, Inc.</strong> for SECURITY-192</p>
+</li>
+<li>
+<p><strong>Daniel Beck, CloudBees, Inc.</strong> for SECURITY-186</p>
+</li>
+<li>
+<p><strong>James Nord, CloudBees, Inc.</strong> for SECURITY-169 and SECURITY-173</p>
+</li>
+<li>
+<p><strong>Jesse Glick, CloudBees, Inc.</strong> for SECURITY-206</p>
+</li>
+<li>
+<p><strong>Nicolas De Loof, CloudBees, Inc.</strong> for SECURITY-153</p>
+</li>
+<li>
+<p><strong>Oleg Nenashev, CloudBees, Inc.</strong> for SECURITY-200</p>
+</li>
+<li>
+<p><strong>Plastunov Andrey, Digital Security (dsec.ru)</strong> for SECURITY-214</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-resources"><a class="anchor" href="#other-resources"></a>Other Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2015/11/06/mitigating-unauthenticated-remote-code-execution-0-day-in-jenkins-cli/">SECURITY-218: related blog post with mitigation after public disclosure of this vulnerability</a></p>
+</li>
+<li>
+<p><a href="https://www.cloudbees.com/jenkins-security-advisory-2015-11-11">Corresponding security advisory for CloudBees Jenkins Enterprise and CloudBees Jenkins Operations Center by CloudBees</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2015-11-11.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

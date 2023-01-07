@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Updating Your Maven Parent POM
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/updating-parent/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Updating Your Maven Parent POM" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Updating Your Maven Parent POM" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Updating Your Maven Parent POM" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/updating-parent/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Updating Your Maven Parent POM" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="active">Plugin Development</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/build-process/" class="">Plugin Build Process</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/choosing-jenkins-baseline/" class="">Choosing a Jenkins version to build against</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/dependency-management/" class="">Dependency Management</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/dependencies-and-class-loading/" class="">Dependencies and Class Loading</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/optional-dependencies/" class="">Optional dependencies</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/plugin-release-tips/" class="">Plugin Release Tips</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/incrementals/" class="">Incrementals: Developing Components in Parallel</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Updating Your Maven Parent POM
+</h1>
+<div class="paragraph">
+<p>Most Jenkins plugins use Apache Maven as their build tool.
+Here are some tips on bringing your plugin up to current recommendations.</p>
+</div>
+<div class="sect1">
+<h2 id="using-the-2-x-or-newer-parent-pom"><a class="anchor" href="#using-the-2-x-or-newer-parent-pom"></a>Using the 2.x (or newer) parent POM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Properly maintained Jenkins plugins are expected to use a 2.x-series (or newer) parent POM,
+the later the better, to define the basic structure of <code>pom.xml</code>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/plugin-pom#usage">Parent POM general usage instructions</a></p>
+</div>
+<div class="paragraph">
+<p>You can use Maven itself to create a new plugin:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/archetypes#usage">Archetype usage instructions</a></p>
+</div>
+<div class="paragraph">
+<p>If you are instead upgrading an older plugin, replace a header such as</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;parent&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.jenkins-ci.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.625<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/parent&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with the new format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;parent&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.jenkins-ci.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.33<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;relativePath</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/parent&gt;</span>
+<span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;jenkins.version&gt;</span>1.625<span class="nt">&lt;/jenkins.version&gt;</span>
+<span class="nt">&lt;/properties&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="understanding-requireupperbounddeps-failures-and-fixes"><a class="anchor" href="#understanding-requireupperbounddeps-failures-and-fixes"></a>Understanding <code>requireUpperBoundDeps</code> failures and fixes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes after changing dependency versions in a POM and building,
+you will encounter Maven Enforcer errors referring to a rule named <code>RequireUpperBoundDeps</code>.
+This rule means that if your plugin depends on some component (such as another plugin) A in version 13,
+and another component B in version 7,
+yet A version 13 expressed a dependency on B version 9 or newer,
+then you may have a problem.
+The practical impact could vary depending on the situation,
+but in some cases it could mean <code>LinkageError</code>s at runtime.</p>
+</div>
+<div class="sect2">
+<h3 id="transitive-dependency-plugin-too-old"><a class="anchor" href="#transitive-dependency-plugin-too-old"></a>Transitive dependency plugin too old</h3>
+<div class="paragraph">
+<p>For example, changing only the <code>git</code> test dependency version from <code>3.9.1</code> to <code>4.0.0-rc</code> in the <code>kubernetes</code> plugin might print:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>--- maven-enforcer-plugin:3.0.0-M2:enforce (display-info) @ kubernetes ---
+Adding ignore: module-info
+Rule 5: org.apache.maven.plugins.enforcer.RequireUpperBoundDeps failed with message:
+Failed while enforcing RequireUpperBoundDeps. The error(s) are [
+Require upper bound dependencies error for org.jenkins-ci.plugins:git-client:2.7.5 paths to dependency are:
++-org.csanchez.jenkins.plugins:kubernetes:1.17.3-SNAPSHOT
+  +-org.jenkinsci.plugins:pipeline-model-definition:1.3.7
+    +-org.jenkins-ci.plugins:git-client:2.7.5
+and
++-org.csanchez.jenkins.plugins:kubernetes:1.17.3-SNAPSHOT
+  +-org.jenkins-ci.plugins:git:4.0.0-rc
+    +-org.jenkins-ci.plugins:git-client:2.7.5 (managed) &lt;-- org.jenkins-ci.plugins:git-client:3.0.0-rc
+and
++-org.csanchez.jenkins.plugins:kubernetes:1.17.3-SNAPSHOT
+  +-org.jenkins-ci.plugins:git:3.9.1
+    +-org.jenkins-ci.plugins:git-client:2.7.5 (managed) &lt;-- org.jenkins-ci.plugins:git-client:2.7.3
+and
++-org.csanchez.jenkins.plugins:kubernetes:1.17.3-SNAPSHOT
+  +-org.jenkinsci.plugins:pipeline-model-definition:1.3.7
+    +-org.jenkins-ci.plugins.workflow:workflow-cps-global-lib:2.9
+      +-org.jenkins-ci.plugins:git-client:2.7.5 (managed) &lt;-- org.jenkins-ci.plugins:git-client:2.7.0
+and
++-org.csanchez.jenkins.plugins:kubernetes:1.17.3-SNAPSHOT
+  +-org.jenkinsci.plugins:pipeline-model-definition:1.3.7
+    +-org.jenkins-ci.plugins.workflow:workflow-cps-global-lib:2.9
+      +-org.jenkins-ci.plugins:git-server:1.7
+        +-org.jenkins-ci.plugins:git-client:2.7.5 (managed) &lt;-- org.jenkins-ci.plugins:git-client:2.3.0
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It takes a while to read the meaning behind this message,
+but it is saying that <code>git:4.0.0-rc</code> depends on <code>git-client:3.0.0-rc</code>
+and yet we are currently using <code>git-client:2.7.5</code> in our classpath.
+Plugin tests in this configuration are likely to fail even if the Enforcer rule were suppressed,
+since code added to Git 4 might be expecting to use APIs added to Git Client 3.</p>
+</div>
+<div class="paragraph">
+<p>In this case (a bad plugin → plugin dependency),
+the <code>InjectedTest</code> in Jenkins 2.12 or later would also catch the mistake,
+albeit more slowly (so less suitably for quick iteration):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>… jenkins.InitReactorRunner$1 onTaskFailed
+SEVERE: Failed Loading plugin Jenkins Git plugin v4.0.0-rc (git)
+java.io.IOException: Jenkins Git plugin version 4.0.0-rc failed to load.
+ - Jenkins Git client plugin version 2.7.5 is older than required. To fix, install version 3.0.0-rc or later.
+	at hudson.PluginWrapper.resolvePluginDependencies(PluginWrapper.java:868)
+	at hudson.PluginManager$2$1$1.run(PluginManager.java:544)
+	at org.jvnet.hudson.reactor.TaskGraphBuilder$TaskImpl.run(TaskGraphBuilder.java:169)
+	at org.jvnet.hudson.reactor.Reactor.runTask(Reactor.java:296)
+	at jenkins.model.Jenkins$5.runTask(Jenkins.java:1091)
+	at org.jvnet.hudson.reactor.Reactor$2.run(Reactor.java:214)
+	at org.jvnet.hudson.reactor.Reactor$Node.run(Reactor.java:117)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+…
+java.lang.Error: Plugin git failed to start
+	at org.jvnet.hudson.test.PluginAutomaticTestBuilder$OtherTests.testPluginActive(PluginAutomaticTestBuilder.java:99)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In other cases you might get a more cryptic <code>NoSuchMethodError</code> error during tests;
+or, worse, all tests might pass yet your plugin might throw an endless stream of errors at runtime.
+The standard POM defines this Enforcer rule to reduce the likelihood of such mistakes.</p>
+</div>
+<div class="paragraph">
+<p>The fix here is to also update the <code>git-client</code> plugin version.
+That in turn might also require another plugin to be updated.
+This process can get tedious,
+so you could consider using the “Bill of Materials” for plugins (under development):</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/bom#usage">Plugin BOM usage instructions</a></p>
+</div>
+<div class="paragraph">
+<p>At least for commonly encountered dependencies,
+the BOM can eliminate the need to specify individual versions and check that they work together.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="improper-attempt-to-use-core-component"><a class="anchor" href="#improper-attempt-to-use-core-component"></a>Improper attempt to use core component</h3>
+<div class="paragraph">
+<p>TODO unless using <code>pluginFirstClassLoader</code>, a dep on a dep of <code>jenkins-core</code> will be ignored at runtime</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="test-scoped-dependency-mismatch"><a class="anchor" href="#test-scoped-dependency-mismatch"></a>Test-scoped dependency mismatch</h3>
+<div class="paragraph">
+<p>TODO if using a plugin and its <code>&lt;classifier&gt;tests&lt;/classifier&gt;</code> JAR too, introduce a POM property to make sure both are at the same version</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="picking-up-fixes-to-dependency-plugins"><a class="anchor" href="#picking-up-fixes-to-dependency-plugins"></a>Picking up fixes to dependency plugins</h3>
+<div class="paragraph">
+<p>TODO if a problematic dep’s trail includes another plugin, check whether that plugin is built using a new POM and best practices</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="suppressing-violations"><a class="anchor" href="#suppressing-violations"></a>Suppressing violations</h3>
+<div class="paragraph">
+<p>TODO similar to <a href="https://github.com/jenkinsci/plugin-pom/blob/439ab3d2fb3dd91717538bef4d38bb67e31d65d4/pom.xml#L572-L589" class="bare">https://github.com/jenkinsci/plugin-pom/blob/439ab3d2fb3dd91717538bef4d38bb67e31d65d4/pom.xml#L572-L589</a> but for <a href="https://github.com/jenkinsci/plugin-pom/blob/439ab3d2fb3dd91717538bef4d38bb67e31d65d4/pom.xml#L604-L611" class="bare">https://github.com/jenkinsci/plugin-pom/blob/439ab3d2fb3dd91717538bef4d38bb67e31d65d4/pom.xml#L604-L611</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shading-libraries"><a class="anchor" href="#shading-libraries"></a>Shading libraries</h3>
+<div class="paragraph">
+<p>TODO can use a distinct version of a library if it is repackaged</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="optional-dependencies-and-extensions"><a class="anchor" href="#optional-dependencies-and-extensions"></a>Optional dependencies and extensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/plugin-development/updating-parent.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

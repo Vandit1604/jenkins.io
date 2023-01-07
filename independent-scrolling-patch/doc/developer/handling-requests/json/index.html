@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Expose HTTP API with JSON content with Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/json/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Expose HTTP API with JSON content with Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Expose HTTP API with JSON content with Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Expose HTTP API with JSON content with Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/json/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Expose HTTP API with JSON content with Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="active">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/routing/" class="">Routing Requests</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/actions/" class="">Web Methods</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/responses/" class="">Responding to Requests</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/json/" class="active">Expose HTTP API with JSON content with Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/deprecated-reflective-access/" class="">Deprecated reflective access</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Expose HTTP API with JSON content with Jenkins
+</h1>
+<div class="paragraph">
+<p>This page explains how to expose Json objects over HTTP API in your Jenkins plugins, using <code>GET</code> and <code>POST</code> verbs.
+This page also shows how to test it with JenkinsRules from <a href="https://github.com/jenkinsci/jenkins-test-harness">jenkins-test-harness</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="pre-requisite-a-pojo-plain-old-java-object"><a class="anchor" href="#pre-requisite-a-pojo-plain-old-java-object"></a>Pre-requisite : a POJO (Plain Old Java Object)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This object represent the structured data that is exchanged between the HTTP server (Jenkins) and the client (curl for example).
+We are using a very simple java Object for example purpose, but in production code you will have more complex objects to manipulate.</p>
+</div>
+<div class="paragraph">
+<p>Note that if you use Stapler (JSONObject) for marshalling and unmarshalling JSON, you need an empty constructor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">MyJsonObject</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="c1">//empty constructor required for JSON parsing.</span>
+    <span class="kd">public</span> <span class="nf">MyJsonObject</span><span class="o">()</span> <span class="o">{}</span>
+
+    <span class="kd">public</span> <span class="nf">MyJsonObject</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="handling-get-with-jenkins"><a class="anchor" href="#handling-get-with-jenkins"></a>Handling GET with Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This part shows how to expose an HTTP GET that return a structured JSON response.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="cm">/* (1) */</span>
+<span class="kn">import</span> <span class="nn">hudson.model.RootAction</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">net.sf.json.JSONObject</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Rule</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.HttpResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.QueryParameter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.WebMethod</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.json.JsonBody</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.json.JsonHttpResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.verb.GET</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.kohsuke.stapler.verb.POST</span><span class="o">;</span>
+
+
+<span class="nd">@Extension</span> <span class="cm">/* (2) */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">JsonAPI</span> <span class="kd">implements</span> <span class="nc">RootAction</span> <span class="cm">/* (3) */</span> <span class="o">{</span>
+
+    <span class="nd">@CheckForNull</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getIconFileName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span> <span class="cm">/* (4) */</span>
+    <span class="o">}</span>
+
+    <span class="nd">@CheckForNull</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDisplayName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span> <span class="cm">/* (5) */</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getUrlName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"custom-api"</span><span class="o">;</span> <span class="cm">/* (6) */</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GET</span>
+    <span class="nd">@WebMethod</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"get-example"</span><span class="o">)</span><span class="cm">/* (7) */</span>
+    <span class="kd">public</span> <span class="cm">/* (8) */</span> <span class="nc">JsonHttpResponse</span> <span class="nf">getExample</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">JSONObject</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">JSONObject</span><span class="o">.</span><span class="na">fromObject</span><span class="o">(</span><span class="k">new</span> <span class="nc">MyJsonObject</span><span class="o">(</span><span class="s">"I am Jenkins"</span><span class="o">));</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">JsonHttpResponse</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span> <span class="cm">/* (9) */</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GET</span>
+    <span class="nd">@WebMethod</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"get-example-param"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">JsonHttpResponse</span> <span class="nf">getWithParameters</span><span class="o">(</span>
+        <span class="nd">@QueryParameter</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="nc">String</span> <span class="n">paramValue</span> <span class="cm">/* (9) */</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="n">assertNotNull</span><span class="o">(</span><span class="n">paramValue</span><span class="o">);</span>
+        <span class="nc">MyJsonObject</span> <span class="n">myJsonObject</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyJsonObject</span><span class="o">(</span><span class="s">"I am Jenkins "</span> <span class="o">+</span> <span class="n">paramValue</span><span class="o">);</span>
+        <span class="nc">JSONObject</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">JSONObject</span><span class="o">.</span><span class="na">fromObject</span><span class="o">(</span><span class="n">myJsonObject</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">JsonHttpResponse</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GET</span>
+    <span class="nd">@WebMethod</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"get-error500"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">JsonHttpResponse</span> <span class="nf">getError500</span><span class="o">()</span> <span class="o">{</span> <span class="cm">/* (10) */</span>
+        <span class="nc">MyJsonObject</span> <span class="n">myJsonObject</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyJsonObject</span><span class="o">(</span><span class="s">"You got an error 500"</span><span class="o">);</span>
+        <span class="nc">JSONObject</span> <span class="n">jsonResponse</span> <span class="o">=</span> <span class="nc">JSONObject</span><span class="o">.</span><span class="na">fromObject</span><span class="o">(</span><span class="n">myJsonObject</span><span class="o">);</span>
+        <span class="nc">JsonHttpResponse</span> <span class="n">error500</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JsonHttpResponse</span><span class="o">(</span><span class="n">jsonResponse</span><span class="o">,</span> <span class="mi">500</span><span class="o">);</span>
+        <span class="k">throw</span> <span class="n">error500</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Non exhaustive list of imports to use.</p>
+</li>
+<li>
+<p>Must be an extension to be discovered as a service by Jenkins.</p>
+</li>
+<li>
+<p>This class is an extension of RootAction.  It is a way to expose HTTP paths that is more frequently used to expose the Web UI, but it can also be used without HTML rendering.</p>
+</li>
+<li>
+<p>Since there is no HTML/Jelly rendering, no icons are needed.</p>
+</li>
+<li>
+<p>Since there is no HTML/Jelly rendering, no display name is needed.</p>
+</li>
+<li>
+<p><code>getUrlName()</code> is the root of the JSON API.  Each WebMethod in the class is prefixed by this.</p>
+</li>
+<li>
+<p><code>@GET</code> indicates the HTTP method that is expected, and <code>@WebMethod</code> indicates that it is accepting an HTTP request. By default, the JAVA name of the WebMethod is used, but a different name can be specified by using <code>name =</code></p>
+</li>
+<li>
+<p><code>JsonHttpResponse</code> is a sub class of <code>HttpResponse</code> that indicates that the response content will be JSON</p>
+</li>
+<li>
+<p>An HTTP status can be set in the response.</p>
+</li>
+<li>
+<p>The method <code>get-error500</code> is added in the example to show how to set a error response as JSON.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="testing-with-curl"><a class="anchor" href="#testing-with-curl"></a>Testing with CURL</h3>
+<div class="paragraph">
+<p>A <code>mvn hpi:run</code> in the plugin should be enough to run it locally.  Assuming that Jenkins is up at <a href="http://localhost:8080/jenkins/" class="bare">http://localhost:8080/jenkins/</a> , you should have at this point:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">curl <span class="nt">-XGET</span> <span class="se">\</span>
+    <span class="nt">-w</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> STATUS:%{http_code}"</span>  <span class="se">\</span>
+    http://localhost:8080/jenkins/custom-api/get-example-param?paramValue<span class="o">=</span>hello
+
+<span class="o">{</span><span class="s2">"message"</span>:<span class="s2">"I am Jenkins hello"</span><span class="o">}</span>
+ STATUS:200</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example-of-test-with-jenkinsrule"><a class="anchor" href="#example-of-test-with-jenkinsrule"></a>Example of test with JenkinsRule</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JsonAPITest</span> <span class="o">{</span>
+
+    <span class="nd">@Rule</span>
+    <span class="kd">public</span> <span class="nc">JenkinsRule</span> <span class="n">j</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JenkinsRule</span><span class="o">();</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">GET_API_URL</span> <span class="o">=</span> <span class="s">"custom-api/get-example-param?paramValue=hello"</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testGetJSON</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+
+        <span class="nc">JenkinsRule</span><span class="o">.</span><span class="na">WebClient</span> <span class="n">webClient</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="na">createWebClient</span><span class="o">();</span>
+
+        <span class="c1">// Testing a simple GET that should answer 200 OK and a JSON</span>
+        <span class="nc">JenkinsRule</span><span class="o">.</span><span class="na">JSONWebResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">webClient</span><span class="o">.</span><span class="na">getJSON</span><span class="o">(</span><span class="no">GET_API_URL</span><span class="o">);</span>
+        <span class="n">assertTrue</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getContentAsString</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"I am JenkinsRule hello"</span><span class="o">));</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">(),</span> <span class="mi">200</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAdvancedGetJSON</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="c1">//Given a Jenkins setup with a user "admin"</span>
+        <span class="nc">MockAuthorizationStrategy</span> <span class="n">auth</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MockAuthorizationStrategy</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">grant</span><span class="o">(</span><span class="nc">Jenkins</span><span class="o">.</span><span class="na">ADMINISTER</span><span class="o">).</span><span class="na">everywhere</span><span class="o">().</span><span class="na">to</span><span class="o">(</span><span class="s">"admin"</span><span class="o">);</span>
+
+        <span class="n">j</span><span class="o">.</span><span class="na">jenkins</span><span class="o">.</span><span class="na">setSecurityRealm</span><span class="o">(</span><span class="n">j</span><span class="o">.</span><span class="na">createDummySecurityRealm</span><span class="o">());</span>
+        <span class="n">j</span><span class="o">.</span><span class="na">jenkins</span><span class="o">.</span><span class="na">setAuthorizationStrategy</span><span class="o">(</span><span class="n">auth</span><span class="o">);</span>
+
+        <span class="c1">//We need to setup the WebClient, we use it to call the HTTP API</span>
+        <span class="nc">JenkinsRule</span><span class="o">.</span><span class="na">WebClient</span> <span class="n">webClient</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="na">createWebClient</span><span class="o">();</span>
+
+        <span class="c1">//By default if the status code is not ok, WebClient throw an exception</span>
+        <span class="c1">//Since we want to assert the error status code, we need to set to false.</span>
+        <span class="n">webClient</span><span class="o">.</span><span class="na">setThrowExceptionOnFailingStatusCode</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+
+        <span class="c1">// - simple call without authentication should be forbidden</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">webClient</span><span class="o">.</span><span class="na">getJSON</span><span class="o">(</span><span class="no">GET_API_URL</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">(),</span> <span class="mi">403</span><span class="o">);</span>
+
+        <span class="c1">// - same call but authenticated using withBasicApiToken() should be fine</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">webClient</span><span class="o">.</span><span class="na">withBasicApiToken</span><span class="o">(</span><span class="s">"admin"</span><span class="o">).</span><span class="na">getJSON</span><span class="o">(</span><span class="no">GET_API_URL</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">(),</span> <span class="mi">200</span><span class="o">);</span>
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="handling-post-with-jenkins"><a class="anchor" href="#handling-post-with-jenkins"></a>Handling POST with Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows how to expose an HTTP endpoint that takes a structured JSON Object as input, and do a response with a JSON structured Object.
+For this example the same Object is used as input and output, but you can also use different JSON structure for the response.</p>
+</div>
+<div class="paragraph">
+<p>Starting from the class <code>JsonAPI</code> provided for GET example, add:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="nd">@POST</span>
+<span class="nd">@WebMethod</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"create"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">JsonHttpResponse</span> <span class="nf">create</span><span class="o">(</span><span class="nd">@JsonBody</span> <span class="nc">MyJsonObject</span> <span class="n">body</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//Do any logic required for creation</span>
+    <span class="c1">//For the example purpose we just uppercase the message parsed from the request.</span>
+    <span class="nc">JSONObject</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="n">body</span><span class="o">.</span><span class="na">message</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">());</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">JsonHttpResponse</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="testing-with-curl-2"><a class="anchor" href="#testing-with-curl-2"></a>Testing with CURL</h3>
+<div class="paragraph">
+<p>A <code>mvn hpi:run</code> in the plugin should be enough to run it locally.
+Assuming that Jenkins is up at <a href="http://localhost:8080/jenkins/" class="bare">http://localhost:8080/jenkins/</a> , you should have at this point:</p>
+</div>
+<div class="paragraph">
+<p>Write a file <code>my.json</code> containing the JSON body:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">{</span><span class="s2">"message"</span>:<span class="s2">"A nice message to send"</span><span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then if you need a user and a token:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>go on Jenkins UI</p>
+</li>
+<li>
+<p>login as a user, for example 'myuser'</p>
+</li>
+<li>
+<p>on the top right click on user name</p>
+</li>
+<li>
+<p>go on configure (for this user)</p>
+</li>
+<li>
+<p>in the section "API Token" create a new token.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For additional documentation on token, please visit:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../book/system-administration/authenticating-scripted-clients">Authenticating scripted clients</a></p>
+</li>
+<li>
+<p><a href="../../../book/security/csrf-protection">CSRF Protection</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And then send the POST request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">curl <span class="nt">-XPOST</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    <span class="nt">--user</span> myuser:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx <span class="se">\</span>
+    http://localhost:40393/jenkins/testing-cli/create <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s2">"@/my.json"</span> <span class="se">\</span>
+
+<span class="o">{</span><span class="s2">"message"</span>:<span class="s2">"A nice message to send"</span><span class="o">}</span>
+ STATUS:200</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example-of-test-with-jenkinsrule-2"><a class="anchor" href="#example-of-test-with-jenkinsrule-2"></a>Example of test with JenkinsRule</h3>
+<div class="paragraph">
+<p>Starting from the class <code>JsonAPITest</code> provided for the GET example, add:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testPostJSON</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+
+    <span class="c1">//Given a Jenkins setup with a user "admin"</span>
+    <span class="nc">MockAuthorizationStrategy</span> <span class="n">auth</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MockAuthorizationStrategy</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">grant</span><span class="o">(</span><span class="nc">Jenkins</span><span class="o">.</span><span class="na">ADMINISTER</span><span class="o">).</span><span class="na">everywhere</span><span class="o">().</span><span class="na">to</span><span class="o">(</span><span class="s">"admin"</span><span class="o">);</span>
+
+    <span class="n">j</span><span class="o">.</span><span class="na">jenkins</span><span class="o">.</span><span class="na">setSecurityRealm</span><span class="o">(</span><span class="n">j</span><span class="o">.</span><span class="na">createDummySecurityRealm</span><span class="o">());</span>
+    <span class="n">j</span><span class="o">.</span><span class="na">jenkins</span><span class="o">.</span><span class="na">setAuthorizationStrategy</span><span class="o">(</span><span class="n">auth</span><span class="o">);</span>
+
+    <span class="c1">//We need to setup the WebClient, we use it to call the HTTP API</span>
+    <span class="nc">JenkinsRule</span><span class="o">.</span><span class="na">WebClient</span> <span class="n">webClient</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="na">createWebClient</span><span class="o">();</span>
+
+    <span class="c1">// Testing an authenticated POST that should answer 200 OK and return same json</span>
+    <span class="nc">MyJsonObject</span> <span class="n">objectToSend</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyJsonObject</span><span class="o">(</span><span class="s">"Jenkins is the way !"</span><span class="o">);</span>
+    <span class="nc">JenkinsRule</span><span class="o">.</span><span class="na">JSONWebResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">webClient</span>
+                    <span class="o">.</span><span class="na">withBasicApiToken</span><span class="o">(</span><span class="s">"admin"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">postJSON</span><span class="o">(</span> <span class="s">"testing-cli/create"</span><span class="o">,</span> <span class="nc">JSONObject</span><span class="o">.</span><span class="na">fromObject</span><span class="o">(</span><span class="n">objectToSend</span><span class="o">));</span>
+
+    <span class="c1">//because API is returning the same object, we assert the input message.</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getContentAsString</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"Jenkins is the way !"</span><span class="o">));</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">(),</span> <span class="mi">200</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="some-additional-information"><a class="anchor" href="#some-additional-information"></a>Some additional information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For people that are familiar with REST/JSON concept you may want to use other HTTP verbs, it should work, but since generally in Jenkins only <code>GET</code> and <code>POST</code> are used this page only shows example for this 2 verbs.</p>
+</div>
+<div class="paragraph">
+<p>You may also want to use several HTTP status code, following HTTP convention like <code>201</code> for created, it will also work, and the example above are returning explicit <code>200</code> status to show how to manage the HTTP status that is return.
+Some status are managed by Jenkins Core and may be return automatically, like <code>403</code> when the user in the request does not have the required permission or is anonymous, or <code>404</code> when the HTTP API is not found.</p>
+</div>
+<div class="paragraph">
+<p>If you are not familiar with Jenkins architecture, you can have a look to <a href="../../architecture/model">High level view of Jenkins application</a> and at <a href="../../architecture">Architecture</a></p>
+</div>
+<div class="paragraph">
+<p>For more advanced reading on the HTTP layer of Jenkins, it&#8217;s managed by <a href="https://github.com/jenkinsci/stapler">Stapler</a>.</p>
+</div>
+</div>
+</div>
+
+<h2>
+References
+</h2>
+<ul>
+<li><a href="https://github.com/stapler/stapler/blob/master/docs/reference.adoc">Stapler URL Binding Reference</a></li>
+<li><a href="../routing">How requests in Jenkins are routed</a></li>
+<li><a href="../../testing">Testing Jenkins</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/handling-requests/json.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Plugin Health Scoring at DevOps World 2022
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/08/11/plugin-health-scoring/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Plugin Health Scoring at DevOps World 2022" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Plugin Health Scoring at DevOps World 2022" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/Jenkins-DevOps.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Plugin Health Scoring at DevOps World 2022" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/08/11/plugin-health-scoring/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Plugin Health Scoring at DevOps World 2022" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/Jenkins-DevOps.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Plugin Health Scoring at DevOps World 2022
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/jleon/"><div class="app-avatar"><img alt="Jake Leon" class="app-avatar__image" src="/images/avatars/jleon.jpg"></div> Jake Leon</a>
+August 11, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Plugin+Health+Scoring+at+DevOps+World+2022&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F08%2F11%2Fplugin-health-scoring%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="imageblock right">
+<div class="content">
+<img src="/images/post-images/Jenkins-DevOps.png" alt="Jenkins DevOps">
+</div>
+</div>
+<div class="sect1">
+<h2 id="about"><a class="anchor" href="#about"></a>About</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the Jenkins ecosystem, there are over 1800 plugins.
+The plugins are not equal in terms of their quality, maintenance or support.
+As an instance administrator or an engineer working in a shared service team, determining which plugins are of good quality can be complicated.
+When someone asks you to install a plugin, what should you check before installing it?
+If you are a maintainer, what should you prioritize and focus on first when improving your plugin?</p>
+</div>
+<div class="paragraph">
+<p>It’s really easy to get lost, confused and just install any plugin requested.
+This leads to instances running plugins that are not supported by anyone, having instances with hundreds of plugins, while most of them are not really used.
+All this makes the upgrade process more complicated, creates regressions, and leads to general displeasure.
+Is there a better way to indicate the quality and activity of a plugin?
+We think so.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="google-summer-of-code-2022"><a class="anchor" href="#google-summer-of-code-2022"></a>Google Summer of Code 2022</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>During this year&#8217;s Google Summer of Code event, <a href="/blog/authors/alecharp/">Adrien Lecharpentier</a>, <a href="/blog/authors/adi10hero/">Aditya Srivastava</a>, and myself have been working with contributor <a href="/blog/authors/dheerajodha/">Dheeraj Singh Jodha</a> on building the foundation for a <a href="/projects/gsoc/2022/projects/plugin-health-scoring-system/">Plugin Health Scoring System</a> for Jenkins plugins.</p>
+</div>
+<div class="paragraph">
+<p>The idea of this system is to come up with a composite score for each plugin.
+This final score will be calculated from multiple probes that cover every area of what makes a great plugin; such as maintainer activity, security, open bugs, automation, code coverage and other best practices.
+Each of these probes will have different weights, commonly agreed upon by the Jenkins community, associated with them as some probes are more important than others at any given time.
+One key aspect we are keeping in mind while building the foundation is the flexibility and adaptability of changing these probes.
+This is extremely important for this project, for as time goes on, probes will be removed or added, weights of the probes will change as best practices get more widely adopted across the plugin ecosystem and new ways of doing things inevitably become mainstream.</p>
+</div>
+<div class="paragraph">
+<p>Whether you are the end user getting a more secure, stable, and quality plugin, administrator being more informed on the plugins, or open source maintainers getting more guidance on how to make an awesome plugin, we think that the plugin health scoring system will be a net benefit to the Jenkins project and provide value to various roles and people.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="date-location"><a class="anchor" href="#date-location"></a>Date | Location</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Thursday, September 29, 2022 @ 1:45PM</p>
+</li>
+<li>
+<p><a href="https://reg.devopsworld.com/flow/cloudbees/devopsworld22/Landing/page/welcome">DevOps World 2022 | Orlando, Florida</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/ryecb">Runxia Ye</a> and myself will be presenting this topic at this year&#8217;s DevOps World 2022.
+Join us on Thursday, September 29th at 1:45 pm for this presentation where we will discuss in detail the ins and outs of this project and the benefits it will bring to the Jenkins community.
+We also welcome you to provide feedback on our project’s <a href="https://gitter.im/jenkinsci/GSoC-Plugin_Health_Score">Gitter channel</a> and follow the project on <a href="https://github.com/jenkins-infra/plugin-health-scoring">GitHub</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/contribute/">
+contribute
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/devopsworld2022/">
+devopsworld2022
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Jake Leon" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/jleon.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/jleon/">
+Jake Leon
+</a>
+</p>
+<div class="paragraph">
+<p>Senior Product Manager at CloudBees.
+Google Summer of Code 2022 Mentor for the Plugin Health Scoring Project.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://www.linkedin.com/in/jake-leon-591a93146" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/08/2022-08-11-plugin-health-scoring.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

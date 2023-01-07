@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Matrix building in scripted pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/12/02/matrix-building-with-scripted-pipeline/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Matrix building in scripted pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Matrix building in scripted pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/plumber/plumber.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Matrix building in scripted pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/12/02/matrix-building-with-scripted-pipeline/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Matrix building in scripted pipeline" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logos/plumber/plumber.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Matrix building in scripted pipeline
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/sgleske/"><div class="app-avatar"><img alt="Sam Gleske" class="app-avatar__image" src="/images/avatars/sgleske.png"></div> Sam Gleske</a>
+December 02, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Matrix+building+in+scripted+pipeline&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F12%2F02%2Fmatrix-building-with-scripted-pipeline%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#matrix-building-with-scripted-pipeline">Matrix building with scripted pipeline</a></li>
+<li><a href="#screenshot-of-matrix-pipeline">Screenshot of matrix pipeline</a></li>
+<li><a href="#adding-static-choices">Adding static choices</a></li>
+<li><a href="#adding-dynamic-choices">Adding dynamic choices</a></li>
+<li><a href="#full-pipeline-example-with-dynamic-choices">Full pipeline example with dynamic choices</a></li>
+<li><a href="#background-how-does-it-work">Background: How does it work?</a></li>
+<li><a href="#exposing-a-shared-library-pipeline-step">Exposing a shared library pipeline step</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With the recent announcement about matrix building you can perform
+<a href="/blog/2019/11/22/welcome-to-the-matrix/">Matrix builds
+with declarative pipeline</a>.  However, if you must use scripted pipeline, then
+I&#8217;m going to cover how to matrix build platforms and tools using scripted
+pipeline.  The examples in this post are modeled after the declarative pipeline
+matrix examples.</p>
+</div>
+<div class="sect1">
+<h2 id="matrix-building-with-scripted-pipeline"><a class="anchor" href="#matrix-building-with-scripted-pipeline"></a>Matrix building with scripted pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following Jenkins scripted pipeline will build combinations across two
+matrix axes.  However, adding more axes to the matrix is just as easy as adding
+another entry to the <code>Map matrix_axes</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="c1">// you can add more axes and this will still work</span>
+<span class="n">Map</span> <span class="n">matrix_axes</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="nl">PLATFORM:</span> <span class="o">[</span><span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span>
+    <span class="nl">BROWSER:</span> <span class="o">[</span><span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span><span class="o">]</span>
+<span class="o">]</span>
+
+<span class="nd">@NonCPS</span>
+<span class="n">List</span> <span class="nf">getMatrixAxes</span><span class="o">(</span><span class="n">Map</span> <span class="n">matrix_axes</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="n">matrix_axes</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">axis</span><span class="o">,</span> <span class="n">values</span> <span class="o">-&gt;</span>
+        <span class="n">List</span> <span class="n">axisList</span> <span class="o">=</span> <span class="o">[]</span>
+        <span class="n">values</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">value</span> <span class="o">-&gt;</span>
+            <span class="n">axisList</span> <span class="o">&lt;&lt;</span> <span class="o">[(</span><span class="n">axis</span><span class="o">):</span> <span class="n">value</span><span class="o">]</span>
+        <span class="o">}</span>
+        <span class="n">axes</span> <span class="o">&lt;&lt;</span> <span class="n">axisList</span>
+    <span class="o">}</span>
+    <span class="c1">// calculate cartesian product</span>
+    <span class="n">axes</span><span class="o">.</span><span class="na">combinations</span><span class="o">()*.</span><span class="na">sum</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="c1">// filter the matrix axes since</span>
+<span class="c1">// Safari is not available on Linux and</span>
+<span class="c1">// Edge is only available on Windows</span>
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">).</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">axis</span> <span class="o">-&gt;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'safari'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'linux'</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'edge'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'windows'</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="c1">// parallel task map</span>
+<span class="n">Map</span> <span class="n">tasks</span> <span class="o">=</span> <span class="o">[</span><span class="nl">failFast:</span> <span class="kc">false</span><span class="o">]</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">axes</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="c1">// convert the Axis into valid values for withEnv step</span>
+    <span class="n">Map</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axes</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+    <span class="n">List</span> <span class="n">axisEnv</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">k</span><span class="o">,</span> <span class="n">v</span> <span class="o">-&gt;</span>
+        <span class="s2">"${k}=${v}"</span>
+    <span class="o">}</span>
+    <span class="c1">// let's say you have diverse agents among Windows, Mac and Linux all of</span>
+    <span class="c1">// which have proper labels for their platform and what browsers are</span>
+    <span class="c1">// available on those agents.</span>
+    <span class="n">String</span> <span class="n">nodeLabel</span> <span class="o">=</span> <span class="s2">"os:${axis['PLATFORM']} &amp;&amp; browser:${axis['BROWSER']}"</span>
+    <span class="n">tasks</span><span class="o">[</span><span class="n">axisEnv</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s1">', '</span><span class="o">)]</span> <span class="o">=</span> <span class="o">{</span> <span class="o">-&gt;</span>
+        <span class="n">node</span><span class="o">(</span><span class="n">nodeLabel</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">withEnv</span><span class="o">(</span><span class="n">axisEnv</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s2">"Build"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">echo</span> <span class="n">nodeLabel</span>
+                    <span class="n">sh</span> <span class="s1">'echo Do Build for ${PLATFORM} - ${BROWSER}'</span>
+                <span class="o">}</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s2">"Test"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">echo</span> <span class="n">nodeLabel</span>
+                    <span class="n">sh</span> <span class="s1">'echo Do Build for ${PLATFORM} - ${BROWSER}'</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">stage</span><span class="o">(</span><span class="s2">"Matrix builds"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">parallel</span><span class="o">(</span><span class="n">tasks</span><span class="o">)</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Matrix axes contain the following combinations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="text">[PLATFORM=linux, BROWSER=firefox]
+[PLATFORM=windows, BROWSER=firefox]
+[PLATFORM=mac, BROWSER=firefox]
+[PLATFORM=linux, BROWSER=chrome]
+[PLATFORM=windows, BROWSER=chrome]
+[PLATFORM=mac, BROWSER=chrome]
+[PLATFORM=windows, BROWSER=safari]
+[PLATFORM=mac, BROWSER=safari]
+[PLATFORM=windows, BROWSER=edge]</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is worth noting that Jenkins agent labels can contain a colon (<code>:</code>).  So
+<code>os:linux</code> and <code>browser:firefox</code> are both valid agent labels.  The node
+expression <code>os:linux &amp;&amp; browser:firefox</code> will search for Jenkins agents which
+have <strong>both labels</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="screenshot-of-matrix-pipeline"><a class="anchor" href="#screenshot-of-matrix-pipeline"></a>Screenshot of matrix pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following is a screenshot of the pipeline code above running in a sandbox
+Jenkins environment.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/matrix-scripted-pipeline-screenshots/pipeline-screenshot.png" alt="Screenshot of matrix pipeline"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-static-choices"><a class="anchor" href="#adding-static-choices"></a>Adding static choices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is useful for users to be able to customize building matrices when a build
+is triggered.  Adding static choices requires only a few changes to the above
+script.  Static choices as in we hard code the question and matrix filters.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">Map</span> <span class="n">response</span> <span class="o">=</span> <span class="o">[:]</span>
+<span class="n">stage</span><span class="o">(</span><span class="s2">"Choose combinations"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">input</span><span class="o">(</span>
+        <span class="nl">id:</span> <span class="s1">'Platform'</span><span class="o">,</span>
+        <span class="nl">message:</span> <span class="s1">'Customize your matrix build.'</span><span class="o">,</span>
+        <span class="nl">parameters:</span> <span class="o">[</span>
+            <span class="n">choice</span><span class="o">(</span>
+                <span class="nl">choices:</span> <span class="o">[</span><span class="s1">'all'</span><span class="o">,</span> <span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">],</span>
+                <span class="nl">description:</span> <span class="s1">'Choose a single platform or all platforms to run tests.'</span><span class="o">,</span>
+                <span class="nl">name:</span> <span class="s1">'PLATFORM'</span><span class="o">),</span>
+            <span class="n">choice</span><span class="o">(</span>
+                <span class="nl">choices:</span> <span class="o">[</span><span class="s1">'all'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'edge'</span><span class="o">,</span> <span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">],</span>
+                <span class="nl">description:</span> <span class="s1">'Choose a single browser or all browsers to run tests.'</span><span class="o">,</span>
+                <span class="nl">name:</span> <span class="s1">'BROWSER'</span><span class="o">)</span>
+        <span class="o">])</span>
+<span class="o">}</span>
+
+<span class="c1">// filter the matrix axes since</span>
+<span class="c1">// Safari is not available on Linux and</span>
+<span class="c1">// Edge is only available on Windows</span>
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">).</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">axis</span> <span class="o">-&gt;</span>
+    <span class="o">(</span><span class="n">response</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'all'</span> <span class="o">||</span> <span class="n">response</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">])</span> <span class="o">&amp;&amp;</span>
+    <span class="o">(</span><span class="n">response</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'all'</span> <span class="o">||</span> <span class="n">response</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">])</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'safari'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'linux'</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'edge'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'windows'</span><span class="o">)</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pipeline code then renders the following choice dialog.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/matrix-scripted-pipeline-screenshots/static-choice-dialog.png" alt="Screenshot of a dialog asking a question to customize matrix build"></span></p>
+</div>
+<div class="paragraph">
+<p>When a user chooses the customized options, the pipeline reacts to the
+requested options.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/matrix-scripted-pipeline-screenshots/customized-pipeline-screenshot.png" alt="Screenshot of pipeline running requested user customizations"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-dynamic-choices"><a class="anchor" href="#adding-dynamic-choices"></a>Adding dynamic choices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dynamic choices means the choice dialog for users to customize the build is
+generated from the <code>Map matrix_axes</code> rather than being something a pipeline
+developer hard codes.</p>
+</div>
+<div class="paragraph">
+<p>For user experience (UX), you&#8217;ll want your choices to automatically reflect the
+matrix axis options you have available.  For example, let&#8217;s say you want to add
+a new dimension for Java to the matrix.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="c1">// you can add more axes and this will still work</span>
+<span class="n">Map</span> <span class="n">matrix_axes</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="nl">PLATFORM:</span> <span class="o">[</span><span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span>
+    <span class="nl">JAVA:</span> <span class="o">[</span><span class="s1">'openjdk8'</span><span class="o">,</span> <span class="s1">'openjdk10'</span><span class="o">,</span> <span class="s1">'openjdk11'</span><span class="o">],</span>
+    <span class="nl">BROWSER:</span> <span class="o">[</span><span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span><span class="o">]</span>
+<span class="o">]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To support dynamic choices, your choice and matrix axis filter needs to be
+updated to the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">Map</span> <span class="n">response</span> <span class="o">=</span> <span class="o">[:]</span>
+<span class="n">stage</span><span class="o">(</span><span class="s2">"Choose combinations"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">input</span><span class="o">(</span>
+        <span class="nl">id:</span> <span class="s1">'Platform'</span><span class="o">,</span>
+        <span class="nl">message:</span> <span class="s1">'Customize your matrix build.'</span><span class="o">,</span>
+        <span class="nl">parameters:</span> <span class="n">matrix_axes</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">key</span><span class="o">,</span> <span class="n">options</span> <span class="o">-&gt;</span>
+            <span class="n">choice</span><span class="o">(</span>
+                <span class="nl">choices:</span> <span class="o">[</span><span class="s1">'all'</span><span class="o">]</span> <span class="o">+</span> <span class="n">options</span><span class="o">.</span><span class="na">sort</span><span class="o">(),</span>
+                <span class="nl">description:</span> <span class="s2">"Choose a single ${key.toLowerCase()} or all to run tests."</span><span class="o">,</span>
+                <span class="nl">name:</span> <span class="n">key</span><span class="o">)</span>
+        <span class="o">})</span>
+<span class="o">}</span>
+
+<span class="c1">// filter the matrix axes since</span>
+<span class="c1">// Safari is not available on Linux and</span>
+<span class="c1">// Edge is only available on Windows</span>
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">).</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">axis</span> <span class="o">-&gt;</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">every</span> <span class="o">{</span> <span class="n">key</span><span class="o">,</span> <span class="n">choice</span> <span class="o">-&gt;</span>
+        <span class="n">choice</span> <span class="o">==</span> <span class="s1">'all'</span> <span class="o">||</span> <span class="n">choice</span> <span class="o">==</span> <span class="n">axis</span><span class="o">[</span><span class="n">key</span><span class="o">]</span>
+    <span class="o">}</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'safari'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'linux'</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'edge'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'windows'</span><span class="o">)</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will dynamically generate choices based on available matrix axes and will
+automatically filter if users customize it.  Here&#8217;s an example dialog and
+rendered choice when the pipeline executes.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/matrix-scripted-pipeline-screenshots/dynamic-choice-dialog.png" alt="Screenshot of dynamically generated dialog for user to customize choices of matrix build"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/matrix-scripted-pipeline-screenshots/dynamic-customized-pipeline-screenshot.png" alt="Screenshot of pipeline running user choices in a matrix"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="full-pipeline-example-with-dynamic-choices"><a class="anchor" href="#full-pipeline-example-with-dynamic-choices"></a>Full pipeline example with dynamic choices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following script is the full pipeline example which contains dynamic
+choices.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="c1">// you can add more axes and this will still work</span>
+<span class="n">Map</span> <span class="n">matrix_axes</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="nl">PLATFORM:</span> <span class="o">[</span><span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span>
+    <span class="nl">JAVA:</span> <span class="o">[</span><span class="s1">'openjdk8'</span><span class="o">,</span> <span class="s1">'openjdk10'</span><span class="o">,</span> <span class="s1">'openjdk11'</span><span class="o">],</span>
+    <span class="nl">BROWSER:</span> <span class="o">[</span><span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span><span class="o">]</span>
+<span class="o">]</span>
+
+<span class="nd">@NonCPS</span>
+<span class="n">List</span> <span class="nf">getMatrixAxes</span><span class="o">(</span><span class="n">Map</span> <span class="n">matrix_axes</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="n">matrix_axes</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">axis</span><span class="o">,</span> <span class="n">values</span> <span class="o">-&gt;</span>
+        <span class="n">List</span> <span class="n">axisList</span> <span class="o">=</span> <span class="o">[]</span>
+        <span class="n">values</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">value</span> <span class="o">-&gt;</span>
+            <span class="n">axisList</span> <span class="o">&lt;&lt;</span> <span class="o">[(</span><span class="n">axis</span><span class="o">):</span> <span class="n">value</span><span class="o">]</span>
+        <span class="o">}</span>
+        <span class="n">axes</span> <span class="o">&lt;&lt;</span> <span class="n">axisList</span>
+    <span class="o">}</span>
+    <span class="c1">// calculate cartesian product</span>
+    <span class="n">axes</span><span class="o">.</span><span class="na">combinations</span><span class="o">()*.</span><span class="na">sum</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="n">Map</span> <span class="n">response</span> <span class="o">=</span> <span class="o">[:]</span>
+<span class="n">stage</span><span class="o">(</span><span class="s2">"Choose combinations"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">input</span><span class="o">(</span>
+        <span class="nl">id:</span> <span class="s1">'Platform'</span><span class="o">,</span>
+        <span class="nl">message:</span> <span class="s1">'Customize your matrix build.'</span><span class="o">,</span>
+        <span class="nl">parameters:</span> <span class="n">matrix_axes</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">key</span><span class="o">,</span> <span class="n">options</span> <span class="o">-&gt;</span>
+            <span class="n">choice</span><span class="o">(</span>
+                <span class="nl">choices:</span> <span class="o">[</span><span class="s1">'all'</span><span class="o">]</span> <span class="o">+</span> <span class="n">options</span><span class="o">.</span><span class="na">sort</span><span class="o">(),</span>
+                <span class="nl">description:</span> <span class="s2">"Choose a single ${key.toLowerCase()} or all to run tests."</span><span class="o">,</span>
+                <span class="nl">name:</span> <span class="n">key</span><span class="o">)</span>
+        <span class="o">})</span>
+<span class="o">}</span>
+
+<span class="c1">// filter the matrix axes since</span>
+<span class="c1">// Safari is not available on Linux and</span>
+<span class="c1">// Edge is only available on Windows</span>
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">).</span><span class="na">findAll</span> <span class="o">{</span> <span class="n">axis</span> <span class="o">-&gt;</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">every</span> <span class="o">{</span> <span class="n">key</span><span class="o">,</span> <span class="n">choice</span> <span class="o">-&gt;</span>
+        <span class="n">choice</span> <span class="o">==</span> <span class="s1">'all'</span> <span class="o">||</span> <span class="n">choice</span> <span class="o">==</span> <span class="n">axis</span><span class="o">[</span><span class="n">key</span><span class="o">]</span>
+    <span class="o">}</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'safari'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'linux'</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'edge'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'windows'</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="c1">// parallel task map</span>
+<span class="n">Map</span> <span class="n">tasks</span> <span class="o">=</span> <span class="o">[</span><span class="nl">failFast:</span> <span class="kc">false</span><span class="o">]</span>
+
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">axes</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="c1">// convert the Axis into valid values for withEnv step</span>
+    <span class="n">Map</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axes</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+    <span class="n">List</span> <span class="n">axisEnv</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">k</span><span class="o">,</span> <span class="n">v</span> <span class="o">-&gt;</span>
+        <span class="s2">"${k}=${v}"</span>
+    <span class="o">}</span>
+    <span class="c1">// let's say you have diverse agents among Windows, Mac and Linux all of</span>
+    <span class="c1">// which have proper labels for their platform and what browsers are</span>
+    <span class="c1">// available on those agents.</span>
+    <span class="n">String</span> <span class="n">nodeLabel</span> <span class="o">=</span> <span class="s2">"os:${axis['PLATFORM']} &amp;&amp; browser:${axis['BROWSER']}"</span>
+    <span class="n">tasks</span><span class="o">[</span><span class="n">axisEnv</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s1">', '</span><span class="o">)]</span> <span class="o">=</span> <span class="o">{</span> <span class="o">-&gt;</span>
+        <span class="n">node</span><span class="o">(</span><span class="n">nodeLabel</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">withEnv</span><span class="o">(</span><span class="n">axisEnv</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s2">"Build"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">echo</span> <span class="n">nodeLabel</span>
+                    <span class="n">sh</span> <span class="s1">'echo Do Build for ${PLATFORM} - ${BROWSER}'</span>
+                <span class="o">}</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s2">"Test"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">echo</span> <span class="n">nodeLabel</span>
+                    <span class="n">sh</span> <span class="s1">'echo Do Build for ${PLATFORM} - ${BROWSER}'</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">stage</span><span class="o">(</span><span class="s2">"Matrix builds"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">parallel</span><span class="o">(</span><span class="n">tasks</span><span class="o">)</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="background-how-does-it-work"><a class="anchor" href="#background-how-does-it-work"></a>Background: How does it work?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The trick is in <code>axes.combinations()*.sum()</code>.  Groovy combinations are a quick
+and easy way to perform a
+<a href="https://en.wikipedia.org/wiki/Cartesian_product">cartesian product</a>.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a simpler example of how cartesian product works.  Take two simple lists
+and create combinations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">List</span> <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s1">'a'</span><span class="o">,</span> <span class="s1">'b'</span><span class="o">,</span> <span class="s1">'c'</span><span class="o">]</span>
+<span class="n">List</span> <span class="n">b</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">]</span>
+
+<span class="o">[</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">].</span><span class="na">combinations</span><span class="o">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result of <code>[a, b].combinations()</code> is the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>[
+    ['a', 1],
+    ['b', 1],
+    ['c', 1],
+    ['a', 2],
+    ['b', 2],
+    ['c', 2],
+    ['a', 3],
+    ['b', 3],
+    ['c', 3]
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead of <code>a, b, c</code> and <code>1, 2, 3</code> let&#8217;s do the same example again but instead using matrix maps.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">List</span> <span class="n">java</span> <span class="o">=</span> <span class="o">[[</span><span class="nl">java:</span> <span class="mi">8</span><span class="o">],</span> <span class="o">[</span><span class="nl">java:</span> <span class="mi">10</span><span class="o">]]</span>
+<span class="n">List</span> <span class="n">os</span> <span class="o">=</span> <span class="o">[[</span><span class="nl">os:</span> <span class="s1">'linux'</span><span class="o">],</span> <span class="o">[</span><span class="nl">os:</span> <span class="s1">'freebsd'</span><span class="o">]]</span>
+
+<span class="o">[</span><span class="n">java</span><span class="o">,</span> <span class="n">os</span><span class="o">].</span><span class="na">combinations</span><span class="o">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result of <code>[java, os].combinations()</code> is the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>[
+    [ [java:8],  [os:linux]   ],
+    [ [java:10], [os:linux]   ],
+    [ [java:8],  [os:freebsd] ],
+    [ [java:10], [os:freebsd] ]
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order for us to easily use this as a single map we must add the maps
+together to create a single map.  For example, adding
+<code>[java: 8] + [os: 'linux']</code> will render a single hashmap
+<code>[java: 8, os: 'linux']</code>.  This means we need our list of lists of maps to
+become a simple list of maps so that we can use them effectively in pipelines.</p>
+</div>
+<div class="paragraph">
+<p>To accomplish this we make use of the
+<a href="https://www.groovy-lang.org/operators.html#_spread_operator">Groovy spread
+operator</a> (<code>*.</code> in <code>axes.combinations()*.sum()</code>).</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see the same <code>java</code>/<code>os</code> example again but with the spread operator being
+used.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">List</span> <span class="n">java</span> <span class="o">=</span> <span class="o">[[</span><span class="nl">java:</span> <span class="mi">8</span><span class="o">],</span> <span class="o">[</span><span class="nl">java:</span> <span class="mi">10</span><span class="o">]]</span>
+<span class="n">List</span> <span class="n">os</span> <span class="o">=</span> <span class="o">[[</span><span class="nl">os:</span> <span class="s1">'linux'</span><span class="o">],</span> <span class="o">[</span><span class="nl">os:</span> <span class="s1">'freebsd'</span><span class="o">]]</span>
+
+<span class="o">[</span><span class="n">java</span><span class="o">,</span> <span class="n">os</span><span class="o">].</span><span class="na">combinations</span><span class="o">()*.</span><span class="na">sum</span><span class="o">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>[
+    [ java: 8,  os: 'linux'],
+    [ java: 10, os: 'linux'],
+    [ java: 8,  os: 'freebsd'],
+    [ java: 10, os: 'freebsd']
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the spread operator the end result of a list of maps which we can
+effectively use as matrix axes.  It also allows us to do neat matrix filtering
+with the <a href="http://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/List.html#findAll(groovy.lang.Closure)"><code>findAll {}</code> Groovy <code>List</code> method</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exposing-a-shared-library-pipeline-step"><a class="anchor" href="#exposing-a-shared-library-pipeline-step"></a>Exposing a shared library pipeline step</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The best user experience is to expose the above code as a shared library
+pipeline step.  As an example, I have added
+<a href="https://github.com/samrocketman/jervis/blob/8d6935e08437c1d9b9b3de1d8711cad6622fc631/vars/getMatrixAxes.groovy"><code>vars/getMatrixAxes.groovy</code>
+to Jervis</a>.  This provides a flexible shared library step which you can copy
+into your own shared pipeline libraries.</p>
+</div>
+<div class="paragraph">
+<p>The step becomes easy to use in the following way with a simple one dimension matrix.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">Map</span> <span class="n">matrix_axes</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="nl">PLATFORM:</span> <span class="o">[</span><span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span>
+<span class="o">]</span>
+
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">)</span>
+
+<span class="c1">// alternately with a user prompt</span>
+<span class="c1">//List axes = getMatrixAxes(matrix_axes, user_prompt: true)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a more complex example using a two dimensional matrix with filtering.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">Map</span> <span class="n">matrix_axes</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="nl">PLATFORM:</span> <span class="o">[</span><span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span>
+    <span class="nl">BROWSER:</span> <span class="o">[</span><span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span><span class="o">]</span>
+<span class="o">]</span>
+
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">)</span> <span class="o">{</span> <span class="n">Map</span> <span class="n">axis</span> <span class="o">-&gt;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'safari'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'linux'</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'edge'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'windows'</span><span class="o">)</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And again with a three dimensional matrix with filtering and prompting for user
+input.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">Map</span> <span class="n">matrix_axes</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="nl">PLATFORM:</span> <span class="o">[</span><span class="s1">'linux'</span><span class="o">,</span> <span class="s1">'windows'</span><span class="o">,</span> <span class="s1">'mac'</span><span class="o">],</span>
+    <span class="nl">JAVA:</span> <span class="o">[</span><span class="s1">'openjdk8'</span><span class="o">,</span> <span class="s1">'openjdk10'</span><span class="o">,</span> <span class="s1">'openjdk11'</span><span class="o">],</span>
+    <span class="nl">BROWSER:</span> <span class="o">[</span><span class="s1">'firefox'</span><span class="o">,</span> <span class="s1">'chrome'</span><span class="o">,</span> <span class="s1">'safari'</span><span class="o">,</span> <span class="s1">'edge'</span><span class="o">]</span>
+<span class="o">]</span>
+
+<span class="n">List</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">getMatrixAxes</span><span class="o">(</span><span class="n">matrix_axes</span><span class="o">,</span> <span class="nl">user_prompt:</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span> <span class="n">Map</span> <span class="n">axis</span> <span class="o">-&gt;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'safari'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'linux'</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">!(</span><span class="n">axis</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'edge'</span> <span class="o">&amp;&amp;</span> <span class="n">axis</span><span class="o">[</span><span class="s1">'PLATFORM'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'windows'</span><span class="o">)</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The script approval is not necessary for
+<a href="/doc/book/pipeline/shared-libraries/">Shared Libraries</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t want to provide a shared step.  In order to expose matrix building
+to end-users, you must allow the following method approval in the script
+approval configuration.</p>
+</div>
+<div class="listingblock">
+<div class="title">Script approval</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">staticMethod</span> <span class="n">org</span><span class="o">.</span><span class="na">codehaus</span><span class="o">.</span><span class="na">groovy</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">DefaultGroovyMethods</span> <span class="n">combinations</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Collection</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We covered how to perform matrix builds using scripted pipeline as well as how
+to prompt users for customizing the matrix build.  Additionally, an example was
+provided where we exposed getting buildable matrix axes to users as an easy to
+use <a href="/doc/book/pipeline/shared-libraries/">Shared Library</a>
+step via <code>vars/getMatrixAxes.groovy</code>.  Using a shared library step is
+definitely the recommended way for admins to support users rather than trying
+to whitelist groovy methods.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/samrocketman/jervis">Jervis shared pipeline library</a> has supported matrix building since 2017 in Jenkins scripted pipelines.
+(<a href="https://github.com/samrocketman/jervis/blob/db79f4d52b3aa23f1b19b59262156388b8193711/src/main/groovy/net/gleske/jervis/lang/pipelineGenerator.groovy#L275">see here</a> and
+<a href="https://github.com/samrocketman/jervis/blob/f09c709326175ff2e701677250cac007170cbd3a/vars/matrixBuildProjectStage.groovy#L25">here</a>
+for an example).</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/matrix/">
+matrix
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/scripted/">
+scripted
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Sam Gleske" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/sgleske.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/sgleske/">
+Sam Gleske
+</a>
+</p>
+<div class="paragraph">
+<p>A Senior Software Engineer at <a href="https://integralads.com/">Integral Ad
+Science</a>, he develops a Jenkins solution to scale CI/CD onboarding for the
+entire company.  To aide in this cause he has been developing
+<a href="https://github.com/samrocketman/jervis/wiki">Jervis: Jenkins as a service</a>
+which strongly focuses on onboarding people and not just technology or projects
+into Jenkins.  When not at work he enjoys contributing to open source software,
+like the Jenkins project, solely through volunteer time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/samrocketman" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/sag47" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/12/2019-12-02-matrix-building-with-scripted-pipeline.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

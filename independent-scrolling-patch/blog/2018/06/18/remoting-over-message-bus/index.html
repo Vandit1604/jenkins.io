@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC Project Intro: Jenkins Remoting over Message Bus/Queue
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/06/18/remoting-over-message-bus/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/06/18/remoting-over-message-bus/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSoC Project Intro: Jenkins Remoting over Message Bus/Queue
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+June 18, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSoC+Project+Intro%3A+Jenkins+Remoting+over+Message+Bus%2FQueue&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F06%2F18%2Fremoting-over-message-bus%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect2">
+<h3 id="about-me"><a class="anchor" href="#about-me"></a>About me</h3>
+<div class="paragraph">
+<p>My name is Pham Vu Tuan, I am a final year undergraduate student from Singapore. This is the first time I participate in Google Summer of Code and contribute to an open-source organization. I am very excited to contribute this summer.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mentors"><a class="anchor" href="#mentors"></a>Mentors</h3>
+<div class="paragraph">
+<p>I have GSoC mentors who help me in this project <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a> and <a href="https://github.com/Supun94">Supun Wanniarachchi</a>. Besides that, I also receive great support from developers in remoting project <a href="https://github.com/dwnusbaum">Devin Nusbaum</a> and <a href="https://github.com/jeffret-b">Jeff Thompson</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="overview"><a class="anchor" href="#overview"></a>Overview</h3>
+<div class="paragraph">
+<p>Current versions of Jenkins Remoting are based on the TCP protocol. If it fails, the agent connection and the build fails as well. There are also issues with traffic prioritization and multi-agent communications, which impact Jenkins stability and scalability.</p>
+</div>
+<div class="paragraph">
+<p>This project aims to develop a plugin in order to add support of a popular message queue/bus technology (Kafka) as a fault-tolerant communication layer in Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="why-kafka"><a class="anchor" href="#why-kafka"></a>Why Kafka?</h3>
+<div class="paragraph">
+<p>When planning for this project, we want to use traditional message queue system such as <a href="https://github.com/oleg-nenashev">ActiveMQ</a> or <a href="https://github.com/oleg-nenashev">RabbitMQ</a>. However, after some discussion, we decided to have a try with <a href="https://kafka.apache.org/">Kafka</a> with more suitable features with this project:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka itself is not a queue like ActiveMQ or RabbitMQ, it is a distributed, replicated commit log. This helps to remove message delivery complexity we have in traditional queue system.</p>
+</li>
+<li>
+<p>We need to support data streaming as a requirement, and Kafka is good at this aspect, which RabbitMQ is lack of.</p>
+</li>
+<li>
+<p>Kafka is said to have a better scalability and good support from the development community.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="current-state"><a class="anchor" href="#current-state"></a>Current State</h3>
+<div class="paragraph">
+<p>The project is reaching the end of the first phase and here are things we have achieved so far:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setup project as a set of Docker Compose components: Kafka cluster, Jenkins controller (with plugin) and a custom agent (JAR).</p>
+</li>
+<li>
+<p>Create a PoC with new command transport implementation to support Kafka, which involves of command invocation, RMI, classloading and data streaming.</p>
+</li>
+<li>
+<p>Make necessary changes in Remoting and Jenkins core to make them extensible for the use of this project.</p>
+</li>
+<li>
+<p>Decide to use Kafka as a suitable final implementation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We planned to release an alpha version of this plugin by the end of this phase, but decided to move this release to the second phase because we need to wait for remoting and core patches to be released.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="architecture-overview"><a class="anchor" href="#architecture-overview"></a>Architecture Overview</h3>
+<div class="paragraph">
+<p>The project consists of multiple components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka Client Library - new command transport implementation, producer and consumer client logic.</p>
+</li>
+<li>
+<p>Remoting Kafka Plugin - plugin implementation with KafkaGlobalConfiguration and KafkaComputerLauncher.</p>
+</li>
+<li>
+<p>Remoting Kafka Agent - A custom JAR agent with remoting JAR packaged together with a custom Engine implementation to setup a communication channel with Kafka.</p>
+</li>
+<li>
+<p>All the components are packaged together with Docker Compose.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The below diagram is the overview of the current architecture:
+<span class="image center"><img src="/images/post-images/remoting-kafka-intro/remoting-kafka-architecture.png" alt="remoting kafka architecture" title="Remoting Kafka Plugin Current Architecture"></span></p>
+</div>
+<div class="paragraph">
+<p>With this design, controller is not communicating with agent using direct TCP communication anymore, all the communication commands are transferred with Kafka.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="anchor" href="#features"></a>Features</h3>
+<div class="sect3">
+<h4 id="1-kafka-global-configuration"><a class="anchor" href="#1-kafka-global-configuration"></a>1. Kafka Global Configuration</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/remoting-kafka-intro/kafka-global-config.png" alt="kafka global config" title="Remoting Kafka Global Configuration"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-custom-agent-start-up-as-a-jar"><a class="anchor" href="#2-custom-agent-start-up-as-a-jar"></a>2. Custom agent start up as a JAR</h4>
+<div class="paragraph">
+<p>User can start running an agent with the following command:
+<span class="image center"><img src="/images/post-images/remoting-kafka-intro/start-agent.png" alt="start agent" title="Command to start an agent"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-launch-agents-with-kafka"><a class="anchor" href="#3-launch-agents-with-kafka"></a>3. Launch agents with Kafka</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/remoting-kafka-intro/launch-agent-kafka.png" alt="launch agent kafka" title="Launch agent with Kafka"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="4-commands-transferred-between-controller-and-agent-over-kafka"><a class="anchor" href="#4-commands-transferred-between-controller-and-agent-over-kafka"></a>4. Commands transferred between controller and agent over Kafka</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/remoting-kafka-intro/kafka-commands.png" alt="kafka commands" title="controller-agent communication with Kafka"></span></p>
+</div>
+<div class="paragraph">
+<p>Remoting operations are being executed over Kafka. In the log you may see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Classloading (Classloader.fetch())</p>
+</li>
+<li>
+<p>Log streaming (Pipe.chunk())</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="5-run-jobs-with-remoting-kafka"><a class="anchor" href="#5-run-jobs-with-remoting-kafka"></a>5. Run jobs with remoting Kafka</h4>
+<div class="paragraph">
+<p>It is possible to run jobs on Agents connected over Kafka
+<span class="image center"><img src="/images/post-images/remoting-kafka-intro/remoting-kafka-run-job.png" alt="remoting kafka run job" title="Job run with Remoting Kafka Plugin"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="next-phase-plan"><a class="anchor" href="#next-phase-plan"></a>Next Phase Plan</h3>
+<div class="paragraph">
+<p>Here are the tasks planned for the next phase:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Support security for controller-agent connection:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka authentication/authorization (<a href="https://issues.jenkins.io/browse/JENKINS-51472">JENKINS-51472</a>, <a href="https://issues.jenkins.io/browse/JENKINS-51473">JENKINS-51473</a>).</p>
+</li>
+<li>
+<p>Agent secrets (<a href="https://issues.jenkins.io/browse/JENKINS-51470">JENKINS-51470</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Improve Kafka producer-consumer model to ensure reliability (<a href="https://issues.jenkins.io/browse/JENKINS-51942">JENKINS-51942</a>).</p>
+</li>
+<li>
+<p>Bug fixing.</p>
+</li>
+<li>
+<p>Release alpha version and address feedback (<a href="https://issues.jenkins.io/browse/JENKINS-51713">JENKINS-51713</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-run-demo"><a class="anchor" href="#how-to-run-demo"></a>How to run demo</h3>
+<div class="paragraph">
+<p>You can try to run a demo of the plugin by following the <a href="https://github.com/jenkinsci/remoting-kafka-plugin/#plugin-demo-instructions">instruction</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://gitter.im/jenkinsci/remoting"><span class="image"><img src="https://badges.gitter.im/jenkinsci/remoting.svg" alt="title: &quot;Gitter&quot;"></span></a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/remoting-kafka-plugin">GitHub Repository</a></p>
+</li>
+<li>
+<p><a href="https://jenkins.io/projects/gsoc/2018/remoting-over-message-bus/">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/qWHM8S0fzUw">Phase 1 Presentation Video</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1GxkI17lZYQ6_pyAOR9sXNXq1K3LwkqjigXdxxf81VkE/edit?usp=sharing">Phase 1 Presentation Slides</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2018/">
+gsoc2018
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/remoting/">
+remoting
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Pham Vu Tuan" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/pvtuan10.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/pvtuan10/">
+Pham Vu Tuan
+</a>
+</p>
+<div class="paragraph">
+<p>Pham Vu Tuan is a developer from Singapore.
+He starts contributing to Jenkins from Google Summer of Code 2018 for <a href="/projects/gsoc/2018/remoting-over-message-bus/">Jenkins Remoting over Message Bus/Queue</a></p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/pvtuan10" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/06/2018-06-18-remoting-over-message-bus.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

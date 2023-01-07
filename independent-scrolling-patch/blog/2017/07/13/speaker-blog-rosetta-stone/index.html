@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Automated Software Maintenance
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/07/13/speaker-blog-rosetta-stone/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Automated Software Maintenance" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Automated Software Maintenance" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Automated Software Maintenance" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/07/13/speaker-blog-rosetta-stone/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Automated Software Maintenance" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Automated Software Maintenance
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+July 13, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Automated+Software+Maintenance&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F07%2F13%2Fspeaker-blog-rosetta-stone%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by Kevin Burnett, DevOps Lead at
+<a href="https://rosettastone.com">Rosetta Stone</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Have you experienced that thing where you make a change in an app, and when you
+go to check on the results of the build, you find an error that really doesn&#8217;t
+seem relevant to your change? And then you notice that your build is the first
+in over a year. And then you realize that you have accidentally become the
+subject matter expert in this app.</p>
+</div>
+<div class="paragraph">
+<p>You have no clue what change caused this failure or when that change occurred.
+Did one Jenkins agent become a
+<a href="https://martinfowler.com/bliki/SnowflakeServer.html">snowflake server</a>,
+accruing cruft on the file system that is not cleaned up before each build?
+Did some unpinned external dependency upgrade in a backwards-incompatible fashion?
+Did the credentials the build plan was using to connect to source control get rotated?
+Did a dependent system go offline?
+Or - and I realize that this is unthinkable - did you legitimately break a test?</p>
+</div>
+<div class="paragraph">
+<p>Not only is this type of archaeological expedition often a bad time for the
+person who happened to commit to this app ("No good deed goes unpunished"), but
+it&#8217;s also unnecessary. There&#8217;s a simple way to reduce the cognitive load it
+takes to connect cause and effect: <strong>build more frequently</strong>.</p>
+</div>
+<div class="paragraph">
+<p>One way we achieve this is by writing scripts to maintain our apps. When we
+build, the goal is that an equivalent artifact should be produced unless there
+was a change to the app in source control. As such, we pin all of our
+dependencies to specific versions. But we also don&#8217;t want to languish on old
+versions of dependencies, whether internal or external. So we also have an
+<code>auto-maintain</code> script that bumps all of these versions and commits the result.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll give an example. We use docker to build and deploy our apps, and each app
+depends on a base image that we host in a docker registry. So a <code>Dockerfile</code> in
+one of our apps would have a line like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>FROM our.registry.example.com/rosettastone/sweet-repo:jenkins-awesome-project-sweet-repo-5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We build our base images in Jenkins and tag them with the Jenkins <code>$BUILD_TAG</code>,
+so this app is using build 5 of the <code>rosettastone/sweet-repo</code> base image.
+Let&#8217;s say we updated our <code>sweet-repo</code> base image to use ubuntu 16.04 instead of 14.04
+and this resulted in build 6 of the base image. Our auto-maintain script takes
+care of upgrading an app that uses this base image to the most recent version.
+The steps in the auto-maintain script look like this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Figure out what base image tag you&#8217;re using.</p>
+</li>
+<li>
+<p>Find the newest version of that base image tag by querying the docker registry.</p>
+</li>
+<li>
+<p>If necessary, update the <code>FROM</code> line in the app&#8217;s <code>Dockerfile</code> to pull in the most recent version.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We do the same thing with library dependencies.
+If our <code>Gemfile.lock</code> is referencing an old library, running <code>auto-maintain</code> will update things.
+The same applies to the <code>Jenkinsfile</code> for each app. If we decide to implement a new policy where we
+discard old builds, we update <code>auto-maintain</code> so that it will bring each app into
+compliance with the policy, by changing, for example, this <code>Jenkinsfile</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile (Before)</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+  <span class="n">agent</span> <span class="o">{</span> <span class="n">label</span> <span class="s1">'docker'</span> <span class="o">}</span>
+  <span class="n">stages</span> <span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'commit_stage'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">sh</span><span class="o">(</span><span class="s1">'./bin/ci'</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to this:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile (After)</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+  <span class="n">agent</span> <span class="o">{</span> <span class="n">label</span> <span class="s1">'docker'</span> <span class="o">}</span>
+  <span class="n">options</span> <span class="o">{</span>
+    <span class="n">buildDiscarder</span><span class="o">(</span><span class="n">logRotator</span><span class="o">(</span><span class="nl">numToKeepStr:</span> <span class="s1">'100'</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="n">stages</span> <span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'commit_stage'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">sh</span><span class="o">(</span><span class="s1">'./bin/ci'</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We try to account for these sorts of things (everything that we can) in our
+<code>auto-maintain</code> script rather than updating apps manually, since this reduces the
+friction in keeping apps standardized.</p>
+</div>
+<div class="paragraph">
+<p>Once you create an <code>auto-maintain</code> script (start small), you just have to run it.
+We run ours based on both "actions" and "non-actions." When an internal library
+changes, we kick off app builds, so a library&#8217;s <code>Jenkinsfile</code> might look like
+this:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+  <span class="n">agent</span> <span class="o">{</span> <span class="n">label</span> <span class="s1">'docker'</span> <span class="o">}</span>
+  <span class="n">stages</span> <span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'commit_stage'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">sh</span><span class="o">(</span><span class="s1">'./bin/ci'</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'auto_maintain_things_that_might_be_using_me'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">build</span><span class="o">(</span><span class="s1">'hot-project/auto-maintain-all-apps/master'</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>auto-maintain</code> updates something in an app, we have it commit the change
+back to the app, which in turn triggers a build of that app, and&#8212;&#8203;if all is
+well&#8212;&#8203;a production deployment.</p>
+</div>
+<div class="paragraph">
+<p>The only missing link then for avoiding one-year build droughts is to get around
+the problem where <code>auto-maintain</code> isn&#8217;t actually updating anything in a certain app.
+If no dependencies are changing, or if the technology in question is not
+receiving much attention, <code>auto-maintain</code> might not do anything for an
+extended period of time, even if the script is run on a schedule using
+<a href="https://en.wikipedia.org/wiki/Cron"><code>cron</code></a>. For those cases, putting
+a <code>cron</code> trigger in the Pipeline for each app will ensure that builds still happen periodically:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+  <span class="n">agent</span> <span class="o">{</span> <span class="n">label</span> <span class="s1">'docker'</span> <span class="o">}</span>
+  <span class="n">triggers</span> <span class="o">{</span>
+    <span class="n">cron</span><span class="o">(</span><span class="s1">'@weekly'</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="n">stages</span> <span class="o">{</span>
+    <span class="n">stage</span><span class="o">(</span><span class="s1">'commit_stage'</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">steps</span> <span class="o">{</span>
+        <span class="n">sh</span><span class="o">(</span><span class="s1">'./bin/ci'</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In most cases, these periodic builds won&#8217;t do anything different from the last
+build, but when something does break, this strategy will allow you to decide
+when you find out about it (by making your cron <code>@weekly</code>, <code>@daily</code>, etc)
+instead of letting some poor developer find out about it when they do
+something silly like commit code to an infrequently-modified app.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Kevin will be
+<a href="https://jenkinsworld20162017.sched.com/event/AK3m/how-we-do-devops-at-rosetta-stone">presenting</a>
+more on this topic at
+<a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in August,
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2017/">
+jenkinsworld2017
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/07/2017-07-13-speaker-blog-rosetta-stone.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

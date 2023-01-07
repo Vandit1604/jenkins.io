@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Pipeline-as-code with Multibranch Workflows in Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/12/03/pipeline-as-code-with-multibranch-workflows-in-jenkins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Pipeline-as-code with Multibranch Workflows in Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Pipeline-as-code with Multibranch Workflows in Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Pipeline-as-code with Multibranch Workflows in Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/12/03/pipeline-as-code-with-multibranch-workflows-in-jenkins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Pipeline-as-code with Multibranch Workflows in Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Pipeline-as-code with Multibranch Workflows in Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+December 03, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Pipeline-as-code+with+Multibranch+Workflows+in+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F12%2F03%2Fpipeline-as-code-with-multibranch-workflows-in-jenkins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><em>Note: This is a guest post by <a href="https://github.com/kishorebhatia">Kishore Bhatia</a>. <a href="https://twitter.com/BhatiaKishore">Kishore</a> works for <a href="https://www.cloudbees.com">CloudBees</a>, building custom frameworks with Open Source software and helping customers solve engineering problems around continuous delivery and DevOps at scale.</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>This year some great new Jenkins features came out of the butler&#8217;s goodie bag - amongst them, the most important one being the ability to realize <a href="https://www.voxxed.com/blog/2015/06/kohsuke-kawaguchi-the-main-challenge-for-jenkins-is-with-itself/">continuous delivery pipeline as code</a>!
+The features like Workflow Multibranch, pipeline-as-code (with a marker file that Jenkins looks for in your application&#8217;s SCM repository/branch, aptly named Jenkinsfile) are the foundations to making Jenkins super intelligent to automagically create workflows (rather, a CI/CD pipeline) to build your code and orchestrate the work required to drive your application from concept to delivery!</p>
+</div>
+<div class="sect2">
+<h3 id="overview"><a class="anchor" href="#overview"></a>Overview</h3>
+<div class="paragraph">
+<p>The Workflow Multibranch feature (provided by the <a href="https://github.com/jenkinsci/workflow-plugin">workflow plugin</a>) provides the following key abilities:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatic Workflow (job) creation in Jenkins per new branch in the repo (assuming webhooks are registered from GH to Jenkins).</p>
+</li>
+<li>
+<p>Build specific to that child-branch and its unique scm change and build history.</p>
+</li>
+<li>
+<p>Automatic job pruning/deletion for branches deleted from the repository, according to the settings.</p>
+</li>
+<li>
+<p>Flexibility to individually configure branch properties, by overriding the parent properties, if required.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins pipeline-as-code (concept) enables you to maintain your CI/CD workflow logic in the project/application source code repo with no additional configuration to be maintained per branch in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>The Workflow script to build/test/deploy your code is always synchronized with the rest of the source code you are working on.</p>
+</div>
+<div class="paragraph">
+<p><strong>To demonstrate the concept here</strong> - Let&#8217;s use a basic Java Web application project with a Maven pom.xml as shown in the structure below (this is using GitHub as the SCM but you can do this on SVN or Mercurial too).</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/kishorebhatia/pipeline-as-code-demo">This project</a> has a marker file for Jenkins in the repo - <code>Jenkinsfile</code>.<center>image:https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/pipeline-as-code-guest-blog/Pic1.png</center></p>
+</div>
+<div class="paragraph">
+<p><strong>So, what&#8217;s a Jenkinsfile?</strong> The <a href="https://github.com/kishorebhatia/pipeline-as-code-demo/blob/master/Jenkinsfile">Jenkinsfile</a> is essentially your Jenkins Workflow, a script, that defines the CI/CD pipeline logic for a project with steps to build/test/deploy etc. captured in various stages.</p>
+</div>
+<div class="paragraph">
+<p>So for our sample Java web application, a basic Jenkinsfile could be something like -</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">node {
+   // Mark the code checkout 'stage'....
+   stage 'Checkout'
+
+   // Checkout code from repository
+   checkout scm
+
+   // Get the maven tool.
+   // ** NOTE: This 'M3' maven tool must be configured
+   // **       in the global configuration.
+   def mvnHome = tool 'M3'
+
+   // Mark the code build 'stage'....
+   stage 'Build'
+   // Run the maven build
+   sh "${mvnHome}/bin/mvn clean install"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Just having this file in the source code repo root would mean that -</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins will automatically recognize this branch and create appropriate jobs by itself.</p>
+</li>
+<li>
+<p>Quick, 1-step code checkout using: &#8220;checkout scm&#8221; in your workflow</p>
+</li>
+<li>
+<p>Every time a new change is pushed to this branch, the branch is built and the commit status gets updated.</p>
+</li>
+<li>
+<p>When the branch is destroyed in the repository, or if Jenkinsfile is removed, the corresponding job gets destroyed from Jenkins automatically (<em>You can retain these jobs and/or archive the builds for audit/compliance requirements using the retention property - Orphan Item strategy</em>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+there are various mechanisms to promote reuse of Workflow scripts, such as the <a href="https://github.com/jenkinsci/workflow-cps-global-lib-plugin">Workflow Global Library</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="required-jenkins-configuration"><a class="anchor" href="#required-jenkins-configuration"></a>Required Jenkins configuration</h3>
+<div class="paragraph">
+<p>Make sure you&#8217;ve the latest <a href="https://github.com/jenkinsci/workflow-plugin">Workflow</a> and (v1.11 as of writing this blog) Workflow Multibranch plugins installed on your Jenkins instance<center>image:https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/pipeline-as-code-guest-blog/Pic2.png</center></p>
+</div>
+<div class="paragraph">
+<p>Also, ensure that other dependencies, like SCM plugins and build tools, are met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Either SVN/Git/Mercurial (depending on your SCM)</p>
+</li>
+<li>
+<p>GitHub Branch Source Plugin (optimized to use the GitHub API and improve performance)</p>
+</li>
+<li>
+<p>Maven build tool</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally, make sure you&#8217;ve created the required Webhook from your SCM (Github in this case) to Jenkins.
+Here&#8217;s how to do that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://thepracticalsysadmin.com/setting-up-a-github-webhook-in-jenkins/">Setting up GitHub Webhooks in Jenkins</a></p>
+</li>
+<li>
+<p><a href="https://gist.github.com/misterbrownlee/3708738">Step-by-step guide to setting up Jenkins for GitHub projects</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Then create a new <em>Multibranch Workflow</em> Job with configuration as shown below - mainly selecting the Branch Sources (Git, in this example) and providing the branch/repo URL with credentials.</p>
+</div>
+<div class="paragraph">
+<p><em>Branch sources</em> (Git) - <code>https://github.com/kishorebhatia/pipeline-as-code-demo</code> (or a repo where you&#8217;ve cloned this source code with Jenkinsfile)</p>
+</div>
+<div class="paragraph">
+<p>Leave all other properties default and <em>Save</em>.<center>image:https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/pipeline-as-code-guest-blog/Pic3.png</center></p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll observe that Jenkins would perform Branch Indexing on that &#8220;cd&#8221; job folder and start the workflow for the master branch, with an automatically created new job, named master, under the &#8220;cd&#8221; folder.</p>
+</div>
+<div class="paragraph">
+<p>The workflow does a dummy step for application deploys to the environments in this sequence <em>Staging</em> -&gt; Waits for manual approval -&gt; <em>PROD</em></p>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s create a new branch off of this master branch in your cloned git repo:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>$ git branch newBranch</code> (create a newBranch)</p>
+</li>
+<li>
+<p><code>$ git checkout newBranch</code> (switches to newBranch)</p>
+</li>
+<li>
+<p><code>$ git push --set-upstream origin newBranch</code> (pushes newBranch)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll observe that your Jenkins instance automatically picks up this newBranch and starts running the workflow (with the Jenkinsfile in this newBranch) to build/test/deploy the code.<center>image:https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/pipeline-as-code-guest-blog/Pic4.png</center></p>
+</div>
+<div class="paragraph">
+<p>Next, if you now delete this <code>newBranch</code> (<code>git branch -D newBranch</code>), Jenkins will automatically remove the orphan Workflow job for <code>newBranch</code>. You can retain these jobs even after the branches are deleted using the <em>Orphaned Item Strategy</em> property in the main "cd" job&#8217;s configuration.</p>
+</div>
+<div class="paragraph">
+<p>So we observed the following benefits of this pipeline-as-code approach:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Overall job definition is a script (Jenkinsfile)</p>
+</li>
+<li>
+<p>Calls your build tools and scripts for details</p>
+</li>
+<li>
+<p>The build script can be versioned alongside project sources</p>
+</li>
+<li>
+<p>Jenkins handles feature/experimental branches automatically</p>
+</li>
+<li>
+<p>Keep less configuration in <code>$JENKINS_HOME</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dockerized-demo-environment"><a class="anchor" href="#dockerized-demo-environment"></a>Dockerized Demo environment</h3>
+<div class="paragraph">
+<p>You can also use the following docker image to run this demo with a preconfigured Jenkins environment and the sample job: <code>jenkinsci/workflow-demo</code> (i.e. <code>docker pull jenkinsci/workflow-demo</code>)</p>
+</div>
+<div class="paragraph">
+<p>This docker container includes Jenkins with Workflow and Workflow Multibranch plugins, a local git repo with the aforementioned Java web application and Jetty to demonstrate a continuous delivery pipeline of this application deployed and tested across multiple environments in the pipeline with an approval gate before promoting to PROD (like QA, Staging and PROD).</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s a "cd" job pre-configured as a multibranch Workflow job.</p>
+</div>
+<div class="paragraph">
+<p>Launch the docker demo as: <code>docker run -p 8080:8080 -p 8081:8081 -p 9418:9418 -ti jenkinsci/workflow-demo</code></p>
+</div>
+<div class="paragraph">
+<p>Now, you can access Jenkins on port 8080 and Jetty on port 8081 from localhost or the IP of your boot2docker/docker-machine environment.</p>
+</div>
+<div class="paragraph">
+<p>The demo container has a local git repo so you can clone: <code>git://localhost/repo</code>. When creating new branches, each branch automatically creates a matching subproject in Jenkins and triggers the build for that branch. The workflow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Checks out source code from the same repository and commit as <code>Jenkinsfile</code>.</p>
+</li>
+<li>
+<p>Builds sources via Maven with unit testing.</p>
+</li>
+<li>
+<p>Runs two parallel integration tests that involve deploying the app to ephemeral server instances, which get thrown away when tests are done (this is done by using auto-deployment of Jetty)</p>
+</li>
+<li>
+<p>Once integration tests are successful, the webapp gets to the staging server at <a href="http://localhost:8081/staging/">localhost:8081/staging</a> (or your docker-machine/boot2docker instance IP)</p>
+</li>
+<li>
+<p>requires a human to Manually inspect the staging instance, and when ready, approves the deployment to the production server at <a href="http://localhost:8081/production/" class="bare">http://localhost:8081/production/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references"><a class="anchor" href="#references"></a>References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer-blog.cloudbees.com/2015/08/workflow-19-and-multibranch-beta.html">Developer blog by jglick introducing multibranch support</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-plugin/blob/master/TUTORIAL.md">workflow plugin tutorial</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-plugin#presentations">workflow plugin presentations</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-aggregator-plugin/tree/master/demo">workflow plugin demo readme</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/guest post/">
+guest post
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/workflow/">
+workflow
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-12-03-pipeline-as-code-with-multibranch-workflows-in-jenkins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

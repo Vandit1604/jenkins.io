@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GitHub Checks API Plugin Project - Coding Phase 3
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Google Summer of Code 2020 - GitHub Checks API Plugin project update for Coding Phase 3" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/31/github-checks-api-plugin-coding-phase-3/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 3" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 3" name="twitter:title">
+<meta content="Google Summer of Code 2020 - GitHub Checks API Plugin project update for Coding Phase 3" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/08-github-checks-api-plugin-coding-phase-3/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GitHub Checks API Plugin Project - Coding Phase 3" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/08/31/github-checks-api-plugin-coding-phase-3/" property="og:url">
+<meta content="Google Summer of Code 2020 - GitHub Checks API Plugin project update for Coding Phase 3" name="og:description">
+<meta content="GitHub Checks API Plugin Project - Coding Phase 3" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/08-github-checks-api-plugin-coding-phase-3/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GitHub Checks API Plugin Project - Coding Phase 3
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/xiongkezhi/"><div class="app-avatar"><img alt="Kezhi Xiong" class="app-avatar__image" src="/images/avatars/XiongKezhi.jpeg"></div> Kezhi Xiong</a>
+August 31, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GitHub+Checks+API+Plugin+Project+-+Coding+Phase+3&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F08%2F31%2Fgithub-checks-api-plugin-coding-phase-3%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>This blog post is about our phase 3 progress on <a href="/projects/gsoc/2020/projects/github-checks/">GitHub Checks API Project</a>, you can find our previous blog posts for <a href="/blog/2020/07/09/github-checks-api-plugin-coding-phase-1">phase 1</a> and <a href="/blog/2020/08/03/github-checks-api-plugin-coding-phase-2">phase 2</a>.</p>
+</div>
+<div class="paragraph">
+<p>At the end of this summer, the GSoC journey for <a href="/projects/gsoc/2020/projects/github-checks/">GitHub Checks API Project</a> comes to an end as well.
+In this blog post, I&#8217;ll show you our works during the last month:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline Support</p>
+</li>
+<li>
+<p>Rerun Request Support</p>
+</li>
+<li>
+<p>Git SCM Support</p>
+</li>
+<li>
+<p>Documentation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>All the above features will be available in our planned 1.0.0 version of <a href="https://plugins.jenkins.io/checks-api">Checks API Plugin</a> and <a href="https://plugins.jenkins.io/github-checks">GitHub Checks Plugin</a>.</em></p>
+</div>
+<div class="videoblock">
+<div class="title">Coding Phase 3 Demo</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/S-pEgT3lzpk?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pipeline-support"><a class="anchor" href="#pipeline-support"></a>Pipeline Support</h3>
+<div class="paragraph">
+<p>The pipeline support allows users to directly publish checks in their pipeline script without depending on any other consumers.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-3/pipeline-check.png" alt="Pipeline Checks">
+</div>
+</div>
+<div class="paragraph">
+<p>The check in the above screenshot is published by script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">publishChecks</span> <span class="nl">name:</span> <span class="s1">'pipeline check'</span><span class="o">,</span> <span class="nl">title:</span> <span class="s1">'pipeline '</span><span class="o">,</span> <span class="nl">summary:</span> <span class="s1">'# A pipeline check example'</span><span class="o">,</span>
+        <span class="nl">text:</span> <span class="s2">"## This check is published through the pipeline script"</span><span class="o">,</span>
+        <span class="nl">detailsURL:</span> <span class="s1">'https://ci.jenkins.io'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>If you want to publish checks to GitHub, please install the <a href="https://github.com/jenkinsci/github-checks-plugin">GitHub implementation</a> and refer to the <a href="https://docs.github.com/en/rest/reference/checks">GitHub API documentation</a> for the requirements for each field. A default value (build link) for <code>detailsURL</code> will be provided automatically.</em></p>
+</div>
+<div class="paragraph">
+<p>This feature can be useful when many stages exist in your pipeline script and each takes a long time: you can publish a check for each stage to keep track of the build.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rerun-request-support"><a class="anchor" href="#rerun-request-support"></a>Rerun Request Support</h3>
+<div class="paragraph">
+<p>The rerun request allows GitHub users to rerun the failed builds. When a build failed (which leads to a failed check), a <code>Re-run</code> button will be added automatically by GitHub.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2020/08-github-checks-api-plugin-coding-phase-3/failed-checks.png" alt="Failed Checks">
+</div>
+</div>
+<div class="paragraph">
+<p>By clicking the <code>Re-run</code> button, Jenkins will reschedule a build for the last commit of this branch.</p>
+</div>
+<div class="paragraph">
+<p><em>Since all checks of a commit are produced by a single build, you don&#8217;t have to rerun all failed checks, just rerun any one of the failed check will refresh all checks.</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="git-scm-support"><a class="anchor" href="#git-scm-support"></a>Git SCM Support</h3>
+<div class="paragraph">
+<p>Thanks to <a href="https://github.com/uhafner">Ullrich</a>'s great help, the <a href="https://plugins.jenkins.io/github-checks">GitHub Checks Plugin</a> now supports <a href="https://github.com/jenkinsci/git-plugin">Git SCM</a>.
+This means now you can publish checks for your freestyle project or any other projects that use Git SCM.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="document"><a class="anchor" href="#document"></a>Document</h3>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/checks-api-plugin/blob/master/docs/consumers-guide.md">Consumers Guide</a> and <a href="https://github.com/jenkinsci/checks-api-plugin/blob/master/docs/implementation-guide.md">Implementation Guide</a> are now available.
+As a Jenkins developer, you can now start consuming our API or even providing an implementation for other SCM platforms beside GitHub.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="acknowledgment"><a class="anchor" href="#acknowledgment"></a>Acknowledgment</h3>
+<div class="paragraph">
+<p>The whole <a href="/projects/gsoc/2020/projects/github-checks/">GitHub Checks API project</a> is started as a Google Summer of Code project. Much appreciate my mentors (<a href="https://github.com/timja">Tim</a> and <a href="https://github.com/uhafner">Ullrich</a>) for their great help during the whole summer. Also huge thanks to the <a href="/sigs/gsoc/">Jenkins GSoC SIG</a> and the whole community for the technique support and resources.</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/checks-api-plugin">Checks API Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/github-checks-plugin">GitHub Checks Plugin</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/2020/projects/github-checks/">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/jenkinsci/github-checks-api">Gitter Channel</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/github/">
+github
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/api/">
+api
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kezhi Xiong" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/XiongKezhi.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/xiongkezhi/">
+Kezhi Xiong
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins Google Summer of Code 2020 Student. Kezhi is an open source enthusiast who enjoys sharing ideas with other developers. He started contributing to Jenkins in March 2020. Currently, he is working on <a href="https://github.com/XiongKezhi/checks-api-plugin">GitHub Checks API Plugin</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/XiongKezhi" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/AugustX_" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/kezhi-xiong-44234a188" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/08/2020-08-31-github-checks-api-plugin-coding-phase-3.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jira upgrade for the Jenkins project
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="The Linux Foundation is now hosting Jira for the Jenkins project" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/12/17/jira-upgrade-for-the-jenkins-project/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jira upgrade for the Jenkins project" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jira upgrade for the Jenkins project" name="twitter:title">
+<meta content="The Linux Foundation is now hosting Jira for the Jenkins project" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020-12-17-jira-upgrade-for-the-jenkins-project/jira-upgrade-for-the-jenkins-project.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jira upgrade for the Jenkins project" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/12/17/jira-upgrade-for-the-jenkins-project/" property="og:url">
+<meta content="The Linux Foundation is now hosting Jira for the Jenkins project" name="og:description">
+<meta content="Jira upgrade for the Jenkins project" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020-12-17-jira-upgrade-for-the-jenkins-project/jira-upgrade-for-the-jenkins-project.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jira upgrade for the Jenkins project
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+December 17, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jira+upgrade+for+the+Jenkins+project&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F12%2F17%2Fjira-upgrade-for-the-jenkins-project%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="imageblock right text-center">
+<div class="content">
+<img src="/images/post-images/2020-12-17-jira-upgrade-for-the-jenkins-project/jira-logo.png" alt="jira logo">
+</div>
+</div>
+<div class="paragraph">
+<p>The Jenkins project has used Jira to track issues for many years.
+Jenkins core, Jenkins modules, Jenkins infrastructure, and many Jenkins plugins manage their issue reports with our <a href="https://issues.jenkins.io/">Jira server</a>.</p>
+</div>
+<div class="paragraph">
+<p>Jira helps the Jenkins project manage issues and tasks related to over 250&#160;000 Jenkins installations.
+It tracks bugs, enhancement requests, tasks, and security issues.
+It is used regularly by users around the world.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;re grateful for the long-standing contribution that Atlassian provides by donating the Jira license to the Jenkins project.
+We&#8217;re grateful to the <a href="https://osuosl.org/">Oregon State University Open Source Lab</a> for their donation of equipment and bandwidth to host the server.</p>
+</div>
+<div class="sect1">
+<h2 id="upgrade-timeline"><a class="anchor" href="#upgrade-timeline"></a>Upgrade Timeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We were running Jira 7.13 and had been managing that installation for a few years.
+Atlassian announced that Jira 7.13 would end its support life on November 28, 2020.
+We needed to upgrade from Jira 7.13 to a more recent version of Jira.
+As part of our membership in the Continuous Delivery Foundation, a Linux Foundation initiative, we could use their project services team to manage our Jira server.
+We decided to move from hosting our own Jira server to having the Jira experts at the Linux Foundation host it.</p>
+</div>
+<div class="paragraph">
+<p>The upgrade timeline looked like this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>November 2019 - Infrastructure team begins discussions about the November 2020 end of support for Jira 7.13</p>
+</li>
+<li>
+<p>August 2020 - First conversations with Linux Foundation to host Jira for the Jenkins project.  Draft of the upgrade plan assembled and shared with the community</p>
+</li>
+<li>
+<p>September 2020 - Schedule for testing week and final transition week proposed.  Authentication options evaluated and selected</p>
+</li>
+<li>
+<p>October 2020 - Test upgrade performed and tested</p>
+</li>
+<li>
+<p>November 2020 - Final upgrade completed and verified</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="confronting-the-complications"><a class="anchor" href="#confronting-the-complications"></a>Confronting the Complications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Initial discussions between the Jenkins infrastructure team and the Linux Foundation identified complications related to authentication and SSL certificates.
+We planned, negotiated, and tested our assumptions throughout the project.</p>
+</div>
+<div class="sect2">
+<h3 id="authentication"><a class="anchor" href="#authentication"></a>Authentication</h3>
+<div class="paragraph">
+<p>Jira servers at the Linux Foundation typically use Linux Foundation accounts for user access.
+Unfortunately, the Jenkins LDAP database includes over 100,000 users and for many of them, Linux Foundation username doesn&#8217;t correspond to Jenkins account username.
+It was not feasible to transition 100,000 user accounts from the Jenkins LDAP database to the Linux Foundation accounts system and still complete the Jira upgrade before the November 28, 2020 deadline.</p>
+</div>
+<div class="paragraph">
+<p>The Linux Foundation Project Services team evaluated authentication alternatives and confirmed that they could use the Jenkins LDAP server.
+Using the Jenkins LDAP server spared us from two transitions, LDAP and Jira, and kept the project timeline feasible.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ssl-certificates"><a class="anchor" href="#ssl-certificates"></a>SSL Certificates</h3>
+<div class="paragraph">
+<p>Jira servers at the Linux Foundation use Let&#8217;s Encrypt to generate SSL certificates for HTTPS.
+The Linux Foundation uses the DNS method to obtain SSL certificates.
+Unfortunately, the Jenkins project uses the HTTP method to obtain SSL certificates.</p>
+</div>
+<div class="paragraph">
+<p>Thankfully, Olivier Vernin of the Jenkins project and Anton Baranov of the Linux Foundation found a solution.
+They created an ACME record in the Jenkins DNS server and pointed the issues.jenkins.io DNS record at the new Linux Foundation Jira server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="building-the-prototype"><a class="anchor" href="#building-the-prototype"></a>Building the Prototype</h3>
+<div class="paragraph">
+<p>Anton Baranov created a prototype Jira server, restored an older Jenkins Jira backup, and upgraded it to Jira 8.13.
+That first restore detected that we had not provided the Jira attachments or the Jira avatars.
+That attachments and avatars added multiple gigabytes to the initial backup data and were vital to complete the update.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="testing-the-upgrade"><a class="anchor" href="#testing-the-upgrade"></a>Testing the Upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A group of volunteers including Jenkins users, security team members, and infrastructure team members tested the upgrade during the week of October 26, 2020.
+The tests confirmed that authentication worked as expected and that the Jira prototype was functioning as expected.</p>
+</div>
+<div class="paragraph">
+<p>We thank the test team, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Daniel Beck</p>
+</li>
+<li>
+<p>Tim Jacomb</p>
+</li>
+<li>
+<p>Olivier Vernin</p>
+</li>
+<li>
+<p>Mark Waite</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The tests included:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Creating and routing issues</p>
+</li>
+<li>
+<p>Commenting on issues</p>
+</li>
+<li>
+<p>Viewing dashboards with the expected content</p>
+</li>
+<li>
+<p>LDAP settings</p>
+</li>
+<li>
+<p>Email notification</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The tests detected minor issues that Anton was able to correct in preparation for the final upgrade.
+The testing team agreed that the tests were successful.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploying-the-upgrade"><a class="anchor" href="#deploying-the-upgrade"></a>Deploying the Upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Olivier Vernin announced the final upgrade by <a href="https://groups.google.com/g/jenkins-infra/c/i7SaB-24L1o/m/NeUFrH82AAAJ">email to the Jenkins infra list</a> with details of the changes happening during the upgrade.
+Monday, November 9, 2020, the final backup of the existing Jira server was copied into the new Linux Foundation server.</p>
+</div>
+<div class="paragraph">
+<p>The final upgrade encountered issues that we had not seen during the initial tests.
+The "bumps and bruises" from the unexpected issues were resolved by Anton Baranov as he used a multi-step upgrade process.
+The steps included:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Restore the earlier backup to Jira 7.13</p>
+</li>
+<li>
+<p>Restore the most recent backup</p>
+</li>
+<li>
+<p>Upgrade to Jira 8.13</p>
+</li>
+<li>
+<p>Install avatars, attachments, and other images</p>
+</li>
+<li>
+<p>Update DNS entries to point to the new Jenkins Jira server</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lessons-from-the-upgrade"><a class="anchor" href="#lessons-from-the-upgrade"></a>Lessons from the Upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lessons were related to timing, estimation, and communication.</p>
+</div>
+<div class="sect2">
+<h3 id="scheduling-the-upgrade"><a class="anchor" href="#scheduling-the-upgrade"></a>Scheduling the Upgrade</h3>
+<div class="paragraph">
+<p>The test upgrade started the week of October 19, 2020.
+It took several days longer than originally expected.
+Thankfully, we had allowed an extra week between the test upgrade and the production upgrade.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://groups.google.com/g/jenkins-infra/c/8SC8bQuhD7s/m/Qtnz9o8gBAAJ">originally announced schedule</a> for the final upgrade was intentionally placed in a week that would not include a long term support release.
+That reduced the risk of disruption if the upgrade took longer than required or failed and we had to roll back.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="estimating-the-work"><a class="anchor" href="#estimating-the-work"></a>Estimating the Work</h3>
+<div class="paragraph">
+<p>Discussions with the Jenkins project Jira administrators and the Linux Foundation Jira experts provided very reasonable estimates of time to complete the work.
+We intentionally allowed additional time between first test and final upgrade.
+We needed that additional time and used it well as the testing week.</p>
+</div>
+<div class="sect3">
+<h4 id="communicating-the-plan"><a class="anchor" href="#communicating-the-plan"></a>Communicating the Plan</h4>
+<div class="paragraph">
+<p>The distributed nature of the Jenkins project makes communication challenging for major changes.
+We communicated plans at various stages but still found occasions where the communication was insufficient.
+In this case, the adage held true that it is, "impossible to communicate too much".</p>
+</div>
+<div class="paragraph">
+<p>Thanks for your patience during the upgrade and thanks to the Linux Foundation for administering the Jenkins Jira server.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/infrastructure/">
+infrastructure
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jira/">
+jira
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/12/2020-12-17-jira-upgrade-for-the-jenkins-project.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

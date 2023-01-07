@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins X: Create Boot Apps
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/jenkins-x-boot-apps/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins X: Create Boot Apps" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins X: Create Boot Apps" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins X: Create Boot Apps" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/jenkins-x-boot-apps/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins X: Create Boot Apps" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Jenkins X: Create Boot Apps
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Create a simple canonical way to install any Helm chart in any namespace
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+Go, Kubernetes, Helm
+</p>
+<h2 class="title">
+Details
+</h2>
+<div class="sect2">
+<h3 id="background"><a class="anchor" href="#background"></a>Background</h3>
+<div class="paragraph">
+<p>Find out more about the Jenkins X project here: <a href="https://jenkins-x.io/" class="bare">https://jenkins-x.io/</a></p>
+</div>
+<div class="paragraph">
+<p>Issue: <a href="https://github.com/jenkins-x/jx/issues/6442" class="bare">https://github.com/jenkins-x/jx/issues/6442</a>
+Old design doc: <a href="https://docs.google.com/document/d/1DL1oEeAZtWFfpJOWk5UVO54D88BnlqZDf5IDaOkGxCk/edit?usp=sharing" class="bare">https://docs.google.com/document/d/1DL1oEeAZtWFfpJOWk5UVO54D88BnlqZDf5IDaOkGxCk/edit?usp=sharing</a></p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="anchor" href="#current-implementation"></a>Current Implementation</h4>
+<div class="paragraph">
+<p>See the Implementation Documentation for an overview of how to use helmfile and helm 3: <a href="https://github.com/jenkins-x/enhancements/blob/master/proposals/2/docs/README.md" class="bare">https://github.com/jenkins-x/enhancements/blob/master/proposals/2/docs/README.md</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="requirements"><a class="anchor" href="#requirements"></a>Requirements</h4>
+<div class="paragraph">
+<p>We want a simple canonical way to install any helm chart in any namespace without having to manually hack the <code>jx boot</code> pipeline file: <code>jenkins-x.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will make it easy for people or software to easily add/remove apps to any git repository for any Environment (dev / staging / production).</p>
+</div>
+<div class="paragraph">
+<p>The boot config repo has become quite complex and hard to manage upgrades to and share common config between different flavours of base boot config repos.  It’s also hard to experiment by adding new helm charts / features / applications that require changes to the boot install pipeline.</p>
+</div>
+<div class="paragraph">
+<p>We want a simpler more modular system that lets us, say, swap out nginx-controller and use gloo/knative/istio for ingress without a deep knowledge of the jenkins-x.yml pipeline for boot.</p>
+</div>
+<div class="paragraph">
+<p>What we’d really like is for folks to type commands like…</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jx delete app nginx-controller
+jx add app istio
+jx delete app knative</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And for it to just work and generically add those to the right namespace.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-apps-model"><a class="anchor" href="#current-apps-model"></a>Current Apps Model</h4>
+<div class="paragraph">
+<p>The current apps model lets you add/remove charts fine - but there are a number of limitations:</p>
+</div>
+<div class="sect4">
+<h5 id="only-works-in-1-namespace"><a class="anchor" href="#only-works-in-1-namespace"></a>Only works in 1 namespace</h5>
+<div class="paragraph">
+<p>Currently apps can only work inside the dev namespace - we can’t support things like knative, gloo, cert-manager, nginx, velero which tend to be installed in separate namespaces.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="does-not-handle-boot-phases"><a class="anchor" href="#does-not-handle-boot-phases"></a>Does not handle boot phases</h5>
+<div class="paragraph">
+<p>This is not surprising as we created the App extension model before boot. But right now boot has a number of distinct phases with pipeline steps between them where we may want to add apps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>pre/post ingress setup (in the case of nip.io / nginx-controller)</p>
+</li>
+<li>
+<p>pre/post vault setup</p>
+</li>
+<li>
+<p>pre/post vault population of parameters</p>
+</li>
+<li>
+<p>pre/post setup of certmanager/external dns</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There is currently no way for an apps to specify a namespace + specify which phase its to be installed in &amp; have (say) the domain / certs / secrets injected easily.</p>
+</div>
+<div class="paragraph">
+<p>So rather than adding steps at the right point in a list of steps in the jenkins-x.yml it would be nice to have a more declarative YAML file to describe which apps are to be enabled.</p>
+</div>
+<div class="paragraph">
+<p>E.g. we need a new YAML file with list of charts to be installed along with metadata for which phase to install them. We also want to invoke a selection of those appss to be installed at the different phases of the boot pipeline.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="limitations-of-the-current-deploy-model"><a class="anchor" href="#limitations-of-the-current-deploy-model"></a>Limitations of the current deploy model</h5>
+<div class="paragraph">
+<p>We have some issues with the current way we deploy apps in Staging / Production:</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="composite-charts-hide-the-individual-versions"><a class="anchor" href="#composite-charts-hide-the-individual-versions"></a>Composite charts hide the individual versions</h5>
+<div class="paragraph">
+<p>Right now we deploy all charts in Staging/Production as a single chart. That means if you use <code>helm list</code> we don&#8217;t show any actual versions of the dependent charts - its just 1 chart (with no version).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="removing-apps-on-dev-doesnt-work"><a class="anchor" href="#removing-apps-on-dev-doesnt-work"></a>Removing Apps on Dev doesn&#8217;t work</h5>
+<div class="paragraph">
+<p>If you remove a chart from <code>env/requirements.yaml</code>  in the Dev repository the pipeline does not remove the chart. e.g. if you add <code>lighthouse</code> and remove <code>prow</code> you need to manually delete the prow resources yourself.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="limitation-of-boot"><a class="anchor" href="#limitation-of-boot"></a>Limitation of boot</h5>
+<div class="paragraph">
+<p>We currently manually configure in the boot pipeline the install of multiple systems usually in separate namespaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>velero (if enabled)</p>
+</li>
+<li>
+<p>nginx</p>
+</li>
+<li>
+<p>externaldns</p>
+</li>
+<li>
+<p>cert-manager</p>
+</li>
+<li>
+<p>acme certs chart</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ideally those should be modular and optional. e.g it should be really trivial to disable nginx if folks are using, say, istio - without having to hack a pipeline yaml.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;d also like to make it easy to add a number of other systems in order in separate namespaces independently of the <code>Staging / Production</code> environment namespaces:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>knative <a href="https://github.com/jenkins-x/jx/issues/6331" class="bare">https://github.com/jenkins-x/jx/issues/6331</a></p>
+</li>
+<li>
+<p>gloo</p>
+</li>
+<li>
+<p>istio</p>
+</li>
+<li>
+<p>linkerd <a href="https://github.com/jenkins-x/jx/issues/6330" class="bare">https://github.com/jenkins-x/jx/issues/6330</a></p>
+</li>
+<li>
+<p>flagger</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>so it&#8217;d be nice to have a simple app model where anyone can add any systems/charts to any namespace at any point in the flow before we setup the dev/staging/production environment in the traditional way.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="newbie-friendly-issues"><a class="anchor" href="#newbie-friendly-issues"></a>Newbie Friendly issues</h3>
+<div class="paragraph">
+<p>The Jenkins X issue tracker is located in github. We also provide a list of issues that are good first issues for people looking to contribute to the project: <a href="https://github.com/jenkins-x/jx/labels/good%20first%20issue" class="bare">https://github.com/jenkins-x/jx/labels/good%20first%20issue</a></p>
+</div>
+<div class="paragraph">
+<p>We welcome your contributions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quick-start"><a class="anchor" href="#quick-start"></a>Quick start</h3>
+<div class="paragraph">
+<p>If you&#8217;re looking to build from source or get started hacking on jx, please see the CONTRIBUTING.MD or our Contributing Guide on the Jenkins X website: <a href="https://jenkins-x.io/docs/contributing/code/" class="bare">https://jenkins-x.io/docs/contributing/code/</a></p>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/jstrachan/"><div class="app-avatar"><img alt="James Strachan" class="app-avatar__image" src="/images/avatars/jstrachan.jpeg"></div> James Strachan</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/sharepointoscar/"><div class="app-avatar"></div> Oscar Medina</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/marckk/"><div class="app-avatar"><img alt="Kara de la Marck" class="app-avatar__image" src="/images/avatars/marckk.jpg"></div> Kara de la Marck</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/sahilrkalra/"><div class="app-avatar"><img alt="Sahil Kalra" class="app-avatar__image" src="/images/avatars/sahilrkalra.png"></div> Sahil Kalra</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/nikhildarocha/"><div class="app-avatar"></div> Nikhil Da Rocha</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://jenkins-x.io/community/#slack" rel="noreferrer noopener" target="_blank">
+Chat
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="https://github.com/jenkins-x/enhancements/blob/master/proposals/2/README.md" rel="noreferrer noopener" target="_blank">
+Project idea draft
+</a>
+</li>
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2020/project-ideas" target="_blank">
+> Go back to other GSoC
+2020
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#background">Background</a></li>
+<li><a href="#newbie-friendly-issues">Newbie Friendly issues</a></li>
+<li><a href="#quick-start">Quick start</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://jenkins-x.io/community/#slack" rel="noreferrer noopener" target="_blank">
+Chat
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2020/project-ideas/jenkins-x-boot-apps.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

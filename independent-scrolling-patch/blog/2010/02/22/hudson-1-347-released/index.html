@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Hudson 1.347 Released
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/02/22/hudson-1-347-released/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Hudson 1.347 Released" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Hudson 1.347 Released" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Hudson 1.347 Released" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/02/22/hudson-1-347-released/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Hudson 1.347 Released" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Hudson 1.347 Released
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+February 22, 2010
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Hudson+1.347+Released&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2010%2F02%2F22%2Fhudson-1-347-released%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The release of Hudson 1.347 last friday, February 19th, was a relatively "minor" one insofar that it contained an assortment of smaller fixes instead of fixes to major regressions (they weren&#8217;t any to be fixed) or major features added. There were however some notable commits in this release cycle that didn&#8217;t make the changelog just yet, for example <a href="https://twitter.com/" class="bare">https://twitter.com/</a><em>godin</em>[godin] committed an <a href="https://en.wikipedia.org/wiki/Ebuild">ebuild</a> which will allow for a native package of Hudson for <a href="https://en.wikipedia.org/wiki/Gentoo%20Linux">Gentoo Linux</a>, joining the ranks of the existing packages for Debian/Ubuntu, FreeBSD, OpenSolaris, openSUSE and RedHat/Fedora Linux. The bundled Subversion plugin was updated and thanks to <a href="https://twitter.com/ssogabe">sogabe</a> and <a href="https://twitter.com/wyukawa">wyukawa</a> the Japanese translations for Hudson got some updates as well.</p>
+</div>
+<div class="paragraph">
+<p>For Hudson developers, both plugin and core, this release contains some notable changes from <a href="https://blogs.sun.com/mindless">mindless</a> (a.k.a Alan Harder), a number of calls which have been deprecated for over <strong>two years</strong> have finally been pruned from the code base:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Hudson.addListener(JobListener)</code>, <code>Hudson.removeListener(JobListener)</code></p>
+</li>
+<li>
+<p>Entire <code>listeners.JobListener</code> class (replaced by <code>ItemListener</code>)</p>
+</li>
+<li>
+<p>One form of <code>DirectoryBrowser</code> constructor</p>
+</li>
+<li>
+<p>One form of <code>Descriptor.configure()</code> (with <code>HttpServletRequest</code> param)</p>
+</li>
+<li>
+<p><code>Descriptor.convert(Map)</code> and 4 implementations of this method, and code calling it in <code>Descriptor.readResolve()</code> (this code called <code>save()</code> whenever updating data, so there should be no remaining cases out there)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alan&#8217;s quest for removing deprecated code will likely continue for a while, but this is a good step in the right direction, keeping Hudson&#8217;s internals in good working order. Worth mentioning, the influx of plugin releases in the <a href="https://jenkins.io/content/week-plugins-0">This Week in Plugins</a> from a couple weeks ago, was driven largely by Alan, rummaging through the code of older plugins, updating plugins left and right.
+Now the breakdown for this release:</p>
+</div>
+<div class="sect2">
+<h3 id="bugs-fixed"><a class="anchor" href="#bugs-fixed"></a>Bugs fixed</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fix javascript problem showing test failure detail for test name with a quote character. (<a href="https://issues.jenkins.io/browse/JENKINS-1544">issue 1544</a>)</p>
+</li>
+<li>
+<p>Hudson can incorrectly configure labels for the controller when bleeding edge EC2 plugin is used.</p>
+</li>
+<li>
+<p>Fixed the regression wrt the whitespace trimming caused by 1.346. (<a href="https://issues.jenkins.io/browse/JENKINS-5633">issue 5633</a>)</p>
+</li>
+<li>
+<p>Under some circumstances, Hudson can incorrectly delete the temporary directory itself. (<a href="https://issues.jenkins.io/browse/JENKINS-5642">issue 5642</a>)</p>
+</li>
+<li>
+<p>Newlines in MAVEN_OPTS environment variable can cause problems in other contexts. (<a href="https://issues.jenkins.io/browse/JENKINS-5651">issue 5651</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancements"><a class="anchor" href="#enhancements"></a>Enhancements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Improved the form validation mechanism to support multiple controls. (<a href="https://issues.jenkins.io/browse/JENKINS-5610">issue 5610</a>)</p>
+</li>
+<li>
+<p>Added message to agent log when it has successfully come online. (<a href="https://issues.jenkins.io/browse/JENKINS-5630">issue 5630</a>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributors"><a class="anchor" href="#contributors"></a>Contributors</h3>
+<div class="paragraph">
+<p>This release of Hudson contained 36 commits from <strong>7</strong> different contributors to "core":</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://twitter.com/abayer">abayer</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/" class="bare">https://twitter.com/</a><em>godin</em>[godin]</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/in/thuybrechts">huybrechts</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/kohsukekawa">kohsuke</a></p>
+</li>
+<li>
+<p><a href="https://blogs.sun.com/mindless">mindless</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/ssogabe">sogabe</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/wyukawa">wyukawa</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><br>
+As usual, you can go grab the <a href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">latest .war file</a> straight from <code>hudson-ci.org</code> or if you&#8217;re using a native package, use your package manager to upgrade.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/feedback/">
+feedback
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/just for fun/">
+just for fun
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/links/">
+links
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2010/2010-02-22-hudson-1-347-released.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

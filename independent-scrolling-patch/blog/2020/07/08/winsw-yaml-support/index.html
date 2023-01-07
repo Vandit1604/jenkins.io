@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Windows Service Wrapper : YAML Configuration Support - GSoC Phase - 01 Updates
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This blog post discusses about phase 01 updates of Windows Service Wrapper Yaml support project of GSoC - 2020" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/08/winsw-yaml-support/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Windows Service Wrapper : YAML Configuration Support - GSoC Phase - 01 Updates" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Windows Service Wrapper : YAML Configuration Support - GSoC Phase - 01 Updates" name="twitter:title">
+<meta content="This blog post discusses about phase 01 updates of Windows Service Wrapper Yaml support project of GSoC - 2020" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020-07-08-winsw-yaml-support/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Windows Service Wrapper : YAML Configuration Support - GSoC Phase - 01 Updates" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/08/winsw-yaml-support/" property="og:url">
+<meta content="This blog post discusses about phase 01 updates of Windows Service Wrapper Yaml support project of GSoC - 2020" name="og:description">
+<meta content="Windows Service Wrapper : YAML Configuration Support - GSoC Phase - 01 Updates" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020-07-08-winsw-yaml-support/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Windows Service Wrapper : YAML Configuration Support - GSoC Phase - 01 Updates
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/buddhikac96/"><div class="app-avatar"></div> Buddhika Chathuranga</a>
+July 08, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Windows+Service+Wrapper+%3A+YAML+Configuration+Support+-+GSoC+Phase+-+01+Updates&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F07%2F08%2Fwinsw-yaml-support%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Hello all, I am Buddhika Chathuranga from Sri Lanka and I am a final year undergraduate at the Faculty of IT, University of Moratuwa. I am participating in GSoC 2020 with Jenkins.
+I am working on the <a href="/projects/gsoc/2020/projects/winsw-yaml-configs/">Windows Service Wrapper Project</a>.
+So the Coding Phase 01 of GSoC 2020 is now over and this blog post describes what I have done so far.</p>
+</div>
+<div class="paragraph">
+<p>Windows Service Wrapper is an executable, which we can use to run applications as Windows Services on Windows machines, which has almost one million downloads.
+In Jenkins, we use Windows service wrapper to run Jenkins server and agents as Windows services to gain more robustness.
+This feature is bundled into Jenkins&#8217;s core. Currently, the Windows Service wrapper is configured by an XML file.
+However, there is a limited number of configuration checks and there is no XML schema.</p>
+</div>
+<div class="paragraph">
+<p>XML is not such a human-friendly way to do that. It is quite verbose and not easy to identify the schema without some effort.
+Usually, users misconfigure the service wrapper. This is a sample XML configuration file that we can use to provide configurations to Windows Service Wrapper.</p>
+</div>
+<div class="sect2">
+<h3 id="sample-xml-configuration-file"><a class="anchor" href="#sample-xml-configuration-file"></a>Sample XML Configuration File</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;service&gt;</span>
+    <span class="nt">&lt;id&gt;</span>jenkins<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Jenkins<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>This service runs Jenkins automation server.<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;env</span> <span class="na">name=</span><span class="s">"JENKINS_HOME"</span> <span class="na">value=</span><span class="s">"%LocalAppData%\Jenkins.jenkins"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;executable&gt;</span>C:\Program Files\Java\jdk1.8.0_201\bin\java.exe<span class="nt">&lt;/executable&gt;</span>
+    <span class="nt">&lt;arguments&gt;</span>-Xrs -Xmx256m -Dhudson.lifecycle=hudson.lifecycle.WindowsServiceLifecycle
+    -jar "C:\Program Files\Jenkins\jenkins.war" --httpPort=8081 --webroot="%LocalAppData%\Jenkinswar"<span class="nt">&lt;/arguments&gt;</span>
+    <span class="nt">&lt;logmode&gt;</span>rotate<span class="nt">&lt;/logmode&gt;</span>
+
+    <span class="nt">&lt;onfailure</span> <span class="na">action=</span><span class="s">"restart"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;extensions&gt;</span>
+        <span class="nt">&lt;extension</span> <span class="na">enabled=</span><span class="s">"true"</span> <span class="na">className=</span><span class="s">"winsw.Plugins.RunawayProcessKiller.RunawayProcessKillerExtension"</span> <span class="na">id=</span><span class="s">"killOnStartup"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pidfile&gt;</span>%LocalAppData%\Jenkinsjenkins.pid<span class="nt">&lt;/pidfile&gt;</span>
+        <span class="nt">&lt;stopTimeout&gt;</span>10000<span class="nt">&lt;/stopTimeout&gt;</span>
+        <span class="nt">&lt;stopParentFirst&gt;</span>false<span class="nt">&lt;/stopParentFirst&gt;</span>
+        <span class="nt">&lt;/extension&gt;</span>
+    <span class="nt">&lt;/extensions&gt;</span>
+<span class="nt">&lt;/service&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The usage of YAML could simplify configuration management in Jenkins, especially when automated and configuration management tools are used.
+So what we are doing under GSoC - 2020 is to update the Windows Service Wrapper to support YAML configurations.
+After finishing this project, users will be able to provide configurations to the Windows Service Wrapper as a YAML file.</p>
+</div>
+<div class="paragraph">
+<p>This is a sample YAML configuration file for Windows Service Wrapper and you can see it is less verbose than XML or JSON and much more human friendly.
+Users can read and edit this without a big effort.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sample-yaml-configuration-file"><a class="anchor" href="#sample-yaml-configuration-file"></a>Sample YAML Configuration File</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">id</span><span class="pi">:</span> <span class="s">jenkins</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">Jenkins</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">This service runs Jenkins automation server.</span>
+<span class="na">env</span><span class="pi">:</span>
+    <span class="na">_name</span><span class="pi">:</span> <span class="s">JENKINS_HOME</span>
+    <span class="na">_value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">%LocalAppData%\Jenkins.jenkins'</span>
+<span class="na">executable</span><span class="pi">:</span> <span class="s1">'</span><span class="s">C:\Program</span><span class="nv"> </span><span class="s">Files\Java\jdk1.8.0_201\bin\java.exe'</span>
+<span class="na">arguments</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+    <span class="s">-Xrs -Xmx256m -Dhudson.lifecycle=hudson.lifecycle.WindowsServiceLifecycle</span>
+    <span class="s">-jar "C:\Program Files\Jenkins\jenkins.war" --httpPort=8081 --webroot="%LocalAppData%\Jenkinswar"</span>
+<span class="na">logmode</span><span class="pi">:</span> <span class="s">rotate</span>
+<span class="na">onfailure</span><span class="pi">:</span>
+    <span class="na">_action</span><span class="pi">:</span> <span class="s">restart</span>
+<span class="na">extensions</span><span class="pi">:</span>
+    <span class="pi">-</span>
+        <span class="na">pidfile</span><span class="pi">:</span> <span class="s1">'</span><span class="s">%LocalAppData%\Jenkinsjenkins.pid'</span>
+        <span class="na">stopTimeout</span><span class="pi">:</span> <span class="s1">'</span><span class="s">10000'</span>
+        <span class="na">stopParentFirst</span><span class="pi">:</span> <span class="s1">'</span><span class="s">false'</span>
+        <span class="na">_enabled</span><span class="pi">:</span> <span class="s1">'</span><span class="s">true'</span>
+        <span class="na">_className</span><span class="pi">:</span> <span class="s">winsw.Plugins.RunawayProcessKiller.RunawayProcessKillerExtension</span>
+        <span class="na">_id</span><span class="pi">:</span> <span class="s">killOnStartup</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advantages-of-yaml-as-a-configuration-file"><a class="anchor" href="#advantages-of-yaml-as-a-configuration-file"></a>Advantages of YAML as a configuration file</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>It is less verbose and much more human friendly than XML.</p>
+</li>
+<li>
+<p>Since YAML is not using extra delimiters, it is lightweight.</p>
+</li>
+<li>
+<p>Nowadays YAML has become more popular among configuration management tools.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-scope"><a class="anchor" href="#project-scope"></a>Project Scope</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>During this project, I will add the following features to Windows Service Wrapper.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>YAML Configuration support</p>
+</li>
+<li>
+<p>YAML Schema validation</p>
+</li>
+<li>
+<p>New CLI for the Windows Service Wrapper</p>
+</li>
+<li>
+<p>Support for XML Schema validation via XML Schema Definition (XSD)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="phase-01-updates"><a class="anchor" href="#phase-01-updates"></a>Phase 01 Updates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In GSoC - 2020 phase 01, I have done the following updates to the Windows Service Wrapper.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Structure overview document. <a href="https://github.com/winsw/winsw/blob/master/doc/developer/projectStructure.md">(Published)</a></p>
+</li>
+<li>
+<p>YAML configurations support (Not released yet) - <a href="https://github.com/winsw/winsw/pull/543">Pull Request</a></p>
+</li>
+<li>
+<p>New CLI (Not released yet) - <a href="https://github.com/winsw/winsw/pull/565">Pull Request</a></p>
+</li>
+<li>
+<p>XML Schema validation (Not released yet) - <a href="https://github.com/winsw/winsw/pull/460">Pull Request</a></p>
+</li>
+</ul>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/9qyo1f2rKQw?rel=0&amp;start=1620&amp;end=3040" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p>You can find Phase 01 Demo slides in this <a href="https://docs.google.com/presentation/d/1E_Y0OJJzNn3gAol-cM4jN6dWrD-EbP6Eatis8olRjzQ/edit?usp=sharing">link</a>.</p>
+</div>
+<div class="paragraph">
+<p>Below you can find more details about the deliverables listed above.</p>
+</div>
+<div class="sect2">
+<h3 id="project-structure-overview"><a class="anchor" href="#project-structure-overview"></a>Project Structure overview</h3>
+<div class="paragraph">
+<p>The project structure overview document describes how files and directories are organized in the Windows Service Wrapper project.
+It will help contributors as well as users, to understand the codebase easily.
+Also, it helps me a lot to understand the codebase. You can find the document from the given link.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="yaml-configurations-support"><a class="anchor" href="#yaml-configurations-support"></a>YAML configurations support</h3>
+<div class="paragraph">
+<p>As I explained before, in this project, configurations will be provided as a YAML file.
+I used YamlDotNet library which has more than 2.2k stars on GitHub, to deserialize the YAML file into an Object graph.
+In this YAML file, users can specify configurations in a more structured way than in XML configuration files.
+As an example, now users can specify all the log related configurations under the log config.
+Users can specify all service account related configurations under serviceaccount config etc.</p>
+</div>
+<div class="paragraph">
+<p>At the moment, I am working on a design document for YAML configuration support. I will add it to the GitHub Issue once ready</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-cli"><a class="anchor" href="#new-cli"></a>New CLI</h3>
+<div class="paragraph">
+<p>Before moving into Phase 01 updates, it’s better to explain why we needed a new CLI for Windows Service Wrapper.
+In the early phases of Windows Service Wrapper, we will keep the XML configuration support as well.
+So we should allow users to specify the configurations file separately.
+The current approach is, configurations file should be in the same directory, where Windows Service Wrapper executable exists and the file name of the XML file should be the same as the Windows Service Wrapper executable file name.
+Also, users should be able to redirect logs if they need to and they should be allowed to elevate command prompt using Windows Service Wrapper.
+Also, we thought that it&#8217;s better to allow users to skip schema validation if they needed. So we decided to move into a new CLI.</p>
+</div>
+<div class="paragraph">
+<p>As I explained, after releasing this, users will have options in addition to commands.
+It will make the WinSW CLI more flexible so that we can easily extend it later. These are the options users are allowed to use.
+These options are available with all the commands except help and version</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>--redirect / -r [string]</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can specify the redirect path for the logs if needed</p>
+</li>
+<li>
+<p>Not required | Default value is null</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>--elevated / -e [boolean]</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Elevate the command prompt before executing the command</p>
+</li>
+<li>
+<p>Not required | Default value is false</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>--configFile / -c [string]</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can specify the configurations file as a path</p>
+</li>
+<li>
+<p>Not Required | Default value is null</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>--skipConfigValidation / -s [boolean]</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can skip schema validation for configurations file if needed</p>
+</li>
+<li>
+<p>Not required | Default value is true</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>--help / -h</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>User can find what options are available with a particular command with this option</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This option is available with the install command</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>--profile / -f [boolean]</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>If this option is true, then users can provide a service account for installation explicitly.</p>
+</li>
+<li>
+<p>Not required | Default value is false</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We used commandlineparser/commandline library to parse the command line argument which has more than 2k stars in GitHub. At a glance, the library is compatible with .NET Framework 4.0+, Mono 2.1+ Profile, .NET Standard, and .NET Core.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="xml-schema-validation"><a class="anchor" href="#xml-schema-validation"></a>XML Schema validation</h3>
+<div class="paragraph">
+<p>As I mentioned before, there was no schema validation for XML in Windows Service Wrapper.
+Hence, I was working on schema validation for XML. I use XSD to validate XML files. The XSD file will be shipped as an embedded resource with the executable.
+You can find the XSD file in my pull request.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="future-updates"><a class="anchor" href="#future-updates"></a>Future updates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the next phase, for GSoC 2020 the listed deliverables features will be released and the YAML schema validation feature will be added.
+Also, we hope to publish a design document for the new features, which will help contributors.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-to-contribute"><a class="anchor" href="#how-to-contribute"></a>How to contribute</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can find the GitHub repository in this link. Issues and Pull requests are always welcome.
+Also, you can communicate with us in the WinSW Gitter channel, which is a great way to get in touch and there are project sync up meetings every Tuesday at 13:30 UTC on the Gitter channel.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="some-useful-links"><a class="anchor" href="#some-useful-links"></a>Some useful links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/projects/gsoc/2020/projects/winsw-yaml-configs">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/winsw/winsw">Project Repository</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/winsw/winsw">Gitter Channel</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aaubry/YamlDotNet">YamlDotNet library</a></p>
+</li>
+<li>
+<p><a href="https://github.com/commandlineparser/commandline">Command Line Parser library</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/winsw/">
+winsw
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/windows/">
+windows
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2020/">
+gsoc2020
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/buddhikac96/">
+Buddhika Chathuranga
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/buddhikac96" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/07/2020-07-08-winsw-yaml-support.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

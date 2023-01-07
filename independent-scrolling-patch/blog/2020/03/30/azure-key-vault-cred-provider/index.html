@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Introducing the Azure Key Vault Credentials Provider for Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Tightly integrate Jenkins and Azure Key Vault" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/03/30/azure-key-vault-cred-provider/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Introducing the Azure Key Vault Credentials Provider for Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Introducing the Azure Key Vault Credentials Provider for Jenkins" name="twitter:title">
+<meta content="Tightly integrate Jenkins and Azure Key Vault" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/azure-key-vault/jenkins-on-azure.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Introducing the Azure Key Vault Credentials Provider for Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/03/30/azure-key-vault-cred-provider/" property="og:url">
+<meta content="Tightly integrate Jenkins and Azure Key Vault" name="og:description">
+<meta content="Introducing the Azure Key Vault Credentials Provider for Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/azure-key-vault/jenkins-on-azure.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Introducing the Azure Key Vault Credentials Provider for Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/timja/"><div class="app-avatar"><img alt="Tim Jacomb" class="app-avatar__image" src="/images/avatars/timja.jpg"></div> Tim Jacomb</a>
+March 30, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Introducing+the+Azure+Key+Vault+Credentials+Provider+for+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F03%2F30%2Fazure-key-vault-cred-provider%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph lead">
+<p><a href="https://azure.microsoft.com/en-gb/services/key-vault/">Azure Key Vault</a> is a product for securely managing keys, secrets and certificates.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;m happy to announce two new features in the <a href="https://plugins.jenkins.io/azure-keyvault/">Azure Key Vault</a> plugin:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <a href="https://github.com/jenkinsci/credentials-plugin/blob/master/docs/user.adoc#credentials-providers">credential provider</a> to tightly link Jenkins and Azure Key Vault.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>huge thanks to <a href="https://github.com/gavinfish">Jie Shen</a> for contributing this</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>integration with the <a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc#secret-sources">configuration-as-code</a> plugin.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>These changes were released in <a href="https://github.com/jenkinsci/azure-keyvault-plugin/releases/tag/azure-keyvault-1.8">v1.8</a> but make sure to run the latest version of the plugin, there has been some fixes since then.</em></p>
+</div>
+<div class="paragraph">
+<p>Some advantages of using the credential provider rather than your own scripts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>your Jenkins jobs consume the credentials with no knowledge of Azure Key Vault, so they stay vendor-independent.</p>
+</li>
+<li>
+<p>the provider integrates with the ecosystem of existing Jenkins credential consumers, such as the Slack Notifications plugin.</p>
+</li>
+<li>
+<p>credential usage is recorded in the central Jenkins credentials tracking log.</p>
+</li>
+<li>
+<p>Jenkins can use multiple credentials providers concurrently, so you can incrementally migrate credentials to Azure Key Vault while consuming other credentials from your existing providers.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Note: Currently only secret text credentials are supported via the credential provider, you can use the configuration-as-code integration to load the secret from Azure Key Vault into the System Credential Provider to work around this limitation.</em></p>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Install the <a href="https://plugins.jenkins.io/azure-keyvault/">Azure Key Vault</a> plugin</p>
+</div>
+<div class="paragraph">
+<p>Then you will need to configure the plugin.</p>
+</div>
+<div class="sect2">
+<h3 id="azure-authentication"><a class="anchor" href="#azure-authentication"></a>Azure authentication</h3>
+<div class="paragraph">
+<p>There&#8217;s two types of authentication you can use 'Microsoft Azure Service Principal' or 'Managed Identities for Azure Resources'</p>
+</div>
+<div class="paragraph">
+<p>The easiest one to set this up quickly with is the 'Microsoft Azure Service Principal',</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="nv">$ </span>az ad sp create-for-rbac <span class="nt">--name</span> http://service-principal-name
+Creating a role assignment under the scope of <span class="s2">"/subscriptions/ff251390-d7c3-4d2f-8352-f9c6f0cc8f3b"</span>
+  Retrying role assignment creation: 1/36
+  Retrying role assignment creation: 2/36
+<span class="o">{</span>
+  <span class="s2">"appId"</span>: <span class="s2">"021b5050-9177-4268-a300-7880f2beede3"</span>,
+  <span class="s2">"displayName"</span>: <span class="s2">"service-principal-name"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"http://service-principal-name"</span>,
+  <span class="s2">"password"</span>: <span class="s2">"d9d0d1ba-d16f-4e85-9b48-81ea45a46448"</span>,
+  <span class="s2">"tenant"</span>: <span class="s2">"7e593e3e-9a1e-4c3d-a26a-b5f71de28463"</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this doesn’t work then take a look at the <a href="https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest">Microsoft documentation</a> for creating a service principal.</p>
+</div>
+<div class="paragraph">
+<p><em>Note: for production 'Managed Identities for Azure Resources' is more secure as there&#8217;s no password involved and you don&#8217;t need to worry about the service principal&#8217;s password or certificate expiring.</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vault-setup"><a class="anchor" href="#vault-setup"></a>Vault setup</h3>
+<div class="paragraph">
+<p>You need to create a vault and give your service principal access to it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="nv">RESOURCE_GROUP_NAME</span><span class="o">=</span>my-resource-group
+az group create <span class="nt">--location</span> uksouth <span class="nt">--name</span> <span class="nv">$RESOURCE_GROUP_NAME</span>
+
+<span class="nv">VAULT</span><span class="o">=</span>my-vault <span class="c"># you will need a unique name for the vault</span>
+az keyvault create <span class="nt">--resource-group</span> <span class="nv">$RESOURCE_GROUP_NAME</span> <span class="nt">--name</span> <span class="nv">$VAULT</span>
+az keyvault set-policy <span class="nt">--resource-group</span> <span class="nv">$RESOURCE_GROUP_NAME</span> <span class="nt">--name</span> <span class="nv">$VAULT</span> <span class="se">\</span>
+  <span class="nt">--secret-permissions</span> get list <span class="nt">--spn</span> http://service-principal-name</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-credential"><a class="anchor" href="#jenkins-credential"></a>Jenkins credential</h3>
+<div class="paragraph">
+<p>The next step is to configure the credential in Jenkins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>click 'Credentials'</p>
+</li>
+<li>
+<p>click 'System' (it&#8217;ll appear below the Credentials link in the side bar)</p>
+</li>
+<li>
+<p>click 'Global credentials (unrestricted)'</p>
+</li>
+<li>
+<p>click 'Add Credentials'</p>
+</li>
+<li>
+<p>select 'Microsoft Azure Service Principal'
+<span class="image"><img src="/images/post-images/azure-key-vault/azure-service-principal-drop-down.png" alt="Microsoft Azure Service Principal dropdown"></span></p>
+</li>
+<li>
+<p>fill out the form from the credential created above, appId is 'Client ID', password is 'Client Secret'
+<span class="image"><img src="/images/post-images/azure-key-vault/azure-service-principal-configuration.png" alt="Microsoft Azure Service Principal credential configuration"></span></p>
+</li>
+<li>
+<p>click 'Verify Service Principal', you should see 'Successfully verified the Microsoft Azure Service Principal'.</p>
+</li>
+<li>
+<p>click 'Save'</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkins-azure-key-vault-plugin-configuration"><a class="anchor" href="#jenkins-azure-key-vault-plugin-configuration"></a>Jenkins Azure Key Vault plugin configuration</h3>
+<div class="paragraph">
+<p>You now have a credential you can use to interact with Azure resources from Jenkins, now you need to configure the plugin:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>go back to the Jenkins home page</p>
+</li>
+<li>
+<p>click 'Manage Jenkins'</p>
+</li>
+<li>
+<p>click 'Configure System'</p>
+</li>
+<li>
+<p>search for 'Azure Key Vault Plugin'</p>
+</li>
+<li>
+<p>enter your vault url and select your credential
+<span class="image"><img src="/images/post-images/azure-key-vault/azure-key-vault-global-config.png" alt="Azure Key Vault plugin configuration"></span></p>
+</li>
+<li>
+<p>click 'Save'</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="store-a-secret-in-azure-key-vault"><a class="anchor" href="#store-a-secret-in-azure-key-vault"></a>Store a secret in Azure Key Vault</h3>
+<div class="paragraph">
+<p>For the step after this you will need a secret, so let&#8217;s create one now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="nv">$ </span>az keyvault secret <span class="nb">set</span> <span class="nt">--vault-name</span> <span class="nv">$YOUR_VAULT</span> <span class="nt">--name</span> secret-key <span class="nt">--value</span> my-super-secret</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-a-pipeline"><a class="anchor" href="#create-a-pipeline"></a>Create a pipeline</h3>
+<div class="paragraph">
+<p>Install the <a href="https://plugins.jenkins.io/workflow-aggregator/">Pipeline</a> plugin if you don&#8217;t already have it.</p>
+</div>
+<div class="paragraph">
+<p>From the Jenkins home page, click 'New item', and then:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>enter a name, i.e. 'key-vault-test'</p>
+</li>
+<li>
+<p>click on 'Pipeline'</p>
+</li>
+<li>
+<p>add the following to the pipeline definition:</p>
+</li>
+</ol>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+  agent any
+  environment {
+    SECRET_KEY = credentials(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">secret-key</span><span style="color:#710">'</span></span>)
+  }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Foo</span><span style="color:#710">'</span></span>) {
+      steps {
+        echo SECRET_KEY
+        echo SECRET_KEY.substring(<span style="color:#00D">0</span>, SECRET_KEY.size() - <span style="color:#00D">1</span>) <span style="color:#777">// shows the right secret was loaded, don't do this for real secrets unless you're debugging</span>
+      }
+    }
+  }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">withCredentials([string(<span style="color:#606">credentialsId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">secret-key</span><span style="color:#710">'</span></span>, <span style="color:#606">variable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SECRET_KEY</span><span style="color:#710">'</span></span>)]) {
+    echo SECRET_KEY
+    echo SECRET_KEY.substring(<span style="color:#00D">0</span>, SECRET_KEY.size() - <span style="color:#00D">1</span>) <span style="color:#777">// shows the right secret was loaded, don't do this for real secrets unless you're debugging</span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>You have now successfully retrieved a credential from Azure Key Vault using native Jenkins credentials integration.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuration-as-code-integration"><a class="anchor" href="#configuration-as-code-integration"></a>configuration-as-code integration</h2>
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>The Configuration as Code plugin has been designed as an opinionated way to configure Jenkins based on human-readable declarative configuration files. Writing such a file should be easy without being a Jenkins expert.</p>
+</div>
+<div class="paragraph">
+<p>For many secrets the credential provider is enough,
+but when integrating with other plugins you will likely need more than string credentials.</p>
+</div>
+<div class="paragraph">
+<p>You can use the <a href="https://github.com/jenkinsci/configuration-as-code-plugin">configuration-as-code plugin</a> (aka JCasC) to allow integrating with other credential types.</p>
+</div>
+<div class="sect2">
+<h3 id="configure-authentication"><a class="anchor" href="#configure-authentication"></a>configure authentication</h3>
+<div class="paragraph">
+<p>As the JCasC plugin runs during initial startup the Azure Key Vault credential provider needs to be configured before JCasC runs during startup.</p>
+</div>
+<div class="paragraph">
+<p>The easiest way to do that is via environment variables set before Jenkins starts up:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="nb">export </span><span class="nv">AZURE_KEYVAULT_URL</span><span class="o">=</span>https://my.vault.azure.net
+<span class="nb">export </span><span class="nv">AZURE_KEYVAULT_SP_CLIENT_ID</span><span class="o">=</span>...
+<span class="nb">export </span><span class="nv">AZURE_KEYVAULT_SP_CLIENT_SECRET</span><span class="o">=</span>...
+<span class="nb">export </span><span class="nv">AZURE_KEYVAULT_SP_SUBSCRIPTION_ID</span><span class="o">=</span>...
+<span class="nb">export </span><span class="nv">AZURE_KEYVAULT_SP_SUBSCRIPTION_ID</span><span class="o">=</span>...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://github.com/jenkinsci/azure-keyvault-plugin#via-system-properties">azure-keyvault documentation</a> for other authentication options.</p>
+</div>
+<div class="paragraph">
+<p>You will now be able to refer to Azure Key Vault secret IDs in your jenkins.yaml file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">credentials</span><span class="pi">:</span>
+  <span class="na">system</span><span class="pi">:</span>
+    <span class="na">domainCredentials</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">credentials</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">usernamePassword</span><span class="pi">:</span>
+            <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub"</span>
+            <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkins-github"</span>
+            <span class="na">password</span><span class="pi">:</span> <span class="s2">"</span><span class="s">${jenkins-github-apikey}"</span>
+            <span class="na">scope</span><span class="pi">:</span> <span class="s">GLOBAL</span>
+            <span class="na">username</span><span class="pi">:</span> <span class="s2">"</span><span class="s">jenkinsadmin"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thanks for reading, send feedback on twitter using the tweet button in the top right, any issues or feature requests use <a href="https://github.com/jenkinsci/azure-keyvault-plugin/issues">GitHub issues</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/azure/">
+azure
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/credentials/">
+credentials
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/credential-provider/">
+credential-provider
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/configuration-as-code/">
+configuration-as-code
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Tim Jacomb" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/timja.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/timja/">
+Tim Jacomb
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer, along with slack, azure-keyvault and configuration-as-code plugins.
+Tim started using Jenkins in 2013 and became an active contributor in 2018.
+Tim enjoys working on open source software in his “free” time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/timja" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/Tjaynz" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/tim-jacomb-98043174" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/03/2020-03-30-azure-key-vault-cred-provider.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

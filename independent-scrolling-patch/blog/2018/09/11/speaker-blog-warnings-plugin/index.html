@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Warnings Plugin 5.0 (White Mountain) Public Beta
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/09/11/speaker-blog-warnings-plugin/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Warnings Plugin 5.0 (White Mountain) Public Beta" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Warnings Plugin 5.0 (White Mountain) Public Beta" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Warnings Plugin 5.0 (White Mountain) Public Beta" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/09/11/speaker-blog-warnings-plugin/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Warnings Plugin 5.0 (White Mountain) Public Beta" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Warnings Plugin 5.0 (White Mountain) Public Beta
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/uhafner/"><div class="app-avatar"><img alt="Ullrich Hafner" class="app-avatar__image" src="/images/avatars/uhafner.jpg"></div> Ullrich Hafner</a>
+September 11, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Warnings+Plugin+5.0+%28White+Mountain%29+Public+Beta&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F09%2F11%2Fspeaker-blog-warnings-plugin%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by Ullrich Hafner, professor for Software Engineering at the University of Applied Sciences Munich and Jenkins contributor. He will be presenting <strong><a href="https://sched.co/F9NZ">Static Analysis Plugins - White Mountain Release for Pipelines</a></strong> at DevOps World | Jenkins World 2018.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock right">
+<div class="content">
+<a class="image" href="https://www.cloudbees.com/devops-world"><img src="/images/conferences/devops-world-2018.jpg" alt="DevOps World | Jenkins World 2018"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>Jenkins' <a href="https://plugins.jenkins.io/warnings">Warnings plugin</a> collects compiler warnings or issues reported by static analysis tools and visualizes the
+results. The plugin (and the associated static analysis plugin suite) has been part of the Jenkins plugin eco-system
+for more than ten years now. In order to optimize user experience and support Pipeline, a major rewrite of
+the whole set of plugins was necessary. This new version (code name <strong>White Mountain</strong>) is now available as a public
+beta. Please download and install this new version and help us to identify problems before the API is sealed.</p>
+</div>
+<div class="paragraph">
+<p>The new release is available in the
+<a href="/doc/developer/publishing/releasing-experimental-updates/">experimental update center</a>.
+It has built-in support for almost hundred static analysis tools (including several compilers), see the list of
+<a href="https://github.com/jenkinsci/warnings-plugin/blob/master/SUPPORTED-FORMATS.md">supported report formats</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="features-overview"><a class="anchor" href="#features-overview"></a>Features overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Warnings plugin provides the following features when added as a post build action (or step) to a job:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The plugin scans the console log of a Jenkins build or files in the workspace of your job for any kind of issues.
+There are almost one hundred
+<a href="https://github.com/jenkinsci/warnings-plugin/blob/master/SUPPORTED-FORMATS.md">report formats</a> supported.
+Among the problems it can detect:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>errors from your compiler (C, C#, Java, etc.)</p>
+</li>
+<li>
+<p>warnings from a static analysis tool (CheckStyle, StyleCop, SpotBugs, etc.)</p>
+</li>
+<li>
+<p>duplications from a copy-and-paste detector (CPD, Simian, etc.)</p>
+</li>
+<li>
+<p>vulnerabilities</p>
+</li>
+<li>
+<p>open tasks in comments of your source files</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The plugin publishes a report of the issues found in your build, so you can navigate to a summary report from the
+main build page. From there you can also dive into the details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>distribution of new, fixed and outstanding issues</p>
+</li>
+<li>
+<p>distribution of the issues by severity, category, type, module, or package</p>
+</li>
+<li>
+<p>list of all issues including helpful comments from the reporting tool</p>
+</li>
+<li>
+<p>annotated source code of the affected files</p>
+</li>
+<li>
+<p>trend charts of the issues</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the next sections, I&#8217;ll show the new and enhanced features in more detail.</p>
+</div>
+<div class="sect2">
+<h3 id="one-plugin-for-all-tools"><a class="anchor" href="#one-plugin-for-all-tools"></a>One plugin for all tools</h3>
+<div class="paragraph">
+<p>Previously the warnings plugin was part of the static analysis suite that provided the same set of features through
+several plugins (CheckStyle, PMD, Static Analysis Utilities, Analysis Collector etc.).
+In order to simplify the user experience and the development process, these
+plugins and the core functionality have been merged into the warnings plugin. All other plugins are not required
+anymore and will not be supported in the future. If you currently use one of these plugins you should migrate
+to the new recorders and steps as soon as possible. I will still maintain the old code for a while,
+but the main development effort will be spent into the new code base.</p>
+</div>
+<div class="paragraph">
+<p>The following plugins have been integrated into the beta version of the warnings plugin:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Android-Lint Plugin</p>
+</li>
+<li>
+<p>CheckStyle Plugin</p>
+</li>
+<li>
+<p>CCM Plugin</p>
+</li>
+<li>
+<p>Dry Plugin</p>
+</li>
+<li>
+<p>PMD Plugin</p>
+</li>
+<li>
+<p>FindBugs Plugin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All other plugins still need to be integrated or need to be refactored to use the new API.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-pipeline-support"><a class="anchor" href="#new-pipeline-support"></a>New pipeline support</h3>
+<div class="paragraph">
+<p>Requirements for using the Warnings plugin in Jenkins Pipeline can be complex and sometimes controversial.
+In order to be as flexible as possible I decided to split the main step into two individual parts,
+which could then be used independently from each other.</p>
+</div>
+<div class="sect3">
+<h4 id="simple-pipeline-configuration"><a class="anchor" href="#simple-pipeline-configuration"></a>Simple pipeline configuration</h4>
+<div class="paragraph">
+<p>The simple pipeline configuration is provided by the step <code>recordIssues</code>. This step is automatically derived from the
+FreeStyle job recorder: it scans for issues in a given set of files (or in the console log) and reports these issues
+in your build. You can use the snippet generator to create a working snippet that calls this step. A typical example
+of this step is shown in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">recordIssues</span>
+    <span class="nl">enabledForFailure:</span> <span class="kc">true</span><span class="o">,</span>
+    <span class="nl">tools:</span> <span class="o">[[</span><span class="nl">pattern:</span> <span class="s1">'*.log'</span><span class="o">,</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'Java'</span><span class="o">]]],</span>
+    <span class="nl">filters:</span> <span class="o">[</span><span class="n">includeFile</span><span class="o">(</span><span class="s1">'MyFile.*.java'</span><span class="o">),</span> <span class="n">excludeCategory</span><span class="o">(</span><span class="s1">'WHITESPACE'</span><span class="o">)]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the files '*.log' are scanned for <strong>Java</strong> issues. Only issues with a file name matching the
+pattern 'MyFile.*.java' are included. Issues with category 'WHITESPACE' will be excluded. The
+step will be executed even if the build failed. The recorded report of warnings will be published under the fixed
+URL 'https://[<em>your-jenkins</em>]/job/[<em>your-job</em>]/java'. URL or name of the report can be changed if required.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced-pipeline-configuration"><a class="anchor" href="#advanced-pipeline-configuration"></a>Advanced Pipeline Configuration</h4>
+<div class="paragraph">
+<p>Sometimes publishing and reporting issues using a single step is not sufficient. For instance, if you build your
+product using several parallel steps and you want to combine the issues from all of these steps into
+a single result. Then you need to split scanning and aggregation. Therefore, the plugin  provides the following
+two steps that are combined by using an intermediate result object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>scanForIssues</code>: this step scans a report file or the console log with a particular parser and creates an
+intermediate report object that contains the report.</p>
+</li>
+<li>
+<p><code>publishIssues</code>: this step publishes a new report in your build that contains the aggregated results
+of one or several <code>scanForIssues</code> steps.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can see the usage of these two steps in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">java</span> <span class="o">=</span> <span class="n">scanForIssues</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'Java'</span><span class="o">]</span>
+<span class="kt">def</span> <span class="n">javadoc</span> <span class="o">=</span> <span class="n">scanForIssues</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'JavaDoc'</span><span class="o">]</span>
+
+<span class="n">publishIssues</span> <span class="nl">issues:</span><span class="o">[</span><span class="n">java</span><span class="o">,</span> <span class="n">javadoc</span><span class="o">],</span> <span class="nl">filters:</span><span class="o">[</span><span class="n">includePackage</span><span class="o">(</span><span class="s1">'io.jenkins.plugins.analysis.*'</span><span class="o">)]</span>
+
+<span class="kt">def</span> <span class="n">checkstyle</span> <span class="o">=</span> <span class="n">scanForIssues</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'CheckStyle'</span><span class="o">],</span> <span class="nl">pattern:</span> <span class="s1">'**/target/checkstyle-result.xml'</span>
+<span class="n">publishIssues</span> <span class="nl">issues:</span><span class="o">[</span><span class="n">checkstyle</span><span class="o">]</span>
+
+<span class="kt">def</span> <span class="n">pmd</span> <span class="o">=</span> <span class="n">scanForIssues</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'Pmd'</span><span class="o">],</span> <span class="nl">pattern:</span> <span class="s1">'**/target/pmd.xml'</span>
+<span class="n">publishIssues</span> <span class="nl">issues:</span><span class="o">[</span><span class="n">pmd</span><span class="o">]</span>
+
+<span class="n">publishIssues</span> <span class="nl">id:</span><span class="s1">'analysis'</span><span class="o">,</span> <span class="nl">name:</span><span class="s1">'White Mountains Issues'</span><span class="o">,</span> <span class="nl">issues:</span><span class="o">[</span><span class="n">checkstyle</span><span class="o">,</span> <span class="n">pmd</span><span class="o">],</span>
+    <span class="nl">filters:</span><span class="o">[</span><span class="n">includePackage</span><span class="o">(</span><span class="s1">'io.jenkins.plugins.analysis.*'</span><span class="o">)]</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filtering-issues"><a class="anchor" href="#filtering-issues"></a>Filtering issues</h3>
+<div class="paragraph">
+<p>The created report of issues can be filtered afterwards. You can specify an arbitrary number of include or exclude
+filters. Currently, there is support for filtering issues by module name, package or namespace name, file name,
+category or type.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/filter.png" alt="Filtering">
+</div>
+</div>
+<div class="paragraph">
+<p>An example pipeline that uses such a filter is shown in the following snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">recordIssues</span>
+    <span class="nl">tools:</span> <span class="o">[[</span><span class="nl">pattern:</span> <span class="s1">'*.log'</span><span class="o">,</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'Java'</span><span class="o">]]],</span>
+    <span class="nl">filters:</span> <span class="o">[</span><span class="n">includeFile</span><span class="o">(</span><span class="s1">'MyFile.*.java'</span><span class="o">),</span> <span class="n">excludeCategory</span><span class="o">(</span><span class="s1">'WHITESPACE'</span><span class="o">)]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quality-gate-configuration"><a class="anchor" href="#quality-gate-configuration"></a>Quality gate configuration</h3>
+<div class="paragraph">
+<p>You can define several quality gates that will be checked after the issues have been reported. These quality gates
+let you to modify Jenkins' build status so that you immediately see if the desired quality of your product is met.
+A build can be set to <strong>unstable</strong> or <strong>failed</strong> for each of these quality gates. All quality gates use a simple metric:
+the maximum number of issues that can be found and still pass a given quality gate.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/quality-gate.png" alt="Quality Gate">
+</div>
+</div>
+<div class="paragraph">
+<p>An example pipeline that enables a quality gate for 10 warnings in total or 1 new warning is shown in the
+following snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">recordIssues</span>
+    <span class="nl">tools:</span> <span class="o">[[</span><span class="nl">pattern:</span> <span class="s1">'*.log'</span><span class="o">,</span> <span class="nl">tool:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'Java'</span><span class="o">]]],</span> <span class="nl">unstableTotalHigh:</span> <span class="mi">10</span><span class="o">,</span> <span class="nl">unstableNewAll:</span> <span class="mi">1</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="issues-history-new-fixed-and-outstanding-issues"><a class="anchor" href="#issues-history-new-fixed-and-outstanding-issues"></a>Issues history: new, fixed, and outstanding issues</h3>
+<div class="paragraph">
+<p>One highlight of the plugin is the ability to categorize issues of subsequent builds as new, fixed and outstanding.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/trend.png" alt="History">
+</div>
+</div>
+<div class="paragraph">
+<p>Using this feature makes it a lot easier to keep the quality of your project under control: you can focus
+only on those warnings that have been introduced recently.</p>
+</div>
+<div class="paragraph">
+<p>Note: the detection of new warnings is based on a complex algorithm that tries to track the same warning in
+two two different versions of the source code. Depending on the extend of the modification of the source code
+it might produce some false positives, i.e., you might still get some new and fixed warnings even if there should
+be none. The accuracy of this algorithm is still ongoing research and will be refined in the next couple of months.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="severities"><a class="anchor" href="#severities"></a>Severities</h3>
+<div class="paragraph">
+<p>The plugin shows the distribution of the severities of the issues in a chart. It defines the
+following default severities, but additional ones might be added by plugins that extend the warnings plugin.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Error</strong>: Indicates an error that typically fails the build</p>
+</li>
+<li>
+<p><strong>Warning</strong> (High, Normal, Low): Indicates a warning of the given priority. Mapping to the priorities
+is up to the individual parsers.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that not every parser is capable of producing warnings with a different severity. Some of the parses simply
+use the same severity for all issues.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/severities.png" alt="Severities">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-trend"><a class="anchor" href="#build-trend"></a>Build Trend</h3>
+<div class="paragraph">
+<p>In order to see the trend of the analysis results, a chart showing the number of issues per build is also
+shown. This chart is used in the details page as well as in the job overview. Currently, type and configuration
+of the chart is fixed. This will be enhanced in future versions of the plugin.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/history.png" alt="Trend Chart">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="issues-overview"><a class="anchor" href="#issues-overview"></a>Issues Overview</h3>
+<div class="paragraph">
+<p>You can get a fast and efficient overview of the reported set of issues in several aggregation views.
+Depending on the number or type of issues you will see the distribution of issues by</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Static Analysis Tool</p>
+</li>
+<li>
+<p>Module</p>
+</li>
+<li>
+<p>Package or Namespace</p>
+</li>
+<li>
+<p>Severity</p>
+</li>
+<li>
+<p>Category</p>
+</li>
+<li>
+<p>Type</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of these detail views are interactive, i.e. you can navigate into a subset of the categorized issues.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/packages.png" alt="Packages Overview">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="issues-details"><a class="anchor" href="#issues-details"></a>Issues Details</h3>
+<div class="paragraph">
+<p>The set of reported issues is shown in a modern and responsive table. The table is loaded on demand using an Ajax
+call. It provides the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pagination</strong>: the number of issues is subdivided into several pages which can be selected by using the provided page
+links. Note that currently the pagination is done on the client side, i.e. it may take some time to obtain the whole table of
+issues from the server.</p>
+</li>
+<li>
+<p><strong>Sorting</strong>: the table content can be sorted by clicking on one of the table columns.</p>
+</li>
+<li>
+<p><strong>Filtering, Searching</strong>: you can filter the shown issues by entering some text in the search box.</p>
+</li>
+<li>
+<p><strong>Content Aware</strong>: columns are only shown if there is something useful to display. I.e., if a tool does not report an
+issues category, then the category will be automatically hidden.</p>
+</li>
+<li>
+<p><strong>Responsive</strong>: the layout should adapt to the actual screen size.</p>
+</li>
+<li>
+<p><strong>Details</strong>: the details message for an issue (if provided by the corresponding static analysis tool) is shown as
+child row within the table.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2018-09-11/details.png" alt="Details">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remote-api"><a class="anchor" href="#remote-api"></a>Remote API</h3>
+<div class="paragraph">
+<p>The plugin provides two REST API endpoints.</p>
+</div>
+<div class="sect3">
+<h4 id="summary-of-the-analysis-result"><a class="anchor" href="#summary-of-the-analysis-result"></a>Summary of the analysis result</h4>
+<div class="paragraph">
+<p>You can obtain a summary of a particular analysis report by using the URL <code>[tool-id]/api/xml</code>
+(or <code>[tool-id]/api/json</code>). The summary contains the number of issues, the quality gate status, and all
+info and error messages.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="details-of-the-analysis-result"><a class="anchor" href="#details-of-the-analysis-result"></a>Details of the analysis result</h4>
+<div class="paragraph">
+<p>The reported issues are also available as REST API. You can either query all issues or only the
+new, fixed, or outstanding issues. The corresponding URLs are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>[tool-id]/all/api/xml</code>: lists all issues</p>
+</li>
+<li>
+<p><code>[tool-id]/fixed/api/xml</code>: lists all fixed issues</p>
+</li>
+<li>
+<p><code>[tool-id]/new/api/xml</code>: lists all new issues</p>
+</li>
+<li>
+<p><code>[tool-id]/outstanding/api/xml</code>: lists all outstanding issues</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-you-can-help"><a class="anchor" href="#how-you-can-help"></a>How You Can Help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I hope these new features are useful for everyone! Please download or install this new release and test it in your jobs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Convert some of your jobs to the new API and test the new (and old) features (based on your requirements).</p>
+</li>
+<li>
+<p>Read all labels carefully, I’m not a native speaker so some descriptions might be misleading or incorrect.</p>
+</li>
+<li>
+<p>Check the new URLs and names of the parsers, see list of
+<a href="https://github.com/jenkinsci/warnings-plugin/blob/master/SUPPORTED-FORMATS.md">supported report formats</a>. These
+can&#8217;t be changed after the beta testing.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you find a problem, incorrect phrase, typo, etc. please report a bug in Jira (or even better: file a PR in GitHub).</p>
+</div>
+<div class="paragraph">
+<p>This has been a brief overview of the new features of the Warnings plugin in Jenkins. For more, be sure to check out my
+<a href="https://sched.co/F9NZ">talk</a> at "DevOps World | Jenkins World" where I show more details of the Warnings plugin!</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Come see Ullrich Hafner and many other Jenkins experts and contributors at
+<a href="https://www.cloudbees.com/devops-world">DevOps World | Jenkins World</a> on September 16-19th,
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/warnings/">
+warnings
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2018/">
+jenkinsworld2018
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Ullrich Hafner" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/uhafner.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/uhafner/">
+Ullrich Hafner
+</a>
+</p>
+<div class="paragraph">
+<p>Ullrich Hafner is an active contributor in the Jenkins project since 2007, mostly in the acceptance test harness and
+the static code analysis suite (which is now replaced by the Warnings Next Generation Plugin).</p>
+</div>
+<div class="paragraph">
+<p>He is a professor for Software Engineering at the University of Applied Sciences Munich. In his role as professor
+he tries to win new Jenkins contributors by letting students develop new features and test cases in their student
+projects and theses.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/uhafner" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/09/2018-09-11-speaker-blog-warnings-plugin.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

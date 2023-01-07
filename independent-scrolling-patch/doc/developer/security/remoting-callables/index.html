@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Remoting Callables
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/security/remoting-callables/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Remoting Callables" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Remoting Callables" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Remoting Callables" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/security/remoting-callables/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Remoting Callables" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="active">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/secrets/" class="">Storing Secrets</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Remoting Callables
+</h1>
+<div class="paragraph">
+<p>Remoting is the library implementing communication between Jenkins processes using Java serialization.
+This applies to controller/agent communications and agents communicating with the Maven process in <a href="https://plugins.jenkins.io/maven-plugin">Maven Integration Plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>hudson.remoting.Callable</code> is the basic building block of this communication channel, representing a message and corresponding response.
+Objects implementing this interface get serialized and sent to the other end of the channel.
+They&#8217;re deserialized on the other end, where the <code>#call()</code> method is invoked.
+Its return value is then serialized and sent back through the channel.</p>
+</div>
+<div class="paragraph">
+<p>Think of each <code>Callable</code> implementation as an interface or API of Jenkins:
+Jenkins will execute <code>Callables</code> it receives through a remoting channel, with fields in the <code>Callable</code> subtype being like parameters.</p>
+</div>
+<div class="sect1">
+<h2 id="remoting-roles"><a class="anchor" href="#remoting-roles"></a>Remoting roles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is important to ensure that the less-privileged end of the channel (typically agents) cannot run arbitrary code on the more-privileged end (typically a controller), so care needs to be taken when implementing <code>Callables</code>.
+The remoting library offers the <code>RoleSensitive</code> interface for this which <code>Callable</code> extends since Jenkins 1.587 and 1.580.1:
+Callables can use it to limit where they can be executed by implementing <code>#checkRoles(RoleChecker)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The abstract classes <code>MasterToSlaveCallable</code> and <code>SlaveToMasterCallable</code> implement this interface with the two most common modes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MasterToSlaveCallable</code> can be sent from a controller to an agent.
+In general, you should write your code so it works with this implementation.</p>
+</li>
+<li>
+<p><code>SlaveToMasterCallable</code> can be sent from an agent to a controller.
+This is less safe, as malicious agents can use these implementations to run code on a controller.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Despite their names, either implementation can be executed anywhere, the name just describes through which channels it can be sent for execution:
+<code>MasterToSlaveCallable</code> can be executed on the controller, just not sent from an agent to a controller for execution, unlike <code>SlaveToMasterCallable</code>, which can be sent through a controller/agent channel through either direction.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the above, <code>NotReallyRoleSensitiveCallable</code> can be used for a <code>Callable</code> that is not intended to be sent through a channel.
+Its <code>#checkRoles</code> method will throw an exception, thereby preventing it from being executed on any side of a communication channel that performs a role check.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to use one of these classes in your plugin, rather than implementing <code>#checkRoles(RoleChecker)</code> directly.</p>
+</div>
+<div class="sect2">
+<h3 id="mandatory-role-checks"><a class="anchor" href="#mandatory-role-checks"></a>Mandatory role checks</h3>
+<div class="paragraph">
+<p>Since Jenkins 2.319 and LTS 2.303.3, <code>Callable</code> implementations providing an implementation of <code>#checkRoles(RoleChecker)</code> that neither throws an exception nor calls <code>RoleChecker#check</code> will result in the <code>Callable</code> being rejected when sent through the channel to a side that requires a role check before execution.
+A typical implementation that breaks will look like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">class</span> <span class="nc">MyCallable</span> <span class="kd">implements</span> <span class="nc">Callable</span><span class="o">&lt;</span><span class="nc">ReturnType</span><span class="o">,</span><span class="nc">ExceptionType</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">parameter</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">MyCallable</span><span class="o">(</span><span class="nc">String</span> <span class="n">parameter</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">parameter</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">ReturnType</span> <span class="nf">call</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">ExceptionType</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Some</span><span class="o">.</span><span class="na">code</span><span class="o">().</span><span class="na">operatesOn</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">parameter</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkRules</span><span class="o">(</span><span class="nc">RoleChecker</span> <span class="n">checker</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// this is an empty block </span><i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nothing is being done here even though a call to <code>RoleChecker#check(&#8230;&#8203;)</code> is expected.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If a plugin implementing an inadequate role check (like this example) attempts to send a <code>Callable</code> through the remoting channel from the agent to the controller, the security improvement will detect it and throw an exception before <code>#call()</code> would be invoked.</p>
+</div>
+<div class="paragraph">
+<p>While administrators can allow specific <code>Callable</code> subtypes to bypass this protection mechanism (<a href="/doc/book/security/controller-isolation/required-role-check/">see documentation</a>), plugin developers are advised to update their plugins:
+<code>Callable</code> implementations should extend from one of the classes mentioned above, with a strong preference for <code>MasterToSlaveCallable</code>, which should work in almost all cases.
+If that does not work and the plugin cannot be restructured to work with a <code>MasterToSlaveCallable</code>, the <code>Callable</code> implementation should be changed to a <code>SlaveToMasterCallable</code>, and the best practices recommended below must be implemented to ensure it cannot be bypassed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="best-practices"><a class="anchor" href="#best-practices"></a>Best practices</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="prohibit-sending-to-controllers-wherever-possible"><a class="anchor" href="#prohibit-sending-to-controllers-wherever-possible"></a>Prohibit sending to controllers wherever possible</h3>
+<div class="paragraph">
+<p>Use <code>MasterToSlaveCallable</code> wherever possible, restructure your plugin code as needed to allow this.</p>
+</div>
+<div class="paragraph">
+<p>For Callables not intended to be sent through a channel, extend <code>NotReallyRoleSensitiveCallable</code> instead of implementing <code>Callable</code> directly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="never-run-unsafe-code-during-deserialization-or-role-check"><a class="anchor" href="#never-run-unsafe-code-during-deserialization-or-role-check"></a>Never run unsafe code during deserialization or role check</h3>
+<div class="paragraph">
+<p>All <code>Callables</code> are still deserialized on the controller, and <code>#checkRoles</code> is invoked to determine whether the <code>Callable</code> can be executed.
+Do not add code to <a href="https://docs.oracle.com/javase/8/docs/platform/serialization/spec/input.html#a5903"><code>#readResolve</code></a> and related methods, or to <code>#checkRoles</code>, that would be unsafe to execute, as these methods will still be executed on the controller between receiving the <code>Callable</code> and invoking <code>#call()</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minimal-safe-implementations"><a class="anchor" href="#minimal-safe-implementations"></a>Minimal, safe implementations</h3>
+<div class="paragraph">
+<p>If a <code>Callable</code> needs to be sent from an agent to a controller (<code>SlaveToMasterCallable</code>), keep the implementations minimal:
+Use few, simple parameters that are easy to reason about and validate, do not send complex trees of objects.
+Do not use (anonymous) inner classes for your Callables, instead make them top-level or static nested classes so they do not have a reference to an instance of the surrounding class, reducing complexity.
+Perform parameter validation inside <code>#call()</code> or <a href="https://docs.oracle.com/javase/8/docs/platform/serialization/spec/input.html#a5903"><code>#readResolve()</code></a> rather than (only) in constructors and setters, and do not rely on <code>private</code> or <code>final</code> modifiers for your fields to protect from unexpected values:
+reflection can be used to set fields to arbitrary, attacker-chosen values.</p>
+</div>
+<div class="paragraph">
+<p>The vast majority of plugins should have their <code>Callables</code> extend from <code>MasterToSlaveCallable</code> (if they&#8217;re implementing <code>Callable</code>) or <code>MasterToSlaveFileCallable</code> (if they&#8217;re implementing <code>FileCallable</code>).</p>
+</div>
+<div class="paragraph">
+<p>This will allow the controller-side of a connection to initiate the Callable submission and invocation on both the controller and any agents and is the safest approach.</p>
+</div>
+<div class="paragraph">
+<p>This is mostly equivalent to implementing <code>checkRoles</code> as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkRules</span><span class="o">(</span><span class="nc">RoleChecker</span> <span class="n">checker</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checker</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="k">this</span><span class="o">,</span><span class="nc">Roles</span><span class="o">.</span><span class="na">SLAVE</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In very care cases, the agent-side of a connection will send a <code>Callable</code> to the controller for execution there.
+This is tricky to do safely and it&#8217;s generally recommended plugins are restructured so this isn&#8217;t needed.
+If this isn&#8217;t possible, plugins can implement <code>SlaveToMasterCallable</code> or <code>SlaveToMasterFileCallable</code>, or implement <code>#checkRules</code> as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkRules</span><span class="o">(</span><span class="nc">RoleChecker</span> <span class="n">checker</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checker</span><span class="o">.</span><span class="na">check</span><span class="o">(</span><span class="k">this</span><span class="o">,</span><span class="nc">Roles</span><span class="o">.</span><span class="na">MASTER</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make sure to carefully consider what your <code>Callable</code> implementation is able to do on the controller when sent from an untrusted agent.
+Carefully review the best practices above and adapt your <code>Callable</code> accordingly.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/developer/security/remoting-callables.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

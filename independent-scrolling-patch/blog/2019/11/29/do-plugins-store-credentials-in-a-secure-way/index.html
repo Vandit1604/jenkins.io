@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Do Plugins Store Credentials In A Secure Way? - DevOps World | Jenkins World 2019
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/11/29/do-plugins-store-credentials-in-a-secure-way/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Do Plugins Store Credentials In A Secure Way? - DevOps World | Jenkins World 2019" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Do Plugins Store Credentials In A Secure Way? - DevOps World | Jenkins World 2019" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2019-11-plugin-creds-secure-store/PluginWebForm.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Do Plugins Store Credentials In A Secure Way? - DevOps World | Jenkins World 2019" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/11/29/do-plugins-store-credentials-in-a-secure-way/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Do Plugins Store Credentials In A Secure Way? - DevOps World | Jenkins World 2019" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2019-11-plugin-creds-secure-store/PluginWebForm.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Do Plugins Store Credentials In A Secure Way? - DevOps World | Jenkins World 2019
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/woodspeed/"><div class="app-avatar"></div> Viktor Gazdag</a>
+November 29, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Do+Plugins+Store+Credentials+In+A+Secure+Way%3F+-+DevOps+World+%7C+Jenkins+World+2019&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F11%2F29%2Fdo-plugins-store-credentials-in-a-secure-way%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a speaker blog post for a DevOps World | Jenkins World 2019 talk in Lisbon, Portugal and has been posted in line with NCC Group responsible disclosure policy.
+Related Jenkins security advisories:
+<a href="/security/advisory/2017-11-08/">2017-11-08</a>,
+<a href="/security/advisory/2017-11-16/">2017-11-16</a>,
+<a href="/security/advisory/2018-06-25/">2018-06-25</a>,
+<a href="/security/advisory/2018-07-30/">2018-07-30</a>,
+<a href="/security/advisory/2018-09-25/">2018-09-25</a>,
+<a href="/security/advisory/2019-02-19/">2019-02-19</a>,
+<a href="/security/advisory/2019-03-06/">2019-03-06</a>,
+<a href="/security/advisory/2019-03-25/">2019-03-25</a>,
+<a href="/security/advisory/2019-04-03/">2019-04-03</a>,
+<a href="/security/advisory/2019-04-17/">2019-04-17</a>,
+<a href="/security/advisory/2019-08-07/">2019-08-07</a>,
+<a href="/security/advisory/2019-09-12/">2019-09-12</a>,
+<a href="/security/advisory/2019-10-01/">2019-10-01</a>,
+<a href="/security/advisory/2019-10-16/">2019-10-16</a>,
+<a href="/security/advisory/2019-10-23/">2019-10-23</a>.
+Some of the vulnerabilities have been announced without a fix, see <a href="/blog/2019/04/03/security-advisory/">Jenkins Security Spring Cleaning 2019</a>.
+The most of the announced vulnerabilities are fixed at the moment of this blogpost publishing.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Come join us at <a href="https://www.cloudbees.com/devops-world/lisbon">DevOps World | Jenkins World 2019</a> for "<a href="https://sched.co/UVWB"><strong>The Story, the Findings and the Fixes Behind More than 100 Jenkins Plugins Vulnerabilities</strong></a>", a talk about the most common vulnerabilities found during research in more than 100 plugins.
+We&#8217;ll review how to prevent these vulnerabilities during plugin development so that a more secure Jenkins CI and CD environment can be built.</p>
+</div>
+<div class="paragraph">
+<p>When I first began familiarising myself with Jenkins, I found myself almost overwhelmed by the amount of plugins to choose from. Most of these plugins are developed by third party developers or companies and can assist the user in a range of ways. They can extend the core functions, they can offer solutions to repetitive tasks or they can help with using a service. For example, they could help with publishing to an artifact store or spinning up cloud instances. However, before a plugin can use a network based service that requires credentials to connect, those credentials have to be typed in and saved somewhere. This raises the question, are those credentials stored securely? Or not?
+When I started looking at different plugins this was one of the first areas I investigated. I found a Jenkins security advisory describing this issue and came to the conclusion that this could be a problem in some plugins, albeit one that could be fixed easily. I found an example of weakly stored credentials in the Publish Over Dropbox Plugin; this plugin used a simple web form with a textbox element to display the token in the plugin’s settings page. This token was stored in plaintext:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-11-plugin-creds-secure-store/PluginWebForm.png" alt="PluginWebForm">
+</div>
+</div>
+<div class="paragraph">
+<p>The following Jelly code was behind the web form and shows that a password field wasn’t used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="html"><span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"${%Token}"</span> <span class="na">field=</span><span class="s">"authorizationCode"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;f:textbox/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The related plugin .xml file contained the secret key in plaintext:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="xml"><span class="nt">&lt;org.jenkinsci.plugins.publishoverdropbox.impl.DropboxTokenImpl</span> <span class="na">plugin=</span><span class="s">"publish-
+over-dropbox@1.2.2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;scope&gt;</span>GLOBAL<span class="nt">&lt;/scope&gt;</span>
+  <span class="nt">&lt;id&gt;</span>woodspeed<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;description&gt;&lt;/description&gt;</span>
+  <span class="nt">&lt;authorizationCode&gt;</span>lYD2VnNz<span class="nt">&lt;/authorizationCode&gt;</span>
+  <span class="nt">&lt;accessCode&gt;</span>lYD2VnNz<span class="nt">&lt;/accessCode&gt;</span>
+<span class="nt">&lt;/org.jenkinsci.plugins.publishoverdropbox.impl.DropboxTokenImpl&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Jenkins offers at least two ways to store credentials in an encrypted format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using a Secret type offered by Jenkins</p>
+</li>
+<li>
+<p>Third party plugin called Credentials Plugin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first case is the easiest solution, because Jenkins will automatically handle the encryption and decryption.</p>
+</div>
+<div class="paragraph">
+<p>Developers should also use the password field tag instead of the textbox field, as shown in the following Jelly control example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="html"><span class="nt">&lt;f:entry</span> <span class="na">title=</span><span class="s">"${%Secret Access Key}"</span> <span class="na">help=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;f:password</span> <span class="na">field=</span><span class="s">"secretKey"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/f:entry&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you would like to know what other vulnerabilities I discovered and how to fix them, come and join us for the presentation in Lisbon!
+In case you are unable to attend the conference, you can read more at <a href="https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2019/may/story-of-a-hundred-vulnerable-jenkins-plugins/">Story of a Hundred Vulnerable Jenkins Plugins</a>.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins world/">
+jenkins world
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/devopsworld2019/">
+devopsworld2019
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/woodspeed/">
+Viktor Gazdag
+</a>
+</p>
+<div class="paragraph">
+<p>Viktor is a security consultant and the 2019 Jenkins Security MVP.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/woodspeed" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/wucpi" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/11/2019-11-29-do-plugins-store-credentials-in-a-secure-way.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

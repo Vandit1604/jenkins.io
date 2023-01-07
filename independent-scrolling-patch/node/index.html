@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Community Blog
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/node/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/node/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-8 main-content with-sidebar" id="content">
+<div id="content-top">
+<h2>
+Jenkins Community Blog
+</h2>
+</div>
+<div class="blogintro">
+The Jenkins project has a lot going on between core/plugin development,
+events and other open source automation related activities. To keep up with
+it subscribe to our
+<a href="https://feeds.feedburner.com/ContinuousBlog/">
+RSS feed
+</a>
+or
+<a href="https://twitter.com/jenkinsci">
+follow us on Twitter
+</a>
+</div>
+<!-- starting partial blogcardlist.html.haml -->
+<div class="content blog-posts app-blog-page">
+<div class="item-list">
+<ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+27
+</div>
+</div>
+<h5 class="title">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</h5>
+</div>
+<p class="teaser">
+Table of Contents
+
+Pre-requisites
+
+Java
+Jenkins user
+Docker
+
+
+Create a new node in Jenkins
+
+Node creation in the UI
+Node configuration
+
+
+Run your Jenkins agent as a service
+
+
+
+
+
+In this tutorial, we will review how to start a Jenkins agent as a Linux service with systemd.
+When using Docker for my agents, entering the correct options on the command line should cause the agents to restart automatically.
+Sometimes, such as when you want to use...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/gounthar/"><div class="app-avatar"><img alt="Bruno Verachten" class="app-avatar__image" src="/images/avatars/gounthar.png"></div> Bruno Verachten</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/systemd/">
+systemd
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/agent/">
+agent
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/node/">
+node
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/12/14/require-java-11/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+14
+</div>
+</div>
+<h5 class="title">
+Jenkins plugin development requires Java 11 or newer
+</h5>
+</div>
+<p class="teaser">
+🚀 Java Platform update
+
+
+Jenkins has required Java 11 or newer
+since 2.361.1 LTS (released on September 7, 2022)
+and has supported Java 17 since 2.346.1 LTS (released on June 16, 2022).
+At the time, more users were running Jenkins on Java 8 than on Java 11,
+and a negligible number of users were running Jenkins on Java 17.
+In recent months, usage of Java 11 has surpassed usage of...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/basil/"><div class="app-avatar"></div> Basil Crow</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/12/09/jfrog-maintenance/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+09
+</div>
+</div>
+<h5 class="title">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</h5>
+</div>
+<p class="teaser">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) December 18, 2022
+
+
+
+
+
+
+
+December 18, 2022: our sponsor JFrog will proceed to perform maintenance of our "jenkinsci" Artifactory instance.
+
+
+Expect a complete downtime of about 6 hours due to the nature of this maintenance.
+The maintenance involves cloud migration from Google Cloud to Amazon Web Services.
+
+
+
+
+Impacts
+
+
+Only Jenkins contributors will be impacted, as no releases or builds on ci.jenkins.io or on...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/dduportal/"><div class="app-avatar"><img alt="Damien DUPORTAL" class="app-avatar__image" src="/images/avatars/dduportal.jpg"></div> Damien DUPORTAL</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jfrog/">
+jfrog
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/artifactory/">
+artifactory
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/repo.jenkins-ci.org">
+repo.jenkins-ci.org
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/infra/">
+infra
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+09
+</div>
+</div>
+<h5 class="title">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</h5>
+</div>
+<p class="teaser">
+'Tis the season of gift giving and what better way than to give the gift of mentorship.
+
+
+Jenkins is a big supporter and contributor of programs like Google Summer of Code (GSoC), She Code Africa, and Outreachy.
+We believe in the value and advancements in helping new, and in many cases under-represented contributors to the open source.
+There is also a special 'je ne sais quoi' that...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/alyssat/"><div class="app-avatar"><img alt="Alyssa Tong" class="app-avatar__image" src="/images/avatars/alyssat.jpg"></div> Alyssa Tong</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2023/">
+gsoc2023
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/12/05/jenkins-newsletter/">
+<div class="header">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+05
+</div>
+</div>
+<h5 class="title">
+Jenkins November 2022 Newsletter
+</h5>
+</div>
+<p class="teaser">
+November 2022
+
+
+
+
+
+Welcome to the Jenkins Newsletter! This is a compilation of progress within the project, highlighted by Jenkins Special Interest Groups (SIGs) for the month of November.
+
+
+Got Inspiration? We would love to highlight your cool Jenkins innovations.
+Share your story and you could be in the next Jenkins newsletter.
+View previous editions of the Jenkins Newsletter here!
+
+
+Happy reading!
+
+
+
+
+Highlights:
+
+
+
+
+Congratulations to the new officers and members of the...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/alyssat/"><div class="app-avatar"><img alt="Alyssa Tong" class="app-avatar__image" src="/images/avatars/alyssat.jpg"></div> Alyssa Tong</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/newsletter/">
+newsletter
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/contribute/">
+contribute
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/11/24/jenkins-sponsor-appreciation/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+24
+</div>
+</div>
+<h5 class="title">
+Jenkins Sponsor Appreciation
+</h5>
+</div>
+<p class="teaser">
+The Jenkins project would like to take a moment and share deep gratitude to our sponsors.
+Sponsorship of the Jenkins project is key to the maintenance and development of Jenkins.
+There are different ways in which our sponsor organizations support the Jenkins project, such as infrastructure, necessary development tools, funding, and providing mirrors to connect Jenkins to the community.
+
+
+For supporting Jenkins distribution, build, test, and deployment...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/kmartens27/"><div class="app-avatar"><img alt="Kevin Martens" class="app-avatar__image" src="/images/avatars/kmartens27.jpeg"></div> Kevin Martens</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/sponsors/">
+sponsors
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/governance/">
+governance
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/11/23/get-prepared-for-gsoc/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+23
+</div>
+</div>
+<h5 class="title">
+GSoC 2023: how to get prepared
+</h5>
+</div>
+<p class="teaser">
+We are happy to see a lot of questions on how to prepare efficiently to submit a powerful project submission.
+This is key to be selected and participate in the coming Google Summer of Code (GSoC).
+This blog post is addressed to those who ask these questions.
+
+
+
+
+
+First of all, welcome to the Jenkins Community!
+Thank you for your interest in Jenkins in general and for GSoC 2023...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/jmmeessen/"><div class="app-avatar"><img alt="Jean-Marc Meessen" class="app-avatar__image" src="/images/avatars/jmMeessen.jpg"></div> Jean-Marc Meessen</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2023/">
+gsoc2023
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="/jenkins.io/independent-scrolling-patch/blog/2022/11/17/jenkins-election-candidates-and-results/">
+<div class="header">
+<div class="date">
+<div class="month">
+Nov
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+Jenkins Elections Announcement
+</h5>
+</div>
+<p class="teaser">
+Hello all, voter registration and candidate nominations for the 2022 Jenkins elections are now complete.
+Thanks to everyone who registered to vote and to all those who submitted nominations.
+Special thanks to the candidates that have accepted the nominations.
+
+
+As in years past, when a particular role receives only one nomination, an election is not required.
+This year, all the board and officer positions are uncontested, with one...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<div>
+<a class="app-author-link" href="/blog/authors/kmartens27/"><div class="app-avatar"><img alt="Kevin Martens" class="app-avatar__image" src="/images/avatars/kmartens27.jpeg"></div> Kevin Martens</a>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/governance/">
+governance
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/governance-board/">
+governance-board
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/elections/">
+elections
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<!-- ending partial blogcardlist.html.haml -->
+<!-- starting partial pagination.html.haml -->
+<div>
+<nav>
+<ul class="pagination">
+<li class="disabled page-item">
+<a class="page-link">
+&laquo;
+</a>
+</li>
+<li class="active page-item">
+<a class="page-link" href=".">
+1
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="./page/2.html">
+2
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="./page/3.html">
+3
+</a>
+</li>
+<li class="page-item disabled">
+<a class="page-link" href="#">
+...
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="./page/106.html">
+106
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="./page/107.html">
+107
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="./page/108.html">
+108
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="/jenkins.io/independent-scrolling-patch/node/page/2.html">
+&raquo;
+</a>
+</li>
+</ul>
+</nav>
+</div>
+
+<!-- ending partial pagination.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
+<div class="content">
+<!-- starting partial events.html.haml -->
+<div class="item-list">
+<ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://fosdem.org/2023/" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Feb
+</div>
+<div class="day">
+4
+</div>
+<div class="dow">
+Sat
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+FOSDEM'23
+</h5>
+Brussels, Belgium
+</div>
+<p class="teaser">
+
+FOSDEM is a free event for software developers to meet, share ideas and collaborate. Visit us at the Jenkins stand.
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.socallinuxexpo.org/scale/20x" rel="noreferrer noopener" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Mar
+</div>
+<div class="day">
+9
+</div>
+<div class="dow">
+Thu
+</div>
+</div>
+<div class="time">
+10:00 am
+</div>
+</div>
+<h5 class="title">
+SCALE 20X
+</h5>
+Pasadena, California
+</div>
+<p class="teaser">
+
+SCaLE is the largest community-run open-source and free software conference in North America. Visit us at the Jenkins booth!
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+</ul>
+</div>
+
+<!-- ending partial events.html.haml -->
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//node/index.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

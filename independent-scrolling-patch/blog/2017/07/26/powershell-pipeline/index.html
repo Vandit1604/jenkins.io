@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Microsoft PowerShell Support for Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/07/26/powershell-pipeline/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Microsoft PowerShell Support for Pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Microsoft PowerShell Support for Pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Microsoft PowerShell Support for Pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/07/26/powershell-pipeline/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Microsoft PowerShell Support for Pipeline" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Microsoft PowerShell Support for Pipeline
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/gabloe/"><div class="app-avatar"></div> Gabriel Loewen</a>
+July 26, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Microsoft+PowerShell+Support+for+Pipeline&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F07%2F26%2Fpowershell-pipeline%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I am pleased to announce Microsoft PowerShell support for Jenkins Pipeline!
+As of <a href="https://plugins.jenkins.io/durable-task">Durable Task 1.14</a> and
+<a href="https://plugins.jenkins.io/workflow-durable-task-step">Pipeline Nodes and Processes Plugin 2.12</a>, you will now be able to run Microsoft PowerShell scripts
+directly in your Jenkins Pipeline projects.  This blog post covers the basics
+of getting started with Microsoft PowerShell in Pipeline and provides some
+basic examples.</p>
+</div>
+<div class="sect1">
+<h2 id="introduction-to-microsoft-powershell"><a class="anchor" href="#introduction-to-microsoft-powershell"></a>Introduction to Microsoft PowerShell</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PowerShell is Microsoft&#8217;s open source and cross platform command line shell, as
+well as an automation and configuration tool/framework which has a broad user
+base. PowerShell can be used to perform common system administration tasks in
+Windows, macOS, and Linux environments. It can also be used as a general
+purpose scripting language. Now that Jenkins Pipeline supports PowerShell, you
+can enjoy the rich set of features in PowerShell for your daily DevOps work.</p>
+</div>
+<div class="paragraph">
+<p>Before diving into using PowerShell in your Pipeline, I recommend reading the
+<a href="https://msdn.microsoft.com/en-us/library/ms714469(v=vs.85).aspx">Windows
+PowerShell Reference</a> as well as the
+<a href="https://blogs.msdn.microsoft.com/powershell/">PowerShell Team Blog</a> for an
+introduction to PowerShell features, utilities, and as a quick look into the
+PowerShell language.  Microsoft also has an active
+<a href="https://github.com/powershell/powershell">PowerShell community</a> on GitHub,
+which I highly recommend visiting to submit feature requests and bug
+reports as you see fit. Jenkins Pipeline currently supports Microsoft
+PowerShell 3.0 or higher, so also be sure to check which version of PowerShell
+is installed on your system in order to take advantage of PowerShell in your
+Pipeline.  Please note that we recommend that you upgrade to the latest stable
+version of PowerShell available, which as of this writing is version 5.1.14393.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The provided code examples use scripted pipeline syntax. Please consider using <code>script{}</code> block for declarative pipelines.</p>
+</div>
+<div class="sect2">
+<h3 id="the-powershell-step"><a class="anchor" href="#the-powershell-step"></a>The <code>powershell</code> step</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">powershell</span> <span class="s1">'Write-Output "Hello, World!"'</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-microsoft-powershell-in-pipeline"><a class="anchor" href="#using-microsoft-powershell-in-pipeline"></a>Using Microsoft PowerShell in Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Writing PowerShell code as part of your pipeline is incredibly simple. The step that you will use is
+simply <code>powershell</code>, and it includes the same optional parameters as the
+Windows Batch (<code>bat</code>) step, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>returnStdout: Returns the standard output stream with a default encoding of UTF-8 (alternative encoding is optional)</p>
+</li>
+<li>
+<p>returnStatus: Returns the exit status (integer) of the PowerShell script</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
+<div class="sect3">
+<h4 id="capture-exit-status-of-a-powershell-script"><a class="anchor" href="#capture-exit-status-of-a-powershell-script"></a>Capture exit status of a PowerShell script</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">status</span> <span class="o">=</span> <span class="n">powershell</span><span class="o">(</span><span class="nl">returnStatus:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">script:</span> <span class="s1">'ipconfig'</span><span class="o">)</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">status</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Success!</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="capture-and-print-the-output-of-a-powershell-script"><a class="anchor" href="#capture-and-print-the-output-of-a-powershell-script"></a>Capture and print the output of a PowerShell script</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">powershell</span><span class="o">(</span><span class="nl">returnStdout:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">script:</span> <span class="s1">'Write-Output "PowerShell is mighty!"'</span><span class="o">)</span>
+    <span class="n">println</span> <span class="n">msg</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="which-streams-get-returned-when-i-use-returnstdout"><a class="anchor" href="#which-streams-get-returned-when-i-use-returnstdout"></a>Which streams get returned when I use <code>returnStdout</code>?</h3>
+<div class="paragraph">
+<p>Until the release of PowerShell 5, there were five distinct output streams. PowerShell 5 introduced a sixth stream for pushing "informational" content,
+with the added benefit of being able to capture messages sent to Write-Host. Each row of the following table describes a PowerShell stream along with
+the corresponding Cmdlet used for writing to the stream for that particular row. Please keep in mind that stream 6 and associated cmdlets either
+do not exist or exhibit alternate behavior in versions of PowerShell earlier than version 5.</p>
+</div>
+<table class="tableblock frame-ends grid-all" style="width: 40%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Stream</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Cmdlet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output stream (e.g. stdOut)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write-Output</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Error stream (e.g. stdErr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write-Error</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Warning stream</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write-Warning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verbose stream</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write-Verbose</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debug stream</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write-Debug</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information stream</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write-Information (or Write-Host with <a href="https://blogs.technet.microsoft.com/heyscriptingguy/2015/07/04/weekend-scripter-welcome-to-the-powershell-information-stream/">caveats</a>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If you are using the <code>returnStdout</code> option of the <code>powershell</code> Pipeline step
+then <strong>only</strong> stream 1 will be returned, while streams 2-6 will be redirected to
+the console output. For example:</p>
+</div>
+<div class="sect3">
+<h4 id="write-to-all-available-streams-and-return-the-standard-output"><a class="anchor" href="#write-to-all-available-streams-and-return-the-standard-output"></a>Write to all available streams and return the standard output</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">stdout</span> <span class="o">=</span> <span class="n">powershell</span><span class="o">(</span><span class="nl">returnStdout:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">script:</span> <span class="s1">'''
+        # Enable streams 3-6
+        $WarningPreference = 'Continue'
+        $VerbosePreference = 'Continue'
+        $DebugPreference = 'Continue'
+        $InformationPreference = 'Continue'
+
+        Write-Output 'Hello, World!'
+        Write-Error 'Something terrible has happened!'
+        Write-Warning 'Warning! There is nothing wrong with your television set'
+        Write-Verbose 'Do not attempt to adjust the picture'
+        Write-Debug 'We will control the horizontal.  We will control the vertical'
+        Write-Information 'We can change the focus to a soft blur or sharpen it to crystal clarity.'
+    '''</span><span class="o">)</span>
+    <span class="n">println</span> <span class="n">stdout</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="console-output"><a class="anchor" href="#console-output"></a>Console output:</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>[Pipeline] {
+[Pipeline] powershell
+[TestStreams] Running PowerShell script
+﻿&lt;Jenkins Home&gt;\workspace\TestStreams@tmp\durable-4d924c2d\powershellScript.ps1 : Something terrible has
+happened!
+At ﻿&lt;Jenkins Home&gt;\workspace\TestStreams@tmp\durable-4d924c2d\powershellMain.ps1:2 char:1
++ &amp; '﻿&lt;Jenkins Home&gt;\workspace\TestStreams@tmp\durable-4d924c ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,powershellScript.ps1
+
+Warning! There is nothing wrong with your television set
+Do not attempt to adjust the picture
+We will control the horizontal.  We will control the vertical
+We can change the focus to a soft blur or sharpen it to crystal clarity.
+Hello, World!
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that "Hello, World!" gets printed last even though it is the first output
+statement in my script.  Another interesting aspect of this example is that the
+<code>powershell</code> step failed, which ultimately caused the job to fail. The failure
+in this example is due to the PowerShell error stream being non-empty, which
+therefore caused the step to result in a non-zero exit status. However, as you
+will soon discover, there are a variety of causes for a failing <code>powershell</code>
+step.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-causes-a-failing-exit-status"><a class="anchor" href="#what-causes-a-failing-exit-status"></a>What causes a failing exit status?</h3>
+<div class="paragraph">
+<p>When you execute a <code>powershell</code> step, it may produce a non-zero exit code and
+fail your pipeline build.  This is very similar to other shell steps with some
+interesting caveats. Your <code>powershell</code> step may produce a failing exit status
+in the following instances:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Something in your PowerShell script has thrown an exception</p>
+</li>
+<li>
+<p>Your PowerShell script explicitly calls <code>exit</code> with a non-zero exit code</p>
+</li>
+<li>
+<p>Your PowerShell script calls a native application that produces a non-zero <code>$LastExitCode</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>$LastExitCode is an <a href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_automatic_variables">automatic variable</a> that is set after executing a native application</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Your PowerShell script results in a non-empty error stream (with or without throwing an exception)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Overriding the exit status behavior of your <code>powershell</code> step can be achieved
+by explicitly exiting from your script as long as the failure was not caused by
+an unhandled exception. For example:</p>
+</div>
+<div class="sect3">
+<h4 id="unavoidable-failure-caused-by-an-unhandled-exception"><a class="anchor" href="#unavoidable-failure-caused-by-an-unhandled-exception"></a>Unavoidable failure caused by an unhandled exception</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">powershell</span> <span class="s1">'''
+        throw 'Error! Problem Exists Between Keyboard And Chair'
+        exit 0  # Unreachable code
+    '''</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="failed-step-caused-by-a-non-empty-error-stream"><a class="anchor" href="#failed-step-caused-by-a-non-empty-error-stream"></a>Failed step caused by a non-empty error stream</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">powershell</span> <span class="s1">'''
+        Write-Error 'Error! Problem Exists Between Keyboard And Chair'
+    '''</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="failure-prevented-by-an-explicit-exit"><a class="anchor" href="#failure-prevented-by-an-explicit-exit"></a>Failure prevented by an explicit exit</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">powershell</span> <span class="s1">'''
+        Write-Error 'Error! Problem Exists Between Keyboard And Chair'
+        exit 0
+    '''</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scripts-vs-cmdlets"><a class="anchor" href="#scripts-vs-cmdlets"></a>Scripts vs. Cmdlets</h3>
+<div class="paragraph">
+<p>A Cmdlet is a small lightweight utility written in either C#, and compiled, or
+written in PowerShell directly. Depending on what your goal is in your pipeline
+you can make use of Cmdlets directly in your pipeline code, call a self
+contained PowerShell script, or some mixture of the two. If your strategy is to
+keep each <code>powershell</code> step as short and succinct as possible then it may make
+sense for you to write a library of Cmdlets, but if you have monolithic scripts
+then it may make sense for you to call those scripts directly from your
+pipeline. The choice is entirely up to you, as both scenarios are supported.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="thanks-for-reading-and-have-fun"><a class="anchor" href="#thanks-for-reading-and-have-fun"></a>Thanks for reading, and have fun!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I sincerely hope that this post has encouraged you to try using PowerShell in
+your Jenkins Pipeline. Please do not hesitate to file an issue against the
+<a href="https://wiki.jenkins.io/display/JENKINS/Durable+Task+Plugin">durable-task</a>
+plugin on
+<a href="https://issues.jenkins.io/secure/IssueNavigator.jspa?mode=hide&amp;reset=true&amp;jqlQuery=project+%3D+JENKINS+AND+status+in+%28Open%2C+%22In+Progress%22%2C+Reopened%29+AND+component+%3D+%27durable-task-plugin%27">JIRA</a>
+if you have discovered any problem that you suspect is related to the
+<code>powershell</code> step.  For general PowerShell related issues or inquiries
+please route your questions to the
+<a href="https://github.com/powershell/powershell">PowerShell community</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/durable-task/">
+durable-task
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/powershell/">
+powershell
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/gabloe/">
+Gabriel Loewen
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/gabloe" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/07/2017-07-26-powershell-pipeline.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

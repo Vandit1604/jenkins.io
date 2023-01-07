@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Extension Points defined in Common API for Blue Ocean Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/extensions/blueocean-commons/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Extension Points defined in Common API for Blue Ocean Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Extension Points defined in Common API for Blue Ocean Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Extension Points defined in Common API for Blue Ocean Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/extensions/blueocean-commons/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Extension Points defined in Common API for Blue Ocean Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="active">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Extension Points defined in Common API for Blue Ocean Plugin
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#pagestatepreloader">PageStatePreloader</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/blueocean-commons">Common API for Blue Ocean Plugin</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pagestatepreloader"><a class="anchor" href="#pagestatepreloader"></a>PageStatePreloader</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/blueocean-commons/io/jenkins/blueocean/commons/PageStatePreloader.html" title="Javadoc for io.jenkins.blueocean.commons.PageStatePreloader">io.jenkins.blueocean.commons.PageStatePreloader in blueocean-commons</a></code></p>
+</div>
+<div class="paragraph">
+<p> Page state "preloader" extension point. 
+<p>  Allows the loading page's JavaScript blueocean global scope to  be pre-populated with data that we know the page is going to need, thereby  providing a mechanism for eliminating the request overhead for that data.&lt;/p&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-config">Config API for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>config.<wbr/><strong>BlueOceanConfigStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-config/search?q=BlueOceanConfigStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-config">Config API for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>config.<wbr/><strong>JenkinsJSExtensionsStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-config/search?q=JenkinsJSExtensionsStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>BlueRunChangesetPreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=BlueRunChangesetPreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>FavoriteListStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=FavoriteListStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>FavoritesStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=FavoritesStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>OrganizationStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=OrganizationStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>PipelineActivityStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=PipelineActivityStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>PipelineBranchRunStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=PipelineBranchRunStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>PipelineStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=PipelineStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-api-impl">Pipeline implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>preload.<wbr/><strong>RESTFetchPreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-api-impl/search?q=RESTFetchPreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-rest-impl">REST Implementation for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>service.<wbr/>embedded.<wbr/><strong>UserStatePreloader</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-rest-impl/search?q=UserStatePreloader&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

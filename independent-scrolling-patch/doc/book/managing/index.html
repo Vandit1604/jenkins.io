@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Managing Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Managing Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Managing Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Managing Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Managing Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="active">Managing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-configuration/" class="">Configuring the System</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" class="">Configuration as Code</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/tools/" class="">Managing Tools</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" class="">Managing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/about-jenkins/" class="">About Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-info/" class="">System Information</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-properties/" class="">Jenkins Features Controlled with System Properties</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/change-system-timezone/" class="">Change System Time Zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-console/" class="">Script Console</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/groovy-hook-scripts/" class="">Groovy Hook Scripts</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" class="">Managing Nodes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-approval/" class="">In-process Script Approval</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/users/" class="">Manage Users</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" class="">Themes for user interface</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/user-content/" class="">User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/spawning-processes/" class="">Spawning Processes From Build</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../blueocean">
+⇐ Blue Ocean
+</a>
+</div>
+<div class="col-md-4">
+<a class="index doc-page-link" href="../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="system-configuration">
+Configuring the System ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Managing Jenkins
+</h1>
+<div id="subsections">
+<div class="toc">
+<div id="toc-title">
+Chapter Sub-Sections
+</div>
+<ul>
+<li>
+<a href="system-configuration">
+Configuring the System
+</a>
+</li>
+<li>
+<a href="casc">
+Configuration as Code
+</a>
+</li>
+<li>
+<a href="tools">
+Managing Tools
+</a>
+</li>
+<li>
+<a href="plugins">
+Managing Plugins
+</a>
+</li>
+<li>
+<a href="about-jenkins">
+About Jenkins
+</a>
+</li>
+<li>
+<a href="system-info">
+System Information
+</a>
+</li>
+<li>
+<a href="system-properties">
+Jenkins Features Controlled with System Properties
+</a>
+</li>
+<li>
+<a href="change-system-timezone">
+Change System Time Zone
+</a>
+</li>
+<li>
+<a href="cli">
+Jenkins CLI
+</a>
+</li>
+<li>
+<a href="script-console">
+Script Console
+</a>
+</li>
+<li>
+<a href="groovy-hook-scripts">
+Groovy Hook Scripts
+</a>
+</li>
+<li>
+<a href="nodes">
+Managing Nodes
+</a>
+</li>
+<li>
+<a href="script-approval">
+In-process Script Approval
+</a>
+</li>
+<li>
+<a href="users">
+Manage Users
+</a>
+</li>
+<li>
+<a href="ui-themes">
+Themes for user interface
+</a>
+</li>
+<li>
+<a href="user-content">
+User Content
+</a>
+</li>
+<li>
+<a href="spawning-processes">
+Spawning Processes From Build
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#system-configuration-group">System Configuration group</a></li>
+<li><a href="#security-group">Security group</a></li>
+<li><a href="#status-information-group">Status Information group</a></li>
+<li><a href="#troubleshooting-group">Troubleshooting group</a></li>
+<li><a href="#tools-and-actions-group">Tools and Actions group</a></li>
+<li><a href="#uncategorized-group">Uncategorized group</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most standard administrative tasks can be performed from the screens
+in the <strong>Manage Jenkins</strong> section of the dashboard.
+In this chapter, we look at these screens and explain how to use them.</p>
+</div>
+<div class="paragraph">
+<p>The tiles displayed on the <strong>Manage Jenkins</strong> page are grouped logically.
+Here we discuss the pages that are part of the standard installation.
+Plugins may add pages to this screen.</p>
+</div>
+<div class="paragraph">
+<p>The top of the <strong>Manage Jenkins</strong> screen may contain "Monitors"
+that alert you when a new version
+of the Jenkins software or a security update is available.
+Each monitor includes a description of the issue it is reporting and links to additional information about the issue</p>
+</div>
+<div class="paragraph">
+<p>Inline help is available on most <strong>Manage Jenkins</strong> pages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To access the help, select the <code>?</code> icon to the right of each field.</p>
+</li>
+<li>
+<p>Click the <code>?</code> icon again to hide the help text.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <strong>Manage Jenkins</strong> screens were modernized in 2020
+to provide a more attractive user interface for all users
+and a much better experience for users on narrow devices such as tablets and phones.
+The main changes made were:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configuration screens now use HTML <code>div</code> tags
+rather than the HTML <code>table</code> tags that were used in older releases.</p>
+</li>
+<li>
+<p>The screens linked from this page are grouped somewhat logically,
+whereas older versions presented a long list of tasks in somewhat random order.</p>
+</li>
+<li>
+<p>Some configuration fields were moved or added.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For more information about these and other changes that have been implemented, see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/changelog-stable/#v2.277.1">2.277.1 LTS Changelog</a></p>
+</li>
+<li>
+<p><a href="/blog/2020/11/10/major-changes-in-weekly-releases/">Jenkins 2.264+: Major changes in the weekly release line</a></p>
+</li>
+<li>
+<p><a href="/doc/upgrade-guide/">Jenkins LTS Upgrade Guide</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Other system administration topics are discussed in
+<a href="../system-administration/">Jenkins System Administration</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="system-configuration-group"><a class="anchor" href="#system-configuration-group"></a>System Configuration group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Screens for configuring resources for your Jenkins instance.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="system-configuration">Configure System</a></dt>
+<dd>
+<p>Configure global settings and paths for the Jenkins instance</p>
+</dd>
+<dt class="hdlist1"><a href="tools">Global Tool Configuration</a></dt>
+<dd>
+<p>Configure tools, their locations, and automatic installers</p>
+</dd>
+<dt class="hdlist1"><a href="plugins">Manage Plugins</a></dt>
+<dd>
+<p>Add, update, remove, disable/enable plugins
+that extend the functionality of Jenkins.</p>
+</dd>
+<dt class="hdlist1"><a href="nodes">Manage Nodes and Clouds</a></dt>
+<dd>
+<p>Add, remove, control, and monitor the nodes used for the agents on which build jobs run.</p>
+</dd>
+<dt class="hdlist1"><a href="casc">Configuration as Code</a></dt>
+<dd>
+<p>Configure your Jenkins instance using a human-readable YAML file rather than the UI.
+This is an optional feature that appears in this group
+only when the plugin is installed on your controller.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="security-group"><a class="anchor" href="#security-group"></a>Security group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Screens for configuring security features for your Jenkins instance.
+See <a href="/doc/book/security/">Securing Jenkins</a> for general information
+about managing Jenkins security.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="system-configuration">Configure Global Security</a></dt>
+<dd>
+<p>Set configuration parameters that secure your Jenkins instance.</p>
+</dd>
+<dt class="hdlist1"><a href="/doc/book/using/using-credentials/#adding-new-global-credentials">Manage Credentials</a></dt>
+<dd>
+<p>Configure the credentials that provide secure access
+to third-party sites and applications that interact with Jenkins.</p>
+</dd>
+<dt class="hdlist1"><strong>Configure Credential Providers</strong></dt>
+<dd>
+<p>Configure credential providers and types</p>
+</dd>
+<dt class="hdlist1"><a href="users">Manage Users</a></dt>
+<dd>
+<p>Manage users defined in the Jenkins user database.
+This is not used if you use a different security realm such as LDAP or AD.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="status-information-group"><a class="anchor" href="#status-information-group"></a>Status Information group</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="system-info">System Information</a></dt>
+<dd>
+<p>Displays information about the Jenkins environment.</p>
+</dd>
+<dt class="hdlist1"><a href="/doc/book/system-administration/viewing-logs/">System Log</a></dt>
+<dd>
+<p>Jenkins log that contains all <code>java.uil.logging</code> output related to Jenkins.</p>
+</dd>
+<dt class="hdlist1"><strong>Load Statistics</strong></dt>
+<dd>
+<p>Displays information about resource utilization on you Jenkins instance.</p>
+</dd>
+<dt class="hdlist1"><a href="about-jenkins">About Jenkins</a></dt>
+<dd>
+<p>Provides version and license information for your Jenkins instance.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting-group"><a class="anchor" href="#troubleshooting-group"></a>Troubleshooting group</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Manage Old Data</strong></dt>
+<dd>
+<p>Remove configuration information related to plugins that have been removed from the instance.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tools-and-actions-group"><a class="anchor" href="#tools-and-actions-group"></a>Tools and Actions group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Screens for common management tasks
+and management tools that enable you to do administrative tasks without using the UI.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Reload Configuration from Disk</strong></dt>
+<dd>
+<p>Discard all data that is loaded in memory and reload everything from the file system.
+This is useful when you modify configuration files directly on disk.</p>
+</dd>
+<dt class="hdlist1"><a href="cli">Jenkins CLI</a></dt>
+<dd>
+<p>How to use the Jenkins CLI from a shell or script.</p>
+</dd>
+<dt class="hdlist1"><a href="/doc/book/managing/script-console/">Script Console</a></dt>
+<dd>
+<p>Execute an Apache Groovy script for administration, troubleshooting, and diagnostics.</p>
+</dd>
+<dt class="hdlist1">Prepare for Shutdown</dt>
+<dd>
+<p>Prevents new builds from starting so that the system can be shut down safely.
+Displays a red banner with a custom message so that users know what is about to happen.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../resources/managing/prepare-for-shutdown.png" alt="Red headband with a custom message"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This does not ask Jenkins to stop; this action will just prevent new builds from starting.
+If you need to stop or restart Jenkins, you should use the command line or the <code>/restart</code> and <code>/safeRestart</code> end points.
+There is also a plugin called <a href="https://plugins.jenkins.io/saferestart/">Safe Restart</a> that will add a <code>Restart Safely</code> link in the UI.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="uncategorized-group"><a class="anchor" href="#uncategorized-group"></a>Uncategorized group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Screens for plugins that have not yet declared the category of their page.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../blueocean">
+⇐ Blue Ocean
+</a>
+</div>
+<div class="col-md-4">
+<a class="index doc-page-link" href="../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="system-configuration">
+Configuring the System ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/managing/index.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

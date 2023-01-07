@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Findsecbugs for Developers
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Adding findsecbugs to spotbugs for detecting common security bugs" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/03/02/findsecbugs/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Findsecbugs for Developers" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Findsecbugs for Developers" name="twitter:title">
+<meta content="Adding findsecbugs to spotbugs for detecting common security bugs" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Findsecbugs for Developers" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/03/02/findsecbugs/" property="og:url">
+<meta content="Adding findsecbugs to spotbugs for detecting common security bugs" name="og:description">
+<meta content="Findsecbugs for Developers" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Findsecbugs for Developers
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/jeffret-b/"><div class="app-avatar"><img alt="Jeff Thompson" class="app-avatar__image" src="/images/avatars/jeffret-b.jpg"></div> Jeff Thompson</a>
+March 02, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Findsecbugs+for+Developers&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F03%2F02%2Ffindsecbugs%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph lead">
+<p><a href="https://spotbugs.github.io/">Spotbugs</a> is a utility used in Jenkins and many other Java projects to detect common Java coding mistakes and bugs. It is integrated into the build process to improve the code before it gets merged and released. <a href="https://find-sec-bugs.github.io/">Findsecbugs</a> is a plugin for Spotbugs that adds 135 vulnerability types focused on the <a href="https://owasp.org/www-project-top-ten/">OWASP TOP 10</a> and the <a href="https://cwe.mitre.org/">Common Weakness Enumeration (CWE)</a>. I&#8217;m working on integrating findsecbugs into our Jenkins ecosystem.</p>
+</div>
+<div class="sect1">
+<h2 id="background"><a class="anchor" href="#background"></a>Background</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spotbugs traces its history through Findbugs, which started in 2006. As Findbugs it was widely adopted by many projects. About 2016, the Findbugs project ground to a halt. Like the mythical phoenix, the Spotbugs project rose from the ashes to keep the capabilities alive. Most things are completely compatible between the two systems.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins has used Findbugs and now Spotbugs for years. This is integrated as a build step into parent Maven poms, including the <a href="https://github.com/jenkinsci/plugin-pom/">plugin parent pom</a> and the <a href="https://github.com/jenkinsci/pom">parent pom for libraries and core components</a>. There are various properties that can be set to control the detection threshold, the effort, and findings or categories to exclude. Take a look at the effective pom for a project to see the settings.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conundrums"><a class="anchor" href="#conundrums"></a>Conundrums</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is a fundamental conundrum with introducing an analysis tool into a project. The best time to have done it is always in the past, particularly when the project first started. There are always difficulties in introducing it into an existing project. Putting it off for later just delays the useful results and makes later implementation more difficult. The best time to do it is now, as early as possible.</p>
+</div>
+<div class="paragraph">
+<p>All analysis tools are imperfect. They report some issues that don&#8217;t actually exist. They miss some important issues. This is worse in legacy code, making the adoption more difficult. Findings have to be examined and evaluated. Some are code weaknesses but don&#8217;t indicate necessary fixes. For example, MD5 has been known for years as a weak algorithm, unsuitable for security uses. It can be used for non-security purposes, such as fingerprinting, but even there other algorithms (SHA-2) are preferred. We should replace all usages of MD5, but in some cases that&#8217;s difficult and it&#8217;s not exactly a problem.</p>
+</div>
+<div class="paragraph">
+<p>Ultimately, the gain from these analysis tools isn&#8217;t so much from finding issues in existing code. The value comes more from catching new regressions that might be introduced or improving new code. This is one reason why it is valuable to add useful new analysis such as findsecbugs now, so that we can begin reaping the benefits.</p>
+</div>
+<div class="paragraph">
+<p>With a security tool like findsecbugs, there is another paradox. Adding the tool makes it easier to find potential security issues. Attackers could take advantage of this information. However, security by obscurity is not a good design. Anyone can run findsecbugs now without the project integrating it. Integrating it makes it easier for legitimate developers to resolve issues and prevent future ones.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="anchor" href="#implementation"></a>Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I&#8217;ve been working on integrating findsecbugs into the Jenkins project for several months. It is working in several repos. There are several others where I have presented draft PRs to demonstrate what it will look like once it is enabled. As soon as we can disseminate the information enough, I propose to enable it in the parent poms for widespread use.</p>
+</div>
+<div class="sect2">
+<h3 id="existing"><a class="anchor" href="#existing"></a>Existing</h3>
+<div class="paragraph">
+<p>I started by enabling findsecbugs in two major components where I have a high degree of familiarity, Remoting, and Jenkins. Most of the work here involves examining each finding and figuring out what to do with it. In most cases this results in using one of the suppression mechanisms to ignore the finding. In some cases, the code can be removed or improved.</p>
+</div>
+<div class="paragraph">
+<p>Findsecbugs reported a significant number of false positives in Remoting for a couple of notable reasons. (See the <a href="https://github.com/jenkinsci/remoting/pull/361">PR</a>.) Remoting uses Spotbugs aggressively with a Low threshold setting. This produces more results. Findsecbugs targets Java web applications. As the communication layer between agents and controller, Remoting uses some mechanisms that would be a problem on the server side but are acceptable on the agent.</p>
+</div>
+<div class="paragraph">
+<p>Even without all its plugins, Jenkins is a considerable collection of code. Findsecbugs reported a smaller number of false positives for Jenkins (See the <a href="https://github.com/jenkinsci/jenkins/pull/4381">PR</a>.) It runs Spotbugs at a High threshold, so it only reports issues it deems more concerning. A number of these indicate code debt, deprecated code to remove, or areas that could be improved. I created Jira tickets for many of these.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="demonstrated"><a class="anchor" href="#demonstrated"></a>Demonstrated</h3>
+<div class="paragraph">
+<p>I have created draft PRs to demonstrate how findsecbugs will look in several plugins. The goal is not to use these PRs directly but instead integrate findsecbugs at the parent pom level. These PRs serve as reference documentation.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://github.com/jenkinsci/credentials-plugin/pull/137">Credentials</a></dt>
+<dd>
+<p>This one is particularly interesting because here findsecbugs correctly detects the remains of a valid security vulnerability (<a href="/security/advisory/2019-05-21/">CVE-2019-10320</a>). Currently, this code is safely used only for migration of old data. If we had run findsecbugs on this plugin a year ago, it would have detected this valid vulnerability.</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/jenkinsci/ssh-slaves-plugin/pull/177">SSH Build Agents</a></dt>
+<dd>
+<p>This one is interesting because it flags MD5 as a concern. Since it is used for fingerprinting, it isn&#8217;t a valid vulnerability, but since the hash isn&#8217;t stored it is easy to improve the code here.</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/jenkinsci/ec2-plugin/pull/432">EC2</a></dt>
+<dd>
+<p>In this case, findsecbugs found some valid concerns, but the code isn&#8217;t used so it can be removed. Also, MD5 is harder to remove here but should be considered technical debt and removed when possible.</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/jenkinsci/platformlabeler-plugin/pull/165">Platform Labeler</a></dt>
+<dd>
+<p>Findsecbugs didn&#8217;t find any concerns here. This means adapting to it requires no work. In this demonstration, I added a fake finding to prove that it was working.</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/jenkinsci/file-leak-detector-plugin/pull/9">File Leak Detector</a></dt>
+<dd>
+<p>There is one simple finding noted here. Because it is part of the configuration performed by an administrator we can ignore it.</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/jenkinsci/credentials-binding-plugin/pull/88">Credentials Binding</a></dt>
+<dd>
+<p>Nothing was found here so integration requires no effort.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed"><a class="anchor" href="#proposed"></a>Proposed</h3>
+<div class="paragraph">
+<p>My proposal is to integrate findsecbugs configuration into the parent poms as soon as we can. The delay is currently mostly around sharing the information to prepare developers by blog post, email list discussion, and presentation.</p>
+</div>
+<div class="paragraph">
+<p>Even before I started working on this, <a href="https://github.com/StefanSpieker">StefanSpieker</a> proposed a <a href="https://github.com/jenkinsci/pom/pull/61">PR</a> to integrate into the parent Jenkins pom. This will apply to Jenkins libraries and core components. Once this is integrated, I will pull out the changes I made to the Jenkins and Remoting project poms.</p>
+</div>
+<div class="paragraph">
+<p>I also plan on integrating findsecbugs into the plugin and Stapler parent poms. Once it is added to the plugin parent pom all plugins will automatically perform these checks when they upgrade their parent pom version. If there are any findings, developers will need to take care of them as described in the next section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-do-you-need-to-do"><a class="anchor" href="#what-do-you-need-to-do"></a>What do you need to do?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once developers upgrade to a parent pom version that integrates findsecbugs, they may have to deal with evaluating, fixing, or suppressing findings. The parent pom versions do not yet exist but are in process or proposed.</p>
+</div>
+<div class="sect2">
+<h3 id="extraneous-build-message"><a class="anchor" href="#extraneous-build-message"></a>Extraneous build message</h3>
+<div class="paragraph">
+<p>In some cases, an extraneous message may show up in the build logs. It starts with a line like this <code>The following classes needed for analysis were missing:</code> followed by lines listing some methods by name. Ignore this message. It results from SpotBugs printing some internal, debug information that isn&#8217;t helpful here.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examine-findings"><a class="anchor" href="#examine-findings"></a>Examine findings</h3>
+<div class="paragraph">
+<p>If findsecbugs reports any findings, then a developer needs to examine and determine what to do about each one.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Excluding issues</dt>
+<dd>
+<p>You can exclude an issue, so that it is never reported in a project. This is done by configuring an exclusion file. If you encounter the findings CRLF_INJECTION_LOGS or INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE feel free to add these to an exclusion file. These are not considered a concern in Jenkins. See the <a href="https://github.com/jenkinsci/jenkins/pull/4381/files#diff-a3a723b46e92f2a14061ff6b9a589d67R16">Jenkins project exclusion file</a> for an example. You should be cautious about including other issue types here.</p>
+</dd>
+<dt class="hdlist1"><em>Temporarily</em> disable findsecbugs</dt>
+<dd>
+<p>You may disable findsecbugs by adding <code>&lt;Bug category="SECURITY"/&gt;</code> to the exclusion file. I strongly encourage you to only disable findsecbugs temporarily when genuinely needed.</p>
+</dd>
+<dt class="hdlist1">Suppress a finding</dt>
+<dd>
+<p>After determining that a finding is not important, you can suppress it by annotating a method or a class with <code>@SuppressFBWarnings(value = “&#8230;&#8203;”, justification=”&#8230;&#8203;”)</code>. I encourage you to suppress narrowly. Never suppress at the class level when you can add it to a method. For a long method, extract the problematic part into a small method and add the suppression there. I also encourage you to always add a meaningful justification.</p>
+</dd>
+<dt class="hdlist1">Improve code</dt>
+<dd>
+<p>Whenever possible improve the code such that the problematic code no longer exists. This can include removing deprecated or unused code, using improved algorithms, or improving structure or implementation. This is where the significant gains come from with SpotBugs and findsecbugs. Also, as you make changes or add new features make sure to implement them so as not to introduce new issues.</p>
+</dd>
+<dt class="hdlist1">Report security vulnerabilities</dt>
+<dd>
+<p>If you encounter a finding related to a valid security vulnerability, please report it via the <a href="/security/reporting/">Jenkins security reporting process</a>. This is the responsible behavior that benefits the community. Try not to discuss or call attention to the issue before it can be disclosed in a Jenkins security advisory.</p>
+</dd>
+<dt class="hdlist1">Create tasks</dt>
+<dd>
+<p>If you discover an improvement area that is too large to fit into your current work or release plan, I encourage you to record a task to get it done. You can do this in Jira, like I did for several issues in Jenkins core, or in whatever task management system you use.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SpotBugs has long been used in Jenkins to catch bugs and improve code quality. Findsecbugs adds valuable security-related bug definitions. As we integrate it into the existing Jenkins code base it will require analysis and suppression for legacy code. This identifies areas we can improve and enhances quality as we move forward. Please responsibly <a href="/security/reporting/">report</a> any security vulnerabilities you discover.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Jeff Thompson" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/jeffret-b.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/jeffret-b/">
+Jeff Thompson
+</a>
+</p>
+<div class="paragraph">
+<p>Jeff has been using Jenkins for many years.
+Since 2018 he has been contributing to Jenkins core and plugins.
+He maintains the Remoting library and participates on the Jenkins security team.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/jeffret-b" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/03/2020-03-02-findsecbugs.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Java 17 Preview is available in Jenkins 2.339+
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Starting with Jenkins 2.339, preview support for Java 17 is available.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/03/21/java17-preview-availability/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Java 17 Preview is available in Jenkins 2.339+" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Java 17 Preview is available in Jenkins 2.339+" name="twitter:title">
+<meta content="Starting with Jenkins 2.339, preview support for Java 17 is available.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-03-21-java17-preview-availability/java-17-preview-for-jenkins.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Java 17 Preview is available in Jenkins 2.339+" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/03/21/java17-preview-availability/" property="og:url">
+<meta content="Starting with Jenkins 2.339, preview support for Java 17 is available.
+" name="og:description">
+<meta content="Java 17 Preview is available in Jenkins 2.339+" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-03-21-java17-preview-availability/java-17-preview-for-jenkins.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Java 17 Preview is available in Jenkins 2.339+
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/basil/"><div class="app-avatar"></div> Basil Crow</a>
+March 21, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Java+17+Preview+is+available+in+Jenkins+2.339%2B&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F03%2F21%2Fjava17-preview-availability%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please refer to the <a href="/doc/administration/requirements/java">Java requirements</a> documentation for up-to-date details on how to run Jenkins on Java 17.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/logos/formal/256.png" alt="Jenkins Java"></span></p>
+</div>
+<div class="paragraph">
+<p>Jenkins, one of the leading open-source automation servers, does not yet officially support Java 17.
+On September 14, 2021, OpenJDK 17 was released.
+This is a Long-Term-Support (LTS) release, and it will stay around for years.
+The Jenkins project is eager to offer full support of this version.
+Over the last year, many contributors have been working toward enabling support for Java 17 in the project.
+It was a thorny path, but now, on behalf of the <a href="/sigs/platform">Jenkins Platform SIG</a>,
+we are happy to announce preview availability of Java 17 support in Jenkins weekly releases!</p>
+</div>
+<div class="paragraph">
+<p>Why do we need preview availability for Java 17?
+It offers Jenkins contributors and early adopters
+a way to try out the changes before the general availability release happens later this year.
+It should help us to get more exploratory testing and, hopefully,
+resolve most of the issues before Java 17 is officially supported in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>In this blog post we will describe how to run with Java 17
+and how to investigate and report compatibility issues.</p>
+</div>
+<div class="sect1">
+<h2 id="background"><a class="anchor" href="#background"></a>Background</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A group of contributors has been working on Java 17 support,
+focusing on enabling Java 17 support in development tools, testing, and addressing known compatibility issues.
+See the <a href="/sigs/platform/#meetings">Platform SIG meeting notes</a> for detailed status updates.
+Starting with Jenkins 2.339, Jenkins successfully runs with latest OpenJDK 17 releases on various Linux and Windows platforms.
+We performed a <em>lot</em> of automated and exploratory tests.
+Jenkins plugins appear to work well.
+There is ongoing test automation effort toward the GA release,
+but we were able to successfully run Jenkins core tests and <a href="https://github.com/jenkinsci/plugin-compat-tester">Plugin Compatibility Tester</a> for recommended plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-jenkins-and-java-17-in-docker"><a class="anchor" href="#running-jenkins-and-java-17-in-docker"></a>Running Jenkins and Java 17 in Docker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For several months, we have provided Docker images for the Jenkins controller and agent.
+All these images are based on the official <a href="https://hub.docker.com/_/debian">Debian stable</a> and <a href="https://hub.docker.com/_/eclipse-temurin">Eclipse Temurin</a> images maintained by the Docker community.</p>
+</div>
+<div class="sect2">
+<h3 id="jenkins-controller-image"><a class="anchor" href="#jenkins-controller-image"></a>Jenkins controller image</h3>
+<div class="paragraph">
+<p>Java 17 support is now provided as a part of the official
+<a href="https://hub.docker.com/r/jenkins/jenkins">jenkins/jenkins</a> image.
+You can run Jenkins with Java 17 simply as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:jdk17-preview</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following tags are available:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>jdk17-preview</code></dt>
+<dd>
+<p>Latest weekly release with Java 17 support</p>
+</dd>
+<dt class="hdlist1"><code>2.339-jdk17-preview</code></dt>
+<dd>
+<p>Weekly releases packaged with Java 17</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The image is fully compatible with
+<a href="https://github.com/jenkinsci/docker/blob/master/README.md">the official Jenkins Docker image documentation</a>,
+e.g., you can use <code>plugins.txt</code> to install plugins, mount volumes, and pass extra options via environment variables.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="agent-images"><a class="anchor" href="#agent-images"></a>Agent images</h3>
+<div class="paragraph">
+<p>If you use containerized agents via the Docker or Kubernetes plugins,
+we have also released official Docker images for Jenkins agents:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://hub.docker.com/r/jenkins/agent">jenkins/agent</a></p>
+</li>
+<li>
+<p><a href="https://hub.docker.com/r/jenkins/inbound-agent/">jenkins/inbound-agent</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All images use the <code>jdk17-preview</code> tag.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-jenkins-with-java"><a class="anchor" href="#running-jenkins-with-java"></a>Running Jenkins with Java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with Java 11, you can start Jenkins using the <code>java</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">java <span class="nt">-jar</span> jenkins.war <span class="nt">--enable-future-java</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compatibility-issues"><a class="anchor" href="#compatibility-issues"></a>Compatibility issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In March 2022, the community performed many exploratory tests to discover as many Java 17 issues as possible.</p>
+</div>
+<div class="paragraph">
+<p>As a result, the community solved a lot of problems before announcing Java 17 support in Jenkins. However, it is still possible that some plugins have not been updated to support Java 17.</p>
+</div>
+<div class="paragraph">
+<p>If you find a regression in a plugin, please file a bug report in Jira:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-67908">Open Java 17 issues</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For security issues, please use the standard <a href="/security/#reporting-vulnerabilities">vulnerability reporting process</a>.
+Although we will be fixing Java 17 specific issues in public while Java 17 support is in preview,
+following the security process will help us to investigate the impact on Java 8 and 11 users.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributing"><a class="anchor" href="#contributing"></a>Contributing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We appreciate any and all contributions in the Java 17 effort,
+including trying out Jenkins with Java 17 and reporting or fixing compatibility issues.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you want to do exploratory testing,
+we recommend trying out Java 17 support on one of your test controllers.
+Such testing is highly appreciated,
+especially if you use some service integration plugins or exotic platforms.</p>
+</li>
+<li>
+<p>If you are a plugin developer/maintainer,
+we would appreciate if you could test your plugin with Java 17.
+Java 17 developer guidelines are forthcoming.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Whatever you do, please let us know about your experience by sending a message to
+the <a href="https://groups.google.com/forum/#!forum/jenkins-platform-sig">Platform SIG mailing list</a>.
+This information will help us track changes and contributions.
+Any other feedback about the migration will be appreciated!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We will soon be updating the toolchain to support Java 17.
+At that point, we will publish documentation for plugin developers explaining how to test plugins with Java 17.</p>
+</div>
+<div class="paragraph">
+<p>In the coming weeks we will focus on addressing feedback from early adopters and
+fixing any discovered compatibility issues.
+We will also continue working on Java 17 support patches toward general availability later this year.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/sigs/platform/">Platform Special Interest Group</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/java17/">
+java17
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform-sig/">
+platform-sig
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/basil/">
+Basil Crow
+</a>
+</p>
+<div class="paragraph">
+<p>Basil is a long-time Jenkins user and contributor, a Jenkins core maintainer, and the maintainer of the <a href="https://plugins.jenkins.io/email-ext">Email Extension</a>, <a href="https://plugins.jenkins.io/timestamper">Timestamper</a>, and <a href="https://plugins.jenkins.io/swarm">Swarm</a> plugins (among others).
+Basil enjoys working on open source software in his free time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/basil" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bcrow" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/basilcrow" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/03/2022-03-21-java17-preview-availability.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

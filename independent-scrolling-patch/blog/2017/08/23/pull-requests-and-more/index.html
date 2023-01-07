@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Needs You - Pull Request Corner at Jenkins World 2017
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/08/23/pull-requests-and-more/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Needs You - Pull Request Corner at Jenkins World 2017" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Needs You - Pull Request Corner at Jenkins World 2017" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Needs You - Pull Request Corner at Jenkins World 2017" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/08/23/pull-requests-and-more/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Needs You - Pull Request Corner at Jenkins World 2017" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins Needs You - Pull Request Corner at Jenkins World 2017
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+August 23, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+Needs+You+-+Pull+Request+Corner+at+Jenkins+World+2017&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F08%2F23%2Fpull-requests-and-more%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https://github.com/markewaite">Mark Waite</a>, who maintains
+the <a href="https://plugins.jenkins.io/git">git plugin</a>,
+the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>,
+and is a technical evangelist for <a href="https://cloudbees.com">CloudBees, Inc.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The Jenkins project booth at <a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World 2017</a>
+will include the "Pull Requests Corner", recruiting new Jenkins contributors.
+We think there are many people who will attend the conference without realizing how easy it is
+to help the Jenkins project, and how much the help is appreciated.</p>
+</div>
+<div class="paragraph">
+<p>Meet us in the "Pull Requests Corner" and we&#8217;ll help you find a way to help Jenkins.
+Here are some areas where we can use your help.
+Most of them do not require coding, and do not require a large time commitment.</p>
+</div>
+<div class="sect2">
+<h3 id="one-minute-feedback-on-your-version"><a class="anchor" href="#one-minute-feedback-on-your-version"></a>One Minute Feedback on Your Version</h3>
+<div class="paragraph">
+<p>The Jenkins changelog pages (<a href="/changelog-stable/">LTS</a> and <a href="/changelog/">weekly</a>) gather user experiences with specific Jenkins versions.
+You can help other Jenkins users by clicking one of the weather icons in the <a href="/changelog-stable/">LTS changelog</a> (or the <a href="/changelog/">weekly changelog</a>) for the release you&#8217;re using.
+Changelog feedback from weekly releases helps the release team select the long term support version.
+Changelog feedback from LTS releases helps other users prepare to upgrade.</p>
+</div>
+<div class="paragraph">
+<p>It takes less than a minute, and helps the community (which will ultimately help you).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="five-minutes-to-answer-a-question"><a class="anchor" href="#five-minutes-to-answer-a-question"></a>Five Minutes to Answer a Question</h3>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/logos/needs-you/Jenkins_Needs_You-02.png" alt="Jenkins needs YOU" width="480"></span>
+In five minutes or less, you can help other Jenkins users.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Answer a question on the #jenkins channel of <a href="https://webchat.freenode.net/?channels=jenkins">internet relay chat (IRC)</a></p>
+</li>
+<li>
+<p>Answer a question on the <a href="https://groups.google.com/forum/#!forum/jenkinsci-users">Jenkins users mailing list</a></p>
+</li>
+<li>
+<p>Answer a question on <a href="https://stackoverflow.com/questions/tagged/jenkins">stackoverflow jenkins</a>, <a href="https://stackoverflow.com/questions/tagged/jenkins-plugins">jenkins plugins</a>, or <a href="https://stackoverflow.com/questions/tagged/jenkins-pipeline">jenkins pipeline</a></p>
+</li>
+<li>
+<p>Answer a question on <a href="https://www.reddit.com/r/jenkinsci/">reddit</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ten-minutes-to-learn-and-share"><a class="anchor" href="#ten-minutes-to-learn-and-share"></a>Ten Minutes to Learn and Share</h3>
+<div class="paragraph">
+<p>If you have ten minutes, you can learn something new and share what you learned.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read a <a href="/node/">Jenkins community blog post</a> and tweet it with the hashtag #jenkinsci</p>
+</li>
+<li>
+<p>Read a <a href="https://devops.com/?s=Jenkins">devops.com blog post</a> and share it on LinkedIn</p>
+</li>
+<li>
+<p>Read a <a href="https://www.cloudbees.com/blog">CloudBees blog post</a> and test drive an idea from it</p>
+</li>
+<li>
+<p>Find another Jenkins blog and share it (I recently discovered <a href="https://cicd.life/tutorials/">Matt Bajor&#8217;s ci/cd life blog</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fifteen-minutes-for-pipeline"><a class="anchor" href="#fifteen-minutes-for-pipeline"></a>Fifteen Minutes for Pipeline</h3>
+<div class="paragraph">
+<p>Liam Newman has created the "<a href="https://www.youtube.com/watch?v=FhDomw6BaHU&amp;list=PLvBBnHmZuNQJsTCaXs91HRrmso7RNSl-L">Jenkins Minute</a>" video series.
+They are brief video segments focusing on specific Jenkins functionality.
+Choose a video, watch it, and share what you learned on social media.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="twenty-minutes-for-a-bug"><a class="anchor" href="#twenty-minutes-for-a-bug"></a>Twenty Minutes for a Bug</h3>
+<div class="paragraph">
+<p>The <a href="https://issues.jenkins.io/secure/Dashboard.jspa">Jenkins bug tracker</a> contains thousands of bugs.
+Reviewing, duplicating, and clarifying bug reports takes time.
+When maintainers are reviewing, duplicating, and clarifying bug reports, they are <strong>not</strong> fixing bugs, and they are <strong>not</strong> adding new capabilities.</p>
+</div>
+<div class="paragraph">
+<p>You can help maintainers by reviewing and duplicating a bug report that matters to you.
+A comment on a bug report is especially helpful when it confirms you&#8217;ve been able to duplicate the bug.
+It is even more helpful if your verification includes the steps you took and how they differ from the original report.</p>
+</div>
+<div class="paragraph">
+<p>A bug report which has been duplicated, and includes <a href="https://wiki.jenkins.io/display/JENKINS/How+to+report+an+issue">clear instructions</a>, is much more likely to receive maintainer attention.
+Help yourself and others by duplicating bugs that matter to you.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="thirty-minutes-for-documentation"><a class="anchor" href="#thirty-minutes-for-documentation"></a>Thirty Minutes for Documentation</h3>
+<div class="paragraph">
+<p>The Jenkins documentation includes
+user documentation (<a href="/doc/">guided tour</a> and <a href="/doc/book/">handbook</a>) and
+developer documentation (<a href="/doc/developer/">tutorial</a>, <a href="/doc/developer/guides/">how-to guides</a>, and <a href="/doc/developer/book/">reference</a>).
+You can help the documentation by describing something important to you clearly and completely.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="https://github.com/jenkins-infra/jenkins.io/blob/master/CONTRIBUTING.adoc#adding-documentation">instructions for documentation contributors</a> to see how easy it is to help.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="forty-five-minutes-for-translation"><a class="anchor" href="#forty-five-minutes-for-translation"></a>Forty Five Minutes for Translation</h3>
+<div class="paragraph">
+<p>If English is not your native language, you can help with Jenkins localization.
+Jenkins is used worldwide, and many users will benefit from translations.
+Considering the rapid and continuing evolution of Jenkins, it is no surprise that there is plenty to translate.
+Refer to the <a href="https://wiki.jenkins.io/display/JENKINS/Internationalization">internationalization guide</a> for instructions to help you contribute translations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sixty-minutes-for-a-meetup"><a class="anchor" href="#sixty-minutes-for-a-meetup"></a>Sixty Minutes for a Meetup</h3>
+<div class="paragraph">
+<p>Local groups around the world meet often for Jenkins presentations, discussions, and demonstrations.
+Organizing a <a href="/projects/jam/">Jenkins Area Meetup</a> will introduce you to other users, and will let you explore new ways to benefit from Jenkins.
+The team at <a href="mailto:jenkinsci-jam@googlegroups.com">jenkinsci-jam@googlegroups.com</a> is ready to support your JAM with stickers, t-shirts, and more.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="week-or-more-adopt-a-plugin"><a class="anchor" href="#week-or-more-adopt-a-plugin"></a>Week or More - Adopt a Plugin</h3>
+<div class="paragraph">
+<p>The Jenkins plugin ecosystem covers a wide range of areas.
+Jenkins plugin maintainers come from many different backgrounds, with many different interests.
+Often, a plugin maintainer may find that they want to do something different on the project, or they may leave the project.
+When a plugin maintainer is no longer able to maintain a plugin, they can <a href="/doc/developer/plugin-governance/adopt-a-plugin/">place it for adoption</a>.</p>
+</div>
+<div class="paragraph">
+<p>Plugins placed for adoption range from very specific use cases (node stalker plugin) to very general use cases (Subversion plugin).</p>
+</div>
+<div class="paragraph">
+<p>Maintaining an orphan plugin is a great way to contribute to the project.
+Follow the instructions to "<a href="/doc/developer/plugin-governance/adopt-a-plugin/">Adopt a Plugin</a>".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="see-you-there"><a class="anchor" href="#see-you-there"></a>See You There!</h3>
+<div class="paragraph">
+<p>All those techniques (and more) are available on the Jenkins <a href="/participate/">participate page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Look for the "Jenkins Needs You" poster at Jenkins World, and come talk
+to us about the ways you can learn new things, address your concerns,
+and help Jenkins.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Join the Jenkins project at
+<a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> on August 30-31,
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/08/2017-08-23-pull-requests-and-more.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

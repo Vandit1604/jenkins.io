@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins on AWS
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins on AWS" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins on AWS" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins on AWS" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins on AWS" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins on AWS
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#creating-a-key-pair">Creating a key pair</a></li>
+<li><a href="#creating-a-security-group">Creating a security group</a></li>
+<li><a href="#launching-an-amazon-ec2-instance">Launching an Amazon EC2 instance</a></li>
+<li><a href="#installing-and-configuring-jenkins">Installing and configuring Jenkins</a>
+<ul class="sectlevel2">
+<li><a href="#connecting-to-your-linux-instance">Connecting to your Linux instance</a>
+<ul class="sectlevel3">
+<li><a href="#prerequisites-2">Prerequisites</a></li>
+<li><a href="#using-putty-to-connect-to-your-instance">Using PuTTY to connect to your instance</a></li>
+<li><a href="#using-ssh-to-connect-to-your-instance">Using SSH to connect to your instance</a></li>
+</ul>
+</li>
+<li><a href="#downloading-and-installing-jenkins">Downloading and installing Jenkins</a></li>
+<li><a href="#configuring-jenkins">Configuring Jenkins</a></li>
+</ul>
+</li>
+<li><a href="#cleaning-up">Cleaning up</a>
+<ul class="sectlevel2">
+<li><a href="#deleting-your-ec2-instance">Deleting your EC2 instance</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins is an open-source automation server that integrates with a number of
+AWS Services, including: AWS CodeCommit, AWS CodeDeploy, Amazon EC2 Spot, and Amazon EC2 Fleet.
+You can use Amazon Elastic Compute Cloud (Amazon EC2) to deploy a Jenkins application on AWS.</p>
+</div>
+<div class="paragraph">
+<p>This tutorial walks you through the process of deploying a Jenkins application.
+You will launch an EC2 instance, install Jenkins on that instance, and configure
+Jenkins to automatically spin up Jenkins agents if build abilities
+need to be augmented on the instance.</p>
+</div>
+<div class="paragraph">
+<p>In this tutorial, you will perform the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#prerequisites">Prerequisites</a>.</p>
+</li>
+<li>
+<p><a href="#creating-a-key-pair">Create a key pair</a> using Amazon EC2.
+If you already have one, you can skip to step 3.</p>
+</li>
+<li>
+<p><a href="#creating-a-security-group">Create a security group</a> for your Amazon EC2 instance. If you already have one, you can skip to step 4.</p>
+</li>
+<li>
+<p><a href="#launching-an-amazon-ec2-instance">Launch an Amazon EC2 instance</a>.</p>
+</li>
+<li>
+<p><a href="#installing-and-configuring-jenkins">Install and configure Jenkins</a>.</p>
+</li>
+<li>
+<p><a href="#cleaning-up">Clean up tutorial resources</a>.</p>
+</li>
+</ol>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>An <strong>AWS account</strong>. If you don&#8217;t have one, you can register <a href="https://portal.aws.amazon.com/billing/signup#/start">here</a>.</p>
+</li>
+<li>
+<p>An Amazon EC2 key pair. If you don&#8217;t have one, refer to <a href="#creating-a-key-pair">Creating a key pair</a>.</p>
+</li>
+<li>
+<p>An AWS IAM User with programmatic key access and <a href="https://plugins.jenkins.io/ec2/#plugin-content-iam-setup">permissions to launch EC2 instances</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-key-pair"><a class="anchor" href="#creating-a-key-pair"></a>Creating a key pair</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creating a key pair helps ensure that the correct form of authentication is used when you install Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>To create your key pair:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/" class="bare">https://console.aws.amazon.com/ec2/</a> and sign in.</p>
+</li>
+<li>
+<p>In the navigation pane, under <strong>NETWORK &amp; SECURITY</strong>, select <strong>Key Pairs</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Create key pair</strong>.</p>
+</li>
+<li>
+<p>For <strong>Name</strong>, enter a descriptive name for the key pair.
+Amazon EC2 associates the public key with the name that you specify as the <strong>key name</strong>.
+A key name can include up to 255 ASCII characters.
+It cannot include leading or trailing spaces.</p>
+</li>
+<li>
+<p>For <strong>File format</strong>, select the format in which to save the private key.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For OpenSSH compatibility, select <strong>pem</strong>.</p>
+</li>
+<li>
+<p>For PuTTY compatibility, select <strong>ppk</strong>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Select <strong>Create key pair</strong>.</p>
+</li>
+<li>
+<p>The private key file downloads automatically.
+The base file name is the name you specified as the name of your key pair, and the file name extension is determined by the file format you chose.
+Save the private key file in a safe place.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is the only chance for you to save the private key file.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>If you use an SSH client on a macOS or Linux computer to connect to your Linux instance, run the following command to set the permissions of your private key file so that only you can read it.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nv">$ </span><span class="nb">chmod </span>400 &lt;key_pair_name&gt;.pem</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you do not set these permissions, you cannot connect to your instance using this key pair. For more information, refer to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html#troubleshoot-unprotected-key">Error: Unprotected private key file</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-security-group"><a class="anchor" href="#creating-a-security-group"></a>Creating a security group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A security group acts as a firewall that controls the traffic allowed to reach one or more EC2 instances.
+When you launch an instance, you can assign it one or more security groups.
+You add rules that control the traffic allowed to reach the instances in each security group.
+You can modify a security group&#8217;s rules any time, and the new rules take effect immediately.</p>
+</div>
+<div class="paragraph">
+<p>For this tutorial, you will create a security group and add the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allow inbound HTTP access from anywhere.</p>
+</li>
+<li>
+<p>Allow inbound SSH traffic from your computer&#8217;s public IP address so you can connect to your instance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To create and configure your security group:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="step1-security-group"></a>Decide who may access your instance.
+For example, a single computer or all trusted computers on a network.
+For this tutorial, you can use the public IP address of your computer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To find your IP address, use the
+<a href="http://checkip.amazonaws.com/">check IP service tool</a> from AWS3 or search for the phrase "what is my IP address" in any search engine.</p>
+</li>
+<li>
+<p>If you connect through an ISP or from behind your firewall without a static IP address, you will need the range of IP addresses used by client computers.
+If you don&#8217;t know this address range, you can use 0.0.0.0/0 for this tutorial.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is unsafe for production environments because it allows everyone to
+access your instance using SSH.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Sign in to the <a href="https://console.aws.amazon.com/ec2/">AWS Management Console</a>.</p>
+</li>
+<li>
+<p>Open the Amazon EC2 console by selecting <strong>EC2</strong> under <strong>Compute</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_service.png" alt="Amazon EC2 Services page">
+</div>
+</div>
+</li>
+<li>
+<p>In the left-hand navigation bar, select <strong>Security Groups</strong>, and then select <strong>Create Security Group</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/create_security_group.png" alt="Amazon security group creation screen">
+</div>
+</div>
+</li>
+<li>
+<p>In <strong>Security group name</strong>, enter <strong>WebServerSG</strong> or any preferred name of your choice, and provide a description.</p>
+</li>
+<li>
+<p>Select your VPC from the list. You can use the default VPC.</p>
+</li>
+<li>
+<p>On the <strong>Inbound tab</strong>, add the rules as follows:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <strong>Add Rule</strong>, and then select <strong>SSH</strong> from the Type list.</p>
+</li>
+<li>
+<p>Under <strong>Source</strong>, select <strong>Custom</strong>, and in the text box, enter <a href="#step1-security-group">the IP address from step 1</a>, followed by /32 indicating a single IP Address.
+For example, 104.34.241.123/32 is a single IP address, while 198.51.100.2/24 results in a range of 256 IP addresses.</p>
+</li>
+<li>
+<p>Select <strong>Add Rule</strong>, and then select <strong>HTTP</strong> from the Type list.</p>
+</li>
+<li>
+<p>Select <strong>Add Rule</strong>, and then select <strong>Custom TCP Rule</strong> from the
+Type list.</p>
+</li>
+<li>
+<p>Under <strong>Port Range</strong>, enter <strong>8080</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Select Create.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For more information, refer to <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security Groups</a> in the Amazon EC2 User Guide for
+Linux Instances.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="launching-an-amazon-ec2-instance"><a class="anchor" href="#launching-an-amazon-ec2-instance"></a>Launching an Amazon EC2 instance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have configured a key pair and security group, you can launch an EC2 instance.</p>
+</div>
+<div class="paragraph">
+<p>To launch an EC2 instance:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sign in to the the <a href="https://console.aws.amazon.com/ec2/">AWS Management Console</a>.</p>
+</li>
+<li>
+<p>Open the Amazon EC2 console by selecting EC2 under <strong>Compute</strong>.</p>
+</li>
+<li>
+<p>From the Amazon EC2 dashboard, select <strong>Launch Instance</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_launch_instance.png" alt="Launching from Amazon">
+</div>
+</div>
+</li>
+<li>
+<p>The <strong>Choose an Amazon Machine Image (AMI)</strong> page displays a list of basic configurations called Amazon Machine Images (AMIs) that serve as templates for your instance.
+Select the HVM edition of the <strong>Amazon Linux AMI</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This configuration is marked <strong>Free tier eligible</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_choose_ami.png" alt="Choosing an Amazon Machine Image">
+</div>
+</div>
+</li>
+<li>
+<p>Scroll down and select the key pair you created in the <a href="#creating-a-key-pair">creating a key pair</a> section above or any existing key pair you intend to use.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <strong>Select an existing security group</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>WebServerSG</strong> security group that you created.</p>
+</li>
+<li>
+<p>Select <strong>Launch Instance</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_review_instance_launch.png" alt="Review your Amazon launch instance">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the left-hand navigation bar, choose <strong>Instances</strong> to view the status of your instance.
+Initially, the status of your instance is pending.
+After the status changes to running, your instance is ready for use.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_view_created_instance.png" alt="Amazon view created instance">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-and-configuring-jenkins"><a class="anchor" href="#installing-and-configuring-jenkins"></a>Installing and configuring Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that the Amazon EC2 instance has been launched, Jenkins can be installed properly.</p>
+</div>
+<div class="paragraph">
+<p>In this step you will deploy Jenkins on your EC2 instance by completing the following tasks:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#connecting-to-your-linux-instance">Connecting to your Linux instance</a></p>
+</li>
+<li>
+<p><a href="#downloading-and-installing-jenkins">Downloading and installing Jenkins</a></p>
+</li>
+<li>
+<p><a href="#configuring-jenkins">Configuring Jenkins</a></p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="connecting-to-your-linux-instance"><a class="anchor" href="#connecting-to-your-linux-instance"></a>Connecting to your Linux instance</h3>
+<div class="paragraph">
+<p>After you launch your instance, you can connect to it and use it the same way as your local machine.</p>
+</div>
+<div class="paragraph">
+<p>Before you connect to your instance, get the <strong>public DNS</strong> name of the instance using the Amazon EC2 console.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the instance and locate Public DNS.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_public_dns.png" alt="Amazon public DNS">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If your instance doesn&#8217;t have a public DNS name, open the VPC console, select the VPC, and check the <strong>Summary</strong> tab.
+If either DNS resolution or DNS hostnames is <strong>no</strong>, select <strong>Edit</strong> and change the value to <strong>yes</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="prerequisites-2"><a class="anchor" href="#prerequisites-2"></a>Prerequisites</h4>
+<div class="paragraph">
+<p>The tool that you use to connect to your Linux instance depends on your operating system.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If your computer runs Windows, you will connect using PuTTY.</p>
+</li>
+<li>
+<p>If your computer runs Linux or Mac OS X, you will connect using the SSH client.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These tools require the use of your key pair.
+Be sure that you have created your key pair as described in <a href="#creating-a-key-pair">Creating a key pair</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-putty-to-connect-to-your-instance"><a class="anchor" href="#using-putty-to-connect-to-your-instance"></a>Using PuTTY to connect to your instance</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From the <strong>Start</strong> menu, select <strong>All Programs</strong> &gt; <strong>PuTTY</strong> &gt; <strong>PuTTY</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Category</strong> pane, select <strong>Session</strong>, and complete the following fields:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In <strong>Host Name</strong>, enter ec2-user@public_dns_name.</p>
+</li>
+<li>
+<p>Ensure that <strong>Port</strong> is 22.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ec2_putty.png" alt="Amazon EC2 PuTTY selection">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the <strong>Category</strong> pane, expand <strong>Connection</strong>, expand <strong>SSH</strong>, and then select <strong>Auth</strong>. Complete the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <strong>Browse</strong>.</p>
+</li>
+<li>
+<p>Select the .ppk file that you generated for your key pair, as
+described in <a href="#creating-a-key-pair">Creating a key pair</a> and then select <strong>Open</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Select <strong>Open</strong> to start the PuTTY session.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/putty_select_key_pair.png" alt="Selecting and opening a new PuTTY session">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-ssh-to-connect-to-your-instance"><a class="anchor" href="#using-ssh-to-connect-to-your-instance"></a>Using SSH to connect to your instance</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use the ssh command to connect to the instance.
+You will specify the private key (.pem) file and ec2-user@public_dns_name.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nv">$ </span>ssh <span class="nt">-i</span> /path/my-key-pair.pem ec2-user@ec2-198-51-
+100-1.compute-1.amazonaws.com</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will receive a response like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">The authenticity of host <span class="s1">'ec2-198-51-100-1.compute1.amazonaws.com (10.254.142.33)'</span> cant be
+established.
+
+RSA key fingerprint is 1f:51:ae:28:bf:89:e9:d8:1f:25:5d:37:2d:7d:b8:ca:9f:f5:f1:6f.
+
+Are you sure you want to <span class="k">continue </span>connecting
+<span class="o">(</span><span class="nb">yes</span>/no<span class="o">)</span>?</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Enter yes.</p>
+<div class="paragraph">
+<p>You will receive a response like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">Warning: Permanently added <span class="s1">'ec2-198-51-100-1.compute1.amazonaws.com'</span> <span class="o">(</span>RSA<span class="o">)</span> to the list of known hosts.</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="downloading-and-installing-jenkins"><a class="anchor" href="#downloading-and-installing-jenkins"></a>Downloading and installing Jenkins</h3>
+<div class="paragraph">
+<p>Completing the previous steps enables you to download and install Jenkins on AWS.
+To download and install Jenkins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ensure that your software packages are up to date on your instance by uing the following command to perform a quick software update:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>yum update –y</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the Jenkins repo using the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>wget <span class="nt">-O</span> /etc/yum.repos.d/jenkins.repo <span class="se">\</span>
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Import a key file from Jenkins-CI to enable installation from the package:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>rpm <span class="nt">--import</span> https://pkg.jenkins.io/redhat-stable/jenkins.io.key</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>yum upgrade</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install Java:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>amazon-linux-extras <span class="nb">install </span>java-openjdk11 <span class="nt">-y</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install Jenkins:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>yum <span class="nb">install </span>jenkins <span class="nt">-y</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Enable the Jenkins service to start at boot:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>systemctl <span class="nb">enable </span>jenkins</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start Jenkins as a service:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>systemctl start jenkins</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can check the status of the Jenkins service using the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo </span>systemctl status jenkins</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-jenkins"><a class="anchor" href="#configuring-jenkins"></a>Configuring Jenkins</h3>
+<div class="paragraph">
+<p>Jenkins is now installed and running on your EC2 instance.
+To configure Jenkins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to http://&lt;your_server_public_DNS&gt;:8080 from your browser.
+You will be able to access Jenkins through its management interface:</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/unlock_jenkins.png" alt="Unlock Jenkins screen">
+</div>
+</div>
+</li>
+<li>
+<p>As prompted, enter the password found in <strong>/var/lib/jenkins/secrets/initialAdminPassword</strong>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Use the following command to display this password:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="o">[</span>ec2-user ~]<span class="nv">$ </span><span class="nb">sudo cat</span> /var/lib/jenkins/secrets/initialAdminPassword</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The Jenkins installation script directs you to the <strong>Customize Jenkins page</strong>.
+Click <strong>Install suggested plugins</strong>.</p>
+</li>
+<li>
+<p>Once the installation is complete, the <strong>Create First Admin User</strong> will open.
+Enter your information, and then select <strong>Save and Continue</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/create_admin_user.png" alt="Create your first admin user.">
+</div>
+</div>
+</li>
+<li>
+<p>On the left-hand side, select <strong>Manage Jenkins</strong>, and then select <strong>Manage
+Plugins</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>Available</strong> tab, and then enter <strong>Amazon EC2 plugin</strong> at the top
+right.</p>
+</li>
+<li>
+<p>Select the checkbox next to <strong>Amazon EC2 plugin</strong>, and then select <strong>Install
+without restart</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/install_ec2_plugin.png" alt="Jenkins Plugin Manager showing available plugins.">
+</div>
+</div>
+</li>
+<li>
+<p>Once the installation is done, select <strong>Back to Dashboard</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Configure a cloud</strong> if there are no existing nodes or clouds.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/configure_cloud.png" alt="Jenkins Dashboard showing configure a cloud.">
+</div>
+</div>
+</li>
+<li>
+<p>If you already have other nodes or clouds set up, select <strong>Manage Jenkins</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/manage-jenkins.png" alt="Jenkins dashboard if there are existing clouds.">
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>After navigating to <strong>Manage Jenkins</strong>, select <strong>Configure Nodes and Clouds</strong> from the left hand side of the page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/manage-nodes-and-clouds.png" alt="Manage nodes and clouds option from Manage Jenkins page">
+</div>
+</div>
+</li>
+<li>
+<p>From here, select <strong>Configure Clouds</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/manage-jenkins-configure-clouds.png" alt="Configure clouds option in navigation.">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Select <strong>Add a new cloud</strong>, and select <strong>Amazon EC2</strong>.
+A collection of new fields appears.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/add-amazon-cloud.png" alt="Adding Amazon EC2 cloud to Jenkins.">
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Add</strong> under Amazon EC2 Credentials</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/configure_cloud_add_ec2_credentials.png" alt="Adding EC2 credentials in Configure Cloud.">
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>From the Jenkins Credentials Provider, select AWS Credentials as the <strong>Kind</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/jenkins_credentials_provider_aws_credentials.png" alt="Choosing Kind AWS Credentials.">
+</div>
+</div>
+</li>
+<li>
+<p>Scroll down and enter in the IAM User programmatic access keys with permissions to launch EC2 instances and select <strong>Add</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/add_access_secret_access_keys.png" alt="Adding AWS Credentials.">
+</div>
+</div>
+</li>
+<li>
+<p>Scroll down to select your region using the drop-down, and select <strong>Add</strong> for the EC2 Key Pair&#8217;s Private Key.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/configure_cloud_region_private_key.png" alt="Set Region and add Private Key.">
+</div>
+</div>
+</li>
+<li>
+<p>From the Jenkins Credentials Provider, select SSH Username with private key as the Kind and set the Username to <code>ec2-user</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/ssh_username.png" alt="Set Kind to SSH Username with private key.">
+</div>
+</div>
+</li>
+<li>
+<p>Scroll down and select <strong>Enter Directly</strong> under Private Key, then select <strong>Add</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/private_key_enter_directly.png" alt="Set Private Key to Enter Directly.">
+</div>
+</div>
+</li>
+<li>
+<p>Open the private key pair you created in the <a href="#creating-a-key-pair">creating a key pair</a> step and paste in the contents from "-----BEGIN RSA PRIVATE KEY-----" to "-----END RSA PRIVATE KEY-----".
+Select <strong>Add</strong> when completed.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/enter_private_key.png" alt="Enter Private Key.">
+</div>
+</div>
+</li>
+<li>
+<p>Scroll down to "Test Connection" and ensure it states "Success".
+Select <strong>Save</strong> when done</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/test_connection.png" alt="Test Connection.">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You are now ready to use EC2 instances as Jenkins agents.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cleaning-up"><a class="anchor" href="#cleaning-up"></a>Cleaning up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After completing this tutorial, be sure to delete the AWS resources that you
+created so you do not continue to accrue charges.</p>
+</div>
+<div class="sect2">
+<h3 id="deleting-your-ec2-instance"><a class="anchor" href="#deleting-your-ec2-instance"></a>Deleting your EC2 instance</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the left-hand navigation bar of the Amazon EC2 console, select
+<strong>Instances</strong>.</p>
+</li>
+<li>
+<p>Right-click on the instance you created earlier, and select <strong>Terminate</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../book/resources/tutorials/AWS/terminate_instance.png" alt="Terminating your AWS EC2 instance.">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/tutorials/tutorial-for-installing-jenkins-on-AWS.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

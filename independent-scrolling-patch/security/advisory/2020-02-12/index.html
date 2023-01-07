@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2020-02-12
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-02-12/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2020-02-12" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2020-02-12" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2020-02-12" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-02-12/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2020-02-12" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2020-02-12
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/applatix">
+Applatix
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/azure-ad">
+Azure AD
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/bmc-rpd">
+BMC Release Package and Deployment
+Plugin
+</a>
+</li>
+<li>
+brakeman
+Plugin
+</li>
+<li>
+debian-package-builder
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/digitalocean-plugin">
+DigitalOcean
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/dynamic_extended_choice_parameter">
+Dynamic Extended Choice Parameter
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/eagle-tester">
+Eagle Tester
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/catalogic-ecx">
+ECX Copy Data Management
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/fitnesse">
+FitNesse
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/git-parameter">
+Git Parameter
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/google-kubernetes-engine">
+Google Kubernetes Engine
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/harvest">
+Harvest SCM
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/nunit">
+NUnit
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/environment-manager">
+Parasoft Environment Manager
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/pipeline-githubnotify-step">
+Pipeline GitHub Notify Step
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/workflow-cps">
+Pipeline: Groovy
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/radargun">
+RadarGun
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/s3">
+S3 publisher
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/script-security">
+Script Security
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/subversion">
+Subversion
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1710">
+Sandbox bypass via default method parameter expression in Pipeline: Groovy Plugin
+</h3>
+<strong>
+SECURITY-1710
+/
+CVE-2020-2109
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/workflow-cps">
+<code>workflow-cps</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Sandbox protection in Pipeline: Groovy Plugin 2.78 and earlier can be circumvented through default parameter expressions in CPS-transformed methods.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers able to specify and run sandboxed Pipelines to execute arbitrary code in the context of the Jenkins controller JVM.</p>
+</div>
+<div class="paragraph">
+<p>These expressions are subject to sandbox protection in Pipeline: Groovy Plugin 2.79.</p>
+</div>
+<h3 id="SECURITY-1713">
+Sandbox bypass vulnerability in Script Security Plugin
+</h3>
+<strong>
+SECURITY-1713
+/
+CVE-2020-2110
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/script-security">
+<code>script-security</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Sandbox protection in Script Security Plugin 1.69 and earlier can be circumvented during the script compilation phase by applying AST transforming annotations such as <code>@Grab</code> to imports or by using them inside of other annotations.
+This affects both script execution (typically invoked from other plugins like Pipeline) as well as HTTP endpoints providing sandboxed script validation.</p>
+</div>
+<div class="paragraph">
+<p>Users with Overall/Read permission can exploit this to bypass sandbox protection and execute arbitrary code on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>This issue is due to an incomplete fix of <a href="/security/advisory/2019-01-08/#SECURITY-1266">SECURITY-1266</a>.</p>
+</div>
+<div class="paragraph">
+<p>Script Security Plugin 1.70 disallows all known unsafe AST transformations on imports or when used inside of other annotations.</p>
+</div>
+<h3 id="SECURITY-1725">
+Stored XSS vulnerability in Subversion Plugin
+</h3>
+<strong>
+SECURITY-1725
+/
+CVE-2020-2111
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/subversion">
+<code>subversion</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Subversion Plugin 2.13.0 and earlier does not escape the error message for the Project Repository Base URL field form validation.
+This results in a stored cross-site scripting vulnerability exploitable by users able to specify such base URLs, for example users able to configure Multibranch Pipelines.</p>
+</div>
+<div class="paragraph">
+<p>Subversion Plugin 2.13.1 escapes the affected part of the error message.</p>
+</div>
+<h3 id="SECURITY-1709">
+Multiple stored XSS vulnerabilities in Git Parameter Plugin
+</h3>
+<strong>
+SECURITY-1709
+/
+CVE-2020-2112 (parameter name), CVE-2020-2113 (default value)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/git-parameter">
+<code>git-parameter</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Git Parameter Plugin 0.9.11 and earlier does not correctly escape the parameter name or default value.
+This results in a stored cross-site scripting vulnerability exploitable by users with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>Git Parameter Plugin 0.9.12 escapes the parameter name and default value shown on the UI.</p>
+</div>
+<h3 id="SECURITY-1684">
+Credential transmitted in plain text by S3 publisher Plugin
+</h3>
+<strong>
+SECURITY-1684
+/
+CVE-2020-2114
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/s3">
+<code>s3</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>S3 publisher Plugin stores a secret key in its global configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the credential is stored encrypted on disk, it is transmitted in plain text as part of the configuration form by S3 publisher Plugin 0.11.4 and earlier.
+This can result in exposure of the credential through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>S3 publisher Plugin 0.11.5 transmits the secret key in its global configuration encrypted.</p>
+</div>
+<h3 id="SECURITY-1752">
+XXE vulnerability in NUnit Plugin
+</h3>
+<strong>
+SECURITY-1752
+/
+CVE-2020-2115
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/nunit">
+<code>nunit</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>NUnit Plugin 0.25 and earlier does not configure the XML parser to prevent XML external entity (XXE) attacks.</p>
+</div>
+<div class="paragraph">
+<p>This allows a user able to control the input files for its post-build step to have Jenkins parse a crafted file that uses external entities for extraction of secrets from the Jenkins controller, server-side request forgery, or denial-of-service attacks.</p>
+</div>
+<div class="paragraph">
+<p>NUnit Plugin 0.26 disables external entity processing for its XML parser.</p>
+</div>
+<h3 id="SECURITY-812 (1)">
+CSRF vulnerability and missing permission checks in Pipeline GitHub Notify Step Plugin allows capturing credentials
+</h3>
+<strong>
+SECURITY-812 (1)
+/
+CVE-2020-2116 (CSRF), CVE-2020-2117 (missing permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/pipeline-githubnotify-step">
+<code>pipeline-githubnotify-step</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Pipeline GitHub Notify Step Plugin 1.0.4 and earlier does not perform permission checks on a method implementing form validation.
+This allows users with Overall/Read access to Jenkins to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form validation method does not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This form validation method requires POST requests and Item/Configure permission in Pipeline GitHub Notify Step Plugin 1.0.5.</p>
+</div>
+<h3 id="SECURITY-812 (2)">
+Users with Overall/Read access can enumerate credential IDs in Pipeline GitHub Notify Step Plugin
+</h3>
+<strong>
+SECURITY-812 (2)
+/
+CVE-2020-2118
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/pipeline-githubnotify-step">
+<code>pipeline-githubnotify-step</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Pipeline GitHub Notify Step Plugin 1.0.4 and earlier provides a list of applicable credential IDs to allow users configuring the plugin to select the one to use.</p>
+</div>
+<div class="paragraph">
+<p>This functionality does not correctly check permissions, allowing any user with Overall/Read permission to get a list of valid credentials IDs.
+Those can be used as part of an attack to capture the credentials using another vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>An enumeration of credentials IDs in Pipeline GitHub Notify Step Plugin 1.0.5 requires the permission to configure a project.</p>
+</div>
+<h3 id="SECURITY-1717">
+Client secret transmitted in plain text by Azure AD Plugin
+</h3>
+<strong>
+SECURITY-1717
+/
+CVE-2020-2119
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/azure-ad">
+<code>azure-ad</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Azure AD Plugin stores a client secret in its global configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the credential is stored encrypted on disk, it is transmitted in plain text as part of the configuration form by Azure AD Plugin 1.1.2 and earlier.
+This can result in exposure of the credential through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>Azure AD Plugin 1.2.0 transmits the client secret in its global configuration encrypted.</p>
+</div>
+<h3 id="SECURITY-1751">
+XXE vulnerability in FitNesse Plugin
+</h3>
+<strong>
+SECURITY-1751
+/
+CVE-2020-2120
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/fitnesse">
+<code>fitnesse</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>FitNesse Plugin 1.30 and earlier does not configure the XML parser to prevent XML external entity (XXE) attacks.</p>
+</div>
+<div class="paragraph">
+<p>This allows a user able to control the input files for its post-build step to have Jenkins parse a crafted file that uses external entities for extraction of secrets from the Jenkins controller, server-side request forgery, or denial-of-service attacks.</p>
+</div>
+<div class="paragraph">
+<p>FitNesse Plugin 1.31 disables external entity processing for its XML parser.</p>
+</div>
+<h3 id="SECURITY-1731">
+RCE vulnerability in Google Kubernetes Engine Plugin
+</h3>
+<strong>
+SECURITY-1731
+/
+CVE-2020-2121
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/google-kubernetes-engine">
+<code>google-kubernetes-engine</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Google Kubernetes Engine Plugin 0.8.0 and earlier does not configure its YAML parser to prevent the instantiation of arbitrary types.
+This results in a remote code execution vulnerability exploitable by users able to provide YAML input files to Google Kubernetes Engine Plugin&#8217;s build step.</p>
+</div>
+<div class="paragraph">
+<p>Google Kubernetes Engine Plugin 0.8.1 configures its YAML parser to only instantiate safe types.</p>
+</div>
+<h3 id="SECURITY-1644">
+Stored XSS vulnerability in brakeman Plugin
+</h3>
+<strong>
+SECURITY-1644
+/
+CVE-2020-2122
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/brakeman">
+<code>brakeman</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>brakeman Plugin 0.12 and earlier did not escape values received from parsed JSON files when rendering them, resulting in a stored cross-site scripting vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This vulnerability can be exploited by users able to control the Brakeman post-build step input data.</p>
+</div>
+<div class="paragraph">
+<p>brakeman Plugin 0.13 escape affected values from the parsed file as they are recorded.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This fix is only applied to newly recorded data after a fixed version of the plugin is installed; historical data may still contain unsafe values.
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-1733">
+RCE vulnerability in RadarGun Plugin
+</h3>
+<strong>
+SECURITY-1733
+/
+CVE-2020-2123
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/radargun">
+<code>radargun</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>RadarGun Plugin 1.7 and earlier does not configure its YAML parser to prevent the instantiation of arbitrary types.
+This results in a remote code execution vulnerability exploitable by users able to configure RadarGun Plugin&#8217;s build step.</p>
+</div>
+<div class="paragraph">
+<p>RadarGun Plugin 1.8 configures its YAML parser to only instantiate safe types.</p>
+</div>
+<h3 id="SECURITY-1560">
+Password stored in plain text by Dynamic Extended Choice Parameter Plugin
+</h3>
+<strong>
+SECURITY-1560
+/
+CVE-2020-2124
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/dynamic_extended_choice_parameter">
+<code>dynamic_extended_choice_parameter</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Dynamic Extended Choice Parameter Plugin 1.0.1 and earlier stores a Subversion password unencrypted in job <code>config.xml</code> files as part of its configuration.
+This credential can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1558">
+Credentials stored in plain text by debian-package-builder Plugin
+</h3>
+<strong>
+SECURITY-1558
+/
+CVE-2020-2125
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/debian-package-builder">
+<code>debian-package-builder</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>debian-package-builder Plugin 1.6.11 and earlier stores a GPG passphrase unencrypted in its global configuration file <code>ru.yandex.jenkins.plugins.debuilder.DebianPackageBuilder.xml</code> on the Jenkins controller.
+This credential can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1559">
+Token stored in plain text by DigitalOcean Plugin
+</h3>
+<strong>
+SECURITY-1559
+/
+CVE-2020-2126
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/digitalocean-plugin">
+<code>digitalocean-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>DigitalOcean Plugin 1.1 and earlier stores a token unencrypted in the global <code>config.xml</code> files as part of its configuration.
+This credential can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1547">
+Credential stored in plain text by BMC Release Package and Deployment Plugin
+</h3>
+<strong>
+SECURITY-1547
+/
+CVE-2020-2127
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/bmc-rpd">
+<code>bmc-rpd</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>BMC Release Package and Deployment Plugin 1.1 and earlier stores the RPD user token unencrypted in its global configuration file <code>com.bmc.rpd.jenkins.plugin.bmcrpd.configuration.RPDPluginConfiguration.xml</code> on the Jenkins controller.
+This credential can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1549">
+Password stored in plain text by ECX Copy Data Management Plugin
+</h3>
+<strong>
+SECURITY-1549
+/
+CVE-2020-2128
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/catalogic-ecx">
+<code>catalogic-ecx</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>ECX Copy Data Management Plugin 1.9 and earlier stores a service password unencrypted in job <code>config.xml</code> files as part of its configuration.
+This credential can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1552">
+Password stored in plain text by Eagle Tester Plugin
+</h3>
+<strong>
+SECURITY-1552
+/
+CVE-2020-2129
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/eagle-tester">
+<code>eagle-tester</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Eagle Tester Plugin 1.0.9 and earlier stores a password unencrypted in its global configuration file <code>com.bmc.rpd.jenkins.plugin.bmcrpd.configuration.RPDPluginConfiguration.xml</code> on the Jenkins controller.
+This credential can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1553">
+Passwords stored in plain text by Harvest SCM Plugin
+</h3>
+<strong>
+SECURITY-1553
+/
+CVE-2020-2130 (global configuration), CVE-2020-2131 (job configuration)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/harvest">
+<code>harvest</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Harvest SCM Plugin 0.5.1 and earlier stores SCM passwords unencrypted in its global configuration file <code>hudson.plugins.harvest.HarvestSCM.xml</code> and in job <code>config.xml</code> files on the Jenkins controller.
+These credentials can be viewed by users with Extended Read permission (job <code>config.xml</code> only) or access to the Jenkins controller file system (both).</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1562">
+Password stored in plain text by Parasoft Environment Manager Plugin
+</h3>
+<strong>
+SECURITY-1562
+/
+CVE-2020-2132
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/environment-manager">
+<code>environment-manager</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Parasoft Environment Manager Plugin 2.14 and earlier stores a repository password unencrypted in job <code>config.xml</code> files as part of its configuration.
+This credential can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1540">
+Password stored in plain text by Applatix Plugin
+</h3>
+<strong>
+SECURITY-1540
+/
+CVE-2020-2133
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/applatix">
+<code>applatix</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Applatix Plugin 1.1 and earlier stores the Applatix password unencrypted in job <code>config.xml</code> files as part of its configuration.
+This credential can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-812 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+</li>
+<li>
+SECURITY-812 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1540:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1547:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1549:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1552:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1553:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1558:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1559:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1560:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1562:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1644:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1684:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1709:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1710:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1713:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1717:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1725:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1731:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1733:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1751:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+High
+</a>
+</li>
+<li>
+SECURITY-1752:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+High
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Applatix
+Plugin
+</strong>
+up to and including
+1.1
+</li>
+<li>
+<strong>
+Azure AD
+Plugin
+</strong>
+up to and including
+1.1.2
+</li>
+<li>
+<strong>
+BMC Release Package and Deployment
+Plugin
+</strong>
+up to and including
+1.1
+</li>
+<li>
+<strong>
+brakeman
+Plugin
+</strong>
+up to and including
+0.12
+</li>
+<li>
+<strong>
+debian-package-builder
+Plugin
+</strong>
+up to and including
+1.6.11
+</li>
+<li>
+<strong>
+DigitalOcean
+Plugin
+</strong>
+up to and including
+1.1
+</li>
+<li>
+<strong>
+Dynamic Extended Choice Parameter
+Plugin
+</strong>
+up to and including
+1.0.1
+</li>
+<li>
+<strong>
+Eagle Tester
+Plugin
+</strong>
+up to and including
+1.0.9
+</li>
+<li>
+<strong>
+ECX Copy Data Management
+Plugin
+</strong>
+up to and including
+1.9
+</li>
+<li>
+<strong>
+FitNesse
+Plugin
+</strong>
+up to and including
+1.30
+</li>
+<li>
+<strong>
+Git Parameter
+Plugin
+</strong>
+up to and including
+0.9.11
+</li>
+<li>
+<strong>
+Google Kubernetes Engine
+Plugin
+</strong>
+up to and including
+0.8.0
+</li>
+<li>
+<strong>
+Harvest SCM
+Plugin
+</strong>
+up to and including
+0.5.1
+</li>
+<li>
+<strong>
+NUnit
+Plugin
+</strong>
+up to and including
+0.25
+</li>
+<li>
+<strong>
+Parasoft Environment Manager
+Plugin
+</strong>
+up to and including
+2.14
+</li>
+<li>
+<strong>
+Pipeline GitHub Notify Step
+Plugin
+</strong>
+up to and including
+1.0.4
+</li>
+<li>
+<strong>
+Pipeline: Groovy
+Plugin
+</strong>
+up to and including
+2.78
+</li>
+<li>
+<strong>
+RadarGun
+Plugin
+</strong>
+up to and including
+1.7
+</li>
+<li>
+<strong>
+S3 publisher
+Plugin
+</strong>
+up to and including
+0.11.4
+</li>
+<li>
+<strong>
+Script Security
+Plugin
+</strong>
+up to and including
+1.69
+</li>
+<li>
+<strong>
+Subversion
+Plugin
+</strong>
+up to and including
+2.13.0
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Azure AD
+Plugin
+</strong>
+should be updated to version
+1.2.0
+</li>
+<li>
+<strong>
+brakeman
+Plugin
+</strong>
+should be updated to version
+0.13
+</li>
+<li>
+<strong>
+FitNesse
+Plugin
+</strong>
+should be updated to version
+1.31
+</li>
+<li>
+<strong>
+Git Parameter
+Plugin
+</strong>
+should be updated to version
+0.9.12
+</li>
+<li>
+<strong>
+Google Kubernetes Engine
+Plugin
+</strong>
+should be updated to version
+0.8.1
+</li>
+<li>
+<strong>
+NUnit
+Plugin
+</strong>
+should be updated to version
+0.26
+</li>
+<li>
+<strong>
+Pipeline GitHub Notify Step
+Plugin
+</strong>
+should be updated to version
+1.0.5
+</li>
+<li>
+<strong>
+Pipeline: Groovy
+Plugin
+</strong>
+should be updated to version
+2.79
+</li>
+<li>
+<strong>
+RadarGun
+Plugin
+</strong>
+should be updated to version
+1.8
+</li>
+<li>
+<strong>
+S3 publisher
+Plugin
+</strong>
+should be updated to version
+0.11.5
+</li>
+<li>
+<strong>
+Script Security
+Plugin
+</strong>
+should be updated to version
+1.70
+</li>
+<li>
+<strong>
+Subversion
+Plugin
+</strong>
+should be updated to version
+2.13.1
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Applatix
+Plugin
+</li>
+<li>
+BMC Release Package and Deployment
+Plugin
+</li>
+<li>
+debian-package-builder
+Plugin
+</li>
+<li>
+DigitalOcean
+Plugin
+</li>
+<li>
+Dynamic Extended Choice Parameter
+Plugin
+</li>
+<li>
+Eagle Tester
+Plugin
+</li>
+<li>
+ECX Copy Data Management
+Plugin
+</li>
+<li>
+Harvest SCM
+Plugin
+</li>
+<li>
+Parasoft Environment Manager
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Adith Sudhakar
+</strong>
+for
+SECURITY-1644
+</li>
+<li>
+<strong>
+Daniel Kalinowski of ISEC.pl Research Team
+</strong>
+for
+SECURITY-1731, SECURITY-1733
+</li>
+<li>
+<strong>
+Federico Pellegrin
+</strong>
+for
+SECURITY-1751, SECURITY-1752
+</li>
+<li>
+<strong>
+James Holderness, IB Boost
+</strong>
+for
+SECURITY-1540, SECURITY-1547, SECURITY-1549, SECURITY-1552, SECURITY-1553, SECURITY-1558, SECURITY-1559, SECURITY-1560, SECURITY-1562
+</li>
+<li>
+<strong>
+Joseph Petersen @jetersen
+</strong>
+for
+SECURITY-1717
+</li>
+<li>
+<strong>
+Nils Emmerich of ERNW Research GmbH
+</strong>
+for
+SECURITY-1710, SECURITY-1713
+</li>
+<li>
+<strong>
+Sven Grossmann (@svennergr)
+</strong>
+for
+SECURITY-1709
+</li>
+<li>
+<strong>
+Thomas de Grenier de Latour
+</strong>
+for
+SECURITY-812 (1), SECURITY-812 (2)
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-1684, SECURITY-1725
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2020-02-12.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

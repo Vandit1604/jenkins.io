@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+What JVM versions are running Jenkins? 2016 Update!
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="What JVM versions are running Jenkins? 2016 Update!" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="What JVM versions are running Jenkins? 2016 Update!" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="What JVM versions are running Jenkins? 2016 Update!" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/11/22/what-jvm-versions-are-running-jenkins-the-return/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="What JVM versions are running Jenkins? 2016 Update!" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+What JVM versions are running Jenkins? 2016 Update!
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/batmat/"><div class="app-avatar"><img alt="Baptiste Mathus" class="app-avatar__image" src="/images/avatars/batmat.jpg"></div> Baptiste Mathus</a>
+November 22, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=What+JVM+versions+are+running+Jenkins%3F+2016+Update%21&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F11%2F22%2Fwhat-jvm-versions-are-running-jenkins-the-return%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Like for <a href="/blog/2015/11/03/what-jvm-versions-are-running-jenkins/">last year&#8217;s article about the same subject</a>, yet another <a href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!msg/jenkinsci-dev/fo5nKLhZK5U/Zb9jHpBJBQAJ">recent discussion about finally requiring Java 8 to run future versions Jenkins</a> pushed me to gather some more factual data around it.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+What follows contains some opinions or statements which may not be seen as purely factual or neutral. Note that this represents by no mean the general position of the Jenkins governance board. This is solely my opinion as a contributor based on the data I gathered, and what I feel from the feedback of the community at large.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="java-8-now-the-most-used-version-and-growing"><a class="anchor" href="#java-8-now-the-most-used-version-and-growing"></a>Java 8 now the most used version, and growing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If we look at the global numbers, Java 8 runtimes now represent 52.8% of the Jenkins instances running, which have not opted out of anonymous usage statistics.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2016-jvm-versions/2016-jvm-stats-all.png" alt="2016 jvm stats all"></span></p>
+</div>
+<div class="paragraph">
+<p>And if you look at the trend, Java 8 is clearly growing fast.</p>
+</div>
+<div class="sect2">
+<h3 id="zooming-into-the-jenkins-2-x-instances-subset"><a class="anchor" href="#zooming-into-the-jenkins-2-x-instances-subset"></a>Zooming into the Jenkins 2.x instances subset</h3>
+<div class="paragraph">
+<p>Now, if you look at that picture, though already interesting and showing a clear trend towards Java 8 runtime adoption, some might argue it&#8217;s being too nice to older JREs.
+The reasoning could be: instances running (very) old Jenkins versions may not be the ones you want to look at when trying to plan the future of an opensource project:
+those are indeed probably not going to upgrade in general anyway, or when they do, upgrading the JRE would be a small thing compared to the rest to be tested with such a gap.</p>
+</div>
+<div class="paragraph">
+<p>So, if we only keep the instances running Jenkins 2.x, then the proportion of Java 8 goes to almost 70% compared to Java 7 (Jenkins 2.x requires Java 7)
+<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2016-jvm-versions/2016-jvm-stats-only-2.x.png" alt="2016 jvm stats only 2.x"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Java 8 adoption numbers are getting bigger, while every other JREs are going down.</p>
+</div>
+<div class="paragraph">
+<p>If you are still using a JRE 7 to run Jenkins, it is seriously time to think
+about upgrading to 8.  Knowing that it&#8217;s definitely not a bleeding-edge path
+might help you go that way, especially if you generally do not like upgrades.
+Also, as a reminder, the most used JDK,
+<a href="https://java.com/en/download/faq/java_7.xml">Oracle JDK 7 now got end-of-lifed more than 18 months ago</a>.</p>
+</div>
+<div class="paragraph">
+<p>Contrary to the past attempts the previous years, the discussion on the Jenkins
+development mailing list did not trigger strong rebutals by many people.</p>
+</div>
+<div class="paragraph">
+<p>Perhaps it&#8217;s finally time for Mr. Jenkins to upgrade to Java 8!</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+All numbers shown below are derived from the new <a href="https://stats.jenkins.io/plugin-installation-trend/jvms.json"><code>jvms.json</code></a> file now generated automatically every month, after the two related pull-requests  <a href="https://github.com/jenkins-infra/infra-statistics/pull/21">1</a> and <a href="https://github.com/jenkins-infra/infra-statistics/pull/22">2</a> got merged.
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. 69% for October, 67% in September
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. You are more than welcome to review those Pull-Requests and shout if you see something wrong in the calculations.
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/statistics/">
+statistics
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Baptiste Mathus" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/batmat.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/batmat/">
+Baptiste Mathus
+</a>
+</p>
+<div class="paragraph">
+<p>Baptiste has been using and contributing to Jenkins since it was called differently, and is a huge proponent of the Agile, Devops &amp; Continuous Delivery movements.
+He loves to discuss not only the technical aspects, but also the even more essential cultural aspects of this all, working together to improve the value provided to customers in a great inclusive and blameless environment.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/batmat" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bmathus" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://batmat.net" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-11-22-what-jvm-versions-are-running-jenkins-the-return.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

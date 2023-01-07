@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+SSH Steps for Jenkins Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/02/06/ssh-steps-for-jenkins-pipeline/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="SSH Steps for Jenkins Pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="SSH Steps for Jenkins Pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="SSH Steps for Jenkins Pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/02/06/ssh-steps-for-jenkins-pipeline/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="SSH Steps for Jenkins Pipeline" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+SSH Steps for Jenkins Pipeline
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/nrayapati/"><div class="app-avatar"><img alt="Naresh Rayapati" class="app-avatar__image" src="/images/avatars/nrayapati.jpeg"></div> Naresh Rayapati</a>
+February 06, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=SSH+Steps+for+Jenkins+Pipeline&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F02%2F06%2Fssh-steps-for-jenkins-pipeline%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This guest post was originally published on Cerner&#8217;s Engineering blog <a href="https://engineering.cerner.com/blog/ssh-steps-for-jenkins-pipeline/">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Pipeline-as-code</strong> or defining the deployment pipeline through code rather than manual job creation through UI, provides tremendous benefits for teams automating builds and deployment infrastructure across their environments.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/pipeline/realworld-pipeline-flow.png" alt="Pipeline Flow" width="100%"></span></p>
+</div>
+<div class="paragraph">
+<p><em>Source of image: <a href="/doc/book/pipeline/"><a href="https://jenkins.io/doc/book/pipeline/" class="bare">https://jenkins.io/doc/book/pipeline/</a></a></em></p>
+</div>
+<div class="sect1">
+<h2 id="jenkins-pipelines"><a class="anchor" href="#jenkins-pipelines"></a>Jenkins Pipelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://jenkins.io/">Jenkins</a> is a well-known open source continuous integration and continuous deployment automation tool. With the latest 2.0 release, Jenkins introduced the Pipeline plugin that implements Pipeline-as-code. This plugin lets you define delivery pipelines using concise scripts which deal elegantly with jobs involving persistence and asynchrony.</p>
+</div>
+<div class="paragraph">
+<p>The Pipeline-as-code&#8217;s script is also known as a <em>Jenkinsfile</em>.</p>
+</div>
+<div class="paragraph">
+<p>Jenkinsfiles uses a domain specific language syntax based on the <a href="http://groovy-lang.org/">Groovy</a> programming language. They are persistent files which can be checked in and version-controlled along with the rest of their project source code. This file can contain the complete set of encoded steps (steps, nodes, and stages) necessary to define the entire application life-cycle, becoming the intersecting point between development and operations.</p>
+</div>
+<div class="sect2">
+<h3 id="missing-piece-of-the-puzzle"><a class="anchor" href="#missing-piece-of-the-puzzle"></a>Missing piece of the puzzle</h3>
+<div class="paragraph">
+<p>One of the most common steps defined in a basic pipeline job is the <em>Deploy</em> step. The deployment stage encompasses everything from publishing build artifacts to pushing code into pre-production and production environments. This deployment stage usually involves both development and operations teams logging onto various remote nodes to run commands and/or scripts to deploy code and configuration. While there are a couple of existing ssh plugins for Jenkins, they currently don&#8217;t support the functionality such as logging into nodes for pipelines. Thus, there was a need for a plugin that supports these steps.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-ssh-steps"><a class="anchor" href="#introducing-ssh-steps"></a>Introducing SSH Steps</h2>
+<div class="sectionbody">
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2019-02-06-ssh-steps/JenkinsPlusSSH.png" alt="SSH Steps">
+</div>
+</div>
+<div class="paragraph">
+<p>Recently, our team at Cerner started working on a project to automate deployments through Jenkins pipelines to help facilitate running commands on over one thousand nodes. We looked at several options including existing plugins, internal shared Jenkins libraries, and others. In the end, we felt it was best to create and open source a plugin to fill this gap so that it can be used across Cerner and beyond.</p>
+</div>
+<div class="paragraph">
+<p>The initial version of this new plugin SSH Steps supports the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sshCommand</code>: Executes the given command on a remote node.</p>
+</li>
+<li>
+<p><code>sshScript</code>: Executes the given shell script on a remote node.</p>
+</li>
+<li>
+<p><code>sshGet</code>: Gets a file/directory from the remote node to current workspace.</p>
+</li>
+<li>
+<p><code>sshPut</code>: Puts a file/directory from the current workspace to remote node.</p>
+</li>
+<li>
+<p><code>sshRemove</code>: Removes a file/directory from the remote node.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="usage"><a class="anchor" href="#usage"></a>Usage</h3>
+<div class="paragraph">
+<p>Below is a simple demonstration on how to use above steps. More documentation can be found on <a href="https://github.com/jenkinsci/ssh-steps-plugin/blob/master/README.adoc">GitHub</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">remote</span> <span class="o">=</span> <span class="o">[:]</span>
+<span class="n">remote</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s2">"node"</span>
+<span class="n">remote</span><span class="o">.</span><span class="na">host</span> <span class="o">=</span> <span class="s2">"node.abc.com"</span>
+<span class="n">remote</span><span class="o">.</span><span class="na">allowAnyHosts</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="n">node</span> <span class="o">{</span>
+    <span class="n">withCredentials</span><span class="o">([</span><span class="n">usernamePassword</span><span class="o">(</span><span class="nl">credentialsId:</span> <span class="s1">'sshUserAcct'</span><span class="o">,</span> <span class="nl">passwordVariable:</span> <span class="s1">'password'</span><span class="o">,</span> <span class="nl">usernameVariable:</span> <span class="s1">'userName'</span><span class="o">)])</span> <span class="o">{</span>
+        <span class="n">remote</span><span class="o">.</span><span class="na">user</span> <span class="o">=</span> <span class="n">userName</span>
+        <span class="n">remote</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span>
+
+        <span class="n">stage</span><span class="o">(</span><span class="s2">"SSH Steps Rocks!"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">writeFile</span> <span class="nl">file:</span> <span class="s1">'test.sh'</span><span class="o">,</span> <span class="nl">text:</span> <span class="s1">'ls'</span>
+            <span class="n">sshCommand</span> <span class="nl">remote:</span> <span class="n">remote</span><span class="o">,</span> <span class="nl">command:</span> <span class="s1">'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'</span>
+            <span class="n">sshScript</span> <span class="nl">remote:</span> <span class="n">remote</span><span class="o">,</span> <span class="nl">script:</span> <span class="s1">'test.sh'</span>
+            <span class="n">sshPut</span> <span class="nl">remote:</span> <span class="n">remote</span><span class="o">,</span> <span class="nl">from:</span> <span class="s1">'test.sh'</span><span class="o">,</span> <span class="nl">into:</span> <span class="s1">'.'</span>
+            <span class="n">sshGet</span> <span class="nl">remote:</span> <span class="n">remote</span><span class="o">,</span> <span class="nl">from:</span> <span class="s1">'test.sh'</span><span class="o">,</span> <span class="nl">into:</span> <span class="s1">'test_new.sh'</span><span class="o">,</span> <span class="nl">override:</span> <span class="kc">true</span>
+            <span class="n">sshRemove</span> <span class="nl">remote:</span> <span class="n">remote</span><span class="o">,</span> <span class="nl">path:</span> <span class="s1">'test.sh'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-via-yaml"><a class="anchor" href="#configuring-via-yaml"></a>Configuring via YAML</h3>
+<div class="paragraph">
+<p>At Cerner, we always strive to have simple configuration files for CI/CD pipelines whenever possible. With that in mind, my team built a wrapper on top of these steps from this plugin. After some design and analysis, we came up with the following YAML structure to run commands across various remote groups:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">config</span><span class="pi">:</span>
+  <span class="na">credentials_id</span><span class="pi">:</span> <span class="s">sshUserAcct</span>
+
+<span class="na">remote_groups</span><span class="pi">:</span>
+  <span class="na">r_group_1</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">node01</span>
+      <span class="na">host</span><span class="pi">:</span> <span class="s">node01.abc.net</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">node02</span>
+      <span class="na">host</span><span class="pi">:</span> <span class="s">node02.abc.net</span>
+  <span class="na">r_group_2</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">node03</span>
+      <span class="na">host</span><span class="pi">:</span> <span class="s">node03.abc.net</span>
+
+<span class="na">command_groups</span><span class="pi">:</span>
+  <span class="na">c_group_1</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">commands</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">ls</span><span class="nv"> </span><span class="s">-lrt'</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">whoami'</span>
+    <span class="pi">-</span> <span class="na">scripts</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">test.sh'</span>
+  <span class="na">c_group_2</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">gets</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">from</span><span class="pi">:</span> <span class="s1">'</span><span class="s">test.sh'</span>
+          <span class="na">to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">test_new.sh'</span>
+    <span class="pi">-</span> <span class="na">puts</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">from</span><span class="pi">:</span> <span class="s1">'</span><span class="s">test.sh'</span>
+          <span class="na">to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">.'</span>
+    <span class="pi">-</span> <span class="na">removes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">test.sh'</span>
+
+<span class="na">steps</span><span class="pi">:</span>
+  <span class="na">deploy</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">remote_groups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">r_group_1</span>
+      <span class="na">command_groups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">c_group_1</span>
+    <span class="pi">-</span> <span class="na">remote_groups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">r_group_2</span>
+      <span class="na">command_groups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">c_group_2</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above example runs commands from <code>c_group_1</code> on remote nodes within <code>r_group_1</code> in parallel before it moves on to the next group using <code>sshUserAcct</code> (from the <a href="https://jenkins.io/doc/book/using/using-credentials/">Jenkins Credentials</a> store) to logon to nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shared-pipeline-library"><a class="anchor" href="#shared-pipeline-library"></a>Shared Pipeline Library</h3>
+<div class="paragraph">
+<p>We have created a shared pipeline library that contains a <code>sshDeploy</code> step to support the above mentioned YAML syntax. Below is the code snippet for the sshDeploy step from the library. The full version can be found <a href="https://github.com/nrayapati/ssh-deploy-library">here</a> on Github.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="err">#</span><span class="o">!</span><span class="s">/usr/</span><span class="n">bin</span><span class="o">/</span><span class="n">groovy</span>
+<span class="kt">def</span> <span class="nf">call</span><span class="o">(</span><span class="n">String</span> <span class="n">yamlName</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">readYaml</span> <span class="nl">file:</span> <span class="n">yamlName</span>
+    <span class="n">withCredentials</span><span class="o">([</span><span class="n">usernamePassword</span><span class="o">(</span><span class="nl">credentialsId:</span> <span class="n">yaml</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">credentials_id</span><span class="o">,</span> <span class="nl">passwordVariable:</span> <span class="s1">'password'</span><span class="o">,</span> <span class="nl">usernameVariable:</span> <span class="s1">'userName'</span><span class="o">)])</span> <span class="o">{</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="na">steps</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">stageName</span><span class="o">,</span> <span class="n">step</span> <span class="o">-&gt;</span>
+            <span class="n">step</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span>
+                <span class="kt">def</span> <span class="n">remoteGroups</span> <span class="o">=</span> <span class="o">[:]</span>
+                <span class="kt">def</span> <span class="n">allRemotes</span> <span class="o">=</span> <span class="o">[]</span>
+                <span class="n">it</span><span class="o">.</span><span class="na">remote_groups</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span>
+                    <span class="n">remoteGroups</span><span class="o">[</span><span class="n">it</span><span class="o">]</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="na">remotes</span><span class="o">.</span><span class="s2">"$it"</span>
+                <span class="o">}</span>
+
+                <span class="kt">def</span> <span class="n">commandGroups</span> <span class="o">=</span> <span class="o">[:]</span>
+                <span class="n">it</span><span class="o">.</span><span class="na">command_groups</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span>
+                    <span class="n">commandGroups</span><span class="o">[</span><span class="n">it</span><span class="o">]</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="na">commands</span><span class="o">.</span><span class="s2">"$it"</span>
+                <span class="o">}</span>
+                <span class="kt">def</span> <span class="n">isSudo</span> <span class="o">=</span> <span class="kc">false</span>
+                <span class="n">remoteGroups</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">remoteGroupName</span><span class="o">,</span> <span class="n">remotes</span> <span class="o">-&gt;</span>
+                    <span class="n">allRemotes</span> <span class="o">+=</span> <span class="n">remotes</span><span class="o">.</span><span class="na">collect</span> <span class="o">{</span> <span class="n">remote</span> <span class="o">-&gt;</span>
+                        <span class="k">if</span><span class="o">(!</span><span class="n">remote</span><span class="o">.</span><span class="na">name</span><span class="o">)</span>
+                            <span class="n">remote</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="na">host</span>
+                        <span class="n">remote</span><span class="o">.</span><span class="na">user</span> <span class="o">=</span> <span class="n">userName</span>
+                        <span class="n">remote</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span>
+                        <span class="n">remote</span><span class="o">.</span><span class="na">allowAnyHosts</span> <span class="o">=</span> <span class="kc">true</span>
+                        <span class="n">remote</span><span class="o">.</span><span class="na">groupName</span> <span class="o">=</span> <span class="n">remoteGroupName</span>
+                        <span class="n">remote</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">allRemotes</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">allRemotes</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="kt">def</span> <span class="n">stepsForParallel</span> <span class="o">=</span> <span class="n">allRemotes</span><span class="o">.</span><span class="na">collectEntries</span> <span class="o">{</span> <span class="n">remote</span> <span class="o">-&gt;</span>
+                            <span class="o">[</span><span class="s2">"${remote.groupName}-${remote.name}"</span> <span class="o">:</span> <span class="n">transformIntoStep</span><span class="o">(</span><span class="n">stageName</span><span class="o">,</span> <span class="n">remote</span><span class="o">.</span><span class="na">groupName</span><span class="o">,</span> <span class="n">remote</span><span class="o">,</span> <span class="n">commandGroups</span><span class="o">)]</span>
+                        <span class="o">}</span>
+                        <span class="n">stage</span><span class="o">(</span><span class="n">stageName</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">parallel</span> <span class="n">stepsForParallel</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="kt">def</span> <span class="n">remote</span> <span class="o">=</span> <span class="n">allRemotes</span><span class="o">.</span><span class="na">first</span><span class="o">()</span>
+                        <span class="n">stage</span><span class="o">(</span><span class="n">stageName</span> <span class="o">+</span> <span class="s2">"\n"</span> <span class="o">+</span> <span class="n">remote</span><span class="o">.</span><span class="na">groupName</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="n">remote</span><span class="o">.</span><span class="na">name</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">transformIntoStep</span><span class="o">(</span><span class="n">stageName</span><span class="o">,</span> <span class="n">remote</span><span class="o">.</span><span class="na">groupName</span><span class="o">,</span> <span class="n">remote</span><span class="o">,</span> <span class="n">commandGroups</span><span class="o">).</span><span class="na">call</span><span class="o">()</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By using the step (as described in the snippet above) from this shared pipeline library, a Jenkinsfile can be reduced to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="nd">@Library</span><span class="o">(</span><span class="s1">'ssh_deploy'</span><span class="o">)</span> <span class="n">_</span>
+
+<span class="n">node</span> <span class="o">{</span>
+  <span class="n">checkout</span> <span class="n">scm</span>
+  <span class="nf">sshDeploy</span><span class="o">(</span><span class="s1">'dev/deploy.yml'</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example execution of the above pipeline code in Blue Ocean looks like this:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2019-02-06-ssh-steps/jenkins-ssh-deploy.png" alt="SSH Deploy BlueOcean View" width="80%">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wrapping-up"><a class="anchor" href="#wrapping-up"></a>Wrapping up</h3>
+<div class="paragraph">
+<p>Steps from the <a href="https://github.com/jenkinsci/ssh-steps-plugin">SSH Steps Plugin</a> are deliberately generic enough that they can be used for various other use-cases as well, not just for deploying code. Using SSH Steps has significantly reduced the time we spend on deployments and has given us the possibility of easily scaling our deployment workflows to various environments.</p>
+</div>
+<div class="paragraph">
+<p>Help us make this <a href="https://github.com/jenkinsci/ssh-steps-plugin">plugin</a> better by contributing. Whether it is adding or suggesting a new feature, bug fixes, or simply improving documentation, contributions are always welcome.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ssh/">
+ssh
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/steps/">
+steps
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Naresh Rayapati" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/nrayapati.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/nrayapati/">
+Naresh Rayapati
+</a>
+</p>
+<div class="paragraph">
+<p>Software Architect at <a href="https://www.cerner.com/">Cerner Corporation</a>. Passionate about Agile, DevOps &amp; Continuous Delivery, and all things Automation.
+OSS Contributor, he is maintaining couple of Jenkins plugins since past several years. <a href="https://plugins.jenkins.io/ssh-steps">SSH Steps</a> - <a href="https://plugins.jenkins.io/jira-steps">JIRA Steps</a> - <a href="https://plugins.jenkins.io/hubot-steps">Hubot Steps</a></p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/nrayapati" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/nrayapati" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/02/2019-02-06-ssh-steps-for-jenkins-pipeline.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

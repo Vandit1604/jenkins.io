@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/06/10/save-costs-with-ec2-spot-fleet/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/06/10/save-costs-with-ec2-spot-fleet/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Save up to 90% of CI cost on AWS with Jenkins and EC2 Spot Fleet
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/cyberax/"><div class="app-avatar"></div> Aleksei Besogonov</a>
+June 10, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Save+up+to+90%25+of+CI+cost+on+AWS+with+Jenkins+and+EC2+Spot+Fleet&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F06%2F10%2Fsave-costs-with-ec2-spot-fleet%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="mailto:cyberax@amazon.com">Aleksei Besogonov</a>, Senior Software Developer at
+<a href="https://aws.amazon.com">Amazon Web Services</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Earlier this year, we published a <a href="https://aws.amazon.com/solutions/case-studies/lyft/" target="_blank" rel="noopener">case study</a> on how
+<a href="https://www.lyft.com/" target="_blank" rel="noopener">Lyft</a> has used Amazon EC2 Spot instances to save 75% on their continuous delivery
+infrastructure costs by simply changing four lines of code. Several other EC2 customers like Mozilla have
+also <a href="https://web.archive.org/web/20160511040514/https://taras.glek.net/blog/2014/05/09/how-amazon-ec2-got-15x-cheaper-in-6-months/" target="_blank" rel="noopener">reduced costs</a> of their
+continuous integration, deployment and testing pipelines by up to 90% on Spot instances. You can view
+the current savings on Spot instances over EC2 On-demand instances using the
+<a href="https://aws.amazon.com/ec2/spot/bid-advisor/" target="_blank" rel="noopener">Spot Bid Advisor</a>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/bidadvisor.png" alt="bidadvisor"></span></p>
+</div>
+<div class="paragraph">
+<p>AWS Spot instances are spare EC2 instances that you can bid on. While your Spot instances may be
+terminated when EC2’s spare capacity declines, you can automatically replenish these instances and
+maintain your target capacity using
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet.html" target="_blank" rel="noopener">EC2 Spot fleets</a>. As each
+instance type and Availability Zone provides an alternative capacity pool, you can select multiple
+such pools to launch the lowest priced instances currently available by launching a Spot
+fleet on the <a href="https://console.aws.amazon.com/ec2sp/v1/spot/" target="_blank" rel="noopener">Amazon EC2 Spot Requests</a> console
+or using the AWS CLI/SDK tools.</p>
+</div>
+<div class="paragraph">
+<p>In this walkthrough, we’ll show you how to configure Jenkins to automatically scale a fleet of Spot
+instances up or down depending on the number jobs to be completed.</p>
+</div>
+<div class="sect2">
+<h3 id="request-an-amazon-ec2-spot-fleet"><a class="anchor" href="#request-an-amazon-ec2-spot-fleet"></a>Request an Amazon EC2 Spot fleet</h3>
+<div class="paragraph">
+<p>To get started, login to <a href="https://console.aws.amazon.com/ec2/" target="_blank" rel="noopener">Amazon EC2 console</a>, and click on <strong>Spot Requests</strong>
+in the left hand navigation pane. Alternatively, you can directly login to
+<a href="https://console.aws.amazon.com/ec2sp/v1/spot" target="_blank" rel="noopener">Amazon EC2 Spot Requests console</a>. Then click on the
+<strong>Request Spot Instances</strong> button at the top of the dashboard.</p>
+</div>
+<div class="paragraph">
+<p>In the Spot instance launch wizard, select the <strong>Request &amp; Maintain</strong> option to request a Spot fleet that automatically
+provisions the most cost-effective EC2 Spot instances, and replenishes them if interrupted. Enter an initial
+target capacity, choose an AMI, and select multiple instance types to automatically provision the lowest priced
+instances available.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/wDW63sm.jpg" alt="wDW63sm"></span></p>
+</div>
+<div class="paragraph">
+<p>On the next page, ensure that you have selected a key pair, complete the launch wizard, and note the Spot
+fleet request ID.</p>
+</div>
+<div class="paragraph">
+<p>Amazon EC2 Spot fleet automates finding the lowest priced instances for you, and enables your Jenkins cluster
+to maintain the required capacity; so, you don’t need any bidding algorithms to provision the optimal Spot
+instances over time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configure-jenkins"><a class="anchor" href="#configure-jenkins"></a>Configure Jenkins</h3>
+<div class="sect3">
+<h4 id="install-the-plugin"><a class="anchor" href="#install-the-plugin"></a>Install the Plugin</h4>
+<div class="paragraph">
+<p>From the Jenkins dashboard, select <strong>Manage Jenkins</strong>, and then click <strong>Manage Plugins</strong>. On the <strong>Available</strong> tab,
+search for and select the <em>EC2 Fleet Jenkins Plugin</em>. Then click the <strong>Install</strong> button.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/iOfvSD8.jpg" alt="iOfvSD8"></span></p>
+</div>
+<div class="paragraph">
+<p>After the plugin installation is completed, select <strong>Manage Jenkins</strong> from the Jenkins dashboard, and
+click <strong>Configure System</strong>. In the <strong>Cloud</strong> section, select <em>Amazon Spot Fleet</em> to add a new Cloud.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/MtvaRLU.jpg" alt="MtvaRLU"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configure-aws-credentials"><a class="anchor" href="#configure-aws-credentials"></a>Configure AWS Credentials</h4>
+<div class="paragraph">
+<p>Next, we will configure the AWS and agent node credentials. Click the <strong>Add</strong> button next to AWS Credentials,
+select Jenkins, and enter your AWS Access Key, secret, and ID.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/oCkHRu5.jpg" alt="oCkHRu5"></span>
+<span class="image center"><img src="/images/post-images/aws/Mh9TabQ.jpg" alt="Mh9TabQ"></span></p>
+</div>
+<div class="paragraph">
+<p>Next, click the <strong>Add</strong> button in the Spot fleet launcher to configure your agents with an SSH key.
+Select Jenkins, and enter the username and private key (from the key pair you configured in your Spot fleet request)
+as shown below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/EuPvQdU.jpg" alt="EuPvQdU"></span></p>
+</div>
+<div class="paragraph">
+<p>Confirm that the AWS and SSH credentials you just added are selected. Then choose the region, and the Spot fleet
+request ID from the drop-down. You can also enter the maximum idle time before your cluster automatically scales
+down, and the maximum cluster size that it can scale up to.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/fk65vh7.jpg" alt="fk65vh7"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="submit-jobs-and-view-status"><a class="anchor" href="#submit-jobs-and-view-status"></a>Submit Jobs and View Status</h3>
+<div class="paragraph">
+<p>After you have finished the previous step, you can view the <strong>EC2 Fleet Status</strong> in the left hand navigation pane on
+the Jenkins dashboard. Now, as you submit more jobs, Jenkins will automatically scale your Spot fleet to add more
+nodes. You can view these new nodes executing jobs under the Build Executor Status.
+After the jobs are done, if the nodes remain free for the specified idle time (configured in the previous step),
+then Jenkins releases the nodes, automatically scaling down your Spot fleet nodes.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/aws/P2eIB08.jpg" alt="P2eIB08"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-faster-and-cheaper"><a class="anchor" href="#build-faster-and-cheaper"></a>Build faster and cheaper</h3>
+<div class="paragraph">
+<p>If you have a story to share about your team or product, or have a question to ask, do leave a comment
+for us; we’d love to connect with you!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/aws/">
+aws
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ec2/">
+ec2
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/cyberax/">
+Aleksei Besogonov
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/Cyberax" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-06-10-save-costs-with-ec2-spot-fleet.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

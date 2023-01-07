@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Configuring Content Security Policy
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/configuring-content-security-policy/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Configuring Content Security Policy" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Configuring Content Security Policy" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Configuring Content Security Policy" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/configuring-content-security-policy/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Configuring Content Security Policy" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="active">Securing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" class="">Access Control</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/securing-jenkins/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/managing-security/" class="">Managing Security</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/" class="">Controller Isolation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/csrf-protection/" class="">CSRF Protection</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/user-content/" class="">Rendering User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/build-authorization/" class="">Access Control for Builds</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/environment-variables/" class="">Handling Environment Variables</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/markup-formatter/" class="">Markup Formatters</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/services/" class="">Exposed Services and Ports</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Configuring Content Security Policy
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#the-default-rule-set">The Default Rule Set</a></li>
+<li><a href="#customizing-content-security-policy">Customizing Content Security Policy</a>
+<ul class="sectlevel2">
+<li><a href="#considerations">Considerations</a></li>
+<li><a href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li><a href="#making-plugins-work">Making Plugins Work</a>
+<ul class="sectlevel2">
+<li><a href="#maven-integration-plugin">Maven Integration Plugin</a></li>
+<li><a href="#javadoc-plugin">Javadoc Plugin</a></li>
+<li><a href="#html-publisher-plugin">HTML Publisher Plugin</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This page describes the restrictions applied by potentially untrusted files served by Jenkins by default and how to customize them.</p>
+</div>
+<div class="sect1">
+<h2 id="the-default-rule-set"><a class="anchor" href="#the-default-rule-set"></a>The Default Rule Set</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default rule set results in the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No JavaScript allowed at all</p>
+</li>
+<li>
+<p>No plugins (object/embed) allowed</p>
+</li>
+<li>
+<p>No inline CSS, or CSS from other sites allowed</p>
+</li>
+<li>
+<p>No images from other sites allowed</p>
+</li>
+<li>
+<p>No frames allowed</p>
+</li>
+<li>
+<p>No web fonts allowed</p>
+</li>
+<li>
+<p>No XHR/AJAX allowed</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>Content-Security-Policy</code> header value is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="javascript"><span class="nx">sandbox</span><span class="p">;</span> <span class="k">default</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span> <span class="nx">img</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span> <span class="nx">style</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sandbox</code> limits a number of things of what the page can do, similar to the <code>sandbox</code> attribute set on iframes.
+For a full list of what is prohibited, see <a href="https://html.spec.whatwg.org/multipage/browsers.html#sandboxing-flag-set">this site</a>.
+This attribute is not widely supported.</p>
+</li>
+<li>
+<p><code>default-src 'none'</code> prohibits loading scripts, URLs for AJAX/XHR/WebSockets/EventSources, fonts, plugin objects, media, and frames from anywhere (images and styles would also be prohibited, but
+are allowed by more specific rules described below).</p>
+</li>
+<li>
+<p><code>img-src 'self'</code> allows loading images from other files served by Jenkins.
+Inline image definitions are prohibited.</p>
+</li>
+<li>
+<p><code>style-src 'self'</code> allows loading style sheets from other files served by Jenkins.
+Inline style sheets are prohibited.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="https://content-security-policy.com/">content-security-policy.com</a> for a reference on this header and its possible values.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customizing-content-security-policy"><a class="anchor" href="#customizing-content-security-policy"></a>Customizing Content Security Policy</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is strongly recommended to set up the <a href="../user-content/#resource-root-url">Resource Root URL</a> instead of customizing Content-Security-Policy.
+Most of the documentation below was written when <code>Content-Security-Policy</code> was first introduced and is retained for use by administrators unable to set up Jenkins to serve user content from a different domain.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="considerations"><a class="anchor" href="#considerations"></a>Considerations</h3>
+<div class="paragraph">
+<p>It depends on the specific Jenkins setup whether relaxing these rules substantially is safe.</p>
+</div>
+<div class="paragraph">
+<p>The following needs to be taken into consideration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Are less trusted users allowed to create or modify files in Jenkins workspaces?</strong> Jenkins builds pull requests sent by untrusted users, or employ a security model that limits trust in users allowed to configure one or more jobs, this also affects in what way the CSP rule set should be relaxed: Anything allowed there could be abused by users with the ability to change files in workspaces or archived artifacts.</p>
+</li>
+<li>
+<p><strong>Are some agents not fully trusted?</strong> Even when <a href="/doc/book/security/controller-isolation/#agent-controller-access-control">Agent To Controller Access</a> is used to limit what agents can do on the
+controller node, the entire build directory on the controller node is writable by agents, with the exception of the build.xml file itself.
+Therefore any file stored in a build directory and served by Jenkins should be considered potentially unsafe.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If either of these are true, you should be very careful when relaxing the CSP rule set.
+If neither is true, and all users with the ability to change files in workspaces are fully trusted, as are all agent machines, then it should be safe to relax or even disable the CSP rules.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementation"><a class="anchor" href="#implementation"></a>Implementation</h3>
+<div class="paragraph">
+<p>The CSP header sent by Jenkins can be modified by setting the system property <code>hudson.model.DirectoryBrowserSupport.CSP</code>:</p>
+</div>
+<div class="paragraph">
+<p>If its value is the <strong>empty string</strong>, e.g. <code>java -Dhudson.model.DirectoryBrowserSupport.CSP= -jar jenkins.war</code> then the header will not be sent at all.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This is potentially very unsafe and should only be used after reviewing the overall security setup.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Any other value will be used as the header value, e.g. <code>java -Dhudson.model.DirectoryBrowserSupport.CSP="sandbox; default-src 'self';" -jar jenkins.war</code>.
+See <a href="http://content-security-policy.com/">content-security-policy.com</a> for a reference on this header and its possible values.</p>
+</div>
+<div class="paragraph">
+<p>Changes to the system property will be effective immediately, so it&#8217;s possible to set this system property temporarily via the <a href="../../managing/script-console/">Script Console</a>, allowing you to experiment with different values:</p>
+</div>
+<div class="paragraph">
+<p><strong>Set a custom value for the header:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s2">"hudson.model.DirectoryBrowserSupport.CSP"</span><span class="o">,</span> <span class="s2">"sandbox; default-src 'self';"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Unset the header:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s2">"hudson.model.DirectoryBrowserSupport.CSP"</span><span class="o">,</span> <span class="s2">""</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Set the header to the default:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">System</span><span class="o">.</span><span class="na">clearProperty</span><span class="o">(</span><span class="s2">"hudson.model.DirectoryBrowserSupport.CSP"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Find out the current header value:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">"hudson.model.DirectoryBrowserSupport.CSP"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>How to interpret the output</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No output below "Result" header: default protection</p>
+</li>
+<li>
+<p>Output <code>Result:</code> below "Result" header: protection disabled</p>
+</li>
+<li>
+<p>Output <code>Result: some text here</code> below "Result" header: custom protection</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Forcing an uncached reload ("Shift-F5" or equivalent) of the affected web page may be necessary after changing the system property for the behavior to change.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="making-plugins-work"><a class="anchor" href="#making-plugins-work"></a>Making Plugins Work</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="maven-integration-plugin"><a class="anchor" href="#maven-integration-plugin"></a>Maven Integration Plugin</h3>
+<div class="paragraph">
+<p>Maven Integration Plugin has a feature that allows browsing generated Maven documentation sites (e.g. <code>site:site</code>) in Jenkins.
+When using this feature, it may be necessary to relax the CSP rule set to allow this to work.
+In limited testing, it was necessary to at least allow <code>style-src 'unsafe-inline'</code>.
+Depending on the site&#8217;s content, more relaxed rules may be necessary.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="javascript"><span class="nx">sandbox</span><span class="p">;</span> <span class="k">default</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span> <span class="nx">img</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span> <span class="nx">style</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">unsafe-inline</span><span class="dl">'</span><span class="p">;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="javadoc-plugin"><a class="anchor" href="#javadoc-plugin"></a>Javadoc Plugin</h3>
+<div class="paragraph">
+<p>The Javadoc Plugin makes Javadoc available for browsing in Jenkins.
+The default rule set does not allow use of frames in pages served by Jenkins.
+To make this work again, the directives <code>frame-src 'self'</code> and <code>child-src 'self'</code> must be added to the CSP header.
+It appears Safari also requires the <code>sandbox</code> directive to be removed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="javascript"><span class="k">default</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span> <span class="nx">img</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span> <span class="nx">style</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span> <span class="nx">child</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span> <span class="nx">frame</span><span class="o">-</span><span class="nx">src</span> <span class="dl">'</span><span class="s1">self</span><span class="dl">'</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To see the <code>ALL CLASSES</code> link when browsing Javadoc without frames, <code>script-src 'unsafe-inline'</code> must also be added to the CSP header.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="html-publisher-plugin"><a class="anchor" href="#html-publisher-plugin"></a>HTML Publisher Plugin</h3>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Make sure to update HTML Publisher Plugin to version 1.10 to make it work with Content Security Policy.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>From version 1.10 on, the HTML Publisher Plugin is compatible with Content Security Policy.
+Before that, it executed inline JavaScript in a file served by <code>DirectoryBrowserSupport</code> to set up the frame wrapper around the published files and would fail unless <code>script-src 'unsafe-inline'</code> was allowed, which is a possible security issue.</p>
+</div>
+<div class="paragraph">
+<p>If the published HTML files require JavaScript or other dynamic features prohibited by Content Security Policy to work properly, the <code>Content-Security-Policy</code> header will need to be adjusted accordingly.
+This applies to all versions of HTML Publisher Plugin.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/security/configuring-content-security-policy.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

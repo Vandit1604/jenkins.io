@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins hits 1.400
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2011/03/13/jenkins-hits-1-400/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins hits 1.400" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins hits 1.400" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins hits 1.400" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2011/03/13/jenkins-hits-1-400/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins hits 1.400" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins hits 1.400
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/kohsuke/"><div class="app-avatar"><img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/images/avatars/kohsuke.jpeg"></div> Kohsuke Kawaguchi</a>
+March 13, 2011
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+hits+1.400&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2011%2F03%2F13%2Fjenkins-hits-1-400%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><a href="https://jenkins-ci.org/">Jenkins</a> is now at 1.400 (as of last Monday, yes, I know. But better late than never&#8230;&#8203;). As with <a href="https://weblogs.java.net/blog/2009/04/22/hudson-hits-1300?force=752">1.300</a> and <a href="https://weblogs.java.net/blog/kohsuke/archive/2008/03/hudson_hits_120.html?force=824">1.200</a>, this release doesn&#8217;t particularly signify any substantial major release, but nonetheless it is a milestone for those of us who are involved in the project — I think repeating something 400 times is something one can be proud of. It&#8217;s a bit like climbing a mountain. Left foot, right foot, left foot, right foot, &#8230;&#8203; and when you look up, voila!<br></p>
+</div>
+<div class="paragraph">
+<p>In 2 years since 1.300, which was April 2009, we&#8217;ve added a lot of features. We now have a CLI to manipulate the server, auto-installation of JDK/Ant/Maven to simplify cluster management, concurrent builds of the same job, community-contributed localizations to 20+ languages, boolean expression over the job/label assignment control, parallel initialization based on a dynamically built acyclic directed graph, console annotations to enrich the build output, far more extensible queue (that enabled a lot of plugins), Windows 7 / Vista support, improved controller/agent communication stability, Maven 3 support, and then all around performance improvements, in memory footprint, in startup time, and in page rendering speed.<br></p>
+</div>
+<div class="paragraph">
+<p>And of course, we had to change the name of the project. That was a real distraction, but now that the divorce is over, things have been <a href="https://bobbickel.blogspot.com/2011/03/jenkins-vs-hudson-time-to-upgrade.html">moving well</a> for Jenkins. I guess any organization (including any sizable OSS project) is really more than sum of all individuals. If you take a store of Target and replace all its workers by those of nearby Staples, it&#8217;ll probably not work out well. I think <a href="https://jenkins-ci.org/why">people understand that</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>And on the positive side, I do think we came out stronger. We are now running <a href="https://jenkins-ci.org/node/280">governance meetings on IRC</a>, we now have <a href="https://jenkins-ci.org/content/jenkins">somewhat more formal governance structure</a>. The core development is actually accelerating with the help of <a href="https://github.com/jenkinsci/jenkins/graphs/impact">many new developers</a>, such as Olivier Lamy, (scroll to the right), and <a href="https://twitter.com/#!/jenkins_release">plugin releases kept coming at amazing rate</a> — we are now at 350+ plugins, more than doubled since 1.300.<br></p>
+</div>
+<div class="paragraph">
+<p>Looking at future, we are working on a number of new initiatives in the community, too. For example, Arnaud Héritier is working on revisiting <a href="https://issues.jenkins.io/">our JIRA project structure</a>, Andrew Bayer is running a contest for new logo, Tyler is in process of getting additional hardwares at OSUOSL for the project. I&#8217;m also doing a lot of things, but for example, I&#8217;m going to write a proposal to start a stable patch releases of Jenkins that only consists of backported important bug fixes, in addition to the current weekly release model. Several large users maintain private branches of Jenkins, and so I think it makes a lot of sense for those folks to align their efforts around this release line. I&#8217;m also thinking that we could launch a community acceptance testing (CAT) effort around this, much like <a href="https://qa.netbeans.org/processes/cat/67/faqs.html">NetBeans</a> and <a href="https://glassfish.java.net/quality/portal/">GlassFish</a> have done it. I think the first stable release line would branch off from 1.400, so if anything that&#8217;s another reason you should upgrade to 1.400.<br></p>
+</div>
+<div class="paragraph">
+<p>When I reflect on the project, I&#8217;m surprised at just how much work there is to be done, after so much that has been achieved. But I&#8217;m still excited at what we can do with this platform. I thank everyone for their continued patoronage of Jenkins, and I hope to see more of you in the mailing lists, in the chat rooms, and in the meet-up events. And here is <a href="https://en.wikipedia.org/wiki/Buzz_Lightyear">to infinity and beyond!</a><br></p>
+</div>
+<div class="paragraph">
+<p>(Cross-posted to <a href="https://kohsuke.org/2011/03/13/jenkins-hits-1-400/">Kohsuke&#8217;s blog</a>)</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/kohsuke.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kohsuke/">
+Kohsuke Kawaguchi
+</a>
+</p>
+<div class="paragraph">
+<p>Kohsuke is the creator of Jenkins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kohsuke" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/kohsukekawa" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2011/2011-03-13-jenkins-hits-1-400.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

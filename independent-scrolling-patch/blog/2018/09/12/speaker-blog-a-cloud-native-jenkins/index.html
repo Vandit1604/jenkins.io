@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Speaker blogpost: A Cloud Native Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/09/12/speaker-blog-a-cloud-native-jenkins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Speaker blogpost: A Cloud Native Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Speaker blogpost: A Cloud Native Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Speaker blogpost: A Cloud Native Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/09/12/speaker-blog-a-cloud-native-jenkins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Speaker blogpost: A Cloud Native Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Speaker blogpost: A Cloud Native Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+September 12, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Speaker+blogpost%3A+A+Cloud+Native+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F09%2F12%2Fspeaker-blog-a-cloud-native-jenkins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="imageblock right">
+<div class="content">
+<a class="image" href="https://www.cloudbees.com/devops-world"><img src="/images/conferences/devops-world-2018.jpg" alt="DevOps World | Jenkins World 2018"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>A few months ago I published a
+<a href="/blog/2018/07/30/introducing-cloud-native-sig/">blog post</a> about
+<a href="/sigs/cloud-native/">Cloud Native Special Interest Group (SIG)</a>
+and ongoing projects related to Cloud Native Jenkins.
+Next week we will be presenting at DevOps World | Jenkins World together with Carlos Sanchez and Jesse Glick,
+so I would like to provide a heads up for
+<a href="https://devopsworldjenkinsworld2018.sched.com/event/F9NT/a-cloud-native-jenkins">our talk: “A Cloud Native Jenkins”</a>.</p>
+</div>
+<div class="paragraph">
+<p>In our talk, we will focus on the following topics: Pluggable Storage,
+our ephemeral Jenkins controllers experiments,
+and tools which may be used to implement single-shot controllers.</p>
+</div>
+<div class="sect1">
+<h2 id="pluggable-storage"><a class="anchor" href="#pluggable-storage"></a>Pluggable Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pluggable storage is one of the major areas we have been working on over the last few months.
+There are a number of parallel stories which are summarized on
+<a href="/sigs/cloud-native/pluggable-storage/">this page</a>.
+There has been significant progress in the areas of artifact storage, build logging and configuration storage.
+A number of Jenkins Enhancement Proposals were submitted and accepted,
+and there are plugin releases and prototypes for these stories.</p>
+</div>
+<div class="paragraph">
+<p>During our talk we will discuss the current status of these stories and future plans.
+In particular, we will cover the following areas and reference implementations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Storing all your artifacts transparently, e.g. in a cloud service blob store like AWS S3.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/artifact-manager-s3">Artifact Manager for S3 Plugin</a> is an implementation we have recently released</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Providing credentials from an external location.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/kubernetes-credentials-provider">Kubernetes Credentials Provider</a> is one of the existing implementations for Kubernetes secrets</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Sending and retrieving the build logs from a cloud service.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>We are working on reference implementations for <a href="https://github.com/jenkinsci/pipeline-log-fluentd-cloudwatch-plugin">AWS CloudWatch Logs</a> and
+<a href="https://github.com/jenkinsci/external-logging-elasticsearch-plugin">Elasticsearch</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Storing configuration data in external storage like Kubernetes Resources and SQL database</p>
+</li>
+<li>
+<p>Storing test results externally, e.g. in an SQL database or a specialized Test Management System</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are existing plugins for the areas above, but there is a difference in approach we have taken.
+Instead of creating new custom steps we extend Jenkins architecture in a way that the storage becomes <strong>transparent</strong> to users.
+For example, with <a href="https://plugins.jenkins.io/artifact-manager-s3">Artifact Manager for S3 Plugin</a> common <em>Archive Artifacts</em> steps
+work transparently with Remote storage, as well as Jenkins Pipeline&#8217;s <code>stash()</code>/<code>unstash()</code> steps.</p>
+</div>
+<div class="paragraph">
+<p>The reference implementations intentionally use different technologies so that we cover more scenarios.
+We regularly discuss the implementations in the <a href="/sigs/cloud-native/">Cloud Native SIG</a>,
+and we would appreciate your feedback.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ephemeral-jenkins-controllers-research"><a class="anchor" href="#ephemeral-jenkins-controllers-research"></a>Ephemeral Jenkins controllers research</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Want something new?
+Several days ago Kohsuke Kawaguchi, the creator of Jenkins, posted the
+<a href="/blog/2018/08/31/shifting-gears/">Jenkins: Shifting Gears</a> article to summarize the plan for Jenkins evolution.
+Cloud Native Jenkins is a critical part of this plan, and it is not “just Jenkins X”.
+There are various architectural changes in Jenkins required to make this vision happen,
+and we plan to work on these changes in the Cloud Native SIG.</p>
+</div>
+<div class="paragraph">
+<p>In our presentation, we will talk about our experiment with ephemeral Jenkins and single-shot controllers.
+In this story we are creating a headless single-shot controller which starts in a container,
+executes a Pipeline build and pushes all the results to remote storage so that the container can just be deleted after completion.
+Such a controller bundles plugins and self-configuration logic using “Configuration as Code”,
+so that it can start executing Pipelines in just a few seconds.
+Once packaged, it can be invoked from CLI as simply as&#8230;&#8203;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">docker run --rm -v $PWD/demo/Jenkinsfile:/workspace/Jenkinsfile onenashev/cwp-jenkinsfile-runner-demo</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or, in Kubernetes:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">kubectl create configmap jenkinsfile --from-file=demo/Jenkinsfile
+kubectl create -f demo/kubernetes.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Such a single-shot controller could also be made a part of a Cloud Native Jenkins system.
+Standard event handlers like Prow can invoke the builds on webhooks and report results back,
+so that the single-shot controller can be used to build pull requests or to run Continuous Delivery flows.
+Extra agents could also be connected to the controller on-demand, using the Kubernetes plugin or sidecar containers.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://www.cloudbees.com/devops-world"><img src="/images/post-images/2018-09-12-cloud-native-jenkins/single-shot-master-schema.png" alt="Single-shot controller concept"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tools"><a class="anchor" href="#tools"></a>Tools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to make this experiment possible, we used a toolchain based on
+Docker,
+<a href="https://github.com/kohsuke/jenkinsfile-runner">Jenkinsfile Runner</a>,
+<a href="https://github.com/jenkinsci/configuration-as-code-plugin">Configuration as Code Plugin</a> (JCasC), and a
+<a href="https://github.com/jenkinsci/custom-war-packager">Custom WAR Packager tool</a> which glues all the things together.</p>
+</div>
+<div class="paragraph">
+<p><strong>Custom WAR Packager</strong> is a new tool which takes various configurations (YAML specification defining core version, list of plugins, system properties, Groovy Hooks, JCasC YAMLs)&#8230;&#8203;
+and then bundles everything as a ready-to-fly WAR file or Docker image.
+Starting from version <strong>1.2</strong>, Custom WAR Packager also supports packaging Jenkinsfile Runner images as an experimental feature.
+I will do a separate blogpost about this new tool later,
+but there is already some documentation a number of <a href="https://github.com/jenkinsci/custom-war-packager#demo">demos</a> in the project’s repo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="our-demo"><a class="anchor" href="#our-demo"></a>Our demo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Yes, we will have a demo! We will show a single-shot controller running with Pluggable storage implementations for AWS environments (Amazon S3, AWS CloudWatch, EKS, etc.),
+which executes Jenkins Pipelines for Maven projects and provisions agents in Kubernetes on-demand.</p>
+</div>
+<div class="paragraph">
+<p>The demo has to be published yes, but you can already find a more simple Jenkinsfile Runner demo
+<a href="https://github.com/jenkinsci/custom-war-packager/tree/master/demo/jenkinsfile-runner">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="want-to-know-more"><a class="anchor" href="#want-to-know-more"></a>Want to know more?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The upcoming <a href="https://www.cloudbees.com/devops-world">DevOps World | Jenkins World conferences</a>
+are heavily packed with talks related to Cloud Native Jenkins,
+including war stories and presentations on projects like Jenkins X and Jenkins Evergreen.
+It is a great chance to get more information about using Jenkins in cloud environments.</p>
+</div>
+<div class="paragraph">
+<p>If you are a Jenkins contributor or just want to become a contributor,
+also join the <a href="/blog/2018/07/25/contributor-summit/">Contributor Summit</a> (Sep 17 in US and Oct 23 in Nice) or visit the Jenkins community booth in the Exhibition hall.
+At the Contributor Summit on Sep 17 we will also have a face-to-face Cloud Native SIG meeting.
+Feel free to contribute to the agenda <a href="https://docs.google.com/document/d/1Hw1mpXSpH8BAe2YK5SrCfFuHQLRf__KnjDBK_SbhGls/edit">here</a>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Come meet Carlos, Jesse, Oleg, and other Cloud Native SIG members at
+<a href="https://www.cloudbees.com/devops-world">Jenkins World</a> on September 16-19th in San Francisco and on October 22-25 in Nice.
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2018/">
+jenkinsworld2018
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/cloud-native/">
+cloud-native
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pluggable-storage/">
+pluggable-storage
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsfile-runner/">
+jenkinsfile-runner
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/09/2018-09-12-speaker-blog-a-cloud-native-jenkins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

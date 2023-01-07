@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>
+macOS
+</title>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software' name='description'>
+<meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<meta content='ie=edge' http-equiv='x-ua-compatible'>
+<link href='https://www.jenkins.io/doc/book/updating/macos/' rel='canonical'>
+<!-- Favicons -->
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180'>
+<link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/site.webmanifest' rel='manifest'>
+<link color='#5bbad5' href='/safari-pinned-tab.svg' rel='mask-icon'>
+<meta content='#2b5797' name='msapplication-TileColor'>
+<meta content='#ffffff' name='theme-color'>
+<meta content='macOS' name='apple-mobile-web-app-title'>
+<!-- Twitter Card data -->
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@JenkinsCI' name='twitter:site'>
+<meta content='macOS' name='twitter:title'>
+<meta content='Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software' name='twitter:description'>
+<meta content='@JenkinsCI' name='twitter:creator'>
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content='/images/logo-title-opengraph.png' name='twitter:image'>
+<!-- Open Graph data -->
+<meta content='macOS' property='og:title'>
+<meta content='article' property='og:type'>
+<meta content='https://www.jenkins.io/doc/book/updating/macos/' property='og:url'>
+<meta content='Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software' name='og:description'>
+<meta content='macOS' property='og:site_name'>
+<meta content='/images/logo-title-opengraph.png' name='og:image'>
+<link href='/assets/bower/bootstrap/css/bootstrap.min.css' media='screen' rel='stylesheet'>
+<link href='/css/jenkins.css' media='screen' rel='stylesheet'>
+<link href='/stylesheets/styles.css' media='screen' rel='stylesheet'>
+<!-- Non-obtrusive CSS styles -->
+<link href='/css/footer.css' media='screen' rel='stylesheet'>
+<link href='/css/font-awesome.min.css' media='screen' rel='stylesheet'>
+<link href='https://cdn.jsdelivr.net/npm/@docsearch/css@3' rel='stylesheet'>
+</head>
+<body>
+<script src='/assets/bower/jquery/jquery.min.js'></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class='fixed-top' id='ji-toolbar' property='https://www.jenkins.io' showSearchBox=''></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class='pt-4'>
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class='container'>
+<div class='row body flex-lg-nowrap'>
+<div class='col-lg-3' id='sidebar-menu'>
+<div class='sidebar-nav tour' id='sidebar-content'>
+<p>
+<a href="/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class='col-lg-9'>
+<h1>no implicit conversion from nil to integer</h1>
+<h2>Rendering file /workspaces/jenkins.io/content/doc/book/updating/macos.adoc resulted in a failure.</h2>
+<p>Line: unknown</p>
+<p>Backtrace:</p>
+<pre>/workspaces/jenkins.io/content/_layouts/section.html.haml:9:in `block in singleton class'
+/workspaces/jenkins.io/content/_layouts/section.html.haml:2:in `instance_eval'
+/workspaces/jenkins.io/content/_layouts/section.html.haml:2:in `singleton class'
+/workspaces/jenkins.io/content/_layouts/section.html.haml:-1:in `__tilt_212600'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/tilt-2.0.9/lib/tilt/template.rb:170:in `call'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/tilt-2.0.9/lib/tilt/template.rb:170:in `evaluate'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/tilt-2.0.9/lib/tilt/haml.rb:24:in `evaluate'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/tilt-2.0.9/lib/tilt/template.rb:109:in `render'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/handlers/base_tilt_handler.rb:134:in `rendered_content'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/handlers/layout_handler.rb:47:in `rendered_content'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/page.rb:143:in `rendered_content'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/handlers/layout_handler.rb:55:in `block in rendered_content'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/handlers/layout_handler.rb:40:in `for_layout_chain'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/handlers/layout_handler.rb:51:in `rendered_content'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/page.rb:143:in `rendered_content'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/engine.rb:428:in `generate_page'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/engine.rb:404:in `block in generate_output'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:508:in `call_with_index'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:472:in `process_incoming_jobs'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:454:in `block in worker'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:445:in `fork'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:445:in `worker'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:436:in `block in create_workers'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:435:in `each'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:435:in `each_with_index'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:435:in `create_workers'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:374:in `work_in_processes'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/parallel-1.19.2/lib/parallel.rb:278:in `map'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/engine.rb:402:in `generate_output'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/engine.rb:121:in `run'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/cli/generate.rb:22:in `run'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/cli/invoker.rb:152:in `invoke_generate'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/lib/awestruct/cli/invoker.rb:74:in `invoke!'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/gems/awestruct-0.6.1/bin/awestruct:9:in `<top (required)>'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/bin/awestruct:23:in `load'
+/workspaces/jenkins.io/vendor/gems/ruby/2.7.0/bin/awestruct:23:in `<top (required)>'
+/usr/local/lib/ruby/2.7.0/bundler/cli/exec.rb:63:in `load'
+/usr/local/lib/ruby/2.7.0/bundler/cli/exec.rb:63:in `kernel_load'
+/usr/local/lib/ruby/2.7.0/bundler/cli/exec.rb:28:in `run'
+/usr/local/lib/ruby/2.7.0/bundler/cli.rb:476:in `exec'
+/usr/local/lib/ruby/2.7.0/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/usr/local/lib/ruby/2.7.0/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/usr/local/lib/ruby/2.7.0/bundler/vendor/thor/lib/thor.rb:399:in `dispatch'
+/usr/local/lib/ruby/2.7.0/bundler/cli.rb:30:in `dispatch'
+/usr/local/lib/ruby/2.7.0/bundler/vendor/thor/lib/thor/base.rb:476:in `start'
+/usr/local/lib/ruby/2.7.0/bundler/cli.rb:24:in `start'
+/usr/local/lib/ruby/gems/2.7.0/gems/bundler-2.1.4/libexec/bundle:46:in `block in <top (required)>'
+/usr/local/lib/ruby/2.7.0/bundler/friendly_errors.rb:123:in `with_friendly_errors'
+/usr/local/lib/ruby/gems/2.7.0/gems/bundler-2.1.4/libexec/bundle:34:in `<top (required)>'
+/usr/local/bin/bundle:23:in `load'
+/usr/local/bin/bundle:23:in `<main>'</pre>
+</div>
+</div>
+</div>
+
+
+<script src='/assets/bower/anchor-js/anchor.min.js'></script>
+<script src='/assets/bower/@popperjs/core/umd/popper.min.js'></script>
+<script src='/assets/bower/bootstrap/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js'></script>
+<script data='ionicons' defer='' src='https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js' type='module'></script>
+<script data='ionicons' defer='' nomodule='' src='https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js'></script>
+<script defer='' src='https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm' type='module'></script>
+<script defer='' nomodule='' src='https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/'></script>
+<jio-footer githubBranch='master' githubRepo='jenkins-infra/jenkins.io' property='https://www.jenkins.io' sourcePath='content//doc/book/updating/macos.adoc'></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src='https://cdn.jsdelivr.net/npm/@docsearch/js@3' type='text/javascript'></script>
+<script type='text/javascript'>
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

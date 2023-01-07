@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Git credentials binding for sh, bat, and powershell
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/project-ideas/git-credentials-binding-for-pipeline/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Git credentials binding for sh, bat, and powershell" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Git credentials binding for sh, bat, and powershell" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Git credentials binding for sh, bat, and powershell" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/project-ideas/git-credentials-binding-for-pipeline/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Git credentials binding for sh, bat, and powershell" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Git credentials binding for sh, bat, and powershell
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Allow greater git flexibility from Jenkins Pipelines
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+Java, Git
+</p>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>Allow Jenkins Pipeline users to run authenticated git commands in sh, bat, and powershell.</p>
+</div>
+<div class="paragraph">
+<p>This project idea proposes to implement two new credential bindings that contribute files and environment variables to sh, bat, and powershell steps so that they can use command line git to perform authenticated operations.
+The Jira issue requesting support for authenticated git operations (JENKINS-28335) is one of the top five most highly voted Jenkins enhancement requests.</p>
+</div>
+<div class="paragraph">
+<p>The two credential bindings will be <code>gitSshPrivateKey</code> and <code>gitUsernamePassword</code>.
+They will be implemented in the git plugin with automated tests to confirm the bindings are behaving as expected on the wide range of command line git versions and operating systems supported by the git plugin.</p>
+</div>
+<div class="sect2">
+<h3 id="rationale"><a class="anchor" href="#rationale"></a>Rationale</h3>
+<div class="paragraph">
+<p>The Jenkins git plugin uses Jenkins credentials to fetch a repository and checkout a branch for freestyle, pipeline, and multibranch pipeline jobs.
+It is also able to use Jenkins credentials to push tags and commits back to the repository from a freestyle job.
+It supports a wide range of command line git versions, from git 1.8.3 (CentOS 7) through the current release of command line git (2.30.0, Debian testing, Windows, &#8230;&#8203;).
+It supports ssh private keys with and without passphrases for ssh protocol authentication and supports usernames and passwords or API tokens for https protocol authentication.</p>
+</div>
+<div class="paragraph">
+<p>The git plugin is not able to push tags or commits from a pipeline job or a multibranch pipeline job.
+It is not able to perform other git operations that require authentication like remote branch creation or deletion.
+The git plugin also does not provide authenticated access to all the command line options offered with the most recent versions of command line git.
+For example, there is no support in the git plugin for the <code>--single-branch</code> option or for the <code>--recurse-submodules</code> option.</p>
+</div>
+<div class="paragraph">
+<p>With the git credentials binding, Pipeline users will be able to push merge results, commits, and tags from a Pipeline job.
+They will be able to create and delete remote branches.
+They will be able to use the git command line options of their choice, including <code>--single-branch</code> and <code>--recurse-submodules</code>.
+Users will be able to run authenticated git commands in their Jenkins Pipelines without modifying the git plugin.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quickstart"><a class="anchor" href="#quickstart"></a>Quickstart</h3>
+<div class="paragraph">
+<p>The project idea is expected to require changes in the git plugin.</p>
+</div>
+<div class="paragraph">
+<p>Install a git plugin development environment by following the <a href="https://github.com/jenkinsci/git-plugin/blob/master/CONTRIBUTING.adoc">contributing instructions</a>.
+Compile the plugin, run its automated tests, and confirm that the automated tests are passing.
+Enable coverage reporting and review the coverage report.</p>
+</div>
+<div class="paragraph">
+<p>Install an integrated development environment (Netbeans, Eclipse, IntelliJ, &#8230;&#8203;).
+Run the git plugin in the development environment.
+Set a breakpoint and confirm that the breakpoint is reached in the development environment.</p>
+</div>
+<div class="paragraph">
+<p>Alternately, use the coverage report to identify an interesting area that has insufficient test coverage.
+Submit one or more tests to improve coverage.
+For example, more tests could be created for <a href="https://github.com/jenkinsci/git-plugin/blob/master/src/main/java/jenkins/plugins/git/MergeWithGitSCMExtension.java">MergeWithGitSCMExtension</a>
+or more tests could be added to <a href="https://github.com/jenkinsci/git-plugin/blob/master/src/main/java/hudson/plugins/git/extensions/impl/PreBuildMerge.java">PreBuildMerge</a>
+or added to <a href="http://mark-pc2.markwaite.net:8080/job/Git-Folder/job/git-plugin/lastBuild/jacoco/hudson.plugins.git.extensions.impl/UserIdentity/">UserIdentity</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="newbie-friendly-issues"><a class="anchor" href="#newbie-friendly-issues"></a>Newbie-friendly issues</h3>
+<div class="paragraph">
+<p>Consider implementing a fix for one or more of the <a href="https://issues.jenkins.io/issues/?jql=(component%3Dgit-plugin%20OR%20component%20%3D%20git-client-plugin)%20and%20labels%20%3D%20newbie-friendly%20and%20status%20in%20(Open%2CReopened)">newbie friendly issues</a>.</p>
+</div>
+<div class="paragraph">
+<p>Examples from that list include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add sparse checkout support to the JGit implementation (<a href="https://issues.jenkins.io/browse/JENKINS-45368">JENKINS-45368</a>)</p>
+</li>
+<li>
+<p>Convert git client plugin tests from JUnit 3 to JUnit 4 (<a href="https://issues.jenkins.io/browse/JENKINS-60940">JENKINS-60940</a>)</p>
+</li>
+<li>
+<p>Expand environment variables in sparse checkout fields (<a href="https://issues.jenkins.io/browse/JENKINS-23477">JENKINS-23477</a>)</p>
+</li>
+<li>
+<p>Confine git commands to workspace directory (<a href="https://issues.jenkins.io/browse/JENKINS-38699">JENKINS-38699</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementation-examples"><a class="anchor" href="#implementation-examples"></a>Implementation examples</h3>
+<div class="paragraph">
+<p>The <code>sshPrivateKey</code> and <code>usernamePassword</code> implementations in the credentials binding plugin provide examples that create environment variables and temporary files for use by sh, bat, and powershell steps.
+Use them as a reference implementation.
+The git credentials implementation will need environment variables for the ssh and https credentials.
+The git credentials implementation will need files for the ssh credentials.</p>
+</div>
+<div class="paragraph">
+<p>The <code>gitSshPrivateKey</code> implementation will use the <code>isAtLeastVersion</code> method provided by the <code>CliGitAPIImpl</code> class in git client plugin, to discover the minimum CLI git version that will be used in the sh, bat, and powershell commands within the <code>withCredentials</code> block.
+If the <code>isAtLeastVersion</code> is greater than 2.3, then the GIT_SSH_COMMAND environment variable should be set and should include arguments that provide the path to the private key.
+If the <code>isAtLeastVersion</code> is less than 2.3, then the current ssh technique in the git plugin should be used instead (needs more details of the current technique).
+The SSH_ASKPASS environment variable should be set to point to a file that is accessible to the agent workspace.
+That SSH_ASKPASS script should echo the passphrase if a passphrase is defined on the private key, just as is done today within the git plugin.
+The credential binding should write the ssh private key to the agent file system in a workspace specific temporary location and should set environment variables to provide the location of the ssh private key.
+Alternately, passphrase protected private keys should be converted by the plugin to not use a passphrase and the private key without passphrase should be written to the workspace specific temporary location instead of writing the private key with passphrase.</p>
+</div>
+<div class="paragraph">
+<p>The gitUsernamePassword implementation should use the Jenkins username and password values to configure a git credential based on the git-credential documentation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/g/jenkinsci-gsoc-all-public/c/VdUhhM1Noxc/m/Zk4yajsFAwAJ">Jenkins GSoC mailing list discussion of git credentials pipeline task</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-28335">JENKINS-28335</a> - Pipeline step to run Git commands with credentials &amp; tool</p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-47733">JENKINS-47733</a> - Add a <code>withGit</code> pipeline step that provides git credentials</p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-36496">JENKINS-36496</a> - Support git publisher with Pipeline</p>
+</li>
+</ul>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/rishabhbudhouliya/"><div class="app-avatar"><img alt="Rishabh Budhouliya" class="app-avatar__image" src="/images/avatars/rishabhbudhouliya.jpg"></div> Rishabh Budhouliya</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/jeffpearce/"><div class="app-avatar"><img alt="Jeff Pearce" class="app-avatar__image" src="/images/avatars/jeffpearce.png"></div> Jeff Pearce</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/justinharringa/"><div class="app-avatar"><img alt="Justin Harringa" class="app-avatar__image" src="/images/avatars/justinharringa.jpeg"></div> Justin Harringa</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/git-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/git-plugin.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="https://docs.google.com/document/d/1tu5g1bfwAY5vvL_2OoBIRDKfYaaOC6sDQdb7BIYBInY/edit?usp=sharing" rel="noreferrer noopener" target="_blank">
+Project idea draft
+</a>
+</li>
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2021/project-ideas" target="_blank">
+> Go back to other GSoC
+2021
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#rationale">Rationale</a></li>
+<li><a href="#quickstart">Quickstart</a></li>
+<li><a href="#newbie-friendly-issues">Newbie-friendly issues</a></li>
+<li><a href="#implementation-examples">Implementation examples</a></li>
+<li><a href="#links">Links</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/git-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/git-plugin.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2021/project-ideas/git-credentials-binding-for-pipeline.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

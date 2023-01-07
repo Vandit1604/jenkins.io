@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2021-11-04
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-11-04/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2021-11-04" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2021-11-04" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2021-11-04" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-11-04/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2021-11-04" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2021-11-04
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+Jenkins (core)
+</li>
+<li>
+<a href="https://plugins.jenkins.io/subversion">
+Subversion
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-2455">
+Multiple vulnerabilities allow bypassing path filtering of agent-to-controller access control
+</h3>
+<strong>
+SECURITY-2455
+/
+CVE-2021-21685, CVE-2021-21686, CVE-2021-21687, CVE-2021-21688, CVE-2021-21689, CVE-2021-21690, CVE-2021-21691, CVE-2021-21692, CVE-2021-21693, CVE-2021-21694, CVE-2021-21695
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H">
+Critical
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The agent-to-controller security subsystem limits which files on the Jenkins controller can be accessed by agent processes.</p>
+</div>
+<div class="paragraph">
+<p>Multiple vulnerabilities in the file path filtering implementation of Jenkins 2.318 and earlier, LTS 2.303.2 and earlier allow agent processes to read and write arbitrary files on the Jenkins controller file system, and obtain some information about Jenkins controller file systems.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SECURITY-2427 / CVE-2021-21685: <code>FilePath#mkdirs</code> does not check permission to create parent directories.</p>
+</li>
+<li>
+<p>SECURITY-2444 / CVE-2021-21686: File path filters do not canonicalize paths, allowing operations to follow symbolic links to outside allowed directories.</p>
+</li>
+<li>
+<p>SECURITY-2446 / CVE-2021-21687: <code>FilePath#untar</code> does not check permission to create symbolic links when unarchiving a symbolic link.</p>
+</li>
+<li>
+<p>SECURITY-2484 / CVE-2021-21688: <code>FilePath#reading(FileVisitor)</code> does not reject any operations, allowing users to have unrestricted read access using certain operations (creating archives, <code>#copyRecursiveTo</code>).</p>
+</li>
+<li>
+<p>SECURITY-2485 / CVE-2021-21689: <code>FilePath#unzip</code> and <code>FilePath#untar</code> were not subject to any access control.</p>
+</li>
+<li>
+<p>SECURITY-2486 / CVE-2021-21690: Agent processes are able to completely bypass file path filtering by wrapping the file operation in an agent file path.</p>
+</li>
+<li>
+<p>SECURITY-2531 / CVE-2021-21691: Creating symbolic links is possible without the <code>symlink</code> permission.</p>
+</li>
+<li>
+<p>SECURITY-2538 / CVE-2021-21692: The operations <code>FilePath#renameTo</code> and <code>FilePath#moveAllChildrenTo</code> only check read permission on the source path.</p>
+</li>
+<li>
+<p>SECURITY-2539 / CVE-2021-21693: When creating temporary files, permission to create files is only checked after they&#8217;ve been created.</p>
+</li>
+<li>
+<p>SECURITY-2541 / CVE-2021-21694: <code>FilePath#toURI</code>, <code>FilePath#hasSymlink</code>, <code>FilePath#absolutize</code>, <code>FilePath#isDescendant</code>, and <code>FilePath#get*DiskSpace</code> do not check any permissions.</p>
+</li>
+<li>
+<p>SECURITY-2542 / CVE-2021-21695: <code>FilePath#listFiles</code> lists files outside directories with agent read access when following symbolic links.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We expect that most of these vulnerabilities have been present since <a href="https://www.jenkins.io/security/advisory/2014-10-30/">SECURITY-144 was addressed in the 2014-10-30 security advisory</a>.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins 2.319, LTS 2.303.3 addresses these security vulnerabilities.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SECURITY-2427 / CVE-2021-21685: <code>FilePath#mkdirs</code> checks permission to create parent directories.</p>
+</li>
+<li>
+<p>SECURITY-2444 / CVE-2021-21686: File path filters canonicalize paths, preventing operations from following symbolic links to outside allowed directories.</p>
+</li>
+<li>
+<p>SECURITY-2446 / CVE-2021-21687: <code>FilePath#untar</code> checks permission to create symbolic links when unarchiving a symbolic link.</p>
+</li>
+<li>
+<p>SECURITY-2484 / CVE-2021-21688: <code>FilePath#reading(FileVisitor)</code> correctly rejects operations if they operate on files outside allowed directories.</p>
+</li>
+<li>
+<p>SECURITY-2485 / CVE-2021-21689: <code>FilePath#unzip</code> and <code>FilePath#untar</code> are now subject to access control.</p>
+</li>
+<li>
+<p>SECURITY-2486 / CVE-2021-21690: Agent processes are no longer able to completely bypass file path filtering by wrapping the file operation in an agent file path.</p>
+</li>
+<li>
+<p>SECURITY-2531 / CVE-2021-21691: Creating symbolic links now correctly checks the <code>symlink</code> permission.</p>
+</li>
+<li>
+<p>SECURITY-2538 / CVE-2021-21692: The operations <code>FilePath#renameTo</code> and <code>FilePath#moveAllChildrenTo</code> check both <code>read</code> and <code>delete</code> permissions on the source path.</p>
+</li>
+<li>
+<p>SECURITY-2539 / CVE-2021-21693: When creating temporary files, permission to create files is checked before they are created based on an artificial path.</p>
+</li>
+<li>
+<p>SECURITY-2541 / CVE-2021-21694: <code>FilePath#toURI</code>, <code>FilePath#hasSymlink</code>, <code>FilePath#absolutize</code>, <code>FilePath#isDescendant</code> check <code>stat</code> permission. <code>FilePath#get*DiskSpace</code> methods are no longer allowed to be executed by an agent.</p>
+</li>
+<li>
+<p>SECURITY-2542 / CVE-2021-21695: <code>FilePath#listFiles</code> checks <code>stat</code> permission on files it returns, preventing listing files outside allowed directories.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+As some common operations are now newly subject to access control, it is expected that plugins sending commands from agents to the controller may start failing.
+Additionally, the newly introduced path canonicalization means that instances using a custom builds directory (<a href="https://www.jenkins.io/doc/book/managing/system-properties/#jenkins-model-jenkins-buildsdir">Java system property <code>jenkins.model.Jenkins.buildsDir</code></a>) or partitioning <code>JENKINS_HOME</code> using symbolic links may fail access control checks.
+See <a href="https://www.jenkins.io/doc/book/security/controller-isolation/agent-to-controller/#file-access-rules">the documentation</a> for how to customize the configuration in case of problems.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are unable to immediately upgrade to Jenkins 2.319, LTS 2.303.3, you can install the <a href="/redirect/remoting-security-workaround/">Remoting Security Workaround Plugin</a>.
+It will prevent all agent-to-controller file access using <code>FilePath</code> APIs.
+Because it is more restrictive than Jenkins 2.319, LTS 2.303.3, more plugins are incompatible with it.
+Make sure to read the plugin documentation before installing it.
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-2423">
+Agent-to-controller access control allowed writing to sensitive directory used by Pipeline: Shared Groovy Libraries Plugin
+</h3>
+<strong>
+SECURITY-2423
+/
+CVE-2021-21696
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins 2.318 and earlier, LTS 2.303.2 and earlier does not limit agent read/write access to the <code>libs/</code> directory inside build directories when using the <code>FilePath</code> APIs.
+This directory is used by the Pipeline: Shared Groovy Libraries Plugin to store copies of shared libraries.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers in control of agent processes to replace the code of a trusted library with a modified variant, resulting in unsandboxed code execution in the Jenkins controller process.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins 2.319, LTS 2.303.3 prohibits agent read/write access to the <code>libs/</code> directory inside build directories.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are unable to immediately upgrade to Jenkins 2.319, LTS 2.303.3, you can install the <a href="/redirect/remoting-security-workaround/">Remoting Security Workaround Plugin</a>.
+It will prevent all agent-to-controller file access using <code>FilePath</code> APIs.
+Because it is more restrictive than Jenkins 2.319, LTS 2.303.3, more plugins are incompatible with it.
+Make sure to read the plugin documentation before installing it.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+It is not easily possible to <a href="/doc/book/security/controller-isolation/agent-to-controller/#file-access-rules">customize the file access rules</a> to prohibit access to the <code>libs/</code> directory specifically, as built-in rules (granting access to <code>&lt;BUILDDIR&gt;</code> contents) would take precedence over a custom rule prohibiting access.
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-2428">
+Agent-to-controller access control allows reading/writing most content of build directories
+</h3>
+<strong>
+SECURITY-2428
+/
+CVE-2021-21697
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:L">
+High
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Agents are allowed some limited access to files on the Jenkins controller file system.
+The directories agents are allowed to access in Jenkins 2.318 and earlier, LTS 2.303.2 and earlier include the directories storing build-related information, intended to allow agents to store build-related metadata during build execution.
+As a consequence, this allows any agent to read and write the contents of any build directory stored in Jenkins with very few restrictions (<code>build.xml</code> and some Pipeline-related metadata).</p>
+</div>
+<div class="paragraph">
+<p>Jenkins 2.319, LTS 2.303.3 prevents agents from accessing contents of build directories unless it&#8217;s for builds currently running on the agent attempting to access the directory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Update <a href="https://plugins.jenkins.io/workflow-durable-task-step/">Pipeline: Nodes and Processes</a> to version 2.40 or newer for Jenkins to associate Pipeline <code>node</code> blocks with the agent they&#8217;re running on for this fix.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are unable to immediately upgrade to Jenkins 2.319, LTS 2.303.3, you can install the <a href="/redirect/remoting-security-workaround/">Remoting Security Workaround Plugin</a>.
+It will prevent all agent-to-controller file access using <code>FilePath</code> APIs.
+Because it is more restrictive than Jenkins 2.319, LTS 2.303.3, more plugins are incompatible with it.
+Make sure to read the plugin documentation before installing it.
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-2506">
+Path traversal vulnerability in Subversion Plugin allows reading arbitrary files
+</h3>
+<strong>
+SECURITY-2506
+/
+CVE-2021-21698
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/subversion">
+<code>subversion</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Subversion Plugin 2.15.0 and earlier does not restrict the name of a file when looking up a subversion key file on the controller from an agent.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers able to control agent processes to read arbitrary files on the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Subversion Plugin 2.15.1 checks for the presence of and prohibits directory separator characters as part of the file name, restricting it to the intended directory.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-2423:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2428:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:L">
+High
+</a>
+</li>
+<li>
+SECURITY-2455:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H">
+Critical
+</a>
+</li>
+<li>
+SECURITY-2506:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+Jenkins weekly up to and including
+2.318
+</li>
+<li>
+Jenkins LTS up to and including
+2.303.2
+</li>
+<li>
+<strong>
+Subversion
+Plugin
+</strong>
+up to and including
+2.15.0
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+Jenkins weekly should be updated to version
+2.319
+</li>
+<li>
+Jenkins LTS should be updated to version
+2.303.3
+</li>
+<li>
+<strong>
+Subversion
+Plugin
+</strong>
+should be updated to version
+2.15.1
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-2423, SECURITY-2428, SECURITY-2455, SECURITY-2506
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2021-11-04.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

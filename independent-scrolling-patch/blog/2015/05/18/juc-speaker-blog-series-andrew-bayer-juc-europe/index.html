@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+JUC Speaker Blog Series: Andrew Bayer, JUC Europe
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/05/18/juc-speaker-blog-series-andrew-bayer-juc-europe/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="JUC Speaker Blog Series: Andrew Bayer, JUC Europe" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="JUC Speaker Blog Series: Andrew Bayer, JUC Europe" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="JUC Speaker Blog Series: Andrew Bayer, JUC Europe" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/05/18/juc-speaker-blog-series-andrew-bayer-juc-europe/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="JUC Speaker Blog Series: Andrew Bayer, JUC Europe" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+JUC Speaker Blog Series: Andrew Bayer, JUC Europe
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+May 18, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=JUC+Speaker+Blog+Series%3A+Andrew+Bayer%2C+JUC+Europe&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F05%2F18%2Fjuc-speaker-blog-series-andrew-bayer-juc-europe%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/Jenkins_Butler_0.png" alt="image" width="114" height="128"></span><br></p>
+</div>
+<div class="paragraph">
+<p>In the fall of 2011, the very first Jenkins User Conference was held in San Francisco. Over 250 people showed up. It was, to be completely honest, a bit shocking to me - that little project I’d gotten involved with less than three years earlier was big enough, interesting enough, important enough for 250 people to travel from around the world to spend a day talking about it? That’s an amazing feeling, and it was an amazing day. Since then, there’ve been three more JUCs in the Bay Area, three in Israel and two in Europe, with more talks on more Jenkins subjects and an ever-increasing number of attendees. This year, there are another four scheduled - three of them for two days each this time! Find out more about the first two, JUC US East and JUC Europe, below!</p>
+</div>
+<div class="paragraph">
+<p>Not only are there enough worthy talks to merit a full day a few times a year - now there are enough to merit two days! At JUC US East 2015 outside Washington, DC on June 18 and 19, you can see talks on the Workflow plugin for Jenkins, test automation, mobile testing, plugin development, and a few talks on new and fascinating ways people are using Jenkins - even driving big data workflows! And then, just a few days later, on June 23 and 24 in London, there’s JUC Europe 2015, with talks covering things like the fantastic Job DSL plugin, reproducible build environments, Jenkins and Docker together, and my personal favorite, the 2015 edition of my Seven Habits of Highly Effective Jenkins Users talk.</p>
+</div>
+<div class="paragraph">
+<p>Whether you’re interested in the latest innovations in continuous integration and delivery, or you’re a Jenkins plugin developer wanting to learn how to make your plugins more mature and useful, or you’re a Jenkins administrator trying to understand how to provide your users with a great platform for their builds and testing, or even if you’ve just heard about CI/CD and you want to find out more, the Jenkins User Conferences are a great opportunity to see all those things and meet with other Jenkins users and developers. I’m excited to attend my fifth JUC in London, and I hope to see you there!</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/smallerme.jpeg" alt="image" width="150" height="188"></span><br></p>
+</div>
+<div class="paragraph">
+<p>This post is by Andrew Bayer, build and tools architect at Cloudera and longtime Jenkins contributor. If you have your ticket to <a href="https://www.cloudbees.com/jenkins/juc-2015/europe">JUC Europe</a>, you can attend his talk <a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/europe/01-01-1030-bayer">"Seven Habits of Highly Effective Jenkins Users"</a> on Day 1.</p>
+</div>
+<div class="paragraph">
+<p><em>Still need your ticket to JUC? Early bird pricing ends May 15. Also, if you register with a friend you can get 2 tickets for the price of 1! <a href="https://www.cloudbees.com/jenkins/juc-2015/">Register here for a JUC near you.</a></em></p>
+</div>
+<div class="paragraph">
+<p>Thank you to our <a href="https://www.cloudbees.com/jenkins/juc-2015/sponsors">sponsors</a> for the 2015 Jenkins User Conference World Tour:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/sponsors-06032015-02_0.png" alt="image" width="598" height="579"></span><br></p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/meta/">
+meta
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/workflow/">
+workflow
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-05-18-juc-speaker-blog-series-andrew-bayer-juc-europe.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

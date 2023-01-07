@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Custom Jenkins distribution build service
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/projects/custom-jenkins-distribution-build-service/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Custom Jenkins distribution build service" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Custom Jenkins distribution build service" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Custom Jenkins distribution build service" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/projects/custom-jenkins-distribution-build-service/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Custom Jenkins distribution build service" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Custom Jenkins distribution build service
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Provide an out of the box solution for packaging Jenkins distributions as WAR files or Docker images
+</p>
+<p>
+<b>
+Status:
+</b>
+Completed
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Student:
+<a class="app-author-link" href="/blog/authors/sladyn98/"><div class="app-avatar"></div> Sladyn Nunes</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/linuxsuren/"><div class="app-avatar"><img alt="赵晓杰(Rick)" class="app-avatar__image" src="/images/avatars/linuxsuren.jpg"></div> 赵晓杰(Rick)</a>
+, 
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+, 
+<a class="app-author-link" href="/blog/authors/baymac/"><div class="app-avatar"><img alt="Parichay Barpanda" class="app-avatar__image" src="/images/avatars/baymac.jpg"></div> Parichay Barpanda</a>
+, 
+<a class="app-author-link" href="/blog/authors/martinda/"><div class="app-avatar"><img alt="Martin d'Anjou" class="app-avatar__image" src="/images/avatars/martinda.png"></div> Martin d'Anjou</a>
+</li>
+<li>
+Advisor(s):
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>The main idea behind the project is to build a customizable Jenkins distribution service that could be used to build tailor-made Jenkins distributions. The service would provide users with a simple interface to select the configurations they want to build the instance with eg: plugins, authorization matrices etc. Furthermore it would include a section for sharing community created distros so that users can find and download already built Jenkins war/configuration files to use out of the box.</p>
+</div>
+<div class="sect2">
+<h3 id="key-deliverables"><a class="anchor" href="#key-deliverables"></a>Key Deliverables</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>A backend service built on spring boot having a modern Restful API support for constructing a  customized WAR package and configuration files.</p>
+</li>
+<li>
+<p>A configuration constructing engine that can convert UI fields into a configuration file.</p>
+</li>
+<li>
+<p>Front End application in the form of a website with a simple user interface for the users to interact with and customize the distribution.</p>
+</li>
+<li>
+<p>Repository sharing community built most commonly used Jenkins configuration files.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plan-for-phase-1"><a class="anchor" href="#plan-for-phase-1"></a>Plan for Phase 1</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Develop a simple workflow(Spring Boot Application) from UI bindings to the generation of the JCasC YAML file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reuse concepts from the JCasC Plugin to generate this JCasC file.</p>
+</li>
+<li>
+<p>Verify the configuration generated against the JCasC Schema.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Begin with a simple User Interface to test the workflow against.</p>
+</li>
+<li>
+<p>Reuse logic from the jenkins core to construct and if possible render the user interface in react for all the plugins.</p>
+</li>
+<li>
+<p>If the rendering is not possible, default to building the schemas from the data bound constructors or the JCasC Schema.</p>
+</li>
+<li>
+<p>Blog Post for Phase 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluation-phase-1"><a class="anchor" href="#evaluation-phase-1"></a>Evaluation Phase 1</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>War Generation</p>
+</li>
+<li>
+<p>Support package generation</p>
+</li>
+<li>
+<p>Develop a plugin selection API</p>
+</li>
+<li>
+<p>Supports UI to select plugins.</p>
+</li>
+<li>
+<p>Support pagination for 1700 plugins.</p>
+</li>
+<li>
+<p>Support package configuration download.</p>
+</li>
+<li>
+<p>Front-end support to generate custom packages.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Repo - <a href="https://github.com/jenkinsci/custom-distribution-service" class="bare">https://github.com/jenkinsci/custom-distribution-service</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="resources"><a class="anchor" href="#resources"></a>Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Blogs</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_week3/">Third week</a></p>
+</li>
+<li>
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_week2/">Second week</a></p>
+</li>
+<li>
+<p><a href="https://sladyn98.netlify.app/blog/gsoc_week1/">First week</a></p>
+</li>
+<li>
+<p><a href="/blog/2020/07/27/custom-distribution-service/">Mid-term report</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Demo: <a href="https://www.youtube.com/watch?v=HQLhakpx5mk" class="bare">https://www.youtube.com/watch?v=HQLhakpx5mk</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1qjlpiabrRrYANHcCU9xwUZCfMuv5g0hbilAjglu98O0/edit?usp=sharing">Slides</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plan-for-phase-2"><a class="anchor" href="#plan-for-phase-2"></a>Plan for Phase 2</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilize the <a href="https://github.com/jenkinsci/custom-war-packager">Custom War Packager (CWP)</a> tool for heavy lifting and converting the configuration file to a WAR package.</p>
+</li>
+<li>
+<p>If necessary, implement a new wrapper around CWP so some logic can be reused from here</p>
+</li>
+<li>
+<p>Integration of the above  wrapper into the service.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This step should be relatively simple since the CWP library is fairly straightforward.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The service should really take shape after this week since we would have build the entire workflow from:
+UI &#8594; Config &#8594; War Package</p>
+</li>
+<li>
+<p>Work on hosting the service.</p>
+</li>
+<li>
+<p>Blog Post for Phase 2.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluation-phase-2"><a class="anchor" href="#evaluation-phase-2"></a>Evaluation Phase 2</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>War Download Feature.</p>
+</li>
+<li>
+<p>Filters for plugin list.</p>
+</li>
+<li>
+<p>Support community configurations.</p>
+</li>
+<li>
+<p>Support for custom community configurations.</p>
+</li>
+<li>
+<p>Docker support to run the service.</p>
+</li>
+<li>
+<p>Pull request creation support.</p>
+</li>
+<li>
+<p>Caching support for plugin list which improved performance</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Repo - <a href="https://github.com/jenkinsci/custom-distribution-service" class="bare">https://github.com/jenkinsci/custom-distribution-service</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="resources-2"><a class="anchor" href="#resources-2"></a>Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Blogs</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/blog/2020/07/27/custom-distribution-service/">Mid-term report</a></p>
+</li>
+<li>
+<p><a href="/blog/2020/08/09/custom-distribution-service-phase-2/">Phase two Blog</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Demo: <a href="https://www.youtube.com/watch?v=oSBvJwSXOVQ&amp;t=360s" class="bare">https://www.youtube.com/watch?v=oSBvJwSXOVQ&amp;t=360s</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1qjlpiabrRrYANHcCU9xwUZCfMuv5g0hbilAjglu98O0/edit?usp=sharing">Slides</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plan-for-phase-3"><a class="anchor" href="#plan-for-phase-3"></a>Plan for Phase 3</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Work on community hosted repositories for most used configuration files.</p>
+</li>
+<li>
+<p>Set up a github repository(Source of Truth) with the configs, allowing users to share their configs either via the service</p>
+</li>
+<li>
+<p>Workflow supported: Service &#8594; Github</p>
+</li>
+<li>
+<p>Login feature for users  via Github or jenkins.io.</p>
+</li>
+<li>
+<p>Work on developing the database schema to store the user generated configurations.</p>
+</li>
+<li>
+<p>Integration of database into the service.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Spring boot makes it quite easy to integrate mongoDB into its architecture so we could leverage that to be able to store private user configurations.</p>
+</li>
+<li>
+<p>Add the Database to the service and introduce this feature as a Beta Release</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Accomplish any remaining goals like tests cases and publish releases of a new plugin if necessary</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluation-phase-3"><a class="anchor" href="#evaluation-phase-3"></a>Evaluation Phase 3</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hosting on a jenkins.io <a href="https://customize.jenkins.io/">subdomain</a>.</p>
+</li>
+<li>
+<p>Rigorous testing support.</p>
+</li>
+<li>
+<p>Code Quality Checks.</p>
+</li>
+<li>
+<p>Self-hosting capabilities.</p>
+</li>
+<li>
+<p>User guide.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Repo - <a href="https://github.com/jenkinsci/custom-distribution-service" class="bare">https://github.com/jenkinsci/custom-distribution-service</a>.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="resources-3"><a class="anchor" href="#resources-3"></a>Resources</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://docs.google.com/presentation/d/1f7dtFCEtYYMkJkSX2LRvIKExTCWOPL47MgJhRljLxTo/edit?usp=sharing">Slides</a></p>
+</li>
+<li>
+<p><a href="/blog/2020/08/31/custom-distribution-service/">Blog Post</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="roadmap"><a class="anchor" href="#roadmap"></a>Roadmap</h3>
+<div class="paragraph">
+<p>The roadmap for the future can be found <a href="https://github.com/jenkinsci/custom-distribution-service/issues?q=is%3Aissue+is%3Aopen+label%3Aroadmap">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sequence-diagram"><a class="anchor" href="#sequence-diagram"></a>Sequence Diagram</h3>
+<div class="paragraph">
+<p>The below diagram is the overview of the proposed sequence Diagram:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-custom-jenkins-service-distribution/cds-sequence-diagram.png" alt="cds sequence diagram" width="1000" height="600" title="Jenkins Custom Distribution Service Sequence Diagram"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="meetings"><a class="anchor" href="#meetings"></a>Meetings</h3>
+<div class="paragraph">
+<p>Office hours are scheduled every Tuesday at 13:00 UTC, and every Thursday at 12:00 UTC
+ The <a href="https://docs.google.com/document/d/1vMiU1kmtmKh1QC_9fwe7nc1LvAGk7gj4tf4GjB5i5vU/edit?usp=sharing">meeting notes</a> available for anyone to read.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-the-code"><a class="anchor" href="#getting-the-code"></a>Getting the Code</h3>
+<div class="paragraph">
+<p>The Custom Distribution Service was created from scratch during GSoC and can be found <a href="https://github.com/jenkinsci/custom-distribution-service">here on Github</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-links"><a class="anchor" href="#other-links"></a>Other links</h3>
+<div class="paragraph">
+<p><a href="https://docs.google.com/document/d/1C7VQJ92Yhr0KRDcNVHYxn4ri7OL9IGZmgxY6UFON6-g/edit?usp=sharing">GSoC Proposal</a><br>
+<a href="https://docs.google.com/document/d/1-ujWVJ2a5VYkUF6UA7m4bEpSDxmb3mJZhCbmoKO716U/edit?usp=sharing">Design Document</a><br>
+<a href="https://docs.google.com/document/d/1DSCH-3wh6uV9Rm_j8PcBzq2lvQPhZ31AIwmWkEaLxvc/edit?usp=sharing">Daily Notes</a><br></p>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/jenkins-custom-distribution-service" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/jenkins-custom-distribution-service.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/jenkins-distribution-customize-service#meetings" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc/2020/project-ideas/jenkins-distribution-customize-service" rel="noreferrer noopener" target="_blank">
+Original GSoC project idea
+</a>
+</li>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#key-deliverables">Key Deliverables</a></li>
+<li><a href="#plan-for-phase-1">Plan for Phase 1</a></li>
+<li><a href="#evaluation-phase-1">Evaluation Phase 1</a></li>
+<li><a href="#plan-for-phase-2">Plan for Phase 2</a></li>
+<li><a href="#evaluation-phase-2">Evaluation Phase 2</a></li>
+<li><a href="#plan-for-phase-3">Plan for Phase 3</a></li>
+<li><a href="#evaluation-phase-3">Evaluation Phase 3</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#sequence-diagram">Sequence Diagram</a></li>
+<li><a href="#meetings">Meetings</a></li>
+<li><a href="#getting-the-code">Getting the Code</a></li>
+<li><a href="#other-links">Other links</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-gsoc-all-public" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/jenkins-custom-distribution-service" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/jenkins-custom-distribution-service.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/jenkins-distribution-customize-service#meetings" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+<li>
+<a href="https://community.jenkins.io/c/contributing/gsoc" rel="noreferrer noopener" target="_blank">
+Forum
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2020/12/22/gsoc-report/">
+Google Summer of Code 2020 summary
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/31/github-checks-api-plugin-coding-phase-3/">
+GitHub Checks API Plugin Project - Coding Phase 3
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/31/custom-distribution-service/">
+Custom Distribution Service : Phase 3 Blogpost
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/29/git-performance-improvement-phase3/">
+Git Plugin Performance Improvement: Final Phase and Release
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/27/winsw-yaml-support/">
+Jenkins Windows Services: YAML Configuration Support - GSoC Project Results
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/27/machine-learning-plugin-coding-phase3/">
+Machine Learning Plugin project - Coding Phase 3 blog post
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/25/external-fingerprint-storage-phase-3/">
+External Fingerprint Storage Phase-3 Update: Introducing the PostgreSQL Fingerprint Storage Plugin
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/09/custom-distribution-service-phase-2/">
+Custom Distribution Service : Phase 2 Blogpost
+</a>
+</li>
+<li>
+<a href="/blog/2020/08/03/github-checks-api-plugin-coding-phase-2/">
+GitHub Checks API Plugin Project - Coding Phase 2
+</a>
+</li>
+<li>
+<a href="/blog/2020/07/29/git-performance-improvement-phase2/">
+Git Plugin Performance Improvement Phase-2 Progress
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2020/projects/custom-jenkins-distribution-build-service.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

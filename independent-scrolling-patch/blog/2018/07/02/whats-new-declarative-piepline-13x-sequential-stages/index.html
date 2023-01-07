@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+What's New in Declarative Pipeline 1.3: Sequential Stages
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/07/02/whats-new-declarative-piepline-13x-sequential-stages/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="What&#39;s New in Declarative Pipeline 1.3: Sequential Stages" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="What&#39;s New in Declarative Pipeline 1.3: Sequential Stages" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="What&#39;s New in Declarative Pipeline 1.3: Sequential Stages" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/07/02/whats-new-declarative-piepline-13x-sequential-stages/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="What&#39;s New in Declarative Pipeline 1.3: Sequential Stages" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+What's New in Declarative Pipeline 1.3: Sequential Stages
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+July 02, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=What%27s+New+in+Declarative+Pipeline+1.3%3A+Sequential+Stages&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F07%2F02%2Fwhats-new-declarative-piepline-13x-sequential-stages%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>We recently released version 1.3 of Declarative Pipelines, which includes a couple significant new features. We&#8217;re
+going to cover these features in separate blog posts. The next post will show the new ability to restart a completed
+Pipeline run starting from a stage partway through the Pipeline, but first, let&#8217;s look at the new sequential stages
+feature.</p>
+</div>
+<div class="sect1">
+<h2 id="sequential-stages"><a class="anchor" href="#sequential-stages"></a>Sequential Stages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Declarative 1.2, we added <a href="/doc/book/pipeline/syntax#parallel">the ability to define stages to run in parallel</a>
+as part of the Declarative syntax. Now in Declarative 1.3, we&#8217;ve added another way to specify stages nested within other
+stages, which we&#8217;re calling "sequential stages".</p>
+</div>
+<div class="sect2">
+<h3 id="running-multiple-stages-in-a-parallel-branch"><a class="anchor" href="#running-multiple-stages-in-a-parallel-branch"></a>Running Multiple Stages in a Parallel Branch</h3>
+<div class="paragraph">
+<p>One common use case is running build and tests on multiple platforms. You could already do that with <code>parallel</code> stages,
+but now you can run multiple stages in each <code>parallel</code> branch giving you more visibility into the progress of your
+Pipeline without having to check the logs to see exactly which step is currently running where, etc.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2018-07-02/sequential_stages.png" alt="sequential stages"></span></p>
+</div>
+<div class="paragraph">
+<p>You can also
+use stage directives, including <code>post</code>, <code>when</code>, <code>agent</code>, and all the others covered in the
+<a href="/doc/book/pipeline/syntax">Pipeline Syntax reference</a>
+in your sequential stages, letting you control behavior for different parts of each <code>parallel</code> branch.</p>
+</div>
+<div class="paragraph">
+<p>In the example below, we are running builds on both Windows and Linux, but only want to deploy if we&#8217;re on the master branch.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s2">"build and deploy on Windows and Linux"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">parallel</span> <span class="o">{</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s2">"windows"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">agent</span> <span class="o">{</span>
+                        <span class="n">label</span> <span class="s2">"windows"</span>
+                    <span class="o">}</span>
+                    <span class="n">stages</span> <span class="o">{</span>
+                        <span class="n">stage</span><span class="o">(</span><span class="s2">"build"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">steps</span> <span class="o">{</span>
+                                <span class="n">bat</span> <span class="s2">"run-build.bat"</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                        <span class="n">stage</span><span class="o">(</span><span class="s2">"deploy"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">when</span> <span class="o">{</span>
+                                <span class="n">branch</span> <span class="s2">"master"</span>
+                            <span class="o">}</span>
+                            <span class="n">steps</span> <span class="o">{</span>
+                                <span class="n">bat</span> <span class="s2">"run-deploy.bat"</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+
+                <span class="n">stage</span><span class="o">(</span><span class="s2">"linux"</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">agent</span> <span class="o">{</span>
+                        <span class="n">label</span> <span class="s2">"linux"</span>
+                    <span class="o">}</span>
+                    <span class="n">stages</span> <span class="o">{</span>
+                        <span class="n">stage</span><span class="o">(</span><span class="s2">"build"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">steps</span> <span class="o">{</span>
+                                <span class="n">sh</span> <span class="s2">"./run-build.sh"</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                        <span class="n">stage</span><span class="o">(</span><span class="s2">"deploy"</span><span class="o">)</span> <span class="o">{</span>
+                             <span class="n">when</span> <span class="o">{</span>
+                                 <span class="n">branch</span> <span class="s2">"master"</span>
+                             <span class="o">}</span>
+                             <span class="n">steps</span> <span class="o">{</span>
+                                <span class="n">sh</span> <span class="s2">"./run-deploy.sh"</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="running-multiple-stages-with-the-same-agent-or-environment-or-options"><a class="anchor" href="#running-multiple-stages-with-the-same-agent-or-environment-or-options"></a>Running Multiple Stages with the Same <code>agent</code>, or <code>environment</code>, or <code>options</code></h3>
+<div class="paragraph">
+<p>While the sequential stages feature was originally driven by users wanting to have multiple stages in <code>parallel</code> branches,
+we&#8217;ve found that being able to group multiple stages together with the same <code>agent</code>, <code>environment</code>, <code>when</code>, etc has a lot
+of other uses. For example, if you are using multiple agents in your Pipeline, but would like to be sure that stages using
+the same agent use the same workspace, you can use a parent <code>stage</code> with an <code>agent</code> directive on it, and then all the stages
+inside its <code>stages</code> directive will run on the same executor, in the same workspace. Another example is that until now, you
+could only set a timeout for the entire Pipeline or an individual stage. But by using a parent <code>stage</code> with nested <code>stages</code>,
+you can define a timeout in the parent&#8217;s <code>options</code> directive, and that timeout will be applied for the execution of the
+parent, including its nested stages. You may also want to conditionally control the execution of multiple stages. For example,
+your deployment process may be spread across multiple stages, and you don&#8217;t want to run any of those stages unless you&#8217;re on
+a certain branch or some other criteria is satisfied. Now you can group all those related stages together in a parent
+<code>stage</code>, within its <code>stages</code> directive, and have a single <code>when</code> condition on that parent, rather than having to copy an
+identical <code>when</code> condition to each of the relevant stages.</p>
+</div>
+<div class="paragraph">
+<p>One of my favorite use cases is shown in the example below. In Declarative 1.2.6, we added the <code>input</code> directive for stages.
+This will pause the execution of the Pipeline until a user confirms that the Pipeline should continue, using the Scripted
+Pipeline <code>input</code> step. The <code>input</code> directive is evaluated before the stage enters its agent, if it has one specified, and
+before the stage&#8217;s <code>when</code> condition, if specified, is evaluated. But if you&#8217;re using a top-level agent for most of your
+stages, you&#8217;re still going to be using that agent&#8217;s executor while waiting for input, which can be a waste of resources.
+With sequential stages, you can instead use <code>agent none</code> at the top-level of the Pipeline, and group the stages using a common
+agent and running before the stage with the <code>input</code> directive together under a parent <code>stage</code> with the required <code>agent</code>
+specified. Then, when your Pipeline reaches the stage with <code>input</code>, it will no longer be using an agent&#8217;s executor.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s2">"build and test the project"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">agent</span> <span class="o">{</span>
+                <span class="n">docker</span> <span class="s2">"our-build-tools-image"</span>
+            <span class="o">}</span>
+            <span class="n">stages</span> <span class="o">{</span>
+               <span class="n">stage</span><span class="o">(</span><span class="s2">"build"</span><span class="o">)</span> <span class="o">{</span>
+                   <span class="n">steps</span> <span class="o">{</span>
+                       <span class="n">sh</span> <span class="s2">"./build.sh"</span>
+                   <span class="o">}</span>
+               <span class="o">}</span>
+               <span class="n">stage</span><span class="o">(</span><span class="s2">"test"</span><span class="o">)</span> <span class="o">{</span>
+                   <span class="n">steps</span> <span class="o">{</span>
+                       <span class="n">sh</span> <span class="s2">"./test.sh"</span>
+                   <span class="o">}</span>
+               <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">post</span> <span class="o">{</span>
+                <span class="n">success</span> <span class="o">{</span>
+                    <span class="n">stash</span> <span class="nl">name:</span> <span class="s2">"artifacts"</span><span class="o">,</span> <span class="nl">includes:</span> <span class="s2">"artifacts/**/*"</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">stage</span><span class="o">(</span><span class="s2">"deploy the artifacts if a user confirms"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">input</span> <span class="o">{</span>
+                <span class="n">message</span> <span class="s2">"Should we deploy the project?"</span>
+            <span class="o">}</span>
+            <span class="n">agent</span> <span class="o">{</span>
+                <span class="n">docker</span> <span class="s2">"our-deploy-tools-image"</span>
+            <span class="o">}</span>
+            <span class="n">steps</span> <span class="o">{</span>
+                <span class="n">sh</span> <span class="s2">"./deploy.sh"</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These are just a few example of the power of the new sequential stages feature in Declarative 1.3.
+This new feature adds another set of significant use cases that can be handled smoothly using Declarative Pipeline.
+In my next post, I&#8217;ll show the another highly requested feature - the new ability to restart a Pipeline run from any stage in that Pipeline.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/07/2018-07-02-whats-new-declarative-piepline-13x-sequential-stages.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

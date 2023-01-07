@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Sauce OnDemand plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/sauce-ondemand/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Sauce OnDemand plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Sauce OnDemand plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Sauce OnDemand plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/sauce-ondemand/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Sauce OnDemand plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#sauce-ondemand-plugin">Sauce OnDemand plugin</a>
+<ul class="sectlevel2">
+<li><a href="#sauce-sauce"><code>sauce</code>: Sauce</a></li>
+<li><a href="#sauceconnect-sauce-connect"><code>sauceconnect</code>: Sauce Connect</a></li>
+<li><a href="#saucepublisher-run-sauce-labs-test-publisher"><code>saucePublisher</code>: Run Sauce Labs Test Publisher</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="sauce-ondemand-plugin"><a class="anchor" href="#sauce-ondemand-plugin"></a>Sauce OnDemand plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/sauce-ondemand">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="sauce-sauce"><a class="anchor" href="#sauce-sauce"></a><code>sauce</code>: Sauce</h3>
+<ul><li><code>credentialsId : String</code>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="sauceconnect-sauce-connect"><a class="anchor" href="#sauceconnect-sauce-connect"></a><code>sauceconnect</code>: Sauce Connect</h3>
+<ul><li><code>options : String</code> (optional)
+</li>
+<li><code>sauceConnectPath : String</code> (optional)
+</li>
+<li><code>useGeneratedTunnelIdentifier : boolean</code> (optional)
+</li>
+<li><code>useLatestSauceConnect : boolean</code> (optional)
+</li>
+<li><code>verboseLogging : boolean</code> (optional)
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="saucepublisher-run-sauce-labs-test-publisher"><a class="anchor" href="#saucepublisher-run-sauce-labs-test-publisher"></a><code>saucePublisher</code>: Run Sauce Labs Test Publisher</h3>
+<div><div>
+ This step will trigger jenkins to parse the output of your build for <code>SauceOnDemandSessionID</code> lines and will attempt to update the job on sauce labs with the proper status. See <a href="https://wiki.saucelabs.com/display/DOCS/Setting+Up+Reporting+between+Sauce+Labs+and+Jenkins" rel="nofollow">the Sauce Labs wiki</a> for more information
+</div></div>
+<ul><li><code>testDataPublishers</code> (optional)
+<ul><b>Array / List of Nested Choice of Objects</b>
+<li><code>attachments</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'AutomateTestDataPublisher'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'ClaimTestDataPublisher'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'JUnitFlakyTestDataPublisher'</code><div>
+<ul></ul></div></li>
+<li><code>jiraTestResultReporter</code><div>
+<ul><li><code>configs</code>
+<ul><b>Array / List of Nested Choice of Objects</b>
+<li><code>jiraSelectableArrayField</code><div>
+<ul><li><code>fieldKey : String</code>
+</li>
+<li><code>values</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>value : String</code>
+</li>
+</ul></li>
+</ul></div></li>
+<li><code>jiraSelectableField</code><div>
+<ul><li><code>fieldKey : String</code>
+</li>
+<li><code>value : String</code>
+</li>
+</ul></div></li>
+<li><code>jiraStringArrayField</code><div>
+<ul><li><code>fieldKey : String</code>
+</li>
+<li><code>values</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>value : String</code>
+</li>
+</ul></li>
+</ul></div></li>
+<li><code>jiraStringField</code><div>
+<ul><li><code>fieldKey : String</code>
+</li>
+<li><code>value : String</code>
+<div><div>
+ <p>Insert a string value.</p>
+ <p>You can include Jenkins Environment variables (see <a href="https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project" rel="nofollow">link</a>), or the following variables defined by this plugin:</p>
+ <p></p>Variable usage: <b>${VAR_NAME}</b>
+ <p></p>
+ <p>CRFL - new line</p>
+ <p>DEFAULT_SUMMARY - configured in the global configuration page</p>
+ <p>DEFAULT_DESCRIPTION - configured in the global configuration page</p>
+ <p>TEST_RESULT</p>
+ <p>TEST_NAME</p>
+ <p>TEST_FULL_NAME</p>
+ <p>TEST_STACK_TRACE</p>
+ <p>TEST_ERROR_DETAILS</p>
+ <p>TEST_DURATION</p>
+ <p>TEST_PACKAGE_NAME</p>
+ <p>TEST_PACKAGE_CLASS_METHOD_NAME</p>
+ <p>TEST_STDERR</p>
+ <p>TEST_STDOUT</p>
+ <p>TEST_OVERVIEW</p>
+ <p>TEST_AGE</p>
+ <p>TEST_PASS_COUNT</p>
+ <p>TEST_SKIPPED_COUNT</p>
+ <p>TEST_FAIL_SINCE</p>
+ <p>TEST_IS_REGRESSION - expands to true/false</p>
+ <p>BUILD_RESULT</p>
+ <h3>WARNING: Your input will not be validated against the server's metadata. Check Jira to make sure you insert a valid value for this field and use the Validate Fields button bellow, otherwise the plugin will fail to create your issue.</h3>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>jiraUserField</code><div>
+<ul><li><code>fieldKey : String</code>
+</li>
+<li><code>value : String</code>
+<div><div>
+ <p>Insert the <b>username</b>.</p>
+ <p>For example if you have a user with: <br><br>Display Name: <b>John Doe</b>, Username: <b>johndoe</b>, Email: <b>johndoe@email.com</b>,<br><br> you need to write <b>johndoe</b> in this field. Any other value (like display name, or email) will not work.</p>
+</div></div>
+
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>projectKey : String</code>
+</li>
+<li><code>issueType : String</code>
+</li>
+<li><code>autoRaiseIssue : boolean</code>
+<div><div>
+ Create issues automatically for failing tests that don't yet have one linked.
+</div></div>
+
+</li>
+<li><code>autoResolveIssue : boolean</code>
+<div><div>
+ Automatically apply transition to resolve issues linked to tests, if the test passes.<br> <b>Experimental feature:</b> For now it only looks for the first transition that contains in its name "resolve". If it is found, it will be applied, if not, the status of the issue will not change. In future releases this will be parametrized.
+</div></div>
+
+</li>
+<li><code>autoUnlinkIssue : boolean</code>
+</li>
+<li><code>overrideResolvedIssues : boolean</code>
+<div><div>
+ Create issues automatically for failing tests that are linked to resolved issues in JiraIssueKeyToTestMap.json.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'JunitResultPublisher'</code><div>
+<div><div>
+ If checked, each JUnit test result XML file will be examined to see if it represents a SOASTA CloudTest composition. For applicable tests, a hyperlink to the SOASTA CloudTest dashboard will be inserted into the test report.
+</div></div>
+<ul><li><code>urlOverride : String</code>
+<div><div>
+ Specify the CloudTest URL to use when creating hyperlinks to CloudTest dashboards. Normally, this can be left blank, and the URL will be extracted from the test result file.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'PerfSigTestDataPublisher'</code><div>
+<ul><li><code>dynatraceProfile : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'SahaginTestDataPublishser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'SauceOnDemandReportPublisher'</code><div>
+<div><div>
+ Show embedded Sauce OnDemand reports, including video and logs. Your test should use <a href="http://selenium-client-factory.infradna.com/" rel="nofollow">Selenium client factory</a> (at least <a href="http://maven.jenkins-ci.org/content/repositories/releases/com/saucelabs/selenium/selenium-client-factory/1.3/" rel="nofollow">version 1.3</a> to match test cases to individual Sauce OnDemand jobs).
+</div></div>
+<ul><li><code>jobVisibility : String</code> (optional)
+<div>Set your test results visibility permissions. The <a href="https://wiki.saucelabs.com/display/DOCS/Sharing+the+Results+of+Sauce+Labs+Tests" rel="nofollow">Sauce Documentation</a> has all the various levels described in detail.</div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'StabilityTestDataPublisher'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'TestCafePublisher'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'TestReporter'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'YoutrackTestDataPublisher'</code><div>
+<ul></ul></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

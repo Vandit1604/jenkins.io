@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+ServiceNow CI/CD Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/servicenow-cicd/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="ServiceNow CI/CD Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="ServiceNow CI/CD Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="ServiceNow CI/CD Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/servicenow-cicd/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="ServiceNow CI/CD Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#servicenow-cicd-plugin">ServiceNow CI/CD Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#snactivateplugin-sn-activate-plugin"><code>snActivatePlugin</code>: SN: Activate plugin</a></li>
+<li><a href="#snapplychanges-sn-apply-changes"><code>snApplyChanges</code>: SN: Apply changes</a></li>
+<li><a href="#snbatchinstall-sn-batch-install"><code>snBatchInstall</code>: SN: Batch install</a></li>
+<li><a href="#snbatchrollback-sn-batch-rollback"><code>snBatchRollback</code>: SN: Batch rollback</a></li>
+<li><a href="#sninstallapp-sn-install-application"><code>snInstallApp</code>: SN: Install application</a></li>
+<li><a href="#sninstancescan-sn-instance-scan"><code>snInstanceScan</code>: SN: Instance scan</a></li>
+<li><a href="#snpublishapp-sn-publish-application"><code>snPublishApp</code>: SN: Publish application</a></li>
+<li><a href="#snrollbackapp-sn-roll-back-application"><code>snRollbackApp</code>: SN: Roll back application</a></li>
+<li><a href="#snrollbackplugin-sn-roll-back-plugin"><code>snRollbackPlugin</code>: SN: Roll back plugin</a></li>
+<li><a href="#snruntestsuite-sn-run-test-suite-with-results"><code>snRunTestSuite</code>: SN: Run test suite with results</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="servicenow-cicd-plugin"><a class="anchor" href="#servicenow-cicd-plugin"></a>ServiceNow CI/CD Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/servicenow-cicd">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="snactivateplugin-sn-activate-plugin"><a class="anchor" href="#snactivateplugin-sn-activate-plugin"></a><code>snActivatePlugin</code>: SN: Activate plugin</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here). <br> This field cannot be empty. It doesn't use global settings from ServiceNow Parameters.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>pluginId : String</code> (optional)
+<div><div>
+ Unique identifier of the plugin. You can locate this identifier on the Plugins page within the card of the desired plugin; identified with the name "ID".
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url. This field cannot be empty. It doesn't use global settings from ServiceNow Parameters.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snapplychanges-sn-apply-changes"><a class="anchor" href="#snapplychanges-sn-apply-changes"></a><code>snApplyChanges</code>: SN: Apply changes</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance (usually where the application will be published).
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>appScope : String</code> (optional)
+<div><div>
+ Required if <code>application system ID</code> is not specified. The scope name of the application for which to apply the changes, such as x_aah_custom_app. You can locate this value in the scope field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>appSysId : String</code> (optional)
+<div><div>
+ Required if <code>application scope</code> is not specified. The system id of the application for which to apply the changes. You can locate this value in the Sys ID field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>branchName : String</code> (optional)
+<div><div>
+ Name of the branch in the source control system from which to acquire the application.
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url (usually where the application will be published to).
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snbatchinstall-sn-batch-install"><a class="anchor" href="#snbatchinstall-sn-batch-install"></a><code>snBatchInstall</code>: SN: Batch install</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance where the application will be installed.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>batchName : String</code> (optional)
+<div><div>
+ Required. User specified descriptive name for this batch request.
+</div></div>
+
+</li>
+<li><code>file : String</code> (optional)
+<div><div>
+ Name of the batch file with json manifest. If only a name is given or relative path then the file will be searched in WORKSPACE directory of the build.
+ <p>The field is required if <strong>Use file</strong> is checked. If the field is not changed default value will be used: <code>now_batch_manifest.json</code>.</p>
+</div></div>
+
+</li>
+<li><code>notes : String</code> (optional)
+<div><div>
+ User specified additional notes about the batch install plan.
+ <p>Default: <code>null</code></p>
+</div></div>
+
+</li>
+<li><code>packages : String</code> (optional)
+<div><div>
+ Required. JSON array, where each object specifies details of a package to install.
+ <pre>        <code>
+    [{
+        "id": "String",
+        "load_demo_data": Boolean,
+        "notes": "String",
+        "requested_customized_version": "String",
+        "requested_version": "String",
+        "type": "String"
+    }]
+        </code>
+    </pre>
+ <table>
+  <tbody>
+   <tr>
+    <th>id</th>
+    <td>Required. Sys_id of the application or identifier of the plugin to install.</td>
+   </tr>
+   <tr>
+    <th>load_demo_data</th>
+    <td>Flag that indicates whether demo data is loaded when installing the package. <br>Valid values: <br>&nbsp;<code>true</code>: Demo data should be loaded. <br>&nbsp;<code>false</code>: Demo data should not be loaded. <br>Default: <code>false</code></td>
+   </tr>
+   <tr>
+    <th>notes</th>
+    <td>User specified notes about the package. <br>Default: <code>null</code></td>
+   </tr>
+   <tr>
+    <th>requested_customized_version</th>
+    <td>Only applicable when packages.type is set to application. Version of the store application customization package to install, such as 1.0.2 or 2.3.</td>
+   </tr>
+   <tr>
+    <th>requested_customized_version</th>
+    <td>Only applicable when packages.type is set to application. Version of the store application customization package to install, such as 1.0.2 or 2.3. <p></p>Default: None. If this is not set, then the system does not look for customizations for the application.</td>
+   </tr>
+   <tr>
+    <th>requested_version</th>
+    <td>Required if <code>type</code> is set to application; ignored if set to plugin. Version of the package to install, such as 1.0.2 or 2.3.</td>
+   </tr>
+   <tr>
+    <th>type</th>
+    <td>Required. Type of package. <br>Valid values:
+     <ul>
+      <li><code>application</code></li>
+      <li><code>plugin</code></li>
+     </ul></td>
+   </tr>
+  </tbody>
+ </table>
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url where the application will be installed.
+</div></div>
+
+</li>
+<li><code>useFile : boolean</code> (optional)
+<div><div>
+ Specifies if manifest json file will be used to define the batch. The file can be stored in git repository (in this case SCM should be configured).
+ <p>Default: <code>false</code></p>
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snbatchrollback-sn-batch-rollback"><a class="anchor" href="#snbatchrollback-sn-batch-rollback"></a><code>snBatchRollback</code>: SN: Batch rollback</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here). <br> If ServiceNow Parameters are used, then credentials for installation instance will be used.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>rollbackId : String</code> (optional)
+<div><div>
+ Unique identifier (<code>sys_id</code>) of the rollback installed before.
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url where the batch of packages was installed.
+ <p>If ServiceNow Parameters are used, then the URL of installation instance will be used.</p>
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="sninstallapp-sn-install-application"><a class="anchor" href="#sninstallapp-sn-install-application"></a><code>snInstallApp</code>: SN: Install application</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance where the application will be installed.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>appScope : String</code> (optional)
+<div><div>
+ Required if <code>application system ID</code> is not specified. The scope name of the application for which to apply the changes, such as x_aah_custom_app. You can locate this value in the scope field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>appSysId : String</code> (optional)
+<div><div>
+ Required if <code>application scope</code> is not specified. The system id of the application for which to apply the changes. You can locate this value in the Sys ID field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>appVersion : String</code> (optional)
+<div><div>
+ Version of the application to install. If empty, the published version will be used.
+</div></div>
+
+</li>
+<li><code>baseAppAutoUpgrade : boolean</code> (optional)
+<div><div>
+ Only applicable if Application Customization is active and the associated application is a higher version than the currently installed version. Flag that indicates whether the associated base application should be automatically upgraded to a newer version.
+ <p></p>Valid values:
+ <ul>
+  <li>true: Automatically upgrade the associated application when a newer version becomes available.</li>
+  <li>false: Upgrades need to be explicitly installed.</li>
+ </ul>
+ <p></p>Data type: Boolean
+ <p></p>Default: false
+</div></div>
+
+</li>
+<li><code>baseAppVersion : String</code> (optional)
+<div><div>
+ Only applicable if Application Customization is active. Version of the base application on which to apply the customizations. A base application is any third-party application that comes in the ServiceNow Store.
+ <p></p>Data type: String
+ <p></p>Default: If the version field in the associated Custom Application [sys_app] or Store Application [sys_store_app] table is set, then that value is used. If the version field is not set.
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url where the application will be installed.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="sninstancescan-sn-instance-scan"><a class="anchor" href="#sninstancescan-sn-instance-scan"></a><code>snInstanceScan</code>: SN: Instance scan</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance (usually where the application will be published).
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+</li>
+<li><code>comboSysId : String</code> (optional)
+</li>
+<li><code>requestBody : String</code> (optional)
+</li>
+<li><code>scanType : String</code> (optional)
+</li>
+<li><code>suiteSysId : String</code> (optional)
+</li>
+<li><code>targetRecordSysId : String</code> (optional)
+</li>
+<li><code>targetTable : String</code> (optional)
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url (usually where the application will be published to).
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snpublishapp-sn-publish-application"><a class="anchor" href="#snpublishapp-sn-publish-application"></a><code>snPublishApp</code>: SN: Publish application</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance where the application will be published.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>appScope : String</code> (optional)
+<div><div>
+ Required if <code>application system ID</code> is not specified. The scope name of the application for which to apply the changes, such as x_aah_custom_app. You can locate this value in the scope field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>appSysId : String</code> (optional)
+<div><div>
+ Required if <code>application scope</code> is not specified. The system id of the application for which to apply the changes. You can locate this value in the Sys ID field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>appVersion : String</code> (optional)
+<div><div>
+ Version under which to store the application. Provide 2 significant numbers separated by '.' eg. 1.0 (the third number will be automatically added with build number, what gives eg. 1.0.106).<br>If the version number is passed, the publish process uses that version and updates the local application version if different. If the version number is not passed, the publish process uses the current version of the local application.
+</div></div>
+
+</li>
+<li><code>devNotes : String</code> (optional)
+<div><div>
+ Developer notes to store with the application.
+</div></div>
+
+</li>
+<li><code>incrementBy : int</code> (optional)
+</li>
+<li><code>isAppCustomization : boolean</code> (optional)
+</li>
+<li><code>obtainVersionAutomatically : boolean</code> (optional)
+<div><div>
+ Calculate next application version that will be published. Retrieve it in smart way using API or source control (if SCM is configured for the build). API has the highest priority, then SCM will be used.<br><strong>The value from ''Application version'' will be ignored.</strong>
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url where the application will be published to.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snrollbackapp-sn-roll-back-application"><a class="anchor" href="#snrollbackapp-sn-roll-back-application"></a><code>snRollbackApp</code>: SN: Roll back application</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance where the application is installed.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>appScope : String</code> (optional)
+<div><div>
+ Required if <code>application system ID</code> is not specified. The scope name of the application for which to apply the changes, such as x_aah_custom_app. You can locate this value in the scope field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>appSysId : String</code> (optional)
+<div><div>
+ Required if <code>application scope</code> is not specified. The system id of the application for which to apply the changes. You can locate this value in the Sys ID field in the Custom Application [sys_app] table.
+</div></div>
+
+</li>
+<li><code>rollbackAppVersion : String</code> (optional)
+<div><div>
+ Expected rollback version. This version is compared to the version that is included in the last rollback context, if they don't match, the build step fails.<br>If empty, installed version from previous step will be taken.
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url where the application was installed.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snrollbackplugin-sn-roll-back-plugin"><a class="anchor" href="#snrollbackplugin-sn-roll-back-plugin"></a><code>snRollbackPlugin</code>: SN: Roll back plugin</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here). <br> This field cannot be empty. It doesn't use global settings from ServiceNow Parameters.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>pluginId : String</code> (optional)
+<div><div>
+ Unique identifier of the plugin. You can locate this identifier on the Plugins page within the card of the desired plugin; identified with the name "ID".
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url. This field cannot be empty. It doesn't use global settings from ServiceNow Parameters.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="snruntestsuite-sn-run-test-suite-with-results"><a class="anchor" href="#snruntestsuite-sn-run-test-suite-with-results"></a><code>snRunTestSuite</code>: SN: Run test suite with results</h3>
+<ul><li><code>credentialsId : String</code> (optional)
+<div><div>
+ User name and password defined in global credentials (credentials ID is required here) used for the instance where the application will be installed.
+</div></div>
+
+</li>
+<li><code>apiVersion : String</code> (optional)
+<div><div>
+ Optional. Version of the endpoint to access. For example, v1 or v2. Only specify this value to use an endpoint version other than the latest.
+</div></div>
+
+</li>
+<li><code>browserName : String</code> (optional)
+<div><div>
+ Name of the browser to use to run the client test. This value must match what is specified in the scheduled client test runner. For additional information on scheduled client test runners, see <a href="https://developer.servicenow.com/app.do#!/training/article/app_store_learnv2_atf_newyork_using_the_automated_test_framework/app_store_learnv2_atf_newyork_scheduled_client_test_runners?v=orlando" rel="nofollow">Scheduled Client Test Runners</a>.
+ <p>Valid values:</p>
+ <ul>
+  <li>Any</li>
+  <li>Chrome</li>
+  <li>Firefox</li>
+  <li>Edge</li>
+  <li>IE</li>
+  <li>Safari</li>
+ </ul>
+</div></div>
+
+</li>
+<li><code>browserVersion : String</code> (optional)
+<div><div>
+ Starting value of the version of the browser specified in browser_name to use to run the test. For example, if you enter "9", that would enable all 9.x.x.x versions. This value must match what is specified in the scheduled client test runner.
+</div></div>
+
+</li>
+<li><code>osName : String</code> (optional)
+<div><div>
+ Name of the operating system under which to run the test suite. This value must match what is specified in the scheduled client test runner.
+</div></div>
+
+</li>
+<li><code>osVersion : String</code> (optional)
+<div><div>
+ Starting value of the version of the operating system under which to run the test suite. For example, if you enter "8", that would enable all 8.x.x.x versions. This value must match what is specified in the scheduled client test. runner.
+</div></div>
+
+</li>
+<li><code>responseBodyFormat : String</code> (optional)
+</li>
+<li><code>testSuiteName : String</code> (optional)
+<div><div>
+ Required if <i>Test suite sys_id</i> is not specified. The name of the test suite to run. This value is located in the Test [sys_atf_test_suite] table.
+</div></div>
+
+</li>
+<li><code>testSuiteSysId : String</code> (optional)
+<div><div>
+ Required if <i>Test suite name</i> is not specified. The <code>sys_id</code> of the test suite to run. This value is located in the Test [sys_atf_test_suite] table.
+</div></div>
+
+</li>
+<li><code>url : String</code> (optional)
+<div><div>
+ ServiceNow instance url where the application will be installed.
+</div></div>
+
+</li>
+<li><code>withResults : boolean</code> (optional)
+<div><div>
+ If the checkbox is checked, then results from ServiceNow will be visible in Output Console, together with the link to the visualization on the NOW platform.
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

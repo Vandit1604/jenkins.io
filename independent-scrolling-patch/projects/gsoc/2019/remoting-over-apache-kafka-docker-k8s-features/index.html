@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Remoting over Apache Kafka with Kubernetes features
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/remoting-over-apache-kafka-docker-k8s-features/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Remoting over Apache Kafka with Kubernetes features" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Remoting over Apache Kafka with Kubernetes features" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Remoting over Apache Kafka with Kubernetes features" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2019/remoting-over-apache-kafka-docker-k8s-features/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Remoting over Apache Kafka with Kubernetes features" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Remoting over Apache Kafka with Kubernetes features
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Enhance the plugin and to provide out-of-the-box management in Kubernetes environment
+</p>
+<p>
+<b>
+Status:
+</b>
+Completed
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Student:
+<a class="app-author-link" href="/blog/authors/longnguyen/"><div class="app-avatar"><img alt="Long Nguyen" class="app-avatar__image" src="/images/avatars/longnguyen.jpg"></div> Long Nguyen</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/afalko/"><div class="app-avatar"><img alt="Andrey Falko" class="app-avatar__image" src="/images/avatars/afalko.jpg"></div> Andrey Falko</a>
+, 
+<a class="app-author-link" href="/blog/authors/pvtuan10/"><div class="app-avatar"><img alt="Pham Vu Tuan" class="app-avatar__image" src="/images/avatars/pvtuan10.jpeg"></div> Pham Vu Tuan</a>
+, 
+<a class="app-author-link" href="/blog/authors/ankit-jain/"><div class="app-avatar"></div> Ankit Jain</a>
+, 
+<a class="app-author-link" href="/blog/authors/supun94/"><div class="app-avatar"></div> Supun Wanniarachchi</a>
+, 
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="sect3">
+<h4 id="motivation"><a class="anchor" href="#motivation"></a>Motivation</h4>
+<div class="paragraph">
+<p>Previous version of Remoting over Apache Kafka plugin requires users to manually configure the entire system which includes Zookeeper, Apache Kafka and Remoting agents. It also didn&#8217;t support dynamic agent provisioning so scalability was harder to achieve. This project aims to solve two problems:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Out-of-the-box solution to provision Apache Kafka cluster.</p>
+</li>
+<li>
+<p>Dynamic agent provisioning in a Kubernetes cluster.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="phase-1-summary"><a class="anchor" href="#phase-1-summary"></a>Phase 1 Summary</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Launching Apache Kafka in Kubernetes feature:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User interface (<a href="https://issues.jenkins.io/browse/JENKINS-57667">JENKINS-57667</a>)</p>
+</li>
+<li>
+<p>Back-end function (<a href="https://issues.jenkins.io/browse/JENKINS-57896">JENKINS-57896</a>)</p>
+</li>
+<li>
+<p>Kubernetes YAML specification files (<a href="https://issues.jenkins.io/browse/JENKINS-57669">JENKINS-57669</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Helm chart skeleton (<a href="https://issues.jenkins.io/browse/JENKINS-57670">JENKINS-57670</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="phase-2-summary"><a class="anchor" href="#phase-2-summary"></a>Phase 2 Summary</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud implementation to dynamically provision Remoting Kafka Agent in Kubernetes (<a href="https://issues.jenkins.io/browse/JENKINS-57668">JENKINS-57668</a>)</p>
+</li>
+<li>
+<p>Helm chart completion (<a href="https://issues.jenkins.io/browse/JENKINS-57671">JENKINS-57671</a>)</p>
+</li>
+<li>
+<p>Configuration-as-Code support (<a href="https://issues.jenkins.io/browse/JENKINS-58218">JENKINS-58218</a>)</p>
+</li>
+<li>
+<p>Release version 2.0 (<a href="https://issues.jenkins.io/browse/JENKINS-58218">JENKINS-58218</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="phase-3-summary"><a class="anchor" href="#phase-3-summary"></a>Phase 3 Summary</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Add retention strategy for Cloud (<a href="https://issues.jenkins.io/browse/JENKINS-58690">JENKINS-58690</a>)</p>
+</li>
+<li>
+<p>Write unit tests and integration tests to bring test coverage to 70% (<a href="https://issues.jenkins.io/browse/JENKINS-57898">JENKINS-57898</a>, <a href="https://issues.jenkins.io/browse/JENKINS-58786">JENKINS-58786</a>)</p>
+</li>
+<li>
+<p>Update dependencies and Apache Kafka versions (<a href="https://issues.jenkins.io/browse/JENKINS-58081">JENKINS-58081</a>)</p>
+</li>
+<li>
+<p>Add JaCoCo to the project</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="features"><a class="anchor" href="#features"></a>Features</h5>
+<div class="paragraph">
+<p>Here are some screenshots of the implemented features</p>
+</div>
+<div class="sect5">
+<h6 id="1-launch-apache-kafka-on-kubernetes"><a class="anchor" href="#1-launch-apache-kafka-on-kubernetes"></a>1. Launch Apache Kafka on Kubernetes</h6>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/remoting-kafka/kafka-provisioning-kubernetes-ui.png" alt="Apache Kafka provisioning in Kubernetes UI"></span></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="2-cloud-configuration"><a class="anchor" href="#2-cloud-configuration"></a>2. Cloud configuration</h6>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/remoting-kafka/cloud-ui.png" alt="Remoting Kafka Cloud UI"></span></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="3-remoting-kafka-agent-get-provisioned-dynamically"><a class="anchor" href="#3-remoting-kafka-agent-get-provisioned-dynamically"></a>3. Remoting Kafka Agent get provisioned dynamically</h6>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/remoting-kafka/cloud-nodes.png" alt="Remoting Kafka Agent get provisioned"></span></p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="4-helm-chart-to-bootstrap-the-whole-system-on-kubernetes"><a class="anchor" href="#4-helm-chart-to-bootstrap-the-whole-system-on-kubernetes"></a>4. Helm Chart to bootstrap the whole system on Kubernetes</h6>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/remoting-kafka/helm-chart.png" alt="Kubectl get all to check Helm chart installation"></span></p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="useful-links"><a class="anchor" href="#useful-links"></a>Useful Links</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Remoting+Kafka+Plugin">Wiki</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/remoting-kafka">Plugin Site</a></p>
+</li>
+<li>
+<p><a href="/blog/2019/08/19/remoting-kafka-kubernetes-release-2/">Release 2.0 Blog Post</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/tnoObQqGhyM?t=2368">Phase 2 Demo Video</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1BN2lUcI5UweN2pumAu2m4XHIVXQw6ujzeO9Fbage3ys/edit?usp=sharing">Phase 2 Presentation Slides</a></p>
+</li>
+<li>
+<p><a href="/blog/2019/07/11/remoting-kafka-kubernetes-phase-1/">Phase 1 Blog Post</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/MDs0Vr7gnnA?t=2601">Phase 1 Demo Video</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1yIPwwL7P051XaSE2EOJYAtbVsd6YvGvvKp9QcJE4J1Y/edit?usp=sharing">Phase 1 Presentation Slides</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-dev" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/remoting" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/remoting.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci/remoting-kafka-plugin" rel="noreferrer noopener" target="_blank">
+Github
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel3">
+<li><a href="#motivation">Motivation</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-dev" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/remoting" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/remoting.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci/remoting-kafka-plugin" rel="noreferrer noopener" target="_blank">
+Github
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2019/remoting-over-apache-kafka-docker-k8s-features.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

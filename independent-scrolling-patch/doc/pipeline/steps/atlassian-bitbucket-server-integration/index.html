@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Bitbucket Server Integration
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/atlassian-bitbucket-server-integration/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Bitbucket Server Integration" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Bitbucket Server Integration" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Bitbucket Server Integration" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/atlassian-bitbucket-server-integration/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Bitbucket Server Integration" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#bitbucket-server-integration">Bitbucket Server Integration</a>
+<ul class="sectlevel2">
+<li><a href="#bbs_checkout-bitbucketscmstep"><code>bbs_checkout</code>: BitbucketSCMStep</a></li>
+<li><a href="#bbs_deploy-wrapper-step-to-notify-bitbucket-server-of-the-deployment-status"><code>bbs_deploy</code>: Wrapper step to notify Bitbucket Server of the deployment status.</a></li>
+<li><a href="#stepclass-deploymentnotifier-notify-bitbucket-server-of-deployment"><code>step([$class: 'DeploymentNotifier'])</code>: Notify Bitbucket Server of deployment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="bitbucket-server-integration"><a class="anchor" href="#bitbucket-server-integration"></a>Bitbucket Server Integration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/atlassian-bitbucket-server-integration">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="bbs_checkout-bitbucketscmstep"><a class="anchor" href="#bbs_checkout-bitbucketscmstep"></a><code>bbs_checkout</code>: BitbucketSCMStep</h3>
+<ul><li><code>projectName : String</code>
+<div><div>
+ <p>Enter the name of the Bitbucket Server project containing the repository you want Jenkins to build from. To find a project, start typing. If it doesn't appear in the search results, the credentials that you've chosen may not have read access to it and you'll need to provide different credentials.</p>
+ <p>To get Jenkins to build from a personal repository, enter a tilde (<code>~</code>) followed by repository owner's username. For example, <code>~jsmith.</code></p>
+</div></div>
+
+</li>
+<li><code>repositoryName : String</code>
+<div><div>
+ <p>Enter the Bitbucket Server repository you want Jenkins to build from. To find a repository, start typing. If it doesn't appear in the search results, the credentials that you've chosen may not have read access to it and you'll need to provide different credentials.</p>
+ <p>To get Jenkins to build from a personal repository, enter its slug. This is the URL-friendly version of the repository name. For example, a repository called my example repo will have the slug <em>my-example-repo</em>, and you can see this in its URL, https://bitbucketserver.mycompany.com/myproject/my-example-repo.</p>
+</div></div>
+
+</li>
+<li><code>branches</code> (optional)
+<ul><b>Array / List of Nested Object</b>
+<li><code>name : String</code>
+<div><div>
+ <p>Specify the branches if you'd like to track a specific branch in a repository. If left blank, all branches will be examined for changes and built.</p>
+ <p>The safest way is to use the <code>refs/heads/&lt;branchName&gt;</code> syntax. This way the expected branch is unambiguous.</p>
+ <p>If your branch name has a <code>/</code> in it make sure to use the full reference above. When not presented with a full path the plugin will only use the part of the string right of the last slash. Meaning <code>foo/bar</code> will actually match <code>bar</code>.</p>
+ <p>If you use a wildcard branch specifier, with a slash (e.g. <code>release/</code>), you'll need to specify the origin repository in the branch names to make sure changes are picked up. So e.g. <code>origin/release/</code></p>
+ <p>Possible options:</p>
+ <ul>
+  <li><strong><code>&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch. If ambiguous the first result is taken, which is not necessarily the expected one. Better use <code>refs/heads/&lt;branchName&gt;</code>.<br> E.g. <code>master</code>, <code>feature1</code>, ...</li>
+  <li><strong><code>refs/heads/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch.<br> E.g. <code>refs/heads/master</code>, <code>refs/heads/feature1/master</code>, ...</li>
+  <li><strong><code>&lt;remoteRepoName&gt;/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch. If ambiguous the first result is taken, which is not necessarily the expected one.<br> Better use <code>refs/heads/&lt;branchName&gt;</code>.<br> E.g. <code>origin/master</code></li>
+  <li><strong><code>remotes/&lt;remoteRepoName&gt;/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch.<br> E.g. <code>remotes/origin/master</code></li>
+  <li><strong><code>refs/remotes/&lt;remoteRepoName&gt;/&lt;branchName&gt;</code></strong><br> Tracks/checks out the specified branch.<br> E.g. <code>refs/remotes/origin/master</code></li>
+  <li><strong><code>&lt;tagName&gt;</code></strong><br> This does not work since the tag will not be recognized as tag.<br> Use <code>refs/tags/&lt;tagName&gt;</code> instead.<br> E.g. <code>git-2.3.0</code></li>
+  <li><strong><code>refs/tags/&lt;tagName&gt;</code></strong><br> Tracks/checks out the specified tag.<br> E.g. <code>refs/tags/git-2.3.0</code></li>
+  <li><strong><code>&lt;commitId&gt;</code></strong><br> Checks out the specified commit.<br> E.g. <code>5062ac843f2b947733e6a3b105977056821bd352</code>, <code>5062ac84</code>, ...</li>
+  <li><strong><code>${ENV_VARIABLE}</code></strong><br> It is also possible to use environment variables. In this case the variables are evaluated and the result is used as described above.<br> E.g. <code>${TREEISH}</code>, <code>refs/tags/${TAGNAME}</code>, ...</li>
+  <li><strong><code>&lt;Wildcards&gt;</code></strong><br> The syntax is of the form: <code>REPOSITORYNAME/BRANCH</code>. In addition, <code>BRANCH</code> is recognized as a shorthand of <code>*/BRANCH</code>, '*' is recognized as a wildcard, and '**' is recognized as wildcard that includes the separator '/'. Therefore, <code>origin/branches*</code> would match <code>origin/branches-foo</code> but not <code>origin/branches/foo</code>, while <code>origin/branches**</code> would match both <code>origin/branches-foo</code> and <code>origin/branches/foo</code>.</li>
+  <li><strong><code>:&lt;regular expression&gt;</code></strong><br> The syntax is of the form: <code>:regexp</code>. Regular expression syntax in branches to build will only build those branches whose names match the regular expression.<br> Examples:<br>
+   <ul>
+    <li><code>:^(?!(origin/prefix)).*</code>
+     <ul>
+      <li>matches: <code>origin</code> or <code>origin/master</code> or <code>origin/feature</code></li>
+      <li>does not match: <code>origin/prefix</code> or <code>origin/prefix_123</code> or <code>origin/prefix-abc</code></li>
+     </ul></li>
+    <li><code>:origin/release-\d{8}</code>
+     <ul>
+      <li>matches: <code>origin/release-20150101</code></li>
+      <li>does not match: <code>origin/release-2015010</code> or <code>origin/release-201501011</code> or <code>origin/release-20150101-something</code></li>
+     </ul></li>
+    <li><code>:^(?!origin/master$|origin/develop$).*</code>
+     <ul>
+      <li>matches: <code>origin/branch1</code> or <code>origin/branch-2</code> or <code>origin/master123</code> or <code>origin/develop-123</code></li>
+      <li>does not match: <code>origin/master</code> or <code>origin/develop</code></li>
+     </ul></li>
+   </ul></li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+</ul></li>
+<li><code>changelog : boolean</code> (optional)
+<div><div>
+ Enable or Disable 'Include in changelog':
+ <p>If 'Include in changelog' is enabled for an SCM source, then when a build occurs, the changes from that SCM source will be included in the changelog.</p>
+ <p>If 'Include in changelog' is disabled, then when a build occurs, the changes from this SCM source will not be included in the changelog.</p>
+</div></div>
+
+</li>
+<li><code>credentialsId : String</code> (optional)
+<div><div>
+ <p>When running a job, Jenkins requires credentials to authenticate with Bitbucket Server. For example, to checkout the source code for builds. To do this, it needs credentials with access to the projects and repositories you want it to build from.</p>
+ <p>You can provide Jenkins with credentials here by:</p>
+ <ul>
+  <li>selecting credentials from the list</li>
+  <li>adding credentials as a <strong>Username with password</strong> (for the password, you can enter a Bitbucket Server password or a Bitbucket Server <a href="https://confluence.atlassian.com/x/a97-Nw" rel="nofollow">personal access token</a>)</li>
+ </ul>
+ <p>In addition, you can provide Jenkins with SSH credentials below. If you do, Jenkins will use them for clone operations instead of the credentials you select here.</p>
+</div></div>
+
+</li>
+<li><code>id : String</code> (optional)
+</li>
+<li><code>mirrorName : String</code> (optional)
+<div><div>
+ <p>Choose the location that Jenkins should clone from when running this build. This can be the primary server or a mirror if one is available. To see available mirrors, first choose a Bitbucket Server project and repository.</p>
+</div></div>
+
+</li>
+<li><code>poll : boolean</code> (optional)
+<div><div>
+ Enable or Disable 'Include in polling'
+ <p>If 'Include in polling' is enabled or 'Include in changelog' is enabled, then when polling occurs, the job will be started if changes are detected from this SCM source.</p>
+ <p>If 'Include in polling' is disabled and 'Include in changelog' is disabled, then when polling occurs, changes that are detected from this repository will be ignored.</p>
+</div></div>
+
+</li>
+<li><code>serverId : String</code> (optional)
+<div><div>
+ <p>Choose the Bitbucket Server instance containing the repository you want Jenkins to build from. If you can't find your instance, check this plugin's configuration and try again.</p>
+</div></div>
+
+</li>
+<li><code>serverName : String</code> (optional)
+</li>
+<li><code>sshCredentialsId : String</code> (optional)
+<div><div>
+ <p>If specified, Jenkins will use these credentials to check out the source code for builds. If no SSH credentials are specified, Jenkins will use the basic credentials instead.</p>
+ <p>To provide Jenkins with SSH credentials, you can:</p>
+ <ul>
+  <li>choose credentials from the list</li>
+  <li>add credentials as a <strong>SSH Username with private key</strong> (the username must be "git")</li>
+ </ul>
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="bbs_deploy-wrapper-step-to-notify-bitbucket-server-of-the-deployment-status"><a class="anchor" href="#bbs_deploy-wrapper-step-to-notify-bitbucket-server-of-the-deployment-status"></a><code>bbs_deploy</code>: Wrapper step to notify Bitbucket Server of the deployment status.</h3>
+<ul><li><code>environmentName : String</code>
+<div><div>
+ <p>A human-readable display name for the environment that was deployed to.</p>
+</div></div>
+
+</li>
+<li><code>environmentKey : String</code> (optional)
+<div><div>
+ <p>This is a unique identifier for the environment in Bitbucket Server. You can name it something readable like <code>MY-ENV</code>, or you can leave it blank and have it auto-generated by the plugin.</p>
+</div></div>
+
+</li>
+<li><code>environmentType : String</code> (optional)
+<div><div>
+ <p>The type of environment that was deployed to, or 'None' if the environment type does not apply.</p>
+</div></div>
+
+</li>
+<li><code>environmentUrl : String</code> (optional)
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="stepclass-deploymentnotifier-notify-bitbucket-server-of-deployment"><a class="anchor" href="#stepclass-deploymentnotifier-notify-bitbucket-server-of-deployment"></a><code>step([$class: 'DeploymentNotifier'])</code>: Notify Bitbucket Server of deployment</h3>
+<ul><li><code>environmentName : String</code>
+<div><div>
+ <p>A human-readable display name for the environment that was deployed to.</p>
+</div></div>
+
+</li>
+<li><code>environmentKey : String</code> (optional)
+<div><div>
+ <p>This is a unique identifier for the environment in Bitbucket Server. You can name it something readable like <code>MY-ENV</code>, or you can leave it blank and have it auto-generated by the plugin.</p>
+</div></div>
+
+</li>
+<li><code>environmentType : String</code> (optional)
+<div><div>
+ <p>The type of environment that was deployed to, or 'None' if the environment type does not apply.</p>
+</div></div>
+
+</li>
+<li><code>environmentUrl : String</code> (optional)
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

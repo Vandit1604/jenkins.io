@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Security Hardening: New API token system in Jenkins 2.129+
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/07/02/new-api-token-system/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Security Hardening: New API token system in Jenkins 2.129+" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Security Hardening: New API token system in Jenkins 2.129+" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Security Hardening: New API token system in Jenkins 2.129+" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/07/02/new-api-token-system/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Security Hardening: New API token system in Jenkins 2.129+" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Security Hardening: New API token system in Jenkins 2.129+
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/wadeck/"><div class="app-avatar"><img alt="Wadeck Follonier" class="app-avatar__image" src="/images/avatars/wadeck.jpg"></div> Wadeck Follonier</a>
+July 02, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Security+Hardening%3A+New+API+token+system+in+Jenkins+2.129%2B&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F07%2F02%2Fnew-api-token-system%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect1">
+<h2 id="about-api-tokens"><a class="anchor" href="#about-api-tokens"></a>About API tokens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins API tokens are an authentication mechanism that allows a tool (script, application, etc.) to impersonate a user
+without providing the actual password for use with the Jenkins API or CLI.
+This is especially useful when your security realm is based on a central directory, like Active Directory or LDAP,
+and you don&#8217;t want to store your password in scripts.
+Recent versions of Jenkins also make it easier to use the remote API when using API tokens to authenticate,
+as no CSRF tokens need to be provided even with CSRF protection enabled.
+API tokens are not meant to&#8201;&#8212;&#8201;and cannot&#8201;&#8212;&#8201;replace the regular password for the Jenkins UI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="previous-problems"><a class="anchor" href="#previous-problems"></a>Previous problems</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We addressed two major problems with the existing API token system in Jenkins 2.129:</p>
+</div>
+<div class="paragraph">
+<p>First, reported in <a href="https://issues.jenkins.io/browse/JENKINS-32442">JENKINS-32442</a>,
+user accounts in Jenkins have an automatically generated API token by default.
+As these tokens can be used to authenticate as a given user, they increase the attack surface of Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>The second problem was reported in <a href="https://issues.jenkins.io/browse/JENKINS-32776">JENKINS-32776</a>:
+The tokens were previously stored on disk in an encrypted form.
+This meant that they could be decrypted by unauthorized users by leveraging another security vulnerability,
+or obtained, for example, from improperly secured backups, and used to impersonate other users.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-approach"><a class="anchor" href="#new-approach"></a>New approach</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main objective of this new system is to provide API tokens that are stored in a unidirectional way on the disk,
+i.e. using a hashing algorithm (in this particular case SHA-256).</p>
+</div>
+<div class="paragraph">
+<p>While this means that you will not be able to see the actual API tokens anymore after you&#8217;ve created them,
+several features were added to mitigate this potential problem:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can have multiple active API tokens at the same time.
+If you don&#8217;t remember an API token&#8217;s value anymore, just revoke it.</p>
+</li>
+<li>
+<p>You can name your tokens to know where they are used (and rename them after creation if desired).
+We recommend that tokens use a name that indicates where (for example the application, script, or host) where it will be used.</p>
+</li>
+<li>
+<p>You can track the usage of your tokens.
+Every token keeps a record of the number of uses and the date of the last use.
+This will allow you to better know which tokens are really used and which are no longer actively required.
+Jenkins also encourages users to rotate old API tokens by highlighting their creation date in orange after six months, and in red after twelve months.
+The goal is to remind the user that tokens are more secure when you regenerate them often:
+The longer a token is around, perhaps passed around in script files and stored on shared drives,
+the greater the chance it&#8217;s going to be accessed by someone not authorized to use it.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="/images/post-images/2018-07-02-new-api-token-system/token_usage.png"><img src="/images/post-images/2018-07-02-new-api-token-system/token_usage.png" alt="token usage" width="800"></a>
+</div>
+<div class="title">Figure 1. Token usage tracking</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can revoke API tokens.
+When you know that you are not using a given token anymore, you can revoke it to reduce the risk of it getting used by unauthorized users.
+Since you can have multiple API tokens, this allows fine-grained control over which scripts, hosts, or applications are allowed to use Jenkins as a given user.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="migrating-to-new-api-tokens"><a class="anchor" href="#migrating-to-new-api-tokens"></a>Migrating to new API tokens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To help administrators migrate their instances progressively, the legacy behavior is still available, while new system is also usable.</p>
+</div>
+<div class="paragraph">
+<p>On the user configuration page, the legacy token is highlighted with a warning sign,
+explaining that users should revoke it and generate a new one (if needed) to increase security.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="/images/post-images/2018-07-02-new-api-token-system/legacy_renewal.gif"><img src="/images/post-images/2018-07-02-new-api-token-system/legacy_renewal.gif" alt="legacy renewal" width="800"></a>
+</div>
+<div class="title">Figure 2. Legacy token renewal still possible</div>
+</div>
+<div class="sect2">
+<h3 id="new-options-for-administrators"><a class="anchor" href="#new-options-for-administrators"></a>New options for administrators</h3>
+<div class="paragraph">
+<p>In order to let administrators control the pace of migration to the new API token system,
+we added two global configuration options in the "Configure Global Security" page in the brand new "API Token" section:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An option to disable the creation of legacy API tokens on user creation.</p>
+</li>
+<li>
+<p>An option to disable the recreation of legacy API tokens by users, forcing them to only use the new, unrecoverable API tokens.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Both options are disabled by default for new installations (the safe default), while they&#8217;re enabled when Jenkins is upgraded from before 2.129.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="/images/post-images/2018-07-02-new-api-token-system/security_configuration_options.png"><img src="/images/post-images/2018-07-02-new-api-token-system/security_configuration_options.png" alt="security configuration options"></a>
+</div>
+<div class="title">Figure 3. Security Configuration options</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="/images/post-images/2018-07-02-new-api-token-system/legacy_removal.gif"><img src="/images/post-images/2018-07-02-new-api-token-system/legacy_removal.gif" alt="legacy removal" width="800"></a>
+</div>
+<div class="title">Figure 4. Remove legacy token and disable the re-creation</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-administrator-warnings"><a class="anchor" href="#new-administrator-warnings"></a>New administrator warnings</h3>
+<div class="paragraph">
+<p>When upgrading to Jenkins 2.129, an administrative monitor informs admins about the new options described above, and recommend disabling them.</p>
+</div>
+<div class="paragraph">
+<p>Another administrative warnings shows up if at least one user still has a legacy API token.
+It provides central control over legacy tokens still configured in the Jenkins instance, and allows revoking them all.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<a class="image" href="/images/post-images/2018-07-02-new-api-token-system/monitor_screen.png"><img src="/images/post-images/2018-07-02-new-api-token-system/monitor_screen.png" alt="monitor screen" width="800"></a>
+</div>
+<div class="title">Figure 5. Legacy token monitoring page</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins API tokens are now much more flexible: They allow and even encourage better security practices.
+We recommend you revoke legacy API tokens as soon as you can, and only use the newly introduced API tokens.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/security/">
+security
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/upgrade/">
+upgrade
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Wadeck Follonier" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/wadeck.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/wadeck/">
+Wadeck Follonier
+</a>
+</p>
+<div class="paragraph">
+<p>Wadeck is the Jenkins security officer, leading the <a href="/security/#team">security team</a> in improving Jenkins security.
+He likes to provide solutions that are both useful and easy to use.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/wadeck" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/07/2018-07-02-new-api-token-system.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

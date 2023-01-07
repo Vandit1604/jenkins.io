@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="https://purl.org/rss/1.0/modules/content/">
+<channel>
+<title>
+Jenkins Security Advisories
+</title>
+<link>
+https://www.jenkins.io/security/advisories/
+</link>
+<atom:link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisories/rss.xml" rel="self" type="application/rss+xml"></atom:link>
+<description>
+Security advisories published by the Jenkins project
+</description>
+<lastBuildDate>
+Sat, 7 Jan 2023 14:36:22 +0000
+</lastBuildDate>
+<item>
+<title>
+Jenkins Security Advisory 2022-12-07
+</title>
+<date>
+Wed, 7 Dec 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-12-07/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/checkmarx'&gt;Checkmarx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/custom-build-properties'&gt;Custom Build Properties&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitea'&gt;Gitea&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/google-login'&gt;Google Login&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/plot'&gt;Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sonar-gerrit'&gt;Sonar Gerrit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/spring-config'&gt;Spring Config&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-11-15
+</title>
+<date>
+Tue, 15 Nov 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-11-15/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/associated-files'&gt;Associated Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: BART
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cccc'&gt;CCCC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dockerhub-notification'&gt;CloudBees Docker Hub/Registry Notification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cluster-stats'&gt;Cluster Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Config Rotator
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/delete-log-plugin'&gt;Delete log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/japex'&gt;JAPEX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/junit'&gt;JUnit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/loaderio-jenkins-plugin'&gt;loader.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/naginator'&gt;Naginator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cavisson-ns-nd-integration'&gt;NS-ND Integration Performance Publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: OSF Builder Suite : : XML Linter
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-utility-steps'&gt;Pipeline Utility Steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/reverse-proxy-auth-plugin'&gt;Reverse Proxy Auth&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sourcemonitor'&gt;SourceMonitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/support-core'&gt;Support Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/violations'&gt;Violations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xpdev'&gt;XP-Dev&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-10-19
+</title>
+<date>
+Wed, 19 Oct 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-10-19/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-scm-downloader'&gt;BMC Compuware Source Code Download for Endevor, PDS, and ISPW&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-strobe-measurement'&gt;Compuware Strobe Measurement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-topaz-for-total-test'&gt;Compuware Topaz for Total Test&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-topaz-utilities'&gt;Compuware Topaz Utilities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-xpediter-code-coverage'&gt;Compuware Xpediter Code Coverage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/contrast-continuous-application-security'&gt;Contrast Continuous Application Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/custom-checkbox-parameter'&gt;Custom Checkbox Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: 360 FireLine
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/generic-webhook-trigger'&gt;Generic Webhook Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitlab-plugin'&gt;GitLab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/job-import-plugin'&gt;Job Import&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/katalon'&gt;Katalon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mercurial'&gt;Mercurial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/neuvector-vulnerability-scanner'&gt;NeuVector Vulnerability Scanner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nunit'&gt;NUnit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps-global-lib'&gt;Pipeline: Deprecated Groovy Libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps'&gt;Pipeline: Groovy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-groovy-lib'&gt;Pipeline: Groovy Libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-input-step'&gt;Pipeline: Input Step&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-stage-view'&gt;Pipeline: Stage View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-support'&gt;Pipeline: Supporting APIs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/repo'&gt;REPO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/s3explorer'&gt;S3 Explorer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: ScreenRecorder
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/tuleap-git-branch-source'&gt;Tuleap Git Branch Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: XFramium Builder
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-09-21
+</title>
+<date>
+Wed, 21 Sep 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-09-21/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/anchore-container-scanner'&gt;Anchore Container Image Scanner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/apprenda'&gt;Apprenda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/bigpanda-jenkins'&gt;BigPanda Notifier&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: build-publisher
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-common-configuration'&gt;Compuware Common Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: CONS3RT
+&lt;li&gt;Affects plugin: DotCi
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/extreme-feedback'&gt;extreme-feedback&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cavisson-ns-nd-integration'&gt;NS-ND Integration Performance Publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rqm-plugin'&gt;RQM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rundeck'&gt;Rundeck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/scm-httpclient'&gt;SCM HttpClient&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/security-inspector'&gt;Security Inspector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/smalltest'&gt;SmallTest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/view26'&gt;View26 Test-Reporting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Walti
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/wildfly-deployer'&gt;WildFly Deployer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ws-execution-manager'&gt;Worksoft Execution Manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-09-09
+</title>
+<date>
+Fri, 9 Sep 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-09-09/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-08-23
+</title>
+<date>
+Tue, 23 Aug 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-08-23/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/collabnet'&gt;CollabNet Plugins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git'&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jobConfigHistory'&gt;Job Configuration History&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Kubernetes Continuous Deploy
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-07-27
+</title>
+<date>
+Wed, 27 Jul 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-07-27/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/android-signing'&gt;Android Signing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-ispw-operations'&gt;BMC Compuware ISPW Operations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-scm-downloader'&gt;BMC Compuware Source Code Download for Endevor, PDS, and ISPW&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/buckminster'&gt;Buckminster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/clif-performance-testing'&gt;CLIF Performance Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-topaz-utilities'&gt;Compuware Topaz Utilities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-xpediter-code-coverage'&gt;Compuware Xpediter Code Coverage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compuware-zadviser-api'&gt;Compuware zAdviser API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/coverity'&gt;Coverity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/deployer-framework'&gt;Deployer Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dynamic_extended_choice_parameter'&gt;Dynamic Extended Choice Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/external-monitor-job'&gt;External Monitor Job Type&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/files-found-trigger'&gt;Files Found Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git'&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git-client'&gt;Git client&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/github'&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/google-cloud-backup'&gt;Google Cloud Backup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/hashicorp-vault-plugin'&gt;HashiCorp Vault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/http_request'&gt;HTTP Request&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jobConfigHistory'&gt;Job Configuration History&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/lucene-search'&gt;Lucene-Search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/maven-metadata-plugin'&gt;Maven Metadata Plugin for Jenkins CI server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/openshift-deployer'&gt;OpenShift Deployer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: openstack-heat
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/repository-connector'&gt;Repository Connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rhnpush-plugin'&gt;rhnpush-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rpmsign-plugin'&gt;rpmsign-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-06-30
+</title>
+<date>
+Thu, 30 Jun 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-06-30/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/build-notifications'&gt;Build Notifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/build-metrics'&gt;build-metrics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cisco-spark'&gt;Cisco Spark&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ec2-deployment-dashboard'&gt;Deployment Dashboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/elasticsearch-query'&gt;Elasticsearch Query&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xfpanel'&gt;eXtreme Feedback Panel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/failedJobDeactivator'&gt;Failed Job Deactivator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitlab-plugin'&gt;GitLab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: hpe-network-virtualization
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jigomerge'&gt;Jigomerge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/matrix-reloaded'&gt;Matrix Reloaded&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/opsgenie'&gt;OpsGenie&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/plot'&gt;Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/project-inheritance'&gt;Project Inheritance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/recipe'&gt;Recipe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rrod'&gt;Request Rename Or Delete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/requests'&gt;requests-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rich-text-publisher-plugin'&gt;Rich Text Publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rocketchatnotifier'&gt;RocketChat Notifier&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rqm-plugin'&gt;RQM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/skype-notifier'&gt;Skype notifier&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/testng-plugin'&gt;TestNG Results&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/validating-email-parameter'&gt;Validating Email Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xlrelease-plugin'&gt;XebiaLabs XL Release&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xpath-config-viewer'&gt;XPath Configuration Viewer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-06-22
+</title>
+<date>
+Wed, 22 Jun 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-06-22/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/agent-server-parameter'&gt;Agent Server Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/beaker-builder'&gt;Beaker builder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/convertigo-mobile-platform'&gt;Convertigo Mobile Platform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/crx-content-package-deployer'&gt;CRX Content Package Deployer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/date-parameter'&gt;Date Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dynamic_extended_choice_parameter'&gt;Dynamic Extended Choice Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/easyqa'&gt;EasyQA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/embeddable-build-status'&gt;Embeddable Build Status&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/filesystem-list-parameter-plugin'&gt;Filesystem List Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/hidden-parameter'&gt;Hidden Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/image-tag-parameter'&gt;Image Tag Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jianliao'&gt;Jianliao Notification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/junit'&gt;JUnit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/maven-metadata-plugin'&gt;Maven Metadata Plugin for Jenkins CI server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nested-view'&gt;Nested View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cavisson-ns-nd-integration'&gt;NS-ND Integration Performance Publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ontrack'&gt;ontrack Jenkins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/packageversion'&gt;Package Version&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-input-step'&gt;Pipeline: Input Step&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/readonly-parameters'&gt;Readonly Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/repository-connector'&gt;Repository Connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rest-list-parameter'&gt;REST List Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sauce-ondemand'&gt;Sauce OnDemand&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Squash TM Publisher (Squash4Jenkins)
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/StashBranchParameter'&gt;Stash Branch Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/threadfix'&gt;ThreadFix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/vmware-vrealize-orchestrator'&gt;vRealize Orchestrator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xunit'&gt;xUnit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-05-17
+</title>
+<date>
+Tue, 17 May 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-05-17/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/app-detector'&gt;Application Detector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Autocomplete Parameter
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/blueocean'&gt;Blue Ocean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git'&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitlab-plugin'&gt;GitLab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/global-variable-string-parameter'&gt;Global Variable String Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/JDK_Parameter_Plugin'&gt;JDK Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mercurial'&gt;Mercurial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/multiselect-parameter'&gt;Multiselect parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/blueocean-pipeline-scm-api'&gt;Pipeline SCM API for Blue Ocean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps'&gt;Pipeline: Groovy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/promoted-builds-simple'&gt;Promoted Builds (Simple)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/random-string-parameter'&gt;Random String Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/repo'&gt;REPO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rundeck'&gt;Rundeck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/selection-tasks-plugin'&gt;Selection tasks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ssh'&gt;SSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Storable Configs
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/vboxwrapper'&gt;vboxwrapper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/windows-slaves'&gt;WMI Windows Agents&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-04-12
+</title>
+<date>
+Tue, 12 Apr 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-04-12/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/credentials'&gt;Credentials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cvs'&gt;CVS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/extended-choice-parameter'&gt;Extended Choice Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gerrit-trigger'&gt;Gerrit Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git-parameter'&gt;Git Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/google-compute-engine'&gt;Google Compute Engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jira'&gt;Jira&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jobgenerator'&gt;Job Generator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mask-passwords'&gt;Mask Passwords&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nodelabelparameter'&gt;Node and Label parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps-global-lib'&gt;Pipeline: Deprecated Groovy Libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/promoted-builds'&gt;promoted builds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/publish-over-ftp'&gt;Publish Over FTP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/subversion'&gt;Subversion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-03-29
+</title>
+<date>
+Tue, 29 Mar 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-03-29/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/atlassian-bitbucket-server-integration'&gt;Bitbucket Server Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ci-with-toad-edge'&gt;Continuous Integration with Toad Edge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/covcomplplot'&gt;Coverage/Complexity Scatter Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/flaky-test-handler'&gt;Flaky Test Handler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/instant-messaging'&gt;instant-messaging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/JiraTestResultReporter'&gt;JiraTestResultReporter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ownership'&gt;Job and Node ownership&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Pipeline: Phoenix AutoTest
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/proxmox'&gt;Proxmox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rocketchatnotifier'&gt;RocketChat Notifier&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sitemonitor'&gt;SiteMonitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/selected-tests-executor'&gt;Tests Selector&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-03-15
+</title>
+<date>
+Tue, 15 Mar 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-03-15/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/aws-credentials'&gt;CloudBees AWS Credentials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dashboard-view'&gt;Dashboard View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dbCharts'&gt;dbCharts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/environment-dashboard'&gt;Environment Dashboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/extended-choice-parameter'&gt;Extended Choice Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/favorite'&gt;Favorite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/folder-auth'&gt;Folder-based Authorization Strategy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitlab-oauth'&gt;GitLab Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/global-build-stats'&gt;global-build-stats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: incapptic connect uploader
+&lt;li&gt;Affects plugin: kubernetes-cd
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/list-git-branches-parameter'&gt;List Git Branches Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/parameterized-trigger'&gt;Parameterized Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/release-helper'&gt;Release Helper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/semantic-versioning-plugin'&gt;Semantic Versioning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/vmware-vrealize-codestream'&gt;Vmware vRealize CodeStream&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-02-15
+</title>
+<date>
+Tue, 15 Feb 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-02-15/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/agent-server-parameter'&gt;Agent Server Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/autonomiq'&gt;autonomiq&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/checkmarx'&gt;Checkmarx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/conjur-credentials'&gt;Conjur Secrets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/convertigo-mobile-platform'&gt;Convertigo Mobile Platform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/custom-checkbox-parameter'&gt;Custom Checkbox Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dbCharts'&gt;dbCharts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/doktor'&gt;Doktor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/fortify'&gt;Fortify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/generic-webhook-trigger'&gt;Generic Webhook Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitlab-oauth'&gt;GitLab Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/hashicorp-vault-plugin'&gt;HashiCorp Vault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-build-step'&gt;Pipeline: Build Step&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps-global-lib'&gt;Pipeline: Deprecated Groovy Libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps'&gt;Pipeline: Groovy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-multibranch'&gt;Pipeline: Multibranch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/promoted-builds-simple'&gt;Promoted Builds (Simple)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/scp'&gt;SCP publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Chef Sinatra
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/embotics-vcommander'&gt;Snow Commander&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/support-core'&gt;Support Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: SWAMP
+&lt;li&gt;Affects plugin: Team Views
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-02-09
+</title>
+<date>
+Wed, 9 Feb 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-02-09/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2022-01-12
+</title>
+<date>
+Wed, 12 Jan 2022 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2022-01-12/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/active-directory'&gt;Active Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/badge'&gt;Badge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: batch task
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cloudbees-bitbucket-branch-source'&gt;Bitbucket Branch Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/configuration-as-code'&gt;Configuration as Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/conjur-credentials'&gt;Conjur Secrets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/credentials-binding'&gt;Credentials Binding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Debian Package Builder
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/docker-commons'&gt;Docker Commons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/hashicorp-vault-plugin'&gt;HashiCorp Vault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mailer'&gt;Mailer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/matrix-project'&gt;Matrix Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/metrics'&gt;Metrics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/publish-over-ssh'&gt;Publish Over SSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ssh-agent'&gt;SSH Agent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/warnings-ng'&gt;Warnings Next Generation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-11-12
+</title>
+<date>
+Fri, 12 Nov 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-11-12/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/uno-choice'&gt;Active Choices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dependency-check-jenkins-plugin'&gt;OWASP Dependency-Check&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/performance'&gt;Performance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pom2config'&gt;pom2config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/scriptler'&gt;Scriptler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Squash TM Publisher (Squash4Jenkins)
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-11-04
+</title>
+<date>
+Thu, 4 Nov 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-11-04/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/subversion'&gt;Subversion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-10-06
+</title>
+<date>
+Wed, 6 Oct 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-10-06/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git'&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-08-31
+</title>
+<date>
+Tue, 31 Aug 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-08-31/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/azure-ad'&gt;Azure AD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/code-coverage-api'&gt;Code Coverage API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nested-view'&gt;Nested View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nomad'&gt;Nomad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/saml'&gt;SAML&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-06-30
+</title>
+<date>
+Wed, 30 Jun 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-06-30/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cas-plugin'&gt;CAS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/requests'&gt;requests-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/seleniumhtmlreport'&gt;Selenium HTML report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-06-18
+</title>
+<date>
+Fri, 18 Jun 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-06-18/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/generic-webhook-trigger'&gt;Generic Webhook Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-06-16
+</title>
+<date>
+Wed, 16 Jun 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-06-16/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/scriptler'&gt;Scriptler&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-06-10
+</title>
+<date>
+Thu, 10 Jun 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-06-10/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/kiuwanJenkinsPlugin'&gt;Kiuwan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/kubernetes-cli'&gt;Kubernetes CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/deployit-plugin'&gt;XebiaLabs XL Deploy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-05-25
+</title>
+<date>
+Tue, 25 May 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-05-25/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/fstrigger'&gt;Filesystem Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/markdown-formatter'&gt;Markdown Formatter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nuget'&gt;Nuget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/urltrigger'&gt;URLTrigger&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-05-11
+</title>
+<date>
+Tue, 11 May 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-05-11/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/credentials'&gt;Credentials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dashboard-view'&gt;Dashboard View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/p4'&gt;P4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/s3'&gt;S3 publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xcode-plugin'&gt;Xcode integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/xray-connector'&gt;Xray - Test Management for Jira&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-04-21
+</title>
+<date>
+Wed, 21 Apr 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-04-21/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/electricflow'&gt;CloudBees CD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/config-file-provider'&gt;Config File Provider&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/templating-engine'&gt;Templating Engine&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-04-20
+</title>
+<date>
+Tue, 20 Apr 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-04-20/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-04-07
+</title>
+<date>
+Wed, 7 Apr 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-04-07/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/hp-application-automation-tools-plugin'&gt;Micro Focus Application Automation Tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/promoted-builds'&gt;promoted builds&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-03-30
+</title>
+<date>
+Tue, 30 Mar 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-03-30/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/build-with-parameters'&gt;Build With Parameters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cloud-stats'&gt;Cloud Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/extra-columns'&gt;Extra Columns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jabber'&gt;Jabber (XMPP) notifier and control&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dependency-track'&gt;OWASP Dependency-Track&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rest-list-parameter'&gt;REST List Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Team Foundation Server
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-03-18
+</title>
+<date>
+Thu, 18 Mar 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-03-18/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/aws-credentials'&gt;CloudBees AWS Credentials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/libvirt-slave'&gt;Libvirt Agents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/matrix-auth'&gt;Matrix Authorization Strategy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/role-strategy'&gt;Role-based Authorization Strategy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/warnings-ng'&gt;Warnings Next Generation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-02-24
+</title>
+<date>
+Wed, 24 Feb 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-02-24/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/uno-choice'&gt;Active Choices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/artifact-repository-parameter'&gt;Artifact Repository Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/claim'&gt;Claim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/configurationslicing'&gt;Configuration Slicing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/repository-connector'&gt;Repository Connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/support-core'&gt;Support Core&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-02-19
+</title>
+<date>
+Fri, 19 Feb 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-02-19/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-01-26
+</title>
+<date>
+Tue, 26 Jan 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-01-26/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2021-01-13
+</title>
+<date>
+Wed, 13 Jan 2021 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-01-13/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/bumblebee'&gt;Bumblebee HP ALM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/tics'&gt;TICS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ecutest'&gt;TraceTronic ECU-TEST&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-12-03
+</title>
+<date>
+Thu, 3 Dec 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-12-03/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/chaos-monkey'&gt;Chaos Monkey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cvs'&gt;CVS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/shelve-project-plugin'&gt;Shelve Project&lt;/a&gt;&lt;/li&gt;
+<li>Affects Plugin Installation Manager Tool</li>
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-11-04
+</title>
+<date>
+Wed, 4 Nov 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-11-04/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/active-directory'&gt;Active Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Static Analysis Utilities
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ansible'&gt;Ansible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/jenkinsci-appspider-plugin'&gt;AppSpider&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/aws-global-configuration'&gt;AWS Global Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/azure-keyvault'&gt;Azure Key Vault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: FindBugs
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/kubernetes'&gt;Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mailcommander'&gt;Mail Commander Plugin for Jenkins-ci&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mercurial'&gt;Mercurial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sqlplus-script-runner'&gt;SQLPlus Script Runner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/subversion'&gt;Subversion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/visualworks-store'&gt;Visualworks Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/labmanager'&gt;VMware Lab Manager Slaves&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-10-08
+</title>
+<date>
+Thu, 8 Oct 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-10-08/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/uno-choice'&gt;Active Choices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/audit-trail'&gt;Audit Trail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/couchdb-statistics'&gt;couchdb-statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/maven-release-cascade'&gt;Maven Cascade Release&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nerrvana-plugin'&gt;Nerrvana&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Persona
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/release'&gt;Release&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/role-strategy'&gt;Role-based Authorization Strategy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/shared-objects'&gt;Shared Objects&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sms'&gt;SMS Notification&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-09-23
+</title>
+<date>
+Wed, 23 Sep 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-09-23/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/implied-labels'&gt;Implied Labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/liquibase-runner'&gt;Liquibase Runner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/lockable-resources'&gt;Lockable Resources&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: warnings
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-09-16
+</title>
+<date>
+Wed, 16 Sep 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-09-16/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: android-lint
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/blueocean'&gt;Blue Ocean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/chosen-views-tabbar'&gt;chosen-views-tabbar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/clearcase-release'&gt;ClearCase Release&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/computer-queue-plugin'&gt;computer-queue-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/copy-data-to-workspace-plugin'&gt;Copy data to workspace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/covcomplplot'&gt;Coverage/Complexity Scatter Plot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/custom-job-icon'&gt;Custom Job Icon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/description-column-plugin'&gt;Description Column&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/elastest'&gt;ElasTest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/email-ext'&gt;Email Extension&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cloudbees-jenkins-advisor'&gt;Health Advisor by CloudBees&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/locked-files-report'&gt;Locked Files Report&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mailer'&gt;Mailer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mongodb'&gt;MongoDB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/perfecto'&gt;Perfecto&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-maven'&gt;Pipeline Maven Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/radiatorviewplugin'&gt;Radiator View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/selection-tasks-plugin'&gt;Selection tasks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Storable Configs
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/validating-string-parameter'&gt;Validating String Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-09-01
+</title>
+<date>
+Tue, 1 Sep 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-09-01/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/build-failure-analyzer'&gt;Build Failure Analyzer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/vmanager-plugin'&gt;Cadence vManager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/database'&gt;Database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git-parameter'&gt;Git Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: JSGames
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/klocwork'&gt;Klocwork Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/Parameterized-Remote-Trigger'&gt;Parameterized Remote Trigger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/soapui-pro-functional-testing'&gt;ReadyAPI Functional Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: tfs
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/valgrind'&gt;Valgrind&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-08-17
+</title>
+<date>
+Mon, 17 Aug 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-08-17/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-08-12
+</title>
+<date>
+Wed, 12 Aug 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-08-12/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/email-ext'&gt;Email Extension&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/flaky-test-handler'&gt;Flaky Test Handler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-maven'&gt;Pipeline Maven Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/yet-another-build-visualizer'&gt;Yet Another Build Visualizer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-07-15
+</title>
+<date>
+Wed, 15 Jul 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-07-15/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/deployer-framework'&gt;Deployer Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gitlab-oauth'&gt;GitLab Authentication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/matrix-auth'&gt;Matrix Authorization Strategy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/matrix-project'&gt;Matrix Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-07-02
+</title>
+<date>
+Thu, 2 Jul 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-07-02/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compatibility-action-storage'&gt;Compatibility Action Storage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/fortify-on-demand-uploader'&gt;Fortify on Demand&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/github-coverage-reporter'&gt;GitHub Coverage Reporter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/hp-quality-center'&gt;HP ALM Quality Center&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: ElasticBox Jenkins Kubernetes CI/CD
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/link-column'&gt;Link Column&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/slack-uploader'&gt;Slack Upload&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sonargraph-integration'&gt;Sonargraph Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/StashBranchParameter'&gt;Stash Branch Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/TestComplete'&gt;TestComplete support&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/vncrecorder'&gt;VncRecorder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/vncviewer'&gt;VncViewer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/whitesource'&gt;White Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/zap-pipeline'&gt;ZAP Pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/zephyr-for-jira-test-management'&gt;Zephyr for JIRA Test Management&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-06-03
+</title>
+<date>
+Wed, 3 Jun 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-06-03/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/compact-columns'&gt;Compact Columns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/echarts-api'&gt;ECharts API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Play Framework
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/project-inheritance'&gt;Project Inheritance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/selenium'&gt;Selenium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/svn-partial-release-mgr'&gt;Subversion Partial Release Manager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/swarm'&gt;Swarm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-05-06
+</title>
+<date>
+Wed, 6 May 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-05-06/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ec2'&gt;Amazon EC2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/copyartifact'&gt;Copy Artifact&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/credentials-binding'&gt;Credentials Binding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cvs'&gt;CVS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/scm-filter-jervis'&gt;SCM Filter Jervis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-04-16
+</title>
+<date>
+Thu, 16 Apr 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-04-16/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/aws-sam'&gt;AWS SAM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/copr'&gt;Copr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/parasoft-findings'&gt;Parasoft Findings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/yaml-axis'&gt;Yaml Axis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-04-07
+</title>
+<date>
+Tue, 7 Apr 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-04-07/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/awseb-deployment-plugin'&gt;AWSEB Deployment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/code-coverage-api'&gt;Code Coverage API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/fitnesse'&gt;FitNesse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/gatling'&gt;Gatling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/usemango-runner'&gt;useMango Runner&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-03-25
+</title>
+<date>
+Wed, 25 Mar 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-03-25/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/artifactory'&gt;Artifactory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/azure-acs'&gt;Azure Container Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/openshift-pipeline'&gt;OpenShift Pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-aws'&gt;Pipeline: AWS Steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/queue-cleanup'&gt;Queue cleanup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rapiddeploy-jenkins'&gt;RapidDeploy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-03-09
+</title>
+<date>
+Mon, 9 Mar 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-03-09/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/audit-trail'&gt;Audit Trail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/backlog'&gt;Backlog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cobertura'&gt;Cobertura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: CryptoMove
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/deployhub'&gt;DeployHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git'&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Literate
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/logstash'&gt;Logstash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/mac'&gt;Mac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/openshift-deployer'&gt;OpenShift Deployer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/p4'&gt;P4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/quality-gates'&gt;Quality Gates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/repository-connector'&gt;Repository Connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/rundeck'&gt;Rundeck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/skytap'&gt;Skytap Cloud CI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sonar-quality-gates'&gt;Sonar Quality Gates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: Subversion Release Manager
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/timestamper'&gt;Timestamper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/zephyr-enterprise-test-management'&gt;Zephyr Enterprise Test Management&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/zephyr-for-jira-test-management'&gt;Zephyr for JIRA Test Management&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-02-12
+</title>
+<date>
+Wed, 12 Feb 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-02-12/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/applatix'&gt;Applatix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/azure-ad'&gt;Azure AD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/bmc-rpd'&gt;BMC Release Package and Deployment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: brakeman
+&lt;li&gt;Affects plugin: debian-package-builder
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/digitalocean-plugin'&gt;DigitalOcean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/dynamic_extended_choice_parameter'&gt;Dynamic Extended Choice Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/eagle-tester'&gt;Eagle Tester&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/catalogic-ecx'&gt;ECX Copy Data Management&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/fitnesse'&gt;FitNesse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/git-parameter'&gt;Git Parameter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/google-kubernetes-engine'&gt;Google Kubernetes Engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/harvest'&gt;Harvest SCM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/nunit'&gt;NUnit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/environment-manager'&gt;Parasoft Environment Manager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/pipeline-githubnotify-step'&gt;Pipeline GitHub Notify Step&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/workflow-cps'&gt;Pipeline: Groovy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/radargun'&gt;RadarGun&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/s3'&gt;S3 publisher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/script-security'&gt;Script Security&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/subversion'&gt;Subversion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-01-29
+</title>
+<date>
+Wed, 29 Jan 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-01-29/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects Jenkins Core&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/code-coverage-api'&gt;Code Coverage API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/fortify'&gt;Fortify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/websphere-deployer'&gt;WebSphere Deployer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+<item>
+<title>
+Jenkins Security Advisory 2020-01-15
+</title>
+<date>
+Wed, 15 Jan 2020 12:00:00 +0000
+</date>
+<link>
+https://www.jenkins.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-01-15/
+</link>
+<description>
+&lt;ul&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/ec2'&gt;Amazon EC2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: gitlab-hook
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/cloudbees-jenkins-advisor'&gt;Health Advisor by CloudBees&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/redgate-sql-ci'&gt;Redgate SQL Change Automation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/robot'&gt;Robot Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Affects plugin: &lt;a href='https://plugins.jenkins.io/sounds'&gt;Sounds&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Live Blog: John Smart demos advanced Hudson usage
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/09/21/live-blog-john-smart-demos-advanced-hudson-usage/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Live Blog: John Smart demos advanced Hudson usage" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Live Blog: John Smart demos advanced Hudson usage" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Live Blog: John Smart demos advanced Hudson usage" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/09/21/live-blog-john-smart-demos-advanced-hudson-usage/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Live Blog: John Smart demos advanced Hudson usage" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Live Blog: John Smart demos advanced Hudson usage
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+September 21, 2010
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Live+Blog%3A+John+Smart+demos+advanced+Hudson+usage&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2010%2F09%2F21%2Flive-blog-john-smart-demos-advanced-hudson-usage%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><strong>Editor&#8217;s Note:</strong> <em>This is a <strong>very</strong> rough set of notes from <a href="https://twitter.com/wakeleo">John Ferguson Smart&#8217;s</a> presentation at JavaOne 2010. Unlike <a href="https://jenkins.io/content/live-blog-kohsukes-presentation-javaone">Kohsuke&#8217;s presentation</a>, John spent a lot of time in demos which made live-blogging a bit difficult.</em><center>image:https://farm5.static.flickr.com/4129/5012383102_cf258075a6.jpg<span class="John Smart (@wakeleo) talking about advanced Hudson use"></center></span></p>
+</div>
+<div class="paragraph">
+<p>John takes the stage at 9:30, this presentation is <em>totally</em> different from yesterday&#8217;s presentation from Kohsuke</p>
+</div>
+<div class="paragraph">
+<p>Taking Hudson a little further, beyond just scheduling a build job.</p>
+</div>
+<div class="paragraph">
+<p>Who is <strong>not</strong> using Hudson, less than 10% raise hands.</p>
+</div>
+<div class="paragraph">
+<p>Focusing on the more technical/nitty-gritty things with Hudson. Looking at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CI Basics</p>
+</li>
+<li>
+<p>Notification strategies</p>
+</li>
+<li>
+<p>Quality metrics</p>
+</li>
+<li>
+<p>Build promotions</p>
+</li>
+<li>
+<p>Automated deployment
+Who knows what build promotions? Who uses build promotions? Very few in the audience use build promotions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Who uses Hudson for automated deployment, a handful raise their hands. Plenty of Tomcat and JBOSS users automating deployment. John going to use Tomcat for the automated deployment demo in this presentation.</p>
+</div>
+<div class="paragraph">
+<p>John mentions he&#8217;s authoring the "Continuous Integration with Hudson" book, which will be available for download as it comes out.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s talk about Continuous Integration! Summing up what CI is in three words: <strong>feedback, visibility</strong> and <strong>delivery</strong>. CI is about <em>snappy feedback</em>. You want feedback in <strong>minutes</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Visibility should be associated with continuous integration, getting everybody in the product life cycle into the loop with continuous integration (product people, QA, developers, etc).</p>
+</div>
+<div class="paragraph">
+<p><strong>What makes Hudson so great?</strong> (according to John)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to use</p>
+</li>
+<li>
+<p>Plenty of plugins/the ecosystem around Hudson for extending/integrating Hudson</p>
+</li>
+<li>
+<p>Reporting/coverage features</p>
+</li>
+<li>
+<p>Distributed builds</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>First demo, the Hudson dashboard (starring the Nested View plugin). Starting with a basic dashboard filled with some unstable and stable builds. Cloudy builds thanks to Cobertura coverage grading.</p>
+</div>
+<div class="paragraph">
+<p>Using the Nested View plugin to group views to make the dashboard more useflu for a <strong>ton</strong> of jobs.</p>
+</div>
+<div class="paragraph">
+<p>Covering build radiators, not enough of the audience uses radiators. John advocates commandeering big monitors for radiators as part of your "notification strategy"</p>
+</div>
+<div class="paragraph">
+<p>Covering the basic version control integration, John <strong>highly</strong> recommends using a "Repository Browser". "The point is, you want one" John starts improvising with making some changes, pops over to Eclipse and refactors some code, commits and kicks off a build. Navigates to the source changes for the newly broken build in "Sventon", his repository browser of choice which was connected to the job</p>
+</div>
+<div class="paragraph">
+<p>John shows the job using Maven integration and deploying artifacts to the Maven repository he&#8217;s set up on his local machine.</p>
+</div>
+<div class="paragraph">
+<p>Hudson will automatically keep track of jar files/war files, so enable the "Discard Old Builds" checkbox to prevent Hudson from eating all kinds of disk space. Useful to only discard the artifacts for the last X builds instead of the test results/code coverage.</p>
+</div>
+<div class="paragraph">
+<p>Desktop build notifiers are quite useful, email can tend to get clutter/lost in the mess with everything else coming into your inbox.</p>
+</div>
+<div class="sect3">
+<h4 id="test-results-integration"><a class="anchor" href="#test-results-integration"></a>Test results integration</h4>
+<div class="paragraph">
+<p>Going into the test results dashboard per-build and the test-result and build time trends for a specific job.</p>
+</div>
+<div class="paragraph">
+<p>Why is the build time trend useful? If the build suddenly takes a <em>huge</em> amount of time to run, you&#8217;ve likely got performance issues that need fixing.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="publishing-html-reports"><a class="anchor" href="#publishing-html-reports"></a>Publishing HTML reports</h4>
+<div class="paragraph">
+<p>Starring the HTML Publisher plugin! Using the plugin to publish HTML reports generated from easyb for publishing acceptance test results for more wide-spread consumption.</p>
+</div>
+<div class="paragraph">
+<p>Bouncing from HTML reports to integrating with Sonar for code quality metrics</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="build-promotion"><a class="anchor" href="#build-promotion"></a>Build Promotion</h4>
+<div class="paragraph">
+<p>Starring the Promoted Builds plugin! Covering some similar concepts to Kohsuke&#8217;s talk yesterday but literally going into the Hudson configuration and setting it up.</p>
+</div>
+<div class="paragraph">
+<p>Time is running out, John&#8217;s flipping back and forth between the M2 release plugin and his automatic deployment to his local Tomcat environment.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="qa"><a class="anchor" href="#qa"></a>Q&amp;A</h4>
+<div class="paragraph">
+<p>"Can Hudson be used for other environments". Yes! Supports a number of build plugins, MSBuild, NAnt, CMake, in addition to the freestyle build. "Maven 3 support" Sonatype is apparently working on an integrated version of Hudson with Maven 3, Hudson core planning support "eventually."</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/javaone/">
+javaone
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2010/2010-09-21-live-blog-john-smart-demos-advanced-hudson-usage.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

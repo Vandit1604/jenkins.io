@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Upgrading to Jenkins LTS 2.263.x
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.263/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Upgrading to Jenkins LTS 2.263.x" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Upgrading to Jenkins LTS 2.263.x" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Upgrading to Jenkins LTS 2.263.x" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/2.263/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Upgrading to Jenkins LTS 2.263.x" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="active">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Upgrading to Jenkins LTS 2.263.x
+</h1>
+<p>
+Each section covers the upgrade from the previous LTS release,
+the section on 2.263.1 covers the upgrade from  2.249.3.
+</p>
+<h3 id="upgrading-to-jenkins-lts-2-263-4">
+Upgrading to Jenkins 2.263.4
+</h3>
+<div class="sect3">
+<h4 id="docker-image-update"><a class="anchor" href="#docker-image-update"></a>Docker image update</h4>
+<div class="paragraph">
+<p>The Jenkins 2.263.4 Docker images labeled <code>jenkins/jenkins:2.263.4-lts</code>, <code>jenkins/jenkins:2.263.4</code>, and <code>jenkins/jenkins:lts</code> use the AdoptOpenJDK 8u282 release instead of using the OpenJDK 8u242 release from previous images.
+Those images also use Debian 10 (<a href="https://www.debian.org/releases/buster/">"Buster"</a>) instead of the Debian 9 (<a href="https://www.debian.org/releases/stretch/">"Stretch"</a>) release that was used in previous images.
+See the <a href="/blog/2021/02/08/docker-base-os-upgrade/">blog post</a> for a more detailed description of the change.</p>
+</div>
+<div class="paragraph">
+<p>The update from OpenJDK 8u242 on Debian 9 to AdoptOpenJDK 8u282 on Debian 10 includes a change in the management of certificate authority (CA) data.
+Please consult <a href="https://github.com/AdoptOpenJDK/openjdk-installer/issues/105">AdoptOpenJDK issue 105</a> for the most recent certificate management status if you&#8217;re encountering SSL certificate issues with AdoptOpenJDK 8u282.</p>
+</div>
+<div class="paragraph">
+<p>The change from Debian 9 to Debian 10 removes several packages from the base Docker image.
+The <code>subversion</code>, <code>mercurial</code>, <code>bzr</code>, and <code>python</code> packages have been removed from the base images, along with other packages.
+The Dockerfile definitions of Jenkins installations that depend on specific operating system packages may need to be updated to use Jenkins 2.263.4 and later.</p>
+</div>
+<div class="paragraph">
+<p>Example Dockerfile definitions are provided below for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#subversion">Subversion</a></p>
+</li>
+<li>
+<p><a href="#mercurial">Mercurial</a></p>
+</li>
+<li>
+<p><a href="#bazaar">Bazaar</a></p>
+</li>
+<li>
+<p><a href="#python">Python</a></p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="subversion"><a class="anchor" href="#subversion"></a>Subversion</h5>
+<div class="paragraph">
+<p>The following Docker image definition uses Jenkins 2.263.4 with the <a href="https://plugins.jenkins.io/subversion">subversion plugin</a> and the operating system <code>subversion</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>FROM jenkins/jenkins:2.263.4-lts
+USER root
+RUN apt-get update &amp;&amp; \
+    apt-get install -y --no-install-recommends subversion
+USER jenkins
+RUN jenkins-plugin-cli --plugins subversion:2.14.0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="mercurial"><a class="anchor" href="#mercurial"></a>Mercurial</h5>
+<div class="paragraph">
+<p>The following Docker image definition uses Jenkins 2.263.4 with the <a href="https://plugins.jenkins.io/mercurial">mercurial plugin</a> and the operating system <code>mercurial</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>FROM jenkins/jenkins:2.263.4
+USER root
+RUN apt-get update &amp;&amp; \
+    apt-get install -y --no-install-recommends mercurial
+USER jenkins
+RUN jenkins-plugin-cli --plugins mercurial:2.12</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="bazaar"><a class="anchor" href="#bazaar"></a>Bazaar</h5>
+<div class="paragraph">
+<p>The following Docker image definition uses Jenkins 2.263.4 with the <a href="https://plugins.jenkins.io/bazaar">bazaar plugin</a> and the operating system <code>bzr</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>FROM jenkins/jenkins:2.263.4-lts
+USER root
+RUN apt-get update &amp;&amp; \
+    apt-get install -y --no-install-recommends bzr
+USER jenkins
+RUN jenkins-plugin-cli --plugins bazaar:1.22</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="python"><a class="anchor" href="#python"></a>Python</h5>
+<div class="paragraph">
+<p>The following Docker image definition uses Jenkins 2.263.4 with the operating system <code>python3</code> package (since Python 2 support ended in January 2020):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>FROM jenkins/jenkins:2.263.4
+USER root
+RUN apt-get update &amp;&amp; \
+    apt-get install -y --no-install-recommends python3
+USER jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your Jenkins installation requires other operating system packages (like bzip2 or certain libraries), those packages can be installed from your Dockerfile with the <code>apt-get install</code> command.</p>
+</div>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-263-3">
+Upgrading to Jenkins 2.263.3
+</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-263-2">
+Upgrading to Jenkins 2.263.2
+</h3>
+<div class="sect3">
+<h4 id="multiple-security-fixes-with-potential-side-effects"><a class="anchor" href="#multiple-security-fixes-with-potential-side-effects"></a>Multiple security fixes with potential side effects</h4>
+<div class="paragraph">
+<p>Jenkins 2.275 and LTS 2.263.2 contain <a href="/security/advisory/2021-01-13/">multiple security fixes</a> that restrict certain features.
+Most of them allow administrators to opt out of (parts of) the security fixes if needed by setting <a href="/doc/book/managing/system-properties/">Java system properties</a>.</p>
+</div>
+<div class="sect4">
+<h5 id="SECURITY-1452"><a class="anchor" href="#SECURITY-1452"></a>Symlink support in file browsers has been removed</h5>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-01-13/#SECURITY-1452">SECURITY-1452</a></p>
+</div>
+<div class="paragraph">
+<p>Directory browsers on the classic Jenkins UI no longer support symlinks.
+While they may still exist on disk, and would be archived by (post) build steps, they will no longer appear on the web UI.</p>
+</div>
+<div class="paragraph">
+<p>If you rely on the previous behavior, this security fix can be disabled by setting the <a href="/doc/book/managing/system-properties/#hudson-model-directorybrowsersupport-allowsymlinkescape">Java system property <code>hudson.model.DirectoryBrowserSupport.allowSymlinkEscape</code></a> to <code>true</code>.
+Doing so is strongly discouraged.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="SECURITY-1923"><a class="anchor" href="#SECURITY-1923"></a>Old Data Monitor no longer includes user-submitted configuration data</h5>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-01-13/#SECURITY-1923">SECURITY-1923</a></p>
+</div>
+<div class="paragraph">
+<p>Old Data Monitor will no longer report user submitted configuration data (e.g. from <code>POST config.xml</code> requests).</p>
+</div>
+<div class="paragraph">
+<p>Note that error messages related to invalid configuration data submissions are already logged at the level <code>FINE</code> in the logger <code>hudson.util.RobustReflectionConverter</code> and you do not need Old Data Monitor just to troubleshoot configuration submissions.
+See <a href="/doc/book/system-administration/viewing-logs/">Viewing Logs</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you rely on the previous behavior, the following <a href="/doc/book/managing/system-properties/">Java system properties</a> can be used to disable part or all of this fix:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/book/managing/system-properties/#hudson-util-robustreflectionconverter-recordfailuresforallauthen"><code>hudson.util.RobustReflectionConverter.recordFailuresForAllAuthentications</code></a> will completely disable the additional protection.
+This is unsafe and strongly discouraged.</p>
+</li>
+<li>
+<p><a href="/doc/book/managing/system-properties/#hudson-util-robustreflectionconverter-recordfailuresforadmins"><code>hudson.util.RobustReflectionConverter.recordFailuresForAdmins</code></a> will record invalid data submissions by users with Overall/Administer permission.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="new-restrictions-on-which-urls-are-always-accessible"><a class="anchor" href="#new-restrictions-on-which-urls-are-always-accessible"></a>New restrictions on which URLs are always accessible</h5>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-01-13/#SECURITY-2047">SECURITY-2047</a></p>
+</div>
+<div class="paragraph">
+<p>A security fix in Jenkins 2.275 and LTS 2.263.2 corrects a check that determines whether a URL in Jenkins should be accessible to users <em>without</em> Overall/Read permission.</p>
+</div>
+<div class="paragraph">
+<p>While we do not expect this to cause problems, the <a href="/doc/book/managing/system-properties/#jenkins-model-jenkins-additionalreadablepaths">Java system property <code>jenkins.model.Jenkins.additionalReadablePaths</code></a> can be used to add additional URLs that should always be accessible.
+For example, if the <code>/loginFoo/</code> and <code>/loginBar/</code> URLs exists in your Jenkins instance, and were accessible before this fix, and should be accessible now, set <code>jenkins.model.Jenkins.additionalReadablePaths</code> to <code>loginFoo,loginBar</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Any plugins introducing such URLs and expecting them to be accessible by users without Overall/Read permission should be changed, e.g. to implement <code>UnprotectedRootAction</code> instead of <code>RootAction</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="SECURITY-2153"><a class="anchor" href="#SECURITY-2153"></a>Security fixes for markup formatter previews</h5>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-01-13/#SECURITY-2153">SECURITY-2153</a></p>
+</div>
+<div class="paragraph">
+<p>A security fix in Jenkins 2.275 and LTS 2.263.2 limits how markup formatter preview URLs can be accessed, and restricts how their output can be rendered.</p>
+</div>
+<div class="paragraph">
+<p>If you encounter problems with markup formatter previews, make sure you&#8217;re not sending <code>GET</code> requests, and that you&#8217;re not rendering these pages standalone.</p>
+</div>
+<div class="paragraph">
+<p>The additional safeguards can be disabled by setting the following <a href="/doc/book/managing/system-properties/">Java system properties</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/book/managing/system-properties/#hudson-markup-markupformatter-previewsallowget"><code>hudson.markup.MarkupFormatter.previewsAllowGET</code></a> can be set to <code>true</code> so the markup formatter preview URL is accessible via <code>GET</code> instead of limited to <code>POST</code>.</p>
+</li>
+<li>
+<p><a href="/doc/book/managing/system-properties/#hudson-markup-markupformatter-previewssetcsp"><code>hudson.markup.MarkupFormatter.previewsSetCSP</code></a> can be set to <code>false</code> to not set restrictive Content-Security-Policy headers on responses from markup formatter preview URLs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Doing so is discouraged, especially if you use a markup formatter that allows the output to contain unsafe content, like JavaScript.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="SECURITY-2025"><a class="anchor" href="#SECURITY-2025"></a>Graph size limits</h5>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-01-13/#SECURITY-2025">SECURITY-2025</a></p>
+</div>
+<div class="paragraph">
+<p>A security fix in Jenkins 2.275 and LTS 2.263.2 limits the maximum size of various graphs rendered by Jenkins.
+A total area of 10 million pixels is now allowed by default (e.g. 4000 x 2500), if a larger size is requested, it will instead render the default size.</p>
+</div>
+<div class="paragraph">
+<p>This limit can be changed by setting the <a href="/doc/book/managing/system-properties/#hudson-util-graph-maxarea">Java system property <code>hudson.util.Graph.maxArea</code></a> to the desired integer value.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="SECURITY-2021"><a class="anchor" href="#SECURITY-2021"></a>Security fix for agent names</h5>
+<div class="paragraph">
+<p><a href="/security/advisory/2021-01-13/#SECURITY-2021">SECURITY-2021</a></p>
+</div>
+<div class="paragraph">
+<p>A security fix in Jenkins 2.275 and LTS 2.263.2 disallows agent names that could cause Jenkins to override unrelated <code>config.xml</code> files.</p>
+</div>
+<div class="paragraph">
+<p>Cloud plugins (like <a href="https://plugins.jenkins.io/mesos">Mesos cloud</a>) allow unsafe characters (like ':') in agent name templates.
+Those plugins may fail to provision an agent due to the unsafe character in the agent name as reported in <a href="https://issues.jenkins.io/browse/JENKINS-65169">JENKINS-65169</a>.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to change the agent name template in the plugin configuration to avoid unsafe characters.
+If that is not possible, administrators may consider disabling this fix.</p>
+</div>
+<div class="paragraph">
+<p>Administrators can disable this fix by setting the <a href="/doc/book/managing/system-properties/#jenkins-model-nodes-enforcenamerestrictions">Java system property <code>jenkins.model.Nodes.enforceNameRestrictions</code></a> to <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Doing so is discouraged, as this will reintroduce a security issue.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="security-hardenings"><a class="anchor" href="#security-hardenings"></a>Security hardenings</h4>
+<div class="paragraph">
+<p>In addition to the security fixes listed above, multiple features of Jenkins received security improvements that are not considered fixes.</p>
+</div>
+<div class="sect4">
+<h5 id="formvalidation"><a class="anchor" href="#formvalidation"></a>Security hardening for form validation responses</h5>
+<div class="paragraph">
+<p>Form validation implemented using standard Jenkins APIs now sets restrictive Content-Security-Policy headers on responses.</p>
+</div>
+<div class="paragraph">
+<p>This will prevent cross-site scripting vulnerabilities in form validation responses from being exploitable as reflected XSS.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+While this does <em>not</em> mean that these vulnerabilities are no longer a problem, exploitation will be more difficult, e.g., they may require need additional permissions to set up.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In case of problems, this hardening can be disabled by setting the <a href="/doc/book/managing/system-properties/#hudson-util-graph-maxarea">Java system property <code>hudson.util.FormValidation.applyContentSecurityPolicyHeaders</code></a> to <code>false</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="digester2"><a class="anchor" href="#digester2"></a>Security hardening for Digester2</h5>
+<div class="paragraph">
+<p>Jenkins provides a slightly modified implementation of <code>Digester</code> from the Apache Commons project as <code>hudson.util.Digester2</code>.
+It is used in many plugins as a easy way to parse simple XML files.</p>
+</div>
+<div class="paragraph">
+<p>Starting in Jenkins 2.275 and LTS 2.263.2, <code>Digester2</code> will have XML External Entity (XXE) processing disabled by default.</p>
+</div>
+<div class="paragraph">
+<p>Plugin maintainers can choose to opt out of that protection by using the new constructor overloads.</p>
+</div>
+<div class="paragraph">
+<p>In case of problems, administrators can disable this hardening by setting the <a href="/doc/book/managing/system-properties/#hudson-util-digester2-unsafe">Java system property <code>hudson.util.Digester2.UNSAFE</code></a> to <code>true</code>.
+As this is a global option, it must not be set by plugins, and care needs to be taken to only set this when appropriate.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="labelatom"><a class="anchor" href="#labelatom"></a>Security hardening for label names</h5>
+<div class="paragraph">
+<p>Jenkins allows using labels to connect jobs and the agents they can run on.
+Labels are only created in memory unless their configuration is saved.</p>
+</div>
+<div class="paragraph">
+<p>Starting in Jenkins 2.275 and LTS 2.263.2, it is not possible to save the configuration of labels with unsafe names.
+Given how labels are stored on disk, some label names would allow overriding unrelated configuration files.</p>
+</div>
+<div class="paragraph">
+<p>This is not considered to be a security vulnerability as Overall/Administer permission is required to save label configurations, and users with that permission can use the script console and have access to the Jenkins controller file system anyway.</p>
+</div>
+<div class="paragraph">
+<p>In case of problems, administrators can disable this hardening by setting the <a href="/doc/book/managing/system-properties/#hudson-model-labelatom-allowfoldertraversal">Java system property <code>hudson.model.LabelAtom.allowFolderTraversal</code></a> to <code>true</code>.</p>
+</div>
+</div>
+</div>
+<h3 id="upgrading-to-jenkins-lts-2-263-1">
+Upgrading to Jenkins 2.263.1
+</h3>
+<div class="sect3">
+<h4 id="sshd-key-exchange-and-mac-algorithms"><a class="anchor" href="#sshd-key-exchange-and-mac-algorithms"></a>SSHD key exchange and MAC algorithms</h4>
+<div class="paragraph">
+<p>The <a href="https://github.com/jenkinsci/sshd-module/blob/master/README.adoc">Jenkins SSHD module</a> has been upgraded in this release.
+The upgrade disables deprecated key exchange algorithms and deprecrated MAC algorithms by default.</p>
+</div>
+<div class="paragraph">
+<p>If an administrator requires one or more of the deprecated algorithms, they may be enabled using <a href="/doc/book/managing/system-properties/">System properties</a>.
+Note that these system properties are generally considered unsupported and may be removed at any time.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>org.jenkinsci.main.modules.sshd.SSHD.excludedKeyExchanges</code> is a comma-separated string of key exchange algorithms to disable.
+By default, this disables SHA-1 based algorithms as they&#8217;re no longer considered safe.
+Use an empty string to disable no algorithms.
+The names of supported, enabled, and disabled algorithms can be viewed using the <a href="/doc/book/system-administration/viewing-logs/">logger</a> <code>org.jenkinsci.main.modules.sshd.SSHD</code> during initialization on the level <code>FINE</code>.</p>
+</li>
+<li>
+<p><code>org.jenkinsci.main.modules.sshd.SSHD.excludedMacs</code> is a comma-separated string of HMAC algorithms to disable.
+By default, this disables MD5 and truncated SHA-1 based algorithms as they&#8217;re no longer considered safe.
+Use an empty string to disable no algorithms.
+The names of supported, enabled, and disabled algorithms can be viewed using the <a href="/doc/book/system-administration/viewing-logs/">logger</a> <code>org.jenkinsci.main.modules.sshd.SSHD</code> during initialization on the level <code>FINE</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/upgrade-guide.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

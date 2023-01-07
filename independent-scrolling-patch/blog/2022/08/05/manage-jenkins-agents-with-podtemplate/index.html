@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Manage Jenkins agents with Kubernetes native PodTemplate
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/08/05/manage-jenkins-agents-with-podtemplate/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Manage Jenkins agents with Kubernetes native PodTemplate" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Manage Jenkins agents with Kubernetes native PodTemplate" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Manage Jenkins agents with Kubernetes native PodTemplate" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/08/05/manage-jenkins-agents-with-podtemplate/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Manage Jenkins agents with Kubernetes native PodTemplate" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Manage Jenkins agents with Kubernetes native PodTemplate
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/linuxsuren/"><div class="app-avatar"><img alt="赵晓杰(Rick)" class="app-avatar__image" src="/images/avatars/linuxsuren.jpg"></div> 赵晓杰(Rick)</a>
+August 05, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Manage+Jenkins+agents+with+Kubernetes+native+PodTemplate&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F08%2F05%2Fmanage-jenkins-agents-with-podtemplate%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Jenkins has great integration with Kubernetes. No matter the controller or agents, they all work well in Kubernetes Pods.
+<a href="https://github.com/jenkinsci/configuration-as-code-plugin">Configuration as Code</a> is an awesome idea.
+People don’t need to open the UI page of Jenkins again and again.
+We can put all the
+system configuration into a git repository. You might already feel tired to edit a super huge Kubernetes YAML file if there are
+many many Jenkins agents that need to be maintained. It’s pretty likely to make a mistake in a big YAML file.</p>
+</div>
+<div class="paragraph">
+<p>I’m going to provide a solution to make our life easier maintaining Jenkins .
+You only need to update a ConfigMap if you want to make
+any changes to the Jenkins system configuration. And you only need to create a Kubernetes native PodTemplate resource if you want
+to add a new Jenkins agent. To achieve this goal, you only need to install an extra Kubernetes deployment.</p>
+</div>
+<div class="paragraph">
+<p>Please allow me to show you how to do it. Before going forward, let’s assume you already have a Kubernetes cluster, and you have
+enough permission to access the relevant resources.</p>
+</div>
+<div class="paragraph">
+<p>Firstly, put all the Jenkins system config into a ConfigMap, such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">data</span><span class="pi">:</span>
+  <span class="na">jenkins_user.yaml</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">jenkins:</span>
+      <span class="s">mode: EXCLUSIVE</span>
+      <span class="s">numExecutors: 0</span>
+      <span class="s">scmCheckoutRetryCount: 2</span>
+      <span class="s">disableRememberMe: true</span>
+      <span class="s">clouds:</span>
+        <span class="s">- kubernetes:</span>
+            <span class="s">name: "kubernetes"</span>
+            <span class="s">serverUrl: "https://kubernetes.default"</span>
+            <span class="s">skipTlsVerify: true</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ConfigMap</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">jenkins-casc-config</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">kubesphere-devops-system</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Secondly, let your Jenkins load its configuration from a ConfigMap. Please see also the following important parts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">spec</span><span class="pi">:</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">ghcr.io/linuxsuren/jenkins:lts</span>
+        <span class="na">env</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">CASC_JENKINS_CONFIG</span>
+          <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/var/jenkins_home/casc_configs/"</span>          <span class="c1"># loading config file from a directory that was mount from a ConfigMap</span>
+        <span class="na">volumeMounts</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">mountPath</span><span class="pi">:</span> <span class="s">/var/jenkins_home/casc_configs</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">casc-config</span>                                 <span class="c1"># mount from a volume</span>
+      <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">configMap</span><span class="pi">:</span>
+          <span class="na">defaultMode</span><span class="pi">:</span> <span class="m">420</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">jenkins-casc-config</span>                         <span class="c1"># clamin a ConfigMap volume, all the CasC YAML content will be here</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">casc-config</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then, the core part is the Kubernetes controller. Please see the following code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">jenkins-agent</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">kubesphere-devops-system</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">kubespheredev/devops-controller:dev-v3.2.1-rc.3-6726130</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">controller</span>
+        <span class="na">args</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">--enabled-controllers</span>
+        <span class="pi">-</span> <span class="s">all=false,jenkinsagent=true,jenkinsconfig=true</span>        <span class="c1"># only enable the necessary features of this controller</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This controller will watch all the PodTemplates (containing the label <code>jenkins.agent.pod</code>), then convert it to Jenkins-style PodTemplate, merge it into
+the CasC YAML file finally.</p>
+</div>
+<div class="paragraph">
+<p>When everything is setup, you can try to add a Kubernetes native PodTemplate. A few seconds later, you can use it in your Pipeline.
+Considering there are many potential technical details, I already put all the necessary files to <a href="https://github.com/devops-ws/learn-kustomization/tree/main/jenkins">this git repository</a>.
+Please feel free to mainain <a href="https://github.com/kubesphere/ks-devops/tree/master/controllers/jenkins/config">this project</a> if it
+is helpful in your work.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/casc/">
+casc
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="赵晓杰(Rick)" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/linuxsuren.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/linuxsuren/">
+赵晓杰(Rick)
+</a>
+</p>
+<div class="paragraph">
+<p>Rick is a big fan of Jenkins, also as a contributor leading the Jenkins China community.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/LinuxSuRen" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/LinuxSuRen" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/linuxsuren" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/08/2022-08-05-manage-jenkins-agents-with-podtemplate.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

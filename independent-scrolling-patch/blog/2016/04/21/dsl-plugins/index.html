@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Making your own DSL with plugins, written in Pipeline script
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/04/21/dsl-plugins/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Making your own DSL with plugins, written in Pipeline script" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Making your own DSL with plugins, written in Pipeline script" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Making your own DSL with plugins, written in Pipeline script" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/04/21/dsl-plugins/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Making your own DSL with plugins, written in Pipeline script" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Making your own DSL with plugins, written in Pipeline script
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/michaelneale/"><div class="app-avatar"><img alt="Michael Neale" class="app-avatar__image" src="/images/avatars/michaelneale.jpg"></div> Michael Neale</a>
+April 21, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Making+your+own+DSL+with+plugins%2C+written+in+Pipeline+script&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F04%2F21%2Fdsl-plugins%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>In this post I will show how you can make your own DSL extensions and distribute
+them as a plugin, using <a href="/doc/pipeline">Pipeline</a> Script.</p>
+</div>
+<div class="sect1">
+<h2 id="a-quick-refresher"><a class="anchor" href="#a-quick-refresher"></a>A quick refresher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipeline has a well kept secret: the ability to add your own DSL
+elements. Pipeline is itself a DSL, but you can extend it.</p>
+</div>
+<div class="paragraph">
+<p>There are 2 main reasons I can think you may want to do this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You want to reduce boilerplate by encapsulating common snippets/things you do
+in one DSL statement.</p>
+</li>
+<li>
+<p>You want to provide a DSL that provides a prescriptive way that your builds
+work - uniform across your organisations Jenkinsfiles.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A DSL could look as simple as</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">acmeBuild</span> <span class="o">{</span>
+    <span class="n">script</span> <span class="o">=</span> <span class="s2">"./bin/ci"</span>
+    <span class="n">environment</span> <span class="o">=</span> <span class="s2">"nginx"</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="s2">"evil-devs"</span>
+    <span class="n">deployBranch</span> <span class="o">=</span> <span class="s2">"production"</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This could be the entirety of your <code>Jenkinsfile</code>!</p>
+</div>
+<div class="paragraph">
+<p>In this "simple" example, it could actually be doing a multi stage build with
+retries, in a specified docker container, that deploys only from the production
+branch.  Detailed notifications are sent to the right team on important events
+(as defined by your org).</p>
+</div>
+<div class="paragraph">
+<p>Traditionally this is done via the
+<a href="https://github.com/jenkinsci/workflow-cps-global-lib-plugin/blob/master/README.md#pipeline-global-library">global
+library</a>.  You take a snippet of DSL you want to want to make into a DSL, and
+drop it in the git repo that is baked into Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>A great trivial
+<a href="https://github.com/jenkinsci/workflow-cps-global-lib-plugin/blob/master/README.md#define-more-structured-dsl">example</a>
+is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">jenkinsPlugin</span> <span class="o">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">'git'</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which is enabled by git pushing the following into <code>vars/jenkinsPlugin.groovy</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The name of the file is the name of the DSL expression you use in the <code>Jenkinsfile</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="nf">call</span><span class="o">(</span><span class="n">body</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">config</span> <span class="o">=</span> <span class="o">[:]</span>
+    <span class="n">body</span><span class="o">.</span><span class="na">resolveStrategy</span> <span class="o">=</span> <span class="n">Closure</span><span class="o">.</span><span class="na">DELEGATE_FIRST</span>
+    <span class="n">body</span><span class="o">.</span><span class="na">delegate</span> <span class="o">=</span> <span class="n">config</span>
+    <span class="n">body</span><span class="o">()</span>
+
+    <span class="c1">// This is where the magic happens - put your pipeline snippets in here, get variables from config.</span>
+    <span class="n">node</span> <span class="o">{</span>
+        <span class="n">git</span> <span class="nl">url:</span> <span class="s2">"https://github.com/jenkinsci/${config.name}-plugin.git"</span>
+        <span class="n">sh</span> <span class="s2">"mvn install"</span>
+        <span class="n">mail</span> <span class="nl">to:</span> <span class="s2">"..."</span><span class="o">,</span> <span class="nl">subject:</span> <span class="s2">"${config.name} plugin build"</span><span class="o">,</span> <span class="nl">body:</span> <span class="s2">"..."</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can imagine many more pipelines, or even archetypes/templates of pipelines
+you could do in this way, providing a really easy <code>Jenkinsfile</code> syntax for your
+users.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="making-it-a-plugin"><a class="anchor" href="#making-it-a-plugin"></a>Making it a plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the global DSL library is a handy thing if you have a single Jenkins, or
+want to keep the DSLs local to a Jenkins instance.  But what if you want to
+distribute it around your org, or, perhaps it is general purpose enough you want
+to share it with the world?</p>
+</div>
+<div class="paragraph">
+<p>Well this is possible, by wrapping it in a plugin. You use the same pipeline
+snippet tricks you use in the global lib, but put it in the dsl directory of a
+plugin.</p>
+</div>
+<div class="paragraph">
+<p>My <a href="https://github.com/jenkinsci/simple-build-for-pipeline-plugin">simple
+build plugin</a> shows how it is done.  To make your own plugin:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new plugin project, either fork the simple build one, or add a
+dependency to it in your <code>pom.xml</code> / <code>build.gradle</code> file</p>
+</li>
+<li>
+<p>Put your dsl in the resources directory in a similar fashion to
+<a href="https://github.com/jenkinsci/simple-build-for-pipeline-plugin/blob/master/src/main/resources/dsl/simpleBuild.groovy">this</a>
+(note the "package dsl" declaration at the top)</p>
+</li>
+<li>
+<p>Create the equivalent extension that just points to the DSL by name like
+<a href="https://github.com/jenkinsci/simple-build-for-pipeline-plugin/blob/master/src/main/java/org/jenkinsci/plugins/simplebuild/SimpleBuildDSL.java">this</a>
+  This is mostly "boiler plate" but it tells Jenkins there is a <code>GlobalVariable</code> extension available when Pipelines run.</p>
+</li>
+<li>
+<p>Deploy it to an Jenkins Update Center to share with your org, or everyone!</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The advantage of delivering this DSL as a plugin is that it has a version (you
+can also put tests in there), and distributable just like any other plugin.</p>
+</div>
+<div class="paragraph">
+<p>For the more advanced, <a href="https://github.com/abayer">Andrew Bayer</a> has a Simple
+Travis Runner plugin that
+<a href="https://github.com/jenkinsci/simple-travis-runner-plugin">interprets and runs
+travis.yml files</a> which is also implemented in pipeline.</p>
+</div>
+<div class="paragraph">
+<p>So, approximately, you can build plugins for pipeline that extend pipeline, in
+pipeline script (with a teeny bit of boiler plate).</p>
+</div>
+<div class="paragraph">
+<p>Enjoy!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/dsl/">
+dsl
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Michael Neale" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/michaelneale.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/michaelneale/">
+Michael Neale
+</a>
+</p>
+<div class="paragraph">
+<p>Michael is a CD enthusiast with a interest in User Experience.
+He is a co-founder of CloudBees and a long time OSS developer, and can often be found
+lurking around the jenkins-dev mailing list or #jenkins on irc (same nick as twitter name).
+Before CloudBees he worked at Red Hat.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/michaelneale" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/michaelneale" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-04-21-dsl-plugins.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

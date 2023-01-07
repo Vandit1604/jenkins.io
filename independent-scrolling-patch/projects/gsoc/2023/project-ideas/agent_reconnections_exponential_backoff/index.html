@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Exponential backoff and jitter for agent reconnections
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2023/project-ideas/agent_reconnections_exponential_backoff/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Exponential backoff and jitter for agent reconnections" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Exponential backoff and jitter for agent reconnections" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Exponential backoff and jitter for agent reconnections" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2023/project-ideas/agent_reconnections_exponential_backoff/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Exponential backoff and jitter for agent reconnections" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Exponential backoff and jitter for agent reconnections
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Add improved reconnection algorithm to agents
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+Java
+</p>
+<div style="margin: 10px; padding: 10px; background-color: #FFFFCE;">
+<b>
+NOTE:
+</b>
+This idea is published as a draft under active discussion, but it is confirmed in principle.
+It is FINE to apply to it.
+The scope and the suggested implementation may change significantly before the final version is published.
+Sections like quickstart guide and newbie-friendly issues may be also missing.
+As a contributor, you are welcome to request additional information and to join the discussions using channels linked on this page.
+</div>
+<h2 class="title">
+Details
+</h2>
+<div class="sect2">
+<h3 id="background"><a class="anchor" href="#background"></a>Background</h3>
+<div class="paragraph">
+<p>Jenkins administrators are often facing a particular problem when restarting a large controller. It can trigger a thundering herd of agents trying to reconnect.
+Remoting and Swarm (a Remoting wrapper) have (separate) retry implementations. Swarm&#8217;s supports exponential backoff but not jitter.
+Remoting&#8217;s supports neither.
+Users have requested both in the form of bug reports and pull requests.
+But initial pull requests need a lot of improvement before they can be merged.
+Additionally, it would be desirable to unify the two implementations rather than to continue to maintain separate logic.</p>
+</div>
+<div class="paragraph">
+<p>This would be a good GSoC project for the following reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intellectually stimulating and therefore a high "brag factor": who couldn&#8217;t resist spending a summer working on a topic that the <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/">AWS Architecture Blog</a> discusses?</p>
+</li>
+<li>
+<p>High demand: Companies like Netflix needs this feature and would likely be willing to test it</p>
+</li>
+<li>
+<p>Feasible within three months: while Remoting is a complex subsystem, retrying logic is at the outer edges of the subsystem.
+One does not need to concern oneself with what happens inside of the guts of Remoting, just how to restart the connection process at a high level.</p>
+</li>
+<li>
+<p>Stretchable and shrinkable scope: If the intern is struggling, scope can be reduced to unification of the existing implementations, or merely implementing exponential backoff rather than exponential backoff and jitter.
+If the intern is doing better than expected, the scope can be expanded to writing a stress testing framework for the end result.</p>
+</li>
+<li>
+<p>Not fatal if the project fails: Even if all the intern manages to complete is a unification of the existing two implementations, that would be a net benefit. If the project fails, no harm: the status quo would simply remain.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-difficulty-level"><a class="anchor" href="#project-difficulty-level"></a>Project Difficulty Level</h3>
+<div class="paragraph">
+<p>Intermediate</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-size"><a class="anchor" href="#project-size"></a>Project Size</h3>
+<div class="paragraph">
+<p>175 hours</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="expected-outcomes"><a class="anchor" href="#expected-outcomes"></a>Expected outcomes</h3>
+<div class="paragraph">
+<p>Release of an updated remoting component that implements a similar exponential backoff and jitter functionality as in the Swarm plugin.</p>
+</div>
+<div class="paragraph">
+<p>Details to be clarified interactively, together with the mentors, during the Contributor Application drafting phase.</p>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/basil/"><div class="app-avatar"></div> Basil Crow</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/loghijiaha/"><div class="app-avatar"><img alt="Loghi Perinpanayagam" class="app-avatar__image" src="/images/avatars/loghijiaha.jpeg"></div> Loghi Perinpanayagam</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2023/project-ideas" target="_blank">
+> Go back to other GSoC
+2023
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#background">Background</a></li>
+<li><a href="#project-difficulty-level">Project Difficulty Level</a></li>
+<li><a href="#project-size">Project Size</a></li>
+<li><a href="#expected-outcomes">Expected outcomes</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2023/project-ideas/agent_reconnections_exponential_backoff.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

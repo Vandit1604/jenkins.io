@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+JUC Speaker Blog Series: Kaj Kandler, JUC U.S. West
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/08/24/juc-speaker-blog-series-kaj-kandler-juc-u-s-west/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="JUC Speaker Blog Series: Kaj Kandler, JUC U.S. West" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="JUC Speaker Blog Series: Kaj Kandler, JUC U.S. West" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="JUC Speaker Blog Series: Kaj Kandler, JUC U.S. West" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2015/08/24/juc-speaker-blog-series-kaj-kandler-juc-u-s-west/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="JUC Speaker Blog Series: Kaj Kandler, JUC U.S. West" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+JUC Speaker Blog Series: Kaj Kandler, JUC U.S. West
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+August 24, 2015
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=JUC+Speaker+Blog+Series%3A+Kaj+Kandler%2C+JUC+U.S.+West&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2015%2F08%2F24%2Fjuc-speaker-blog-series-kaj-kandler-juc-u-s-west%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/Jenkins_Butler_0.png" alt="image" width="114" height="128"></span><br></p>
+</div>
+<div class="sect1">
+<h2 id="developing-enterprise-ready-plugins"><a class="anchor" href="#developing-enterprise-ready-plugins"></a>Developing Enterprise-Ready Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My greatest surprise at JUC 2014 in Boston was how many enterprise Jenkins CI users had developed plugins for their own use. I had not pictured enterprise release managers as plugin developers. Here at <a href="https://www.blackducksoftware.com/">Black Duck Software</a>, we developed Jenkins plugins for four years running. Fabrice Solami, a sales engineer, wanted to do more than automate our code scanning tool via a shell script step in the Jenkins job. He wrote a first plugin that added a build step to run the tool and configure the job more comfortably. The plugin became quickly popular, and when customers asked for it to also support maven builds and run on agents, it was time for help from the engineering team, particularly the integration team I lead.</p>
+</div>
+<div class="paragraph">
+<p>Over the years we developed four more plugins and overhauled the original one with the user community (aka paying customers) growing to &gt;75 organizations, mostly large or really large development organizations. In the process, we received lots of feedback and discovered some Jenkins features we feel are essential for good plugin design for the enterprise. Let me share these insights so that you can consider them in your plugin development.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="credentials-plugin"><a class="anchor" href="#credentials-plugin"></a>Credentials Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Our plugins connect to our web applications and need authentication to utilize our SDK. The first plugins used username and password fields in every job configuration. That made tedious configuration work and stores the passwords in clear text in the configuration files on disk. Ouch!</p>
+</div>
+<div class="paragraph">
+<p>We did wise up and started using the credentials plugin to manage username/passwords centrally and securely. It even allows setting authorization roles in such a way that the maintainer of a job can use the credentials without seeing the password. With that in place, our plugins are fit for banks and insurance companies and any other security-conscious organization.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="support-the-rest-api"><a class="anchor" href="#support-the-rest-api"></a>Support the REST API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Did you know that Jenkins talks REST? We found it to be an easy way to create and update jobs. It is a really handy tool. The REST API is easy to script for all sorts of external interactions.</p>
+</div>
+<div class="paragraph">
+<p>However, plugins need to do a little effort to support it on their part; yet it is almost trivial to do. So from our experience it should not be left out.</p>
+</div>
+<div class="paragraph">
+<p>We wrote a small Java program that reads, creates, updates job configurations, and can trigger job runs. It reads the jobs and commits them to a file for easy mass editing and updates the jobs afterwards.</p>
+</div>
+<div class="paragraph">
+<p>Our internal use case is to manage regression tests. We have medium-sized lists of jobs that run regression tests. With this tooling we can create a new set of jobs for a given plugin that runs against a new target server, that is, a server version under QA. It all happens in less than 15 minutes.</p>
+</div>
+<div class="paragraph">
+<p>We also made this part of our migration from our first plugin to its successor with all the enterprise capabilities, but incompatible configuration. Using the REST API and some more Java programs we can create a csv file / Excel spreadsheet with jobs that are configured with the previous plugin. The user can filter the list with the spreadsheet application as needed, and then use the resulting list as input to the batch upgrade tool. This makes the upgrade a gradual affair and not a tedious exercise in UI configuration changes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updatesites-manager-plugin"><a class="anchor" href="#updatesites-manager-plugin"></a>UpdateSites Manager Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are developing plugins for in-house use, you have the option to install/update those through file upload. However, in an enterprise you likely have multiple Jenkins servers for different divisions, development groups, or regions. The notification of updates becomes tedious at best. Wouldn’t it be nice to run your own update site, so that your plugin(s) become discoverable in the “Available” tab of the “Manage plugins” screen? Wouldn’t it be a dream if available new versions show up automatically in the “Updates” tab, including Jenkins version compatibility check?</p>
+</div>
+<div class="paragraph">
+<p>UpdateSites Manager plugin by IKEDA Yasuyuki is the answer to your prayers. It is easy to install, and the process to create and publish an update site is not too complicated and can become part of your Jenkins job building/releasing the plugin.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/us-west/01-02-1400">my presentation at JUC 2015 West</a>, I’ll share more details on how this makes a difference and how you can use these techniques to make your plugins enterprise-grade. As a bonus, I’ll show you how to get a <a href="https://www.blackducksoftware.com/vulnerability-plugin">free vulnerability report</a> for your Maven or Gradle builds.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/Kandler_0.jpg" alt="image" width="152" height="182"></span><br></p>
+</div>
+<div class="paragraph">
+<p>This post is by Kaj Kandler, Integration Manager atBlack Duck Software, Inc. If you have your ticket to <a href="https://www.cloudbees.com/jenkins/juc-2015/us-west">JUC U.S. West</a>, you can attend his talk <a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/us-west/01-02-1400">"Making Plugins that are Enterprise Ready"</a> on Day 1.</p>
+</div>
+<div class="paragraph">
+<p><em>Still need your ticket to JUC? If you register with a friend you can get 2 tickets for the price of 1! <a href="https://www.cloudbees.com/jenkins/juc-2015/us-west">Register here for a JUC U.S. West, the last JUC of the year!</a></em></p>
+</div>
+<div class="paragraph">
+<p>Thank you to our <a href="https://www.cloudbees.com/jenkins/juc-2015/sponsors">sponsors</a> for the 2015 Jenkins User Conference World Tour:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://jenkins-ci.org/sites/default/files/images/sponsors-06032015-02_0.png" alt="image" width="598" height="579"></span><br></p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsci/">
+jenkinsci
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2015/2015-08-24-juc-speaker-blog-series-kaj-kandler-juc-u-s-west.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

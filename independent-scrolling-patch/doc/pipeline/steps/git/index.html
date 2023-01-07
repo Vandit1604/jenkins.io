@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Git plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/git/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Git plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Git plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Git plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/git/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Git plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#git-plugin">Git plugin</a>
+<ul class="sectlevel2">
+<li><a href="#git-git"><code>git</code>: Git</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="git-plugin"><a class="anchor" href="#git-plugin"></a>Git plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/git">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="git-git"><a class="anchor" href="#git-git"></a><code>git</code>: Git</h3>
+<div><div>
+ <p>Git step. It performs a clone from the specified repository.</p>
+ <p>Use the <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> to generate a sample pipeline script for the git step. More advanced checkout operations require the <code>checkout</code> step rather than the <code>git</code> step. Examples of the <code>git</code> step include:</p>
+ <ul>
+  <li><a rel="nofollow">Git step with defaults</a></li>
+  <li><a rel="nofollow">Git step with https and a specific branch</a></li>
+  <li><a rel="nofollow">Git step with ssh and a private key credential</a></li>
+  <li><a rel="nofollow">Git step with https and changelog disabled</a></li>
+  <li><a rel="nofollow">Git step with git protocol and polling disabled</a></li>
+ </ul> See the <a rel="nofollow">argument descriptions</a> for more details.
+ <p></p>
+ <p>The <code>git</code> step is a simplified shorthand for a subset of the more powerful <code>checkout</code> step:</p>
+ <pre>checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+    userRemoteConfigs: [[url: 'https://git-server/user/repository.git']]])
+</pre>
+ <p></p>
+ <p><strong>NOTE:</strong> The <code>checkout</code> step is the <strong>preferred SCM checkout method</strong>. It provides significantly more functionality than the <code>git</code> step.</p>
+ <p>Use the <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> to generate a sample pipeline script for the checkout step.</p>
+ <p>The <code>checkout</code> step can be used in many cases where the <code>git</code> step cannot be used. Refer to the <a href="https://plugins.jenkins.io/git#extensions" rel="nofollow">git plugin documentation</a> for detailed descriptions of options available to the checkout step. For example, the <code>git</code> step does <strong>not</strong> support:</p>
+ <ul>
+  <li>SHA-1 checkout</li>
+  <li>Tag checkout</li>
+  <li>Submodule checkout</li>
+  <li>Sparse checkout</li>
+  <li>Large file checkout (LFS)</li>
+  <li>Reference repositories</li>
+  <li>Branch merges</li>
+  <li>Repository tagging</li>
+  <li>Custom refspecs</li>
+  <li>Timeout configuration</li>
+  <li>Changelog calculation against a non-default reference</li>
+  <li>Stale branch pruning</li>
+ </ul>
+ <p></p> <strong><a rel="nofollow">Example: Git step with defaults</a></strong>
+ <p>Checkout from the git plugin source repository using https protocol, no credentials, and the master branch.</p>
+ <p>The <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> generates this example:</p>
+ <pre>git 'https://github.com/jenkinsci/git-plugin'
+</pre>
+ <p></p> <strong><a rel="nofollow">Example: Git step with https and a specific branch</a></strong>
+ <p>Checkout from the Jenkins source repository using https protocol, no credentials, and a specific branch (stable-2.204). Note that this must be a local branch name like 'master' or 'develop'.</p>
+ <p><strong>Branch names that are not supported by the <code>git</code> step</strong></p>
+ <ul>
+  <li>Remote branch names like 'origin/master' and 'origin/develop' are <strong>not supported</strong> as the branch argument</li>
+  <li>SHA-1 hashes are <strong>not supported</strong> as the branch argument</li>
+  <li>Tag names are <strong>not supported</strong> as the branch argument</li>
+ </ul>
+ <p>Remote branch names, SHA-1 hashes, and tag names <strong>are supported</strong> by the general purpose <code>checkout</code> step.</p>
+ <p>The <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> generates this example:</p>
+ <pre>git branch: 'stable-2.204',
+    url: 'https://github.com/jenkinsci/jenkins.git'
+</pre>
+ <p></p> <strong><a rel="nofollow">Example: Git step with ssh and a private key credential</a></strong>
+ <p>Checkout from the git client plugin source repository using ssh protocol, private key credentials, and the master branch. The credential must be a private key credential if the remote git repository is accessed with the ssh protocol. The credential must be a username / password credential if the remote git repository is accessed with http or https protocol.</p>
+ <p>The <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> generates this example:</p>
+ <pre>git credentialsId: 'my-private-key-credential-id',
+    url: 'git@github.com:jenkinsci/git-client-plugin.git'
+</pre>
+ <p></p> <strong><a rel="nofollow">Example: Git step with https and changelog disabled</a></strong>
+ <p>Checkout from the Jenkins source repository using https protocol, no credentials, the master branch, and changelog calculation disabled. If changelog is <code>false</code>, then the changelog will not be computed for this job. If changelog is <code>true</code> or is not set, then the changelog will be computed. See the <a href="https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md#changelogs" rel="nofollow">workflow scm step documentation</a> for more changelog details.</p>
+ <p>The <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> generates this example:</p>
+ <pre>git changelog: false,
+    url: 'https://github.com/jenkinsci/credentials-plugin.git'
+</pre>
+ <p></p> <strong><a rel="nofollow">Example: Git step with https protocol and polling disabled</a></strong>
+ <p>Checkout from the Jenkins platform labeler repository using https protocol, no credentials, the master branch, and no polling for changes. If poll is <code>false</code>, then the remote repository will not be polled for changes. If poll is <code>true</code> or is not set, then the remote repository will be polled for changes. See the <a href="https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md#polling" rel="nofollow">workflow scm step documentation</a> for more polling details.</p>
+ <p>The <a href="https://www.jenkins.io/redirect/pipeline-snippet-generator" rel="nofollow">Pipeline Syntax Snippet Generator</a> generates this example:</p>
+ <pre>git poll: false,
+    url: 'https://github.com/jenkinsci/platformlabeler-plugin.git'
+</pre>
+ <p></p> <strong><a rel="nofollow">Argument Descriptions</a></strong>
+</div></div>
+<ul><li><code>url : String</code>
+<div><div>
+ <p>URL of the repository to be checked out in the workspace. Required parameter.</p>
+ <p>Repository URL's should follow the <a href="https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a" rel="nofollow">git URL guidelines</a>. Git steps to access a secured repository should provide a Jenkins credential with the <code>credentialsId</code> argument rather than embedding credentials in the URL. Credentials embedded in a repository URL may be visible in console logs or in other log files.</p>
+</div></div>
+
+</li>
+<li><code>branch : String</code> (optional)
+<div><div>
+ <p>Branch to be checked out in the workspace. Default is '<code>master</code>'.</p>
+ <p>Note that this must be a local branch name like 'master' or 'develop'. Remote branch names like 'origin/master' and 'origin/develop' are <strong>not supported</strong> as the branch argument. Tag names are <strong>not supported</strong> as the branch argument. SHA-1 hashes are <strong>not supported</strong> as the branch argument. Remote branch names, tag names, and SHA-1 hashes are supported by the general purpose <code>checkout</code> step.</p>
+</div></div>
+
+</li>
+<li><code>changelog : boolean</code> (optional)
+<div><div>
+ <p>Compute changelog for this job. Default is '<code>true</code>'.</p>
+ <p>If <code>changelog</code> is false, then the changelog will not be computed for this job. If <code>changelog</code> is true or is not set, then the changelog will be computed.</p>
+</div></div>
+
+</li>
+<li><code>credentialsId : String</code> (optional)
+<div><div>
+ <p>Identifier of the credential used to access the remote git repository. Default is '&lt;empty&gt;'.</p>
+ <p>The credential must be a private key credential if the remote git repository is accessed with the ssh protocol. The credential must be a username / password credential if the remote git repository is accessed with http or https protocol.</p>
+</div></div>
+
+</li>
+<li><code>poll : boolean</code> (optional)
+<div><div>
+ <p>Poll remote repository for changes. Default is '<code>true</code>'.</p>
+ <p>If <code>poll</code> is false, then the remote repository will not be polled for changes. If <code>poll</code> is true or is not set, then the remote repository will be polled for changes.</p>
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

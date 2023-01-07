@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Issue Reporting
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/participate/report-issue/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Issue Reporting" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Issue Reporting" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Issue Reporting" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/participate/report-issue/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Issue Reporting" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Issue Reporting
+</h1>
+<div class="sect1">
+<h2 id="how-to-report-an-issue"><a class="anchor" href="#how-to-report-an-issue"></a>How-To Report an Issue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins JIRA is not a support site. If you need assistance or have
+general questions, visit us <a href="/chat/">in chat</a>, email
+one of the <a href="/mailing-lists">mailing lists</a>, or post
+on the <a href="https://community.jenkins.io/">community forum</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Howtoreportanissue-Beforecreatinganissue"><a class="anchor" href="#Howtoreportanissue-Beforecreatinganissue"></a>Before creating an issue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, determine what kind of issue it is. There are three main types
+whose use is explained on this page:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Bug</strong>: Something does not work as intended.</p>
+</li>
+<li>
+<p><strong>New Feature</strong>: You want Jenkins to have new functionality.</p>
+</li>
+<li>
+<p><strong>Improvement</strong>: Existing functionality should be changed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other types (<em>Patch</em>, <em>Task</em>) are not widely used in JIRA. Neither will
+be explained here. If you want to propose a patch, create an issue of
+one of the 3 types above and then create a <a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">pull request in GitHub</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="Howtoreportanissue-Beforereportingabug"><a class="anchor" href="#Howtoreportanissue-Beforereportingabug"></a>Before reporting a bug</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>First, <strong>search for the error message or general problem description</strong>.
+This can help you find solutions if it&#8217;s actually e.g. a configuration
+problem, or point you to earlier reports in case you&#8217;re not the first
+one experiencing this problem. You can
+<a href="http://issues.jenkins.io/secure/IssueNavigator.jspa">use the search
+in the issue tracker</a>, or use web search.
+<a href="https://stackoverflow.com/tags/jenkins">Stack Overflow</a> may also be a
+good place to search. Any results will often point you to earlier issue
+reports if it&#8217;s really a bug. You can then <em>watch them</em> and <em>vote for
+them</em> in JIRA. Voting helps us determine the impact of bugs and
+prioritize them. <em>If you have doubts that the problem you&#8217;re
+experiencing is the exact same one as you found, prefer to file a new
+issue (and mention the one(s) you found in the description).</em></p>
+</li>
+<li>
+<p><strong>Make sure that the problem actually is with Jenkins</strong>. If your build
+seems to fail for no reason, try to build your project outside Jenkins,
+but in the same general environment (e.g. same machine, same user
+account, &#8230;&#8203;). If Jenkins interacts with other systems, make sure that
+they&#8217;re working. If the connections between Jenkins controller and agents
+fail, make sure the network is reliable.</p>
+</li>
+<li>
+<p><strong>Check the changelogs</strong> to see whether the issue has been fixed in
+newer versions of the affected component.
+For Jenkins itself, review the <a href="/changelog-stable/">long term support changelog</a>, the <a href="/doc/upgrade-guide/">LTS upgrade guide</a>, and the <a href="/changelog/">weekly changelog</a>.
+If you believe the problem to be in a plugin, review the changelog for the specific plugin on the <a href="https://plugins.jenkins.io/">plugins site</a>.  The plugin documentation can also be reached
+directly by clicking the plugin name in <em>Manage Jenkins</em> » <em>Manage Plugins</em> » <em>Installed</em>.
+If you&#8217;re still unable to resolve the problem and cannot find existing
+issue reports or related fixes in newer versions of Jenkins or the
+plugins, file a <strong>bug</strong> in <a href="https://issues.jenkins.io/">JIRA</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Howtoreportanissue-Beforerequestinganimprovementorfeature"><a class="anchor" href="#Howtoreportanissue-Beforerequestinganimprovementorfeature"></a>Before requesting an improvement or feature</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Check newer versions of Jenkins or the plugin</strong> for this feature.
+They may have the feature already!</p>
+</li>
+<li>
+<p><strong>Search JIRA for existing requests</strong> for this feature. You can then
+<em>watch them and vote for them</em>. Voting helps us determine the demand for
+requests and prioritize them, so it&#8217;s in your interest to actually find
+these rather than reporting a duplicate.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you cannot find anything, file an <strong>improvement</strong> or <strong>new feature</strong>
+request in <a href="https://issues.jenkins.io/">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p>Searching for existing issues makes it easier
+for us to deal with issue reports and shows which
+issues are considered important by the community by the number of voters
+and watchers.  It increases the likelihood of related changes.
+It&#8217;s not that obvious when an issue has been reported separately several
+times with only a few watchers each.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Howtoreportanissue-Creatingtheissue"><a class="anchor" href="#Howtoreportanissue-Creatingtheissue"></a>Creating the issue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You need to <a href="https://accounts.jenkins.io/">register an account</a> if you
+haven&#8217;t already. Then, just select <strong>Create Issue</strong> on
+<a href="https://issues.jenkins.io/secure/Dashboard.jspa">the JIRA home page</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For <strong>Project</strong> select:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Jenkins</em> for general issues with Jenkins,</p>
+</li>
+<li>
+<p><em>Security Issues</em> if you want to report a security issue privately</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For <em>Infrastructure</em>, if you&#8217;re reporting a bug with <a href="https://www.jenkins.io/projects/infrastructure/">a Jenkins service run by the Jenkins project</a>, open an issue in the <a href="https://github.com/jenkins-infra/helpdesk/issues/new/choose">dedicated helpdesk on Github</a>.</p>
+</li>
+<li>
+<p>Enter a short but meaningful description of your problem as <strong>Summary</strong>.</p>
+</li>
+<li>
+<p>For <strong>Priority</strong>, see
+<a href="https://issues.jenkins.io/secure/ShowConstantsHelp.jspa?decorator=popup#PriorityLevels">here</a>
+for descriptions of the levels. <strong>This is not how urgently</strong> <strong><em>you</em></strong> <strong>want
+it fixed</strong>. Try to be realistic: Most bugs should be Minor or Major
+priority. If you found a workaround, reduce the priority, even if it&#8217;s a
+severe problem otherwise.</p>
+</li>
+<li>
+<p>As <strong>Component</strong>, select <em>core</em> if it&#8217;s a problem with Jenkins itself
+and not any of the plugins. Otherwise, select the name of the plugin;
+all of them should have a related component. You can also select
+multiple components e.g. if the problem is in the interaction of the
+components, or when you&#8217;re not sure.</p>
+</li>
+<li>
+<p>Leave the <strong>Assignee</strong> field to automatic.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="Howtoreportanissue-WhatinformationtoprovideforEnvironmentandDescription"><a class="anchor" href="#Howtoreportanissue-WhatinformationtoprovideforEnvironmentandDescription"></a>What information to provide for Environment and Description</h3>
+<div class="paragraph">
+<p>Much of the advice on
+<a href="http://www.catb.org/esr/faqs/smart-questions.html#intro">How To Ask Questions
+The Smart Way</a> also helps you write great issue reports.</p>
+</div>
+<div class="paragraph">
+<p><strong>Environment</strong> is mostly relevant for bug reports: What is the
+configuration experiencing the issue? Depending on the type of problem,
+the following are often relevant:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Operating System</strong> (including version, and whether it&#8217;s 32/64 bit) of
+all systems involved (your client&#8217;s, the Jenkins server&#8217;s, all agent
+nodes'),</p>
+</li>
+<li>
+<p>All relevant <strong>JRE/JDK vendors and versions</strong> (e.g. Oracle JRE, OpenJDK,
+&#8230;&#8203;) and the parameters set.</p>
+</li>
+<li>
+<p><strong>Jenkins and plugin versions</strong>, use the below snippet in <strong>Jenkins &gt; Manage Jenkins &gt; Script Console</strong>:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>println("Jenkins: " + Jenkins.instance.getVersion())
+println("OS: " + System.getProperty('os.name') + " - " +System.getProperty('os.version'))
+println "---"
+
+Jenkins.instance.pluginManager.plugins
+    .collect()
+    .sort { it.getShortName() }
+    .each {
+        plugin -&gt; println("${plugin.getShortName()}:${plugin.getVersion()}")
+    }
+return</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Whether you&#8217;re <strong>running Jenkins directly or in a container</strong> like
+Tomcat (which one, in which version?)</p>
+</li>
+<li>
+<p>Whether Jenkins is accessed through a <strong>reverse proxy</strong> (if so, how is
+it configured?)</p>
+</li>
+<li>
+<p><strong>How you installed Jenkins</strong> (Windows installer, deb/rpm, &#8230;&#8203;), and
+<strong>how you&#8217;re launching any involved agents</strong> (via SSH, web browser,
+command line, &#8230;&#8203;)</p>
+</li>
+<li>
+<p><strong>Your web browser</strong> (+ version). Make sure the issue occurs on
+<a href="/doc/administration/requirements/web-browsers/">supported
+web browsers</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If this is too much information for the Environment field, just put some
+of it into the description.</p>
+</div>
+<div class="paragraph">
+<p>Every Jenkins installation has the <code>/systemInfo</code> URL with information
+about Jenkins. If you&#8217;re not sure what information to provide, copying
+everything on that page is a good place to start. Another option would
+be to install the
+<a href="https://plugins.jenkins.io/support-core/">Support Core
+Plugin</a>, which allows downloading zip files from Jenkins that contain
+information relevant for investigating bug reports.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>The <strong>Description</strong> should be comprehensive to allow others to understand
+the problem or improvement request immediately. A few suggestions on
+what to include (again, mostly applicable to bug reports):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Did the issue <strong>occur after an upgrade</strong> of Jenkins or any plugins? If
+so, what was/were the previous version(s), what is/are the current
+version(s)? Does downgrading resolve the issue? For plugins, the
+previous versions can often be seen in Plugin Manager (where it offers
+to downgrade to the previous version).</p>
+</li>
+<li>
+<p>Include <strong>log output and stack traces</strong> of error messages from the UI or
+any client programs.</p>
+</li>
+<li>
+<p>Provide a <strong>complete step-by-step description of how to reproduce the
+problem</strong>. We cannot see your screen, so be comprehensive. Consider
+switching the Jenkins UI to English by changing your web browser&#8217;s
+configuration to get the labels right.</p>
+</li>
+<li>
+<p>If possible, provide information on the <strong>circumstances</strong> the issue
+occurs with (or doesn&#8217;t), e.g. "only when starting the agent via SSH",
+"only when using Tomcat as container", etc. – this may be some work, but
+it&#8217;ll make reproducing and fixing the issue much easier!</p>
+</li>
+<li>
+<p>Does the issue occur with a new Jenkins installation not reusing any
+old configuration or data? <strong>Try to reproduce the problem with a pristine
+Jenkins installation</strong> with as little customization as possible.</p>
+</li>
+<li>
+<p>If the problem occurs in <strong>interaction with other systems</strong> (e.g. SCM),
+include their version and other relevant configuration.</p>
+</li>
+<li>
+<p>If the Jenkins UI no longer responds, <strong>get a thread dump</strong> using e.g.
+(on Linux) <code>kill -3 &lt;Jenkins PID&gt;</code> or <code>jstack -l &lt;Jenkins PID&gt;</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Howtoreportanissue-Aftercreatingtheissue"><a class="anchor" href="#Howtoreportanissue-Aftercreatingtheissue"></a>After creating the issue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you&#8217;ve created an issue, make sure to <strong>respond to requests for
+additional information</strong> in a timely manner, otherwise your issue may be
+resolved as Incomplete.</p>
+</div>
+<div class="paragraph">
+<p>If you reported a regression in Jenkins (i.e. a bug that appeared after
+updating Jenkins itself), consider
+<a href="/changelog">leaving <strong>community feedback</strong> on the
+changelog</a> to let others know about it.</p>
+</div>
+<div class="paragraph">
+<p><strong>Keep the issue updated</strong>. This includes, for example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you find additional information that may be relevant to the issue,
+add it to the issue description or write a comment.</p>
+</li>
+<li>
+<p>If it turns out that the bug you reported was actually something else,
+resolve it. (If you only found a workaround, don&#8217;t resolve it yet.)</p>
+</li>
+<li>
+<p>If newer Jenkins versions no longer are affected by the issue, or
+implemented the feature you requested, make sure to mark your issue as
+Fixed. This can happen e.g. if there were other reports on the issue, or
+developers noticed it on their own.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel1">
+<li><a href="#how-to-report-an-issue">How-To Report an Issue</a></li>
+<li><a href="#Howtoreportanissue-Beforecreatinganissue">Before creating an issue</a>
+<ul class="sectlevel2">
+<li><a href="#Howtoreportanissue-Beforereportingabug">Before reporting a bug</a></li>
+<li><a href="#Howtoreportanissue-Beforerequestinganimprovementorfeature">Before requesting an improvement or feature</a></li>
+</ul>
+</li>
+<li><a href="#Howtoreportanissue-Creatingtheissue">Creating the issue</a>
+<ul class="sectlevel2">
+<li><a href="#Howtoreportanissue-WhatinformationtoprovideforEnvironmentandDescription">What information to provide for Environment and Description</a></li>
+</ul>
+</li>
+<li><a href="#Howtoreportanissue-Aftercreatingtheissue">After creating the issue</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2022/09/21/improve-a-plugin-tutorial/">
+Improve a plugin tutorial
+</a>
+</li>
+<li>
+<a href="/blog/2022/08/04/expanding-open-source-in-Africa/">
+Expanding Open Source in Africa
+</a>
+</li>
+<li>
+<a href="/blog/2022/06/28/require-java-11/">
+Jenkins requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/05/04/DigitalOcean/">
+DigitalOcean sponsors the Jenkins project
+</a>
+</li>
+<li>
+<a href="/blog/2022/04/11/She-Code-Africa-contributhon/">
+She Code Africa Contributhon 2022!
+</a>
+</li>
+<li>
+<a href="/blog/2022/02/16/return_of_students_as_mentors/">
+Jenkins GSoC 2022: The Return of Students as Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//participate/report-issue.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

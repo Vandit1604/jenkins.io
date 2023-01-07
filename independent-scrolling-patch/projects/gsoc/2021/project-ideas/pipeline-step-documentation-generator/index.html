@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Pipeline Step Documentation Generator improvements
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/project-ideas/pipeline-step-documentation-generator/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Pipeline Step Documentation Generator improvements" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Pipeline Step Documentation Generator improvements" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Pipeline Step Documentation Generator improvements" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/project-ideas/pipeline-step-documentation-generator/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Pipeline Step Documentation Generator improvements" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Pipeline Step Documentation Generator improvements
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Enhance the Jenkins Pipeline documentation generator to produce better documentation for thousands of Pipeline developers
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+Java, Jenkins Pipeline, HTML, CSS, Asciidoc, JavaScript
+</p>
+<div style="margin: 10px; padding: 10px; background-color: #FFFFCE;">
+<b>
+NOTE:
+</b>
+This idea is published as a draft under active discussion, but it is confirmed in principle.
+It is FINE to apply to it.
+The scope and the suggested implementation may change significantly before the final version is published.
+Sections like quickstart guide and newbie-friendly issues may be also missing.
+As a contributor, you are welcome to request additional information and to join the discussions using channels linked on this page.
+</div>
+<h2 class="title">
+Details
+</h2>
+<div class="sect2">
+<h3 id="background"><a class="anchor" href="#background"></a>Background</h3>
+<div class="paragraph">
+<p>The Jenkins Pipeline Step reference is difficult to read, even to the initiated, mostly due to its format.
+This project aims to improve the way the documentation is formatted.</p>
+</div>
+<div class="paragraph">
+<p>For example, when you read the <a href="/doc/pipeline/steps/workflow-basic-steps/#readfile-read-file-from-workspace">readFile step documentation</a>, the documentation format makes it difficult to see that the obvious usage is : <code>readFile('filename')</code>.
+When you read the <a href="/doc/pipeline/steps/workflow-scm-step/">checkout documentation</a>, you are shown a single web page with collapsible sections that when expanded and printed would be 62 pages long.
+That is too large a page for usable navigation.
+We should consider logical partitions of that page, possibly with a single page per SCM provider (like checkout-git, checkout-p4, checkout-svn, checkout-cvs).
+Redirects would be needed within the checkout page to link users to the correct page per SCM provider.</p>
+</div>
+<div class="paragraph">
+<p>For this project, the student is expected to study the <a href="https://github.com/jenkins-infra/pipeline-steps-doc-generator/">documentation generator code base</a>, the <a href="https://docs.google.com/spreadsheets/d/1nA8xVOkyKmZ8oTYSLdwjborT0w-BpBNNZT0nxR9deZ8/edit#gid=1087292709">documentation feedback from readers</a>, and to propose enhancements to the documentation generator code to improve the format, layout, and readability of the documentation published on-line.
+The student is not expected to contribute to the content of the documentation, however, technical additions that enhance the discoverability of the documentation via annotations or other special markup are considered valid for a coding project.</p>
+</div>
+<div class="paragraph">
+<p>Many of the Pipeline step references include no documentation.
+Those pages could have a standard reference created that directs the reader to use the Pipeline Syntax snippet generator.
+See the <a href="https://plugins.jenkins.io/git/#pipelines">git plugin documentation</a> for one idea of a way to encourage use of the snippet generator.</p>
+</div>
+<div class="paragraph">
+<p>The student is also expected to study Stapler and Jelly, as these technologies are used to capture documentation as well.
+Documentation can be extracted from Stapler and Jelly.</p>
+</div>
+<div class="paragraph">
+<p>A potential stretch goal could  be something like an embedded pipeline steps generator, though that might be outside the scope of the website.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/book/pipeline/">Pipeline documentation</a></p>
+</li>
+<li>
+<p>Documentation for <a href="/doc/pipeline/steps/workflow-basic-steps/#code-readfile-code-read-file-from-workspace">readFile step</a>, <a href="/doc/pipeline/steps/workflow-scm-step/#checkout-check-out-from-version-control">checkout step</a>, and <a href="/doc/pipeline/steps/workflow-multibranch/#properties-set-job-properties">properties step</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/pipeline-steps-doc-generator/">Pipeline steps doc generator source code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/pipeline-library">Jenkins pipeline library for ci.jenkins.io</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples of remote documentation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline: AWS steps adds documentation to the README</p>
+</li>
+<li>
+<p>JIRA Pipeline steps keeps their documentation in their repo, and displays it as a weblink.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="newbie-friendly-issues"><a class="anchor" href="#newbie-friendly-issues"></a>Newbie Friendly issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>List of issues related to <a href="https://issues.jenkins.io/browse/JENKINS-41667?jql=text%20~%20%22pipeline%20steps%20document%20generator%22%20and%20status%20not%20in%20(Closed%2C%20resolved%2C%20done)%20and%20labels%20%3D%20gsoc-2019-project-idea">documentation generation</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/helpdesk/issues/1434">Help desk 1434</a> - Javadoc landing page</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/pipeline-library/pull/22" class="bare">https://github.com/jenkins-infra/pipeline-library/pull/22</a>   Review and help merge the PR to generate Javadoc for Pipeline steps</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Component Java Doc: <a href="https://javadoc.jenkins.io/component/" class="bare">https://javadoc.jenkins.io/component/</a></p>
+</li>
+<li>
+<p>Core Java doc: <a href="https://javadoc.jenkins.io/component/" class="bare">https://javadoc.jenkins.io/component/</a></p>
+</li>
+<li>
+<p>Plugin java docs: <a href="https://javadoc.jenkins.io/plugin/" class="bare">https://javadoc.jenkins.io/plugin/</a></p>
+</li>
+<li>
+<p>The java docs cannot be searched easily (e.g. try to find org.jenkinsci.Symbol)</p>
+</li>
+</ul>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-docs" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="https://docs.google.com/document/d/19hf1FSs7Y4z7YjfqjareqaWURpZ3Elkvh4XgLKdX6Ho" rel="noreferrer noopener" target="_blank">
+Project idea draft
+</a>
+</li>
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2021/project-ideas" target="_blank">
+> Go back to other GSoC
+2021
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#background">Background</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#newbie-friendly-issues">Newbie Friendly issues</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-docs" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2021/project-ideas/pipeline-step-documentation-generator.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Parallel stages with Declarative Pipeline 1.2
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/09/25/declarative-1/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Parallel stages with Declarative Pipeline 1.2" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Parallel stages with Declarative Pipeline 1.2" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Parallel stages with Declarative Pipeline 1.2" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/09/25/declarative-1/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Parallel stages with Declarative Pipeline 1.2" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Parallel stages with Declarative Pipeline 1.2
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+September 25, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Parallel+stages+with+Declarative+Pipeline+1.2&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F09%2F25%2Fdeclarative-1%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>After a few months of work on its key features, I&#8217;m happy to announce the
+1.2 release of
+<a href="/doc/book/pipeline/syntax/#declarative-pipeline">Declarative Pipeline</a>!
+On behalf of the contributors developing Pipeline, I thought it would be
+helpful to discuss three of the key changes.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/declarative-1.2/pipeline-parallel-stages.png" alt="A Pipeline with Parallel stages"></span></p>
+</div>
+<div class="sect2">
+<h3 id="parallel-stages"><a class="anchor" href="#parallel-stages"></a>Parallel Stages</h3>
+<div class="paragraph">
+<p>First, we&#8217;ve added syntax support for parallel stages. In earlier versions of
+Declarative Pipeline, the only way to run chunks of Pipeline code in parallel
+was to use the <code>parallel</code> step inside the <code>steps</code> block for a stage, like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="cm">/* .. snip .. */</span>
+<span class="n">stage</span><span class="o">(</span><span class="s1">'run-parallel-branches'</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">steps</span> <span class="o">{</span>
+    <span class="n">parallel</span><span class="o">(</span>
+      <span class="nl">a:</span> <span class="o">{</span>
+        <span class="n">echo</span> <span class="s2">"This is branch a"</span>
+      <span class="o">},</span>
+      <span class="nl">b:</span> <span class="o">{</span>
+        <span class="n">echo</span> <span class="s2">"This is branch b"</span>
+      <span class="o">}</span>
+    <span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="cm">/* .. snip .. */</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While this works, it doesn&#8217;t integrate well with the rest of the Declarative
+Pipeline syntax. For example, to run each parallel branch on a different agent,
+you need to use a <code>node</code> step, and if you do that, the output of the parallel
+branch won&#8217;t be available for <code>post</code> directives (at a <code>stage</code> or <code>pipeline</code>
+level). Basically the old <code>parallel</code> step required you to use Scripted Pipeline
+within a Declarative Pipeline.</p>
+</div>
+<div class="paragraph">
+<p>But now with Declarative Pipeline 1.2, we&#8217;ve introduced a true Declarative
+syntax for running stages in parallel:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+    <span class="n">agent</span> <span class="n">none</span>
+    <span class="n">stages</span> <span class="o">{</span>
+        <span class="n">stage</span><span class="o">(</span><span class="s1">'Run Tests'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">parallel</span> <span class="o">{</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s1">'Test On Windows'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">agent</span> <span class="o">{</span>
+                        <span class="n">label</span> <span class="s2">"windows"</span>
+                    <span class="o">}</span>
+                    <span class="n">steps</span> <span class="o">{</span>
+                        <span class="n">bat</span> <span class="s2">"run-tests.bat"</span>
+                    <span class="o">}</span>
+                    <span class="n">post</span> <span class="o">{</span>
+                        <span class="n">always</span> <span class="o">{</span>
+                            <span class="n">junit</span> <span class="s2">"**/TEST-*.xml"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">stage</span><span class="o">(</span><span class="s1">'Test On Linux'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">agent</span> <span class="o">{</span>
+                        <span class="n">label</span> <span class="s2">"linux"</span>
+                    <span class="o">}</span>
+                    <span class="n">steps</span> <span class="o">{</span>
+                        <span class="n">sh</span> <span class="s2">"run-tests.sh"</span>
+                    <span class="o">}</span>
+                    <span class="n">post</span> <span class="o">{</span>
+                        <span class="n">always</span> <span class="o">{</span>
+                            <span class="n">junit</span> <span class="s2">"**/TEST-*.xml"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now specify either <code>steps</code> or <code>parallel</code> for a <code>stage</code>, and within
+<code>parallel</code>, you can specify a list of <code>stage</code> directives to run in parallel,
+with all the configuration you&#8217;re used to for a <code>stage</code> in Declarative
+Pipeline. We think this will be really useful for cross-platform builds and
+testing, as an example. Support for parallel stages will be in the
+soon-to-be-released Blue Ocean Pipeline Editor 1.3 as well.</p>
+</div>
+<div class="paragraph">
+<p>You can find more documentation on parallel stages in the
+<a href="/doc/book/pipeline/syntax/">User Handbook</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-declarative-pipelines-in-shared-libraries"><a class="anchor" href="#defining-declarative-pipelines-in-shared-libraries"></a>Defining Declarative Pipelines in Shared Libraries</h3>
+<div class="paragraph">
+<p>Until the 1.2 release, Declarative Pipelines did not officially support
+defining your <code>pipeline</code> blocks in a shared library. Some of you may have tried
+that out and found that it could work in some cases, but since it was never an
+officially supported feature, it was vulnerable to breaking due to necessary
+changes for the supported use cases of Declarative. But with 1.2, we&#8217;ve added
+official support for defining <code>pipeline</code> blocks in <code>src/<strong>.groovy</code> files in your
+shared libraries. Within your <code>src/</strong>.groovy</code> file&#8217;s <code>call</code> method, you can
+call <code>pipeline { &#8230;&#8203; }</code>, or possibly different <code>pipeline { &#8230;&#8203; }</code> blocks
+depending on <code>if</code> conditions and the like. Note that only one <code>pipeline { &#8230;&#8203; }</code>
+block can actually be executed per run - you&#8217;ll get an error if a second one
+tries to execute!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="major-improvements-to-parsing-and-environment-variables"><a class="anchor" href="#major-improvements-to-parsing-and-environment-variables"></a>Major Improvements to Parsing and Environment Variables</h3>
+<div class="paragraph">
+<p>Hopefully, you&#8217;ll never actually care about this change, but we&#8217;re very happy
+about it nonetheless. The original approach used for actually taking the
+<code>pipeline { &#8230;&#8203; }</code> block and executing its contents was designed almost two
+years ago, and wasn&#8217;t very well suited to how you all are actually using
+Declarative Pipelines. In our attempts to work around some of those limitations,
+we made the parsing logic even more complicated and fragile, resulting in an
+<a href="https://issues.jenkins.io/issues/?jql=labels%20%3D%20declarative-variable-and-method-resolution">impressive
+number of bugs</a>, mainly relating to inconsistencies and bad behavior with
+<code>environment</code> variables.</p>
+</div>
+<div class="paragraph">
+<p>In Declarative 1.2, we&#8217;ve replaced the runtime parsing logic completely with a
+far more robust system, which also happens to fix most of those bugs at the
+same time! While not every issue has been resolved, you may find that you can
+use <code>environment</code> variables in more places, escaping is more consistent,
+Windows paths are no longer handled incorrectly, and a lot more. Again, we&#8217;re
+hoping you&#8217;ve never had the misfortune to run into any of these bugs, but if
+you have, well, they&#8217;re fixed now, and it&#8217;s going to be a lot easier for us to
+fix any future issues that may arise relating to <code>environment</code> variables, <code>when</code>
+expressions, and more. Also, the parsing at the very beginning of your build
+may be about 0.5 seconds faster. =)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="more-to-come"><a class="anchor" href="#more-to-come"></a>More to Come!</h3>
+<div class="paragraph">
+<p>While we don&#8217;t have any concrete plans for what will be going into Declarative
+Pipelines 1.3, rest assured that we&#8217;ve got some great new features in mind, as
+well as our continuing dedication to fixing the bugs you encounter and report.
+So please do keep <a href="https://issues.jenkins.io/">opening tickets</a> for
+issues and feature requests. Thanks!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/declarative/">
+declarative
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/09/2017-09-25-declarative-1.2-released.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

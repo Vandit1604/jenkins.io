@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Blue Ocean 1.1 - fast search for pipelines and much more
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/06/13/blueocean-1-1/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Blue Ocean 1.1 - fast search for pipelines and much more" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Blue Ocean 1.1 - fast search for pipelines and much more" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Blue Ocean 1.1 - fast search for pipelines and much more" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/06/13/blueocean-1-1/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Blue Ocean 1.1 - fast search for pipelines and much more" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Blue Ocean 1.1 - fast search for pipelines and much more
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/i386/"><div class="app-avatar"></div> James Dumay</a>
+June 13, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Blue+Ocean+1.1+-+fast+search+for+pipelines+and+much+more&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F06%2F13%2Fblueocean-1-1%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The Blue Ocean team are proud to announce the release of Blue Ocean 1.1.
+ We’ve shipped a tonne of small improvements, features and bug fixes here that
+ will make your day-to-day experience with Blue Ocean even smoother.</p>
+</div>
+<div class="paragraph">
+<p>Today is also the first time we are promoting
+our <a href="/projects/blueocean/roadmap">Public Roadmap</a>.
+We recognise that using JIRA can be a bit of a pain to track what we are working
+ on at a macro level and the Public Roadmap makes it very easy for anyone to
+ find out what we are working on. We’ve got some really cool stuff coming,
+ so check back here soon!</p>
+</div>
+<div class="paragraph">
+<p>It’s been an insane two months since the launch of Blue Ocean 1.0 and there
+ are now officially over 10,000 teams using Blue Ocean  – so here’s a big
+ “thank you” to all of you for your support.</p>
+</div>
+<div class="paragraph">
+<p>Now, lets get to the goods!</p>
+</div>
+<div class="sect1">
+<h2 id="fast-search"><a class="anchor" href="#fast-search"></a>Fast search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For those of you who have many pipelines we’ve introduced pipeline fast search
+to the pipeline dashboard. Click the search icon to activate and just start
+typing what you’re looking for.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/blueocean/1.1-release/fast-search.gif" alt="Fast search"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trigger-reasons"><a class="anchor" href="#trigger-reasons"></a>Trigger reasons</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Differentiate at a glance between pipeline runs that have been manually
+triggered and by who, triggered automatically by a commit or triggered by any
+other means.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/blueocean/1.1-release/trigger-reasons.png" alt="Trigger Reasons"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="blockage-reasons"><a class="anchor" href="#blockage-reasons"></a>Blockage reasons</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipelines can be blocked from execution for a variety of reasons, including
+waiting for executors or other resources to become free. You can see from the
+Pipeline Activity, Branch and Result screen why the pipeline is blocked from
+execution.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/blueocean/1.1-release/blockage-reason.png" alt="Blockage reason"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="history-jump"><a class="anchor" href="#history-jump"></a>History jump</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developers can quickly jump from the branches tab to the run history for a
+specific branch. This makes it more convenient to see historical runs for the
+branch within the Pipeline which improves the your ability to trace down
+problems.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/blueocean/1.1-release/history-jump.gif" alt="History jump"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="analyse-1000s-of-tests"><a class="anchor" href="#analyse-1000s-of-tests"></a>Analyse 1,000s of tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now you can see more than 100 test results for a Pipeline run. This makes
+Blue Ocean practical for teams who have invested heavily in testing.
+We&#8217;ve also dramatically improved loading times for Pipelines with large
+numbers of tests so theres no more waiting for the test tab to load.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom-run-names-and-descriptions"><a class="anchor" href="#custom-run-names-and-descriptions"></a>Custom run names and descriptions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developers authoring Pipeline using the scripted syntax can set a custom name
+and description for Pipeline run. This feature is commonly used to name or
+describe a pipeline run that is meaningful in their release management workflow.</p>
+</div>
+<div class="paragraph">
+<p>For example, a developer can set the run name to the release version
+<code>1.1</code> and the description to something meaningful, like <code>Final Release</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>currentBuild.displayName = '1.1'
+currentBuild.description = ‘Final Release’</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="performance"><a class="anchor" href="#performance"></a>Performance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We’ve been making optimisations for general page speed.
+In Blue Ocean 1.1, plugin data was automatically sent to browser and we’ve made
+a change so that this data is only sent on the request of plugins. The long and
+short of it is that you shouldn&#8217;t notice a thing except those Blue Ocean pages
+zipping faster into your browser.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="48-bug-fixes"><a class="anchor" href="#48-bug-fixes"></a>48+ bug fixes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There have been a total of 48 bug improvements, with emphasis on how executing
+pipelines behave, and we’ve  invested a large amount of time to improve
+automated test coverage of Blue Ocean to ensure reliability in
+production settings.</p>
+</div>
+<div class="paragraph">
+<p>For a full list of bug fixes and improvements,
+see the <a href="https://issues.jenkins.io/issues/?filter=17643">JIRA</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>What are you waiting for? <a href="/projects/blueocean/">Try Blue Ocean 1.1 today</a></strong></p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/i386/">
+James Dumay
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/i386" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/i386" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/06/2017-06-13-blueocean-1-1.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

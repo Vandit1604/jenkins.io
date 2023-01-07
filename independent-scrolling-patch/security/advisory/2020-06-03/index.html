@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2020-06-03
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-06-03/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2020-06-03" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2020-06-03" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2020-06-03" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2020-06-03/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2020-06-03" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2020-06-03
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/compact-columns">
+Compact Columns
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/echarts-api">
+ECharts API
+Plugin
+</a>
+</li>
+<li>
+Play Framework
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/project-inheritance">
+Project Inheritance
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/script-security">
+Script Security
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/selenium">
+Selenium
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/svn-partial-release-mgr">
+Subversion Partial Release Manager
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/swarm">
+Swarm
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1866">
+Stored XSS vulnerability in Script Security Plugin
+</h3>
+<strong>
+SECURITY-1866
+/
+CVE-2020-2190
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/script-security">
+<code>script-security</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Script Security Plugin 1.72 and earlier does not correctly escape pending or approved classpath entries on the In-process Script Approval page.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by users able to configure sandboxed scripts.</p>
+</div>
+<div class="paragraph">
+<p>Script Security Plugin 1.73 escapes pending and approved classpath entries before rendering them in the Jenkins UI.</p>
+</div>
+<h3 id="SECURITY-1200">
+CSRF vulnerability and improper permission checks in Swarm Plugin
+</h3>
+<strong>
+SECURITY-1200
+/
+CVE-2020-2191 (permission checks), CVE-2020-2192 (CSRF)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/swarm">
+<code>swarm</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Swarm Plugin adds API endpoints to add or remove agent labels.
+In Swarm Plugin 3.20 and earlier these only require a global Swarm secret to use, and no regular permission check is performed.
+This allows users with Agent/Create permission to add or remove labels of any agent.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, these API endpoints do not require POST requests, resulting in a cross-site request forgery (CSRF) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Swarm Plugin 3.21 requires POST requests and Agent/Configure permission for the affected agent to these endpoints.
+It no longer uses the global Swarm secret for these API endpoints.</p>
+</div>
+<h3 id="SECURITY-1841">
+Stored XSS vulnerability in ECharts API Plugin
+</h3>
+<strong>
+SECURITY-1841
+/
+CVE-2020-2193
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/echarts-api">
+<code>echarts-api</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>ECharts API Plugin 4.7.0-3 and earlier does not escape the parser identifier when rendering charts.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability that can be exploited by users with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>ECharts API Plugin 4.7.0-4 escapes the parser identifier.</p>
+</div>
+<h3 id="SECURITY-1842">
+Stored XSS vulnerability in ECharts API Plugin
+</h3>
+<strong>
+SECURITY-1842
+/
+CVE-2020-2194
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/echarts-api">
+<code>echarts-api</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>ECharts API Plugin 4.7.0-3 and earlier does not escape the display name of the builds in the trend chart.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability that can be exploited by users with Run/Update permission.</p>
+</div>
+<div class="paragraph">
+<p>ECharts API Plugin 4.7.0-4 escapes the display name.</p>
+</div>
+<h3 id="SECURITY-1837">
+Stored XSS vulnerability in Compact Columns Plugin
+</h3>
+<strong>
+SECURITY-1837
+/
+CVE-2020-2195
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/compact-columns">
+<code>compact-columns</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Compact Columns Plugin 1.11 and earlier displays the unprocessed job description in tooltips.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting vulnerability that can be exploited by users with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>Compact Columns Plugin 1.12 applies the configured markup formatter to the job description shown in tooltips.</p>
+</div>
+<h3 id="SECURITY-1766">
+Complete lack of CSRF protection in Selenium Plugin can lead to OS command injection
+</h3>
+<strong>
+SECURITY-1766
+/
+CVE-2020-2196
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/selenium">
+<code>selenium</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Selenium Plugin 3.141.59 and earlier has no CSRF protection for its HTTP endpoints.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers to perform the following actions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Restart the Selenium Grid hub.</p>
+</li>
+<li>
+<p>Delete or replace the plugin configuration.</p>
+</li>
+<li>
+<p>Start, stop, or restart Selenium configurations on specific nodes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Through carefully chosen configuration parameters, these actions can result in OS command injection on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1582">
+Missing permission check in Project Inheritance Plugin
+</h3>
+<strong>
+SECURITY-1582
+/
+CVE-2020-2197 (permission check), CVE-2020-2198 (unredacted encrypted secrets)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/project-inheritance">
+<code>project-inheritance</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jenkins limits access to job configuration XML data (<code>config.xml</code>) to users with Job/ExtendedRead permission, typically implied by Job/Configure permission.
+Project Inheritance Plugin has several job inspection features, including the API URL <code>/job/&#8230;&#8203;/getConfigAsXML</code> for its Inheritance Project job type that does something similar.</p>
+</div>
+<div class="paragraph">
+<p>Project Inheritance Plugin 19.08.02 and earlier does not check permissions for this new endpoint, granting access to job configuration XML data to every user with Job/Read permission.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the encrypted values of secrets stored in the job configuration are not redacted, as they would be by the <code>config.xml</code> API for users without Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1726">
+XSS vulnerability in Subversion Partial Release Manager Plugin
+</h3>
+<strong>
+SECURITY-1726
+/
+CVE-2020-2199
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/svn-partial-release-mgr">
+<code>svn-partial-release-mgr</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Subversion Partial Release Manager Plugin 1.0.1 and earlier does not escape the error message for the repository URL field form validation.</p>
+</div>
+<div class="paragraph">
+<p>This results in a reflected cross-site scripting (XSS) vulnerability that can also be exploited similar to a stored cross-site scripting vulnerability by users with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1879">
+OS command injection vulnerability in Play Framework Plugin
+</h3>
+<strong>
+SECURITY-1879
+/
+CVE-2020-2200
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/play-autotest-plugin">
+<code>play-autotest-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>A form validation endpoint in Play Framework Plugin executes the <code>play</code> command to validate a given input file.</p>
+</div>
+<div class="paragraph">
+<p>Play Framework Plugin 1.0.2 and earlier lets users specify the path to the <code>play</code> command on the Jenkins controller.
+This results in an OS command injection vulnerability exploitable by users able to store such a file on the Jenkins controller (e.g. through archiving artifacts).</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-1200:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1582:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1726:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1766:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1837:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1841:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1842:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1866:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1879:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Compact Columns
+Plugin
+</strong>
+up to and including
+1.11
+</li>
+<li>
+<strong>
+ECharts API
+Plugin
+</strong>
+up to and including
+4.7.0-3
+</li>
+<li>
+<strong>
+Play Framework
+Plugin
+</strong>
+up to and including
+1.0.2
+</li>
+<li>
+<strong>
+Project Inheritance
+Plugin
+</strong>
+up to and including
+19.08.02
+</li>
+<li>
+<strong>
+Script Security
+Plugin
+</strong>
+up to and including
+1.72
+</li>
+<li>
+<strong>
+Selenium
+Plugin
+</strong>
+up to and including
+3.141.59
+</li>
+<li>
+<strong>
+Subversion Partial Release Manager
+Plugin
+</strong>
+up to and including
+1.0.1
+</li>
+<li>
+<strong>
+Swarm
+Plugin
+</strong>
+up to and including
+3.20
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Compact Columns
+Plugin
+</strong>
+should be updated to version
+1.12
+</li>
+<li>
+<strong>
+ECharts API
+Plugin
+</strong>
+should be updated to version
+4.7.0-4
+</li>
+<li>
+<strong>
+Script Security
+Plugin
+</strong>
+should be updated to version
+1.73
+</li>
+<li>
+<strong>
+Swarm
+Plugin
+</strong>
+should be updated to version
+3.21
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Play Framework
+Plugin
+</li>
+<li>
+Project Inheritance
+Plugin
+</li>
+<li>
+Selenium
+Plugin
+</li>
+<li>
+Subversion Partial Release Manager
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-1879
+</li>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc. and, independently, Markus Winter, SAP SE
+</strong>
+for
+SECURITY-1582
+</li>
+<li>
+<strong>
+Oleg Nenashev, CloudBees, Inc.
+</strong>
+for
+SECURITY-1200
+</li>
+<li>
+<strong>
+Tobias Gruetzmacher
+</strong>
+for
+SECURITY-1837
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-1726, SECURITY-1841, SECURITY-1842, SECURITY-1866
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc. and Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-1766
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2020-06-03.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

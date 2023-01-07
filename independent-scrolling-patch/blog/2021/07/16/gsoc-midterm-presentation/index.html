@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC CDF Meetup: Google Summer of Code Midterm Demos
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/07/16/gsoc-midterm-presentation/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC CDF Meetup: Google Summer of Code Midterm Demos" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC CDF Meetup: Google Summer of Code Midterm Demos" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/2021/cdf_gsoc_org.jpeg" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC CDF Meetup: Google Summer of Code Midterm Demos" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/07/16/gsoc-midterm-presentation/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC CDF Meetup: Google Summer of Code Midterm Demos" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/2021/cdf_gsoc_org.jpeg" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSoC CDF Meetup: Google Summer of Code Midterm Demos
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/marckk/"><div class="app-avatar"><img alt="Kara de la Marck" class="app-avatar__image" src="/images/avatars/marckk.jpg"></div> Kara de la Marck</a>
+July 16, 2021
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSoC+CDF+Meetup%3A+Google+Summer+of+Code+Midterm+Demos&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2021%2F07%2F16%2Fgsoc-midterm-presentation%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/jenkins-gsoc-logo_small.png" alt="Jenkins GSoC"></span></p>
+</div>
+<div class="paragraph">
+<p>Congratulations to all GSoC students who have made it through the first half of the GSoC 2021 coding phase!</p>
+</div>
+<div class="paragraph">
+<p>This year, the Jenkins project has been participating in GSoC as part of the Continuous Delivery Foundation&#8217;s GSoC org.
+To celebrate our GSoC students and the fantastic work they have been doing, the CDF is hosting an online meetup where students will present their work.
+Students will be showcasing what they have learned and accomplished thus far in GSoC, demoing their work, and discussing their goals and plans for the second coding phase.</p>
+</div>
+<div class="paragraph">
+<p>The CDF Google Summer of Code Midterm Demos will be held online on July 20th, 13:00 UTC - 15:00 UTC.</p>
+</div>
+<div class="sect1">
+<h2 id="sign-up-here-meetup-event"><a class="anchor" href="#sign-up-here-meetup-event"></a>Sign up here: <a href="https://www.meetup.com/Jenkins-online-meetup/events/279467675/">Meetup Event</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image center center"><img src="/images/gsoc/2021/cdf_gsoc_org.jpeg" alt="CDF GSoC" height="420"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="speakers"><a class="anchor" href="#speakers"></a>Speakers</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="akihiro-kiuchi-jenkins-remoting-monitoring"><a class="anchor" href="#akihiro-kiuchi-jenkins-remoting-monitoring"></a>Akihiro Kiuchi - <a href="/projects/gsoc/2021/projects/remoting-monitoring/">Jenkins Remoting Monitoring</a></h3>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/2021/gsoc-akihiro-kiuchi.jpg" alt="Akihiro Kiuchi" height="220"></span></p>
+</div>
+<div class="paragraph">
+<p>Akihiro is a student in the Department of information and communication engineering at the University of Tokyo.
+He is improving the monitoring experience of Jenkins Remoting during Google Summer of Code 2021.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Affiliation: The University of Tokyo and Jenkins project</p>
+</li>
+<li>
+<p>GitHub: <a href="https://github.com/Aki-7">Aki-7</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="title-jenkins-remoting-monitoring-with-opentelemetry"><a class="anchor" href="#title-jenkins-remoting-monitoring-with-opentelemetry"></a>Title: Jenkins Remoting Monitoring with OpenTelemetry</h4>
+<div class="paragraph">
+<p>In this talk, he will discuss the problems in maintaining Jenkins agents and how to support Jenkins admins in troubleshooting them.
+As one of the solutions, he will introduce the new Remoting monitoring with OpenTelemetry plugin that collects Jenkins Remoting monitoring data and troubleshooting data using OpenTelemetry.
+What kind of data the plugin will collect and how we will be able to visualize them using available open-source monitoring tools will be demonstrated.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shruti-chaturvedi-cloudevents-plugin-for-jenkins"><a class="anchor" href="#shruti-chaturvedi-cloudevents-plugin-for-jenkins"></a>Shruti Chaturvedi - <a href="/projects/gsoc/2021/projects/cloudevents-plugin">CloudEvents Plugin for Jenkins</a></h3>
+<div class="paragraph">
+<p>Shruti is an undergrad student of Computer Science at Kalamazoo College.
+She is developing a CloudEvents integration for Jenkins, allowing other CloudEvents-compliant CI/CD tools to communicate easily.
+Shruti is also the Founding Engineer of a California-based startup, MeetKlara, where she is building serverless solutions and advocating for developing CI/CD pipelines using open-source tools.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Affiliation: Kalamazoo College and Jenkins project</p>
+</li>
+<li>
+<p>GitHub: <a href="https://github.com/ShrutiC-git">ShrutiC-git</a></p>
+</li>
+<li>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/shruti-chaturvedi-developer/">Shruti Chaturvedi</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="title-cloudevents-plugin-for-jenkins-moving-towards-interoperability"><a class="anchor" href="#title-cloudevents-plugin-for-jenkins-moving-towards-interoperability"></a>Title: CloudEvents Plugin for Jenkins: Moving Towards Interoperability</h4>
+<div class="paragraph">
+<p>In this talk, we will look at interoperability as an essential element in building workloads across several services.
+We will also talk about how CloudEvents solves one of the biggest challenges in achieving interoperability between systems: lack of normalization/standardization.
+Without any standard definition, in order to achieve interoperability, services have to develop adapters specific to a particular system.
+That, however, is complex because services are always changing the way data/events are emitted.
+CloudEvents solves this problem by defining a standard format for events, which can be emitted/consumed agnostically, thereby achieving indirect interoperability.
+Shruti will demonstrate the workings of CloudEvents Plugin for Jenkins; she will walk us through how Jenkins can be configured as a source and a sink, emitting and consuming CloudEvents-compliant events in a platform-independent manner.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="daniel-ko-try-spinnaker-io"><a class="anchor" href="#daniel-ko-try-spinnaker-io"></a>Daniel Ko - try.spinnaker.io</h3>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/2021/gsoc-daniel-ko.jpg" alt="Daniel Ko" height="220"></span></p>
+</div>
+<div class="paragraph">
+<p>Daniel is studying computer science at the University of Wisconsin - Madison.
+He is developing a public Spinnaker sandbox environment for Google Summer of Code 2021.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Affiliation: University of Wisconsin - Madison and Spinnaker project</p>
+</li>
+<li>
+<p>GitHub: <a href="https://github.com/ko28">ko28</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="title-try-spinnaker-io-explore-spinnaker-in-a-sandbox-environment"><a class="anchor" href="#title-try-spinnaker-io-explore-spinnaker-in-a-sandbox-environment"></a>Title: try.spinnaker.io:  Explore Spinnaker in a Sandbox Environment!</h4>
+<div class="paragraph">
+<p>The talk will go through a brief explanation of Spinnaker and the challenges that users face during the installation process.
+He will discuss the infrastructure of this project and how a public multi tenant spinnaker instance will be managed and installed.
+We will end with a demo of the site so far and the various features implemented, including Github authentication, K8s manifest deployment, AWS Load Balancer Controller to expose deployments, private ECR registry and the blocking of all public images, and auto resource cleanup.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aditya-srivastava-conventional-commits-plugin-for-jenkins"><a class="anchor" href="#aditya-srivastava-conventional-commits-plugin-for-jenkins"></a>Aditya Srivastava - <a href="/projects/gsoc/2021/projects/conventional-commits-plugin">Conventional Commits Plugin for Jenkins</a></h3>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/2021/gsoc-aditya-srivastava.png" alt="Aditya Srivastava" height="220"></span></p>
+</div>
+<div class="paragraph">
+<p>Aditya is a curiosity driven individual striving to find ingenious solutions to real-world problems.
+He is an open-source enthusiast and a lifelong learner.
+Aditya is also the Co-Founder and Maintainer of an Open Source Organization - Auto-DL, where he&#8217;s leading the development of a Deep Learning Platform as a Service application.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Affiliation: V.E.S.I.T &amp; Jenkins project</p>
+</li>
+<li>
+<p>GitHub: <a href="https://github.com/ADI10HERO">ADI10HERO</a></p>
+</li>
+<li>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/adi10hero">Aditya S.</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="title-conventional-commits-plugin-for-jenkins"><a class="anchor" href="#title-conventional-commits-plugin-for-jenkins"></a>Title: Conventional Commits Plugin for Jenkins</h4>
+<div class="paragraph">
+<p>In this talk, we&#8217;ll start with what are conventional commits and why they are needed.
+Then we&#8217;ll see what the jenkins plugin, "Conventional Commits" is and what goal it is trying to achieve.
+A demo of how the plugin can be used/integrated in the current workflow will be shown.
+Finally, we&#8217;ll talk about the next steps in plugin development followed by the QnA.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="harshit-chopra-git-credentials-binding-for-sh-bat-and-powershell"><a class="anchor" href="#harshit-chopra-git-credentials-binding-for-sh-bat-and-powershell"></a>Harshit Chopra - <a href="/projects/gsoc/2021/projects/git-credentials-binding">Git credentials binding for sh, bat, and powershell</a></h3>
+<div class="paragraph">
+<p>Harshit Chopra is a recent graduate and is currently working on a Jenkins project which brings the authentication support for cli git commands in a pipeline job and freestyle project.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Affiliation: Punjab University &amp; Jenkins Project</p>
+</li>
+<li>
+<p>GitHub: link: <a href="https://github.com/arpoch">arpoch</a></p>
+</li>
+<li>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/harshit-chopra-275269178">Harshit Chopra</a></p>
+</li>
+<li>
+<p><a href="https://latenighttechie.wordpress.com">Website</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="title-git-credentials-binding-for-sh-bat-and-powershell"><a class="anchor" href="#title-git-credentials-binding-for-sh-bat-and-powershell"></a>Title: Git credentials binding for sh, bat, and powershell</h4>
+<div class="paragraph">
+<p>In this talk, he will give an overview of the project and will move on further explaining what problems are being faced, a bit about the workaround that are being used to tackle the problems,
+what makes the authentication support so important, why a feature and not a plugin in itself, accomplishments achieved and work done during the coding phase 1, will talk about the implementation of the feature, demonstration of git authentication support over HTTP protocol.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pulkit-sharma-security-validator-for-jenkins-kubernetes-operator"><a class="anchor" href="#pulkit-sharma-security-validator-for-jenkins-kubernetes-operator"></a>Pulkit Sharma - <a href="/projects/gsoc/2021/projects/jenkins-operator-security">Security Validator for Jenkins Kubernetes Operator</a></h3>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/2021/gsoc-pulkit-sharma.jpg" alt="Pulkit Sharma" height="220"></span></p>
+</div>
+<div class="paragraph">
+<p>Pulkit is a student at Indian Institute of Technology,BHU,Varanasi.
+He is working on a GSoC Project under Jenkins where he aims to add a security validator to the Jenkins Kubernetes Operator.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Affiliation: Indian Institute of Technology, BHU and Jenkins Project.</p>
+</li>
+<li>
+<p>GitHub: <a href="https://github.com/sharmapulkit04">sharmapulkit04</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="title-security-validator-for-jenkins-kubernetes-operator"><a class="anchor" href="#title-security-validator-for-jenkins-kubernetes-operator"></a>Title: Security Validator for Jenkins Kubernetes Operator</h4>
+<div class="paragraph">
+<p>In this talk, we will discuss why we need a security validator for the Jenkins Kubernetes Operator and how we are going to implement it via admission webhooks.
+We will have a look at how we are going to implement the validation webhook, the validation logic being used and what tools we are using to achieve it.
+Pulkit will showcase his progress and will discuss his future plans for phase 2 and beyond as well.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2021/">
+gsoc2021
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/events/">
+events
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kara de la Marck" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/marckk.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/marckk/">
+Kara de la Marck
+</a>
+</p>
+<div class="paragraph">
+<p>Ecosystem Advocate at the Continuous Delivery Foundation (CDF).
+Co-chair of the Continuous Delivery Foundation’s Interoperability SIG and a mentor and org admin for Outreachy and Google Summer of Code.
+Passionate about making technology accessible and building welcoming tech communities.
+Board director of codebar.io.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/MarckK" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/KaraMarck" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/karadelamarck" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2021/07/2021-07-16-gsoc-midterm-presentation.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

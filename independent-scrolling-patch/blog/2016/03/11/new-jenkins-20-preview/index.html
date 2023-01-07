@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins 2.0-alpha-3 Preview Build has been released!
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/03/11/new-jenkins-20-preview/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins 2.0-alpha-3 Preview Build has been released!" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins 2.0-alpha-3 Preview Build has been released!" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins 2.0-alpha-3 Preview Build has been released!" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/03/11/new-jenkins-20-preview/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins 2.0-alpha-3 Preview Build has been released!" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins 2.0-alpha-3 Preview Build has been released!
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/daniel-beck/"><div class="app-avatar"></div> Daniel Beck</a>
+March 11, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+2.0-alpha-3+Preview+Build+has+been+released%21&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F03%2F11%2Fnew-jenkins-20-preview%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>We just published the new Jenkins 2.0-alpha-3 preview build.</p>
+</div>
+<div class="sect1">
+<h2 id="whats-new"><a class="anchor" href="#whats-new"></a>What&#8217;s new?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Jenkins is now secure out of the box</strong>:
+Administrators previously had to set up authentication and authorization
+while Jenkins was accessible to anyone on the same network.  Now, Jenkins is
+protected out of the box, so that it is always safe from unauthorized
+access.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/alpha3/alpha3_unlock.png" alt="Unlock Jenkins" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Plugin selection for setup</strong>:
+We refined the plugin selection on the setup dialog.
+You&#8217;ve always wondered why Jenkins does not install the Git Plugin by default?
+Now it does, along with a number of other plugins popular in the Jenkins community.
+We&#8217;re also including more plugins complementing the
+<a href="/solutions/pipeline">Pipeline plugin</a>:
+The
+<a href="https://wiki.jenkins.io/display/JENKINS/Pipeline+Stage+View+Plugin">Pipeline
+Stage View</a> plugin lets you quickly see what&#8217;s going on in your CD pipeline,
+and the <a href="https://github.com/jenkinsci/github-organization-folder-plugin#github-organization-folder">GitHub
+Organization Folder</a> will automatically scan your GitHub organization for
+repositories with Pipeline definitions (e.g. <code>Jenkinsfile</code>), and set up jobs for those.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/alpha3/alpha3_suggested_plugins.png" alt="Install suggested plugins" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Redesigned job configuration forms</strong>:
+The job configuration form has been redesigned so its structure is visually
+clear when showing complex configuration forms.  Additionally, the tabs on
+the top of the page show where you are, and can be used to quickly navigate
+between the different sections of the configuration form.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/alpha3/alpha3_configuration.png" alt="Job configuration" width="500">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="download-now"><a class="anchor" href="#download-now"></a>Download now!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="/2.0/">Get Jenkins 2.0 alpha 3 now</a>, and tell us what you think:</p>
+</div>
+<div class="paragraph">
+<p>If you use Twitter, you can leave us some feedback
+<a href="https://twitter.com/intent/tweet?text=@jenkinsci%20I%20think%20%23jenkins2%20is%20">on
+Twitter</a>.</p>
+</div>
+<div class="paragraph">
+<p>Our
+<a href="https://groups.google.com/group/jenkinsci-users/topics">jenkinsci-users@</a>
+mailing list is also available for feedback in
+<a href="https://groups.google.com/d/msg/jenkinsci-users/fEWFVUj0UVY/GbG0ChvkIgAJ">this
+thread</a>..</p>
+</div>
+<div class="paragraph">
+<p>And of course, since this is a preview release, if you find any issues please
+report them on our
+<a href="https://wiki.jenkins.io/display/JENKINS/Issue+Tracking">Issue Tracker</a>
+to the <strong>JENKINS</strong> project.</p>
+</div>
+<div class="paragraph">
+<p>We have a list of
+<a href="https://wiki.jenkins.io/display/JENKINS/2.0+Errata">known issues</a> on
+our wiki but if you&#8217;re not sure whether you&#8217;re experiencing a known issue or
+not, don&#8217;t hesitate to ask!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins2/">
+jenkins2
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/daniel-beck/">
+Daniel Beck
+</a>
+</p>
+<div class="paragraph">
+<p>Daniel is a Jenkins core maintainer and member of the <a href="/security/#team">Jenkins security team</a>.
+He was the inaugural Jenkins security officer from 2015 to 2021.
+He sometimes contributes to developer documentation and project infrastructure in his spare time.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/daniel-beck" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-03-11-new-jenkins-20-preview.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

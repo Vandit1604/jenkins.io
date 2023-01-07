@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Managing Nodes
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Managing Nodes" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Managing Nodes" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Managing Nodes" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Managing Nodes" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="active">Managing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-configuration/" class="">Configuring the System</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/casc/" class="">Configuration as Code</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/tools/" class="">Managing Tools</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/plugins/" class="">Managing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/about-jenkins/" class="">About Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-info/" class="">System Information</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/system-properties/" class="">Jenkins Features Controlled with System Properties</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/change-system-timezone/" class="">Change System Time Zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-console/" class="">Script Console</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/groovy-hook-scripts/" class="">Groovy Hook Scripts</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/nodes/" class="active">Managing Nodes</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/script-approval/" class="">In-process Script Approval</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/users/" class="">Manage Users</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/ui-themes/" class="">Themes for user interface</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/user-content/" class="">User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/spawning-processes/" class="">Spawning Processes From Build</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../groovy-hook-scripts">
+⇐ Groovy Hook Scripts
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../script-approval">
+In-process Script Approval ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Managing Nodes
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#components-of-distributed-builds">Components of Distributed Builds</a></li>
+<li><a href="#creating-agents">Creating Agents</a></li>
+<li><a href="#launch-inbound-agent-via-windows-scheduler">Launch inbound agent via Windows Scheduler</a></li>
+<li><a href="#installing-a-jenkins-agent-on-windows">Installing a Jenkins agent on Windows</a></li>
+<li><a href="#creating-a-macos-agent-for-jenkins">Creating a macOS agent for Jenkins</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="components-of-distributed-builds"><a class="anchor" href="#components-of-distributed-builds"></a>Components of Distributed Builds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Builds in a
+<a href="/doc/book/scaling/architecting-for-scale/#distributed-builds-architecture">Distributed Builds Architecture</a>
+use nodes, agents, and executors which are distinct from the Jenkins controller itself.
+Understanding what each of these components are is useful when managing nodes:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Jenkins controller</dt>
+<dd>
+<p>The Jenkins controller is the Jenkins service itself
+and is where Jenkins is installed.
+It is a webserver that also acts as a "brain"
+for deciding how, when and where to run tasks.
+Management tasks (configuration, authorization, and authentication)
+are executed on the controller, which serves HTTP requests.
+Files written when a Pipeline executes are written to the filesystem on the controller
+unless they are off-loaded to an artifact repository such as Nexus or Artifactory.</p>
+</dd>
+<dt class="hdlist1">Nodes</dt>
+<dd>
+<p>Nodes are the "machines" on which build agents run.
+Jenkins monitors each attached node for
+disk space, free temp space, free swap,
+clock time/sync and response time.
+A node is taken offline if any of these values
+go outside the configured threshold.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The Jenkins controller itself runs on a special <em>built-in node</em>.
+It is possible to run agents and executors on this built-in node
+although this can degrade performance, reduce scalability of the Jenkins instance, and create serious security problems
+and is strongly discouraged, especially for production environments.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Agents</dt>
+<dd>
+<p>Agents manage the task execution on behalf of the Jenkins controller
+by using executors.
+An agent is actually a small (170KB single jar) Java client process
+that connects to a Jenkins controller and is assumed to be unreliable.
+An agent can use any operating system that supports Java.
+Tools required for builds and tests are installed on the node where the agent runs;
+they can be installed directly or in a container (Docker or Kubernetes).
+Each agent is effectively a process with its own PID (Process Identifier) on the host machine.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>In practice, nodes and agents are essentially the same but it is good to remember that they are conceptually distinct.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Executors</dt>
+<dd>
+<p>An executor is a slot for execution of tasks;
+effectively, it is a thread in the agent.
+The number of executors on a node defines the number of concurrent tasks
+that can be executed on that node at one time.
+In other words, this determines the number of concurrent Pipeline <code>stages</code>
+that can execute on that node at one time.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The proper number of executors per build node must be determined
+based on the resources available on the node
+and the resources required for the workload.
+When determining how many executors to run on a node,
+consider CPU and memory requirements
+as well as the amount of I/O and network activity:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>One executor per node is the safest configuration.</p>
+</li>
+<li>
+<p>One executor per CPU core may work well
+if the tasks being run are small.</p>
+</li>
+<li>
+<p>Monitor I/O performance, CPU load, memory usage, and I/O throughput carefully
+when running multiple executors on a node.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-agents"><a class="anchor" href="#creating-agents"></a>Creating Agents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins agents are the "workers" that perform operations requested by the Jenkins controller.
+The Jenkins controller administers the agents and can manage the tooling on the agents.
+Jenkins agents may be statically allocated or they can be dynamically allocated through systems like Kubernetes, OpenShift, Amazon EC2, Azure, Google Cloud, IBM Cloud, Oracle Cloud, and other cloud providers.</p>
+</div>
+<div class="paragraph">
+<p>This 30 minute tutorial from Darin Pope creates a Jenkins agent and connects it to a controller.</p>
+</div>
+<div class="videoblock">
+<div class="title">How to create an agent node in Jenkins</div>
+<div class="content">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/99DddJiH7lM?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="launch-inbound-agent-via-windows-scheduler"><a class="anchor" href="#launch-inbound-agent-via-windows-scheduler"></a>Launch inbound agent via Windows Scheduler</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are having trouble getting the inbound agent installed as a Windows service (i.e., you followed <a href="https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+as+a+Windows+service">the instructions on installing the agent as a service here</a> but it didn&#8217;t work), an alternative method of starting the service automatically when Windows starts is to use the Windows Scheduler. </p>
+</div>
+<div class="paragraph">
+<p>We take advantage of the Windows Scheduler&#8217;s ability to run command at system startup</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configure your node to use the "Launch agents by connecting it to the master" launch method</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Click Save</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Note the command required to launch the agent</p>
+<div class="ulist">
+<ul>
+<li>
+<p>On the new agent node&#8217;s Jenkins page, note the agent command line shown. </p>
+<div class="ulist">
+<ul>
+<li>
+<p>It will be like:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">java -jar agent.jar \
+-jnlpUrl http://&lt;JenkinsHostName&gt;:8080/computer/&lt;nodeName&gt;/slave-agent.jnlp \
+-secret &lt;some_long_hex_string&gt;</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Obtain the agent.jar file and copy it to your new Windows agent node</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In the command line noted in the last step, the "agent.jar" is a hyperlink. Click it to download the agent.jar file.</p>
+</li>
+<li>
+<p>Copy the agent.jar file to a permanent location on your agent machine</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Ensure that you have a java version available on your agent machine</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If not, obtain and install a <a href="/doc/administration/requirements/java/">supported version</a> of Java</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Run the command manually from a CMD window on your agent to confirm that it works</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the CMD window</p>
+</li>
+<li>
+<p>Run the command the one like</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">java -jar agent.jar -jnlpUrl \
+http://&lt;JenkinsHostName&gt;:8080/computer/&lt;nodeName&gt;/slave-agent.jnlp -secret &lt;some_long_hex_string&gt;</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go back to the node&#8217;s web page in Jenkins.  If everything works then page should say "Agent is connected"</p>
+</li>
+<li>
+<p>Stop the command (control-c)</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Register a new scheduled job to run the same command</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Open "Task Scheduler" on your windows machine</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Start &#8594; Run: task Scheduler</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create a basic task (Menu: Action &#8594; Create Basic Task)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>First page of the wizard:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name: Jenkins Agent</p>
+</li>
+<li>
+<p>Description (optional)</p>
+</li>
+<li>
+<p>Click Next</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Next page of the wizard</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When do you want the task to start: select "When the computer starts"</p>
+</li>
+<li>
+<p>Click Next</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Next page of the wizard</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What action do you want the task to perform: select "Start a program"</p>
+</li>
+<li>
+<p>Click Next</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Next page of the wizard</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Program/Script: enter "java.exe" (or the full path to your java.exe)</p>
+</li>
+<li>
+<p>Add arguments: enter the rest of the command, like</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">-jar agent.jar -jnlpUrl http://&lt;JenkinsHostName&gt;:8080/computer/&lt;nodeName&gt;/slave-agent.jnlp \
+-secret &lt;some_long_hex_string&gt;</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>eg:</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">-jar D:\Scripts\jenkins\agent.jar \
+-jnlpUrl http://jenkinshost.example.com:8080/computer/buildNode1/slave-agent.jnlp -secret \
+d6a84df1fc4f45ddc9c6ab34b08f13391983ffffffffffb3488b7d5ac77fbc7</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click Next</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Next page of the wizard</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click the check box "Open the Properties dialog for this task when I click Finish</p>
+</li>
+<li>
+<p>Click Finish</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Update the task&#8217;s properties</p>
+<div class="ulist">
+<ul>
+<li>
+<p>On the General tab</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Select the user to run the task as</p>
+</li>
+<li>
+<p>Select "Run whether user is logged on or not"</p>
+<div class="ulist">
+<ul>
+<li>
+<p>On the settings tab</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Uncheck "Stop the task if it runs longer than"</p>
+</li>
+<li>
+<p>Check "Run the task as soon as possible after a scheduled start is missed"</p>
+</li>
+<li>
+<p>Check "If the task failed, restart every: 10 minutes", and "Attempt to restart up to: 3 times"</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Click OK</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start the scheduled task and again check that the agent is connected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Go back to the node&#8217;s web page in Jenkins.  If everything works then page should say "Agent is connected"</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-a-jenkins-agent-on-windows"><a class="anchor" href="#installing-a-jenkins-agent-on-windows"></a>Installing a Jenkins agent on Windows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can install a Jenkins agent on Windows using the command line.
+In this video, Darin reviews setting up and installing the Jenkins agent, including how to create any necessary files.</p>
+</div>
+<div class="videoblock">
+<div class="title">How to install a Jenkins agent on Windows</div>
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/N8AQTlHoBKc?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-macos-agent-for-jenkins"><a class="anchor" href="#creating-a-macos-agent-for-jenkins"></a>Creating a macOS agent for Jenkins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This video reviews the process of creating a macOS agent for Jenkins using Java 11.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/DteE1Zf8CIw?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../groovy-hook-scripts">
+⇐ Groovy Hook Scripts
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Managing Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../script-approval">
+In-process Script Approval ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/managing/nodes.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

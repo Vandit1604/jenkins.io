@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Extension Points defined in Folders Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/extensions/cloudbees-folder/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Extension Points defined in Folders Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Extension Points defined in Folders Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Extension Points defined in Folders Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/developer/extensions/cloudbees-folder/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Extension Points defined in Folders Plugin" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  h4 {
+    font-size: 22px;
+  }
+  div.container .row.body {
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .toc {
+      float: right;
+  }
+  div.sidebar-nav > ul {
+    list-style: none;
+    padding-inline-start: 2em;
+  }
+  ion-icon {
+    color: #bf6900;
+  }
+  .jenkins-developer-chapters {
+    list-style: none;
+    padding-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #dev-docs {
+    margin-bottom: 1em;
+  }
+  #reference-topics {
+    font-weight: normal;
+  }
+  #reference-topics:active {
+    font-weight: bold;
+  }
+  #taglibs {
+    margin-bottom: 2em;
+    font-weight: normal;
+  }
+  #taglibs:active {
+    font-weight: bold;
+  }
+  #how-to-guides {
+    font-weight: normal;
+  }
+  #how-to-guides:active {
+    font-weight: bold;
+  }
+  #plugin-tutorial {
+    font-weight: normal;
+  }
+  #plugin-tutorial:active {
+    font-weight: bold;
+  }
+  #javadoc {
+    font-weight: normal;
+  }
+  #javadoc:active {
+    font-weight: bold;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-8 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-nowrap">
+<div class="col-4" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/" class="">> Developer Documentation Home</a>
+</p>
+<h4 id="dev-docs">
+Developer Documentation
+</h4>
+<h5 id="plugin-tutorial">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial/" class="">Plugin Tutorial</a>
+</h5>
+<h5 id="how-to-guides">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/guides/" class="">How-To Guides</a>
+</h5>
+<h5 id="reference-topics">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/book/" class="">Reference Topics</a>
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/architecture/" class="">Architecture</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/initialization/" class="">Initialization and Startup</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensibility/" class="">Extensibility</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/model/" class="">Model</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/handling-requests/" class="">Handling Requests</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/security/" class="">Security</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/persistence/" class="">Persistent Objects</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/scheduling/" class="">Scheduling</a>
+<span title="Early work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/views/" class="">Views</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/forms/" class="">Forms</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/internationalization/" class="">Internationalization and Localization</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/distributed-builds/" class="">Distributed Builds</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/cli/" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/testing/" class="">Testing</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/telemetry/" class="">Telemetry</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-development/" class="">Plugin Development</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/plugin-governance/" class="">Plugin Governance</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/publishing/" class="">Publishing Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/blueocean-plugin-development/" class="">Blue Ocean</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/building/" class="">Building and Debugging</a>
+<span title="Partial work in progress">
+<ion-icon name="warning" style="opacity: 0.5;"></ion-icon>
+</span>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/" class="">Development Environment</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/crowdin/" class="">Jenkins Crowdin Integration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/tutorial-improve/" class="">Improve a Plugin Tutorial</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<h6 style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/extensions/" class="active">Extensions Index</a>
+</h6>
+<h6 id="javadoc" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/javadoc/" class="">Javadoc</a>
+</h6>
+<h6 id="taglibs" style="padding-left: 2rem;">
+<a href="/jenkins.io/independent-scrolling-patch/doc/developer/development-environment/taglibs/" class="">Taglibs</a>
+</h6>
+<h5>
+Tools
+</h5>
+<ul>
+<li>
+<a href="https://jenkinsci.github.io/maven-hpi-plugin/" rel="noreferrer noopener" target="_blank">
+Maven HPI Plugin
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-8">
+<h1>
+Extension Points defined in Folders Plugin
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#abstractfolderproperty">AbstractFolderProperty</a></li>
+<li><a href="#foldericon">FolderIcon</a></li>
+<li><a href="#itemgroupmodifier">ItemGroupModifier</a></li>
+<li><a href="#orphaneditemstrategy">OrphanedItemStrategy</a></li>
+<li><a href="#relocationhandler">RelocationHandler</a></li>
+<li><a href="#relocationui">RelocationUI</a></li>
+<li><a href="#transientfolderactionfactory">TransientFolderActionFactory</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="abstractfolderproperty"><a class="anchor" href="#abstractfolderproperty"></a>AbstractFolderProperty</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/AbstractFolderProperty.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.AbstractFolderProperty">com.cloudbees.hudson.plugins.folder.AbstractFolderProperty in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p> Property potentially applicable to any <a href="https://javadoc.jenkins.io/byShortName/AbstractFolder" title="Javadoc for AbstractFolder">AbstractFolder</a> .</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/onepassword-secrets">1Password Secrets Plugin</a>: com.<wbr/>onepassword.<wbr/>jenkins.<wbr/>plugins.<wbr/>config.<wbr/><strong>OnePasswordFolderConfig</strong> (<a href="https://github.com/jenkinsci/onepassword-secrets-plugin/search?q=OnePasswordFolderConfig&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/azure-ad">Azure AD Plugin</a>: com.<wbr/>microsoft.<wbr/>jenkins.<wbr/>azuread.<wbr/><strong>AzureAdAuthorizationMatrixFolderProperty</strong> (<a href="https://github.com/jenkinsci/azure-ad-plugin/search?q=AzureAdAuthorizationMatrixFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>NoTriggerOrganizationFolderProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=NoTriggerOrganizationFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>OrganizationChildHealthMetricsProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=OrganizationChildHealthMetricsProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>OrganizationChildOrphanedItemsProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=OrganizationChildOrphanedItemsProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>OrganizationChildTriggersProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=OrganizationChildTriggersProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>OrganizationFolderProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=OrganizationFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>ProjectNameProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=ProjectNameProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/config-file-provider">Config File Provider Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>configfiles.<wbr/>folder.<wbr/><strong>FolderConfigFileProperty</strong> (<a href="https://github.com/jenkinsci/config-file-provider-plugin/search?q=FolderConfigFileProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/conjur-credentials">Conjur Secrets Plugin</a>: org.<wbr/>conjur.<wbr/>jenkins.<wbr/>configuration.<wbr/><strong>FolderConjurConfiguration</strong> (<a href="https://github.com/jenkinsci/conjur-credentials-plugin/search?q=FolderConjurConfiguration&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cortex-metrics">Cortex Metrics Plugin</a>: com.<wbr/>adobe.<wbr/>dx.<wbr/>xeng.<wbr/>cortexmetrics.<wbr/>config.<wbr/><strong>CortexMetricsFolderConfig</strong> (<a href="https://github.com/jenkinsci/cortex-metrics-plugin/search?q=CortexMetricsFolderConfig&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/docker-workflow">Docker Pipeline Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>docker.<wbr/>workflow.<wbr/>declarative.<wbr/><strong>FolderConfig</strong> (<a href="https://github.com/jenkinsci/docker-workflow-plugin/search?q=FolderConfig&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/folder-properties">Folder Properties Plugin</a>: com.<wbr/>mig82.<wbr/>folders.<wbr/>properties.<wbr/><strong>FolderProperties</strong> (<a href="https://github.com/jenkinsci/folder-properties-plugin/search?q=FolderProperties&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>properties.<wbr/><strong>FolderCredentialsProvider.<wbr/>FolderCredentialsProperty</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=FolderCredentialsProvider.FolderCredentialsProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/><strong>FolderProperty</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=FolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/hashicorp-vault-plugin">HashiCorp Vault Plugin</a>: com.<wbr/>datapipe.<wbr/>jenkins.<wbr/>vault.<wbr/>configuration.<wbr/><strong>FolderVaultConfiguration</strong> (<a href="https://github.com/jenkinsci/hashicorp-vault-plugin/search?q=FolderVaultConfiguration&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/hubot-steps">Hubot Pipeline Steps Plugin</a>: org.<wbr/>thoughtslive.<wbr/>jenkins.<wbr/>plugins.<wbr/>hubot.<wbr/>config.<wbr/><strong>HubotFolderProperty</strong> (<a href="https://github.com/jenkinsci/hubot-steps-plugin/search?q=HubotFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/jira">Jira Plugin</a>: hudson.<wbr/>plugins.<wbr/>jira.<wbr/><strong>JiraFolderProperty</strong> (<a href="https://github.com/jenkinsci/jira-plugin/search?q=JiraFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/ownership">Job and Node ownership Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>ownership.<wbr/>model.<wbr/>folders.<wbr/><strong>FolderOwnershipProperty</strong> (<a href="https://github.com/jenkinsci/ownership-plugin/search?q=FolderOwnershipProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/kubernetes">Kubernetes Plugin</a>: org.<wbr/>csanchez.<wbr/>jenkins.<wbr/>plugins.<wbr/>kubernetes.<wbr/><strong>KubernetesFolderProperty</strong> (<a href="https://github.com/jenkinsci/kubernetes-plugin/search?q=KubernetesFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/machine-learning">Machine Learning Plugin</a>: io.<wbr/>jenkins.<wbr/>plugins.<wbr/>ml.<wbr/><strong>ServerFolderProperty</strong> (<a href="https://github.com/jenkinsci/machine-learning-plugin/search?q=ServerFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/matrix-auth">Matrix Authorization Strategy Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>properties.<wbr/><strong>AuthorizationMatrixProperty</strong> (<a href="https://github.com/jenkinsci/matrix-auth-plugin/search?q=AuthorizationMatrixProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multibranch-action-triggers">MultiBranch Action Triggers Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/><strong>PipelineTriggerProperty</strong> (<a href="https://github.com/jenkinsci/multibranch-action-triggers-plugin/search?q=PipelineTriggerProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/pipeline-maven">Pipeline Maven Integration Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>pipeline.<wbr/>maven.<wbr/><strong>MavenConfigFolderOverrideProperty</strong> (<a href="https://github.com/jenkinsci/pipeline-maven-plugin/pipeline-maven/search?q=MavenConfigFolderOverrideProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/blueocean-pipeline-scm-api">Pipeline SCM API for Blue Ocean Plugin</a>: io.<wbr/>jenkins.<wbr/>blueocean.<wbr/>rest.<wbr/>impl.<wbr/>pipeline.<wbr/>credential.<wbr/><strong>BlueOceanCredentialsProvider.<wbr/>FolderPropertyImpl</strong> (<a href="https://github.com/jenkinsci/blueocean-plugin/blueocean-pipeline-scm-api/search?q=BlueOceanCredentialsProvider.FolderPropertyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/pipeline-groovy-lib">Pipeline: Groovy Libraries Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>libs.<wbr/><strong>FolderLibraries</strong> (<a href="https://github.com/jenkinsci/pipeline-groovy-lib-plugin/search?q=FolderLibraries&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/PrioritySorter">Priority Sorter Plugin</a>: jenkins.<wbr/>advancedqueue.<wbr/>jobinclusion.<wbr/>strategy.<wbr/><strong>JobInclusionFolderProperty</strong> (<a href="https://github.com/jenkinsci/priority-sorter-plugin/search?q=JobInclusionFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/requests">requests-plugin Plugin</a>: com.<wbr/>michelin.<wbr/>cio.<wbr/>jenkins.<wbr/>plugin.<wbr/>requests.<wbr/>action.<wbr/><strong>RequestDeleteFolderAction</strong> (<a href="https://github.com/jenkinsci/requests-plugin/search?q=RequestDeleteFolderAction&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/sidebar-link">Sidebar Link Plugin</a>: hudson.<wbr/>plugins.<wbr/>sidebar_link.<wbr/><strong>FolderLinks</strong> (<a href="https://github.com/jenkinsci/sidebar-link-plugin/search?q=FolderLinks&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/skip-cron-rebuild">Skip Cron Rebuild Plugin</a>: ru.<wbr/>omniverse.<wbr/>jenkins.<wbr/>skip_cron_rebuild.<wbr/><strong>SkipCronRebuild</strong> (<a href="https://github.com/jenkinsci/skip-cron-rebuild-plugin/search?q=SkipCronRebuild&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/spring-config">Spring Config Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>springconfig.<wbr/><strong>SpringProfilesFolderProperty</strong> (<a href="https://github.com/jenkinsci/spring-config-plugin/search?q=SpringProfilesFolderProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/testinium">Testinium Plugin</a>: com.<wbr/>testinium.<wbr/>jenkinsplugin.<wbr/>configuration.<wbr/><strong>TestiniumPluginFolderConfiguration</strong> (<a href="https://github.com/jenkinsci/testinium-plugin/search?q=TestiniumPluginFolderConfiguration&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/thycotic-vault">Thycotic DevOps Secrets Vault Plugin</a>: com.<wbr/>thycotic.<wbr/>jenkins.<wbr/>configuration.<wbr/><strong>DevOpsSecretsVaultFolderConfiguration</strong> (<a href="https://github.com/jenkinsci/thycotic-vault-plugin/search?q=DevOpsSecretsVaultFolderConfiguration&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/unique-id">Unique ID Library Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>uniqueid.<wbr/>impl.<wbr/><strong>FolderIdStore.<wbr/>FolderIdProperty</strong> (<a href="https://github.com/jenkinsci/unique-id-plugin/search?q=FolderIdStore.FolderIdProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/vsphere-cloud">vSphere Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>folder.<wbr/><strong>FolderVSphereCloudProperty</strong> (<a href="https://github.com/jenkinsci/vsphere-cloud-plugin/search?q=FolderVSphereCloudProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="foldericon"><a class="anchor" href="#foldericon"></a>FolderIcon</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/FolderIcon.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.FolderIcon">com.cloudbees.hudson.plugins.folder.FolderIcon in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p> Renders <a href="https://javadoc.jenkins.io/byShortName/StatusIcon" title="Javadoc for StatusIcon">StatusIcon</a> for a folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>MetadataActionFolderIcon</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=MetadataActionFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/custom-folder-icon">Custom Folder Icon Plugin</a>: jenkins.<wbr/>plugins.<wbr/>foldericon.<wbr/><strong>BuildStatusFolderIcon</strong> (<a href="https://github.com/jenkinsci/custom-folder-icon-plugin/search?q=BuildStatusFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/custom-folder-icon">Custom Folder Icon Plugin</a>: jenkins.<wbr/>plugins.<wbr/>foldericon.<wbr/><strong>CustomFolderIcon</strong> (<a href="https://github.com/jenkinsci/custom-folder-icon-plugin/search?q=CustomFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/custom-folder-icon">Custom Folder Icon Plugin</a>: jenkins.<wbr/>plugins.<wbr/>foldericon.<wbr/><strong>IoniconFolderIcon</strong> (<a href="https://github.com/jenkinsci/custom-folder-icon-plugin/search?q=IoniconFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>icons.<wbr/><strong>StockFolderIcon</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=StockFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folder Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>orgfolder.<wbr/>github.<wbr/><strong>GitHubOrgIcon</strong> (<a href="https://github.com/jenkinsci/github-organization-folder-plugin/search?q=GitHubOrgIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folder Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>orgfolder.<wbr/>github.<wbr/><strong>GitHubRepoIcon</strong> (<a href="https://github.com/jenkinsci/github-organization-folder-plugin/search?q=GitHubRepoIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>BallColorFolderIcon</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=BallColorFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>SelectJobsBallColorFolderIcon</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=SelectJobsBallColorFolderIcon&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="itemgroupmodifier"><a class="anchor" href="#itemgroupmodifier"></a>ItemGroupModifier</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/relocate/ItemGroupModifier.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.relocate.ItemGroupModifier">com.cloudbees.hudson.plugins.folder.relocate.ItemGroupModifier in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p><em>This extension point has no Javadoc documentation.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>relocate.<wbr/><strong>ItemGroupModifier.<wbr/>StandardModifier</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=ItemGroupModifier.StandardModifier&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="orphaneditemstrategy"><a class="anchor" href="#orphaneditemstrategy"></a>OrphanedItemStrategy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/computed/OrphanedItemStrategy.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.computed.OrphanedItemStrategy">com.cloudbees.hudson.plugins.folder.computed.OrphanedItemStrategy in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p> A strategy for removing children after they are no longer indexed by an owning <a href="https://javadoc.jenkins.io/byShortName/ComputedFolder" title="Javadoc for ComputedFolder">ComputedFolder</a> .</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>OrganizationChildOrphanedItemsProperty.<wbr/>Inherit</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=OrganizationChildOrphanedItemsProperty.Inherit&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>computed.<wbr/><strong>DefaultOrphanedItemStrategy</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=DefaultOrphanedItemStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="relocationhandler"><a class="anchor" href="#relocationhandler"></a>RelocationHandler</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/relocate/RelocationHandler.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.relocate.RelocationHandler">com.cloudbees.hudson.plugins.folder.relocate.RelocationHandler in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p> Provides some kind of specialized handling for a move.  Handlers are chained in extension registration order, so that some can decorate other handlers.  It is also possible for a handler to send a placeholder response and schedule a move for later (keeping the rest of the handlers ready).</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>relocate.<wbr/><strong>StandardHandler</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=StandardHandler&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="relocationui"><a class="anchor" href="#relocationui"></a>RelocationUI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/relocate/RelocationUI.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.relocate.RelocationUI">com.cloudbees.hudson.plugins.folder.relocate.RelocationUI in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p> Extension point to provide a pluggable UI for moving <a href="https://javadoc.jenkins.io/byShortName/Item" title="Javadoc for Item">Item</a> instances.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-folder">Folders Plugin</a>: com.<wbr/>cloudbees.<wbr/>hudson.<wbr/>plugins.<wbr/>folder.<wbr/>relocate.<wbr/><strong>DefaultRelocationUI</strong> (<a href="https://github.com/jenkinsci/cloudbees-folder-plugin/search?q=DefaultRelocationUI&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="transientfolderactionfactory"><a class="anchor" href="#transientfolderactionfactory"></a>TransientFolderActionFactory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="https://javadoc.jenkins.io/plugin/cloudbees-folder/com/cloudbees/hudson/plugins/folder/TransientFolderActionFactory.html" title="Javadoc for com.cloudbees.hudson.plugins.folder.TransientFolderActionFactory">com.cloudbees.hudson.plugins.folder.TransientFolderActionFactory in cloudbees-folder</a></code></p>
+</div>
+<div class="paragraph">
+<p> Extension point for inserting transient <a href="https://javadoc.jenkins.io/byShortName/Action" title="Javadoc for Action">Action</a> s into <a href="https://javadoc.jenkins.io/byShortName/Folder" title="Javadoc for Folder">Folder</a> s.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/convert-to-pipeline">Convert To Pipeline Plugin</a>: com.<wbr/>infostretch.<wbr/>labs.<wbr/>actions.<wbr/><strong>ConvertFolderAction.<wbr/>ActionFolderInjector</strong> (<a href="https://github.com/jenkinsci/convert-to-pipeline-plugin/search?q=ConvertFolderAction.ActionFolderInjector&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/sidebar-link">Sidebar Link Plugin</a>: hudson.<wbr/>plugins.<wbr/>sidebar_link.<wbr/><strong>FolderLinks.<wbr/>TransientFolderActionFactoryImpl</strong> (<a href="https://github.com/jenkinsci/sidebar-link-plugin/search?q=FolderLinks.TransientFolderActionFactoryImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

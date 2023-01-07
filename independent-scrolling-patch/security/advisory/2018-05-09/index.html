@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2018-05-09
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2018-05-09/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2018-05-09" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2018-05-09" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2018-05-09" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2018-05-09/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2018-05-09" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2018-05-09
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+Jenkins (core)
+</li>
+<li>
+Black Duck Hub
+Plugin
+</li>
+<li>
+Black Duck Hub
+Plugin
+</li>
+<li>
+gitlab-hook
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/groovy-postbuild">
+Groovy Postbuild
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-771">
+CLI and UI allow non-admin users to enumerate installed plugins
+</h3>
+<strong>
+SECURITY-771
+/
+CVE-2018-1000192
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+medium
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Users with Overall/Read permission were able use the <code>list-plugins</code> CLI command and view the <em>About Jenkins</em> page to list all installed plugins.</p>
+</div>
+<div class="paragraph">
+<p>Use of the <code>list-plugins</code> CLI command and access to the <em>About Jenkins</em> page now require Overall/Administer permission.</p>
+</div>
+<h3 id="SECURITY-786">
+Users were able to register user names containing control characters
+</h3>
+<strong>
+SECURITY-786
+/
+CVE-2018-1000193
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:L/A:L">
+low
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The built-in Jenkins user database optionally allows user registration.
+This feature did not properly sanitize user names, allowing registration of user names containing control characters.</p>
+</div>
+<div class="paragraph">
+<p>This could be used to confuse administrators (appearing to be a different user) while preventing deletion of such users through the UI.</p>
+</div>
+<div class="paragraph">
+<p>User registration in the built-in Jenkins user database now limits user names to those containing alphanumeric, dash, and underscore characters.
+Administrators can customize this restriction by setting the <code>hudson.security.HudsonPrivateSecurityRealm.ID_REGEX</code> system property to a regular expression that will be used instead to determine whether a given user name is valid.</p>
+</div>
+<h3 id="SECURITY-788">
+Path traversal vulnerability in agent to controller security subsystem
+</h3>
+<strong>
+SECURITY-788
+/
+CVE-2018-1000194
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H">
+high
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The agent to controller security subsystem ensures that the Jenkins controller is protected from maliciously configured agents.
+<a href="/doc/book/security/controller-isolation/#agent-controller-access-control">Learn more.</a></p>
+</div>
+<div class="paragraph">
+<p>A path traversal vulnerability allowed agents to escape whitelisted directories to read and write to files they should not be able to access.</p>
+</div>
+<div class="paragraph">
+<p>Paths are now normalized before performing the access check to ensure they don&#8217;t escape allowed directories.</p>
+</div>
+<h3 id="SECURITY-794">
+Users with Overall/Read permission were able to send GET requests to any URL
+</h3>
+<strong>
+SECURITY-794
+/
+CVE-2018-1000195
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:N/A:N">
+low
+</a>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>The form validation code for a tool installer improperly checked permissions, allowing any user with Overall/Read permission to submit a HTTP GET request to any user specified URL, and learn whether the response was successful (HTTP 200) or not.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this functionality did not require POST requests be used, thereby allowing the above to be performed without direct access to Jenkins via Cross-Site Request Forgery attacks.</p>
+</div>
+<div class="paragraph">
+<p>The affected form validation code now properly checks permissions, and requires that POST requests be sent to prevent CSRF attacks.</p>
+</div>
+<h3 id="SECURITY-263">
+Gitlab Hook Plugin stores and displays GitLab API token in plain text
+</h3>
+<strong>
+SECURITY-263
+/
+CVE-2018-1000196
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/gitlab-hook">
+<code>gitlab-hook</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Gitlab Hook Plugin does not encrypt the Gitlab API token used to access Gitlab.
+This can be used by users with Jenkins controller file system access to obtain GitHub credentials.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the Gitlab API token round-trips in its plaintext form, and is displayed in a regular text field to users with Overall/Administer permission.
+This exposes the API token to people viewing a Jenkins administrator&#8217;s screen, browser extensions, cross-site scripting vulnerabilities, etc.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-670">
+Black Duck Hub Plugin allowed any user with Overall/Read to read and write its configuration
+</h3>
+<strong>
+SECURITY-670
+/
+CVE-2018-1000197
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/blackduck-hub">
+<code>blackduck-hub</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Black Duck Hub Plugin did not perform permission checks for its <code>/descriptorByName/com.blackducksoftware.integration.hub.jenkins.PostBuildHubScan/config.xml</code> API endpoint.</p>
+</div>
+<div class="paragraph">
+<p>This allowed any user with Overall/Read permission to both read and write the plugin configuration XML.</p>
+</div>
+<div class="paragraph">
+<p>Black Duck Hub Plugin 3.1.0 and newer requires Overall/Administer permission to access this API.</p>
+</div>
+<h3 id="SECURITY-671">
+XML External Entity processing vulnerability in Black Duck Hub Plugin
+</h3>
+<strong>
+SECURITY-671
+/
+CVE-2018-1000198
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/blackduck-hub">
+<code>blackduck-hub</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Black Duck Hub Plugin&#8217;s <code>/descriptorByName/com.blackducksoftware.integration.hub.jenkins.PostBuildHubScan/config.xml</code> API endpoint was affected by an XML External Entity (XXE) processing vulnerability.
+This allowed an attacker with Overall/Read access to have Jenkins parse a maliciously crafted file that uses external entities for extraction of secrets from the Jenkins controller, server-side request forgery, or denial-of-service attacks.</p>
+</div>
+<div class="paragraph">
+<p>Black Duck Hub Plugin 4.0.0 and newer no longer processes XML External Entities in XML documents submitted to this endpoint.</p>
+</div>
+<h3 id="SECURITY-821">
+Persisted cross-site scripting vulnerability in Groovy Postbuild Plugin
+</h3>
+<strong>
+SECURITY-821
+/
+CVE-2018-1000202
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/groovy-postbuild">
+<code>groovy-postbuild</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Groovy Postbuild Plugin did not properly escape badge content from user input, resulting in a stored cross-site scripting vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Groovy Postbuild Plugin 2.4 now properly escapes badge content from user input.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-263:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+</li>
+<li>
+SECURITY-670:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L">
+medium
+</a>
+</li>
+<li>
+SECURITY-671:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+high
+</a>
+</li>
+<li>
+SECURITY-771:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-786:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:L/A:L">
+low
+</a>
+</li>
+<li>
+SECURITY-788:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H">
+high
+</a>
+</li>
+<li>
+SECURITY-794:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:N/A:N">
+low
+</a>
+</li>
+<li>
+SECURITY-821:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+Jenkins weekly up to and including
+2.120
+</li>
+<li>
+Jenkins LTS up to and including
+2.107.2
+</li>
+<li>
+<strong>
+Black Duck Hub
+Plugin
+</strong>
+up to and including
+3.0.3
+</li>
+<li>
+<strong>
+Black Duck Hub
+Plugin
+</strong>
+up to and including
+3.1.0
+</li>
+<li>
+<strong>
+gitlab-hook
+Plugin
+</strong>
+up to and including
+1.4.2
+</li>
+<li>
+<strong>
+Groovy Postbuild
+Plugin
+</strong>
+up to and including
+2.3.1
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+Jenkins weekly should be updated to version
+2.121
+</li>
+<li>
+Jenkins LTS should be updated to version
+2.107.3
+</li>
+<li>
+<strong>
+Black Duck Hub
+Plugin
+</strong>
+should be updated to version
+3.1.0
+</li>
+<li>
+<strong>
+Black Duck Hub
+Plugin
+</strong>
+should be updated to version
+4.0.0
+</li>
+<li>
+<strong>
+Groovy Postbuild
+Plugin
+</strong>
+should be updated to version
+2.4
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+gitlab-hook
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-670
+</li>
+<li>
+<strong>
+Devin Nusbaum, CloudBees, Inc.
+</strong>
+for
+SECURITY-771
+</li>
+<li>
+<strong>
+James Nord, CloudBees, Inc.
+</strong>
+for
+SECURITY-671
+</li>
+<li>
+<strong>
+Jesse Glick, CloudBees, Inc. and Kalle Niemitalo, Procomp Solutions Oy
+</strong>
+for
+SECURITY-788
+</li>
+<li>
+<strong>
+Steve Marlowe &lt;smarlowe@cisco.com&gt; of Cisco ASIG
+</strong>
+for
+SECURITY-263
+</li>
+<li>
+<strong>
+Sureshbabu Narvaneni
+</strong>
+for
+SECURITY-786
+</li>
+<li>
+<strong>
+Thomas de Grenier de Latour
+</strong>
+for
+SECURITY-794
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2018-05-09.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Reverse proxy - Apache
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-apache/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Reverse proxy - Apache" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Reverse proxy - Apache" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Reverse proxy - Apache" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-apache/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Reverse proxy - Apache" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="active">System Administration</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/backing-up/index.html" class="">Backing-up/Restoring Jenkins</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/monitoring/index.html" class="">Monitoring Jenkins</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/administering-jenkins-on-kubernetes/index.html" class="">Administering Jenkins on Kubernetes</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/with-chef/index.html" class="">Managing Jenkins with Chef</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/with-puppet/index.html" class="">Managing Jenkins with Puppet</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/viewing-logs/index.html" class="">Viewing logs</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/authenticating-scripted-clients/index.html" class="">Authenticating scripted clients</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/index.html" class="">Reverse proxy configuration</a>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-apache/" class="active">Reverse proxy - Apache</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-nginx/" class="">Reverse proxy - Nginx</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-haproxy/" class="">Reverse proxy - HAProxy</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-squid/" class="">Reverse proxy - Squid</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-iis/" class="">Reverse proxy - IIS</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-iptables/" class="">Reverse proxy - iptables</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/reverse-proxy-configuration-troubleshooting/index.html" class="">Reverse proxy - Issues</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/systemd-services/index.html" class="">Managing systemd services</a>
+<ul style="padding-left: 1rem;">
+</ul>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<style>
+  .row.body {
+    padding-top: 3rem;
+  }
+</style>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+</div>
+<div class="row" style="padding-left: 5rem">
+<a class="index" href="/jenkins.io/independent-scrolling-patch/doc/book/">
+Index
+</a>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+Reverse proxy - Apache
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#mod_proxy">mod_proxy</a>
+<ul class="sectlevel2">
+<li><a href="#mod_proxy-with-https">mod_proxy with HTTPS</a></li>
+</ul>
+</li>
+<li><a href="#mod_rewrite">mod_rewrite</a></li>
+<li><a href="#proxying-cli-commands-with-the-https-transport">Proxying CLI commands with the HTTP(S) transport</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In situations where you have existing web sites on your server,
+you may find it useful to run Jenkins (or the servlet container
+that Jenkins runs in) behind Apache, so that you can bind Jenkins
+to the part of a bigger website that you may have.
+This section discusses some of the approaches for doing this.</p>
+</div>
+<div class="paragraph">
+<p><strong>Make sure that you change the Jenkins httpListenAddress from its
+default of 0.0.0.0 to 127.0.0.1 or any Apache-level restrictions can be
+easily bypassed by accessing the Jenkins port directly.</strong></p>
+</div>
+<div class="paragraph">
+<p>There are several different alternatives to configure Jenkins with Apache.
+Choose the technique that best meets your needs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#mod_proxy">mod_proxy</a></p>
+</li>
+<li>
+<p><a href="#mod_proxy-with-https">mod_proxy with HTTPS</a></p>
+</li>
+<li>
+<p><a href="#mod_rewrite">mod_rewrite</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mod_proxy"><a class="anchor" href="#mod_proxy"></a>mod_proxy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://httpd.apache.org/docs/2.0/mod/mod_proxy.html">mod_proxy</a> works by
+making Apache perform "reverse proxy" — when a request arrives for
+certain URLs, Apache becomes a proxy and forwards that request to
+Jenkins, then forwards the response from Jenkins back to the client.</p>
+</div>
+<div class="paragraph">
+<p>The following Apache modules must be installed :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>a2enmod proxy
+a2enmod proxy_http
+a2enmod headers</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A typical set up for mod_proxy would look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyPass         /jenkins  http://localhost:8081/jenkins nocanon
+ProxyPassReverse  /jenkins  http://localhost:8081/jenkins
+ProxyRequests     Off
+AllowEncodedSlashes NoDecode
+
+# Local reverse proxy authorization override
+# Most unix distribution deny proxy by default
+# See /etc/apache2/mods-enabled/proxy.conf in Ubuntu
+&lt;Proxy http://localhost:8081/jenkins*&gt;
+  Order deny,allow
+  Allow from all
+&lt;/Proxy&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This assumes that you run Jenkins on port 8081.</p>
+</div>
+<div class="paragraph">
+<p>For this set up to work, the context path of Jenkins <strong>must be the same</strong>
+between your Apache and Jenkins (that is, you can&#8217;t run Jenkins on
+<a href="http://localhost:8081/ci" class="bare">http://localhost:8081/ci</a> and have it exposed at
+<a href="http://localhost:80/jenkins" class="bare">http://localhost:80/jenkins</a>).<br>
+Set the context path in Windows by modifying the <code>jenkins.xml</code>
+configuration file and adding --prefix=/jenkins (or similar) to the
+&lt;arguments&gt; entry.<br>
+Set the context path when using the Linux package
+by running <code>systemctl edit jenkins</code> and adding the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>[Service]
+Environment="JENKINS_PREFIX=/jenkins"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When running on a dedicated server and you are using / as context, make
+sure you add a slash at the end of all URLs in proxy params in apache.
+Otherwise you might run into proxy errors. So</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyPass / http://localhost:8080/ nocanon</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>instead of</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyPass / http://localhost:8080 nocanon     # wont work</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that this does <strong>not</strong> apply to the <code>ProxyPassMatch</code> directive,
+which behaves differently than <code>ProxyPass</code>.
+Below is an example of <code>ProxyPassMatch</code> to proxy all URLs other than
+<code>/.well-known</code> (a URL required by letsencrypt):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyPassMatch  ^/(?\!.well-known)  http://localhost:8080 nocanon</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>ProxyRequests Off</em> prevents Apache from functioning as a forward
+proxy server (except for <em>ProxyPass</em>), it is advised to include it
+unless the server should function as a proxy.</p>
+</div>
+<div class="paragraph">
+<p>Both the <code>nocanon</code> option to <code>ProxyPass</code>, <em>and</em>
+<code>AllowEncodedSlashes NoDecode</code>, are required for certain Jenkins
+features to work.</p>
+</div>
+<div class="paragraph">
+<p>If you are running Apache on a Security-Enhanced Linux (SE-Linux)
+machine it is essential to make SE-Linux do the right thing by issuing
+as root</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>setsebool -P httpd_can_network_connect true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is not issued Apache will not be allowed to forward proxy
+requests to Jenkins and only an error message will be displayed.</p>
+</div>
+<div class="paragraph">
+<p>Because Jenkins already compress its output, you can not use the normal
+proxy-html filter to modify urls:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>SetOutputFilter proxy-html</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead you can use the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>SetOutputFilter INFLATE;proxy-html;DEFLATE
+ProxyHTMLURLMap http://your_server:8080/jenkins /jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But since Jenkins seems to be well behaved it&#8217;s even better to just not
+use SetOutputFilter and ProxyHTMLURLMap.</p>
+</div>
+<div class="paragraph">
+<p>If there are problems with Jenkins sometimes servicing random garbage
+pages, then the following may help:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>SetEnv proxy-nokeepalive 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some plug-ins determine URLs from client requests from Host header, so
+if you experience some problems with wrong URLs, you can try to switch
+on <code>ProxyPreserveHost</code> directive, which is switched off by default:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyPreserveHost On</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mod_proxy-with-https"><a class="anchor" href="#mod_proxy-with-https"></a>mod_proxy with HTTPS</h3>
+<div class="paragraph">
+<p>You can add an additional <code>ProxyPassReverse</code> directive
+to redirect non-SSL URLs generated by Jenkins to the SSL side.
+Assuming that your webserver is <code>your.host.com</code>, placing the following within
+the SSL virtual host definition will do the trick:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyRequests     Off
+ProxyPreserveHost On
+AllowEncodedSlashes NoDecode
+
+&lt;Proxy http://localhost:8081/jenkins*&gt;
+  Order deny,allow
+  Allow from all
+&lt;/Proxy&gt;
+
+ProxyPass         /jenkins  http://localhost:8081/jenkins nocanon
+ProxyPassReverse  /jenkins  http://localhost:8081/jenkins
+ProxyPassReverse  /jenkins  http://your.host.com/jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Yet another option is to rewrite the Location headers that contain
+non-ssl URL&#8217;s generated by Jenkins.
+If you want to access Jenkins from https://www.example.com/jenkins,
+placing the following within the SSL virtual host definition also works:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>ProxyRequests     Off
+ProxyPreserveHost On
+ProxyPass /jenkins/ http://localhost:8081/jenkins/ nocanon
+AllowEncodedSlashes NoDecode
+
+&lt;Location /jenkins/&gt;
+  ProxyPassReverse /
+  Order deny,allow
+  Allow from all
+&lt;/Location&gt;
+
+Header edit Location ^http://www.example.com/jenkins/ https://www.example.com/jenkins/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But it may also work fine to just use simple forwarding as above (the
+first HTTPS snippet), and add</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>RequestHeader set X-Forwarded-Proto "https"
+RequestHeader set X-Forwarded-Port "443"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in the HTTPS site configuration, as the Docker demo (below) does.
+(<code>X-Forwarded-Port</code> is not interpreted by Jenkins prior to
+<a href="https://issues.jenkins.io/browse/JENKINS-23294">JENKINS-23294</a> so it
+may also be desirable to configure the servlet container to specify the
+originating port.)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>NameVirtualHost *:80
+NameVirtualHost *:443
+
+&lt;VirtualHost *:80&gt;
+    ServerAdmin  webmaster@localhost
+    Redirect permanent / https://www.example.com/
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/cert.pem
+    ServerAdmin  webmaster@localhost
+    ProxyRequests     Off
+    ProxyPreserveHost On
+    AllowEncodedSlashes NoDecode
+    &lt;Proxy *&gt;
+        Order deny,allow
+        Allow from all
+    &lt;/Proxy&gt;
+    ProxyPass         /  http://localhost:8080/ nocanon
+    ProxyPassReverse  /  http://localhost:8080/
+    ProxyPassReverse  /  http://www.example.com/
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port "443"
+&lt;/VirtualHost&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mod_rewrite"><a class="anchor" href="#mod_rewrite"></a>mod_rewrite</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Apache mod_rewrite module can be used to configure an Apache reverse proxy for Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>The following Apache modules must be installed :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>a2enmod rewrite
+a2enmod proxy
+a2enmod proxy_http</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A typical mod_rewrite configuration would look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code># Use last flag because no more rewrite can be applied after proxy pass
+# NE makes sure slashes are not re-encoded.
+# Apache does not re-encode spaces though, we ask Apache to encode it again with the B flag
+# BNP tells apache to use %20 instead of + to re-encode the space
+RewriteRule       ^/jenkins(.*)$  http://localhost:8081/jenkins$1 [P,L,NE,B=\,BNP]
+ProxyPassReverse  /jenkins        http://localhost:8081/jenkins
+ProxyRequests     Off
+
+AllowEncodedSlashes NoDecode
+
+# Local reverse proxy authorization override
+# Most unix distribution deny proxy by default
+# See /etc/apache2/mods-enabled/proxy.conf in Ubuntu
+&lt;Proxy http://localhost:8081/jenkins*&gt;
+  Order deny,allow
+  Allow from all
+&lt;/Proxy&gt;
+
+# If using HTTPS, add the following directives
+# RequestHeader set X-Forwarded-Proto "https"
+# RequestHeader set X-Forwarded-Port "443"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This assumes that you run Jenkins on port 8081.
+For this set up to work, the context path of Jenkins must be the same
+between your Apache and Jenkins (that is, you can&#8217;t run Jenkins on
+<a href="http://localhost:8081/ci" class="bare">http://localhost:8081/ci</a> and have it exposed at <a href="http://localhost:80/jenkins" class="bare">http://localhost:80/jenkins</a>)</p>
+</div>
+<div class="paragraph">
+<p>The <em>ProxyRequests Off</em> prevents Apache from functioning as a forward
+proxy server (except for <em>ProxyPass</em>), it is advised to include it
+unless the server should function as a proxy.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proxying-cli-commands-with-the-https-transport"><a class="anchor" href="#proxying-cli-commands-with-the-https-transport"></a>Proxying CLI commands with the HTTP(S) transport</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the plain CLI protocol with the HTTP(S) transport to access
+Jenkins through an Apache reverse proxy does not work.
+See <a href="https://issues.jenkins.io/browse/JENKINS-47279">JENKINS-47279 - Full-duplex HTTP(S) transport with plain CLI protocol does not work with Apache reverse proxy</a>
+for more details.
+As a workaround, you can use the <a href="/doc/book/managing/cli/#ssh">CLI over SSH</a>.</p>
+</div>
+<div class="paragraph">
+<p>If using Apache check that <em>nocanon</em> is set on <em>ProxyPass</em> and
+that <em>AllowEncodedSlashes</em> is set.</p>
+</div>
+<div class="paragraph">
+<p><em>AllowEncodedSlashes</em> is not inherited in Apache configs, so this
+directive must be placed inside the <em>VirtualHost</em> definition.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+</div>
+<div class="row" style="padding-left: 5rem">
+<a class="index" href="/jenkins.io/independent-scrolling-patch/doc/book/">
+Index
+</a>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/system-administration/reverse-proxy-configuration-with-jenkins/reverse-proxy-configuration-apache.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

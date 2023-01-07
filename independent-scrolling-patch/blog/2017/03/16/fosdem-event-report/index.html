@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+FOSDEM 2017 Wrap-up
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/03/16/fosdem-event-report/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="FOSDEM 2017 Wrap-up" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="FOSDEM 2017 Wrap-up" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="FOSDEM 2017 Wrap-up" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/03/16/fosdem-event-report/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="FOSDEM 2017 Wrap-up" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+FOSDEM 2017 Wrap-up
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+March 16, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=FOSDEM+2017+Wrap-up&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F03%2F16%2Ffosdem-event-report%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>In early February numerous free and open source developers from around the
+world traveled to Brussels, Belgium, for arguably the largest event of its
+kind:
+<a href="https://fosdem.org">FOSDEM</a>. Among the thousands of hackers in attendance
+were a dozen or so Jenkins contributors. We have attended the event in the
+past, but this year we had a blizzard of activity spanning four days around the FOSDEM
+weekend.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<a class="image" href="https://www.flickr.com/photos/12508267@N00/32449169840/in/album-72157680098353926/"><img src="https://c1.staticflickr.com/3/2328/32449169840_f8fec9c11a_z.jpg" alt="Brussels City Hall"></a>
+</div>
+<div class="title">Figure 1. City Hall, photo by Kohsuke Kawaguchi</div>
+</div>
+<div class="paragraph">
+<p>One of our "accidental traditions" has become a
+<a href="https://www.meetup.com/jenkinsmeetup/events/236370435/">happy hour</a>
+the Friday night before FOSDEM truly begins at Cafe Le Roy d&#8217;Espagne on Grand
+Place right in the middle of Brussels. Conveniently located a few hundred meters away from the
+<a href="https://fosdem.org/2017/beerevent/">FOSDEM Beer Event</a>
+at Delirium Cafe, each year we are inevitably joined by friends from other open
+source projects who know they&#8217;re welcome to join us for a few drinks.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<a class="image" href="https://www.flickr.com/photos/12508267@N00/31987111834/in/album-72157680098353926/"><img src="https://c1.staticflickr.com/1/497/31987111834_39773bc5ab_z.jpg" alt="Happy hour at Cafe Le Roy"></a>
+</div>
+<div class="title">Figure 2. Cafe Le Roy, photo by Kohsuke Kawaguchi</div>
+</div>
+<div class="paragraph">
+<p>After dinner and drinks, a few of us decided it would be a good idea (it
+wasn&#8217;t) to walk over to check out the FOSDEM Beer Event and <em>maybe</em> have just
+one more beer. For the uninitiated, Belgian beers tend to be strong, as the FOSDEM organizers warn:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Unlike some other beers, Belgian beer is not just coloured water. Some beers
+contain significant quantities of alcohol and will give you a pounding
+hangover.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Unfortunately, some of us seem to re-learn this lesson each year at FOSDEM!</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Bright and early the following day, FOSDEM really kicked off with keynotes and
+the project tables lining a number of corridors.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<a class="image" href="https://www.flickr.com/photos/12508267@N00/32706234821/in/album-72157680098353926/"><img src="https://c1.staticflickr.com/3/2035/32706234821_2997a98b52_z.jpg" alt="Busy FOSDEM hall"></a>
+</div>
+<div class="title">Figure 3. A busy hall at FOSDEM, photo by Kohsuke Kawaguchi</div>
+</div>
+<div class="paragraph">
+<p>At the Jenkins project&#8217;s table we typically spend two full days answering questions,
+showing off the latest and greatest Jenkins features, and of course handing out
+Jenkins stickers. The table is where many contributors, myself included, have
+a rare opportunity to talk with dozens of enthusiastic Jenkins users from
+across the broader open source community. This year we were very fortunate to have a
+tremendous number of contributors available at the table to answer hundreds of
+questions throughout the two days of FOSDEM.</p>
+</div>
+<div class="paragraph">
+<p>I would like to thank everybody by name, but the entire weekend was such a blur
+that I&#8217;m not sure I would be able to remember everybody who helped! We couldn&#8217;t have
+had a successful event without their support, so many thanks to all the
+contributors who helped!</p>
+</div>
+<div class="paragraph">
+<p>In addition to the Jenkins project table, we had two contributors present in
+the
+<a href="https://fosdem.org/2017/schedule/track/testing_and_automation/">Testing and Automation</a>
+devroom, which I helped organize in between answering Jenkins questions.</p>
+</div>
+<div class="sect3">
+<h4 id="declarative-pipelines-in-jenkins"><a class="anchor" href="#declarative-pipelines-in-jenkins"></a>Declarative Pipelines in Jenkins</h4>
+<div class="paragraph">
+<p>The first presentation was a stellar introduction to
+<a href="/doc/book/pipeline">Declarative Pipelines</a>
+in Jenkins, by long-time contributor and primary developer of Declarative
+Pipeline support,
+<a href="https://github.com/abayer">Andrew Bayer</a>.</p>
+</div>
+<center>
+    <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/utztUGvZ_EA" frameborder="0" allowfullscreen></iframe>
+</center>
+</div>
+<div class="sect3">
+<h4 id="using-containers-for-building-and-testing"><a class="anchor" href="#using-containers-for-building-and-testing"></a>Using Containers for Building and Testing</h4>
+<div class="paragraph">
+<p>Later in the day,
+<a href="https://github.com/carlossg">Carlos Sanchez</a>,
+another long-time contributor, maintainer of the
+<a href="https://plugins.jenkins.io/kubernetes">Kubernetes plugin</a> and a number of Jenkins- and Maven-related
+Docker containers, provided a great overview of the current state of using
+containers for building and testing in Jenkins.</p>
+</div>
+<center>
+    <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/YjTG9imfbOU" frameborder="0" allowfullscreen></iframe>
+</center>
+<hr>
+<div class="paragraph">
+<p>After a very busy two days at FOSDEM, a few contributors remained in Brussels
+for a day-long
+<a href="https://www.meetup.com/jenkinsmeetup/events/236370750/">Post-FOSDEM Contributor Hackathon</a>
+sponsored by CloudBees, Inc. and
+<a href="https://www.betacowork.com/">Betacowork Brussels</a>. Trying to cram lots of
+hacking into a single day is challenging, so the day was mostly filled with
+discussions, some light prototyping, and a bit of recovery from the hectic
+weekend at FOSDEM. :)</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<a class="image" href="https://www.flickr.com/photos/12508267@N00/32015233063/in/album-72157680098353926/"><img src="https://c1.staticflickr.com/3/2087/32015233063_47128bac1c_z.jpg" alt="Daniel presented at the hackathon"></a>
+</div>
+<div class="title">Figure 4. Daniel Beck presenting on CLI prototyping, photo by Kohsuke Kawaguchi</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="thanks"><a class="anchor" href="#thanks"></a>Thanks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Of course I would like to extend many thanks to all the contributors who
+participated in the various FOSDEM related events, but I would call special
+attention to the logistics and planning work done by contributors Alyssa Tong,
+Damien Duportal, and Olivier Vernin. Thanks to their work coordinating all the
+plans, reservations, and schedules, we had a flawless weekend
+of high-intensity Jenkins discussion, advocacy, and hacking.</p>
+</div>
+<div class="paragraph">
+<p>I hope to see everybody back in Brussels next year for FOSDEM 2018!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/fosdem/">
+fosdem
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/03/2017-03-16-fosdem-event-report.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

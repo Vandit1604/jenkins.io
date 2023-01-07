@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/09/07/jenkinsfile-runner-as-github-actions/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/09/07/jenkinsfile-runner-as-github-actions/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+A near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/yiminggong/"><div class="app-avatar"></div> Yiming Gong</a>
+September 07, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=A+near+Feature-complete+version+of+Jenkinsfile+Runner+Actions+as+GitHub+Actions&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F09%2F07%2Fjenkinsfile-runner-as-github-actions%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="sect1">
+<h2 id="abstract"><a class="anchor" href="#abstract"></a>Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkinsfile Runner Action for GitHub Actions aims at providing customized environments and useful GitHub Actions for the users.
+Therefore, users can execute the Jenkins pipeline in the GitHub Actions runners.
+It enables running Jenkins pipelines in a Function-as-a-Service context.
+Users can customize their environment by setting up base images, configuring the Jenkins Configuration-as-Code plugin,
+extending vanilla images or providing initial hooks for the temporary Jenkins controller.
+Several examples about how to set up secrets, Jenkins plugins and integrate with other GitHub Actions can be seen below.
+This project is based on the <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile runner</a>, which is a command line tool for the Jenkins pipeline execution engine.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="anchor" href="#implementation"></a>Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkinsfile Runner Action for GitHub Actions help users fetch necessary dependencies,
+and wrap the entrypoint for Jenkinsfile Runner in one GitHub Action.
+Users can use them in the workflow definitions just like other GitHub Actions.
+Based on this big idea, I developed five GitHub Actions.</p>
+</div>
+<div class="sect2">
+<h3 id="runtime-type-actions"><a class="anchor" href="#runtime-type-actions"></a>Runtime type actions</h3>
+<div class="paragraph">
+<p>These actions run the pipeline in the GitHub Actions runners host machines directly.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jfr-setup-action</code> - It&#8217;s used to set up the Jenkins environment, including but not limited to Jenkins core, plugin installation manager and Jenkinsfile Runner.</p>
+</li>
+<li>
+<p><code>jfr-plugin-installation-action</code> - Users can use it to install extra plugins. <code>jfr-setup-setup</code> needs to be run before.</p>
+</li>
+<li>
+<p><code>jfr-runtime-action</code> - It runs the Jenkins pipeline in the host machine. <code>jfr-setup-setup</code> needs to be run before.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="container-type-actions"><a class="anchor" href="#container-type-actions"></a>Container type actions</h3>
+<div class="paragraph">
+<p>These actions run the pipeline in the customized container.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jfr-container-action</code> - It runs the Jenkins pipeline in the declared container.
+As the prebuilt container is declared in advance, it can integrate with other GitHub Actions theoretically.
+It&#8217;s based on the idea of <a href="https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container">Running jobs in a container</a>.</p>
+</li>
+<li>
+<p><code>jfr-static-image-action</code> - It runs the Jenkins pipeline in the runtime built container.
+It doesn&#8217;t need to declare the container in advance so users cannot use other GitHub Actions except using <code>actions/checkout</code> to set up the workspace.
+But the users can override the base image by providing the docker image URL.
+For instance, if users want to combine the Jenkins environment with nodejs environment, they can use <code>node:18.3.0</code> as input.
+It&#8217;s based on the idea of <a href="https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action#introduction/">GitHub Docker container action</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="phase-1"><a class="anchor" href="#phase-1"></a>Phase 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When I started to write code based on my previous proposal, I found my implementation is different from the expectation of the maintainer and the mentors.
+What I wanted to do is make Jenkinsfile runner capable of generating necessary configurations for users.
+So they can use these configuration files to complete their Jenkinsfile runner actions.
+However, this method will couple the configuration generation step with Jenkinsfile runner which is a command line tool for Jenkins pipeline execution engine.
+The maintainer and the mentors proposed to make several useful GitHub Actions instead of coupling this unnecessary logic into Jenkinsfile runner.
+Therefore, I changed my project plan based on their advice and worked on developing the GitHub Actions for Jenkinsfile runner.</p>
+</div>
+<div class="paragraph">
+<p>In this stage, I developed <code>jfr-container-action</code> and <code>jfr-static-image-action</code>, which run in the customized containers.
+Its main advantage is that most dependencies are prepared in advance in the container.
+I also made several useful options in Jenkinsfile runner available in our GitHub actions such as the initial hook option.
+To make users get started in our actions quickly, I refactored the documentation several times,
+and created several useful examples.
+It is worth noting that my examples aim at applying Jenkins pipeline in GitHub Actions runner which is a FaaS context.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="phase-2"><a class="anchor" href="#phase-2"></a>Phase 2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the second phase, I found current actions can only be supported by GitHub Actions Linux runner.
+Then I decided to develop the runtime type actions so they can run in all kinds of GitHub Actions runners.
+Its advantages are obvious.
+The runtime type actions are <code>jfr-setup-action</code>, <code>jfr-plugin-installation-action</code> and <code>jfr-runtime-action</code>.
+These actions will download all the dependencies at the runtime compared to container type actions' behavior.
+Its main disadvantage is the possibility of suffering from a download center outage.</p>
+</div>
+<div class="paragraph">
+<p>What&#8217;s more, I kept developing examples for the actions and updated the documentation.
+As the project and documentation grow infinitely, I decided to split my project into several subprojects,
+and host the documentation including the user guide and developer guide on the GitHub Pages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deliverables"><a class="anchor" href="#deliverables"></a>Deliverables</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I write a <a href="https://jenkinsci.github.io/jfr-action-doc">central documentation page</a> above the interface, basic usage, advanced usage, demos and developer guide for these Jenkinsfile-runner GitHub actions.
+If you feel confused about the definitions or examples, you can check the documentation page mentioned above.</p>
+</div>
+<div class="sect2">
+<h3 id="how-to-use-jfr-container-action"><a class="anchor" href="#how-to-use-jfr-container-action"></a>How to use jfr-container-action</h3>
+<div class="paragraph">
+<p>The user needs to declare the image usage of <code>ghcr.io/jenkinsci/jenkinsfile-runner:master</code> at the start of the job.
+Then the user can call this action by using <code>jenkinsci/jfr-container-action@master</code>.
+Because the runner declares the container environment at the start,
+other GitHub Actions can also run with <code>jfr-container-action</code> theoretically.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">jfr-container-action-pipeline</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">container</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">ghcr.io/jenkinsci/jenkinsfile-runner:master</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Jenkins pipeline in the container</span>
+        <span class="na">uses</span><span class="pi">:</span>
+          <span class="s">jenkinsci/jfr-container-action@master</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="s">run</span>
+          <span class="na">jenkinsfile</span><span class="pi">:</span> <span class="s">Jenkinsfile</span>
+          <span class="na">pluginstxt</span><span class="pi">:</span> <span class="s">plugins.txt</span>
+          <span class="na">jcasc</span><span class="pi">:</span> <span class="s">jcasc.yml</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-use-jfr-static-image-action"><a class="anchor" href="#how-to-use-jfr-static-image-action"></a>How to use jfr-static-image-action</h3>
+<div class="paragraph">
+<p><code>jfr-static-image-action</code> can also run the pipeline in the container.
+But the users don&#8217;t need to declare the container by themselves like <code>jfr-container-action</code>.
+Instead, <code>jfr-static-image-action</code> wraps the preparation and invocation of a customized container.
+Therefore, the users cannot use other GitHub Actions except using <code>actions/checkout</code> to set up the workspace.
+The users can call this action by using <code>jenkinsci/jfr-static-image-action@master</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">jfr-static-image-action-pipeline</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Jenkins pipeline in the container</span>
+        <span class="na">uses</span><span class="pi">:</span>
+          <span class="s">jenkinsci/jfr-static-image-action@master</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="s">run</span>
+          <span class="na">jenkinsfile</span><span class="pi">:</span> <span class="s">Jenkinsfile</span>
+          <span class="na">pluginstxt</span><span class="pi">:</span> <span class="s">plugins.txt</span>
+          <span class="na">jcasc</span><span class="pi">:</span> <span class="s">jcasc.yml</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-use-jfr-runtime-action-with-other-supporting-runtime-type-actions"><a class="anchor" href="#how-to-use-jfr-runtime-action-with-other-supporting-runtime-type-actions"></a>How to use jfr-runtime-action with other supporting runtime type actions</h3>
+<div class="paragraph">
+<p><code>jfr-runtime-action</code> will run the pipeline in the host machine directly.
+The users need to use <code>jfr-setup-action</code> in advance.
+If the users want to install extra plugins, they can use <code>jfr-plugin-installation-action</code>.
+The advantage of <code>jfr-runtime-action</code> is that it can run in all kinds of runners provided by GitHub Actions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">jfr-runtime-action-pipeline</span><span class="pi">:</span>
+    <span class="na">strategy</span><span class="pi">:</span>
+      <span class="na">matrix</span><span class="pi">:</span>
+        <span class="na">os</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">ubuntu-latest</span><span class="pi">,</span> <span class="nv">macOS-latest</span><span class="pi">,</span> <span class="nv">windows-latest</span> <span class="pi">]</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">${{matrix.os}}</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">jfr-runtime-action-pipeline</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name </span><span class="pi">:</span> <span class="s">Setup Jenkins</span>
+        <span class="na">uses</span><span class="pi">:</span>
+          <span class="s">jenkinsci/jfr-runtime-action@master</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Jenkins plugins download</span>
+        <span class="na">uses</span><span class="pi">:</span>
+          <span class="s">jenkinsci/jfr-plugin-installation-action@master</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">pluginstxt</span><span class="pi">:</span> <span class="s">plugins.txt</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run Jenkins pipeline</span>
+        <span class="na">uses</span><span class="pi">:</span>
+          <span class="s">jenkinsci/jfr-runtime-action@master</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="s">run</span>
+          <span class="na">jenkinsfile</span><span class="pi">:</span> <span class="s">Jenkinsfile</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reflection"><a class="anchor" href="#reflection"></a>Reflection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The most valuable lesson I learned in GSoC is not about how to write code.
+It&#8217;s about the method of communicating with other people in the Jenkins community.
+When I was new in the Jenkins community, I kept making assumptions when I communicate with my mentors and project maintainers.
+Therefore, it&#8217;s easy for them to misunderstand my idea.
+The best way of communication in Jenkins open source community is over-explanation.
+Sometimes, people who lack background information cannot understand your ideas about a specific topic.
+Therefore, providing some extra explanations or descriptions is necessary.</p>
+</div>
+<div class="paragraph">
+<p>The second lesson I learned is still about communication.
+When you feel confused about the words under a specific context, it&#8217;s better to ask the contributors or your mentors directly instead of spending plenty of time by yourself.
+The people in Jenkins open source community are always willing to give you the answers.
+Furthermore, if you have obstacles or milestones when developing the tools or plugins, it&#8217;s still necessary to ask the community developers first instead of making the decisions arbitrarily.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-links"><a class="anchor" href="#project-links"></a>Project links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jenkinsci.github.io/jfr-action-doc">Central documentation page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jfr-setup-action">jfr-setup-action repository</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jfr-plugin-installation-action">jfr-plugin-installation-action repository</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jfr-runtime-action">jfr-runtime-action repository</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jfr-container-action">jfr-container-action repository</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jfr-static-image-action">jfr-static-image-action repository</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2022/">
+gsoc2022
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsfile-runner/">
+jenkinsfile-runner
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/github-actions/">
+github-actions
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/yiminggong/">
+Yiming Gong
+</a>
+</p>
+<div class="paragraph">
+<p>Yiming is an Electrical and Computer Engineering student at Carnegie Mellon University.
+He developed <a href="https://jenkinsci.github.io/jfr-action-doc">a near Feature-complete version of Jenkinsfile Runner Actions as GitHub Actions</a> during GSoC 2022.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/Cr1t-GYM" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/09/2022-09-07-jenkinsfile-runner-as-github-actions.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

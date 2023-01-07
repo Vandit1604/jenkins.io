@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC 2022 Project Ideas
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2022/project-ideas/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC 2022 Project Ideas" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC 2022 Project Ideas" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC 2022 Project Ideas" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2022/project-ideas/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC 2022 Project Ideas" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/gsoc/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+GSoC 2022 Project Ideas
+</h1>
+<style>
+  .pi_table {
+    width: 100%;
+  }
+  .pi_table_header {
+    text-align: center;
+  }
+  .pi_table_category {
+    width: 100px;
+  }
+  .pi_table_skills {
+    width: 175px;
+  }
+</style>
+<img src="/jenkins.io/independent-scrolling-patch/images/gsoc/jenkins-gsoc-logo_small.png" style="float:right" title="Jenkins GSoC" width="128">
+<p>
+This page aggregates project ideas for Google Summer of Code
+2022.
+See more information about this project and applications
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/">
+on the Jenkins Google Summer of Code page
+</a>.
+</p>
+<p>
+Below you can find project ideas which have been proposed for this year.
+New ideas may be proposed by interested mentors or GSoC contributors (e.g. new features in the core, "write a plugin for MY_TOOL_OR_SERVICE", etc.).
+Project ideas without potential mentors will be considered though applicants may need to work with the community and GSoC org admins to find mentors.
+To add a new project idea, see:
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/proposing-project-ideas/">
+proposing project ideas
+</a>.
+</p>
+<h3>
+Accepted ideas
+</h3>
+<p>
+Below you can see the list of project ideas that fully match the Jenkins' project idea standard.
+The scope of these ideas is well known and we don't normally expect deep changes.
+All ideas have quick start guidelines and newbie-friendly issues referenced.
+We welcome contributors to join the mentor teams, and we invite GSoC contributors to submit project proposal applications in relation to these ideas.
+</p>
+<table class="pi_table grid-all">
+<thead>
+<tr class="pi_table_header">
+<th>Project</th>
+<th>Category</th>
+<th>Skills to study/improve</th>
+</tr>
+</thead>
+<tbody>
+<!-- / TODO: parameterize year -->
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/automatic-git-cache-maintenance/">
+<strong>
+Automatic git cache maintenance on the controller
+</strong>
+</a>
+<br>
+Automate the maintenance of cached git repositories on the Jenkins controller.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+<a class="app-author-link" href="/blog/authors/rishabhbudhouliya/"><div class="app-avatar"><img alt="Rishabh Budhouliya" class="app-avatar__image" src="/images/avatars/rishabhbudhouliya.jpg"></div> Rishabh Budhouliya</a>
+<a class="app-author-link" href="/blog/authors/krisstern/"><div class="app-avatar"><img alt="Kris Stern" class="app-avatar__image" src="/images/avatars/krisstern.png"></div> Kris Stern</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/automatic-spec-generator-for-jenkins-rest-api/">
+<strong>
+Automatic Specification Generator for Jenkins REST API
+</strong>
+</a>
+<br>
+Find and implement the extraction of the REST APIs from the sources and generate and publish the REST APIs respective documentation.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+<a class="app-author-link" href="/blog/authors/abhyudayasharma/"><div class="app-avatar"><img alt="Abhyudaya Sharma" class="app-avatar__image" src="/images/avatars/abhyudayasharma.jpg"></div> Abhyudaya Sharma</a>
+</td>
+<td class="pi_table_category">
+Plugins
+</td>
+<td class="pi_table_skills">
+Java, REST API, OpenAPI / Swagger
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/jenkinsfile-runner-action-for-github-actions/">
+<strong>
+Jenkinsfile Runner Action for GitHub Actions
+</strong>
+</a>
+<br>
+Implement a (near) feature-complete version of Jenkinsfile Runner Action for GitHub Actions.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/krisstern/"><div class="app-avatar"><img alt="Kris Stern" class="app-avatar__image" src="/images/avatars/krisstern.png"></div> Kris Stern</a>
+<a class="app-author-link" href="/blog/authors/imskr/"><div class="app-avatar"><img alt="Shubham Kumar" class="app-avatar__image" src="/images/avatars/imskr.jpg"></div> Shubham Kumar</a>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java, Jenkinsfile Runner, Docker, GitHub Actions
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/pipeline-step-documentation-generator/">
+<strong>
+Pipeline Step Documentation Generator improvements
+</strong>
+</a>
+<br>
+Enhance the Jenkins Pipeline documentation generator to produce better documentation for thousands of Pipeline developers.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/kwhetstone/"><div class="app-avatar"></div> Kristin Whetstone</a>
+<a class="app-author-link" href="/blog/authors/arpoch/"><div class="app-avatar"></div> Harshit Chopra</a>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+<a class="app-author-link" href="/blog/authors/koushartasneem/"><div class="app-avatar"><img alt="Tasneem Koushar" class="app-avatar__image" src="/images/avatars/koushartasneem.jpg"></div> Tasneem Koushar</a>
+</td>
+<td class="pi_table_category">
+Dev Tools
+</td>
+<td class="pi_table_skills">
+Java, Jenkins Pipeline, HTML, CSS, Asciidoc, JavaScript
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/plugin-health-scoring-system/">
+<strong>
+Plugin Health Scoring system - how should it work
+</strong>
+</a>
+<br>
+Provide a 'plugin health indicator' for plugin maintainers and Jenkins administrators.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/alecharp/"><div class="app-avatar"><img alt="Adrien Lecharpentier" class="app-avatar__image" src="/images/avatars/alecharp.jpg"></div> Adrien Lecharpentier</a>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+<a class="app-author-link" href="/blog/authors/jleon/"><div class="app-avatar"><img alt="Jake Leon" class="app-avatar__image" src="/images/avatars/jleon.jpg"></div> Jake Leon</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java, Data Analysis, Data Presentation
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/plugin-installation-manager-tool/">
+<strong>
+Plugin Installation Manager Tool Improvements
+</strong>
+</a>
+<br>
+Introduce new features and improvements in the plugin installation manager.
+<br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+<a class="app-author-link" href="/blog/authors/abhyudayasharma/"><div class="app-avatar"><img alt="Abhyudaya Sharma" class="app-avatar__image" src="/images/avatars/abhyudayasharma.jpg"></div> Abhyudaya Sharma</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java, YAML, Command line tools, Package management tool theory
+</td>
+</tr>
+</tbody>
+</table>
+<h3>
+Draft project ideas
+</h3>
+<p>
+Below you can see draft project ideas, which are currently under review.
+The scope of such ideas may change during the discussions, but the idea is accepted in principle.
+You are welcome to comment on the draft and to join the project as a mentor.
+If you are a GSoC contributor, it is also fine to explore and to apply to the draft project ideas.
+</p>
+<table class="pi_table grid-all">
+<thead>
+<tr class="pi_table_header">
+<th>Project</th>
+<th>Category</th>
+<th>Skills to study/improve</th>
+</tr>
+</thead>
+<tbody>
+<!-- / TODO: parameterize year -->
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/JCasC-drift-detector/">
+<strong>
+Jenkins Configuration as Code (JCasC) drift detector
+</strong>
+</a>
+<br>
+Report differences between a Jenkins active configuration and a given JCasC definition.
+</br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/jmmeessen/"><div class="app-avatar"><img alt="Jean-Marc Meessen" class="app-avatar__image" src="/images/avatars/jmMeessen.jpg"></div> Jean-Marc Meessen</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/automating-plugin-buildmetadata-updates/">
+<strong>
+Automating plugin build metadata updates
+</strong>
+</a>
+<br>
+Apply generic transformations across the Jenkins ecosystem.
+</br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/basil/"><div class="app-avatar"></div> Basil Crow</a>
+</td>
+<td class="pi_table_category">
+Tools
+</td>
+<td class="pi_table_skills">
+Java
+</td>
+</tr>
+<tr>
+<td>
+<a href="/projects/gsoc/2022/project-ideas/screenshot-automation/">
+<strong>
+Screenshot Automation for Jenkins Docs
+</strong>
+</a>
+<br>
+To automate screenshot capture process for Jenkins docs.
+</br>
+<b>
+Potential Mentor(s):
+</b>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+</td>
+<td class="pi_table_category">
+Dev Tools
+</td>
+<td class="pi_table_skills">
+Web Browser Automation, Image Comparison
+</td>
+</tr>
+</tbody>
+</table>
+<!-- / TODO parameterize year -->
+<h3>
+Ongoing discussion
+</h3>
+<p class="markdown">
+These are proposals in the mailing lists which have not been published as project ideas yet.
+The feasibility is yet to be defined, and the idea may be dismissed depending on the feedback.
+Everyone is welcome to participate in the discussion and to join as a potential mentor.
+</p>
+<table class="pi_table grid-all">
+<thead>
+<tr class="pi_table_header">
+<th>Project</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2022/project-ideas.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

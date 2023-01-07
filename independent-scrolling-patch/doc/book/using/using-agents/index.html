@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Using Jenkins agents
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/using/using-agents/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Using Jenkins agents" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Using Jenkins agents" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Using Jenkins agents" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/using/using-agents/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Using Jenkins agents" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="active">Using Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-credentials/" class="">Using credentials</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/searchbox/" class="">Search Box</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/referencing-another-project-by-name/" class="">Referencing another project by name</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/aborting-a-build/" class="">Aborting a build</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/fingerprints/" class="">Fingerprints</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-local-language/" class="">Using local language</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/change-time-zone/" class="">Change time zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/remote-access-api/" class="">Remote Access API</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/executor-starvation/" class="">Executor Starvation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-agents/" class="active">Using Jenkins agents</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-jmeter-with-jenkins/" class="">Using JMeter with Jenkins</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../executor-starvation">
+⇐ Executor Starvation
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Using Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../using-jmeter-with-jenkins">
+Using JMeter with Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Using Jenkins agents
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#configuring-agents-with-docker">Configuring agents with Docker</a>
+<ul class="sectlevel2">
+<li><a href="#environment">Environment</a></li>
+<li><a href="#generating-an-ssh-key-pair">Generating an SSH key pair</a>
+<ul class="sectlevel3">
+<li><a href="#create-a-jenkins-ssh-credential">Create a Jenkins SSH credential</a></li>
+</ul>
+</li>
+<li><a href="#creating-your-docker-agent">Creating your Docker agent</a>
+<ul class="sectlevel3">
+<li><a href="#on-linux">On Linux</a></li>
+<li><a href="#on-windows">On Windows</a></li>
+</ul>
+</li>
+<li><a href="#setup-up-the-agent1-on-jenkins">Setup up the agent1 on jenkins.</a></li>
+<li><a href="#delegating-the-first-job-to-agent1">Delegating the first job to agent1</a></li>
+</ul>
+</li>
+<li><a href="#restarting-a-jenkins-agent">Restarting a Jenkins agent</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Jenkins architecture is designed for distributed build environments.
+It allows us to use different environments for each build project balancing
+the workload among multiple agents running jobs in parallel.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins controller is the original node in the Jenkins installation.
+The Jenkins controller administers the Jenkins agents and orchestrates their work, including scheduling jobs on agents and monitoring agents.
+Agents may be connected to the Jenkins controller using either local or cloud computers.</p>
+</div>
+<div class="paragraph">
+<p>The agents require a Java installation and a network connection to the Jenkins controller.
+View the 3 minute video below for a brief explanation of Jenkins agents.</p>
+</div>
+<div class="videoblock">
+<div class="title">What is a Jenkins Agent</div>
+<div class="content">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/4KghHJEz5no?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuring-agents-with-docker"><a class="anchor" href="#configuring-agents-with-docker"></a>Configuring agents with Docker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins agents can be launched in physical machines, virtual machines, Kubernetes clusters, and with Docker images.
+This section connects Docker agents to Jenkins with SSH.</p>
+</div>
+<div class="sect2">
+<h3 id="environment"><a class="anchor" href="#environment"></a>Environment</h3>
+<div class="paragraph">
+<p>To run this guide you will need a machine with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java installation</p>
+</li>
+<li>
+<p>Jenkins installation</p>
+</li>
+<li>
+<p>Docker installation</p>
+</li>
+<li>
+<p>SSH key pair</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you need help to install Java, Jenkins and Docker please visit the section <a href="/doc/book/installing/docker/">Installing Jenkins.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generating-an-ssh-key-pair"><a class="anchor" href="#generating-an-ssh-key-pair"></a>Generating an SSH key pair</h3>
+<div class="paragraph">
+<p>To generate the SSH key pair, you have to execute a command line tool named <code>ssh-keygen</code> on a machine you have access to. It could be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the machine on which your Jenkins controller runs</p>
+</li>
+<li>
+<p>the host (if using containers)</p>
+</li>
+<li>
+<p>a machine on which you have an agent running</p>
+</li>
+<li>
+<p>or even your developer machine</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The SSH key pair generation can be done on any operating system:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On Windows, you can use any OpenSSH installation such as <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse">Windows OpenSSH</a>, the <code>ssh-keygen</code> that is included with <a href="https://gitforwindows.org/">git for Windows</a>, or <a href="https://cygwin.com/">Cygwin</a></p>
+</li>
+<li>
+<p>On Unix (Linux, macOS, BSD, etc.) you can use any OpenSSH installation packaged with your system as well</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Note that you will have to be able to copy the key value to your controller and agent afterwards, so check that you can copy a file content into the clipboard beforehand.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a terminal window run the command: <code>ssh-keygen -f ~/.ssh/jenkins_agent_key</code></p>
+</li>
+<li>
+<p>Provide a passphrase to use with the key (it can be empty)</p>
+</li>
+<li>
+<p>Confirm the output looks something like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">ubuntu@desktop:~<span class="nv">$ </span>ssh-keygen <span class="nt">-f</span> ~/.ssh/jenkins_agent_key
+Generating public/private rsa key pair.
+Enter passphrase <span class="o">(</span>empty <span class="k">for </span>no passphrase<span class="o">)</span>:
+Enter same passphrase again:
+Your identification has been saved <span class="k">in</span> /home/ubuntu/.ssh/jenkins_agent_key
+Your public key has been saved <span class="k">in</span> /home/ubuntu/.ssh/jenkins_agent_key.pub
+The key fingerprint is:
+SHA256:XqxxjqsLlvDD0ZHm9Y2iR7zC6IbsUlMEHo3ffy8TzGs
+The key<span class="s1">'s randomart image is:
++---[RSA 3072]----+
+|  o+             |
+| ...o  .         |
+|  .o .+ .        |
+|    o+.+ o o     |
+|  ... o.So* .    |
+|  o+ = +.X=      |
+| o oO + *..+     |
+|. oo.o o .E .    |
+| o... oo.. o     |
++----[SHA256]-----+</span></code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="create-a-jenkins-ssh-credential"><a class="anchor" href="#create-a-jenkins-ssh-credential"></a>Create a Jenkins SSH credential</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to your Jenkins dashboard;</p>
+</li>
+<li>
+<p>Go to <code>Manage Jenkins</code> option in main menu and click on the <code>Manage Credentials</code> button;</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/credentials-1.png" alt="credentials menu" width="700"></span></p>
+</div>
+</li>
+<li>
+<p>select the drop option <code>Add Credentials</code> from the global item;</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/credentials-2.png" alt="add credentials option" width="700"></span></p>
+</div>
+</li>
+<li>
+<p>Fill in the form:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Kind:  SSH Username with private key;</p>
+</li>
+<li>
+<p>id: jenkins</p>
+</li>
+<li>
+<p>description: The jenkins ssh key</p>
+</li>
+<li>
+<p>username: jenkins</p>
+</li>
+<li>
+<p>Private Key: select <code>Enter directly</code> and press the Add button to insert the content of your private key file at <code>~/.ssh/jenkins_agent_key</code></p>
+</li>
+<li>
+<p>Passphrase: fill your passphrase used to generate the SSH key pair (leave empty if you didn&#8217;t use one at the previous step) and then press the <code>Create</code> button
+<span class="image"><img src="../../resources/node/credentials-3.png" alt="credentials filled form" width="650"></span></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-your-docker-agent"><a class="anchor" href="#creating-your-docker-agent"></a>Creating your Docker agent</h3>
+<div class="sect3">
+<h4 id="on-linux"><a class="anchor" href="#on-linux"></a>On Linux</h4>
+<div class="paragraph">
+<p>Here we will use the <a href="https://github.com/jenkinsci/docker-ssh-agent">docker-ssh-agent image</a> to create the agent containers.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>run the command to start your first agent:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">docker run <span class="nt">-d</span> <span class="nt">--rm</span> <span class="nt">--name</span><span class="o">=</span>agent1 <span class="nt">-p</span> 22:22 <span class="se">\</span>
+<span class="nt">-e</span> <span class="s2">"JENKINS_AGENT_SSH_PUBKEY=[your-public-key]"</span> <span class="se">\</span>
+jenkins/ssh-agent:alpine</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Remember to replace the tag [your-public-key] for your own SSH <strong>public</strong> key.</p>
+</li>
+<li>
+<p>Your public key value in this example could be found by issuing : <code>cat ~/.ssh/jenkins_agent_key.pub</code> on the machine your created it. Do not add the square brackets <code>[]</code> around the key value</p>
+</li>
+<li>
+<p><a id="ssh-anchor"></a> If your machine already has a ssh server running on the <code>22</code> port (if you logged onto this machine thanks to the <code>ssh</code> command, that&#8217;s the case), you should use another port for the <code>docker</code> command, such as <code>-p 4444:22</code></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now the container <code>agent1</code> is running.<br>
+Hint: the command <code>docker ps</code> can be used to check if the container is running as expected.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="on-windows"><a class="anchor" href="#on-windows"></a>On Windows</h4>
+<div class="paragraph">
+<p>Here we will use the <a href="https://github.com/jenkinsci/docker-ssh-agent">docker-ssh-agent image</a> to create the agent containers.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>run the command to start your first agent:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="powershell"><span class="n">docker</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nt">--rm</span><span class="w"> </span><span class="nt">--name</span><span class="o">=</span><span class="n">agent1</span><span class="w"> </span><span class="nt">--network</span><span class="w"> </span><span class="nx">jenkins</span><span class="w"> </span><span class="nt">-p</span><span class="w"> </span><span class="nx">22:22</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-e</span><span class="w"> </span><span class="s2">"JENKINS_AGENT_SSH_PUBKEY=[your-public-key]"</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nx">jenkins/ssh-agent:jdk11</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Remember to replace the tag [your-public-key] for your own SSH <strong>public</strong> key.</p>
+</li>
+<li>
+<p>Your public key in this example is: <code>Get-Content $Env:USERPROFILE\.ssh\jenkins_agent_key.pub</code></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now the container <code>agent1</code> is running.<br>
+Hint: the command <code>docker ps</code> can be used to check if the container is running as expected.
+Additionally, the command <code>docker container inspect agent1 | Select-String -Pattern '"IPAddress": "\d+\.\d+\.\d+\.\d+"'</code> can be used to see the <strong>Host</strong> to be set in Jenkins for the agent.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setup-up-the-agent1-on-jenkins"><a class="anchor" href="#setup-up-the-agent1-on-jenkins"></a>Setup up the agent1 on jenkins.</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to your Jenkins dashboard;</p>
+</li>
+<li>
+<p>Go to <code>Manage Jenkins</code> option in main menu;</p>
+</li>
+<li>
+<p>Go to <code>Manage Nodes and clouds</code> item;</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/node-1.png" alt="Manage node menu" width="700"></span></p>
+</div>
+</li>
+<li>
+<p>Go to <code>New Node</code> option in side menu;</p>
+</li>
+<li>
+<p>Fill the Node/agent name and select the type; (e.g. Name: agent1, Type: Permanent Agent)</p>
+</li>
+<li>
+<p>Now fill the fields:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Remote root directory; (e.g.: /home/jenkins )</p>
+</li>
+<li>
+<p>label; (e.g.: agent1 )</p>
+</li>
+<li>
+<p>usage; (e.g.: only build jobs with label expression&#8230;&#8203;)</p>
+</li>
+<li>
+<p>Launch method; (e.g.: Launch agents by SSH )</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Host; (e.g.: localhost or your IP address )</p>
+</li>
+<li>
+<p>Credentials; (e.g.: jenkins )</p>
+</li>
+<li>
+<p>Host Key verification Strategy; (e.g.: Manually trusted key verification &#8230;&#8203; )
+<span class="image"><img src="../../resources/node/node-2.png" alt="node create form" width="600"></span></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Press the <code>Save</code> button and the agent1 will be registered, but offline for the time being. Click on it.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/node-3.png" alt="node offline" width="650"></span></p>
+</div>
+</li>
+<li>
+<p>You should now see <code>This node is being launched.</code>. If that&#8217;s not the case, you can now press the <code>Relaunch agent</code> button and wait a few seconds. You can now click on the <code>Log</code> button on the left, then you should receive<br>
+the message: <code>Agent successfully connected and online</code> on the last log line.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/node-4.png" alt="Agent successfully connected" width="650"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If your Jenkins controller does not start the agent via ssh, please check the port you <a href="#ssh-anchor">configured</a> on your agent.
+Copy it, and then click on the <code>Advanced&#8230;&#8203;</code> button.
+You will then be able to paste the port number into the <code>Port</code> textfield.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delegating-the-first-job-to-agent1"><a class="anchor" href="#delegating-the-first-job-to-agent1"></a>Delegating the first job to agent1</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to your jenkins dashboard;</p>
+</li>
+<li>
+<p>Select <code>New Item</code> on side menu;</p>
+</li>
+<li>
+<p>Enter a name. (e.g.: First Job to Agent1)</p>
+</li>
+<li>
+<p>Select the <code>Freestyle project</code> and press OK;</p>
+</li>
+<li>
+<p>Check the option: <code>Restrict where this project can be run</code>;</p>
+</li>
+<li>
+<p>Fill the field: label with the agent1 label; (e.g.: agent1)</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/node-5.png" alt="Agent job 1" width="650"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Be careful with white spaces before or after the label.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Now Select the option <code>Execute shell</code> at Build Section;</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/node-6.png" alt="Agent job 2" width="650"></span></p>
+</div>
+</li>
+<li>
+<p>Add the command: <code>echo $NODE_NAME</code> in the <code>Command</code> field of the <code>Execute shell</code> step  and the name<br>
+of the agent will be printed inside the log when this job is run;</p>
+</li>
+<li>
+<p>press the save button and then select the option <code>Build Now</code>;</p>
+</li>
+<li>
+<p>Wait some seconds and then go to <code>Console Output</code> page</p>
+<div class="paragraph">
+<p><span class="image"><img src="../../resources/node/node-7.png" alt="Agent job 3" width="650"></span></p>
+</div>
+</li>
+<li>
+<p>you should receive output similar to:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">Started by user Admin User
+Running as SYSTEM
+Building remotely on agent1 <span class="k">in </span>workspace /home/jenkins/workspace/First Job to Agent1
+<span class="o">[</span>First Job to Agent1] <span class="nv">$ </span>/bin/sh <span class="nt">-xe</span> /tmp/jenkins15623311211559049312.sh
++ <span class="nb">echo</span> <span class="nv">$NODE_NAME</span>
+agent1
+Finished: SUCCESS</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="restarting-a-jenkins-agent"><a class="anchor" href="#restarting-a-jenkins-agent"></a>Restarting a Jenkins agent</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This video provides instructions on how to restart a Jenkins agent using various methods.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="420" src="https://www.youtube.com/embed/MTLgbp0GH8w?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../executor-starvation">
+⇐ Executor Starvation
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Using Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../using-jmeter-with-jenkins">
+Using JMeter with Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/using/using-agents.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

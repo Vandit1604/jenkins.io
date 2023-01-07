@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins 2.264+: Major changes in the weekly release line
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Latest Jenkins weekly releases contain large changes. We invite Jenkins users to evaluate these changes and provide their feedback" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/11/10/major-changes-in-weekly-releases/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins 2.264+: Major changes in the weekly release line" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins 2.264+: Major changes in the weekly release line" name="twitter:title">
+<meta content="Latest Jenkins weekly releases contain large changes. We invite Jenkins users to evaluate these changes and provide their feedback" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020-11-10-major-changes-in-weekly-releases/help-test-jenkins.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins 2.264+: Major changes in the weekly release line" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/11/10/major-changes-in-weekly-releases/" property="og:url">
+<meta content="Latest Jenkins weekly releases contain large changes. We invite Jenkins users to evaluate these changes and provide their feedback" name="og:description">
+<meta content="Jenkins 2.264+: Major changes in the weekly release line" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020-11-10-major-changes-in-weekly-releases/help-test-jenkins.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins 2.264+: Major changes in the weekly release line
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+November 10, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+2.264%2B%3A+Major+changes+in+the+weekly+release+line&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F11%2F10%2Fmajor-changes-in-weekly-releases%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Recently we have <a href="https://groups.google.com/g/jenkinsci-dev/c/AWOPeU4k0DI">selected Jenkins 2.263 as a new baseline</a> for the <a href="/download/lts/">LTS release line</a>, with ETA in December 2020.
+It allows delivering significant and in some cases breaking changes which have been previously on hold.
+Beginning with the Jenkins 2.264 release on October 27, 2020, we&#8217;ve entered a period where the Jenkins weekly releases will include more significant changes than usual.
+That period of more significant changes is expected to continue for a month or more.
+As you may have seen from the <a href="/changelog/">release community ratings</a>, there might be regressions and instabilities during this period.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;re excited for the changes.
+They help to improve user experience and to address the technical debt accumulated in the Jenkins core.
+We invite Jenkins users to evaluate those changes and provide feedback.
+This is an especially valuable time for users and administrators to test the weekly releases and report issues with them,
+especially on Jenkins test environments.
+In the Jenkins project we have invested a lot in test coverage for the main functionality,
+but in many cases we rely on user feedback for exotic plugins and environments not yet covered by our test automation.</p>
+</div>
+<div class="paragraph">
+<p>The most notable changes include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#configuration-ui-tables-to-divs">Configuration UI - Tables to Divs</a></p>
+</li>
+<li>
+<p><a href="#core-spring-security-replaces-acegi-security">Core - Spring Security replaces Acegi Security</a></p>
+</li>
+<li>
+<p><a href="#core-xstream-unfork">Core - XStream unfork</a></p>
+</li>
+<li>
+<p><a href="#ui-jquery-upgrade">UI - JQuery upgrade</a></p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="configuration-ui-tables-to-divs"><a class="anchor" href="#configuration-ui-tables-to-divs"></a>Configuration UI - Tables to Divs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins 2.264 is the first weekly release to include the "Tables to Divs migration" user interface work of <a href="https://github.com/jsoref/">Josh Soref</a>, <a href="https://github.com/timja/">Tim Jacomb</a>, and <a href="https://github.com/fqueiruga">Felix Queiruga</a>.
+It is a significant step to improve forms in the Jenkins user interface (configuration pages, build parameters, etc.), especially for users on narrow devices like tablets and phones.</p>
+</div>
+<div class="sect2">
+<h3 id="a-better-user-interface"><a class="anchor" href="#a-better-user-interface"></a>A better user interface</h3>
+<div class="paragraph">
+<p>The transition from using HTML <code>table</code> tags to using HTML <code>div</code> tags provides a more attractive user interface for all users and a much better experience for users on narrower devices.
+Before the conversion from table tags to div tags, the <strong>"Manage Jenkins"</strong> page looked like this in a 1024x768 window:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020-11-10-major-changes-in-weekly-releases/ui-using-tables.png" alt="Before the pull request"></span></p>
+</div>
+<div class="paragraph">
+<p>After the conversion, the <strong>"Manage Jenkins"</strong> page now looks like this:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2020-11-10-major-changes-in-weekly-releases/ui-using-divs.png" alt="After the pull request"></span></p>
+</div>
+<div class="paragraph">
+<p>The user interface improvements from the transition are a nice step forward for Jenkins.
+However, because the user interface improvements require changes in plugins, we need your help.</p>
+</div>
+<div class="paragraph">
+<p>We need users to test the latest weekly Jenkins releases with the plugins and configurations that are most important to them.
+When users detect an issue, we need them to <a href="/participate/report-issue/">report the issue</a> with enough detail that a plugin maintainer can fix the issue.
+Please add the <code>tables-to-divs-regression</code> label to the issues.
+The <code>tables-to-divs-regression</code> label makes it easier to find issues related to the tables to divs transition.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plugin-developers"><a class="anchor" href="#plugin-developers"></a>Plugin developers</h3>
+<div class="paragraph">
+<p>Several plugins have already been identified that may need changes.
+See the <a href="https://issues.jenkins.io/browse/JENKINS-62437">Jira epic</a> for plugins that are likely to need changes for the new user interface layout.
+The list of <a href="https://issues.jenkins.io/issues/?filter=22840">open <code>tables-to-divs-regression</code> issues</a> can also be used to see plugins that need changes.</p>
+</div>
+<div class="paragraph">
+<p>If you can assist with plugin testing and code changes, select one of the plugins from that epic, test it, and propose a pull request to help with this user interface transition.
+If you&#8217;re not comfortable proposing a pull request, describe the problems you see in a bug report.</p>
+</div>
+<div class="paragraph">
+<p>A <a href="/doc/developer/views/table-to-div-migration/">tables to divs migration guide</a> is available.
+It describes areas that typically need to be changed as part of the migration from tables to divs.
+It also includes detailed examples that allow the plugin to continue supporting older Jenkins versions with table layouts and use div layouts for newer Jenkins versions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="core-spring-security-replaces-acegi-security"><a class="anchor" href="#core-spring-security-replaces-acegi-security"></a>Core - Spring Security replaces Acegi Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins 2.266 release on November 10, 2020 will include the migration to the Spring Security libraries from the Acegi security libraries that <a href="https://github.com/jglick">Jesse Glick</a> has proposed and developed through <a href="https://github.com/jenkinsci/jep/blob/master/jep/227/README.adoc">JEP-227: Jenkins Enhancement Proposal 227</a>.</p>
+</div>
+<div class="paragraph">
+<p>This upgrade replaces the Acegi Security library with the current release of the Spring Security library.
+Details of the change are described in <a href="https://github.com/jenkinsci/jep/blob/master/jep/227/README.adoc">JEP-227</a> and in the <a href="https://github.com/jenkinsci/jenkins/pull/4848">pull request</a>.</p>
+</div>
+<div class="paragraph">
+<p>We need users to test the latest Jenkins weekly releases with their plugins and watch for issues related to authentication.</p>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="/blog/2020/11/10/spring-xstream/">Jesse Glick&#8217;s blog post</a> that introduces the details of the change and provides links to the <a href="https://github.com/jenkinsci/jep/blob/master/jep/227/compatibility.adoc">Spring Security compatibility</a> table.
+Jesse&#8217;s blog post provides specific instructions for those who report bugs related to this change.
+Please use those instructions as you submit bug reports related to the Spring Security upgrade.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="core-xstream-unfork"><a class="anchor" href="#core-xstream-unfork"></a>Core - XStream unfork</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins has been using a fork of the XStream serialization library to read and write XML files.
+The XStream library was forked over 10 years ago and had a few fixes applied to it.
+Unfortunately, at that time the fixes were rejected by the upstream maintainers of XStream (unsupported patterns of API use) and the fork fell behind the upstream version.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins 2.266 release on November 10, 2020 will include the migration to the upstream version of the XStream library that <a href="https://github.com/jglick">Jesse Glick</a> has proposed and developed through <a href="https://github.com/jenkinsci/jep/blob/master/jep/228/README.adoc">JEP-228: Jenkins Enhancement Proposal 228</a>.</p>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="/blog/2020/11/10/spring-xstream/">Jesse Glick&#8217;s blog post</a> that introduces the details of the change and provides links to the <a href="https://github.com/jenkinsci/jep/blob/master/jep/228/compatibility.adoc">XStream compatibility</a> table.
+Jesse&#8217;s blog post provides specific instructions for those who report bugs related to this change.
+Please use those instructions as you submit bug reports related to the XStream upgrade.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ui-jquery-upgrade"><a class="anchor" href="#ui-jquery-upgrade"></a>UI - JQuery upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins uses a 1.x version of the <a href="https://jquery.com/">jQuery user interface library</a> for some of its components.
+<a href="https://github.com/fqueiruga">Felix Queiruga</a> has started the work to update that library to a current jQuery version.</p>
+</div>
+<div class="paragraph">
+<p>It will arrive in a future Jenkins weekly release.
+When it arrives, it will be noted in the <a href="/changelog/">Jenkins weekly changelog</a>.</p>
+</div>
+<div class="paragraph">
+<p>When the jQuery update arrives, We will need users to test the Jenkins weekly release with the plugins and configurations that are most important to them.
+When users detect an issue, we need them to <a href="/participate/report-issue/">report the issue</a> with enough detail that a plugin maintainer can fix the issue.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="call-to-test"><a class="anchor" href="#call-to-test"></a>Call to test</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a great time to help the Jenkins project by testing the weekly releases.
+We encourage you to test the user interface and the interactions that are most important to you.
+If you find an issue, please <a href="/participate/report-issue/">report the issue</a> so that others can benefit from your discovery.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/testing/">
+testing
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ui/">
+ui
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/11/2020-11-10-major-changes-in-weekly-releases.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

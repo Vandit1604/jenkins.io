@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+IRC Bot
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/infrastructure/ircbot/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="IRC Bot" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="IRC Bot" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="IRC Bot" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/infrastructure/ircbot/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="IRC Bot" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+IRC Bot
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#available-actions">Available actions</a>
+<ul class="sectlevel2">
+<li><a href="#irc-management">IRC Management</a></li>
+<li><a href="#github-repo-management">GitHub Repo Management</a></li>
+<li><a href="#issue-tracker-management">Issue Tracker Management</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The primary Jenkins IRC Channel (<code>#jenkins</code> on the
+<a href="https://libera.chat/">Libera Chat</a>
+network) uses an administrator bot "jenkins-admin" so that some of the project
+operation work can be done by the community. This bot is available for anyone
+in the channel with "voice", which is an IRC jargon for those users who are
+trusted.</p>
+</div>
+<div class="sect1">
+<h2 id="available-actions"><a class="anchor" href="#available-actions"></a>Available actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Actions should be addressed to the <code>jenkins-admin</code> bot as if you are speaking
+directly to the robot.</p>
+</div>
+<div class="sect2">
+<h3 id="irc-management"><a class="anchor" href="#irc-management"></a>IRC Management</h3>
+<div class="paragraph">
+<p><strong>Grant voice to a user</strong></p>
+</div>
+<div class="paragraph">
+<p>Any of the following variations will work for granting voice to a user named
+<code>USER</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Make USER voice
+jenkins-admin: Give USER voice
+jenkins-admin: Grant USER voice
+jenkins-admin: Add USER voice</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Ungrant voice to a user</strong></p>
+</div>
+<div class="paragraph">
+<p>Any of the following variations will work for removing voice from a user named
+<code>USER</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Remove USER voice
+jenkins-admin: Delete USER voice
+jenkins-admin: Ungrant USER voice</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Get help</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Get the version of the bot</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Kick a user</strong></p>
+</div>
+<div class="paragraph">
+<p>Only should be used when dealing with spammers or otherwise highly abusive
+participants to the IRC channel.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: kick USER</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Set channel topic</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: set topic &lt;TOPIC HERE&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="github-repo-management"><a class="anchor" href="#github-repo-management"></a>GitHub Repo Management</h3>
+<div class="paragraph">
+<p>The following actions are used for managing repositories in the
+<a href="https://github.com/jenkinsci">jenkinsci organization</a>
+on GitHub.</p>
+</div>
+<div class="paragraph">
+<p><strong>Grant a committer access</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Make USER a committer of/to REPO1[, REPO2, REPO3...]
+jenkins-admin: Give USER a commit access of/to REPO[, REPO2, REPO3...]
+jenkins-admin: Grant USER a commit access of/to REPO[, REPO2, REPO3...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This adds the user to the per-repo team in the specified repositories, typically granting admin access. One or more repository may be listed by separating them with commas.</p>
+</div>
+<div class="paragraph">
+<p><strong>Grant maintainer access to a team</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Make USER a maintainer on TEAM1[, TEAM2, TEAM3...]
+jenkins-admin: Give USER a maintainer on TEAM1[, TEAM2, TEAM3...]
+jenkins-admin: Grant USER a maintainer on TEAM1[, TEAM2, TEAM3...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Make some-user a maintainer on blueocean-plugin Developers, figlet-buildstep-plgin Developers</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This adds the user to the specified team(s) with the maintainer role. One or more team may be listed by separating with commas.</p>
+</div>
+<div class="paragraph">
+<p><strong>Remove a user from a team</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Remove USER as committer on TEAM1[, TEAM2, TEAM3...]
+jenkins-admin: Remove USER as member on TEAM1[, TEAM2, TEAM3...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This removes the user from the teams associated with the repositories listed.
+One or more repositories may be listed by separating them with commas.</p>
+</div>
+<div class="paragraph">
+<p><strong>Make team visible</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Make TEAM1[, TEAM2, TEAM3...] teams visible</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This makes the specified teams 'visible' (still requires organisation membership to see it),
+which makes the team show up in reviewers when using CODEOWNERS, and allows non members of the teams
+to mention them. One or more team may be listed by separating them with commas.</p>
+</div>
+<div class="paragraph">
+<p><strong>Fork an existing repository on GitHub</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Fork USER/REPO [on github]
+jenkins-admin: Fork USER/REPO [on github] as NEW_REPO_NAME
+jenkins-admin: Fork GITHUB_REPO_URL [on github] as NEW_REPO_NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will fork a repository into Jenkins. The said user will be added as a
+committer to all the Jenkins repositories.</p>
+</div>
+<div class="paragraph">
+<p>By convention, plugin repositories in Jenkins has the "PLUGINID-plugin" name,
+so please use the "as NEW_REPO_NAME" clause to adjust the repository name. A
+prefix of "jenkins" or any other irrelevant information should be removed.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: fork example/jenkins-foobar as foobar-plugin
+jenkins-admin: fork https://github.com/somebody/foobar-plugin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Create a new repository on GitHub</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Create REPO on github
+jenkins-admin: Create REPO on github for SOMEONE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the latter form, the specified someone will get the commit access to the
+repository right away.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="issue-tracker-management"><a class="anchor" href="#issue-tracker-management"></a>Issue Tracker Management</h3>
+<div class="paragraph">
+<p><strong>Create an issue tracker component</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Create COMPONENT in the issue tracker for USER
+jenkins-admin: Create COMPONENT in the bug database for USER</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where COMPONENT is the subcomponent name in the issue tracker (normally the
+name of the plugin), and USER is the jenkins-ci.org user ID who gets the
+initial notification when a new bug is filed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Set default assignee of issue tracker component</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Set USER as default assignee of COMPONENT1[, COMPONENT2, COMPONENT3...]
+jenkins-admin: Make USER the lead of COMPONENT1[, COMPONENT2, COMPONENT3...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where COMPONENTx is the subcomponent name in the issue tracker (normally the
+name of the plugin), and USER is the jenkins-ci.org user ID who gets the
+initial notification when a new bug is filed. One or more components can be
+listed by separating them with commas.</p>
+</div>
+<div class="paragraph">
+<p><strong>Remove the default assignee</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Remove the default assignee of COMPONENT1[, COMPONENT2, COMPONENT3...]
+jenkins-admin: Remove lead of COMPONENT1[, COMPONENT2, COMPONENT3...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Rename the component</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Rename component COMPONENT to NEW_NAME</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Modify the component description</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Set description of COMPONENT to "DESCRIPTION"
+jenkins-admin: Set the description for component COMPONENT to "DESCRIPTION"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Remove the component</strong></p>
+</div>
+<div class="paragraph">
+<p>The command removes the specified component. All its issues will be moved to COMPONENT2</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>jenkins-admin: Remove component COMPONENT1 and move its issues to COMPONENT2
+jenkins-admin: Delete component COMPONENT1 and move its issues to COMPONENT2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/infrastructure/ircbot.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

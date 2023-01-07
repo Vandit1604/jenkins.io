@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Don't install software, define your environment with Docker and Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/08/08/docker-pipeline-environments/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Don&#39;t install software, define your environment with Docker and Pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Don&#39;t install software, define your environment with Docker and Pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Don&#39;t install software, define your environment with Docker and Pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/08/08/docker-pipeline-environments/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Don&#39;t install software, define your environment with Docker and Pipeline" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Don't install software, define your environment with Docker and Pipeline
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/michaelneale/"><div class="app-avatar"><img alt="Michael Neale" class="app-avatar__image" src="/images/avatars/michaelneale.jpg"></div> Michael Neale</a>
+August 08, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Don%27t+install+software%2C+define+your+environment+with+Docker+and+Pipeline&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F08%2F08%2Fdocker-pipeline-environments%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https://github.com/michaelneale">Michael Neale</a>, long time open
+source developer and contributor to the <a href="/projects/blueocean">Blue Ocean</a>
+project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you are running parts of your pipeline on Linux, possibly the easiest way to
+get a clean reusable environment is to use:
+<a href="https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html">CloudBees
+Docker Pipeline plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this short post I wanted to show how you can avoid installing stuff on the agents, and have per project, or even per branch, customized build environments.
+Your environment, as well as your pipeline is defined and versioned alongside your code.</p>
+</div>
+<div class="paragraph">
+<p>I wanted to use the <a href="/doc/book/blueocean">Blue Ocean</a> project as an
+<a href="https://github.com/jenkinsci/jenkins-design-language/">example</a> of a
+project that uses the CloudBees Docker Pipeline plugin.</p>
+</div>
+<div class="sect2">
+<h3 id="environment-and-pipeline-for-javascript-components"><a class="anchor" href="#environment-and-pipeline-for-javascript-components"></a>Environment and Pipeline for JavaScript components</h3>
+<div class="paragraph">
+<p>The <a href="/projects/blueocean">Blue Ocean</a> project has a few moving parts, one of
+which is called the "Jenkins Design Language".  This is a grab bag of re-usable
+CSS, HTML, style rules, icons and JavaScript components (using React.js) that
+provide the look and feel for Blue Ocean.</p>
+</div>
+<div class="paragraph">
+<p>JavaScript and Web Development being what it is in 2016, many utilities are
+need to assemble a web app.  This includes npm and all that it needs, less.js
+to convert Less to CSS, Babel to "transpile" versions of JavaScript to other
+types of JavaScript (don&#8217;t ask) and more.</p>
+</div>
+<div class="paragraph">
+<p>We could spend time installing nodejs/npm on the agents, but why not just use
+the <a href="https://hub.docker.com/_/node/">official off the shelf</a> docker image
+from <a href="https://hub.docker.com">Docker Hub</a>?</p>
+</div>
+<div class="paragraph">
+<p>The only thing that has to be installed and run on the build agents is the Jenkins agent, and a docker daemon.</p>
+</div>
+<div class="paragraph">
+<p>A simple pipeline using this approach would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+        <span class="n">stage</span> <span class="s2">"Prepare environment"</span>
+          <span class="n">checkout</span> <span class="n">scm</span>
+          <span class="n">docker</span><span class="o">.</span><span class="na">image</span><span class="o">(</span><span class="s1">'node'</span><span class="o">).</span><span class="na">inside</span> <span class="o">{</span>
+            <span class="n">stage</span> <span class="s2">"Checkout and build deps"</span>
+                <span class="n">sh</span> <span class="s2">"npm install"</span>
+
+            <span class="n">stage</span> <span class="s2">"Test and validate"</span>
+                <span class="n">sh</span> <span class="s2">"npm install gulp-cli &amp;&amp; ./node_modules/.bin/gulp"</span>
+          <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This uses the stock "official" Node.js image from the Docker Hub, but doesn&#8217;t let us customize much about the environment.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customising-the-environment-without-installing-bits-on-the-agent"><a class="anchor" href="#customising-the-environment-without-installing-bits-on-the-agent"></a>Customising the environment, without installing bits on the agent</h3>
+<div class="paragraph">
+<p>Being the forward looking and lazy person that I am, I didn&#8217;t want to have to
+go and fish around for a Docker image every time a developer wanted something
+special installed.</p>
+</div>
+<div class="paragraph">
+<p>Instead, I put a <code>Dockerfile</code> in the root of the repo, alongside the <code>Jenkinsfile</code>:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-03/environment_jenkinsfile.png" alt="Environment">
+</div>
+</div>
+<div class="paragraph">
+<p>The contents of the <code>Dockerfile</code> can then define the exact environment needed
+to build the project.  Sure enough, shortly after this, someone came along
+saying they wanted to use <a href="https://flowtype.org/">Flow</a> from Facebook (A
+typechecker for JavaScript).  This required an additional native component to
+work (via <code>apt-get install</code>).</p>
+</div>
+<div class="paragraph">
+<p>This was achieved via a
+<a href="https://github.com/jenkinsci/jenkins-design-language/pull/72/files">pull
+request</a> to both the <code>Jenkinsfile</code> and the <code>Dockerfile</code> at the same time.</p>
+</div>
+<div class="paragraph">
+<p>So now our environment is defined by a <code>Dockerfile</code> with the following contents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell"><span class="c"># Lets not just use any old version but pick one</span>
+FROM node:5.11.1
+
+<span class="c"># This is needed for flow, and the weirdos that built it in ocaml:</span>
+RUN apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> libelf1
+
+RUN useradd jenkins <span class="nt">--shell</span> /bin/bash <span class="nt">--create-home</span>
+USER jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Jenkinsfile</code> pipeline now has the following contents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">node</span> <span class="o">{</span>
+    <span class="n">stage</span> <span class="s2">"Prepare environment"</span>
+        <span class="n">checkout</span> <span class="n">scm</span>
+        <span class="kt">def</span> <span class="n">environment</span>  <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="na">build</span> <span class="s1">'cloudbees-node'</span>
+
+        <span class="n">environment</span><span class="o">.</span><span class="na">inside</span> <span class="o">{</span>
+            <span class="n">stage</span> <span class="s2">"Checkout and build deps"</span>
+                <span class="n">sh</span> <span class="s2">"npm install"</span>
+
+            <span class="n">stage</span> <span class="s2">"Validate types"</span>
+                <span class="n">sh</span> <span class="s2">"./node_modules/.bin/flow"</span>
+
+            <span class="n">stage</span> <span class="s2">"Test and validate"</span>
+                <span class="n">sh</span> <span class="s2">"npm install gulp-cli &amp;&amp; ./node_modules/.bin/gulp"</span>
+                <span class="n">junit</span> <span class="s1">'reports/**/*.xml'</span>
+        <span class="o">}</span>
+
+    <span class="n">stage</span> <span class="s2">"Cleanup"</span>
+        <span class="n">deleteDir</span><span class="o">()</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Even hip JavaScript tools can emit that weird XML format that test
+reporters can use, e.g. the junit result archiver.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The main change is that we have <code>docker.build</code> being called to produce the
+<code>environment</code> which is then used.  Running <code>docker build</code> is essentially a
+"no-op" if the image has already been built on the agent before.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="whats-it-like-to-drive"><a class="anchor" href="#whats-it-like-to-drive"></a>What&#8217;s it like to drive?</h3>
+<div class="paragraph">
+<p>Well, using Blue Ocean, to build Blue Ocean, yields a pipeline that visually
+looks like this (a recent run I screen capped):</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-03/JDL_pipeline.png" alt="Pipeline">
+</div>
+</div>
+<div class="paragraph">
+<p>This creates a pipeline that developers can tweak on a pull-request basis,
+along with any changes to the environment needed to support it, without having
+to install any packages on the agent.</p>
+</div>
+<div class="sect3">
+<h4 id="why-not-use-docker-commands-directly"><a class="anchor" href="#why-not-use-docker-commands-directly"></a>Why not use docker commands directly?</h4>
+<div class="paragraph">
+<p>You could of course just use shell commands to do things with Docker directly,
+however, Jenkins Pipeline keeps track of Docker images used in a <code>Dockerfile</code>
+via the "Docker Fingerprints" link (which is good, should that image need to
+change due to a security patch).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The project used as as an example is <a href="https://github.com/jenkinsci/jenkins-design-language/">here</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The pipeline is defined by the <a href="https://github.com/jenkinsci/jenkins-design-language/blob/master/Jenkinsfile">Jenkinsfile</a></p>
+</li>
+<li>
+<p>The environment is defined by the <a href="https://github.com/jenkinsci/jenkins-design-language/blob/master/Dockerfile">Dockerfile</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Read more on <a href="https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html">Docker Pipeline</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/blueocean/">
+blueocean
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/ux/">
+ux
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/javascript/">
+javascript
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/nodejs/">
+nodejs
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Michael Neale" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/michaelneale.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/michaelneale/">
+Michael Neale
+</a>
+</p>
+<div class="paragraph">
+<p>Michael is a CD enthusiast with a interest in User Experience.
+He is a co-founder of CloudBees and a long time OSS developer, and can often be found
+lurking around the jenkins-dev mailing list or #jenkins on irc (same nick as twitter name).
+Before CloudBees he worked at Red Hat.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/michaelneale" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/michaelneale" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-08-08-docker-pipeline-environments.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

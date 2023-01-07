@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Indispensable, Disposable Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/07/17/speaker-blog-care/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Indispensable, Disposable Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Indispensable, Disposable Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Indispensable, Disposable Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/07/17/speaker-blog-care/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Indispensable, Disposable Jenkins" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Indispensable, Disposable Jenkins
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+July 17, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Indispensable%2C+Disposable+Jenkins&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F07%2F17%2Fspeaker-blog-care%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by Mandy Hubbard, Software Engineer/QA Architect at
+<a href="https://www.care.com">Care.com</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Imagine this: It’s 4:30pm on a Friday,
+you have a major release on Monday, and your Jenkins server goes down.
+It doesn&#8217;t matter if it experienced a hardware failure,
+fell victim to a catastrophic
+<a href="https://en.wikipedia.org/wiki/Fat-finger_error">fat-finger error</a>,
+or just got hit by a meteor - your Jenkins server is toast.
+How long did it take to perfect your Pipeline,
+all your Continuous Delivery jobs, plugins, and credentials?
+Hopefully you at least have a recent backup of your Jenkins home directory,
+but you’re still going have to work over the weekend with IT to procure a new server,
+install it, and do full regression testing to be up and running by Monday morning.
+Go ahead and take a moment, go to your car and just scream.
+It will help &#8230;&#8203; a little.</p>
+</div>
+<div class="paragraph">
+<p>But what if you could have a Jenkins environment that is completely disposable,
+one that could be easily rebuilt at any time?
+Using <a href="https://www.docker.com/">Docker</a> and Joyent’s
+<a href="https://www.joyent.com/containerpilot">ContainerPilot</a>, the team at
+<a href="https://www.care.com/homepay">Care.com HomePay</a>
+has created a production Jenkins environment that is completely software-defined.
+Everything required to set up a new Jenkins environment is stored in source control,
+versioned, and released just like any other software.
+At Jenkins World, I’ll do a developer deep-dive into this approach during my technical session,
+<a href="https://jenkinsworld20162017.sched.com/event/ALPr/disposable-jenkins">Indispensable, Disposable Jenkins</a>,
+including a demo of bringing up a fully configured Jenkins server in a Docker container.
+For now, let me give you a basic outline of what we&#8217;ve done.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Mandy will be
+<a href="https://jenkinsworld20162017.sched.com/event/ALPr/disposable-jenkins">presenting</a>
+more on this topic at
+<a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in August,
+register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>First, we add ContainerPilot to our Jenkins image by including it in the <code>Dockerfile</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Dockerfile</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>## ContainerPilot
+
+ENV CONTAINERPILOT_VERSION 2.7.0
+ENV CONTAINERPILOT_SHA256 3cf91aabd3d3651613942d65359be9af0f6a25a1df9ec9bd9ea94d980724ee13
+ENV CONTAINERPILOT file:///etc/containerpilot/containerpilot.json
+
+RUN curl -Lso /tmp/containerpilot.tar.gz https://github.com/joyent/containerpilot/releases/download/${CONTAINERPILOT_VERSION}/containerpilot-${CONTAINERPILOT_VERSION}.tar.gz &amp;&amp; \
+    echo "${CONTAINERPILOT_SHA256}  /tmp/containerpilot.tar.gz" | sha256sum -c &amp;&amp; \
+    tar zxf /tmp/containerpilot.tar.gz -C /bin &amp;&amp; \
+rm /tmp/containerpilot.tar.gz</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we specify <code>containerpilot</code> as the Docker command in the <code>docker-compose.yml</code>
+and pass the Jenkins startup script as an argument.
+This allows ContainerPilot to perform our preStart business before starting the Jenkins server.</p>
+</div>
+<div class="listingblock">
+<div class="title">docker-compose.yml</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">jenkins</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">devmandy/auto-jenkins:latest</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">mem_limit</span><span class="pi">:</span> <span class="s">8g</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="m">80</span>
+      <span class="pi">-</span> <span class="m">22</span>
+    <span class="na">dns</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">8.8.8.8</span>
+      <span class="pi">-</span> <span class="s">127.0.0.1</span>
+    <span class="na">env_file</span><span class="pi">:</span> <span class="s">_env</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">/var/run/docker.sock:/var/run/docker.sock</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">CONSUL=consul</span>
+    <span class="na">links</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">consul:consul</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">8080:80"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">2222:22"</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">&gt;</span>
+      <span class="s">containerpilot</span>
+      <span class="s">/usr/local/bin/jenkins.sh</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Configuration data is read from a Docker Compose <code>_env</code> file,
+as specified in the <code>docker-compose.yml</code> file,
+and stored in environment variables inside the container.
+This is an example of our _env file:</p>
+</div>
+<div class="listingblock">
+<div class="title">_env</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code>GITHUB_TOKEN=&lt;my Github user token&gt;
+GITHUB_USERNAME=DevMandy
+GITHUB_ORGANIZATION=DevMandy
+DOCKERHUB_ORGANIZATION=DevMandy
+DOCKERHUB_USERNAME=DevMandy
+DOCKERHUB_PASSWORD=&lt;my Dockerhub password&gt;
+DOCKER_HOST=&lt;my Docker host, or localhost&gt;
+SLACK_TEAM_DOMAIN=DevMandy
+SLACK_CHANNEL=jenkinsbuilds
+SLACK_TOKEN=&lt;my Slack token&gt;
+BASIC_AUTH=&lt;my basic auth token&gt;
+AD_NAME=&lt;my AD domain&gt;
+AD_SERVER=&lt;my AD server&gt;
+PRIVATE_KEY=&lt;my ssh private key, munged by a setup script&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Jenkins stores its credentials and plugin information in various xml files.
+The <code>preStart</code> script modifies the relevant files,
+substituting the environment variables as appropriate,
+using a set of command line utilities called <code>xmlstarlet</code>.
+Here is an example method from our <code>preStart</code> script that configures Github credentials:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash">github_credentials_setup<span class="o">()</span> <span class="o">{</span>
+    <span class="c">## Setting Up Github username in credentials.xml file</span>
+    <span class="nb">echo
+    echo</span> <span class="nt">-e</span> <span class="s2">"Adding Github username to credentials.xml file for SSH key"</span>
+    xmlstarlet <span class="se">\</span>
+        ed <span class="se">\</span>
+        <span class="nt">--inplace</span> <span class="se">\</span>
+        <span class="nt">-u</span> <span class="s1">'//com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey[id="github"]/username'</span> <span class="se">\</span>
+        <span class="nt">-v</span> <span class="k">${</span><span class="nv">GITHUB_USERNAME</span><span class="k">}</span> <span class="se">\</span>
+        <span class="k">${</span><span class="nv">JENKINS_HOME</span><span class="k">}</span>/credentials.xml
+
+    <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Adding Github username to credentials.xml file for Github token"</span>
+    xmlstarlet <span class="se">\</span>
+        ed <span class="se">\</span>
+         <span class="nt">--inplace</span> <span class="se">\</span>
+        <span class="nt">-u</span> <span class="s1">'//com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl[id="github_token"]/username'</span> <span class="se">\</span>
+        <span class="nt">-v</span> <span class="k">${</span><span class="nv">GITHUB_USERNAME</span><span class="k">}</span> <span class="se">\</span>
+        <span class="k">${</span><span class="nv">JENKINS_HOME</span><span class="k">}</span>/credentials.xml
+
+    <span class="nv">PASSWORD</span><span class="o">=</span><span class="k">${</span><span class="nv">GITHUB_TOKEN</span><span class="k">}</span>
+    <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Adding Github token to credentials.xml"</span>
+    xmlstarlet <span class="se">\</span>
+        ed <span class="se">\</span>
+        <span class="nt">--inplace</span> <span class="se">\</span>
+        <span class="nt">-u</span> <span class="s1">'//com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl[id="github_token"]/password'</span> <span class="se">\</span>
+        <span class="nt">-v</span> <span class="k">${</span><span class="nv">PASSWORD</span><span class="k">}</span> <span class="se">\</span>
+        <span class="k">${</span><span class="nv">JENKINS_HOME</span><span class="k">}</span>/credentials.xml
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This approach can be used to automate all things Jenkins.
+These are just a few of the things I’ll show you in my Jenkins World session,
+which you can build on to automate anything else your Jenkins environment needs.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Creation of credentials sets for interacting with third party services
+like Github, Docker Hub and Slack</p>
+</li>
+<li>
+<p>Configuration of the <a href="https://plugins.jenkins.io/active-directory">Active Directory plugin</a>
+and setup of matrix-based security</p>
+</li>
+<li>
+<p>Configuration of the <a href="https://plugins.jenkins.io/github-organization-folder">Github Organization plugin</a>,
+which results in the automatic creation of all Jenkins pipeline jobs
+by scanning the organization for all repositories containing a <code>Jenkinsfile</code></p>
+</li>
+<li>
+<p>Configuration of the
+<a href="https://plugins.jenkins.io/docker-workflow">Docker Pipeline plugin</a>, including creating templates for all custom build agents</p>
+</li>
+<li>
+<p>Configuration of the <a href="https://plugins.jenkins.io/workflow-cps-global-lib">Global Pipeline Libraries plugin</a></p>
+</li>
+<li>
+<p>Configuration of the <a href="https://plugins.jenkins.io/slack">Slack Notifier plugin</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With software-defined Jenkins, pipeline infrastructure
+gains the same flexibility and resiliency as the rest of the development pipeline.
+If we decide to change our Jenkins configuration in any way –
+for example installing a new plugin or upgrading an existing one,
+adding a new global library, or adding new Docker images for build agents –
+we simply edit our <code>preStart</code> script to include these changes, build a new Docker image,
+and the Jenkins environment is automatically reconfigured when we start a new container.
+Because the entire configuration specification lives in a Github repository,
+changes are merged to the "master" branch using pull requests,
+and our Jenkins Docker image is tagged using
+<a href="https://semver.org/">semantic versioning</a> just like any other component.
+Jenkins can be both indispensable and completely disposable at the same time.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/JenkinsWorld/">
+JenkinsWorld
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/07/2017-07-17-speaker-blog-care.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

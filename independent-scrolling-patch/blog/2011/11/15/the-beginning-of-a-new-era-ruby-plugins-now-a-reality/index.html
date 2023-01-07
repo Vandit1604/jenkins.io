@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+The beginning of a new era: Ruby plugins now a reality
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2011/11/15/the-beginning-of-a-new-era-ruby-plugins-now-a-reality/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="The beginning of a new era: Ruby plugins now a reality" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="The beginning of a new era: Ruby plugins now a reality" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="The beginning of a new era: Ruby plugins now a reality" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2011/11/15/the-beginning-of-a-new-era-ruby-plugins-now-a-reality/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="The beginning of a new era: Ruby plugins now a reality" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+The beginning of a new era: Ruby plugins now a reality
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+November 15, 2011
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=The+beginning+of+a+new+era%3A+Ruby+plugins+now+a+reality&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2011%2F11%2F15%2Fthe-beginning-of-a-new-era-ruby-plugins-now-a-reality%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image"><img src="https://web.archive.org/web/*/https://agentdero.cachefly.net/continuousblog/jruby.png" alt="Yay JRuby!" width="180"></span> It&#8217;s not often that I get to use <em>that</em> much hyperbole in a Jenkins blog post, but I think in this case it&#8217;s allowable. A journey that started over a year ago by <a href="https://twitter.com/cowboyd">Charles Lowell</a> has reached a new level, thanks to lots of help from <a href="https://twitter.com/kohsukekawa">Kohsuke</a> along with <a href="https://twitter.com/nahi">Hiroshi Nakamura</a> and <a href="https://twitter.com/jorgenpt">J&oslash;rgen Tjern&oslash;</a>.</p>
+</div>
+<div class="paragraph">
+<p>As of today, with Jenkins 1.438, you can now <strong>download and install Ruby plugins from the update center</strong> (the <a href="https://wiki.jenkins.io/display/JENKINS/Pathignore+Plugin">Path Ignore plugin</a> being the first).</p>
+</div>
+<div class="paragraph">
+<p>Words simply can&#8217;t express what a monumental achievement this is for the Jenkins project, both from the technical perspective but also in terms of what this means for the future of the project.</p>
+</div>
+<div class="paragraph">
+<p>According to the <a href="https://github.com/languages">languages dashboard on GitHub</a>, Ruby is over two times as popular as Java on the site. I do not intend to start a language popularity contest here, but if we pretend just for a minute that the GitHub ecosystem is all that exists. Can you then imagine how powerful it would be to engage and include a community of open source developers that would be two times the size of the current pool of contributors? That&#8217;s <strong>tremendous</strong> potential!</p>
+</div>
+<div class="sect2">
+<h3 id="great-where-do-i-start"><a class="anchor" href="#great-where-do-i-start"></a>Great! Where do I start?</h3>
+<div class="paragraph">
+<p>For those that are curious, the first officially released Ruby plugin for Jenkins is J&oslash;rgen&#8217;s <a href="https://github.com/jenkinsci/pathignore-plugin">pathignore-plugin</a> which can be found in the update center. If you&#8217;re looking for a reference project, this is currently the most up-to-date plugin.</p>
+</div>
+<div class="paragraph">
+<p>There is also a <strong><a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+plugin+development+in+Ruby">wiki page covering Ruby plugin development</a></strong>, which might be a little out-of-date but covers most of the essentials.</p>
+</div>
+<div class="paragraph">
+<p>Additionally you might find the <a href="https://github.com/cowboyd/jenkins-prototype-ruby-plugin">jenkins-prototype-plugin</a> an interesting resource as it is practically a kitchen sink of demo/test Ruby plugin code.</p>
+</div>
+<div class="paragraph">
+<p>Currently only a few extension points (BuildStep, Publisher, BuildWrapper) are mapped in a Ruby-friendly manner. Don&#8217;t let that scare you though! If you dig around in the <a href="https://github.com/cowboyd/jenkins-plugin-runtime">jenkins-plugin-runtime</a> you can see how the existing extension points are mapped from Java into Ruby, because Ruby plugins are running under JRuby, if you need to access some Java APIs, you can do so without too much trouble.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-thank-yous"><a class="anchor" href="#the-thank-yous"></a>The Thank Yous</h3>
+<div class="paragraph">
+<p>Great efforts like this one don&#8217;t just happen without support, which is why I&#8217;d like to call out and thank <a href="https://thefrontside.net/">The FrontSide</a> for their <strong>wonderful</strong> support, helping to cover costs of WebEx for Office Hours and covering Charles' time while he worked with Kohsuke on the internal plumbing needed to make Ruby plugins possible within Jenkins core. If the name "The FrontSide" looks familiar to you, that might be because they also created and donated the Jenkins logo!</p>
+</div>
+<div class="paragraph">
+<p>We should also thank <a href="https://www.mylookout.com">Lookout, Inc</a> (<em>full disclosure: Lookout is my employer</em>) and <a href="https://www.cloudbees.com">CloudBees</a> for affording some employee time for J&oslash;rgen and Kohsuke respectively to work on the project.</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/general/">
+general
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jruby/">
+jruby
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2011/2011-11-15-the-beginning-of-a-new-era-ruby-plugins-now-a-reality.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

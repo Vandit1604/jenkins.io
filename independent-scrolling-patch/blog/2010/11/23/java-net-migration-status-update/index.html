@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Java.net migration status update
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/11/23/java-net-migration-status-update/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Java.net migration status update" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Java.net migration status update" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Java.net migration status update" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/11/23/java-net-migration-status-update/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Java.net migration status update" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Java.net migration status update
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/kohsuke/"><div class="app-avatar"><img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/images/avatars/kohsuke.jpeg"></div> Kohsuke Kawaguchi</a>
+November 23, 2010
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Java.net+migration+status+update&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2010%2F11%2F23%2Fjava-net-migration-status-update%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Monday morning I came into work and discovered that I cannot commit to the Hudson Subversion repository. Initially I wasn&#8217;t worried — I thought it was just another java.net outage that will resolve itself in a few hours — but a little research a bit later revealed that Hudson was locked down and being <a href="https://weblogs.java.net/blog/communitymanager/archive/2010/11/03/javanet-begins-migration-collabnet-kenai-infrastructure">migrated to new java.net infrastructure</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>I and the whole community was quite surprised by this, as we are supposed to be "notified as soon as we assign a date for [our] projects to move." But by the time the developer community noticed, the project was already locked down, repository is read-only, and mailing lists can stop functioning any time. My immediate action was to contact the folks who are doing migration to get Hudson out of this cycle of the migration, but I was told that the ship has sailed and it was too late.<br></p>
+</div>
+<div class="paragraph">
+<p>Even worse, there&#8217;s no ETA — it&#8217;ll definitely take a week, but since this is a Thanksgiving weekend, it can take longer, Oracle said.<br></p>
+</div>
+<div class="paragraph">
+<p>I find this situation plain unacceptable, and <a href="https://java.net/projects/jersey/lists/dev/archive/2010-11/message/3">e-mails from the earlier migration effort</a> made me doubt if the new infrastructure is any better. I also had a pleasure of working closely with CollabNet folks over the past years and I was also involved in some earlier conversation and experiments about the new java.net infrastructure, and when it comes to performance and monitoring, CollabNet folks really knew what they are doing. So I had multiple reasons to worry if the new infrastructure can handle the load of java.net, which the old CollabNet-hosted one couldn&#8217;t handle.<br></p>
+</div>
+<div class="paragraph">
+<p>But fortunately, since the general java.net migration has been announced, we&#8217;ve <a href="https://hudson.361315.n4.nabble.com/Mailing-list-change-proposal-td3047548.html">discussed</a> the migration of some of the project infrastructure. So we&#8217;ve accelerated the plan and implemented it, so as not to lose the critical project infrastructure services.<br></p>
+</div>
+<div class="sect1">
+<h2 id="mailing-lists"><a class="anchor" href="#mailing-lists"></a>Mailing Lists</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hudson mailing lists are moved to Google Groups. See <a href="https://hudson-labs.org/content/mailing-lists">more details here</a> and <a href="https://wiki.jenkins.io/display/JENKINS/Mailing%20List">here</a>. The new mailing lists provide a real search capability, decent UI for archives, and it makes it easier for people with multiple e-mail addresses to post from multiple addresses and receive just one copy. The stability of the service is also much better.<br></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="source-code"><a class="anchor" href="#source-code"></a>Source code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hudson core source code has been long synced to GitHub. We&#8217;ve been getting several contributions through that already, and people have been asking <a href="https://hudson.361315.n4.nabble.com/On-the-future-of-Hudson-hosting-and-infrastructure-td393278i20.html">for</a> <a href="https://hudson.361315.n4.nabble.com/Git-repository-for-Hudson-td394409.html#a394412">Git</a> <a href="https://hudson.361315.n4.nabble.com/hudson-plugins-git-repository-td1477941.html">migration</a> <a href="https://hudson.361315.n4.nabble.com/Hudson-on-github-td2252960.html">for</a> <a href="https://hudson.361315.n4.nabble.com/Expose-the-Hudson-SVN-as-a-GIT-repository-td391333.html">long</a> <a href="https://hudson.361315.n4.nabble.com/version-control-for-hudson-source-bidirectional-git-lt-gt-svn-td978706.html">time</a> anyway. So going forward I&#8217;ll be committing to and producing releases from <a href="https://github.com/hudson/hudson">the Hudson repository on GitHub</a> at <code>https://kohsuke@github.com/hudson/hudson.git</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>The new Git-based repository would be far snappier to work with, and it&#8217;ll make it easier for people to maintain private changes and contribute changes back. There&#8217;s also a work in progress to set up Gerrit to streamline the patch review process to the core. So I think this further reduces the barrier of entry to the Hudson project and accelerate the progress.<br></p>
+</div>
+<div class="paragraph">
+<p>The migration of Hudson plugin repositories still needs to be discussed, so stay tuned for the updates in <a href="https://groups.google.com/group/hudson-dev">the dev list</a> today or tomorrow. I&#8217;ve developed a bulk import program whose output can be seen <a href="https://github.com/HudsonLabs">here</a>, so I&#8217;m going to propose this as the migration strategy.<br></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusions"><a class="anchor" href="#conclusions"></a>Conclusions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My apologies that these changes had to happen quickly — I&#8217;m just as frustrated as you are, but given the circumstances, I think this is the best course of action. Hopefully everything will be in place within a few days. And in the mean time, thanks for your patience.<br></p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/infrastructure/">
+infrastructure
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/core/">
+core
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Kohsuke Kawaguchi" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/kohsuke.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/kohsuke/">
+Kohsuke Kawaguchi
+</a>
+</p>
+<div class="paragraph">
+<p>Kohsuke is the creator of Jenkins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/kohsuke" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/kohsukekawa" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2010/2010-11-23-java-net-migration-status-update.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

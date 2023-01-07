@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins IRC moves to Libera Chat
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="In this article we announce migration of the Jenkins community from Freenode IRC to Libera Chat. See the blogpost for the migration details and next steps for our community.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/06/17/libera-chat/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins IRC moves to Libera Chat" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins IRC moves to Libera Chat" name="twitter:title">
+<meta content="In this article we announce migration of the Jenkins community from Freenode IRC to Libera Chat. See the blogpost for the migration details and next steps for our community.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2021-06-libera-chat/jenkins-irc-on-libera-chat-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins IRC moves to Libera Chat" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/06/17/libera-chat/" property="og:url">
+<meta content="In this article we announce migration of the Jenkins community from Freenode IRC to Libera Chat. See the blogpost for the migration details and next steps for our community.
+" name="og:description">
+<meta content="Jenkins IRC moves to Libera Chat" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2021-06-libera-chat/jenkins-irc-on-libera-chat-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins IRC moves to Libera Chat
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a><a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+June 17, 2021
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+IRC+moves+to+Libera+Chat&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2021%2F06%2F17%2Flibera-chat%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p><span class="image center"><a class="image" href="/chat/#internet-relay-chat-irc"><img src="/images/post-images/2021-06-libera-chat/jenkins-irc-on-libera-chat-opengraph.png" alt="Jenkins IRC now on Libera Chat"></a></span></p>
+</div>
+<div class="paragraph">
+<p>We are happy to announce that
+the Jenkins community has moved all its <a href="/chat/#internet-relay-chat-irc">official IRC channels</a> to <a href="https://libera.chat/">Libera chat</a>.
+We have started our migration on May 26 as a response to the
+<a href="https://www.theregister.com/2021/05/26/freenode_irc_takeover/">hostile takeover</a>
+of hundreds of open source community channel by the new Freenode management.
+As decided  by the Jenkins governance meeting on June 16th,
+Libera Chat IRC channels are the only official channels going forward.</p>
+</div>
+<div class="paragraph">
+<p>A more detailed history of the transition is available on the <a href="https://groups.google.com/g/jenkinsci-dev/c/pEcun5ZSfgo/m/ztRg03VNAgAJ">Jenkins developers mailing list</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="what-did-we-move"><a class="anchor" href="#what-did-we-move"></a>What did we move?</h3>
+<div class="paragraph">
+<p>We have created the following IRC chats:</p>
+</div>
+<div class="paragraph">
+<p>that currently live on freenode to libera.chat:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>#jenkins</code> - general discussion channel for Jenkins users and developers.
+We no longer consider it a central chat for all things Jenkins, but we intend to keep it available to users
+who want to keep using IRC.</p>
+</li>
+<li>
+<p><code>#jenkins-hosting</code> - Chat used by the <a href="/project/teams/hosting/">Hosting Team</a> to manage hosting automation</p>
+</li>
+<li>
+<p><code>#jenkins-infra</code> - Chat used by the <a href="/projects/infrastructure/#team">Infrastructure Team</a> to coordinate efforts related to Jenkins project infrastructure and the incident response</p>
+</li>
+<li>
+<p><code>#jenkins-release</code>- Chat used for Jenkins core release coordination by the <a href="https://github.com/jenkinsci/jenkins/blob/master/docs/MAINTAINERS.adoc#team">Release Team</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All other channels have NOT been moved to Libera Chat IRC and were replaced by other channels.
+Most notable channels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>#jenkins-meeting</code> - the <a href="/project/governance-meeting/">Jenkins Governance Meeting</a> uses combination of Zoom and Google Docs at the moment. We do not longer use the IRC chat for that purpose.</p>
+</li>
+<li>
+<p><code>#jenkins-cert</code> - no private chat going forward. The <a href="/security">Security Team</a> will use mailing lists only going forward</p>
+</li>
+<li>
+<p><code>#jenkins-community</code> - Replaced by the <a href="https://gitter.im/jenkinsci/advocacy-and-outreach-sig">Advocacy&amp;Outreach</a> Gitter channel.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="freenode-concerns-and-disclaimers"><a class="anchor" href="#freenode-concerns-and-disclaimers"></a>Freenode concerns and disclaimers</h3>
+<div class="paragraph">
+<p>Going forward, the Jenkins community does not have <strong>ANY</strong> official channels on Freenode.
+All channels are either removed or left abandoned.
+We no longer manage or control our channels.
+Most of the Jenkins IRC channel operators use IRCCloud,
+and hence they <a href="https://twitter.com/oleg_nenashev/status/1403265278566412288">were banned</a> by the Freenode team on June 11th.
+Only a few operators have reconnected since this event.</p>
+</div>
+<div class="paragraph">
+<p>Taking the takeover of Freenode and hostile actions taken by the new management,
+we can no longer guarantee any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Authenticity of registered users on Freenode.
+All IRC accounts, cloaked or not, might have been taken over by the new Freenode management.
+ Do not trust messages from the Jenkins contributor account IDs there.</p>
+</li>
+<li>
+<p>Confidentiality of private channels like <code>#jenkins-cert</code>.
+We performed audit of the conversations there, and we believe there are no undisclosed security vulnerabilities referenced in the channel.
+ After all, this IRC has been rather dormant for the last 18 months.</p>
+</li>
+<li>
+<p>IRC User Passwords.
+All passwords on Freenode IRC may be compromised in the future.
+We strongly advise all users to rotate their passwords if they were used on Freenode IRC.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have made backups of IRC channel conversations in the abandoned channels.
+If you need to access the conversation history, please reach out to the Jenkins Infrastructure team.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="acknowledgements"><a class="anchor" href="#acknowledgements"></a>Acknowledgements</h3>
+<div class="paragraph">
+<p>We thank the entire <a href="https://libera.chat/">Libera Chat</a> team and all contributors who have worked on creating
+a Freenode replacement for hundreds of open source communities using IRC.
+Within just a month, a new platform has been created and adopted by almost all active projects.
+We remember the Hudson to Jenkins renaming days when a similar mobilization happened in the Jenkins community,
+and we appreciate all the effort put by contributors.</p>
+</div>
+<div class="paragraph">
+<p>Special thanks to Tim Jacomb, Gavin Mogan, Alex Earl, and Olivier Vernin for their work on the migration of IRC channels
+and our automation like the <a href="/projects/infrastructure/ircbot/">IRC Bot</a> used by the Jenkins hosting team.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next?</h3>
+<div class="paragraph">
+<p>In the Jenkins community we will keep using Libera Chat IRC and maintaining user and contributor channels there.
+Other Jenkins chat channels like <a href="/chat/#gitter">Gitter</a> and <a href="/chat/#slack">Slack</a> are unchanged.
+We intend to gradually replace many of those channels with <a href="https://community.jenkins.io/">community.jenkins.io</a>.
+This is a new portal powered by <a href="https://www.discourse.org/">Discourse</a>.
+The service is sponsored by <a href="https://www.discourse.org/">Civilized Discourse Construction Kit, Inc.</a>.
+It is currently in preview, stay tuned for announcements.
+As always, we will appreciate any suggestions and <a href="https://community.jenkins.io/c/site-feedback/2">feedback</a>!</p>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/chat/">
+chat
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+<!-- / Support both topic IDs and full URLs -->
+<!-- / TODO: Check number validity -->
+<b class="title">
+Discuss
+</b>
+<div id="discourse-comments">
+<script>
+    window.DiscourseEmbed = {"discourseUrl":"https://community.jenkins.io/","topicId":"146"}; 
+    (function() {
+        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    })();
+</script>
+</div>
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2021/06/2021-06-17-libera-chat.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

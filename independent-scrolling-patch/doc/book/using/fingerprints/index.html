@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Fingerprints
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/using/fingerprints/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Fingerprints" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Fingerprints" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Fingerprints" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/using/fingerprints/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Fingerprints" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="active">Using Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-credentials/" class="">Using credentials</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/searchbox/" class="">Search Box</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/referencing-another-project-by-name/" class="">Referencing another project by name</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/aborting-a-build/" class="">Aborting a build</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/fingerprints/" class="active">Fingerprints</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-local-language/" class="">Using local language</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/change-time-zone/" class="">Change time zone</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/remote-access-api/" class="">Remote Access API</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/executor-starvation/" class="">Executor Starvation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-agents/" class="">Using Jenkins agents</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/using-jmeter-with-jenkins/" class="">Using JMeter with Jenkins</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../aborting-a-build">
+⇐ Aborting a build
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Using Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../using-local-language">
+Using local language ⇒
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Fingerprints
+</h1>
+<div class="sect1">
+<h2 id="tracking-file-usage-across-jenkins-jobs-using-fingerprints"><a class="anchor" href="#tracking-file-usage-across-jenkins-jobs-using-fingerprints"></a>Tracking file usage across Jenkins jobs using fingerprints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you have interdependent projects on Jenkins, it often becomes hard
+to keep track of which version of a file is used by which version of a
+dependency on that file.
+Jenkins supports <strong>file fingerprinting</strong> to track dependencies.</p>
+</div>
+<div class="paragraph">
+<p>For example, suppose you have a TOP project that depends on a MIDDLE
+project, which in turn depends on a BOTTOM project.
+You are working on the BOTTOM project.
+The TOP team reported that the <code>bottom.jar</code> that they are using causes
+an NPE, which you (a member of the BOTTOM team) thought you fixed in
+BOTTOM #32.
+Jenkins can tell you which MIDDLE builds and TOP builds are using (or not
+using) your <code>bottom.jar</code> #32.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-do-i-set-it-up"><a class="anchor" href="#how-do-i-set-it-up"></a>How do I set it up?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To make this work, all the relevant projects need to be configured to
+<strong>Record fingerprints</strong> of the jar files (in the above case,
+<code>bottom.jar</code>).</p>
+</div>
+<div class="paragraph">
+<p>For example, if you just want to track which BOTTOM builds are used by
+which TOP builds, configure TOP and BOTTOM to record the fingerprint
+of <code>bottom.jar</code>.
+If you also want to know which MIDDLE builds are using which
+<code>bottom.jar</code>, also configure MIDDLE.</p>
+</div>
+<div class="paragraph">
+<p>Since recording fingerprints is a cheap operation, the simplest thing to
+do is just blindly record all fingerprints of the followings:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>jar files that your project produce</p>
+</li>
+<li>
+<p>jar files that your project rely on</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The disk usage is affected more by the number of files fingerprinted, as
+opposed to the size of files or the number of builds they are used.
+So unless you have a plenty of disk space, you don&#8217;t want to fingerprint
+<code>**/*</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="configure-a-job-to-record-fingerprints-of-a-file-or-set-of-files"><a class="anchor" href="#configure-a-job-to-record-fingerprints-of-a-file-or-set-of-files"></a>Configure a job to Record Fingerprint(s) of a file or set of files</h3>
+<div class="paragraph">
+<p>Go to your project, click <strong>Configure</strong> in the left navigation bar, then
+scroll down to the <strong>Post-build Actions</strong> section of the job</p>
+</div>
+<div class="paragraph">
+<p>Click on the button to add a <strong>Post-build</strong> action.</p>
+</div>
+<div class="paragraph">
+<p>Select <strong>Record fingerprints of files to track usage</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The post-build action configuration fields provide you with a pattern
+option to match the files you want to fingerprint as well as a couple
+check-box selections to do your file fingerprinting.</p>
+</div>
+<div class="paragraph">
+<p>Maven job type does this automatically for its dependencies and
+artifacts.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-does-it-work"><a class="anchor" href="#how-does-it-work"></a>How does it work?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The fingerprint of a file is simply an MD5 checksum. Jenkins maintains a
+database of MD5 checksums, and for each MD5 checksum, Jenkins records
+which builds of which projects used it.
+This database is updated every time a build runs and files are
+fingerprinted.</p>
+</div>
+<div class="paragraph">
+<p>To avoid excessive disk usage, Jenkins does not store the actual
+file.
+Instead, it just stores MD5 checksums and their usages.
+These files can be seen in</p>
+</div>
+<div class="paragraph">
+<p><strong>$JENKINS_HOME/fingerprints</strong></p>
+</div>
+<div class="paragraph">
+<p>Plugins can store additional information in these records.
+For example,
+<a href="https://plugins.jenkins.io/deployment-notification/">Deployment Notification Plugin</a>
+tracks files deployed on servers via chef/puppet through fingerprints.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-can-i-use-it"><a class="anchor" href="#how-can-i-use-it"></a>How can I use it?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here are a few typical scenarios that benefit from this feature:</p>
+</div>
+<div class="paragraph">
+<p>You develop the BOTTOM project and you want to know who is using BOTTOM
+#13 in which builds</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to BOTTOM #13 build page.</p>
+</li>
+<li>
+<p>Click the "fingerprint" icon of <code>bottom.jar</code> in the build artifacts</p>
+</li>
+<li>
+<p>You&#8217;ll see all the projects and builds that use it.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You develop the TOP project and you want to know which build of
+<code>bottom.jar</code> and <code>middle.jar</code> you are using in TOP #10.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to TOP #10 build page.</p>
+</li>
+<li>
+<p>Click "see fingerprints"</p>
+</li>
+<li>
+<p>You&#8217;ll see all the files fingerprinted in TOP #10, along with where
+they came from.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You have the TOP project that builds a jar.
+You also have the TOP-TEST project that runs after the TOP project and does extensive
+integration tests on the latest TOP bits. You want to know the test results of TOP
+#7.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to TOP #7 build page.</p>
+</li>
+<li>
+<p>Click the "fingerprint" icon of <code>top.jar</code> in the build artifacts</p>
+</li>
+<li>
+<p>You&#8217;ll see all the TOP-TEST builds that used it.</p>
+</li>
+<li>
+<p>Click it and you&#8217;ll be taken to the appropriate TOP-TEST build page,
+which will show you test reports.</p>
+</li>
+<li>
+<p>If there&#8217;s no TOP-TEST builds displayed, then that means TOP-TEST
+build didn&#8217;t run against TOP #7. Maybe it skipped TOP #7 (this can
+happen if there are a lot of TOP builds in a short period of time), or
+maybe a new TOP-TEST build is in progress.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../aborting-a-build">
+⇐ Aborting a build
+</a>
+</div>
+<div class="col-md-4">
+<a class="up doc-page-link" href="../">
+⇑ Using Jenkins
+</a>
+<a class="index doc-page-link" href="../../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+<a class="next doc-page-link" href="../using-local-language">
+Using local language ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/using/fingerprints.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2019-10-16
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-10-16/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2019-10-16" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2019-10-16" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2019-10-16" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-10-16/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2019-10-16" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2019-10-16
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/bumblebee">
+Bumblebee HP ALM
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/vmanager-plugin">
+Cadence vManager
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/crx-content-package-deployer">
+CRX Content Package Deployer
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/delphix">
+Delphix
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/elasticbox">
+ElasticBox CI
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/extensivetesting">
+Extensive Testing
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/fortify-on-demand-uploader">
+Fortify on Demand
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/google-kubernetes-engine">
+Google Kubernetes Engine
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/google-oauth-plugin">
+Google OAuth Credentials
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/icescrum">
+iceScrum
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/neoload-jenkins-plugin">
+NeoLoad
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/oracle-cloud-infrastructure-compute-classic">
+Oracle Cloud Infrastructure Compute Classic
+Plugin
+</a>
+</li>
+<li>
+Puppet Enterprise Pipeline
+
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/rundeck">
+Rundeck
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/cloudtest">
+SOASTA CloudTest
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/sofy-ai">
+Sofy.AI
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/view26">
+View26 Test-Reporting
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1583">
+Arbitrary file read vulnerability in Google OAuth Credentials Plugin
+</h3>
+<strong>
+SECURITY-1583
+/
+CVE-2019-10436
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/google-oauth-plugin">
+<code>google-oauth-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Google OAuth Credentials Plugin allowed the creation of credentials based on the content of files on the Jenkins controller through a feature retaining backwards compatibility with earlier plugin releases.
+This allowed users with the permission to configure jobs and credentials to read arbitrary files on the Jenkins controller by creating a credential referencing an arbitrary file on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>Google OAuth Credentials Plugin no longer allows a regular user to create credentials in the legacy format.</p>
+</div>
+<h3 id="SECURITY-1006 (1)">
+CSRF vulnerability and missing permission check in CRX Content Package Deployer Plugin allowed capturing credentials
+</h3>
+<strong>
+SECURITY-1006 (1)
+/
+CVE-2019-10437 (CSRF), CVE-2019-10438 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/crx-content-package-deployer">
+<code>crx-content-package-deployer</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>CRX Content Package Deployer Plugin did not perform permission checks on a method implementing form validation.
+This allowed users with Overall/Read access to Jenkins to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form validation method did not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>CRX Content Package Deployer Plugin now requires POST requests and Item/Configure permission.</p>
+</div>
+<h3 id="SECURITY-1006 (2)">
+Users with Overall/Read access could enumerate credential IDs in CRX Content Package Deployer Plugin
+</h3>
+<strong>
+SECURITY-1006 (2)
+/
+CVE-2019-10439
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/crx-content-package-deployer">
+<code>crx-content-package-deployer</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>CRX Content Package Deployer Plugin provides a list of applicable credential IDs to allow users configuring the plugin to select the one to use.</p>
+</div>
+<div class="paragraph">
+<p>This functionality did not correctly check permissions, allowing any user with Overall/Read permission to get a list of valid credentials IDs.
+Those could be used as part of an attack to capture the credentials using another vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>An enumeration of credentials IDs in CRX Content Package Deployer Plugin now requires the appropriate permission.</p>
+</div>
+<h3 id="SECURITY-1427">
+NeoLoad Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1427
+/
+CVE-2019-10440
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/neoload-jenkins-plugin">
+<code>neoload-jenkins-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>NeoLoad Plugin stored credentials unencrypted in its global configuration file <code>org.jenkinsci.plugins.neoload.integration.NeoGlobalConfig.xml</code> and in job <code>config.xml</code> files on the Jenkins controller.
+These credentials could be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>NeoLoad Plugin now stores these credentials encrypted.</p>
+</div>
+<h3 id="SECURITY-1484">
+CSRF vulnerability and missing permission check in iceScrum Plugin
+</h3>
+<strong>
+SECURITY-1484
+/
+CVE-2019-10441 (CSRF), CVE-2019-10442 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/icescrum">
+<code>icescrum</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>iceScrum Plugin did not perform permission checks on a method implementing form validation.
+This allowed users with Overall/Read access to Jenkins to initiate a connection test to an attacker-specified server with attacker-specified access token or username and password.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form validation method did not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>iceScrum Plugin now requires POST requests and Overall/Administer permission.</p>
+</div>
+<h3 id="SECURITY-1436">
+iceScrum Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1436
+/
+CVE-2019-10443
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/icescrum">
+<code>icescrum</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>iceScrum Plugin stored credentials unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+These credentials could be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>iceScrum Plugin 1.1.5 and newer now stores these credentials encrypted.</p>
+</div>
+<h3 id="SECURITY-1481">
+Bumblebee HP ALM Plugin unconditionally disabled SSL/TLS certificate validation
+</h3>
+<strong>
+SECURITY-1481
+/
+CVE-2019-10444
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/bumblebee">
+<code>bumblebee</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Bumblebee HP ALM Plugin unconditionally disabled SSL/TLS certificate validation for connections to the HP ALM service.</p>
+</div>
+<div class="paragraph">
+<p>Bumblebee HP ALM Plugin no longer does that.
+Instead, it now allows users to opt out of certificate validation.</p>
+</div>
+<h3 id="SECURITY-1607">
+Missing permission checks in Google Kubernetes Engine Plugin allowed validating and obtaining data
+</h3>
+<strong>
+SECURITY-1607
+/
+CVE-2019-10445
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/google-kubernetes-engine">
+<code>google-kubernetes-engine</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Missing permission checks in Google Kubernetes Engine Plugin allowed users with Overall/Read permission to obtain limited information about the scope and access of a credential with an attacker-specified credential ID obtained through another method.</p>
+</div>
+<div class="paragraph">
+<p>Google Kubernetes Engine Plugin now requires Job/Configure permission for these operations.</p>
+</div>
+<h3 id="SECURITY-1615">
+Cadence vManager Plugin globally and unconditionally disabled SSL/TLS certificate validation
+</h3>
+<strong>
+SECURITY-1615
+/
+CVE-2019-10446
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/vmanager-plugin">
+<code>vmanager-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Cadence vManager Plugin unconditionally disabled SSL/TLS certificate validation for the entire Jenkins controller JVM.</p>
+</div>
+<div class="paragraph">
+<p>Cadence vManager Plugin no longer does that.
+Instead, it now has an opt-in option to ignore SSL/TLS errors for its connections.</p>
+</div>
+<h3 id="SECURITY-918">
+Script sandbox bypass vulnerability in Puppet Enterprise Pipeline
+ Plugin
+</h3>
+<strong>
+SECURITY-918
+/
+CVE-2019-10458
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/puppet-enterprise-pipeline">
+<code>puppet-enterprise-pipeline</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Puppet Enterprise Pipeline
+ Plugin defines a custom list of pre-approved signatures for all scripts protected by the Script Security sandbox.</p>
+</div>
+<div class="paragraph">
+<p>This custom list of pre-approved signatures allows the use of methods that can be used to bypass Script Security sandbox protection.
+This results in arbitrary code execution on any Jenkins instance with this plugin installed.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1431">
+Sofy.AI Plugin stores API token in plain text
+</h3>
+<strong>
+SECURITY-1431
+/
+CVE-2019-10447
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/sofy-ai">
+<code>sofy-ai</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Sofy.AI Plugin stores an API token unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+This token can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1432">
+Extensive Testing Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1432
+/
+CVE-2019-10448
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/extensivetesting">
+<code>extensivetesting</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Extensive Testing Plugin stores credentials unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+These credentials can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1433">
+Fortify on Demand Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1433
+/
+CVE-2019-10449
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/fortify-on-demand-uploader">
+<code>fortify-on-demand-uploader</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Fortify on Demand Plugin stores credentials unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+These credentials can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1434">
+ElasticBox CI Plugin stores access token in plain text
+</h3>
+<strong>
+SECURITY-1434
+/
+CVE-2019-10450
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/elasticbox">
+<code>elasticbox</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>ElasticBox CI Plugin stores an access token unencrypted in the global <code>config.xml</code> configuration file on the Jenkins controller.
+This token can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1439">
+SOASTA CloudTest Plugin stores API token in plain text
+</h3>
+<strong>
+SECURITY-1439
+/
+CVE-2019-10451
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/cloudtest">
+<code>cloudtest</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>SOASTA CloudTest Plugin stores credentials unencrypted in its global configuration file <code>com.soasta.jenkins.CloudTestServer.xml</code> on the Jenkins controller.
+These credentials could be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1440">
+View26 Test-Reporting Plugin stores access token in plain text
+</h3>
+<strong>
+SECURITY-1440
+/
+CVE-2019-10452
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/view26">
+<code>view26</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>View26 Test-Reporting Plugin stores an access token unencrypted in job <code>config.xml</code> files on the Jenkins controller.
+This token can be viewed by users with Extended Read permission or access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1450">
+Delphix Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1450
+/
+CVE-2019-10453
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/delphix">
+<code>delphix</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Delphix Plugin stores credentials unencrypted in its global configuration file <code>io.jenkins.plugins.delphix.GlobalConfiguration.xml</code> on the Jenkins controller.
+These credentials could be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1460">
+CSRF vulnerability and missing permission check in Rundeck Plugin
+</h3>
+<strong>
+SECURITY-1460
+/
+CVE-2019-10454 (CSRF), CVE-2019-10455 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/rundeck">
+<code>rundeck</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Rundeck Plugin does not perform permission checks on a method implementing form validation.
+This allows users with Overall/Read access to Jenkins to initiate a connection test to an attacker-specified server with attacker-specified username and password.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form validation method does not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h3 id="SECURITY-1462">
+CSRF vulnerability and missing permission check in Oracle Cloud Infrastructure Compute Classic Plugin
+</h3>
+<strong>
+SECURITY-1462
+/
+CVE-2019-10456 (CSRF), CVE-2019-10457 (permission check)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/oracle-cloud-infrastructure-compute-classic">
+<code>oracle-cloud-infrastructure-compute-classic</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Oracle Cloud Infrastructure Compute Classic Plugin does not perform permission checks on a method implementing form validation.
+This allows users with Overall/Read access to Jenkins to initiate a connection test to an attacker-specified server with attacker-specified username and password.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form validation method does not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory there is no fix.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-918:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-1006 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+</li>
+<li>
+SECURITY-1006 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1427:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1431:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1432:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1433:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1434:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1436:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1439:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1440:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1450:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1460:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1462:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1481:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1484:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1583:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1607:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1615:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N">
+Medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Bumblebee HP ALM
+Plugin
+</strong>
+up to and including
+4.1.3
+</li>
+<li>
+<strong>
+Cadence vManager
+Plugin
+</strong>
+up to and including
+2.7.0
+</li>
+<li>
+<strong>
+CRX Content Package Deployer
+Plugin
+</strong>
+up to and including
+1.8.1
+</li>
+<li>
+<strong>
+Delphix
+Plugin
+</strong>
+up to and including
+2.0.4
+</li>
+<li>
+<strong>
+ElasticBox CI
+Plugin
+</strong>
+up to and including
+5.0.1
+</li>
+<li>
+<strong>
+Extensive Testing
+Plugin
+</strong>
+up to and including
+1.4.4b
+</li>
+<li>
+<strong>
+Fortify on Demand
+Plugin
+</strong>
+up to and including
+4.0.0
+</li>
+<li>
+<strong>
+Google Kubernetes Engine
+Plugin
+</strong>
+up to and including
+0.7.0
+</li>
+<li>
+<strong>
+Google OAuth Credentials
+Plugin
+</strong>
+up to and including
+0.9
+</li>
+<li>
+<strong>
+iceScrum
+Plugin
+</strong>
+up to and including
+1.1.5
+</li>
+<li>
+<strong>
+NeoLoad
+Plugin
+</strong>
+up to and including
+2.2.5
+</li>
+<li>
+<strong>
+Oracle Cloud Infrastructure Compute Classic
+Plugin
+</strong>
+up to and including
+1.0.0
+</li>
+<li>
+<strong>
+Puppet Enterprise Pipeline
+
+Plugin
+</strong>
+up to and including
+1.3.1
+</li>
+<li>
+<strong>
+Rundeck
+Plugin
+</strong>
+up to and including
+3.6.5
+</li>
+<li>
+<strong>
+SOASTA CloudTest
+Plugin
+</strong>
+up to and including
+2.25
+</li>
+<li>
+<strong>
+Sofy.AI
+Plugin
+</strong>
+up to and including
+1.0.3
+</li>
+<li>
+<strong>
+View26 Test-Reporting
+Plugin
+</strong>
+up to and including
+1.0.7
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Bumblebee HP ALM
+Plugin
+</strong>
+should be updated to version
+4.1.4
+</li>
+<li>
+<strong>
+Cadence vManager
+Plugin
+</strong>
+should be updated to version
+2.7.1
+</li>
+<li>
+<strong>
+CRX Content Package Deployer
+Plugin
+</strong>
+should be updated to version
+1.9
+</li>
+<li>
+<strong>
+Google Kubernetes Engine
+Plugin
+</strong>
+should be updated to version
+0.7.1
+</li>
+<li>
+<strong>
+Google OAuth Credentials
+Plugin
+</strong>
+should be updated to version
+0.10
+</li>
+<li>
+<strong>
+iceScrum
+Plugin
+</strong>
+should be updated to version
+1.1.6
+</li>
+<li>
+<strong>
+NeoLoad
+Plugin
+</strong>
+should be updated to version
+2.2.6
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Delphix
+Plugin
+</li>
+<li>
+ElasticBox CI
+Plugin
+</li>
+<li>
+Extensive Testing
+Plugin
+</li>
+<li>
+Fortify on Demand
+Plugin
+</li>
+<li>
+Oracle Cloud Infrastructure Compute Classic
+Plugin
+</li>
+<li>
+Puppet Enterprise Pipeline
+
+Plugin
+</li>
+<li>
+Rundeck
+Plugin
+</li>
+<li>
+SOASTA CloudTest
+Plugin
+</li>
+<li>
+Sofy.AI
+Plugin
+</li>
+<li>
+View26 Test-Reporting
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-1615
+</li>
+<li>
+<strong>
+David Fiser of Trend Micro Nebula working with Trend Micro's Zero Day Initiative
+</strong>
+for
+SECURITY-1427, SECURITY-1431, SECURITY-1432, SECURITY-1433, SECURITY-1434, SECURITY-1436, SECURITY-1439, SECURITY-1440, SECURITY-1450
+</li>
+<li>
+<strong>
+Jesse Glick, CloudBees, Inc.
+</strong>
+for
+SECURITY-918
+</li>
+<li>
+<strong>
+Matt Sicker, CloudBees Inc.
+</strong>
+for
+SECURITY-1607
+</li>
+<li>
+<strong>
+Oleg Nenashev, CloudBees, Inc.
+</strong>
+for
+SECURITY-1006 (1), SECURITY-1006 (2)
+</li>
+<li>
+<strong>
+Viktor Gazdag NCC Group
+</strong>
+for
+SECURITY-1460, SECURITY-1462, SECURITY-1481, SECURITY-1484
+</li>
+<li>
+<strong>
+Wadeck Follonier, Jesse Glick, and Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-1583
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2019-10-16.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

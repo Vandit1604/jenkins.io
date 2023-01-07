@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Delivery Pipelines, with Jenkins 2, SonarQube, and Artifactory
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/04/18/continuousdelivery-devops-sonarqube/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Delivery Pipelines, with Jenkins 2, SonarQube, and Artifactory" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Delivery Pipelines, with Jenkins 2, SonarQube, and Artifactory" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Delivery Pipelines, with Jenkins 2, SonarQube, and Artifactory" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/04/18/continuousdelivery-devops-sonarqube/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Delivery Pipelines, with Jenkins 2, SonarQube, and Artifactory" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Delivery Pipelines, with Jenkins 2, SonarQube, and Artifactory
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/michaelhuettermann/"><div class="app-avatar"><img alt="Michael Hüttermann" class="app-avatar__image" src="/images/avatars/michaelhuettermann.jpg"></div> Michael Hüttermann</a>
+April 18, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Delivery+Pipelines%2C+with+Jenkins+2%2C+SonarQube%2C+and+Artifactory&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F04%2F18%2Fcontinuousdelivery-devops-sonarqube%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https://github.com/michaelhuettermann">Michael Hüttermann</a>. Michael is an expert
+in Continuous Delivery, DevOps and SCM/ALM. More information about him at <a href="http://huettermann.net">huettermann.net</a>, or
+follow him on Twitter: <a href="https://twitter.com/huettermann">@huettermann</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Continuous Delivery and DevOps are well known and widely spread practices nowadays. It is commonly accepted that it
+is crucial to form great teams and define shared goals first and then choose and integrate the tools fitting best to
+given tasks. Often it is a mashup of lightweight tools, which are integrated to build up Continuous Delivery pipelines
+and underpin DevOps initiatives. In this blog post, we zoom in to an important part of the overall pipeline, that is the discipline
+often called <em>Continuous Inspection</em>, which comprises inspecting code and injecting a quality gate on that, and show how artifacts can
+be uploaded after the quality gate was met. DevOps enabler tools covered are Jenkins, SonarQube, and Artifactory.</p>
+</div>
+<div class="sect2">
+<h3 id="the-use-case"><a class="anchor" href="#the-use-case"></a>The Use Case</h3>
+<div class="paragraph">
+<p>You already know that quality cannot be injected after the fact, rather it should be part of the process and product from the very beginning.
+As a commonly used good practice, it is strongly recommended to inspect the code and make findings visible, as soon as possible.
+For that <a href="https://www.sonarqube.com">SonarQube</a> is a great choice. But SonarQube is not just running on any isolated
+island, it is integrated in a Delivery Pipeline. As part of the pipeline, the code is inspected, and only if the code is fine according to defined
+requirements, in other words: it meets the quality gates, the built artifacts are uploaded to the binary repository manager.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s consider the following scenario. One of the busy developers has to fix code, and checks in changes to the central
+version control system. The day was long and the night short, and against all team commitments the developer
+did not check the quality of the code in the local sandbox. Luckily, there is the build engine <a href="https://www.jenkins.io">Jenkins</a>
+which serves as a single point of truth, implementing the Delivery Pipeline with its native pipeline features, and as a handy coincidence
+SonarQube has support for Jenkins pipeline.</p>
+</div>
+<div class="paragraph">
+<p>The change triggers a new run of the pipeline. Oh no! The build pipeline broke, and the change is not further processed.
+In the following image you see that a defined quality gate was missed. The visualizing is done with Jenkins Blue Ocean.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/sonarqube-jenkins/01_PipelineFailedBlueOcean.png" alt="01 PipelineFailedBlueOcean"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sonarqube-inspection"><a class="anchor" href="#sonarqube-inspection"></a>SonarQube inspection</h3>
+<div class="paragraph">
+<p>What is the underlying issue? We can open the SonarQube web application and drill down to the finding. In the Java code, obviously a string literal is not placed on the right side.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/sonarqube-jenkins/02_Finding.png" alt="02 Finding"></span></p>
+</div>
+<div class="paragraph">
+<p>During a team meeting it was decided to define this to be a <em>Blocker</em>, and SonarQube was configured accordingly. Furthermore, a SonarQube quality gate was created to break any build, if a <em>blocker</em> was identified. Let&#8217;s now quickly look into the code.
+Yes, SonarQube is right, there is the issue with the following code snippet.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/sonarqube-jenkins/03_FindingVisualizedInCode.png" alt="03 FindingVisualizedInCode"></span></p>
+</div>
+<div class="paragraph">
+<p>We do not want to discuss in detail all used tools, and also covering the complete Jenkins build job would be out of scope.
+But the interesting extract here in regard of the inspection is the following <em>stage</em> defined in Jenkins pipeline DSL:</p>
+</div>
+<div class="listingblock">
+<div class="title">config.xml: SonarQube inspection</div>
+<div class="content">
+<pre class="nowrap">    stage('SonarQube analysis') { <i class="conum" data-value="1"></i><b>(1)</b>
+        withSonarQubeEnv('Sonar') { <i class="conum" data-value="2"></i><b>(2)</b>
+          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar ' + <i class="conum" data-value="3"></i><b>(3)</b>
+          '-f all/pom.xml ' +
+          '-Dsonar.projectKey=com.huettermann:all:master ' +
+          '-Dsonar.login=$SONAR_UN ' +
+          '-Dsonar.password=$SONAR_PW ' +
+          '-Dsonar.language=java ' +
+          '-Dsonar.sources=. ' +
+          '-Dsonar.tests=. ' +
+          '-Dsonar.test.inclusions=**/*Test*/** ' +
+          '-Dsonar.exclusions=**/*Test*/**'
+        }
+    }</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The dedicated stage for running the SonarQube analysis.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Allow to select the SonarQube server you want to interact with.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Running and configuring the scanner, many options available, check the docs.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Many options are available to integrate and configure SonarQube. Please consult the documentation for alternatives. Same applies to the other covered tools.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sonarqube-quality-gate"><a class="anchor" href="#sonarqube-quality-gate"></a>SonarQube Quality Gate</h3>
+<div class="paragraph">
+<p>As part of a Jenkins pipeline stage, SonarQube is configured to run and inspect the code. But this is just the first part,
+because we now also want to add the quality gate in order to break the build. The next stage is covering exactly that, see
+next snippet. The pipeline is paused until the quality gate is computed, specifically the <em>waitForQualityGate</em> step will pause the
+pipeline until SonarQube analysis is completed and returns the quality gate status. In case a quality gate was missed, the build breaks.</p>
+</div>
+<div class="listingblock">
+<div class="title">config.xml: SonarQube Quality Gate</div>
+<div class="content">
+<pre class="nowrap">    stage("SonarQube Quality Gate") { <i class="conum" data-value="1"></i><b>(1)</b>
+        timeout(time: 1, unit: 'HOURS') { <i class="conum" data-value="2"></i><b>(2)</b>
+           def qg = waitForQualityGate() <i class="conum" data-value="3"></i><b>(3)</b>
+           if (qg.status != 'OK') {
+             error "Pipeline aborted due to quality gate failure: ${qg.status}"
+           }
+        }
+    }</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The defined quality gate stage.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A timeout to define when to proceed without waiting for any results for ever.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Here we wait for the OK. Underlying implementation is done with SonarQube&#8217;s <em>webhooks</em> feature.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This blog post is an appetizer, and scripts are excerpts. For more information, please consult the respective documentation, or a good book, or the great community, or ask your local expert.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Since they all work in a wonderful Agile team, the next available colleague just promptly fixes the issue. After checking in
+the fixed code, the build pipeline runs again.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/sonarqube-jenkins/04_PipelineFixedBlueOcean.png" alt="04 PipelineFixedBlueOcean"></span></p>
+</div>
+<div class="paragraph">
+<p>The pipeline was processed successfully, including the SonarQube quality gate, and as the final step, the packaged and tested artifact was
+deployed to <a href="https://www.jfrog.org/artifactory">Artifactory</a>. There are a couple of different flexible ways how to upload the artifacts,
+the one we use here is using an upload spec to actually collect and upload the artifact which was built at the very beginning of the pipeline.
+Also meta information are published to Artifactory, since it is the context which matters and thus we can add valuable labels to the artifact for further processing.</p>
+</div>
+<div class="listingblock">
+<div class="title">config.xml: Upload to Artifactory</div>
+<div class="content">
+<pre class="nowrap">stage ('Distribute binaries') { <i class="conum" data-value="1"></i><b>(1)</b>
+    def SERVER_ID = '4711' <i class="conum" data-value="2"></i><b>(2)</b>
+    def server = Artifactory.server SERVER_ID
+    def uploadSpec = <i class="conum" data-value="3"></i><b>(3)</b>
+    """
+    {
+    "files": [
+        {
+            "pattern": "all/target/all-(*).war",
+            "target": "libs-snapshots-local/com/huettermann/web/{1}/"
+        }
+      ]
+    }
+    """
+    def buildInfo = Artifactory.newBuildInfo() <i class="conum" data-value="4"></i><b>(4)</b>
+    buildInfo.env.capture = true <i class="conum" data-value="5"></i><b>(5)</b>
+    buildInfo=server.upload(uploadSpec) <i class="conum" data-value="6"></i><b>(6)</b>
+    server.publishBuildInfo(buildInfo) <i class="conum" data-value="7"></i><b>(7)</b>
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The stage responsible for uploading the binary.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The server can be defined Jenkins wide, or as part of the build step, as done here.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>In the upload spec, in JSON format, we define what to deploy to which target, in a fine-grained way.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The build info contains meta information attached to the artifact.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>We want to capture environmental data.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Upload of artifact, according to upload spec.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Build info are published as well.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see check that the binary was deployed to Artifactory, successfully. As part of the context information, also a reference to the
+producing Jenkins build job is available for better traceability.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/sonarqube-jenkins/05_BinaryDeployedInArtifactory.png" alt="05 BinaryDeployedInArtifactory"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="summary"><a class="anchor" href="#summary"></a>Summary</h3>
+<div class="paragraph">
+<p>In this blog post, we&#8217;ve discovered tips and tricks to integrate Jenkins with SonarQube, how to define
+Jenkins stages with the Jenkins pipeline DSL, how those stages are visualized with Jenkins Blue Ocean, and how the artifact
+was deployed to our binary repository manager Artifactory.
+Now I wish you a lot of further fun with your great tools of choice to implement your Continuous Delivery pipelines.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references"><a class="anchor" href="#references"></a>References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jenkins.io/">Jenkins 2</a></p>
+</li>
+<li>
+<p><a href="https://www.sonarqube.org/">Sonarqube</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/SonarQube+plugin">Sonarqube Jenkins plugin</a></p>
+</li>
+<li>
+<p><a href="https://www.jfrog.com/artifactory/">Artifactory</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Artifactory+Plugin">Jenkins Artifactory plugin</a></p>
+</li>
+<li>
+<p><a href="http://huettermann.net/devops/">'DevOps for Developers', Apress, 2012</a></p>
+</li>
+<li>
+<p><a href="http://huettermann.net/alm/">'Agile ALM', Manning, 2011</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/quality/">
+quality
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/sonarqube/">
+sonarqube
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/artifactory/">
+artifactory
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Michael Hüttermann" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/michaelhuettermann.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/michaelhuettermann/">
+Michael Hüttermann
+</a>
+</p>
+<div class="paragraph">
+<p>Michael is expert in Continuous Delivery, DevOps and SCM/ALM supporting enterprises in implementing DevOps.
+Michael is Jenkins Ambassador.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/michaelhuettermann" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/huettermann" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://huettermann.net" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/04/2017-04-18-continuousdelivery-devops-sonarqube.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Required Role Check Security Improvement
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/required-role-check/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Required Role Check Security Improvement" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Required Role Check Security Improvement" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Required Role Check Security Improvement" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/required-role-check/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Required Role Check Security Improvement" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="active">Securing Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/access-control/" class="">Access Control</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/securing-jenkins/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/managing-security/" class="">Managing Security</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/controller-isolation/" class="active">Controller Isolation</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/csrf-protection/" class="">CSRF Protection</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/user-content/" class="">Rendering User Content</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/build-authorization/" class="">Access Control for Builds</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/environment-variables/" class="">Handling Environment Variables</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/markup-formatter/" class="">Markup Formatters</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/services/" class="">Exposed Services and Ports</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Required Role Check Security Improvement
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#identifying-broken-plugins">Identifying Broken Plugins</a></li>
+<li><a href="#known-affected-plugins">Known Affected Plugins</a></li>
+<li><a href="#workarounds">Workarounds</a>
+<ul class="sectlevel2">
+<li><a href="#allow-specific-callables">Allow specific callables</a></li>
+<li><a href="#disable-security-hardening">Disable security hardening</a></li>
+</ul>
+</li>
+<li><a href="#fixing-plugins">Fixing Plugins</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins agents communicate with the controller using the <a href="https://github.com/jenkinsci/remoting/">remoting library</a>.
+Individual messages (implementations of the <code>Callable</code> interface) instruct the other side of the bidirectional communication channel to perform operations and/or provide information.</p>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implementations are expected to restrict where they can be executed by their implementation of a <em>role check</em>.
+This role check is run after receiving the object through a communication channel and is expected to reject the execution of the <code>Callable</code> when it is determined to run on an unexpected side of that channel.
+For example, the <code>Callable</code> implementing the functionality for Jenkins to run OS commands (usually build tools and build scripts) on another system is only allowed to be sent from a controller to an agent, but not in the other direction.</p>
+</div>
+<div class="paragraph">
+<p>From Jenkins 2.319 and Jenkins LTS 2.303.3, Jenkins requires that role checks are performed by <code>Callable</code> implementations.
+This change aims to prevent the execution on the controller of callables with an incomplete implementation.
+Any plugin that fails to work in the Jenkins releases mentioned above will need to be updated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="identifying-broken-plugins"><a class="anchor" href="#identifying-broken-plugins"></a>Identifying Broken Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The security improvement detects when a plugin implementing an inadequate role check attempts to send a <code>Callable</code> through the remoting channel from the agent to the controller and throws a <code>SecurityException</code> causing a log message like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Security hardening prohibits the Callable implementation io.jenkins.demo.MyCallable ↵
+  from ignoring RoleChecker, see https://www.jenkins.io/redirect/required-role-check</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This change will not prevent implementations from deliberately declaring themselves to be safe to execute on the controller.
+Instead, this aims to prevent the impact of simple programming mistakes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="known-affected-plugins"><a class="anchor" href="#known-affected-plugins"></a>Known Affected Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As of 2021-11-04, no plugins are known to be affected by this security hardening.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Not all plugins that implement an empty role check are negatively impacted by this security hardening.
+They may not require these callables to be sent from an agent to the controller for execution as part of their regular functionality.
+In those cases, it is still recommended to update the plugin as described <a href="/doc/developer/security/remoting-callables">in the developer documentation</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="workarounds"><a class="anchor" href="#workarounds"></a>Workarounds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While fixes for affected plugins are not yet available, administrators can allow the execution of specific callables on the controller, or disable this security hardening altogether.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Doing either will potentially allow attackers able to control an agent process to execute unsafe code on the Jenkins controller.
+It is recommended that individual callables are only allowed after careful review of their code to ensure they&#8217;re not unsafe to execute.
+<a href="/doc/developer/security/remoting-callables">See the developer documentation</a> for considerations what constitutes unsafe <code>Callable</code> behavior.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="allow-specific-callables"><a class="anchor" href="#allow-specific-callables"></a>Allow specific callables</h3>
+<div class="paragraph">
+<p>To allow specific, known safe callables to execute on any end of any remoting communication channel despite their empty role check, do either of the following:</p>
+</div>
+<div class="paragraph">
+<p>Set the <a href="/doc/book/managing/system-properties/#hudson-remoting-channelbuilder-specificcallablescanignoreroleche">Java system property <code>hudson.remoting.ChannelBuilder.specificCallablesCanIgnoreRoleChecker</code></a> to a comma-separated list of class names.
+The class names are the same as in the error message.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use the <a href="/doc/book/managing/script-console/">Jenkins script console</a>.
+This approach is immediately effective and does not require Jenkins to be restarted first, but is only effective until Jenkins is restarted.
+Run this script, replacing the callable class name as needed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kn">import</span> <span class="nn">hudson.remoting.ChannelBuilder</span>
+<span class="n">ChannelBuilder</span><span class="o">.</span><span class="na">SPECIFIC_CALLABLES_CAN_IGNORE_ROLECHECKER</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s1">'io.jenkins.demo.MyCallable'</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run this script once for every callable you want to allow.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="disable-security-hardening"><a class="anchor" href="#disable-security-hardening"></a>Disable security hardening</h3>
+<div class="paragraph">
+<p>To disable the security hardening altogether, set the <a href="/doc/book/managing/system-properties/#hudson-remoting-channelbuilder-allcallablescanignorerolechecker">Java system property <code>hudson.remoting.ChannelBuilder.allCallablesCanIgnoreRoleChecker</code></a> to <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use the <a href="/doc/book/managing/script-console/">Jenkins script console</a>.
+This approach is immediately effective and does not require Jenkins to be restarted first, but is only effective until Jenkins is restarted.
+Run this script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">hudson</span><span class="o">.</span><span class="na">remoting</span><span class="o">.</span><span class="na">ChannelBuilder</span><span class="o">.</span><span class="na">CALLABLES_CAN_IGNORE_ROLECHECKER</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fixing-plugins"><a class="anchor" href="#fixing-plugins"></a>Fixing Plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="/doc/developer/security/remoting-callables">See the developer documentation</a> for advice how to change plugins to be compatible with this change while not creating a security vulnerability.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/security/controller-isolation/required-role-check.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

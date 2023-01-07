@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins 2.248: Windows Support Updates
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This article introduces the new Windows support policy. We also discuss .NET Framework 2.0 support removal in Jenkins 2.248, and new Windows service management features introduced by this release.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/23/windows-support-updates/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins 2.248: Windows Support Updates" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins 2.248: Windows Support Updates" name="twitter:title">
+<meta content="This article introduces the new Windows support policy. We also discuss .NET Framework 2.0 support removal in Jenkins 2.248, and new Windows service management features introduced by this release.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/07-windows-support-updates/opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins 2.248: Windows Support Updates" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2020/07/23/windows-support-updates/" property="og:url">
+<meta content="This article introduces the new Windows support policy. We also discuss .NET Framework 2.0 support removal in Jenkins 2.248, and new Windows service management features introduced by this release.
+" name="og:description">
+<meta content="Jenkins 2.248: Windows Support Updates" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2020/07-windows-support-updates/opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins 2.248: Windows Support Updates
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+July 23, 2020
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+2.248%3A+Windows+Support+Updates&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2020%2F07%2F23%2Fwindows-support-updates%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>In this article, I would like to announce the new <a href="/doc/administration/requirements/windows/">Windows support policy</a>
+which was introduced in the Jenkins project in June 2020.
+This policy sets an expectation about how we handle issues and patches related to Windows support for the Jenkins server and agents, and how we organize testing of Windows support in the project.
+We will also talk about .NET Framework 2.0 support removal in <a href="/changelog/#v2.248">Jenkins 2.248</a>,
+and about new Windows service management features and fixes Jenkins users get with this release.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="/images/post-images/2020/07-windows-support-updates/header_image.png" alt="header image">
+</div>
+<div class="title">Figure 1. Jenkins on Windows</div>
+</div>
+<div class="sect1">
+<h2 id="why"><a class="anchor" href="#why"></a>Why?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In theory, Jenkins can run everywhere where you can run Java 8 or Java 11, but, in practice, there are some limitations.
+The Jenkins core and some plugins contain native code, and hence they rely on operating systems and platforms.
+We use Java Native Access and Java Native Runtime libraries which provide wide platform support for low-level operations,
+but there are platform-specific cases not covered by such generic libraries.
+In the case of Windows platforms we use <a href="https://github.com/winsw/winsw">Windows Service Wrapper (WinSW)</a> and
+<a href="https://github.com/kohsuke/winp">Windows Process Management Library (WinP)</a>.
+These libraries depend on particular Windows API versions and, in the case of Windows services, on .NET Framework.</p>
+</div>
+<div class="paragraph">
+<p>Historically Jenkins had no documented support policy for Windows,
+and we were accepting patches for all versions which existed since the Hudson inception in 2004.
+It became a serious obstacle for Windows component maintainers who had to be very conservative about incoming patches so that we could avoid breaking instances running on old platforms.
+Lack of testing for older platforms did not help either.
+And it is not just about maintenance overhead.
+Users were impacted as well, because it blocked us from adopting some new Windows features and making Jenkins more stable/maintainable on modern platforms.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-policy"><a class="anchor" href="#new-policy"></a>New policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To set proper expectations about Windows support,
+in the new policy we defined four support levels.
+See the <a href="/doc/administration/requirements/windows/">Windows support policy page</a> for the actual information about the support levels and the supported platforms.
+This blogpost captures the support state as of Jul 23, 2020:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Level 1 - Full Support</dt>
+<dd>
+<p>We run automated testing for these platforms, and we intend to timely fix the reported issues.
+This support level includes 64-bit (amd-64) Windows Server versions with the latest GA update pack,
+and versions used in the official Jenkins server and agent Docker images.</p>
+</dd>
+<dt class="hdlist1">Level 2 - Supported</dt>
+<dd>
+<p>We do not actively test these platforms, but we intend to keep compatibility.
+We are happy to accept patches.
+This support level includes 64-bit (amd64) Windows Server and Windows 10 versions generally supported by Microsoft.</p>
+</dd>
+<dt class="hdlist1">Level 3 - Patches considered</dt>
+<dd>
+<p>The platforms are generally expected to work, but they may have limitations and extra requirements.
+We do not test compatibility, and we may drop support if needed.
+We will consider patches if they do not put Level 1/2 platforms at risk and if they do not create maintenance overhead.
+This support level includes non-amd64 platforms like x86 (32-bit) and AArch64 (Arm).
+It also applies to non-mainstream release lines like Windows Embedded, preview releases, and versions no longer supported by Microsoft.</p>
+</dd>
+<dt class="hdlist1">Level 4 - Unsupported</dt>
+<dd>
+<p>These versions are known to be incompatible or to have severe limitations.
+We do not support the listed platforms, and we will not accept patches.
+At the moment this level applies to platforms released before 2008.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When the policy was introduced, there were questions raised about platforms listed in the <em>Level 3</em> support category.
+First of all, these platforms are still supported.
+Users are welcome to run Jenkins on these platforms.
+We recognize the importance of the platforms listed there, and we intend to keep compatibility with them.
+At the same time, particular functionality may break there due to the lack of testing when we update Jenkins or upstream dependencies.
+It may take a while until a fix is submitted by a user or contributor,
+because we do not maintain development environments for these platforms.
+By setting a Level 3 support level, we want to set an explicit expectation about those limitations.</p>
+</div>
+<div class="paragraph">
+<p>If you are interested in expanding the official Windows support policy and adding more platforms there,
+we invite you to participate in <a href="/participate/test/">quality assurance of Jenkins</a>.
+You may contribute by expanding test automation for Jenkins,
+contributing test environments for your platforms,
+or participating in the <a href="/download/lts/">LTS release candidate testing</a> and reporting results.
+Please contact us via <a href="/sigs/platform/">Platform SIG</a> channels if you are interested.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="windows-service-management-changes-in-jenkins-2-248"><a class="anchor" href="#windows-service-management-changes-in-jenkins-2-248"></a>Windows Service Management changes in Jenkins 2.248</h2>
+<div class="sectionbody">
+<div class="imageblock right">
+<div class="content">
+<img src="/images/post-images/2020/07-windows-support-updates/winsw-logo.png" alt="winsw logo" width="224px">
+</div>
+<div class="title">Figure 2. WinSW Logo</div>
+</div>
+<div class="paragraph">
+<p>Although the policy was introduced more than 1 month ago,
+<a href="/changelog/#v2.248">Jenkins 2.248</a> is the first release where the new policy is applied.
+Starting from this release, we won&#8217;t support .NET Framework 2.0 for launching the Jenkins server or agents as Windows services.
+ .NET Framework 4.0 or above is now required for using the default service management features.</p>
+</div>
+<div class="paragraph">
+<p>This release also upgrades <a href="https://github.com/winsw/winsw">Windows Service Wrapper (WinSW)</a> from 2.3.0 to 2.9.0 and replaces the bundled binary from .NET Framework 2.0 to 4.0.
+There are many improvements and fixes in these versions,
+big thanks to <a href="https://github.com/NextTurn">NextTurn</a> and all other contributors.
+You can find the full WinSW changelog <a href="https://github.com/winsw/winsw/releases">here</a>,
+just a few highlights important to Jenkins users:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Prompt for permission elevation when administrative access is required.
+Now Jenkins users do not need to run the agent process as Administrator to install the agent as a service from GUI.</p>
+</li>
+<li>
+<p>Enable TLS 1.1/1.2 in .NET Framework 4.0 packages on Windows 7 and Windows Server 2008 R2.</p>
+</li>
+<li>
+<p>Enable strong cryptography when running .NET Framework 4.0 binaries on .NET 4.6.</p>
+</li>
+<li>
+<p>Support security descriptor string in the Windows service definition.</p>
+</li>
+<li>
+<p>Support 'If-Modified-Since' and proxy settings for automatic downloads.</p>
+</li>
+<li>
+<p>Fix Runaway Process Killer extension so that it does not kill wrong processes with the same PID on startup.</p>
+</li>
+<li>
+<p>Fix the default domain name in the <code>serviceaccount</code> parameter (<a href="https://issues.jenkins.io/browse/JENKINS-12660">JENKINS-12660</a>)</p>
+</li>
+<li>
+<p>Fix archiving of old logs in the <code>roll-by-size-time</code> mode.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As you may see, there are many improvements available with this version,
+and we hope that it will make Windows service installation even more reliable.
+Some of the changes in WinSW also replaced old workarounds in the Jenkins core,
+making the code more maintainable.</p>
+</div>
+<div class="sect2">
+<h3 id="use-cases-affected-by-net-framework-2-0-support-removal"><a class="anchor" href="#use-cases-affected-by-net-framework-2-0-support-removal"></a>Use-cases affected by .NET Framework 2.0 support removal</h3>
+<div class="paragraph">
+<p>If you use .NET Framework 2.0 to run the Jenkins Windows services,
+the following use-cases are likely to be affected:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Installing the Jenkins server as a Windows service from Web UI.
+The official MSI Installer supports .NET Framework 2.0 for the moment, but it will be changed in future versions.</p>
+</li>
+<li>
+<p>Installing agents as Windows services from GUI.
+This feature is provided by in <a href="https://github.com/jenkinsci/windows-slave-installer-module">Windows Agent Installer Module</a> from the Jenkins core.</p>
+</li>
+<li>
+<p>Installing agents over Windows Management Instrumentation (WMI) via the <a href="https://plugins.jenkins.io/windows-slaves">WMI Windows Agents</a> plugin</p>
+</li>
+<li>
+<p>Auto-updating of Windows service wrappers on agents installed from GUI.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrade-guidelines"><a class="anchor" href="#upgrade-guidelines"></a>Upgrade guidelines</h3>
+<div class="paragraph">
+<p>If all of your Jenkins server and agent instances already use .NET Framework 4.0 or above,
+there are no special upgrade steps required.
+Please enjoy the new features!</p>
+</div>
+<div class="paragraph">
+<p>If you run the Jenkins server as a Windows Service with .NET Framework 2.0,
+this instance will require an upgrade of .NET Framework to version 4.0 or above.
+We recommend running with .NET Framework 4.6.1 or above,
+because this .NET version provides many platform features by default
+(e.g. TLS 1.2 encryption and strong cryptography),
+and Windows Service Wrapper does not have to apply custom workarounds.</p>
+</div>
+<div class="paragraph">
+<p>If you want to continue running some of your agents with .NET Framework 2.0,
+the following extra upgrade steps are required:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Disable auto-upgrade of Windows Service Wrapper on agents by setting the
+<code>-Dorg.jenkinsci.modules.windows_slave_installer.disableAutoUpdate=true</code> flag on the Jenkins server side.</p>
+</li>
+<li>
+<p>Upgrade agents with .NET Framework 4.0+ by downloading the recent Windows Service Wrapper 2.x
+version from <a href="https://github.com/winsw/winsw/releases">WinSW GitHub Releases</a>
+and manually replacing the wrapper ".exe" files in the agent workspaces.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We plan to continue expanding the Windows support in Jenkins,
+including providing official Docker images for newer Windows versions.
+For example, there is already a <a href="https://github.com/jenkinsci/docker-agent/pull/145">pull request</a> which will introduce official agent images for Windows Server Core LTSC 2019 and
+for Windows Server Core and Nano Server 1909.
+We are also interested to keep expanding test coverage for Windows platforms.
+Any contributions and feedback will be appreciated!</p>
+</div>
+<div class="paragraph">
+<p>We also keep working on improving Windows Services.
+<a href="/blog/authors/buddhikac96">Buddhika Chathuranga</a>, a Google Summer of Code 2020 student, is working on support for YAML Configurations in Windows Service Wrapper,
+and on better verification of XML and YAML Configurations.
+See the details on the <a href="/projects/gsoc/2020/projects/winsw-yaml-configs/">project page</a> and in the
+<a href="/blog/2020/07/08/winsw-yaml-support/">Coding Phase 1 Report</a>.
+In addition to that, there is ongoing work on a new <a href="https://github.com/winsw/winsw/tree/v3">Windows Service Wrapper 3.0</a> release which will redesign CLI and introduce a lot more improvements.
+If you are interested in contributing to Windows Service Wrapper,
+see the guidelines <a href="https://github.com/winsw/winsw/blob/master/CONTRIBUTING.md">here</a>.
+We will also appreciate your feedback on the <a href="https://gitter.im/winsw/winsw">WinSW Gitter channel</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/announcement/">
+announcement
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/windows/">
+windows
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/platform/">
+platform
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/winsw/">
+winsw
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Oleg Nenashev" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/oleg_nenashev.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/oleg_nenashev/">
+Oleg Nenashev
+</a>
+</p>
+<div class="paragraph">
+<p>Jenkins core maintainer and board member, open source software and open hardware advocate, TOC chair in the Continuous Delivery Foundation.
+Oleg started using Hudson for Hardware/Embedded projects in 2008 and became an active Jenkins contributor in 2012.
+Nowadays he maintains <a href="https://github.com/jenkinsci/jenkinsfile-runner/">Jenkinsfile Runner</a>,
+contributes to several Jenkins <a href="/sigs">SIGs</a> and outreach programs (<a href="/projects/gsoc">Google Summer of Code</a>, <a href="/events/hacktoberfest">Hacktoberfest</a>)
+and organizes <a href="/projects/jam/">Jenkins meetups</a> in Switzerland and Russia.
+Oleg works on open source programs and <a href="https://keptn.sh/">Keptn</a> at the <a href="https://dynatrace.com">Dynatrace</a>, Open Source Program Office.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/oleg-nenashev" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/oleg_nenashev" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://oleg-nenashev.github.io/" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/onenashev" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2020/07/2020-07-23-windows-support-updates.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

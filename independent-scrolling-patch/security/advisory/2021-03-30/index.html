@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2021-03-30
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-03-30/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2021-03-30" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2021-03-30" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2021-03-30" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2021-03-30/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2021-03-30" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2021-03-30
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/build-with-parameters">
+Build With Parameters
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/cloud-stats">
+Cloud Statistics
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/extra-columns">
+Extra Columns
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/jabber">
+Jabber (XMPP) notifier and control
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/dependency-track">
+OWASP Dependency-Track
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/rest-list-parameter">
+REST List Parameter
+Plugin
+</a>
+</li>
+<li>
+Team Foundation Server
+Plugin
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-2231">
+Stored XSS vulnerability in Build With Parameters Plugin
+</h3>
+<strong>
+SECURITY-2231
+/
+CVE-2021-21628
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/build-with-parameters">
+<code>build-with-parameters</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Build With Parameters Plugin 1.5 and earlier does not escape parameter names and descriptions.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>Build With Parameters Plugin 1.5.1 escapes parameter names and descriptions.</p>
+</div>
+<h3 id="SECURITY-2257">
+CSRF vulnerability in Build With Parameters Plugin
+</h3>
+<strong>
+SECURITY-2257
+/
+CVE-2021-21629
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/build-with-parameters">
+<code>build-with-parameters</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Build With Parameters Plugin 1.5 and earlier does not require POST requests for its form submission endpoint, resulting in a cross-site request forgery (CSRF) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This vulnerability allows attackers to build a project with attacker-specified parameters.</p>
+</div>
+<div class="paragraph">
+<p>Build With Parameters Plugin 1.5.1 requires POST requests for the affected HTTP endpoint.</p>
+</div>
+<h3 id="SECURITY-2222">
+Stored XSS vulnerability in Extra Columns Plugin
+</h3>
+<strong>
+SECURITY-2222
+/
+CVE-2021-21630
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/extra-columns">
+<code>extra-columns</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Extra Columns Plugin 1.22 and earlier does not escape parameter values in the build parameters column.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Job/Configure permission.
+Additionally, a view containing such a job needs to be configured with the build parameters column, or the attacker also needs View/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>Extra Columns Plugin 1.23 escapes parameter values in the build parameters column.</p>
+</div>
+<h3 id="SECURITY-2246">
+Missing permission check in Cloud Statistics Plugin
+</h3>
+<strong>
+SECURITY-2246
+/
+CVE-2021-21631
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/cloud-stats">
+<code>cloud-stats</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Cloud Statistics Plugin 0.26 and earlier does not perform a permission check in an HTTP endpoint.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers with Overall/Read permission and knowledge of random activity IDs to view related provisioning exception error messages.</p>
+</div>
+<div class="paragraph">
+<p>Cloud Statistics Plugin 0.27 requires Overall/Administer permission to access provisioning exception error messages.</p>
+</div>
+<h3 id="SECURITY-2250">
+CSRF vulnerability and missing permission checks in OWASP Dependency-Track Plugin allow capturing credentials
+</h3>
+<strong>
+SECURITY-2250
+/
+CVE-2021-21632 (permission check), CVE-2021-21633 (CSRF)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/dependency-track">
+<code>dependency-track</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>OWASP Dependency-Track Plugin 3.1.0 and earlier does not perform permission checks in several HTTP endpoints.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers with Overall/Read permission to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing "Secret text" credentials stored in Jenkins.
+If no credentials ID is specified, the globally configured credential is used, if set up, and can likewise be captured.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, these HTTP endpoints do not require POST requests, resulting in a cross-site request forgery (CSRF) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>OWASP Dependency-Track Plugin 3.1.1 requires POST requests and appropriate permissions for the affected HTTP endpoints.</p>
+</div>
+<h3 id="SECURITY-2162">
+Passwords stored in plain text by Jabber (XMPP) notifier and control Plugin
+</h3>
+<strong>
+SECURITY-2162
+/
+CVE-2021-21634
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/jabber">
+<code>jabber</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Jabber (XMPP) notifier and control Plugin 1.41 and earlier stores passwords unencrypted in its global configuration file <code>hudson.plugins.jabber.im.transport.JabberPublisher.xml</code> on the Jenkins controller as part of its configuration.</p>
+</div>
+<div class="paragraph">
+<p>These passwords can be viewed by users with access to the Jenkins controller file system.</p>
+</div>
+<div class="paragraph">
+<p>Jabber (XMPP) notifier and control Plugin 1.42 stores passwords encrypted once its configuration is saved again.</p>
+</div>
+<h3 id="SECURITY-2261">
+Stored XSS vulnerability in REST List Parameter Plugin
+</h3>
+<strong>
+SECURITY-2261
+/
+CVE-2021-21635
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/rest-list-parameter">
+<code>rest-list-parameter</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>REST List Parameter Plugin 1.3.0 and earlier does not escape a parameter name reference in embedded JavaScript.</p>
+</div>
+<div class="paragraph">
+<p>This results in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Job/Configure permission.</p>
+</div>
+<div class="paragraph">
+<p>REST List Parameter Plugin 1.3.1 no longer identifies a parameter using user-specified content.</p>
+</div>
+<h3 id="SECURITY-2283 (1)">
+Missing permission check in Team Foundation Server Plugin allows enumerating credentials IDs
+</h3>
+<strong>
+SECURITY-2283 (1)
+/
+CVE-2021-21636
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/tfs">
+<code>tfs</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Team Foundation Server Plugin 5.157.1 and earlier does not perform a permission check in an HTTP endpoint.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.
+Those can be used as part of an attack to capture the credentials using another vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-2283 (2)">
+CSRF vulnerability and missing permission check in Team Foundation Server Plugin allow capturing credentials
+</h3>
+<strong>
+SECURITY-2283 (2)
+/
+CVE-2021-21637 (permission check), CVE-2021-21638 (CSRF)
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/tfs">
+<code>tfs</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Team Foundation Server Plugin 5.157.1 and earlier does not perform a permission check in an HTTP endpoint.</p>
+</div>
+<div class="paragraph">
+<p>This allows attackers with Overall/Read permission to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this HTTP endpoint does not require POST requests, resulting in a cross-site request forgery (CSRF) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-2162:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-2222:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2231:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2246:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-2250:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-2257:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-2261:
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H">
+High
+</a>
+</li>
+<li>
+SECURITY-2283 (1):
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-2283 (2):
+<a href="https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N">
+High
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Build With Parameters
+Plugin
+</strong>
+up to and including
+1.5
+</li>
+<li>
+<strong>
+Cloud Statistics
+Plugin
+</strong>
+up to and including
+0.26
+</li>
+<li>
+<strong>
+Extra Columns
+Plugin
+</strong>
+up to and including
+1.22
+</li>
+<li>
+<strong>
+Jabber (XMPP) notifier and control
+Plugin
+</strong>
+up to and including
+1.41
+</li>
+<li>
+<strong>
+OWASP Dependency-Track
+Plugin
+</strong>
+up to and including
+3.1.0
+</li>
+<li>
+<strong>
+REST List Parameter
+Plugin
+</strong>
+up to and including
+1.3.0
+</li>
+<li>
+<strong>
+Team Foundation Server
+Plugin
+</strong>
+up to and including
+5.157.1
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Build With Parameters
+Plugin
+</strong>
+should be updated to version
+1.5.1
+</li>
+<li>
+<strong>
+Cloud Statistics
+Plugin
+</strong>
+should be updated to version
+0.27
+</li>
+<li>
+<strong>
+Extra Columns
+Plugin
+</strong>
+should be updated to version
+1.23
+</li>
+<li>
+<strong>
+Jabber (XMPP) notifier and control
+Plugin
+</strong>
+should be updated to version
+1.42
+</li>
+<li>
+<strong>
+OWASP Dependency-Track
+Plugin
+</strong>
+should be updated to version
+3.1.1
+</li>
+<li>
+<strong>
+REST List Parameter
+Plugin
+</strong>
+should be updated to version
+1.3.1
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Team Foundation Server
+Plugin
+</li>
+</ul>
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/#unresolved">
+Learn why we announce these issues.
+</a>
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-2162, SECURITY-2246, SECURITY-2283 (1), SECURITY-2283 (2)
+</li>
+<li>
+<strong>
+Justin Philip
+</strong>
+for
+SECURITY-2250
+</li>
+<li>
+<strong>
+Kevin Guerroudj
+</strong>
+for
+SECURITY-2231, SECURITY-2257, SECURITY-2261
+</li>
+<li>
+<strong>
+Marc Heyries
+</strong>
+for
+SECURITY-2222
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2021-03-30.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

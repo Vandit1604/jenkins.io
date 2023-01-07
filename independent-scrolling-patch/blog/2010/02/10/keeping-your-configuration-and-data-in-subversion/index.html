@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Keeping your configuration and data in Subversion
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/02/10/keeping-your-configuration-and-data-in-subversion/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Keeping your configuration and data in Subversion" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Keeping your configuration and data in Subversion" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Keeping your configuration and data in Subversion" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2010/02/10/keeping-your-configuration-and-data-in-subversion/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Keeping your configuration and data in Subversion" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Keeping your configuration and data in Subversion
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/rtyler/"><div class="app-avatar"><img alt="R. Tyler Croy" class="app-avatar__image" src="/images/avatars/rtyler.jpeg"></div> R. Tyler Croy</a>
+February 10, 2010
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Keeping+your+configuration+and+data+in+Subversion&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2010%2F02%2F10%2Fkeeping-your-configuration-and-data-in-subversion%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>We all know that keeping important files in version control is critical, as it ensures problematic changes can be reverted and can serve as a backup mechanism as well. Code and resources are often kept in version control, but it can be easy to forget your continuous integration (CI) server itself! If a disk were to die or fall victim to a <a href="https://twitter.com/progrium/status/7646048501">misplaced</a> <code>rm -rf</code>, you could lose all the history and configuration associated with the jobs your CI server manages.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s pretty simple to create a repository, but it isn&#8217;t obvious which parts of your $HUDSON_HOME you&#8217;ll want to backup. You&#8217;ll also want to have some automation so new projects get added to the repository, and deleted ones get removed. Luckily we have a great tool to handle this: Hudson!</p>
+</div>
+<div class="paragraph">
+<p>We have a Hudson job which runs nightly, performs the appropriate SVN commands, and checks in. The high-level overview of this job is basically:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add any new jobs, users, plugin configurations, et cetera: <code>svn add -q --parents <strong>.xml jobs/</strong>/config.xml users/<strong>/config.xml userContent/</strong></code></p>
+</li>
+<li>
+<p>Remove anything from SVN that no longer exists (such as a deleted job): <code>svn status | grep '!' | awk '{print $2;}' | xargs -r svn rm</code></p>
+</li>
+<li>
+<p>Check it in! <code>svn ci --non-interactive --username=mrhudson -m "automated commit of Hudson configuration"</code>
+You&#8217;ll want to make sure to use the <code>--non-interactive</code> option for any automated svn operations, as this ensures Subversion won&#8217;t hang asking a question but instead fail immediately. You may also need to provide your password with the <code>--password</code> option.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To make such a Hudson job, create a new job, tie it to the controller (since this is where the configuration files are), set it to build periodically (we use &#8220;@midnight&#8221;), and add an &#8220;Execute shell&#8221; build step. Here&#8217;s the full script we use, to put into the build step:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c"># Change into your HUDSON_HOME.</span>
+<span class="nb">cd</span> /opt/hudson
+<span class="c"># Add any new conf files, jobs, users, and content.</span>
+svn add <span class="nt">-q</span> <span class="nt">--parents</span> <span class="k">*</span>.xml <span class="nb">jobs</span>/<span class="k">*</span>/config.xml <span class="nb">users</span>/<span class="k">*</span>/config.xml userContent/<span class="k">*</span>
+<span class="c"># Ignore things in the root we don't care about.</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"warnlogn*.logn*.tmpn*.oldn*.bakn*.jarn*.json"</span> <span class="o">&gt;</span> myignores
+svn propset svn:ignore <span class="nt">-F</span> myignores <span class="nb">.</span> <span class="o">&amp;&amp;</span> <span class="nb">rm </span>myignores
+<span class="c"># Ignore things in jobs/* we don't care about.</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"buildsnlast*nnext*n*.txtn*.lognworkspace*ncoberturanjavadocnhtmlreportsnncoverndoclinks"</span> <span class="o">&gt;</span> myignores
+svn propset svn:ignore <span class="nt">-F</span> myignores <span class="nb">jobs</span>/<span class="k">*</span> <span class="o">&amp;&amp;</span> <span class="nb">rm </span>myignores
+<span class="c"># Remove anything from SVN that no longer exists in Hudson.</span>
+svn status | <span class="nb">grep</span> <span class="s1">'!'</span> | <span class="nb">awk</span> <span class="s1">'{print $2;}'</span> | xargs <span class="nt">-r</span> svn <span class="nb">rm</span>
+<span class="c"># And finally, check in of course, showing status before and after for logging.</span>
+svn st <span class="o">&amp;&amp;</span> svn ci <span class="nt">--non-interactive</span> <span class="nt">--username</span><span class="o">=</span>mrhudson <span class="nt">-m</span> <span class="s2">"automated commit of Hudson configuration"</span> <span class="o">&amp;&amp;</span> svn st</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll notice this does some extra things like set the svn:ignores property to provide a relatively clean <code>svn st</code> which it shows before and after the commit for logging purposes. One thing this job <em>doesn&#8217;t</em> do is put the build results of your jobs in version control. Because historical build logs and artifacts will never change and are also potentially large, a periodic (daily or weekly) <code>cp</code> or <code>rsync</code> of the <strong>jobs</strong> directory will still give you restorability while keeping your repository lean.</p>
+</div>
+<div class="paragraph">
+<p>Now you can sleep well at night knowing that your CI server is safe and sound. If you are doing a similar thing with Hudson or another CI system, let us know about your solution!</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Editor&#8217;s Note:</strong> <a href="https://twitter.com/MikeRooney">Mike Rooney</a> is a Software Engineer at <a href="https://twitter.com/Genius_com">Genius.com</a>, provider of real-time marketing automation software connecting marketing and sales. You can read more posts from Mike and other Geniuses at <a href="https://eng.genius.com">eng.genius.com</a></p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/development/">
+development
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/guest post/">
+guest post
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jobs/">
+jobs
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/just for fun/">
+just for fun
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="R. Tyler Croy" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/rtyler.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/rtyler/">
+R. Tyler Croy
+</a>
+</p>
+<div class="paragraph">
+<p>R&#46; Tyler Croy has been part of the Jenkins project for the past seven years.
+While avoiding contributing any Java code, Tyler is involved in many of the
+other aspects of the project which keep it running, such as this website,
+infrastructure, governance, etc.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/rtyler" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/agentdero" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="http://unethicalblogger.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2010/2010-02-10-keeping-your-configuration-and-data-in-subversion.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

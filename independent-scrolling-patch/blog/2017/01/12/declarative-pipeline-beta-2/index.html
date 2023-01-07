@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Declarative Pipeline Syntax Beta 2 release
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/01/12/declarative-pipeline-beta-2/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Declarative Pipeline Syntax Beta 2 release" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Declarative Pipeline Syntax Beta 2 release" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Declarative Pipeline Syntax Beta 2 release" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/01/12/declarative-pipeline-beta-2/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Declarative Pipeline Syntax Beta 2 release" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Declarative Pipeline Syntax Beta 2 release
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/abayer/"><div class="app-avatar"></div> Andrew Bayer</a>
+January 12, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Declarative+Pipeline+Syntax+Beta+2+release&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F01%2F12%2Fdeclarative-pipeline-beta-2%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>This week, we released the second beta of the new
+<a href="https://plugins.jenkins.io/pipeline-model-definition">Declarative Pipeline syntax</a>,
+available in the Update Center now as version 0.8.1 of <em>Pipeline: Model Definition</em>.
+You can read more about Declarative Pipeline
+<a href="/blog/2016/12/19/declarative-pipeline-beta/">in the blog post introducing the first beta</a>
+from December, but we wanted to update you all on the syntax changes in the
+second beta. These syntax changes are the last compatibility-breaking changes to
+the syntax before the 1.0 release planned for February, so you can safely start
+using the 0.8.1 syntax now without needing to change it when 1.0 is released.</p>
+</div>
+<div class="paragraph">
+<p>A full syntax reference is <a href="https://github.com/jenkinsci/pipeline-model-definition-plugin/wiki/Syntax-Reference">available on the wiki</a> as well.</p>
+</div>
+<div class="sect1">
+<h2 id="syntax-changes"><a class="anchor" href="#syntax-changes"></a>Syntax Changes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="changed-agent-configuration-to-block-structure"><a class="anchor" href="#changed-agent-configuration-to-block-structure"></a>Changed "agent" configuration to block structure</h3>
+<div class="paragraph">
+<p>In order to support more detailed and clear configuration of agents, as well as
+making agent syntax more consistent with the rest of the Declarative Pipeline
+syntax, we&#8217;ve moved the agent configuration into blocks. The <code>agent any</code> and
+<code>agent none</code> configurations work the same as previously, but <code>label</code>, <code>docker</code>
+and <code>dockerfile</code> now look like the following:</p>
+</div>
+<div class="paragraph">
+<p>Just specifying a label is simple.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">agent {
+    label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">some-label</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>If you&#8217;re just specifying a Docker image, you can use this simple syntax.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">agent {
+    docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ubuntu:16.04</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>When you are specifying a label or other arguments, docker looks like this:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">agent {
+    docker {
+        image <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ubuntu:16.04</span><span style="color:#710">&quot;</span></span>
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker-label</span><span style="color:#710">&quot;</span></span>
+        args <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-v /tmp:/tmp -p 8000:8000</span><span style="color:#710">&quot;</span></span>
+    }
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>When you&#8217;re building an image from "Dockerfile" in your repository and
+don&#8217;t care what node is used or have additional arguments, you can again
+use a simple syntax.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">agent {
+    dockerfile <span style="color:#069">true</span>
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>When you&#8217;re building an image from a different file, or have a label or other
+arguments, use the following syntax:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">agent {
+    dockerfile {
+        filename <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OtherDockerfile</span><span style="color:#710">&quot;</span></span>
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker-label</span><span style="color:#710">&quot;</span></span>
+        args <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-v /tmp:/tmp -p 8000:8000</span><span style="color:#710">&quot;</span></span>
+    }
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect2">
+<h3 id="improved-when-conditions"><a class="anchor" href="#improved-when-conditions"></a>Improved "when" conditions</h3>
+<div class="paragraph">
+<p>We introduced the <code>when</code> section a couple releases ago, but have made some
+changes to its syntax here in 0.8.1. We wanted to add some simpler ways to
+specify common conditions, and that required we re-work the syntax accordingly.</p>
+</div>
+<div class="sect3">
+<h4 id="branch"><a class="anchor" href="#branch"></a>Branch</h4>
+<div class="paragraph">
+<p>One of the most common conditions is running a stage only if you&#8217;re on a
+specific branch. You can also use wildcards like "*/master".</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">when {
+    branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">master</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect3">
+<h4 id="environment"><a class="anchor" href="#environment"></a>Environment</h4>
+<div class="paragraph">
+<p>Another built-in condition is the environment condition, which checks to see
+if a given environment variable is set to a given value.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">when {
+    environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SOME_ENV_VAR</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SOME_VALUE</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect3">
+<h4 id="expression"><a class="anchor" href="#expression"></a>Expression</h4>
+<div class="paragraph">
+<p>Lastly, there&#8217;s the expression condition, which resolves an arbitrary
+Pipeline expression. If the return value of that expression isn&#8217;t false or
+null, the stage will execute.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">when {
+    expression {
+        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Should I run?</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span> == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span>
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="options-replaces-properties-and-wrappers"><a class="anchor" href="#options-replaces-properties-and-wrappers"></a>"options" replaces "properties" and "wrappers"</h3>
+<div class="paragraph">
+<p>We&#8217;ve renamed the <code>properties</code> section to <code>options</code>, due to needing to add new
+Declarative-specific options and to cut down on confusion. The <code>options</code> section
+is now where you&#8217;ll put general Pipeline options like <code>buildDiscarder</code>,
+Declarative-specific options like <code>skipDefaultCheckout</code>, and block-scoped steps
+that should wrap the execution of the entire build, like <code>timeout</code> or
+<code>timestamps</code>.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">
+options {
+    buildDiscarder(logRotator(<span style="color:#606">numToKeepStr</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1</span><span style="color:#710">'</span></span>))
+    skipDefaultCheckout()
+    timeout(<span style="color:#606">time</span>: <span style="color:#00D">5</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MINUTES</span><span style="color:#710">'</span></span>)
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="heading-towards-1-0"><a class="anchor" href="#heading-towards-1-0"></a>Heading towards 1.0!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While we may still add more functionality to the Declarative Pipeline syntax,
+we won&#8217;t be making any changes to existing syntax for the 1.0 release. This
+means that any pipelines you write against the 0.8.1 syntax will keep working
+for the foreseeable future without any changes. So if you&#8217;re already using
+Declarative Pipelines, make sure to update your `Jenkinsfile`s after upgrading
+to 0.8.1, and if you haven&#8217;t been using Declarative Pipelines yet, install the
+<a href="https://plugins.jenkins.io/pipeline-model-definition"><em>Pipeline: Model Definition</em></a> plugin and
+give them a try!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/abayer/">
+Andrew Bayer
+</a>
+</p>
+<div class="paragraph">
+<p>Andrew was a core committer to Hudson and the author of numerous plugins.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/abayer" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/abayer" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/01/2017-01-12-declarative-pipeline-beta-2.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

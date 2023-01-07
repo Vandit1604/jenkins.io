@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Windows Services: YAML Configuration Support
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/winsw-yaml-config-support/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Windows Services: YAML Configuration Support" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Windows Services: YAML Configuration Support" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Windows Services: YAML Configuration Support" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/winsw-yaml-config-support/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Windows Services: YAML Configuration Support" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Jenkins Windows Services: YAML Configuration Support
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Enhance Jenkins controller and agent service management on Windows by offering new configuration file formats and improving settings validation
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+C#, .NET, Windows, Windows Services, YAML, Java (optional)
+</p>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>On Windows machines Jenkins controller and agents can be installed as Windows Services in order to get better robustness and manageability within the system.
+This is a functionality bundled into the Jenkins core directly.
+When installed as a service, Jenkins uses the <a href="https://github.com/kohsuke/winsw">Windows Service Wrapper</a> executable (.NET, written in C#) which is being configured by XML config files.
+Currently there are only few configuration checks there (no XML Schema, limited validation, etc.),
+and it’s often that the service wrapper is misconfigured by Jenkins users.</p>
+</div>
+<div class="paragraph">
+<p>In this project we propose to update Windows Service Wrapper to support YAML files as configuration inputs and to introduce better configuration validation during the service installation and startup.
+Usage of YAML should simplify configuration management in Jenkins, especially when automated tools are used.
+On the Jenkins side, patches could be proposed to the Jenkins Core and Windows Agent Installer module to switch them from XML to YAML once the new version of WinSW is integrated.</p>
+</div>
+<div class="paragraph">
+<p>In this project students can also propose various extra enhancements to the Windows Service Wrapper project especially around logging and diagnosability.
+Students are welcome to explore the tool and to make other suggestions in their project proposal.</p>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Windows Service Wrapper: <a href="https://github.com/kohsuke/winsw">https://github.com/kohsuke/winsw</a></p>
+</li>
+<li>
+<p>Jenkins Windows Agent Installer Module: <a href="https://github.com/jenkinsci/windows-slave-installer-module">https://github.com/jenkinsci/windows-slave-installer-module</a></p>
+</li>
+<li>
+<p>Jenkins WMI Windows Agents Plugin: <a href="https://github.com/jenkinsci/windows-slaves-plugin">https://github.com/jenkinsci/windows-slaves-plugin</a></p>
+</li>
+<li>
+<p>Windows Service Lifecycle in the Jenkins core:
+<a href="https://github.com/jenkinsci/jenkins/blob/0795e89b308ec7fcbda097858d58763d8531be8c/core/src/main/java/hudson/lifecycle/WindowsServiceLifecycle.java">https://github.com/jenkinsci/jenkins/blob/0795e89b308ec7fcbda097858d58763d8531be8c/core/src/main/java/hudson/lifecycle/WindowsServiceLifecycle.java</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="special-requirements"><a class="anchor" href="#special-requirements"></a>Special requirements</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>This project requires development on Windows, and hence the applicant should have access to a computer with Windows 10 or other recent Windows versions (<code>amd64</code> is recommended)</p>
+</li>
+<li>
+<p>Microsoft Visual Studio Community Edition will be enough for this project</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="anchor" href="#quick-start"></a>Quick Start</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Download WinSW (<a href="https://github.com/kohsuke/winsw#download">guidelines</a>), then try it with some demo services</p>
+</li>
+<li>
+<p>Try building and testing WinSW locally (<a href="https://github.com/kohsuke/winsw/blob/master/DEVELOPER.md">Developer guidelines</a>)</p>
+</li>
+<li>
+<p>Try installing Jenkins and its agents as Windows services (<a href="/doc/book/installing/#windows">guidelines for the master</a>, <a href="https://github.com/jenkinsci/windows-slave-installer-module#installation">guideline for agents</a>)</p>
+</li>
+<li>
+<p>Report any issues you discovered in the process</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="newbie-friendly-issues"><a class="anchor" href="#newbie-friendly-issues"></a>Newbie-friendly issues</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>WinSW: <a href="https://github.com/kohsuke/winsw/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">GitHub Query</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/mikecirioli/"><div class="app-avatar"></div> Michael Cirioli</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/nextturn/"><div class="app-avatar"></div> Next Turn</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="https://docs.google.com/document/d/16Aa3E9D_IYD-LO89bcInZQPwAfTOWfD_UrDbDxy8FKA" rel="noreferrer noopener" target="_blank">
+Project idea draft
+</a>
+</li>
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2020/project-ideas" target="_blank">
+> Go back to other GSoC
+2020
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel1">
+<li><a href="#links">Links</a></li>
+<li><a href="#special-requirements">Special requirements</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#newbie-friendly-issues">Newbie-friendly issues</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/gsoc-sig" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/gsoc-sig.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2020/project-ideas/winsw-yaml-config-support.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

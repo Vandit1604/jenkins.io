@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2019-01-28
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-01-28/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2019-01-28" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2019-01-28" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2019-01-28" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2019-01-28/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2019-01-28" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/security/" class="">Jenkins Security Home</a>
+</p>
+<strong>
+For Administrators
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-administrators/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/advisories/" class="">Security Advisories</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/scheduling/" class="">Advisory Schedule</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/fixing/" class="">How We Fix Security Issues</a>
+</li>
+</ul>
+<strong>
+For Reporters
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/reporting/" class="">Reporting Vulnerabilities</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/cna/" class="">Jenkins CNA</a>
+</li>
+</ul>
+<strong>
+For Maintainers
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/for-maintainers/" class="">Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/plugins/" class="">Vulnerabilities in Plugins</a>
+</li>
+</ul>
+<strong>
+Jenkins Security Team
+</strong>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/team/" class="">About</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/security/improvements/" class="">Contributions</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Jenkins Security Advisory 2019-01-28
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/active-directory">
+Active Directory
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/blueocean">
+Blue Ocean
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/config-file-provider">
+Config File Provider
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/git">
+Git
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/github-oauth">
+GitHub Authentication
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/groovy">
+Groovy
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/job-import-plugin">
+Job Import
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/job-import-plugin">
+Job Import
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/kanboard">
+Kanboard
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/monitoring">
+Monitoring
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/oic-auth">
+OpenId Connect Authentication
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/script-security">
+Script Security
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/token-macro">
+Token Macro
+Plugin
+</a>
+</li>
+<li>
+warnings
+Plugin
+</li>
+<li>
+<a href="https://plugins.jenkins.io/warnings-ng">
+Warnings Next Generation
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/warnings-ng">
+Warnings Next Generation
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1292">
+Sandbox Bypass in Script Security Plugin
+</h3>
+<strong>
+SECURITY-1292
+/
+CVE-2019-1003005
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/script-security">
+<code>script-security</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Script Security sandbox protection could be circumvented during the script compilation phase by applying AST transforming annotations such as <code>@Grab</code> to source code elements.</p>
+</div>
+<div class="paragraph">
+<p>This affected an HTTP endpoint used to validate a user-submitted Groovy script that was not covered in the <a href="../2019-01-08/#SECURITY-1266">2019-01-08 fix for SECURITY-1266</a> and allowed users with Overall/Read permission to bypass the sandbox protection and execute arbitrary code on the Jenkins controller.</p>
+</div>
+<div class="paragraph">
+<p>The affected HTTP endpoint now applies a safe Groovy compiler configuration prohibiting unsafe AST transforming annotations.</p>
+</div>
+<h3 id="SECURITY-1293">
+Sandbox Bypass in Groovy Plugin
+</h3>
+<strong>
+SECURITY-1293
+/
+CVE-2019-1003006
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/groovy">
+<code>groovy</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Groovy Plugin has a form validation HTTP endpoint used to validate a user-submitted Groovy script through compilation, which was not subject to sandbox protection.
+This allowed attackers with Overall/Read access to execute arbitrary code on the Jenkins controller by applying AST transforming annotations such as <code>@Grab</code> to source code elements.</p>
+</div>
+<div class="paragraph">
+<p>The affected HTTP endpoint now applies a safe Groovy compiler configuration preventing the use of unsafe AST transforming annotations.</p>
+</div>
+<h3 id="SECURITY-1295 (1)">
+Sandbox Bypass via CSRF in Warnings Plugin
+</h3>
+<strong>
+SECURITY-1295 (1)
+/
+CVE-2019-1003007
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/warnings">
+<code>warnings</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Warnings Plugin has a form validation HTTP endpoint used to validate a user-submitted Groovy script through compilation, which was not subject to sandbox protection.
+The endpoint checked for the Overall/RunScripts permission, but did not require POST requests, so it was vulnerable to cross-site request forgery (CSRF).
+This allowed attackers to execute arbitrary code on the Jenkins controller by applying AST transforming annotations such as <code>@Grab</code> to source code elements.</p>
+</div>
+<div class="paragraph">
+<p>The affected HTTP endpoint now applies a safe Groovy compiler configuration preventing the use of unsafe AST transforming annotations.
+Additionally, the form validation HTTP endpoint now requires that requests be sent via POST to prevent CSRF.</p>
+</div>
+<h3 id="SECURITY-1295 (2)">
+Sandbox Bypass via CSRF in Warnings Next Generation Plugin
+</h3>
+<strong>
+SECURITY-1295 (2)
+/
+CVE-2019-1003008
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/warnings-ng">
+<code>warnings-ng</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Warnings Next Generation Plugin has a form validation HTTP endpoint used to validate a Groovy script through compilation, which was not subject to sandbox protection.
+The endpoint checked for the Overall/RunScripts permission, but did not require POST requests, so it was vulnerable to cross-site request forgery (CSRF).
+This allowed attackers to execute arbitrary code on the Jenkins controller by applying AST transforming annotations such as <code>@Grab</code> to source code elements.</p>
+</div>
+<div class="paragraph">
+<p>The affected HTTP endpoint now applies a safe Groovy compiler configuration preventing the use of unsafe AST transforming annotations.
+Additionally, the form validation HTTP endpoint now requires that requests be sent via POST to prevent CSRF.</p>
+</div>
+<h3 id="SECURITY-859">
+Improper certificate validation with StartTLS in Active Directory Plugin
+</h3>
+<strong>
+SECURITY-859
+/
+CVE-2019-1003009
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/active-directory">
+<code>active-directory</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Active Directory Plugin performs TLS upgrade (StartTLS) after connecting to domain controllers through insecure LDAP.
+In this mode, certificates were not properly validated, effectively trusting all certificates, allowing man-in-the-middle attacks.</p>
+</div>
+<div class="paragraph">
+<p>This only affected TLS upgrades.
+The LDAPS mode, available by setting the system property <code>hudson.plugins.active_directory.ActiveDirectorySecurityRealm.forceLdaps</code> to <code>true</code>, was unaffected.</p>
+</div>
+<div class="paragraph">
+<p>The plugin now properly validates certificates according to the TLS trust configuration when performing a TLS upgrade.</p>
+</div>
+<h3 id="SECURITY-1095">
+CSRF vulnerability in Git Plugin
+</h3>
+<strong>
+SECURITY-1095
+/
+CVE-2019-1003010
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N">
+low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/git">
+<code>git</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Git Plugin allows the creation of a tag in a job workspace&#8217;s Git repository with accompanying metadata attached to a build record.</p>
+</div>
+<div class="paragraph">
+<p>The HTTP endpoint to create the tag did not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>The HTTP endpoint to create the tag now requires that requests are sent via POST.</p>
+</div>
+<h3 id="SECURITY-1102">
+Recursive token expansion results in information disclosure and DoS in Token Macro Plugin
+</h3>
+<strong>
+SECURITY-1102
+/
+CVE-2019-1003011
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/token-macro">
+<code>token-macro</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Token Macro Plugin recursively applied token expansion.</p>
+</div>
+<div class="paragraph">
+<p>This could be used by users able to affect input to token expansion (such as change log messages), to inject additional tokens into the input, which would then be expanded, resulting in information disclosure (for example values of environment variables), or denial of service.</p>
+</div>
+<div class="paragraph">
+<p>Most tokens have been changed to no longer recursively apply token expansion.</p>
+</div>
+<h3 id="SECURITY-1201">
+Blue Ocean did not require CSRF tokens
+</h3>
+<strong>
+SECURITY-1201
+/
+CVE-2019-1003012
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/blueocean">
+<code>blueocean</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Blue Ocean did not require CSRF tokens ("crumbs") for POST requests with the <code>Content-Type: application/json</code>.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean now requires that valid CSRF tokens are present in POST requests.</p>
+</div>
+<h3 id="SECURITY-1204">
+XSS vulnerability via user description in Blue Ocean
+</h3>
+<strong>
+SECURITY-1204
+/
+CVE-2019-1003013
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/blueocean">
+<code>blueocean</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Blue Ocean did not properly escape HTML/JavaScript content set on the current user&#8217;s description field, resulting in a cross-site scripting vulnerability exploitable by administrators and other people accessing Jenkins with the same user account.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean now properly escapes HTML/JavaScript content set on the current user&#8217;s description field.</p>
+</div>
+<h3 id="SECURITY-1253">
+XSS vulnerability in Config File Provider Plugin
+</h3>
+<strong>
+SECURITY-1253
+/
+CVE-2019-1003014
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/config-file-provider">
+<code>config-file-provider</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Config File Provider Plugin improperly handled script names in its JavaScript-based UI, resulting in a stored cross-site scripting (XSS) vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Config File Provider Plugin now properly handles script names.</p>
+</div>
+<h3 id="SECURITY-905 (1)">
+XXE vulnerability in Job Import Plugin
+</h3>
+<strong>
+SECURITY-905 (1)
+/
+CVE-2019-1003015
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+high
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/job-import-plugin">
+<code>job-import-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Job Import Plugin allows to import jobs from other Jenkins instances.
+As a first step in this process, Job Import Plugin sends a request to another Jenkins instance, parsing XML REST API output to obtain a list of jobs that could be imported.</p>
+</div>
+<div class="paragraph">
+<p>Job Import Plugin did not configure the XML parser in a way that would prevent XML External Entity (XXE) processing.
+This allowed attackers able to control either the server Jenkins will query, or the URL Jenkins queries, to have it parse a maliciously crafted XML response that uses external entities for extraction of secrets from the Jenkins controller, server-side request forgery, or denial-of-service attacks.</p>
+</div>
+<div class="paragraph">
+<p>External entity resolution has been disabled for the XML parser used in Job Import Plugin 3.0.</p>
+</div>
+<h3 id="SECURITY-905 (2)">
+CSRF vulnerability and missing permission checks in Job Import Plugin allowed capturing credentials
+</h3>
+<strong>
+SECURITY-905 (2)
+/
+CVE-2019-1003016
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/job-import-plugin">
+<code>job-import-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Job Import Plugin did not check user permissions on its API endpoint used to access remote Jenkins instances.
+    This allowed users with Overall/Read access to Jenkins to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Job Import Plugin 3.0 will only access Jenkins instances using credentials defined in the global configuration.</p>
+</div>
+<h3 id="SECURITY-1302">
+CSRF vulnerability in Job Import Plugin allowed creating and overwriting jobs, installing some plugins
+</h3>
+<strong>
+SECURITY-1302
+/
+CVE-2019-1003017
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/job-import-plugin">
+<code>job-import-plugin</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Job Import Plugin did not require that POST requests are sent to its <code>/import</code> URL, which processes requests to import jobs.
+This resulted in a cross-site request forgery (CSRF) vulnerability that could be exploited to create or replace jobs on the local instance if the remote Jenkins instance has different ones with the same name, or to install additional plugins, if jobs on the remote Jenkins instance reference them in their configuration.</p>
+</div>
+<div class="paragraph">
+<p>Job Import Plugin 3.0 restricted which remote Jenkins instances jobs can be imported from, limiting how this can be exploited.
+From Job Import Plugin 3.1, the <code>/import</code> URL requires that requests are sent via POST.</p>
+</div>
+<h3 id="SECURITY-602">
+GitHub Authentication Plugin showed plain text client secret in configuration form
+</h3>
+<strong>
+SECURITY-602
+/
+CVE-2019-1003018
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/github-oauth">
+<code>github-oauth</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>GitHub Authentication Plugin stores the client secret in the global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the client secret is stored encrypted on disk, it was transmitted in plain text as part of the configuration form and displayed without masking.
+This could result in exposure of the client secret through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>GitHub Authentication Plugin now encrypts the client secret transmitted to administrators viewing the global security configuration form.</p>
+</div>
+<h3 id="SECURITY-797">
+Session fixation vulnerability in GitHub Authentication Plugin
+</h3>
+<strong>
+SECURITY-797
+/
+CVE-2019-1003019
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/github-oauth">
+<code>github-oauth</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>GitHub Authentication Plugin did not invalidate the previous session and create a new one upon successful login, allowing attackers able to control or obtain another user&#8217;s pre-login session ID to impersonate them.</p>
+</div>
+<div class="paragraph">
+<p>GitHub Authentication Plugin now invalidates the previous session during login and creates a new one.</p>
+</div>
+<h3 id="SECURITY-818">
+CSRF vulnerability and missing permission checks in Kanboard Plugin allowed server-side request forgery
+</h3>
+<strong>
+SECURITY-818
+/
+CVE-2019-1003020
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/kanboard">
+<code>kanboard</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Kanboard Plugin did not perform permission checks on a method implementing form validation.
+This allowed users with Overall/Read access to Jenkins to submit a GET request to an attacker-specified URL.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this form validation method did not require POST requests, resulting in a CSRF vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This form validation method now requires POST requests and Overall/Administer permissions.</p>
+</div>
+<h3 id="SECURITY-886">
+OpenId Connect Authentication Plugin showed plain text client secret in configuration form
+</h3>
+<strong>
+SECURITY-886
+/
+CVE-2019-1003021
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/oic-auth">
+<code>oic-auth</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>OpenId Connect Authentication Plugin stores the client secret in the global Jenkins configuration.</p>
+</div>
+<div class="paragraph">
+<p>While the client secret is stored encrypted on disk, it was transmitted in plain text as part of the configuration form and displayed without masking.
+This could result in exposure of the client secret through browser extensions, cross-site scripting vulnerabilities, and similar situations.</p>
+</div>
+<div class="paragraph">
+<p>The OpenId Connect Authentication Plugin now encrypts the client secret transmitted to administrators viewing the global configuration form.</p>
+</div>
+<h3 id="SECURITY-1153">
+Monitoring Plugin did not apply CSRF protection even if enabled in Jenkins
+</h3>
+<strong>
+SECURITY-1153
+/
+CVE-2019-1003022
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/monitoring">
+<code>monitoring</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Monitoring Plugin provides a standalone JavaMelody servlet with an independent CSRF protection configuration.
+Even if Jenkins had CSRF protection enabled, Monitoring Plugin may not have it enabled.</p>
+</div>
+<div class="paragraph">
+<p>Monitoring Plugin now checks on startup whether Jenkins has CSRF protection enabled and enables its own CSRF protection accordingly.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Monitoring Plugin does not take into account configuration changes applied after Jenkins startup or after Monitoring Plugin finishes loading.
+Administrators need to restart Jenkins when enabling or disabling the CSRF protection configuration to apply the change to Monitoring Plugin.
+</td>
+</tr>
+</table>
+</div>
+<h3 id="SECURITY-1154">
+Clickjacking vulnerability in Monitoring Plugin
+</h3>
+<strong>
+SECURITY-1154
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:L">
+low
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/monitoring">
+<code>monitoring</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Monitoring Plugin did not set the <code>X-Frame-Options</code> header, allowing its pages to be embedded.
+This could result in clickjacking attacks.</p>
+</div>
+<div class="paragraph">
+<p>Monitoring Plugin now sets the <code>X-Frame-Options</code> header to <code>sameorigin</code>, preventing embedding.</p>
+</div>
+<h3 id="SECURITY-1271">
+XSS vulnerability in Warnings Next Generation Plugin
+</h3>
+<strong>
+SECURITY-1271
+/
+CVE-2019-1003023
+</strong>
+<br>
+<strong>
+Severity (CVSS):
+</strong>
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N">
+medium
+</a>
+<br>
+<strong>
+Affected plugin:
+<nobr>
+<a href="https://plugins.jenkins.io/warnings-ng">
+<code>warnings-ng</code>
+</a>
+</nobr>
+</strong>
+<br>
+<strong>
+Description:
+</strong>
+<div class="paragraph">
+<p>Warnings Next Generation Plugin did not properly escape HTML content in warnings displayed on the Jenkins UI, resulting in a cross-site scripting vulnerability exploitable by users able to control warnings parser input.</p>
+</div>
+<div class="paragraph">
+<p>Warnings Next Generation Plugin now removes unsafe HTML content from warnings.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-602:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+</li>
+<li>
+SECURITY-797:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-818:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-859:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N">
+high
+</a>
+</li>
+<li>
+SECURITY-886:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N">
+low
+</a>
+</li>
+<li>
+SECURITY-905 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L">
+high
+</a>
+</li>
+<li>
+SECURITY-905 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-1095:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N">
+low
+</a>
+</li>
+<li>
+SECURITY-1102:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H">
+medium
+</a>
+</li>
+<li>
+SECURITY-1153:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L">
+medium
+</a>
+</li>
+<li>
+SECURITY-1154:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:L">
+low
+</a>
+</li>
+<li>
+SECURITY-1201:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-1204:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-1253:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-1271:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N">
+medium
+</a>
+</li>
+<li>
+SECURITY-1292:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+high
+</a>
+</li>
+<li>
+SECURITY-1293:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H">
+high
+</a>
+</li>
+<li>
+SECURITY-1295 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+high
+</a>
+</li>
+<li>
+SECURITY-1295 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H">
+high
+</a>
+</li>
+<li>
+SECURITY-1302:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L">
+medium
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Active Directory
+Plugin
+</strong>
+up to and including
+2.10
+</li>
+<li>
+<strong>
+Blue Ocean
+Plugin
+</strong>
+up to and including
+1.10.1
+</li>
+<li>
+<strong>
+Config File Provider
+Plugin
+</strong>
+up to and including
+3.4.1
+</li>
+<li>
+<strong>
+Git
+Plugin
+</strong>
+up to and including
+3.9.1
+</li>
+<li>
+<strong>
+GitHub Authentication
+Plugin
+</strong>
+up to and including
+0.29
+</li>
+<li>
+<strong>
+Groovy
+Plugin
+</strong>
+up to and including
+2.0
+</li>
+<li>
+<strong>
+Job Import
+Plugin
+</strong>
+up to and including
+2.1
+</li>
+<li>
+<strong>
+Job Import
+Plugin
+</strong>
+up to and including
+3.0
+</li>
+<li>
+<strong>
+Kanboard
+Plugin
+</strong>
+up to and including
+1.5.10
+</li>
+<li>
+<strong>
+Monitoring
+Plugin
+</strong>
+up to and including
+1.74.0
+</li>
+<li>
+<strong>
+OpenId Connect Authentication
+Plugin
+</strong>
+up to and including
+1.4
+</li>
+<li>
+<strong>
+Script Security
+Plugin
+</strong>
+up to and including
+1.50
+</li>
+<li>
+<strong>
+Token Macro
+Plugin
+</strong>
+up to and including
+2.5
+</li>
+<li>
+<strong>
+warnings
+Plugin
+</strong>
+up to and including
+5.0.0
+</li>
+<li>
+<strong>
+Warnings Next Generation
+Plugin
+</strong>
+up to and including
+2.1.1
+</li>
+<li>
+<strong>
+Warnings Next Generation
+Plugin
+</strong>
+up to and including
+1.0.1
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Active Directory
+Plugin
+</strong>
+should be updated to version
+2.11
+</li>
+<li>
+<strong>
+Blue Ocean
+Plugin
+</strong>
+should be updated to version
+1.10.2
+</li>
+<li>
+<strong>
+Config File Provider
+Plugin
+</strong>
+should be updated to version
+3.5
+</li>
+<li>
+<strong>
+Git
+Plugin
+</strong>
+should be updated to version
+3.9.2
+</li>
+<li>
+<strong>
+GitHub Authentication
+Plugin
+</strong>
+should be updated to version
+0.31
+</li>
+<li>
+<strong>
+Groovy
+Plugin
+</strong>
+should be updated to version
+2.1
+</li>
+<li>
+<strong>
+Job Import
+Plugin
+</strong>
+should be updated to version
+3.0
+</li>
+<li>
+<strong>
+Job Import
+Plugin
+</strong>
+should be updated to version
+3.1
+</li>
+<li>
+<strong>
+Kanboard
+Plugin
+</strong>
+should be updated to version
+1.5.11
+</li>
+<li>
+<strong>
+Monitoring
+Plugin
+</strong>
+should be updated to version
+1.75.0
+</li>
+<li>
+<strong>
+OpenId Connect Authentication
+Plugin
+</strong>
+should be updated to version
+1.5
+</li>
+<li>
+<strong>
+Script Security
+Plugin
+</strong>
+should be updated to version
+1.51
+</li>
+<li>
+<strong>
+Token Macro
+Plugin
+</strong>
+should be updated to version
+2.6
+</li>
+<li>
+<strong>
+warnings
+Plugin
+</strong>
+should be updated to version
+5.0.1
+</li>
+<li>
+<strong>
+Warnings Next Generation
+Plugin
+</strong>
+should be updated to version
+2.1.2
+</li>
+<li>
+<strong>
+Warnings Next Generation
+Plugin
+</strong>
+should be updated to version
+2.0.0
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="/jenkins.io/independent-scrolling-patch/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Adam Willard
+</strong>
+for
+SECURITY-1253
+</li>
+<li>
+<strong>
+Andy Caldwell and Chris Swindle, Metaswitch Networks
+</strong>
+for
+SECURITY-1102
+</li>
+<li>
+<strong>
+Chris Jacobs, Comscore, Inc., Systems Engineer
+</strong>
+for
+SECURITY-859
+</li>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-1153, SECURITY-1154, SECURITY-1302
+</li>
+<li>
+<strong>
+James Nord, CloudBees, Inc.
+</strong>
+for
+SECURITY-886
+</li>
+<li>
+<strong>
+Kalle Niemitalo, Procomp Solutions Oy
+</strong>
+for
+SECURITY-1271
+</li>
+<li>
+<strong>
+Man Shum, security researcher, https://www.linkedin.com/in/man-shum/
+
+</strong>
+for
+SECURITY-1204
+</li>
+<li>
+<strong>
+Mikhail Egorov, security researcher, https://twitter.com/0ang3el
+</strong>
+for
+SECURITY-1292
+</li>
+<li>
+<strong>
+Oleg Nenashev
+</strong>
+for
+SECURITY-1095
+</li>
+<li>
+<strong>
+R. Tyler Croy, CloudBees, Inc.
+</strong>
+for
+SECURITY-602
+</li>
+<li>
+<strong>
+Thomas Chauchefoin and Julien Szlamowicz of Synacktiv
+</strong>
+for
+SECURITY-905 (1), SECURITY-905 (2)
+</li>
+<li>
+<strong>
+Thomas de Grenier de Latour
+</strong>
+for
+SECURITY-818
+</li>
+<li>
+<strong>
+Wadeck Follonier, CloudBees, Inc.
+</strong>
+for
+SECURITY-797, SECURITY-1201
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2019-01-28.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

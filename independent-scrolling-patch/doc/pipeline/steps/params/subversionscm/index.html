@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+$class: 'SubversionSCM'
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/params/subversionscm/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="$class: &#39;SubversionSCM&#39;" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="$class: &#39;SubversionSCM&#39;" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="$class: &#39;SubversionSCM&#39;" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/params/subversionscm/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="$class: &#39;SubversionSCM&#39;" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div class="sect1">
+<h2 id="class-subversionscm"><a class="anchor" href="#class-subversionscm"></a>$class: 'SubversionSCM'</h2>
+<div class="sectionbody">
+<li><code>$class: 'SubversionSCM'</code><div>
+<div><div>
+ Checks out the source code from Subversion repositories. See <a href="https://wiki.jenkins-ci.org/display/JENKINS/Subversion+Plugin#SubversionPlugin-Postcommithook" rel="nofollow">post-commit</a> hook set up for improved turn-around time and performance in polling.
+</div></div>
+<ul><li><code>locations</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>remote : String</code>
+</li>
+<li><code>credentialsId : String</code>
+</li>
+<li><code>local : String</code>
+<div><div>
+ Specify a local directory (relative to <a rel="nofollow">the workspace root</a>) where this module is checked out. If left empty, the last path component of the URL is used as the default, just like the svn CLI. A single period (<code>.</code>) may be used to check out the project directly into the workspace rather than into a subdirectory.
+</div></div>
+
+</li>
+<li><code>depthOption : String</code>
+<div><div>--depth option for checkout and update commands. Default value is infinity.
+ <ul>
+  <li>empty includes only the immediate target of the operation, not any of its file or directory children.</li>
+  <li>files includes the immediate target of the operation and any of its immediate file children.</li>
+  <li>immediates includes the immediate target of the operation and any of its immediate file or directory children. The directory children will themselves be empty.</li>
+  <li>infinity includes the immediate target, its file and directory children, its children's children, and so on to full recursion.</li>
+  <li>as-it-is takes the working depth from the current working copy, allows for setting update depth manually using --set-depth option.</li>
+ </ul> More information can be found <a href="http://svnbook.red-bean.com/en/1.7/svn.advanced.sparsedirs.html" rel="nofollow">here</a>.
+</div></div>
+
+</li>
+<li><code>ignoreExternalsOption : boolean</code>
+<div><div>
+ "--ignore-externals" option will be used with svn checkout, svn update commands to disable externals definition processing.
+ <p></p> More information can be found <a href="http://svnbook.red-bean.com/en/1.7/svn.advanced.externals.html" rel="nofollow">here</a>. <br> <b>Note:</b> there is the potential to leverage <code>svn:externals</code> to gain read access to the entire Subversion repository. This can happen if you follow the normal practice of giving Jenkins credentials with read access to the entire Subversion repository. You will also need to provide the credentials to use when checking/polling out the svn:externals using the <i>Additional Credentials</i> option.
+</div></div>
+
+</li>
+<li><code>cancelProcessOnExternalsFail : boolean</code>
+<div><div>
+ Determines if the process should be cancelled when checkout/update svn:externals failed. Will work when "Ignore externals" box is not checked. Default choice is to cancelled the process when checkout/update svn:externals failed.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>workspaceUpdater</code>
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'CheckoutUpdater'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'NoopUpdater'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'UpdateUpdater'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'UpdateWithCleanUpdater'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'UpdateWithRevertUpdater'</code><div>
+<ul></ul></div></li>
+</ul></li>
+<li><code>browser</code>
+<ul><b>Nested Choice of Objects</b>
+<li><code>$class: 'Assembla'</code><div>
+<ul><li><code>spaceName : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'BacklogRepositoryBrowser'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ Set the project URL of Repository Browser used with this project. Sample of URL are shown below.
+ <ul>
+  <li>https://demo.backlog.jp/projects/DORA</li>
+ </ul>
+ <p>When no value is set, project of "Backlog URL" set above is used.</p>
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'CollabNetSVN'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ The repository browser URL for the root of the project. For example, a Java.net project called myproject would use https://myproject.dev.java.net/source/browse/myproject.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'FishEyeSVN'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ Specify the URL of this module in FishEye. (such as http://fisheye6.cenqua.com/browse/ant/)
+</div></div>
+
+</li>
+<li><code>rootModule : String</code>
+<div><div>
+ Specify the root Subversion module that this FishEye monitors. For example, for http://fisheye6.cenqua.com/browse/ant/, this field would be ant because it displays the directory "/ant" of the ASF repo. If FishEye is configured to display the whole SVN repository, leave this field empty.
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>svnPhabricator</code><div>
+<ul><li><code>url : String</code>
+</li>
+<li><code>repo : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'PolarionRepositoryBrowser'</code><div>
+<ul><li><code>url : String</code>
+</li>
+<li><code>location : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'RedmineRepositoryBrowser'</code><div>
+<ul><li><code>repositoryId : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'SVNWeb'</code><div>
+<ul><li><code>url : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'ScmManagerSvnRepositoryBrowser'</code><div>
+<ul><li><code>repoUrl : String</code>
+<div><div>
+ Specify the root URL serving this repository (such as <em>https://scm-manager.org/scm/repo/namespace/name</em>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Sventon'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ Specify the URL of the Sventon repository browser. For example, if you normally browse from http://somehost.com/svn/repobrowser.svn?name=local, this field would be http://somehost.com/svn/
+</div></div>
+
+</li>
+<li><code>repositoryInstance : String</code>
+<div><div>
+ Specify the Sventon repository instance name that references this subversion repository. For example, if you normally browse from http://somehost.com/svn/repobrowser.svn?name=local, this field would be local
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'Sventon2'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ Specify the URL of the Sventon repository browser. For example, if you normally browse from http://somehost.com/svn/repobrowser.svn?name=local, this field would be http://somehost.com/svn/
+</div></div>
+
+</li>
+<li><code>repositoryInstance : String</code>
+<div><div>
+ Specify the Sventon repository instance name that references this subversion repository. For example, if you normally browse from http://somehost.com/svn/repobrowser.svn?name=local, this field would be local
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'TeamForge'</code><div>
+<ul><li><code>connectionFactory</code>
+<ul><b>Nested Object</b>
+<li><code>url : String</code>
+<div><div>
+ <p>This should be the URL of your CollabNet TeamForge site. It should be of the form 'https://forge.collab.net'.</p>
+</div></div>
+
+</li>
+<li><code>username : String</code>
+<div><div>
+ <p>The user who will upload the files.</p>
+</div></div>
+
+</li>
+<li><code>password : String</code>
+<div><div>
+ <p>The password for the user specified above. If incorrectly given, the login to the CollabNet TeamForge server will fail.</p>
+</div></div>
+
+</li>
+</ul></li>
+<li><code>project : String</code>
+</li>
+<li><code>repo : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'TracRepositoryBrowser'</code><div>
+<ul></ul></div></li>
+<li><code>$class: 'ViewSVN'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ Specify the root URL of ViewSVN for this repository (such as <a href="http://svn.apache.org/viewvc" rel="nofollow">this</a>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'ViewVCRepositoryBrowser'</code><div>
+<ul><li><code>url : String</code>
+</li>
+<li><code>location : String</code>
+</li>
+</ul></div></li>
+<li><code>$class: 'VisualSVN'</code><div>
+<ul><li><code>url : String</code>
+<div><div>
+ Specify the root URL of VisualSVN for this repository (such as <a href="https://demo-server.visualsvn.com/!/#tortoisesvn" rel="nofollow">https://demo-server.visualsvn.com/!/#tortoisesvn</a>).
+</div></div>
+
+</li>
+</ul></div></li>
+<li><code>$class: 'WebSVN'</code><div>
+<ul><li><code>url : String</code>
+</li>
+</ul></div></li>
+</ul></li>
+<li><code>excludedRegions : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any files and/or folders in this list when determining if a build needs to be triggered.
+ <p></p> Each exclusion uses regular expression pattern matching, and must be separated by a new line.
+ <p></p>
+ <pre>	/trunk/myapp/src/main/web/.*\.html
+	/trunk/myapp/src/main/web/.*\.jpeg
+	/trunk/myapp/src/main/web/.*\.gif
+  </pre> The example above illustrates that if only html/jpeg/gif files have been committed to the SCM a build will not occur.
+ <p></p> More information on regular expressions can be found <a href="http://www.regular-expressions.info/" rel="nofollow">here</a>.
+</div></div>
+
+</li>
+<li><code>excludedUsers : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any revisions committed by users in this list when determining if a build needs to be triggered. This can be used to exclude commits done by the build itself from triggering another build, assuming the build server commits the change with a distinct SCM user.
+ <p></p>Each exclusion uses literal pattern matching, and must be separated by a new line.
+ <p></p>
+ <pre>	 auto_build_user
+  </pre> The example above illustrates that if only revisions by "auto_build_user" have been committed to the SCM a build will not occur.
+</div></div>
+
+</li>
+<li><code>excludedRevprop : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any revisions that are marked with the given revision property (revprop) when determining if a build needs to be triggered. This can be used to exclude commits done by the build itself from triggering another build, assuming the build server commits the change with the correct revprop.
+ <p></p>This type of exclusion only works with Subversion 1.5 servers and newer.
+ <p></p>More information on revision properties can be found <a href="http://svnbook.red-bean.com/en/1.5/svn.advanced.props.html" rel="nofollow">here</a>.
+</div></div>
+
+</li>
+<li><code>excludedCommitMessages : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any revisions with commit messages containing any of the given regular expressions when determining if a build needs to be triggered.
+</div></div>
+
+</li>
+<li><code>includedRegions : String</code>
+<div><div>
+ If set, and Jenkins is set to poll for changes, Jenkins will ignore any files and/or folders that are <b><i>not</i></b> in this list when determining if a build needs to be triggered.
+ <p></p> Each inclusion uses regular expression pattern matching, and must be separated by a new line.
+ <p></p> This is useful when you need to check out an entire resource for building, but only want to do the build when a subset has changed.
+ <p></p>
+ <pre>	/trunk/myapp/c/library1/.*
+	/trunk/myapp/c/library2/.*
+  </pre> If /trunk/myapp is checked out, the build will only occur when there are changes to either the c/library1 and c/library2 subtrees.
+ <p></p> If there are also excluded regions specified, then a file is not ignored when it is in the included list and <b><i>not</i></b> in the excluded list.
+ <p></p> More information on regular expressions can be found <a href="http://www.regular-expressions.info/" rel="nofollow">here</a>.
+</div></div>
+
+</li>
+<li><code>ignoreDirPropChanges : boolean</code>
+<div><div>
+ If set, Jenkins ignores svn-property only changes of directories. These changes are ignored when determining whether a build should be triggered and are removed from a build's changeset. Main usage of this property is to ignore svn:mergeinfo changes (which would otherwise e.g. lead to a complete rebuild of a maven project, in spite of incremental build option).
+</div></div>
+
+</li>
+<li><code>filterChangelog : boolean</code>
+<div><div>
+ If set Jenkins will apply the same inclusion and exclusion patterns for displaying changelog entries as it does for polling for changes. If this is disabled, changes which are excluded for polling are still displayed in the changelog.
+</div></div>
+
+</li>
+<li><code>additionalCredentials</code>
+<div><div>
+ <p>If there are additional credentials required in order to obtain a complete checkout of the source, they can be provided here.</p>
+ <p>The <strong>realm</strong> is how the repository self-identifies to a client. It usually has the following format:</p>
+ <p><code>&lt;proto://host:port&gt; Realm Name</code></p>
+ <ul>
+  <li><code>proto</code> is the protocol, e.g. <code>http</code> or <code>svn</code>.</li>
+  <li><code>host</code> is the host how it's accessed by Jenkins, e.g. as IP address <code>192.168.1.100</code>, host name <code>svnserver</code>, or host name and domain <code>svn.example.org</code>.</li>
+  <li><code>port</code> is the port, even if not explicitly specified. By default, this is <code>80</code> for HTTP, <code>443</code> for HTTPS, 3690 for the <code>svn</code> protocol.</li>
+  <li><code>Realm Name</code> is how the repository self-identifies. Common options include <code>VisualSVN Server</code>, <code>Subversion Authentication</code> or the UUID of the repository.</li>
+ </ul>
+ <p>To find out the realm, you could do any of the following:</p>
+ <ul>
+  <li>If you access the repository via HTTP or HTTPS: Open the repo in a web browser without saved credentials. It will use the <code>Realm Name</code> (see above) in the authentication dialog.</li>
+  <li>Use the command line <code>svn</code> program.
+   <ul>
+    <li>If you don't have stored the credentials, run e.g. <code>svn info https://svnserver/repo</code> and it will tell you the realm when asking you to enter a password, e.g.: <em>Authentication realm: &lt;svn://svnserver:3690&gt; VisualSVN Server</em>.</li>
+    <li>If you have already stored the credentials to access the repository, look for the realm name in one of the files in <code>~/.subversion/auth/svn/simple</code>; it will be two lines below the line <code>svn:realmstring</code>.</li>
+   </ul></li>
+  <li>When accessing a repository via the <code>svn+ssh</code> protocol, the realm has the format <code>username@svn+ssh://host:port</code> – note that the username is <em>before</em> the <code>svn+ssh://</code> (unlike the URL used for normal SVN operations), and that there are no angle brackets and no realm name. For this protocol the default port is 22.</li>
+ </ul>
+ <p>Make sure to enter the realm <em>exactly</em> as shown, starting with a <code>&lt;</code> (except for repositories accessed via <code>svn+ssh</code> – see above).</p>
+</div></div>
+
+<ul><b>Array / List of Nested Object</b>
+<li><code>realm : String</code>
+<div><div>
+ This is the realm that the SvnKit library associates with a specific checkout. For most Subversion servers this will typically be of the format <code>&lt;<i>scheme</i>://<i>hostname</i>(:<i>port</i>)&gt; <i>name</i></code>, while for servers accessed via <code>svn+ssh</code> it is of the format <code>(<i>username</i>@)svn+ssh://<i>hostname</i>(:<i>port</i>)</code>.
+</div></div>
+
+</li>
+<li><code>credentialsId : String</code>
+<div><div>
+ Select the credential from the list of relevant credentials in order to use that credential for checking out the source code.
+</div></div>
+
+</li>
+</ul></li>
+<li><code>quietOperation : boolean</code>
+<div><div>
+ <p>Mimics subversion command line <code>--quiet</code> parameter for <strong>check out / update</strong> operations to help keep the output shorter. Prints nothing, or only summary information.</p>
+</div></div>
+
+</li>
+</ul></div></li>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

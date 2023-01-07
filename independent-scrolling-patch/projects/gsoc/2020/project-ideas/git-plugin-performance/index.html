@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Git plugin performance improvements
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/git-plugin-performance/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Git plugin performance improvements" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Git plugin performance improvements" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Git plugin performance improvements" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2020/project-ideas/git-plugin-performance/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Git plugin performance improvements" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Git plugin performance improvements
+</h1>
+<p>
+<strong>
+Project goal:
+</strong>
+Improve git plugin performance
+</p>
+<p>
+<strong>
+Skills to study/improve:
+</strong>
+Java, Git, Benchmarking, JMH
+</p>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p>Improve Jenkins git plugin performance by fixing known issues in performance critical areas.
+Implement performance comparisons between the command line git and JGit implementations using the Java Microbenchmark Harness.
+Improve the performance of git operations that use the command line git implementation by selectively replacing CLI implementations with JGit when benchmarks show a significant performance gain.</p>
+</div>
+<div class="sect2">
+<h3 id="fix-known-issues-avoid-redundant-fetch"><a class="anchor" href="#fix-known-issues-avoid-redundant-fetch"></a>Fix Known Issues - Avoid Redundant Fetch</h3>
+<div class="paragraph">
+<p>The Jenkins git plugin copies remote git repositories into Jenkins workspaces on agents as part of a 'checkout'.
+The checkout creates an empty git repository in the workspace, configures it with 'git config', and populates it with 'git fetch'.
+Unfortunately, the most commonly used path through the code will call 'git fetch' twice.</p>
+</div>
+<div class="paragraph">
+<p>The second call to 'git fetch' is useless when it is using the same arguments as the first call.
+It wastes server time, network bandwidth, and job time.
+With large repositories, that waste of time may be a minute or more.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implement at least one automated test to detect the redundant fetch</p>
+</li>
+<li>
+<p>Implement changes in the git plugin and the git client plugin to avoid the second call to 'git fetch' when using the same arguments as the first call to 'git fetch'.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="performance-comparisons"><a class="anchor" href="#performance-comparisons"></a>Performance Comparisons</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Compare <a href="https://github.com/jenkinsci/git-client-plugin/blob/master/src/main/java/org/jenkinsci/plugins/gitclient/CliGitAPIImpl.java">CliGitAPIImpl</a> and <a href="https://github.com/jenkinsci/git-client-plugin/blob/master/src/main/java/org/jenkinsci/plugins/gitclient/JGitAPIImpl.java">JGitAPIImpl</a> using the <a href="/blog/2019/06/21/performance-testing-jenkins/">Java Microbenchmark Harness</a> by writing benchmark tests that compare performance of the same operations using the two different implementations.</p>
+</li>
+<li>
+<p>Present the results of those comparisons.</p>
+</li>
+<li>
+<p>Use the results of the comparisons and common use cases to prioritize operations for performance improvement.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="performance-improvements"><a class="anchor" href="#performance-improvements"></a>Performance Improvements</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Confirm that existing automated tests adequately verify the existing implementations.
+If they do not adequately verify implementation behaviors, write additional automated tests to verify the existing implementations.</p>
+</li>
+<li>
+<p>Replace a command line git implementation with a JGit implementation in cases where benchmarks show JGit is faster.</p>
+</li>
+<li>
+<p>Confirm that benchmark tests show the performance improvement.</p>
+</li>
+<li>
+<p>Confirm that automated tests confirm no loss of functionality.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quickstart"><a class="anchor" href="#quickstart"></a>Quickstart</h3>
+<div class="paragraph">
+<p>The project idea is expected to require changes in both the git client plugin and the git plugin.</p>
+</div>
+<div class="paragraph">
+<p>Install a git client plugin development environment by following the <a href="https://github.com/jenkinsci/git-client-plugin/blob/master/CONTRIBUTING.adoc">contributing instructions</a>.
+Compile the plugin, run its automated tests, and confirm that the automated tests are passing.
+Enable coverage reporting and review the coverage report.</p>
+</div>
+<div class="paragraph">
+<p>Install a git plugin development environment by following the <a href="https://github.com/jenkinsci/git-plugin/blob/master/CONTRIBUTING.adoc">contributing instructions</a>.
+Compile the plugin, run its automated tests, and confirm that the automated tests are passing.
+Enable coverage reporting and review the coverage report.</p>
+</div>
+<div class="paragraph">
+<p>Install an integrated development environment (Netbeans, Eclipse, IntelliJ, &#8230;&#8203;).
+Run the git plugin in the development environment.
+Set a breakpoint and confirm that the breakpoint is reached in the development environment.</p>
+</div>
+<div class="paragraph">
+<p>Alternately, use the coverage report to identify an interesting area that has insufficient test coverage.
+Submit one or more tests to improve coverage.
+For example, more tests could be created for <a href="https://github.com/jenkinsci/git-plugin/blob/master/src/main/java/jenkins/plugins/git/MergeWithGitSCMExtension.java">MergeWithGitSCMExtension</a>
+or more tests could be added to <a href="https://github.com/jenkinsci/git-plugin/blob/master/src/main/java/hudson/plugins/git/extensions/impl/PreBuildMerge.java">PreBuildMerge</a>
+or added to <a href="http://mark-pc2.markwaite.net:8080/job/Git-Folder/job/git-plugin/lastBuild/jacoco/hudson.plugins.git.extensions.impl/UserIdentity/">UserIdentity</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="newbie-friendly-issues"><a class="anchor" href="#newbie-friendly-issues"></a>Newbie-friendly issues</h3>
+<div class="paragraph">
+<p>Consider implementing a fix for one or more of the <a href="https://issues.jenkins.io/issues/?jql=(component%3Dgit-plugin%20OR%20component%20%3D%20git-client-plugin)%20and%20labels%20%3D%20newbie-friendly%20and%20status%20in%20(Open%2CReopened)">newbie friendly issues</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-gsoc-all-public/bJUtxIxcT64/0Ddt_LZvCQAJ">Jenkins GSoC mailing list discussion of redundant fetch removal idea</a></p>
+</li>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-gsoc-all-public/SXeSeo3yRl4/I8QeJYVvCQAJ">Jenkins GSoC mailing list discussion of JMH benchmark idea</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-49757">JENKINS-49757</a> - Git plugin calls fetch twice per checkout</p>
+</li>
+<li>
+<p><a href="https://issues.jenkins.io/browse/JENKINS-56404">JENKINS-56404</a> - Exclude redundant fetch</p>
+</li>
+</ul>
+</div>
+</div>
+<h2 class="title">
+Potential Mentors
+</h2>
+<ul>
+<li>
+<a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/fcojfernandez/"><div class="app-avatar"></div> Francisco Fernandez</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/baymac/"><div class="app-avatar"><img alt="Parichay Barpanda" class="app-avatar__image" src="/images/avatars/baymac.jpg"></div> Parichay Barpanda</a>
+</li>
+<li>
+<a class="app-author-link" href="/blog/authors/justinharringa/"><div class="app-avatar"><img alt="Justin Harringa" class="app-avatar__image" src="/images/avatars/justinharringa.jpeg"></div> Justin Harringa</a>
+</li>
+</ul>
+<h2 class="title">
+Project Links
+</h2>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/git-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/git-plugin.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="https://docs.google.com/document/d/1bmpgW_8cg38ulp0uFdn2BRfVlIrZ03FFhWpe0MVHyyI" rel="noreferrer noopener" target="_blank">
+Project idea draft
+</a>
+</li>
+</ul>
+<h2 class="title">
+Organization Links
+</h2>
+<ul>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+- documentation, application guidelines
+</li>
+<li>
+<a href="/participate" target="_blank">
+Participate and contribute to Jenkins
+</a>
+- landing page for newcomer contributors
+</li>
+<li>
+<a href="https://issues.jenkins.io/issues/?jql=project%20%3D%20JENKINS%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20labels%20%3D%20newbie-friendly%20" rel="noreferrer noopener" target="_blank">
+Newbie-friendly issues
+</a>
+- list of organization-wide newbie-friendly issues (use them if there is no links in the project idea)
+</li>
+</ul>
+<p>
+<a href="/projects/gsoc/2020/project-ideas" target="_blank">
+> Go back to other GSoC
+2020
+project ideas
+</a>
+</p>
+
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#fix-known-issues-avoid-redundant-fetch">Fix Known Issues - Avoid Redundant Fetch</a></li>
+<li><a href="#performance-comparisons">Performance Comparisons</a></li>
+<li><a href="#performance-improvements">Performance Improvements</a></li>
+<li><a href="#quickstart">Quickstart</a></li>
+<li><a href="#newbie-friendly-issues">Newbie-friendly issues</a></li>
+<li><a href="#links">Links</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkins-platform-sig" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="https://gitter.im/jenkinsci/git-plugin" rel="noreferrer noopener" target="_blank">
+<img src="https://badges.gitter.im/jenkinsci/git-plugin.svg" title="Gitter">
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2022/12/27/run-jenkins-agent-as-a-service/">
+Create a new Jenkins node, and run your Jenkins agent as a service
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/14/require-java-11/">
+Jenkins plugin development requires Java 11 or newer
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/jfrog-maintenance/">
+Maintenance with downtime of JFrog Artifactory (repo.jenkins-ci.org) 18 of December of 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/09/GSoC-the-gift-of-mentorship/">
+[GSoC] 'Tis the Season to Give the Gift of Mentorship
+</a>
+</li>
+<li>
+<a href="/blog/2022/12/05/jenkins-newsletter/">
+Jenkins November 2022 Newsletter
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/24/jenkins-sponsor-appreciation/">
+Jenkins Sponsor Appreciation
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/23/get-prepared-for-gsoc/">
+GSoC 2023: how to get prepared
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/jenkins-election-candidates-and-results/">
+Jenkins Elections Announcement
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/17/hacktoberfest-recap/">
+Hacktoberfest in Jenkins 2022
+</a>
+</li>
+<li>
+<a href="/blog/2022/11/16/gsoc-2023/">
+Google Summer of Code 2023 Call for Project Ideas and Mentors
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2020/project-ideas/git-plugin-performance.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

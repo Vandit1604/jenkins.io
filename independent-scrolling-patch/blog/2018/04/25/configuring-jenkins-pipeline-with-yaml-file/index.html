@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Configuring a Jenkins Pipeline using a YAML file
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/25/configuring-jenkins-pipeline-with-yaml-file/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Configuring a Jenkins Pipeline using a YAML file" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Configuring a Jenkins Pipeline using a YAML file" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Configuring a Jenkins Pipeline using a YAML file" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2018/04/25/configuring-jenkins-pipeline-with-yaml-file/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Configuring a Jenkins Pipeline using a YAML file" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Configuring a Jenkins Pipeline using a YAML file
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/mdesanti/"><div class="app-avatar"></div> Matias De Santi</a>
+April 25, 2018
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Configuring+a+Jenkins+Pipeline+using+a+YAML+file&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2018%2F04%2F25%2Fconfiguring-jenkins-pipeline-with-yaml-file%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This guest post was originally published on Wolox&#8217;s Medium account <a href="https://medium.com/wolox-driving-innovation/dynamic-jenkins-pipelines-b04066371fbc">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A few years ago our CTO wrote about building a
+<a href="https://medium.com/wolox-driving-innovation/ruby-on-rails-continuous-integration-with-jenkins-and-docker-compose-8dfd24c3df57">Continuous Integration server for Ruby On Rails using Jenkins and docker</a>.
+The solution has been our CI pipeline for the past years until we recently decided to
+make an upgrade. Why?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins version was way out of date and it was getting difficult to
+upgrade</p>
+</li>
+<li>
+<p><a href="https://www.wolox.co">Wolox</a> has grown significantly over the past years
+and we’ve been experiencing scaling issues</p>
+</li>
+<li>
+<p>Very few people knew how to fix any issues with the server</p>
+</li>
+<li>
+<p>Configuring jobs was not an easy task and that made our project
+kickoff process slower</p>
+</li>
+<li>
+<p>Making changes to the commands that each job runs was not easy and not
+many people had permissions to do so. Wolox has a wide range of
+projects, with a wide variety of languages which made this problem even
+bigger.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Taking into account these problems, we started digging into the newest
+version of Jenkins to see how we could improve our CI. We needed to
+build a new CI that could, at least, address the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Projects must be built using Docker. Our projects depend on one or
+multiple docker images to run (app, database, redis, etc)</p>
+</li>
+<li>
+<p>Easy to configure and replicate if necessary</p>
+</li>
+<li>
+<p>Easy to add a new project</p>
+</li>
+<li>
+<p>Easy to change the building steps. Everyone working on the project
+should be able to change if they want to run <em>npm install</em> or <em>yarn
+install</em>.</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="installing-jenkins-and-docker"><a class="anchor" href="#installing-jenkins-and-docker"></a>Installing Jenkins and Docker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Installing Jenkins is straightforward. You can visit
+<a href="/download/">Jenkins Installation page</a> and choose the
+option that best suits your needs.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps we followed to install Jenkins in AWS:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="nb">sudo </span>rpm — import https://pkg.jenkins.io/debian/jenkins.io.key
+<span class="nb">sudo </span>wget <span class="nt">-O</span> /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+<span class="nb">sudo </span>yum <span class="nb">install </span>java-1.8.0 <span class="nt">-y</span>
+<span class="nb">sudo </span>yum remove java-1.7.0-openjdk <span class="nt">-y</span>
+<span class="nb">sudo </span>yum <span class="nb">install </span>jenkins <span class="nt">-y</span>
+<span class="nb">sudo </span>yum update <span class="nt">-y</span>
+<span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> docker</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="automatically-adding-projects-from-github"><a class="anchor" href="#automatically-adding-projects-from-github"></a>Automatically adding projects from Github</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding projects automatically from Github can be achieved using the
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source Plugin</a>.
+It allows Jenkins to scan a GitHub organization
+for projects that match certain rules and add them to Jenkins
+automatically. The only constraint that all branches must meet in order
+to be added is that they contain a Jenkinsfile that explains how to
+build the project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="easy-to-change-configuration"><a class="anchor" href="#easy-to-change-configuration"></a>Easy to change configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="not-so-easy-to-change-configuration"><a class="anchor" href="#not-so-easy-to-change-configuration"></a>Not so easy to change configuration</h3>
+<div class="paragraph">
+<p>One of the biggest pains we had with our previous Jenkins was the
+difficulty of changing the steps necessary to build the project. If you
+looked at a project’s build steps, you would find something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c">#!/bin/bash +x</span>
+<span class="nb">set</span> <span class="nt">-e</span>
+
+<span class="c"># Remove unnecessary files</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\0</span><span class="s2">33[34mRemoving unnecessary files...</span><span class="se">\0</span><span class="s2">33[0m"</span>
+<span class="nb">rm</span> <span class="nt">-f</span> log/<span class="k">*</span>.log &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null
+<span class="nb">rm</span> <span class="nt">-rf</span> public/uploads/<span class="k">*</span> &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null
+
+<span class="c"># Build Project</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\0</span><span class="s2">33[34mBuilding Project...</span><span class="se">\0</span><span class="s2">33[0m"</span>
+docker-compose <span class="nt">--project-name</span><span class="o">=</span><span class="k">${</span><span class="nv">JOB_NAME</span><span class="k">}</span> build
+
+<span class="c"># Prepare test database</span>
+<span class="nv">COMMAND</span><span class="o">=</span><span class="s2">"bundle exec rake db:drop db:create db:migrate"</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\0</span><span class="s2">33[34mRunning: </span><span class="nv">$COMMAND</span><span class="se">\0</span><span class="s2">33[0m"</span>
+docker-compose <span class="nt">--project-name</span><span class="o">=</span><span class="k">${</span><span class="nv">JOB_NAME</span><span class="k">}</span> run  <span class="se">\</span>
+	<span class="nt">-e</span> <span class="nv">RAILS_ENV</span><span class="o">=</span><span class="nb">test </span>web <span class="nv">$COMMAND</span>
+
+<span class="c"># Run tests</span>
+<span class="nv">COMMAND</span><span class="o">=</span><span class="s2">"bundle exec rspec spec"</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\0</span><span class="s2">33[34mRunning: </span><span class="nv">$COMMAND</span><span class="se">\0</span><span class="s2">33[0m"</span>
+unbuffer docker-compose <span class="nt">--project-name</span><span class="o">=</span><span class="k">${</span><span class="nv">JOB_NAME</span><span class="k">}</span> run web <span class="nv">$COMMAND</span>
+
+<span class="c"># Run rubocop lint</span>
+<span class="nv">COMMAND</span><span class="o">=</span><span class="s2">"bundle exec rubocop app spec -R --format simple"</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\0</span><span class="s2">33[34mRunning: </span><span class="nv">$COMMAND</span><span class="se">\0</span><span class="s2">33[0m"</span>
+unbuffer docker-compose <span class="nt">--project-name</span><span class="o">=</span><span class="k">${</span><span class="nv">JOB_NAME</span><span class="k">}</span> run <span class="nt">-e</span> <span class="nv">RUBYOPT</span><span class="o">=</span><span class="s2">"-Ku"</span> web <span class="nv">$COMMAND</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And some post build steps that cleaned up the docker:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="bash"><span class="c">#!/bin/bash +x</span>
+docker-compose <span class="nt">--project-name</span><span class="o">=</span><span class="k">${</span><span class="nv">JOB_NAME</span><span class="k">}</span> stop &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null
+docker-compose <span class="nt">--project-name</span><span class="o">=</span><span class="k">${</span><span class="nv">JOB_NAME</span><span class="k">}</span> <span class="nb">rm</span> <span class="nt">--force</span> &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null
+docker stop <span class="sb">`</span>docker ps <span class="nt">-a</span> <span class="nt">-q</span> <span class="nt">-f</span> <span class="nv">status</span><span class="o">=</span>exited<span class="sb">`</span> &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null
+docker <span class="nb">rm</span> <span class="nt">-v</span> <span class="sb">`</span>docker ps <span class="nt">-a</span> <span class="nt">-q</span> <span class="nt">-f</span> <span class="nv">status</span><span class="o">=</span>exited<span class="sb">`</span> &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null
+docker rmi <span class="sb">`</span>docker images <span class="nt">--filter</span> <span class="s1">'dangling=true'</span> <span class="nt">-q</span> <span class="nt">--no-trunc</span><span class="sb">`</span> &amp;&gt; /dev/null <span class="o">||</span> <span class="nb">true</span> &amp;&gt; /dev/null</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Although these commands are not complex, changing any of them required
+someone with permissions to modify the job and an understanding ofwhat
+needed to be done.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkinsfile-to-the-rescue-or-not"><a class="anchor" href="#jenkinsfile-to-the-rescue-or-not"></a>Jenkinsfile to the rescue&#8230;&#8203; or not</h3>
+<div class="paragraph">
+<p>With the current Jenkins version, we can take advantage of
+<a href="/doc/book/pipeline/">Jenkins Pipeline</a> and model our build
+flow in a file. This file is checked into the repository and, therefore,
+anyone with access to it can change the build steps. Yay!</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Pipeline even has support for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jenkins.io/doc/book/pipeline/docker/">Docker</a> and
+<a href="https://jenkins.io/doc/book/pipeline/docker/#advanced-usage-with-scripted-pipeline">multiple
+images</a> can be used for a build!</p>
+</li>
+<li>
+<p>Setting environment variables with <em>withEnv</em> and many other built -in
+functions that can be found
+<a href="/doc/pipeline/steps/workflow-basic-steps/">here</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This makes a perfect case for <a href="https://www.wolox.co">Wolox</a>. We can have
+our build configuration in a file that’s checked into the repository and
+can be changed by anyone with write access to it. However, a Jenkinsfile
+for a simple rails project would look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="err">#</span> <span class="n">sample</span> <span class="n">Jenkinsfile</span><span class="o">.</span> <span class="n">Might</span> <span class="n">not</span> <span class="n">compile</span>
+<span class="n">node</span> <span class="o">{</span>
+    <span class="n">checkout</span> <span class="n">scm</span>
+    <span class="nf">withEnv</span><span class="o">([</span><span class="s1">'MYTOOL_HOME=/usr/local/mytool'</span><span class="o">])</span> <span class="o">{</span>
+        <span class="n">docker</span><span class="o">.</span><span class="na">image</span><span class="o">(</span><span class="s2">"postgres:9.2"</span><span class="o">).</span><span class="na">withRun</span><span class="o">()</span> <span class="o">{</span> <span class="n">db</span> <span class="o">-&gt;</span>
+            <span class="n">withEnv</span><span class="o">([</span><span class="s1">'DB_USERNAME=postgres'</span><span class="o">,</span> <span class="s1">'DB_PASSWORD='</span><span class="o">,</span> <span class="s2">"DB_HOST=db"</span><span class="o">,</span> <span class="s2">"DB_PORT=5432"</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">docker</span><span class="o">.</span><span class="na">image</span><span class="o">(</span><span class="s2">"redis:X"</span><span class="o">).</span><span class="na">withRun</span><span class="o">()</span> <span class="o">{</span> <span class="n">redis</span> <span class="o">-&gt;</span>
+                    <span class="n">withEnv</span><span class="o">([</span><span class="s2">"REDIS_URL=redis://redis"</span><span class="o">])</span> <span class="o">{</span>
+                        <span class="n">docker</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">imageName</span><span class="o">,</span> <span class="s2">"--file .woloxci/Dockerfile ."</span><span class="o">).</span><span class="na">inside</span><span class="o">(</span><span class="s2">"--link ${db.id}:postgres --link ${redis.id}:redis"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">sh</span> <span class="s2">"rake db:create"</span>
+                            <span class="n">sh</span> <span class="s2">"rake db:migrate"</span>
+                            <span class="n">sh</span> <span class="s2">"bundle exec rspec spec"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This file is not only difficult to read, but also difficult to change.
+It’s quite easy to break things if you’re not familiar with Groovy and
+even easier if you know nothing about how Jenkins’ pipeline works.
+Changing or adding a new Docker image isn’t straightforward and might
+lead to confusion.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-jenkins-pipeline-via-yaml"><a class="anchor" href="#configuring-jenkins-pipeline-via-yaml"></a>Configuring Jenkins Pipeline via YAML</h3>
+<div class="paragraph">
+<p>Personally, I’ve always envied simple configuration files for CIs and
+this time it was our chance to build CI that could be configured using a
+YAML file. After some analysis we concluded that a YAML like this one
+would suffice:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">config</span><span class="pi">:</span>
+  <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">.woloxci/Dockerfile</span>
+  <span class="na">project_name</span><span class="pi">:</span> <span class="s">some-project-name</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">postgresql</span>
+  <span class="pi">-</span> <span class="s">redis</span>
+
+<span class="na">steps</span><span class="pi">:</span>
+  <span class="na">analysis</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec rubocop -R app spec --format simple</span>
+    <span class="pi">-</span> <span class="s">bundle exec rubycritic --path ./analysis --minimum-score 80 --no-browser</span>
+  <span class="na">setup_db</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec rails db:create</span>
+    <span class="pi">-</span> <span class="s">bundle exec rails db:schema:load</span>
+  <span class="na">test</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec rspec</span>
+  <span class="na">security</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec brakeman --exit-on-error</span>
+  <span class="na">audit</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle audit check --update</span>
+
+
+<span class="na">environment</span><span class="pi">:</span>
+  <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
+  <span class="na">GIT_COMMITTER_NAME</span><span class="pi">:</span> <span class="s">a</span>
+  <span class="na">GIT_COMMITTER_EMAIL</span><span class="pi">:</span> <span class="s">b</span>
+  <span class="na">LANG</span><span class="pi">:</span> <span class="s">C.UTF-8</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It outlines some basic configuration for the project, environment
+variables that need to be present during the run, dependentservices, and
+our build steps.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jenkinsfile-shared-libraries-woloxci"><a class="anchor" href="#jenkinsfile-shared-libraries-woloxci"></a>Jenkinsfile + Shared Libraries = WoloxCI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After investigating for a while about Jenkins and the pipeline, we found
+that we could extend it with
+<a href="https://jenkins.io/doc/book/pipeline/shared-libraries/">shared libraries</a>.
+Shared libraries are written in groovy and can be imported
+into the pipeline and executed when necessary.</p>
+</div>
+<div class="paragraph">
+<p>If you look carefully at this Jenkinsfile,
+we see that the code is a chain of methods calls that receive a
+closure, where we execute another method passing a new closure to it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="err">#</span> <span class="n">sample</span> <span class="n">Jenkinsfile</span><span class="o">.</span> <span class="n">Might</span> <span class="n">not</span> <span class="n">compile</span>
+<span class="n">node</span> <span class="o">{</span>
+    <span class="n">checkout</span> <span class="n">scm</span>
+    <span class="nf">withEnv</span><span class="o">([</span><span class="s1">'MYTOOL_HOME=/usr/local/mytool'</span><span class="o">])</span> <span class="o">{</span>
+        <span class="n">docker</span><span class="o">.</span><span class="na">image</span><span class="o">(</span><span class="s2">"postgres:9.2"</span><span class="o">).</span><span class="na">withRun</span><span class="o">()</span> <span class="o">{</span> <span class="n">db</span> <span class="o">-&gt;</span>
+            <span class="n">withEnv</span><span class="o">([</span><span class="s1">'DB_USERNAME=postgres'</span><span class="o">,</span> <span class="s1">'DB_PASSWORD='</span><span class="o">,</span> <span class="s2">"DB_HOST=db"</span><span class="o">,</span> <span class="s2">"DB_PORT=5432"</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">docker</span><span class="o">.</span><span class="na">image</span><span class="o">(</span><span class="s2">"redis:X"</span><span class="o">).</span><span class="na">withRun</span><span class="o">()</span> <span class="o">{</span> <span class="n">redis</span> <span class="o">-&gt;</span>
+                    <span class="n">withEnv</span><span class="o">([</span><span class="s2">"REDIS_URL=redis://redis"</span><span class="o">])</span> <span class="o">{</span>
+                        <span class="n">docker</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">imageName</span><span class="o">,</span> <span class="s2">"--file .woloxci/Dockerfile ."</span><span class="o">).</span><span class="na">inside</span><span class="o">(</span><span class="s2">"--link ${db.id}:postgres --link ${redis.id}:redis"</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">sh</span> <span class="s2">"rake db:create"</span>
+                            <span class="n">sh</span> <span class="s2">"rake db:migrate"</span>
+                            <span class="n">sh</span> <span class="s2">"bundle exec rspec spec"</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Groovy is flexible enough to allow this same declarative code to be
+created at runtime, making our dream of using a YAML to configure our
+job come true!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-wolox-ci"><a class="anchor" href="#introducing-wolox-ci"></a>Introducing Wolox-CI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>That’s how <a href="https://github.com/Wolox/wolox-ci">wolox-ci</a> was born- our
+shared library for Jenkins!</p>
+</div>
+<div class="paragraph">
+<p>With <a href="https://github.com/Wolox/wolox-ci">wolox-ci</a>, our Jenkinsfile is now
+reduced to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="nd">@Library</span><span class="o">(</span><span class="s1">'wolox-ci'</span><span class="o">)</span> <span class="n">_</span>
+
+<span class="n">node</span> <span class="o">{</span>
+
+  <span class="n">checkout</span> <span class="n">scm</span>
+
+  <span class="nf">woloxCi</span><span class="o">(</span><span class="s1">'.woloxci/config.yml'</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now it simply checks out the code and then calls wolox-ci. The library
+reads yaml file like this one</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="yaml"><span class="na">config</span><span class="pi">:</span>
+  <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">.woloxci/Dockerfile</span>
+  <span class="na">project_name</span><span class="pi">:</span> <span class="s">some-project-name</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">postgresql</span>
+  <span class="pi">-</span> <span class="s">redis</span>
+
+<span class="na">steps</span><span class="pi">:</span>
+  <span class="na">analysis</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec rubocop -R app spec --format simple</span>
+    <span class="pi">-</span> <span class="s">bundle exec rubycritic --path ./analysis --minimum-score 80 --no-browser</span>
+  <span class="na">setup_db</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec rails db:create</span>
+    <span class="pi">-</span> <span class="s">bundle exec rails db:schema:load</span>
+  <span class="na">test</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec rspec</span>
+  <span class="na">security</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle exec brakeman --exit-on-error</span>
+  <span class="na">audit</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bundle audit check --update</span>
+
+
+<span class="na">environment</span><span class="pi">:</span>
+  <span class="na">RAILS_ENV</span><span class="pi">:</span> <span class="s">test</span>
+  <span class="na">GIT_COMMITTER_NAME</span><span class="pi">:</span> <span class="s">a</span>
+  <span class="na">GIT_COMMITTER_EMAIL</span><span class="pi">:</span> <span class="s">b</span>
+  <span class="na">LANG</span><span class="pi">:</span> <span class="s">C.UTF-8</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and builds the Jenkinsfile to get your job running on the fly.</p>
+</div>
+<div class="paragraph">
+<p>The nice part about having a shared library is that we can extend and
+fix our library in a centralized way. Once we add new code, the library
+is automatically updated in Jenkins which will notify all of our jobs
+with the update.</p>
+</div>
+<div class="paragraph">
+<p>Since we have projects in different languages we use Docker to build the
+testing environment. WoloxCI assumes there is a Dockerfile to build and
+will run all the specified commands inside the container.</p>
+</div>
+<div class="sect2">
+<h3 id="woloxci-config-yml"><a class="anchor" href="#woloxci-config-yml"></a>Woloxci config.yml</h3>
+<div class="sect3">
+<h4 id="config"><a class="anchor" href="#config"></a>Config</h4>
+<div class="paragraph">
+<p>The first part of the config.yml file specifies some basic
+configuration: project’s name and Dockerfile location. The Dockerfile is
+used to build the image where the commands will be run.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="services"><a class="anchor" href="#services"></a>Services</h4>
+<div class="paragraph">
+<p>This section describes which services will be exposed to the container.
+Out of the box, WoloxCI has support for <em>postgresql</em>, <em>mssql</em> and
+<em>redis</em>. You can also specify the docker image version you want! It is
+not hard to add a new service. You just need to add the corresponding
+file at</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/Wolox/wolox-ci/tree/development/vars" class="bare">https://github.com/Wolox/wolox-ci/tree/development/vars</a></p>
+</div>
+<div class="paragraph">
+<p>and modify how the services are parsed</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/Wolox/wolox-ci/blob/development/src/com/wolox/parser/ConfigParser.groovy#L76" class="bare">https://github.com/Wolox/wolox-ci/blob/development/src/com/wolox/parser/ConfigParser.groovy#L76</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="steps"><a class="anchor" href="#steps"></a>Steps</h4>
+<div class="paragraph">
+<p>The listed commands in this section will run inside the Docker
+container. As a result, you’ll see each of the steps on the Jenkins UI.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://cdn-images-1.medium.com/max/2000/0*SlHf1JHAAvEvZQ74." alt="image"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environment"><a class="anchor" href="#environment"></a>Environment</h4>
+<div class="paragraph">
+<p>If you need some environment variables during your build, you can
+specify them here. Whatever variable you set will be available inside
+the Docker container when your commands listed in the <strong>steps</strong> section
+described above.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wrapping-up"><a class="anchor" href="#wrapping-up"></a>Wrapping up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WoloxCI is still being tested with a not-so-small sample of our
+projects. The possibility of changing the build steps through a YAML
+file makes it accessible for everyone and that is a great improvement in
+our CI workflow.</p>
+</div>
+<div class="paragraph">
+<p>Docker gives us the possibility of easily changing the programming
+language without making any changes to our Jenkins installation and
+Jenkins’ Github Organization feature automatically adds new projects
+when a new repository with a Jenkinsfile is detected.</p>
+</div>
+<div class="paragraph">
+<p>All of these improvements have reduced the time we spend maintaining
+Jenkins significantly and give us the possibility of easily scaling
+without any extra configuration.</p>
+</div>
+<div class="paragraph">
+<p>This library is working in our CI but it still can be improved.
+If you would like to add features, feel free to
+<a href="https://github.com/Wolox/wolox-ci">contribute</a>!</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipelines/">
+pipelines
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/yaml/">
+yaml
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/sharedlibrary/">
+sharedlibrary
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/mdesanti/">
+Matias De Santi
+</a>
+</p>
+<div class="paragraph">
+<p>Head of Infrastructure &amp; Cloud at <a href="https://www.wolox.com.ar">Wolox</a></p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/mdesanti" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/mdsanti" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2018/04/2018-04-25-configuring-jenkins-pipeline-with-yaml-file.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

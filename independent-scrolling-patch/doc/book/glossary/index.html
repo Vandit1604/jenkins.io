@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Glossary
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/glossary/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Glossary" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Glossary" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Glossary" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/book/glossary/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Glossary" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="active">Glossary</a>
+<small>
+<ul style="padding-left: 1rem;">
+</ul>
+</small>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../troubleshooting">
+⇐ Troubleshooting Jenkins
+</a>
+</div>
+<div class="col-md-4">
+<a class="index doc-page-link" href="../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+</div>
+</div>
+</div>
+<div>
+<div class="row body">
+<div class="section">
+<h1>
+Glossary
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#general-terms">General Terms</a></li>
+<li><a href="#build-status">Build Status</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<script>
+$(function () {
+    anchors.add('dt');
+})
+</script>
+</div>
+</div>
+<div class="sect1">
+<h2 id="general-terms"><a class="anchor" href="#general-terms"></a>General Terms</h2>
+<div class="sectionbody">
+<div class="dlist glossary">
+<dl>
+<dt><a href="/doc/book/using/using-agents/">Agent</a></dt>
+<dd>
+<p>An agent is typically a machine, or container, which connects to a Jenkins
+controller and executes tasks when directed by the controller.</p>
+</dd>
+<dt>Artifact</dt>
+<dd>
+<p>An immutable file generated during a <a href="#build">Build</a> or <a href="#pipeline">Pipeline</a>
+run which is <strong>archived</strong> onto the Jenkins <a href="#controller">Controller</a> for
+later retrieval by users.</p>
+</dd>
+<dt>Build</dt>
+<dd>
+<p><a id="build"></a>
+Result of a single execution of a <a href="#job">job</a></p>
+</dd>
+<dt>Cloud</dt>
+<dd>
+<p><a id="cloud"></a>
+A System Configuration which provides dynamic <a href="#agent">Agent</a>
+provisioning and allocation, such as that provided by the
+<a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a>
+or
+<a href="https://plugins.jenkins.io/ec2">Amazon EC2</a> plugins.</p>
+</dd>
+<dt>Controller</dt>
+<dd>
+<p>The central, coordinating process which stores configuration, loads plugins,
+and renders the various user interfaces for Jenkins.</p>
+</dd>
+<dt>Core</dt>
+<dd>
+<p>The primary Jenkins application (<code>jenkins.war</code>) which provides
+the basic web UI, configuration, and foundation upon which <a href="#plugin">Plugins</a>
+can be built.</p>
+</dd>
+<dt>Downstream</dt>
+<dd>
+<p><a id="downstream"></a>
+A configured <a href="#pipeline">Pipeline</a> or <a href="#job">job</a> which is triggered
+as part of the execution of a separate Pipeline or Job.</p>
+</dd>
+<dt>Executor</dt>
+<dd>
+<p><a id="executor"></a>
+A slot for execution of work defined by a <a href="#pipeline">Pipeline</a> or
+<a href="#job">job</a> on a <a href="#node">Node</a>. A Node may have zero or more
+Executors configured which corresponds to how many concurrent Jobs or
+Pipelines are able to execute on that Node.</p>
+</dd>
+<dt>Fingerprint</dt>
+<dd>
+<p>A hash considered globally unique to track the usage of an
+<a href="#artifact">Artifact</a> or other entity across multiple
+<a href="#pipeline">Pipelines</a> or <a href="#job">jobs</a>.</p>
+</dd>
+<dt>Folder</dt>
+<dd>
+<p><a id="folder"></a>
+An organizational container for <a href="#pipeline">Pipelines</a> and/or
+<a href="#job">jobs</a>, similar to folders on a file system.</p>
+</dd>
+<dt>Item</dt>
+<dd>
+<p><a id="item"></a>
+An entity in the web UI corresponding to either a:
+<a href="#folder">Folder</a>, <a href="#pipeline">Pipeline</a>, or <a href="#job">job</a>.</p>
+</dd>
+<dt>Jenkins URL</dt>
+<dd>
+<p><a id="jenkins-url"></a>
+The main url for the jenkins application, as visited by a user.
+e.g. <a href="https://ci.jenkins.io/" class="bare">https://ci.jenkins.io/</a></p>
+</dd>
+<dt>Job</dt>
+<dd>
+<p><a id="job"></a>
+A user-configured description of work which Jenkins should perform, such as
+building a piece of software, etc.</p>
+</dd>
+<dt>Kubernetes</dt>
+<dd>
+<p><a id="kubernetes"></a>
+Kubernetes (K8s) is an open-source system for automating deployment, scaling,
+and management of containerized applications.
+See <a href="/doc/book/installing/kubernetes/">Installing Jenkins / Kubernetes</a>
+for more info.</p>
+</dd>
+<dt>Label</dt>
+<dd>
+<p><a id="label"></a>
+User-defined text for grouping <a href="#agent">Agents</a>, typically by similar
+functionality or capability. For example <code>linux</code> for Linux-based agents or
+<code>docker</code> for Docker-capable agents.</p>
+</dd>
+<dt>LTS</dt>
+<dd>
+<p>A long-term support <a href="#release">Release</a> line of Jenkins products, becoming
+available for downloads every 12 weeks.
+See <a href="/download/lts/">this page</a> for more info.</p>
+</dd>
+<dt>Master</dt>
+<dd>
+<p>A deprecated term, synonymous with <a href="#controller">Controller</a>.</p>
+</dd>
+<dt><a href="/doc/book/managing/nodes/">Node</a></dt>
+<dd>
+<p>A machine which is part of the Jenkins environment and capable
+of executing <a href="#pipeline">Pipelines</a> or <a href="#job">jobs</a>. Both the
+<a href="#controller">Controller</a> and <a href="#agent">Agents</a> are considered to be Nodes.</p>
+</dd>
+<dt>Project</dt>
+<dd>
+<p><a id="project"></a>
+A deprecated term, synonymous with <a href="#job">job</a>.</p>
+</dd>
+<dt>Pipeline</dt>
+<dd>
+<p><a id="pipeline"></a>
+A user-defined model of a continuous delivery pipeline, for more read the
+<a href="../pipeline/">Pipeline chapter</a> in this handbook.</p>
+</dd>
+<dt>Plugin</dt>
+<dd>
+<p>An extension to Jenkins functionality provided separately
+from Jenkins <a href="#core">Core</a>.</p>
+</dd>
+<dt>Publisher</dt>
+<dd>
+<p>Part of a <a href="#build">Build</a> after the completion of all configured
+<a href="#step">Steps</a> which publishes reports, sends notifications, etc.
+A publisher may report <a href="#stable">Stable</a> or <a href="#unstable">Unstable</a> result
+depending on the result of its processing and its configuration.
+For example, if a JUnit test fails, then the whole JUnit publisher may
+report the build result as <a href="#unstable">Unstable</a>.</p>
+</dd>
+<dt>Resource Root URL</dt>
+<dd>
+<p><a id="resource-root-url"></a>
+A secondary url used to serve potentially untrusted content (especially
+build artifacts). This url is distinct from the <a href="#jenkins-url">Jenkins URL</a>.</p>
+</dd>
+<dt>Release</dt>
+<dd>
+<p>An event, indicating availability of Jenkins distribution products or one
+of Jenkins plugins. Jenkins products belong either to <a href="#lts">LTS</a> or weekly
+Release lines.</p>
+</dd>
+<dt>Stage</dt>
+<dd>
+<p><code>stage</code> is part of Pipeline, and used for defining a conceptually distinct
+subset of the entire Pipeline, for example: "Build", "Test", and "Deploy",
+which is used by many plugins to visualize or present Jenkins Pipeline
+status/progress.</p>
+</dd>
+<dt>Step</dt>
+<dd>
+<p>A single task; fundamentally steps tell Jenkins <em>what</em> to do inside of a
+<a href="#pipeline">Pipeline</a> or <a href="#job">job</a>.
+See <a href="/doc/book/pipeline/getting-started/">Pipelines / Getting Started</a>
+and <a href="/doc/book/pipeline/jenkinsfile/">Pipeline / Using a jenkinsfile</a>
+for more info.</p>
+</dd>
+<dt>Trigger</dt>
+<dd>
+<p><a id="trigger"></a>
+A criteria for triggering a new <a href="#pipeline">Pipeline</a> run or
+<a href="#job">job</a>.</p>
+</dd>
+<dt>Update Center</dt>
+<dd>
+<p><a id="update-center"></a>
+Hosted inventory of plugins and plugin metadata to enable plugin
+installation from within Jenkins.</p>
+</dd>
+<dt>Upstream</dt>
+<dd>
+<p><a id="upstream"></a>
+A configured <a href="#pipeline">Pipeline</a> or <a href="#job">job</a> which triggers a
+separate Pipeline or Job as part of its execution.</p>
+</dd>
+<dt>View</dt>
+<dd>
+<p><a id="view"></a>
+A way of displaying the data of Jenkins in a dashboard style.
+This is an extensible object, so there are lots of different ways to list <a href="#job">jobs</a>, show trends, and analyze data.</p>
+</dd>
+<dt>Workspace</dt>
+<dd>
+<p><a id="workspace"></a>
+A disposable directory on the file system of a <a href="#node">Node</a>
+where work can be done by a <a href="#pipeline">Pipeline</a> or <a href="#job">job</a>.
+Workspaces are typically left in place after a <a href="#build">Build</a> or
+<a href="#pipeline">Pipeline</a> run completes unless specific Workspace cleanup policies
+have been put in place on the Jenkins <a href="#controller">Controller</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="build-status"><a class="anchor" href="#build-status"></a>Build Status</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Aborted</dt>
+<dd>
+<p>The <a href="#build">Build</a> was interrupted before it reaches its expected end. For example, the user has stopped it manually or there was a time-out.</p>
+</dd>
+<dt class="hdlist1">Failed</dt>
+<dd>
+<p>The <a href="#build">Build</a> had a fatal error.</p>
+</dd>
+<dt class="hdlist1">Stable</dt>
+<dd>
+<p>The <a href="#build">Build</a> was <a href="#successful">Successful</a> and no <a href="#publisher">Publisher</a> reports it as <a href="#unstable">Unstable</a>.</p>
+</dd>
+<dt class="hdlist1">Successful</dt>
+<dd>
+<p>The <a href="#build">Build</a> has no compilation errors.</p>
+</dd>
+<dt class="hdlist1">Unstable</dt>
+<dd>
+<p>The <a href="#build">Build</a> had some errors but they were not fatal. A <a href="#build">Build</a> is unstable if it was built successfully and one or more publishers report it unstable. For example if the JUnit publisher is configured and a test fails then the <a href="#build">Build</a> will be marked unstable.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div>
+<div class="row">
+<div class="col-md-4">
+<a class="prev doc-page-link" href="../troubleshooting">
+⇐ Troubleshooting Jenkins
+</a>
+</div>
+<div class="col-md-4">
+<a class="index doc-page-link" href="../">
+Index
+</a>
+</div>
+<div class="col-md-4">
+</div>
+</div>
+</div>
+<hr>
+<div></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//doc/book/glossary/index.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

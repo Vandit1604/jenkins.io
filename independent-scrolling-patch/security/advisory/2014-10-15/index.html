@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2014-10-15
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2014-10-15/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Security Advisory 2014-10-15" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2014-10-15" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2014-10-15" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/security/advisory/2014-10-15/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2014-10-15" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins Security Advisory 2014-10-15
+</h1>
+<div class="paragraph">
+<p>This advisory discusses the impact of so-called <a href="https://poodle.io/">Poodle vulnerability</a> (CVE-2014-3566) in Jenkins core.</p>
+</div>
+<div class="sect1">
+<h2 id="description"><a class="anchor" href="#description"></a>Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This vulnerability allows a man-in-the-middle attacker to decrypt SSLv3 communication. See <a href="https://www.imperialviolet.org/2014/10/14/poodle.html">this post</a> for the technical detail of the attack. This involves an attacker who sits in the middle of a Jenkins controller and a victim, and a victim who opens a web page controller by an attacker. By repeatedly making the victim&#8217;s browser to issue an HTTPS request to the Jenkins controller, the attacker can decrypt sensitive information such as session cookie one byte at a time.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="severity"><a class="anchor" href="#severity"></a>Severity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CVE-2014-3566 is rated <strong>high</strong>. An man-in-the-middle attacker can relatively easily trick a victim into opening an unencrypted web page controlled by an attacker, and a successful exploit results in a compromise of the Jenkins controller and/or loss of data.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="affected-versions"><a class="anchor" href="#affected-versions"></a>Affected Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All versions of Jenkins released to date is vulnerable, but only if all the following conditions are met:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You are using the built-in Winstone container by running Jenkins like <code>java -jar jenkins.war &#8230;&#8203;</code> (this includes everyone who installed Jenkins via a package manager such as deb, rpm, msi, and so on.)</p>
+</li>
+<li>
+<p>You enable the HTTPS protocol by adding the <code>--httpsPort</code> option</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fix"><a class="anchor" href="#fix"></a>Fix</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins 1.585, which is expected to ship in Oct 19th, will contain this fix.</p>
+</li>
+<li>
+<p>Jenkins 1.580.1, which is expected to ship in  Oct 29th, will contain this fix.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This issue and its fix is currently tracked as <a href="https://issues.jenkins.io/browse/JENKINS-25169">JENKINS-25169</a>.</p>
+</div>
+<div class="paragraph">
+<p>While we are working on releasing the new versions that incorporate the fix, you can change the way you run Jenkins today to get the fix on the version of Jenkins you are currently using:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download <a href="https://repo.jenkins-ci.org/public/org/jenkins-ci/winstone/2.8/winstone-2.8.jar">winstone.jar</a> v2.8, which contains the fix</p>
+</li>
+<li>
+<p>Where you run <code>java -jar path/to/jenkins.war &#8230;&#8203;</code>, change this to <code>java -jar winstone.jar --warfile=path/to/jenkins.war &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This version of Winstone fixes the vulnerability by disabling SSLv3 entirely.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-resources"><a class="anchor" href="#other-resources"></a>Other Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://poodle.io/">POODLE announcement</a></p>
+</li>
+<li>
+<p><a href="https://www.imperialviolet.org/2014/10/14/poodle.html">technical details</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//security/advisory/2014-10-15.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

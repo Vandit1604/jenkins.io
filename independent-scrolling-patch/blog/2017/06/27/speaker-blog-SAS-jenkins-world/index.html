@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Extending your Pipeline with Shared Libraries, Global Functions and External Code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/06/27/speaker-blog-SAS-jenkins-world/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Extending your Pipeline with Shared Libraries, Global Functions and External Code" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Extending your Pipeline with Shared Libraries, Global Functions and External Code" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Extending your Pipeline with Shared Libraries, Global Functions and External Code" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2017/06/27/speaker-blog-SAS-jenkins-world/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Extending your Pipeline with Shared Libraries, Global Functions and External Code" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Extending your Pipeline with Shared Libraries, Global Functions and External Code
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/hinman/"><div class="app-avatar"></div> Hannah Inman</a>
+June 27, 2017
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Extending+your+Pipeline+with+Shared+Libraries%2C+Global+Functions+and+External+Code&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2017%2F06%2F27%2Fspeaker-blog-SAS-jenkins-world%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by Brent Laster, Senior Manager, Research and Development at
+<a href="https://www.sas.com/en_us/home.html">SAS</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="/doc/book/pipeline">Jenkins Pipeline</a>
+has fundamentally changed how users can orchestrate their pipelines and workflows.
+Essentially, anything that you can do in a script or program can now be done in a <code>Jenkinsfile</code> or in a pipeline script created within the application.
+But just because you can do nearly anything directly in those mechanisms doesn&#8217;t mean you necessarily should.</p>
+</div>
+<div class="paragraph">
+<p>In some cases, it&#8217;s better to abstract the functionality out separately from your main Pipeline.
+Previously, the main way to do this in Jenkins itself was through creating plugins.
+With Jenkins 2 and the tight incorporation of Pipeline, we now have another approach – shared libraries.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Brent will be
+<a href="https://jenkinsworld20162017.sched.com/event/ALMq/extending-your-pipeline-with-shared-libraries-global-functions-and-external-code">presenting</a>
+more of this topic at <a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in
+August, register with the code <code>JWFOSS</code> for a 30% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="/doc/book/pipeline/shared-libraries">Shared libraries</a>
+provide solutions for a number of situations that can be challenging or time-consuming to deal with in Pipeline.
+Among them:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Providing common routines that can be accessed across a number of pipelines or within a designated scope (more on scope later)</p>
+</li>
+<li>
+<p>Abstracting out complex or restricted code</p>
+</li>
+<li>
+<p>Providing a means to execute scripted code from calls in declarative pipelines (where scripted code is not normally allowed)</p>
+</li>
+<li>
+<p>Simplifying calls in a script to custom code that only differ by calling parameters</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To understand how to use shared libraries in Pipeline, we first need to understand how they are constructed.
+A shared library for Jenkins consists of a source code repository with a structure like the one below:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2017-06-27/jw-speaker-blog-sas-1.png" alt="jw speaker blog sas 1"></span></p>
+</div>
+<div class="paragraph">
+<p>Each of the top-level directories has its own purpose.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>resources</strong> directory can have non-groovy resources that get loaded via the <code>libraryResource</code> step.
+Think of this as a place to store supporting data files such as json files.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>src</strong> directory uses a structure similar to the standard Java <code>src</code> layout.
+This area is added to the <code>classpath</code> when a Pipeline that includes this shared library is executed.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>vars</strong> directory holds global variables that should be accessible from pipeline scripts.
+A corresponding <code>.txt</code> file can be included that defines documentation for objects here.
+If found, this will be pulled in as part of the documentation in the Jenkins application.</p>
+</div>
+<div class="paragraph">
+<p>Although you might think that it would always be best to define library functions in the src structure, it actually works better in many cases to define them in the vars area.
+The notion of a global variable may not correspond very well to a global function, but you can think of it as the function being a global value that can be pulled in and used in your pipeline.
+In fact, to work in a declarative style pipeline, having your function in the vars area is the only option.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at a simple function that we can create for a shared library.
+In this case, we&#8217;ll just wrap picking up the location of the Gradle installation from Jenkins and calling the corresponding executable with whatever tasks are passed in as arguments.
+The code is below:</p>
+</div>
+<div class="listingblock">
+<div class="title">/vars/gbuild.groovy</div>
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="nf">call</span><span class="o">(</span><span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">sh</span> <span class="s2">"${tool 'gradle3'}/bin/gradle ${args}"</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that we are using a structured form here with the def call syntax.
+This allows us to simply invoke the routine in our pipeline (assuming we have loaded the shared library) based on the name of the file in the vars area.
+For example, since we named this file <strong>gbuild.groovy</strong>, then we can invoke it in our pipeline via a step like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="n">gbuild</span> <span class="s1">'clean compileJava'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, how do we get our shared library loaded to use in our pipeline?
+The shared library itself is just code in the structure outlined above committed/pushed into a source code repository that Jenkins can access.
+In our example, we&#8217;ll assume we&#8217;ve staged, committed, and pushed this code into a local Git repository on the system at <code>/opt/git/shared-library.git</code>.</p>
+</div>
+<div class="paragraph">
+<p>Like most other things in Jenkins, we need to first tell Jenkins where this shared library can be found and how to reference it "globally" so that pipelines can reference it specifically.</p>
+</div>
+<div class="paragraph">
+<p>First, though, we need to decide at what scope you want this shared library to be available.
+The most common case is making it a "global shared library" so that all Pipelines can access it.
+However, we also have the option of only making shared libraries available for projects in a particular Jenkins <strong>Folder</strong> structure,
+or those in a <strong>Multibranch Pipeline</strong>, or those in a <strong>GitHub Organization</strong> pipeline project.</p>
+</div>
+<div class="paragraph">
+<p>To keep it simple, we&#8217;ll just define ours to be globally available to all pipelines.
+Doing this is a two-step process.
+We first tell Jenkins what we want to call the library and define some default behavior for Jenkins related to the library,
+such as whether we wanted it loaded implicitly for all pipelines.
+This is done in the <strong>Global Pipeline Libraries</strong> section of the <strong>Configure System</strong> page.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2017-06-27/jw-speaker-blog-sas-2.png" alt="jw speaker blog sas 2" width="800"></span></p>
+</div>
+<div class="paragraph">
+<p>For the second part, we need to tell Jenkins where the actual source repository for the shared library is located.
+SCM plugins that have been modified to understand how to work with shared libraries are called "<strong>Modern SCM</strong>".
+The git plugin in one of these updated plugin, so we just supply the information in the same <strong>Configure System</strong> page.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2017-06-27/jw-speaker-blog-sas-3.png" alt="jw speaker blog sas 3"></span></p>
+</div>
+<div class="paragraph">
+<p>After configuring Jenkins so that it can find the shared library repository, we can load the shared library into our pipeline using the <code>@Library('&lt;library name&gt;')</code> annotation.
+Since <a href="https://docs.oracle.com/javase/1.5.0/docs/guide/language/annotations.html">Annotations</a>
+are designed to annotate something that follows them,
+we need to either include a specific import statement, or, if we want to include everything, we can use an underscore character as a placeholder.
+So our basic step to load the library in a pipeline would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="nd">@Library</span><span class="o">(</span><span class="s1">'Utilities2'</span><span class="o">)</span> <span class="n">_</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Based on this step, when Jenkins runs our Pipeline, it will first go out to the repository that holds the shared library and clone down a copy to use.
+The log output during this part of the pipeline execution would look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>Loading library Utilities2@master
+ &gt; git rev-parse --is-inside-work-tree # timeout=10
+Setting origin to /opt/git/shared-libraries
+ &gt; git config remote.origin.url /opt/git/shared-libraries # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ &gt; git --version # timeout=10
+using GIT_SSH to set credentials Jenkins2 SSH
+ &gt; git fetch --tags --progress origin +refs/heads/*:refs/remotes/origin/*
+ &gt; git rev-parse master^{commit} # timeout=10
+ &gt; git rev-parse origin/master^{commit} # timeout=10
+Cloning the remote Git repository
+Cloning repository /opt/git/shared-libraries</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then Pipeline can call our shared library <code>gbuild</code> function and translate it to the desired Gradle build commands.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code>First time build.
+Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compile)
+[Pipeline] tool
+[Pipeline] sh
+[gsummit17_lab2-4T357CUTJORMC2TIF7WW5LMRR37F7PM2QRUHXUNSRTWTTRHB3XGA]
+Running shell script
++ /usr/share/gradle/bin/gradle clean compileJava -x test
+Starting a Gradle Daemon (subsequent builds will be faster)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a very basic illustration of how using shared libraries work.
+There is much more detail and functionality surrounding shared libraries, and extending your pipeline in general, than we can cover here.</p>
+</div>
+<div class="paragraph">
+<p>Be sure to catch my talk on
+<a href="https://jenkinsworld20162017.sched.com/event/ALMq/extending-your-pipeline-with-shared-libraries-global-functions-and-external-code">Extending your Pipeline with Shared Libraries, Global Functions and External Code</a>
+at <a href="https://www.cloudbees.com/jenkinsworld">Jenkins World 2017</a>.
+Also, watch for my new book on
+<a href="https://www.amazon.com/Jenkins-Deployment-Pipeline-Generation-Automation/dp/1491979593/ref=sr_1_2?ie=UTF8&amp;qid=1497984947&amp;sr=8-2&amp;keywords=Brent+laster">Jenkins 2 Up and Running</a>
+which will have a dedicated chapter on this – expected to be available later this year from O&#8217;Reilly.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2017/">
+jenkinsworld2017
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/hinman/">
+Hannah Inman
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2017/06/2017-06-27-speaker-blog-SAS-jenkins-world.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

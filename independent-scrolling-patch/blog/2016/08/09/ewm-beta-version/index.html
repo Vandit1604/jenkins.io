@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC: External Workspace Manager for Pipeline. Beta release is available
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/08/09/ewm-beta-version/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="GSoC: External Workspace Manager for Pipeline. Beta release is available" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC: External Workspace Manager for Pipeline. Beta release is available" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC: External Workspace Manager for Pipeline. Beta release is available" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/08/09/ewm-beta-version/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC: External Workspace Manager for Pipeline. Beta release is available" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+GSoC: External Workspace Manager for Pipeline. Beta release is available
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/alexsomai/"><div class="app-avatar"></div> Alexandru Somai</a>
+August 09, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=GSoC%3A+External+Workspace+Manager+for+Pipeline.+Beta+release+is+available&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F08%2F09%2Fewm-beta-version%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>This blog post is a continuation of the External Workspace Manager Plugin related posts, starting with
+<a href="/blog/2016/05/23/external-workspace-manager-plugin/">the introductory blog post</a>, and followed by
+<a href="/blog/2016/06/30/ewm-alpha-version/">the alpha version release announcement</a>.</p>
+</div>
+<div class="paragraph">
+<p>As the title suggests, the beta version of the External Workspace Manager Plugin was launched!
+This means that it&#8217;s available only in the
+<a href="/blog/2013/09/23/experimental-plugins-update-center/">Experimental Plugins Update Center</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Take care when installing plugins from the Experimental Update Center, since they may change in
+backward-incompatible ways.
+It&#8217;s advisable not to use it for Jenkins production environments.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The plugin&#8217;s repository is on <a href="https://github.com/jenkinsci/external-workspace-manager-plugin">GitHub</a>.
+The complete plugin&#8217;s documentation can be accessed
+<a href="https://github.com/jenkinsci/external-workspace-manager-plugin/blob/master/README.md">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="whats-new"><a class="anchor" href="#whats-new"></a>What&#8217;s new</h3>
+<div class="paragraph">
+<p>Bellow is a summary of the features added so far, since the alpha version.</p>
+</div>
+<div class="sect3">
+<h4 id="multiple-upstream-run-selection-strategies"><a class="anchor" href="#multiple-upstream-run-selection-strategies"></a>Multiple upstream run selection strategies</h4>
+<div class="paragraph">
+<p>It has support for the
+<a href="https://github.com/jenkinsci/run-selector-plugin">Run Selector Plugin</a> (which is still in beta),
+so you can provide different run selection strategies when allocating a disk from the upstream job.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s suppose that we have an upstream job that clones the repository and builds the project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">extWorkspace</span> <span class="o">=</span> <span class="n">exwsAllocate</span> <span class="s1">'diskpool1'</span>
+
+<span class="n">node</span> <span class="o">(</span><span class="s1">'linux'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">exws</span> <span class="o">(</span><span class="n">extWorkspace</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">checkout</span> <span class="n">scm</span>
+        <span class="n">sh</span> <span class="s1">'mvn clean install -DskipTests'</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the downstream job, we run the tests on a different node, but we reuse the same workspace as the previous job:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">run</span> <span class="o">=</span> <span class="n">selectRun</span> <span class="s1">'upstream'</span>
+<span class="kt">def</span> <span class="n">extWorkspace</span> <span class="o">=</span> <span class="n">exwsAllocate</span> <span class="nl">selectedRun:</span> <span class="n">run</span>
+
+<span class="n">node</span> <span class="o">(</span><span class="s1">'test'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">exws</span> <span class="o">(</span><span class="n">extWorkspace</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sh</span> <span class="s1">'mvn test'</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>selectRun</code> in this example selects the last stable build from the upstream job.
+But, we can be more explicit, and select a specific build number from the upstream job.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">run</span> <span class="o">=</span> <span class="n">selectRun</span> <span class="s1">'upstream'</span><span class="o">,</span>
+ <span class="nl">selector:</span> <span class="o">[</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'SpecificRunSelector'</span><span class="o">,</span> <span class="nl">buildNumber:</span> <span class="n">UPSTREAM_BUILD_NUMBER</span><span class="o">]</span>
+<span class="kt">def</span> <span class="n">extWorkspace</span> <span class="o">=</span> <span class="n">exwsAllocate</span> <span class="nl">selectedRun:</span> <span class="n">run</span>
+<span class="c1">// ...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the <code>selectedRun</code> parameter is given to the <code>exwsAllocate</code> step, it will allocate the same workspace that was
+used by that run.</p>
+</div>
+<div class="paragraph">
+<p>The Run Selector Plugin has several run selection strategies that are briefly explained
+<a href="https://github.com/jenkinsci/run-selector-plugin/blob/master/README.md">here</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="automatic-workspace-cleanup"><a class="anchor" href="#automatic-workspace-cleanup"></a>Automatic workspace cleanup</h4>
+<div class="paragraph">
+<p>Provides an automatic workspace cleanup by integrating the
+<a href="https://github.com/jenkinsci/ws-cleanup-plugin">Workspace Cleanup Plugin</a>.
+For example, if we need to delete the workspace only if the build has failed, we can do the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">extWorkspace</span> <span class="o">=</span> <span class="n">exwsAllocate</span> <span class="nl">diskPoolId:</span> <span class="s1">'diskpool1'</span>
+
+<span class="n">node</span> <span class="o">(</span><span class="s1">'linux'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">exws</span> <span class="o">(</span><span class="n">extWorkspace</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">checkout</span> <span class="n">scm</span>
+            <span class="n">sh</span> <span class="s1">'mvn clean install'</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">currentBuild</span><span class="o">.</span><span class="na">result</span> <span class="o">=</span> <span class="s1">'FAILURE'</span>
+            <span class="k">throw</span> <span class="n">e</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">step</span> <span class="o">([</span><span class="n">$class</span><span class="o">:</span> <span class="s1">'WsCleanup'</span><span class="o">,</span> <span class="nl">cleanWhenFailure:</span> <span class="kc">false</span><span class="o">])</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More workspace cleanup examples can be found at this
+<a href="https://github.com/jenkinsci/external-workspace-manager-plugin/blob/master/doc/WORKSPACE_CLEANUP.md">link</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="custom-workspace-path"><a class="anchor" href="#custom-workspace-path"></a>Custom workspace path</h4>
+<div class="paragraph">
+<p>Allows the user to specify a custom workspace path to be used when allocating workspace on the disk.
+The plugin offers two alternatives for doing this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>by defining a global workspace template for each Disk Pool</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This can be defined in the Jenkins global config, <em>External Workspace Definitions</em> section.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/ewm/global-custom-workspace-path.png" alt="global custom workspace path" title="Global Custom Workspace Path"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>by defining a custom workspace path in the Pipeline script</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We can use the Pipeline DSL to compute the workspace path.
+Then we pass this path as input parameter to the <code>exwsAllocate</code> step.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">customPath</span> <span class="o">=</span> <span class="s2">"${env.JOB_NAME}/${PULL_REQUEST_NUMBER}/${env.BUILD_NUMBER}"</span>
+<span class="kt">def</span> <span class="n">extWorkspace</span> <span class="o">=</span> <span class="n">exwsAllocate</span> <span class="nl">diskPoolId:</span> <span class="s1">'diskpool1'</span><span class="o">,</span> <span class="nl">path:</span> <span class="n">customPath</span>
+<span class="c1">// ...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more details see the afferent
+<a href="https://github.com/jenkinsci/external-workspace-manager-plugin/blob/master/doc/CUSTOM_WORKSPACE_PATH.md">documentation page</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="disk-pool-restrictions"><a class="anchor" href="#disk-pool-restrictions"></a>Disk Pool restrictions</h4>
+<div class="paragraph">
+<p>The plugin comes with Disk Pool restriction strategies.
+It does this by using the restriction capabilities provided by the
+<a href="https://github.com/jenkinsci/job-restrictions-plugin">Job Restrictions Plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example, we can restrict a Disk Pool to be allocated only if the Jenkins job in which it&#8217;s allocated was triggered
+by a specific user:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/ewm/restriction-by-user.png" alt="restriction by user" title="Disk Pool Restriction By User"></span></p>
+</div>
+<div class="paragraph">
+<p>Or, we can restrict the Disk Pool to be allocated only for those jobs whose name matches a well defined pattern:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/ewm/restriction-by-job-name.png" alt="restriction by job name" title="Disk Pool Restriction By Job Name"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="whats-next"><a class="anchor" href="#whats-next"></a>What&#8217;s next</h3>
+<div class="paragraph">
+<p>Currently there is ongoing work for providing flexible disk allocation strategies.
+The user will be able to define a default disk allocation strategy in the Jenkins global config.
+So for example, we want to select the disk with the most usable space as default allocation strategy:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/ewm/global-disk-allocation-strategy.png" alt="global disk allocation strategy" title="Global Disk Allocation Strategy"></span></p>
+</div>
+<div class="paragraph">
+<p>If needed, this allocation strategy may be overridden in the Pipeline code.
+Let&#8217;s suppose that for a specific job, we want to allocate the disk with the highest read speed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="groovy"><span class="kt">def</span> <span class="n">extWorkspace</span> <span class="o">=</span> <span class="n">exwsAllocate</span> <span class="nl">diskPoolId:</span> <span class="s1">'diskpool1'</span><span class="o">,</span> <span class="nl">strategy:</span> <span class="n">fastestRead</span><span class="o">()</span>
+<span class="c1">// ...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When this feature is completed, the plugin will enter a final testing phase.
+If all goes to plan, a stable version should be released in about two weeks.</p>
+</div>
+<div class="paragraph">
+<p>If you have any issues in setting up or using the plugin, please feel free to ask me on the plugin&#8217;s Gitter
+<a href="https://gitter.im/jenkinsci/external-workspace-manager-plugin">chat</a>.
+Any feedback is welcome, and you may provide it either on the Gitter chat, or on
+<a href="https://issues.jenkins.io">Jira</a> by using the <em>external-workspace-manager-plugin</em> component.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="paragraph">
+<p><a href="https://gitter.im/jenkinsci/external-workspace-manager-plugin?utm_source=share-link&amp;utm_medium=link&amp;utm_campaign=share-link"><span class="image"><img src="https://badges.gitter.im/jenkinsci/external-workspace-manager-plugin.svg" alt="title: &quot;Gitter&quot;"></span></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/external-workspace-manager-plugin">Project repository</a></p>
+</li>
+<li>
+<p><a href="/blog/2016/05/23/external-workspace-manager-plugin/">Project intro blog post</a></p>
+</li>
+<li>
+<p><a href="/blog/2016/06/30/ewm-alpha-version/">Alpha version announcement</a></p>
+</li>
+<li>
+<p><a href="https://summerofcode.withgoogle.com/">GSoC page</a></p>
+</li>
+<li>
+<p><a href="/projects/gsoc/">Jenkins GSoC Page</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/pipeline/">
+pipeline
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/external-workspace-manager/">
+external-workspace-manager
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px"></div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/alexsomai/">
+Alexandru Somai
+</a>
+</p>
+This author has no biography defined.
+See social media links referenced below.
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/alexsomai" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/alex_somai" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-08-09-ewm-beta-version.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

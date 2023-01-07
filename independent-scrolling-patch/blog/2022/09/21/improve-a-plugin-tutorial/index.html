@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Improve a plugin tutorial
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="A series of small but valuable steps are described that improve a plugin.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/09/21/improve-a-plugin-tutorial/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Improve a plugin tutorial" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Improve a plugin tutorial" name="twitter:title">
+<meta content="A series of small but valuable steps are described that improve a plugin.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/improve-a-plugin-2022.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Improve a plugin tutorial" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/09/21/improve-a-plugin-tutorial/" property="og:url">
+<meta content="A series of small but valuable steps are described that improve a plugin.
+" name="og:description">
+<meta content="Improve a plugin tutorial" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/improve-a-plugin-2022.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Improve a plugin tutorial
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/dheerajodha/"><div class="app-avatar"><img alt="Dheeraj Singh Jodha" class="app-avatar__image" src="/images/avatars/dheerajodha.jpg"></div> Dheeraj Singh Jodha</a><a class="app-author-link" href="/blog/authors/markewaite/"><div class="app-avatar"><img alt="Mark Waite" class="app-avatar__image" src="/images/avatars/markewaite.jpg"></div> Mark Waite</a>
+September 21, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Improve+a+plugin+tutorial&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F09%2F21%2Fimprove-a-plugin-tutorial%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>Many new contributors may hesitate to contribute to a Jenkins plugin.
+They may be concerned that the time commitment is too great.
+They may be worried that they lack the technical skills to maintain a plugin.
+They may not feel adequate to handle issues related to a Jenkins plugin.</p>
+</div>
+<div class="paragraph">
+<p>This blog post introduces the <a href="/doc/developer/tutorial-improve/">"Improve a plugin"</a> developer tutorial for new contributors.
+The tutorial is a result of the "Contributing to Open Source" workshop (<a href="https://docs.google.com/document/d/1PKYIpPlRVGsBqrz0Ob1Cv3cefOZ5j2xtGZdWs27kLuw/edit?usp=sharing">document</a> and <a href="https://docs.google.com/presentation/d/1jk8kxC0R59YNO7fY7akx2zmn07WTsZwJo5Ub0khoO0w/edit?usp=sharing">slides</a>) that was held at DevOps World 2021.</p>
+</div>
+<div class="paragraph">
+<p>It includes links to segments of the five part video series, <a href="https://www.youtube.com/playlist?list=PLvBBnHmZuNQIwIZ86HL39uot6751EOd-f">Modernizing Jenkins plugins</a>.
+Special thanks to Darin Pope for hosting the video series.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="852" height="480" src="https://www.youtube.com/embed/Fev8KfFsPZE?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="sect1">
+<h2 id="small-steps"><a class="anchor" href="#small-steps"></a>Small steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A series of small steps can help new contributors contribute to Jenkins development, improve a plugin, and develop the confidence to adopt a Jenkins plugin.
+Each of the steps is valuable even if the new contributor decides that they do not want to adopt the plugin.
+Each of the steps will assist the maintainers of the plugin.</p>
+</div>
+<div class="paragraph">
+<p>The steps include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/developer/tutorial-improve/add-a-jenkinsfile/">Add a Jenkinsfile</a> to evaluate the plugin and its pull requests on ci.jenkins.io</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/update-parent-pom/">Update the parent pom</a> to use the most recent features of the Jenkins plugin build environment</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/update-base-jenkins-version/">Update base Jenkins version</a> to access the most recent features of Jenkins core</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/update-scm-url/">Update the SCM URL</a> to replace a reference to an unsupported git communictions protocol</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/add-more-spotbugs-checks/">Enable additional spotbugs checks</a> to improve the static analysis checks of the plugin</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/automate-dependency-update-checks/">Enable dependency management</a> to automate dependency update detection and evaluation</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/enable-incrementals/">Enable incremental builds</a> to support parallel development of components</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/migrate-documentation-to-github/">Migrate documentation to GitHub</a> to simplify plugin documentation updates</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/add-a-contributing-guide/">Add a contributing guide</a> to better welcome other contributors to the plugin</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/add-a-link-to-report-an-issue/">Add a link to “Report an Issue”</a> so that users know the correct location to report bugs, enhancements, and security issues</p>
+</li>
+<li>
+<p><a href="/doc/developer/tutorial-improve/replace-jsr-305-annotations/">Replace Nonnull and CheckForNull annotations</a> to modernize the spotbugs static analysis</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/tutorial/">
+tutorial
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+<h2>
+About the authors
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Dheeraj Singh Jodha" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/dheerajodha.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/dheerajodha/">
+Dheeraj Singh Jodha
+</a>
+</p>
+<div class="paragraph">
+<p>Dheeraj is working as an Associate Software Quality Engineer at Red Hat.
+He is a Jenkins Google Summer of Code (GSoC) contributor in 2022, associated with the <a href="https://github.com/jenkins-infra/plugin-health-scoring">Plugin Health Scoring</a> project.
+He started his journey of contributing to Jenkins in March 2021.
+He is part of the Jenkins Documentation SIG and has also made some contributions to the <a href="https://github.com/jenkinsci/custom-distribution-service">Custom Distribution Service for Jenkins</a> project.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/dheerajodha" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/dheeraj-sj" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Mark Waite" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/markewaite.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/markewaite/">
+Mark Waite
+</a>
+</p>
+<div class="paragraph">
+<p>Mark is the <a href="/project/team-leads/#documentation">Jenkins Documentation Officer</a>, a long-time Jenkins user and contributor, and maintains the <a href="https://plugins.jenkins.io/git">git plugin</a> and the <a href="https://plugins.jenkins.io/git-client">git client plugin</a>.
+He is active in <a href="/sigs/">Jenkins special interest groups</a> including the <a href="/sigs/docs/">Docs SIG</a>, <a href="/sigs/platform">Platform SIG</a>, and <a href="/sigs/advocacy-and-outreach">Advocacy SIG</a>.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/markewaite" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/MarkEWaite" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/markwaite" rel="noreferrer noopener" target="_blank">
+LinkedIn
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+<!-- / Support both topic IDs and full URLs -->
+<!-- / TODO: Check number validity -->
+<b class="title">
+Discuss
+</b>
+<div id="discourse-comments">
+<script>
+    window.DiscourseEmbed = {"discourseUrl":"https://community.jenkins.io/","topicId":"513"}; 
+    (function() {
+        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    })();
+</script>
+</div>
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/09/2022-09-21-improve-a-plugin-tutorial.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

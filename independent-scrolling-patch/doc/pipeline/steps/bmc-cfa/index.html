@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+BMC AMI DevOps for Application Checkpoint Analysis
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/bmc-cfa/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="BMC AMI DevOps for Application Checkpoint Analysis" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="BMC AMI DevOps for Application Checkpoint Analysis" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="BMC AMI DevOps for Application Checkpoint Analysis" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/bmc-cfa/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="BMC AMI DevOps for Application Checkpoint Analysis" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#bmc-ami-devops-for-application-checkpoint-analysis">BMC AMI DevOps for Application Checkpoint Analysis</a>
+<ul class="sectlevel2">
+<li><a href="#bmc-devops-for-cfa-plugin-bmc-ami-devops-for-application-checkpoint-analysis"><code>BMC DevOps for CFA Plugin</code>: BMC AMI DevOps for Application Checkpoint Analysis</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="bmc-ami-devops-for-application-checkpoint-analysis"><a class="anchor" href="#bmc-ami-devops-for-application-checkpoint-analysis"></a>BMC AMI DevOps for Application Checkpoint Analysis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/bmc-cfa">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="bmc-devops-for-cfa-plugin-bmc-ami-devops-for-application-checkpoint-analysis"><a class="anchor" href="#bmc-devops-for-cfa-plugin-bmc-ami-devops-for-application-checkpoint-analysis"></a><code>BMC DevOps for CFA Plugin</code>: BMC AMI DevOps for Application Checkpoint Analysis</h3>
+<ul><li><code>server : String</code>
+<div><div>
+ URL or IP address.
+</div></div>
+
+</li>
+<li><code>port : String</code>
+<div><div>
+ z/OSMF Port
+</div></div>
+
+</li>
+<li><code>user : String</code>
+<div><div>
+ z/OS user name
+</div></div>
+
+</li>
+<li><code>jclContent : String</code>
+</li>
+<li><code>chkfreq : String</code>
+</li>
+<li><code>jobCard : String</code>
+</li>
+<li><code>acctno : String</code>
+</li>
+<li><code>thresh : String</code>
+</li>
+<li><code>sortby : String</code>
+</li>
+<li><code>pswd : String</code>
+</li>
+<li><code>prilog : String</code>
+</li>
+<li><code>cfaLoadLibs</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>lib : String</code>
+</li>
+</ul></li>
+<li><code>cfaSldsLibs</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>sldsname : String</code>
+</li>
+<li><code>sldsver : String</code>
+</li>
+<li><code>sldsunit : String</code>
+</li>
+<li><code>sldsvolser : String</code>
+</li>
+</ul></li>
+<li><code>cfaDliLibs</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>dliname : String</code>
+</li>
+<li><code>dliver : String</code>
+</li>
+<li><code>dliunit : String</code>
+</li>
+<li><code>dlivolser : String</code>
+</li>
+</ul></li>
+<li><code>cfaJobnames</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>jobname : String</code>
+</li>
+</ul></li>
+<li><code>cfaReconSets</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>recon1 : String</code>
+</li>
+<li><code>recon2 : String</code>
+</li>
+<li><code>recon3 : String</code>
+</li>
+</ul></li>
+<li><code>goodRC : String</code>
+<div><div>
+ Any value that is above the acceptable return code will be considered as FAILURE.
+</div></div>
+
+</li>
+<li><code>bmcSlds : boolean</code>
+<div><div>
+ <p>You can use the SLDS keyword on the ANALYZE control statement to identify explicitly an input log data set to use as input to the analysis process. SLDS=<b>(dataSetName,Rvr, unit,volser)</b> If you want CFA to read multiple log data sets, specify multiple instances of the SLDS keyword. <br> <b>Example:</b> IMSA is an IMS version 14.1 system and creates generations of SLDSs that use the naming convention imsid.SLDS.Ddate.GENnnn. The SLDSs are cataloged. To analyze log records that IMSA wrote to generations 10 through 12 on March 29, 2015, specify the following keywords on the ANALYZE control statement:<br> SLDS=(IMSA.SLDS.D2008088.GEN010, R141)<br> SLDS=(IMSA.SLDS.D2008088.GEN011, R141)<br> SLDS=(IMSA.SLDS.D2008088.GEN012, R141)<br></p>
+</div></div>
+
+</li>
+<li><code>bmcDb2log : boolean</code>
+<div><div>
+ <p>You can use the DB2LOG keyword on the ANALYZE control statement to identify a DB2 log data set that was created by a DB2 subsystem. <br> <b>Note:</b> If you specify the DB2LOG keyword, do not specify the DB2BSDS keyword.</p>
+</div></div>
+
+</li>
+<li><code>db2log : String</code>
+<div><div>
+ Specify the fully qualified data set name. No default value is provided. <br> If you omit the DB2LOG keyword, CFA does not read any DB2 logs.
+</div></div>
+
+</li>
+<li><code>db2bsds : String</code>
+</li>
+<li><code>limit : String</code>
+</li>
+<li><code>skip : String</code>
+</li>
+<li><code>maxlogs : String</code>
+<div><p>If you specify a value from 1 through 999, Log Analyzer&nbsp;stops reading log data sets after it reaches the specified number of log data sets. If Log Analyzer&nbsp;does not read other log data sets because the specified limit was reached, a warning message indicates the number of log data sets that were not read.</p>
+<p>If you want Log Analyzer to read all log data sets, specify MAXLOGS=999.</p>
+<p>The default is MAXLOGS=100 (Log Analyzer reads a maximum of 100 log data sets).</p></div>
+
+</li>
+<li><code>bmcDb2bsds : boolean</code>
+<div><div>
+ <p>You can use the DB2BSDS keyword on the ANALYZE control statement to identify a DB2 bootstrap data set (BSDS). <br> Specify the fully qualified data set name. This name should refer to a VSAM key-sequenced data set (KSDS). <br> Do not specify the name of a BSDS archive copy, which is not a VSAM KSDS. BSDS cannot be a TAPE dataset. <br> <b>Note:</b></p>
+ <ul>
+  <li>No default value is provided. If you omit the DB2BSDS keyword, CFA does not read any DB2 BSDSs.</li>
+  <li>If you specify the DB2BSDS keyword, do not specify the DB2LOG keyword.</li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+<li><code>bmcLimit : boolean</code>
+<div><div>
+ <p>You can use the LIMIT keyword (or the LIM abbreviation) on the ANALYZE control statement to set a limit on the number (1 through 9999999999) of log records to process from an input log data set. <br> <b>Note:</b></p>
+ <ul>
+  <li>The default is LIMIT=9999999999.</li>
+  <li>If you specify the LIMIT keyword, you must specify one SLDS keyword. The SLDS keyword is required, and multiple SLDS keywords are not allowed.</li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+<li><code>bmcSkip : boolean</code>
+<div><div>
+ <p>You can use the SKIP keyword on the ANALYZE control statement to specify a number (1 through 9999999999) of log records in an input log data set to skip before CFA begins to process records. <br> The default is SKIP=0, which skips no records. <br> <b>Note:</b> <br> If you specify the SKIP keyword, you must specify one SLDS keyword. The SLDS keyword is required, and multiple SLDS keywords are not allowed.</p>
+</div></div>
+
+</li>
+<li><code>bmcActiveOlds : boolean</code>
+<div><div>
+ You can use the ACTIVEOLDS keyword (or the AOLDS abbreviation) on the ANALYZE control statement to specify whether CFA can select an active OLDS during RECON processing
+</div></div>
+
+</li>
+<li><code>bmcImsid : boolean</code>
+<div><div>
+ <p>You can use the IMSID keyword on the ANALYZE control statement to specify one or more IMSIDs. <br> If you do not check this option,then the the default IMSID=ALL will be taken and all log records for all IMS systems that are associated with the input RECON data set (or data sets) will be considered. <br> <b>Note:</b> <br> If you specify the SLDS keyword, you cannot specify the IMSID keyword. The IMSID keyword applies only if CFA is reading RECON data sets to determine which log data sets to process.</p>
+</div></div>
+
+</li>
+<li><code>bmcDlilog : boolean</code>
+<div><div>
+ <p>You can use the DLILOG keyword on the ANALYZE control statement to identify explicitly an input dli log data set to use as input to the analysis process. <br> Specify the keyword values as follows: <br> DLILOG=<b>(dataSetName,Rnn)</b> <br> DLILOG=<b>(dataSetName,Rvr,unit,volser)</b> <br> <b>Notes:</b></p>
+ <ul>
+  <li>This keyword is used only for the APPCHECK report.</li>
+  <li>The DLILOG datasets that are processed for the APPCHECK report for DLI are the DLI logs created by using the DLI batch job that uses the //IEFRDER DD statement. For more information about //IEFRDER DD, refer to the IBM IMS Program Restart Facility for z/OS documentation.</li>
+  <p></p>
+ </ul>
+</div></div>
+
+</li>
+<li><code>bmcMaxlogs : boolean</code>
+<div><div>
+ <div>
+  You can use the MAXLOGS keyword (or the MAXL abbreviation) on the ANALYZE control statement to control the number of log data sets that Log Analyzer&nbsp;processes.
+ </div>
+ <p>Use this keyword when you are using implicit specification of log data sets and Log Analyzer&nbsp;is reading RECON data sets to determine which log data sets to process. In this case, the number of log data sets to be processed is unknown. The MAXLOGS keyword can help you prevent a problem that could result from processing an excessive number of log data sets.</p>
+ <p>The MAXLOGS keyword works differently, depending on how you specify the value:</p>
+</div></div>
+
+</li>
+<li><code>bmcJobname : boolean</code>
+<div><div>
+ <p>You can use the JOBNAME keyword on the ANALYZE control statement to specify one or more JOBNAMEs. Each JOBNAME (one to eight characters) identifies a Job name. Log Analyzer uses the JOBNAME when determining which dli log data sets to use as input. <br> To process log records for all Job names that are associated with the input RECON data set (or data sets), specify JOBNAME=ALL. <br> If you omit the JOBNAME sub-keyword, Log Analyzer uses the default value ALL. <br> <b>Note:</b></p>
+ <ul>
+  <li>If you specify the DLILOGS keyword, you cannot specify the JOBNAME keyword. The JOBNAME keyword applies only if Log Analyzer is reading RECON data sets to determine which log data sets to process.</li>
+  <li>Log Analyzer will process all the jobs in the DLILOGs that get selected by the JOBNAME filter.</li>
+  <li>To later filter the report by job name, use the JOB sub-keyword of the APPCHECK report.</li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+<li><code>cfaImsids</code>
+<ul><b>Array / List of Nested Object</b>
+<li><code>imsid : String</code>
+</li>
+</ul></li>
+<li><code>bmcRecon : boolean</code>
+<div><div>
+ <p>You can use the RECON keyword on the ANALYZE control statement to specify the names of a set of RECON data sets to examine during the CFA job.</p>
+ <p>If you want CFA to examine multiple sets of RECON data sets, you must specify each set with a separate RECON keyword.</p>
+ <p>If you specify the RECON keyword, your user ID must have Security Access Facility (SAF) READ access to the RECON data sets.</p>
+ <p>You can specify from one to three data set names. One of the specified data set names must be designated as COPY1 by IMS.</p>
+ <p><b>Example:</b><br> The RECON data sets for the IMSA system are named IMSA.RECON1 and IMSA.RECON2, and the RECON data sets for the IMSB system are named IMSB.RECON1 and IMSB.RECON2. To examine IMSA and IMSB RECON data sets in the CFA job, specify the following keywords on the ANALYZE control statement: <br> RECON=(IMSA.RECON1, IMSA.RECON2) <br> RECON=(IMSB.RECON1, IMSB.RECON2) <br> <b>Note:</b> <br> If you specify the RECON keyword, you must specify the INTERVAL control statement with a START time value and a STOP time value.</p>
+</div></div>
+
+</li>
+<li><code>bmcTimezone : boolean</code>
+<div><div>
+ You can use the TIMEZONE keyword on the ANALYZE control statement to specify how time values are interpreted when you are specifying time input values and when CFA is displaying time values in reports and on panels. <br> <b>Note:</b> <br> The default is TIMEZONE=LOCAL.
+</div></div>
+
+</li>
+<li><code>bmcStartInterval : boolean</code>
+<div><div>
+ <p>You can use the START keyword on the INTERVAL control statement for the following purposes:</p>
+ <ul>
+  <li>Specify the beginning a range of log records to identify as candidates for the record selection process.</li>
+  <li>Control the beginning of range of log data sets to allocate from RECON information.</li>
+  <li>Reduce the overall number of log records that are selected from input SLDS or extract files.</li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+<li><code>bmcStopInterval : boolean</code>
+<div><div>
+ <p>You can use the STOP keyword on the INTERVAL control statement for the following purposes: <br> � Specify the end of a range of log records to identify as candidates for the record selection process <br> � Control the end of range of log data sets to allocate from RECON information <br> � Reduce the overall number of log records that are selected from input SLDS or extract files</p>
+ <p></p>
+</div></div>
+
+</li>
+<li><code>start</code>
+<ul><b>Nested Object</b>
+<li><code>value : String</code>
+</li>
+<li><code>startDate : String</code>
+</li>
+<li><code>startlogSeq : String</code>
+</li>
+</ul></li>
+<li><code>stop</code>
+<ul><b>Nested Object</b>
+<li><code>value : String</code>
+</li>
+<li><code>stopDate : String</code>
+</li>
+<li><code>stoplogSeq : String</code>
+</li>
+</ul></li>
+<li><code>tz</code>
+<ul><b>Nested Object</b>
+<li><code>value : String</code>
+</li>
+<li><code>timezoneoffset : String</code>
+</li>
+</ul></li>
+<li><code>jobInclude : String</code>
+</li>
+<li><code>jobExclude : String</code>
+</li>
+<li><code>psbInclude : String</code>
+</li>
+<li><code>psbExclude : String</code>
+</li>
+<li><code>maxlogsRc : String</code>
+<div><p>If you specify a value from 1 through 999 followed by literal R and a return code (08 through 99), Log Analyzer issues the specified return code and terminates the job step if more than the specified number of log data sets would be read. Log Analyzer issues the return code at the conclusion of the RECON analysis phase without reading any input log data sets.</p>
+<p><b>Example:</b></p>
+<p>If you want Log Analyzer to issue return code 16 and terminate the job step if more than 10 log data sets would be read, specify the following keyword on the ANALYZE control statement:</p>
+<p>MAXLOGS=(10,R16)</p></div>
+
+</li>
+<li><code>maxlogsAbend : String</code>
+<div><p>If you specify a value from 1 through 999 followed by an abend code (1 through 4095), Log Analyzer issues a user abend code and terminates the job step if more than the specified number of log data sets would be read. Log Analyzer issues the user abend at the conclusion of the RECON analysis phase without reading any input log data sets.</p>
+<p><b>Example:</b></p>
+<p>If you want Log Analyzer to issue a user abend, with abend code U4000, if more than 120 log data sets would be read, specify the following keyword on the ANALYZE control statement:</p>
+<p>MAXLOGS=(120,4000)</p></div>
+
+</li>
+<li><code>bmcJobInc : boolean</code>
+<div><div>
+ This OPTION includes information for BMP jobs with the specified job names and omits information for all other jobs that CFA finds in the input logs.
+</div></div>
+
+</li>
+<li><code>bmcJobExc : boolean</code>
+<div><div>
+ This OPTION omits information for BMP jobs with the specified job names and includes information for all other jobs that CFA finds in the input logs. For jobName, specify the name of each job to include or exclude. You can specify multiple names (separated by commas). You can use wildcards (* and %)
+</div></div>
+
+</li>
+<li><code>bmcPsbInc : boolean</code>
+<div><div>
+ This OPTION includes information for BMP jobs with the specified PSB names and omits information for all other BMP jobs that CFA finds in the input logs
+</div></div>
+
+</li>
+<li><code>bmcPsbExc : boolean</code>
+<div><div>
+ This OPTION omits information for BMP jobs with the specified PSB names and includes information for all other BMP jobs that CFA finds in the input logs. For psbName, specify the name of each PSB to include or exclude. You can specify multiple names (separated by commas). You can use wildcards (* and %)
+</div></div>
+
+</li>
+<li><code>bmcChkfreq : boolean</code>
+<div><div>
+ You can use the CHKFREQ subkeyword in an APPCHECK expression to filter the information in the Application Checkpoint report, based on checkpoint frequency.
+</div></div>
+
+</li>
+<li><code>bmcThresh : boolean</code>
+<div><div>
+ You can use the THRESH subkeyword in an APPCHECK expression to specify the time unit to use for the threshold value in a checkpoint frequency filter. Valid values are MIN (minutes) and SEC (seconds). If you omit the THRESH subkeyword, CFA uses the default value MIN.
+</div></div>
+
+</li>
+<li><code>bmcPrilog : boolean</code>
+<div><div>
+ <p>You can use the PRILOG keyword on the ANALYZE control statement to specify the logs type associated with the input RECON data set (or data sets) to use as input to the analysis process. <br> You can select one of the following values:</p>
+ <ul>
+  <li><b>SLDS</b> - Process SLDS associated with the input RECON data set (or data sets).</li>
+  <li><b>DLI</b> - Process DLI datasets associated with the input RECON data set (or data sets).</li>
+  <li><b>BOTH</b> - Process SLDS and DLI datasets associated with the input RECON data set (or data sets).</li>
+ </ul> <b>Note:</b>
+ <ul>
+  <li>If you omit the PRILOG option, Log Analyzer uses the default value SLDS.</li>
+  <li>If you select the SLDS keyword, you cannot specify the PRILOG keyword. The PRILOG keyword applies only if CFA is reading RECON data sets to determine which log data sets to process.</li>
+ </ul>
+ <p></p>
+</div></div>
+
+</li>
+<li><code>bmcAppcheck : boolean</code>
+<div><div>
+ You can use the APPCHECK keyword on the REPORTS control statement to control production of the Application Checkpoint report.
+</div></div>
+
+</li>
+<li><code>bmcAll : boolean</code>
+<div><div>
+ To produce the Application Checkpoint report with default filters, specify APPCHECK=ALL. With this keyword, CFA includes all batch message processing (BMP) jobs that are found in the input logs, and does not filter the information by checkpoint frequency.
+</div></div>
+
+</li>
+<li><code>bmcLsec : boolean</code>
+<div><div>
+ You can use the LSEC subkeyword in an APPCHECK expression to display the LUOW information with job duration of less than a second for jobs in the Application Checkpoint report.
+</div></div>
+
+</li>
+<li><code>chkfreqval : String</code>
+</li>
+<li><code>bmcPlanInc : boolean</code>
+<div><div>
+ This OPTION includes information for batch jobs with the specified Plan names and omits information for all other batch jobs that CFA finds in the input logs.
+</div></div>
+
+</li>
+<li><code>planInclude : String</code>
+</li>
+<li><code>bmcPlanExc : boolean</code>
+<div><div>
+ This OPTION omits information for batch jobs with the specified Plan names and includes information for all other batch jobs that CFA finds in the input logs. For PlanName, specify the name of each Plan to include or exclude. You can specify multiple names (separated by commas). You can use wildcards (* and %).
+</div></div>
+
+</li>
+<li><code>planExclude : String</code>
+</li>
+<li><code>bmcSortby : boolean</code>
+<div><div>
+ You can use the SORTBY subkeyword in an APPCHECK expression to sort the information in the Application Checkpoint report, based on either checkpoint frequency or start time.
+</div></div>
+
+</li>
+<li><code>bmcCsv : boolean</code>
+<div><div>
+ You can use the CSVRPT subkeyword to create output file in CSV form. Log Analyzer writes the CSV reports to SYSOUT-type data sets.
+</div></div>
+
+</li>
+<li><code>bmcFullreport : boolean</code>
+<div><div>
+ View Full report shows CSV file in MS excel application.
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

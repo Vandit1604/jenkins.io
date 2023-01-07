@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Introduce React Plugin Template
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/08/23/introduce-react-plugin-template/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Introduce React Plugin Template" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Introduce React Plugin Template" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Introduce React Plugin Template" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/08/23/introduce-react-plugin-template/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Introduce React Plugin Template" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Introduce React Plugin Template
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/jackshen/"><div class="app-avatar"><img alt="Jack Shen" class="app-avatar__image" src="/images/avatars/jackshen.jpg"></div> Jack Shen</a>
+August 23, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Introduce+React+Plugin+Template&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F08%2F23%2Fintroduce-react-plugin-template%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>The template&#8217;s main repo is at
+<a href="https://github.com/jenkinsci/react-plugin-template">React Plugin Template</a></p>
+</div>
+<div class="paragraph">
+<p>This template is part of the project <a href="https://summerofcode.withgoogle.com/projects/#6112735123734528">Working Hours UI Improvement</a> during
+<a href="https://summerofcode.withgoogle.com/">Google Summer of Code 2019</a>, which improved the UI of <code>Working Hours Plugin</code> using this pattern to develop Jenkins plugins with React. The <code>Working Hours Plugin</code> repository can be found at <a href="https://github.com/jenkinsci/working-hours-plugin">Working Hours Plugin</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developing plugin for Jenkins has always been easy to do with its Jelly based UI render system, but Jelly seems to be pretty heavy when we want to use more modernized frameworks like React, or if we need to make the plugin UI more customized. This is what this template is built for.</p>
+</div>
+<div class="paragraph">
+<p>And with React integrated, development of Jenkins plugin is more modernized, developer can now use tons of React libraries, the way to use libraries is now tinier and safer with webpack, in short, coding with Jenkins plugin can be much easier.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="features"><a class="anchor" href="#features"></a>Features</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Feature</th>
+<th class="tableblock halign-left valign-top">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React Integrated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React is integrated, you can take full control of the UI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using Iframe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Using iframe can create a new javascript env, we can get rid of some side effects of some polyfills which was added globally.(such as Prototype.js)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maven Lifecycle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">npm commands are integrated into Maven lifecycle with help of <a href="https://github.com/eirslett/frontend-maven-plugin/">Frontend Maven Plugin</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Webpack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Webpack helps us reduce the size of the bundle, also avoids pollution on the global namespace.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jenkins Crumb attached</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crumb is attached to Axios client, now you can send requests in the way you used to do in React.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Express as devserver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You can run your react app in a standalone page so you can develop in webpack hot reload mode, also with webpack proxy, the standalone app is still accessible to the jenkins dev server.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Axios as http client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Axios hugely simplify the way to make requests.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="screenshots"><a class="anchor" href="#screenshots"></a>Screenshots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Example Plugin UI</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/react-plugin-template/plugin-ui.jpg" alt="plugin ui"></span>
+Management Link</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/react-plugin-template/management-link.jpg" alt="management link"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clone the repo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">git clone https://github.com/jenkinsci/react-plugin-template.git
+<span class="nb">cd </span>react-plugin-template</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install the Maven dependencies and node modules.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">mvn <span class="nb">install</span> <span class="nt">-DskipTests</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run standalone React app with hot reload</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">npm run start</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run plugin</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="shell">mvn hpi:run <span class="nt">-Dskip</span>.npm <span class="nt">-f</span> pom.xml</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="send-http-requests"><a class="anchor" href="#send-http-requests"></a>Send HTTP requests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As Crumb Issuer is default enabled in Jenkins and each ajax request is required to contain a <code>Jenkins Crumb</code> in request header, so be sure to use the <code>axiosInstance</code> which is already set up with <code>Jenkins Crumb</code> and exported at <code>src/main/react/app/api.js</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="javascript"><span class="k">export</span> <span class="kd">const</span> <span class="nx">apiGetData</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">axiosInstance</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/data</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or if you want to use your own http client, remember to add the <code>Jenkins Crumb</code> to your request&#8217;s header, the Crumb&#8217;s key and content could be found at <code>src/main/react/app/utils/urlConfig.js</code>, then you can set the header like below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="javascript"><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">const</span> <span class="nx">crumbHeaderName</span> <span class="o">=</span> <span class="nx">UrlConfig</span><span class="p">.</span><span class="nx">getCrumbHeaderName</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">crumbHeaderName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">headers</span><span class="p">[</span><span class="nx">crumbHeaderName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">UrlConfig</span><span class="p">.</span><span class="nx">getCrumbToken</span><span class="p">();</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="write-your-own-request-handler"><a class="anchor" href="#write-your-own-request-handler"></a>Write your own request handler</h3>
+<div class="paragraph">
+<p>Now you can customize your request pattern as you want, also we need to write a handler.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins is using stapler to preprocess the requests, so if you need a request handler. For example and also in this template, you can use an <code>Action</code> class to create a sub-url, and then a <code>StaplerProxy</code> to proxy the request like a router. More info about handlers can be found in the <a href="https://github.com/stapler/stapler/blob/master/README.md">Stapler Reference</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example-handler"><a class="anchor" href="#example-handler"></a>Example handler</h3>
+<div class="paragraph">
+<p>ManagementLink would get the request and then hand it off to the <code>PluginUI</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="nd">@Extension</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PluginManagementLink</span> <span class="kd">extends</span> <span class="nc">ManagementLink</span> <span class="kd">implements</span> <span class="nc">StaplerProxy</span> <span class="o">{</span>
+
+    <span class="nc">PluginUI</span> <span class="n">webapp</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getTarget</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">webapp</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getUrlName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"react-plugin-template"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>PluginUI</code>, stapler would then find methods in the target class, in this case, it finds <code>doDynamic</code>, then we can choose the next handler by return the methods result, in this case, <code>getTodos</code> or <code>setTodos</code>, and <code>PluginUI</code> just function like a url router.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PluginUI</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">HttpResponse</span> <span class="nf">doDynamic</span><span class="o">(</span><span class="nc">StaplerRequest</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="n">getRequestParams</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">params</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="s">"get-todos"</span><span class="o">:</span>
+            <span class="k">return</span> <span class="nf">getTodos</span><span class="o">();</span>
+        <span class="k">case</span> <span class="s">"set-todos"</span><span class="o">:</span>
+            <span class="k">return</span> <span class="nf">setTodos</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-persistence"><a class="anchor" href="#data-persistence"></a>Data Persistence</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can save your data with a descriptor</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="nd">@Extension</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PluginConfig</span> <span class="kd">extends</span> <span class="nc">Descriptor</span><span class="o">&lt;</span><span class="nc">PluginConfig</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">Describable</span><span class="o">&lt;</span><span class="nc">PluginConfig</span><span class="o">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And after each time you change data, call <code>save()</code> to persist them.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTodos</span><span class="o">(</span>
+            <span class="nd">@CheckForNull</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Todo</span><span class="o">&gt;</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">todos</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+        <span class="n">save</span><span class="o">();</span>
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And in your handler, you can get the config class by calling</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight nowrap"><code data-lang="java"><span class="n">config</span> <span class="o">=</span> <span class="nc">ExtensionList</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="nc">PluginConfig</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customize-your-plugin"><a class="anchor" href="#customize-your-plugin"></a>Customize your plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="be-sure-to-modify-all-the-occurrence-of-react-template"><a class="anchor" href="#be-sure-to-modify-all-the-occurrence-of-react-template"></a>Be sure to modify all the occurrence of <code>react-template</code></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>At <code>org/jenkinsci/plugins/reactplugintemplate/PluginUI/index.jelly</code> , change the iframe&#8217;s id and its source url.</p>
+</li>
+<li>
+<p>At <code>src/main/react/app/utils/urlConfig.js</code> change</p>
+</li>
+<li>
+<p>At <code>src/main/react/server/config.js</code> , change the proxy route.</p>
+</li>
+<li>
+<p>At <code>src/main/react/package.json</code> , change the start script&#8217;s BASE_URL</p>
+</li>
+<li>
+<p>At <code>pom.xml</code> , change the artifactId</p>
+</li>
+<li>
+<p>At <code>org/jenkinsci/plugins/reactplugintemplate/PluginManagementLink.java</code> , change names.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also use the <code>same value</code> to modify the occurrence in <code>src\main\react\app\utils\urlConfig.js</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customize-a-page-for-your-plugin"><a class="anchor" href="#customize-a-page-for-your-plugin"></a>Customize a page for your plugin</h3>
+<div class="paragraph">
+<p>A management Link is recommended, which would get your plugin a standalone page, along with a entry button in the <code>/manage</code> system manage page.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/react-plugin-template/management-link.jpg" alt="management link"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-does-this-template-work"><a class="anchor" href="#how-does-this-template-work"></a>How does this template work?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This template is putting a webpack project inside a Maven project, and this template is just chaining the build result by copy the webpack output to the plugin&#8217;s webapp folder to make it accessible from the iframe, then Jelly render the iframe and the client gets the Plugin UI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="why-iframe"><a class="anchor" href="#why-iframe"></a>Why iframe?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Over time, Jenkins has added a lot of various javascript libraries to every regular page, which now causes problems for using modern Javascript tooling and as such, we decided to inline the new react based pages in their own sandbox which prevents collisions with other libraries, and maybe the iframe is a good sandbox case.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/react-plugin-template">Github: React Plugin Template</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/working-hours-plugin">Github: Working Hours Plugin</a></p>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/react/">
+react
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugins/">
+plugins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/template/">
+template
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc/">
+gsoc
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/gsoc2019/">
+gsoc2019
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Jack Shen" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/jackshen.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/jackshen/">
+Jack Shen
+</a>
+</p>
+<div class="paragraph">
+<p>Shen is a student from Beijing Forestry University. One of the students accepted to GSoC 2019.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/ShenJack" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/08/2019-08-23-introduce-react-plugin-template.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

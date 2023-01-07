@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Why can't I install the latest plugin on my Jenkins LTS?
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="This blogpost explains why the latest version of a plugin can&#39;t be installed on Jenkins in some circumstances.
+" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/02/10/last-plugin-version-not-installable/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Why can&#39;t I install the latest plugin on my Jenkins LTS?" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Why can&#39;t I install the latest plugin on my Jenkins LTS?" name="twitter:title">
+<meta content="This blogpost explains why the latest version of a plugin can&#39;t be installed on Jenkins in some circumstances.
+" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-02-10-last-plugin-version-not-installable/summary_picture.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Why can&#39;t I install the latest plugin on my Jenkins LTS?" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2022/02/10/last-plugin-version-not-installable/" property="og:url">
+<meta content="This blogpost explains why the latest version of a plugin can&#39;t be installed on Jenkins in some circumstances.
+" name="og:description">
+<meta content="Why can&#39;t I install the latest plugin on my Jenkins LTS?" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/post-images/2022-02-10-last-plugin-version-not-installable/summary_picture.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Why can't I install the latest plugin on my Jenkins LTS?
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/jmmeessen/"><div class="app-avatar"><img alt="Jean-Marc Meessen" class="app-avatar__image" src="/images/avatars/jmMeessen.jpg"></div> Jean-Marc Meessen</a>
+February 10, 2022
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Why+can%27t+I+install+the+latest+plugin+on+my+Jenkins+LTS%3F&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2022%2F02%2F10%2Flast-plugin-version-not-installable%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>I regularly go, as all Jenkins admin do, to my system&#8217;s Plugin Management page to see what plugins can be upgraded.</p>
+</div>
+<div class="paragraph">
+<p>Although I am running the latest <a href="/download/lts/">LTS version</a>, <strong>I can&#8217;t update some key plugins</strong> (for example the JUnit plugin).
+This is even more intriguing as some are part of the plugins installed by default by the setup wizard.
+No "install" tick box and the plugin is labeled "unavailable".
+There is a note saying "<em>This version of the plugin exists but it is not being offered for installation, so the latest bug fixes or features are not available to you. This is typically the case when plugin requirements, e.g. a recent version of Jenkins, are not satisfied. If you are using the latest version of Jenkins offered to you, newer plugin releases may not be available to your release line yet. See the plugin documentation for information about its requirements.</em>".</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2022-02-10-last-plugin-version-not-installable/plugin-not-installable.png" alt="pluginView"></span></p>
+</div>
+<div class="paragraph">
+<p>The message indicates to Jenkins administrators that a newer plugin version is available
+but that the installed Jenkins core doesn&#8217;t provide a necessary prerequisite – typically being too old.</p>
+</div>
+<div class="paragraph">
+<p><strong>Why is this happening now?</strong>
+Did I miss something?</p>
+</div>
+<div class="paragraph">
+<p>As part of the continuous improvement of Jenkins, some critical and high impact changes are introduced.
+This is typically the case of GUI changes (icons, fonts, layout) as is currently happening.
+It is also the case for new core features that can be consumed by plugins.</p>
+</div>
+<div class="paragraph">
+<p>Such changes are typically first introduced in the cutting edge Jenkins weekly release.
+Plugins are adapted to take advantage of these changes and the minimal Jenkins version required for those new plugin releases is set to a very new release of Jenkins that includes these changes.
+This causes a clear requirement disruption compared to the generally slow and low-impact plugin requirement evolution.</p>
+</div>
+<div class="paragraph">
+<p>It will require more time before these major changes will be available in an LTS Jenkins version.
+In the meantime, the new plugin will have to wait before it can be installed on that release line.</p>
+</div>
+<div class="paragraph">
+<p>If you <em>need</em> to install that latest plugin version because it also fixes that annoying bug, you will have to evaluate whether it is worth <a href="/download/lts/#switching-from-lts-to-weekly">switching to the weekly release line</a>.</p>
+</div>
+<div class="paragraph">
+<p>Note that this story is a strong reminder to keep your Jenkins system as current as possible if you don&#8217;t want to miss out on new features and important bug fixes.</p>
+</div>
+<div class="paragraph">
+<p>Special thanks to Daniel Beck to have given me the "raw" explanation of this unexpected behavior.</p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/plugin/">
+plugin
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/upgrade/">
+upgrade
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Jean-Marc Meessen" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/jmMeessen.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/jmmeessen/">
+Jean-Marc Meessen
+</a>
+</p>
+<div class="paragraph">
+<p>A perpetual and enthusiastic learner, admirative of all the cool stuff out there. Loves to share his discoveries and passions.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/jmMeessen" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jm_meessen" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2022/02/2022-02-10-last-plugin-version-not-installable.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

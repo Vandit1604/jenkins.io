@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Remoting Monitoring
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/projects/remoting-monitoring/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Remoting Monitoring" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Remoting Monitoring" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Remoting Monitoring" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/projects/remoting-monitoring/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Remoting Monitoring" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-lg-9">
+<h1>
+Jenkins Remoting Monitoring
+</h1>
+<p>
+<b>
+Goal:
+</b>
+Support monitoring and troubleshooting of Jenkins remoting system with OpenTelemetry.
+</p>
+<p>
+<b>
+Status:
+</b>
+Completed
+</p>
+<h3 class="title">
+Team
+</h3>
+<ul>
+<li>
+Student:
+<a class="app-author-link" href="/blog/authors/aki-7/"><div class="app-avatar"><img alt="Akihiro Kiuchi" class="app-avatar__image" src="/images/avatars/aki-7.jpg"></div> Akihiro Kiuchi</a>
+</li>
+<li>
+Mentor(s):
+<a class="app-author-link" href="/blog/authors/oleg_nenashev/"><div class="app-avatar"><img alt="Oleg Nenashev" class="app-avatar__image" src="/images/avatars/oleg_nenashev.png"></div> Oleg Nenashev</a>
+, 
+<a class="app-author-link" href="/blog/authors/darshank15/"><div class="app-avatar"></div> Darshan Kansagara</a>
+, 
+<a class="app-author-link" href="/blog/authors/stellargo/"><div class="app-avatar"><img alt="Sumit Sarin" class="app-avatar__image" src="/images/avatars/stellargo.jpeg"></div> Sumit Sarin</a>
+, 
+<a class="app-author-link" href="/blog/authors/cyrille-leclerc/"><div class="app-avatar"></div> Cyrille Le Clerc</a>
+</li>
+</ul>
+<h2 class="title">
+Details
+</h2>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin">🔗 GitHub Repository</a>
+<a href="https://plugins.jenkins.io/remoting-opentelemetry/">🔗 Jenkins plugin page</a></p>
+</div>
+<div class="sect2">
+<h3 id="purpose"><a class="anchor" href="#purpose"></a>Purpose</h3>
+<div class="paragraph">
+<p>In Jenkins, we have a Remoting module, which implements a communication layer in the Jenkins automation server.
+It’s being primarily used for controller ⇔ agent interaction.
+The purpose of this project is to develop a software to support the monitoring and troubleshooting of Remoting systems.</p>
+</div>
+<div class="paragraph">
+<p>This can benefit to system admins who often manage Jenkins on a daily basis.
+Such integration with monitoring tools will help system admins to faster address the issues, bottlenecks when working with Jenkins.
+Therefore, this plugin will help to provide a better monitoring experience for system admins in using Jenkins as their daily automation pipeline.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="goal"><a class="anchor" href="#goal"></a>Goal</h3>
+<div class="paragraph">
+<p><span class="image"><img src="/images/gsoc/2021/remoting-monitoring/goal.png" alt="goal"></span></p>
+</div>
+<div class="paragraph">
+<p>The goal of this project:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>collect telemetry data(metrics, traces, logs) of Remoting module with OpenTelemetry.</p>
+</li>
+<li>
+<p>send the telemetry data to OpenTelemetry Protocol endpoint.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Which OpenTelemetry endpoint to use and how to visualize the data are up to users.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="phase-1-summary"><a class="anchor" href="#phase-1-summary"></a>Phase 1 summary.</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">User survey</dt>
+<dd>
+<p>Our team conducted a user survey to understand the pain point regarding the Jenkins Remoting.
+Please see the <a href="/blog/2021/07/31/remoting-monitoring-phase-1/#user-survey">User survey section</a>
+in the phase 1 blog post for details.</p>
+</dd>
+<dt class="hdlist1">Proof of Concept</dt>
+<dd>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">How to deliver the monitoring program to the agents</dt>
+<dd>
+<p>We tried two approaches</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Send the monitoring program to the agent over Remoting<br>
+<span class="image"><img src="/images/post-images/2021-07-31-remoting-monitoring-phase-1/sending-monitoring-program-via-remoting.png" alt="sending monitoring program via remoting"></span></p>
+</li>
+<li>
+<p>Install the monitoring engine when provisioning a new agent<br>
+<span class="image"><img src="/images/post-images/2021-07-31-remoting-monitoring-phase-1/install-monitoring-engine-when-provisioning.png" alt="install monitoring engine when provisioning"></span></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Then, I decided to take the second approach.
+Please see <a href="/blog/2021/07/31/remoting-monitoring-phase-1/#how-to-deliver-the-monitoring-program-to-agents">the relevant section</a>
+in the phase 1 blog post for details.</p>
+</div>
+</dd>
+<dt class="hdlist1">How to instrument remoting for tracing</dt>
+<dd>
+<p><strong>Approach 1</strong> Use <a href="https://javadoc.jenkins.io/component/remoting/hudson/remoting/EngineListener.html">EngineListener</a>
+: <a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/pull/49">Pull Request</a><br>
+↑ This PR was merged once but removed later.</p>
+<div class="paragraph">
+<p><strong>Approach 2</strong> Add instrumentation extension points to Remoting module
+: <a href="https://github.com/jenkinsci/remoting/pull/471">Pull Request</a></p>
+</div>
+<div class="paragraph">
+<p>We tried two approaches above, but I couldn&#8217;t find out a good approach to instrument Remoting.
+Please see the <a href="#future-work">Future work</a> section and
+<a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/issues/70">GitHub issue</a> for details.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1">Metrics</dt>
+<dd>
+<p>We implemented a feature to collect general metrics (e.g., System CPU load, JVM memory usage)
+and export them to an OTLP endpoint.
+The list of metric types collected in the phase1 is listed
+<a href="/blog/2021/07/31/remoting-monitoring-phase-1/#metrics">here</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="phase-2-summary"><a class="anchor" href="#phase-2-summary"></a>Phase 2 summary.</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Log feature</dt>
+<dd>
+<p>Export agent logs to an OTLP/gRPC endpoint: <a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/pull/67">PR #67</a></p>
+</dd>
+<dt class="hdlist1">Release as Jenkins plugin</dt>
+<dd>
+<p>We released this project as Jenkins plugin🎉</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>🔗 <a href="https://plugins.jenkins.io/remoting-opentelemetry/">Plugin page</a></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Regex metrics filter</dt>
+<dd>
+<p>Filter metrics to collect by the regular expression. <a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/pull/80">PR #80</a></p>
+</dd>
+<dt class="hdlist1">Additional metrics</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Filesystem metrics: <a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/pull/82">PR #82</a></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Configuration</dt>
+<dd>
+<div class="paragraph">
+<p>Users can configure the monitoring engine via environment variables e.g., OTLP endpoint.
+Please see <a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin#configuration-options">README</a> for more options.<br>
+We created a simple configuration framework for this project.
+<a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/pull/86">PR #86</a></p>
+</div>
+</dd>
+<dt class="hdlist1">Demo Examples</dt>
+<dd>
+<p>We prepared two demo examples so that users can quickly try out the features.</p>
+<div id="docker-compose-demo" class="dlist">
+<dl>
+<dt class="hdlist1">Docker Compose Demo</dt>
+<dd>
+<p>We prepared Docker Compose example, which sets up</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins controller</p>
+<div class="ulist">
+<ul>
+<li>
+<p>preconfigured with JCasC</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Jenkins inbound agents</p>
+<div class="ulist">
+<ul>
+<li>
+<p>instrumented with our monitoring engine</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>OpenTelemetry Collector</p>
+</li>
+<li>
+<p>Loki for Log aggregation</p>
+</li>
+<li>
+<p>Prometheus for metric backend</p>
+</li>
+<li>
+<p>Grafana for log and metric visualization</p>
+<div class="ulist">
+<ul>
+<li>
+<p>datasource is preconfigured</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please see the
+<a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin#using-docker-compose">relevant section in README</a>
+for details.</p>
+</div>
+</dd>
+<dt class="hdlist1">Kubernetes Demo</dt>
+<dd>
+<p>We also prepared a demo with Kubernetes.
+It sets up all the component mentioned in the <a href="#docker-compose-demo">Docker Compose Demo</a> section on a Kubernetes cluster,
+and launches agents using <a href="https://plugins.jenkins.io/kubernetes/">Kubernetes plugin</a>.
+Service instance id, by which OpenTelemetry identifies the data producing instance,
+will be automatically set to Jenkins agent name.</p>
+<div class="paragraph">
+<p>Please see
+<a href="https://github.com/Aki-7/remoting-opentelemetry-kubernetes-demo">Demo repository</a> for details.</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1">Demo snapshot</dt>
+<dd>
+<p><strong><em>Click to open in new tab</em></strong></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="/images/gsoc/2021/remoting-monitoring/demo-loki.png" target="_blank" rel="noopener"><img src="/images/gsoc/2021/remoting-monitoring/demo-loki.png" alt="logging demo snapshot" width="40%"></a></span>
+<span class="image"><a class="image" href="/images/gsoc/2021/remoting-monitoring/demo-prometheus.png" target="_blank" rel="noopener"><img src="/images/gsoc/2021/remoting-monitoring/demo-prometheus.png" alt="logging demo snapshot" width="40%"></a></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="future-work"><a class="anchor" href="#future-work"></a>Future work</h3>
+<div class="paragraph">
+<p>During this GSoC period, I couldn&#8217;t find out a good way to instrument Remoting module for tracing.
+Also, I couldn&#8217;t identify the valuable tracing in Remoting,
+which really helps admins to monitoring and troubleshooting the Remoting system.</p>
+</div>
+<div class="paragraph">
+<p>I summarized what I tried and what I thought during this GSoC in the
+<a href="https://github.com/jenkinsci/remoting-opentelemetry-plugin/issues/70">issue</a>.
+This is the feature work of this project.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="chat"><a class="anchor" href="#chat"></a>Chat</h3>
+<div class="paragraph">
+<p>We use the <code>#gsoc-jenkins-remoting-monitoring</code> channel in the CDF Slack workspace.
+<a href="/chat/#continuous-delivery-foundation">How to join</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references"><a class="anchor" href="#references"></a>References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Plugin page: <a href="https://plugins.jenkins.io/remoting-opentelemetry/" class="bare">https://plugins.jenkins.io/remoting-opentelemetry/</a></p>
+</li>
+<li>
+<p>Kubernetes Demo repository: <a href="https://github.com/Aki-7/remoting-opentelemetry-kubernetes-demo/" class="bare">https://github.com/Aki-7/remoting-opentelemetry-kubernetes-demo/</a></p>
+</li>
+<li>
+<p>Remoting library: <a href="https://github.com/jenkinsci/remoting" class="bare">https://github.com/jenkinsci/remoting</a></p>
+</li>
+<li>
+<p>Remoting sub-project: <a href="https://jenkins.io/projects/remoting/" class="bare">https://jenkins.io/projects/remoting/</a></p>
+</li>
+<li>
+<p>OpenTelemetry <a href="https://opentelemetry.io/" class="bare">https://opentelemetry.io/</a></p>
+</li>
+<li>
+<p>Prometheus: <a href="https://prometheus.io/" class="bare">https://prometheus.io/</a></p>
+</li>
+<li>
+<p>Grafana: <a href="https://grafana.com/" class="bare">https://grafana.com/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<h3 class="title">
+Links
+</h3>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-dev" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/projects/remoting-monitoring/#chat" rel="noreferrer noopener" target="_blank">
+Chat
+</a>
+</li>
+<li>
+<a href="https://github.com/https://github.com/jenkinsci/remoting-opentelemetry-plugin" rel="noreferrer noopener" target="_blank">
+Github
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/projects/remoting-monitoring/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+<li>
+<a href="/projects/gsoc/2021/project-ideas/remoting-monitoring" rel="noreferrer noopener" target="_blank">
+Original GSoC project idea
+</a>
+</li>
+<li>
+<a href="/projects/gsoc" target="_blank">
+Jenkins GSoC page
+</a>
+</li>
+</ul>
+
+<!-- starting partial discuss.html.haml -->
+<!-- / Support both topic IDs and full URLs -->
+<!-- / TODO: Check number validity -->
+<b class="title">
+Discuss
+</b>
+<div id="discourse-comments">
+<script>
+    window.DiscourseEmbed = {"discourseUrl":"https://community.jenkins.io/","topicId":"118"}; 
+    (function() {
+        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    })();
+</script>
+</div>
+
+<!-- ending partial discuss.html.haml -->
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel2">
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#goal">Goal</a></li>
+<li><a href="#phase-1-summary">Phase 1 summary.</a></li>
+<li><a href="#phase-2-summary">Phase 2 summary.</a></li>
+<li><a href="#future-work">Future work</a></li>
+<li><a href="#chat">Chat</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!-- starting partial connect-h4-div.html.haml -->
+<div>
+<h4>
+Connect
+</h4>
+</div>
+<ul>
+<!-- starting partial connect-links.html.haml -->
+<li>
+<a href="https://groups.google.com/g/jenkinsci-dev" rel="noreferrer noopener" target="_blank">
+Mailing List
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/projects/remoting-monitoring/#chat" rel="noreferrer noopener" target="_blank">
+Chat
+</a>
+</li>
+<li>
+<a href="https://github.com/https://github.com/jenkinsci/remoting-opentelemetry-plugin" rel="noreferrer noopener" target="_blank">
+Github
+</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/projects/gsoc/2021/projects/remoting-monitoring/#office-hours" rel="noreferrer noopener" target="_blank">
+Meetings
+</a>
+</li>
+
+<!-- ending partial connect-links.html.haml -->
+</ul>
+
+<!-- ending partial connect-h4-div.html.haml -->
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2021/09/24/gsoc-report/">
+Congratulations to all Jenkins and CDF Google Summer of Code 2021 participants!
+</a>
+</li>
+<li>
+<a href="/blog/2021/08/28/conventional-commits-plugin-project-report/">
+Work report for the Conventional Commits Plugin for Jenkins
+</a>
+</li>
+<li>
+<a href="/blog/2021/08/02/cloudevents-plugin-phase-I/">
+CloudEvents Plugin for Jenkins: Interoperability between Jenkins and other CI/CD Tools
+</a>
+</li>
+<li>
+<a href="/blog/2021/07/31/remoting-monitoring-phase-1/">
+Remoting Monitoring with OpenTelemetry - Coding Phase 1
+</a>
+</li>
+<li>
+<a href="/blog/2021/07/30/introducing-conventional-commits-plugin-for-jenkins/">
+Introducing the Conventional Commits Plugin for Jenkins
+</a>
+</li>
+<li>
+<a href="/blog/2021/07/16/gsoc-midterm-presentation/">
+GSoC CDF Meetup: Google Summer of Code Midterm Demos
+</a>
+</li>
+<li>
+<a href="/blog/2021/03/17/gsoc2021-announcement/">
+Jenkins accepted in Google Summer Of Code 2021!
+</a>
+</li>
+<li>
+<a href="/blog/2020/12/16/call-for-mentors/">
+Google Summer of Code 2021 call for Project Ideas and Mentors
+</a>
+</li>
+<li>
+<a href="/blog/2020/02/02/web-socket/">
+WebSocket
+</a>
+</li>
+<li>
+<a href="/blog/2019/08/19/remoting-kafka-kubernetes-release-2/">
+Remoting over Apache Kafka 2.0: Built-in Kubernetes support
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/gsoc/2021/projects/remoting-monitoring.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

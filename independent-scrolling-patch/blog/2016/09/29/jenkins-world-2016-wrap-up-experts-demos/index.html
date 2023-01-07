@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins World 2016 Wrap-up - Ask the Experts & Demos
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2016/09/29/jenkins-world-2016-wrap-up-experts-demos/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins World 2016 Wrap-up - Ask the Experts &amp; Demos" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins World 2016 Wrap-up - Ask the Experts & Demos
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/lnewman/"><div class="app-avatar"><img alt="Liam Newman" class="app-avatar__image" src="/images/avatars/lnewman.jpeg"></div> Liam Newman</a>
+September 29, 2016
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+World+2016+Wrap-up+-+Ask+the+Experts+%26+Demos&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2016%2F09%2F29%2Fjenkins-world-2016-wrap-up-experts-demos%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/bitwiseman">Liam Newman</a>,
+Technical Evangelist at CloudBees.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/conferences/Jenkins-World_125x125.png" alt="Jenkins World 2016"></span></p>
+</div>
+<div class="paragraph">
+<p>As I mentioned in my
+<a href="/blog/2016/09/27/jenkins-world-2016-wrap-up-scaling/">previous post</a>,
+<a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> brought together
+Jenkins users from organizations of all sizes.  It also brought together Jenkins
+users of all skill levels; from beginners to experts (including to <a href="/projects/jam">JAM</a>
+organizers, board members, and long time contributors).  A number
+of those experts also volunteered to staff the Open Source Hub&#8217;s
+"Ask the Experts" desk throughout the conference to answer Jenkins questions.
+This included, but was not limited to:
+<a href="https://github.com/p4paul">Paul Allen</a>,
+<a href="https://github.com/rtyler">R Tyler Croy</a>,
+<a href="https://github.com/i386">James Dumay</a>,
+<a href="https://github.com/jglick">Jesse Glick</a>,
+<a href="https://github.com/eddumelendez">Eddú Meléndez Gonzales</a>,
+<a href="https://github.com/jonahermansen">Jon Hermansen</a>,
+<a href="https://github.com/omehegan">Owen Mehegan</a>,
+<a href="https://github.com/oleg-nenashev">Oleg Nenashev</a>,
+<a href="https://github.com/bitwiseman">Liam Newman</a>,
+<a href="https://github.com/orrc">Christopher Orr</a>,
+<a href="https://github.com/cvega">Casey Vega</a>,
+<a href="https://github.com/markewaite">Mark Waite</a>,
+<a href="https://github.com/dty">Dean Yu</a>,
+and
+<a href="https://github.com/kzantow">Keith Zantow</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2016-jenkins-world-wrap/experts-0.jpg" alt="Ask the Experts" width="480"></span></p>
+</div>
+<div class="paragraph">
+<p>I actually chose to spend the majority of my time at the booth. It was
+fantastic to hear all the different ways people are using
+Jenkins and wanting use Jenkins to do even more. I answered dozens of questions
+on both days of the conference, often learning new things in the process of answering them.
+And for questions that were beyond any one person&#8217;s knowledge, there was such a
+breadth of expertise, very few questions were beyond our combined abilities.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2016-jenkins-world-wrap/experts-2.jpg" alt="Ask the Experts" width="480"></span></p>
+</div>
+<div class="paragraph">
+<p>While "Ask the Experts" saw a lot traffic, the Open Source Hub&#8217;s lunch-time demos drew
+really big crowds. They covered wide range of subjects in a quick succession and offered people
+a chance to be introduced to new areas of in Jenkins without spending a whole session on them.
+Some demos were only presented at lunch while others were abbreviated versions of
+longer talks presented at other times during the conference.  Here&#8217;s the full list with related links:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2016-jenkins-world-wrap/demo-crowd.jpg" alt="Demo Crowd" width="480"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/kzantow">Keith Zantow</a> gave a live demo of
+<strong><a href="/projects/blueocean">Blue Ocean</a> in Action</strong> on their
+<a href="https://ci.blueocean.io/blue">live Jenkins instance</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/orrc">Christopher Orr</a> presented a lightning version of his talk
+<a href="https://www.cloudbees.com/continuous-build-and-delivery-pipelines-android"><strong>Pipelines for building and deploying Android apps</strong></a>
+(<a href="https://www.cloudbees.com/sites/default/files/2016-jenkins-world-continuous_build_delivery_pip.pdf">Slides</a>)
+(<a href="https://youtu.be/Gn3ygjUMKUY">video</a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a> showed a different way to
+manage security with the
+<strong><a href="https://wiki.jenkins.io/display/JENKINS/Ownership+Plugin">Ownership plugin</a> for Jenkins</strong>
+(<a href="https://speakerdeck.com/onenashev/jw2016-ownership-plugin-demo">Slides</a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/alexsomai">Alex Somai</a> presented his
+<a href="https://summerofcode.withgoogle.com/">Google Summer of Code (GSoC) 2016</a> project, the
+<strong>External Workspace Manager plugin for Jenkins Pipeline</strong> (<a href="https://youtu.be/lo8sZJt2WhM?t=6m58s">GSOC Video</a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/markewaite">Mark Waite</a> discussed
+<strong>Git plugin - large repos, submodule authentication and more</strong>
+(<a href="/files/2016/jenkins-world/large-git-repos.pdf">Slides</a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/bitwiseman">Liam Newman</a> gave a live demo of
+<strong>Notifications with Jenkins Pipeline</strong>
+(based on <a href="/blog/2016/07/18/pipeline-notifications/">this blog post</a>).</p>
+</li>
+<li>
+<p><a href="https://github.com/jglick">Jesse Glick</a> talked about
+<strong>Extending Pipeline with Libraries</strong> using the
+<a href="https://wiki.jenkins.io/display/JENKINS/Pipeline+Shared+Groovy+Libraries+Plugin">Pipeline Shared Groovy Libraries Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jonahermansen">Jon Hermansen</a> demonstrated some cool ways to use
+<strong>Multibranch Pipelines + Git symbolic-ref</strong> to optimize build times.</p>
+</li>
+<li>
+<p><a href="https://github.com/rtyler">R Tyler Croy</a> showed the power of
+<strong>Docker and Pipeline</strong>
+(<a href="/files/2016/jenkins-world/jenkins-and-docker.pdf">Slides</a>)</p>
+</li>
+<li>
+<p><a href="https://github.com/rtyler">R Tyler Croy</a> also showed how easy it can be to migrate from
+<strong>Freestyle to Pipeline</strong>
+(<a href="/files/2016/jenkins-world/freestyle-to-pipelines.pdf">Slides</a>)</p>
+</li>
+<li>
+<p><a href="https://github.com/cvega">Casey Vega</a> gave a live demo,
+<strong><code>package.json</code> and Jenkins</strong>, on using <code>package.json</code> to control all aspects of Jenkins builds.</p>
+</li>
+<li>
+<p><a href="https://github.com/abayer">Andrew Bayer</a> presented at lightning version of his talk,
+<a href="https://www.cloudbees.com/introducing-new-way-define-jenkins-pipelines"><strong>A simpler way to define Jenkins Pipelines</strong></a>
+(<a href="https://www.cloudbees.com/sites/default/files/2016-jenkins-world-introducing_a_new_way_to_define_jenkins_pipelines_1.pdf">Slides</a>)
+(<a href="https://www.youtube.com/watch?v=ALvg4KK25JU">Video</a>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2016-jenkins-world-wrap/experts-3.jpg" alt="Ask the Experts" width="480"></span></p>
+</div>
+<div class="paragraph">
+<p>Thank you to everyone who staffed the booth and gave demos.</p>
+</div>
+<div class="paragraph">
+<p>Also, thanks to everyone who attended the demos and came by to ask questions.
+If you have more questions, you don&#8217;t have to wait until next year&#8217;s Jenkins World.
+Join the
+<a href="/content/mailing-lists/">jenkinsci-users</a> mailing list or the
+<a href="/chat/">#jenkins IRC channel</a> to
+get help from experts around the world.</p>
+</div>
+<div class="paragraph">
+<p>And finally, a special thanks to the Jenkins Events officer, <a href="https://github.com/alyssat">Alyssa Tong</a>,
+for getting the entire booth designed, prepared, and keeping everything
+on track before, during, and after the conference.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/2016-jenkins-world-wrap/experts-4.jpg" alt="Ask the Experts" width="480"></span></p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/event/">
+event
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld/">
+jenkinsworld
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkinsworld2016/">
+jenkinsworld2016
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Liam Newman" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/lnewman.jpeg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/lnewman/">
+Liam Newman
+</a>
+</p>
+<div class="paragraph">
+<p>Liam started his software career as a tester, which might explain why he&#8217;s such a fan of CI/CD and Pipeline as Code.
+He has spent the majority of his software engineering career implementing Continuous Integration systems at companies big and small.
+He is a Jenkins project contributor and an expert in Jenkins Pipeline, both Scripted and Declarative.
+Liam currently works as a Jenkins Evangelist at <a href="https://cloudbees.com">CloudBees</a>.
+When not at work, he enjoys testing gravity by doing Aikido.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/bitwiseman" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/bitwiseman" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2016/2016-09-29-jenkins-world-2016-wrap-up-experts-demos.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

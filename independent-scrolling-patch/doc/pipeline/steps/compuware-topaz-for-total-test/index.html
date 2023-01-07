@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Compuware Topaz for Total Test
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/compuware-topaz-for-total-test/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Compuware Topaz for Total Test" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Compuware Topaz for Total Test" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Compuware Topaz for Total Test" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/compuware-topaz-for-total-test/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Compuware Topaz for Total Test" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<div class="container">
+<div class="row body flex-lg-nowrap">
+<div class="col-lg-3" id="sidebar-menu">
+<div class="sidebar-nav tour" id="sidebar-content">
+<p>
+<a href="/jenkins.io/independent-scrolling-patch/doc/" class="">> User Documentation Home</a>
+</p>
+<h5>
+User Handbook
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/getting-started/" class="">User Handbook Overview</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/installing/" class="">Installing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/using/" class="">Using Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/" class="">Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/managing/" class="">Managing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/security/" class="">Securing Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/system-administration/" class="">System Administration</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/scaling/" class="">Scaling Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/troubleshooting/" class="">Troubleshooting Jenkins</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/glossary/" class="">Glossary</a>
+</li>
+</ul>
+<h5>
+Tutorials
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/tour/getting-started/" class="">Guided Tour</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#pipeline" class="">Jenkins Pipeline</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/tutorials#tools" class="">Using Build Tools</a>
+</li>
+</ul>
+<h5>
+Resources
+</h5>
+<ul>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/" class="">Pipeline Syntax reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/" class="">Pipeline Steps reference</a>
+</li>
+<li>
+<a href="/jenkins.io/independent-scrolling-patch/doc/upgrade-guide/" class="">LTS Upgrade guides</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<p>
+The following plugin provides functionality available through
+Pipeline-compatible steps. Read more about how to integrate steps into your
+Pipeline in the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/#declarative-steps">Steps</a>
+section of the
+<a href="/jenkins.io/independent-scrolling-patch/doc/book/pipeline/syntax/">Pipeline Syntax</a>
+page.
+</p>
+<p>
+For a list of other such plugins, see the
+<a href="/jenkins.io/independent-scrolling-patch/doc/pipeline/steps/">Pipeline Steps Reference</a>
+page.
+</p>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#compuware-topaz-for-total-test">Compuware Topaz for Total Test</a>
+<ul class="sectlevel2">
+<li><a href="#totaltestut-topaz-for-total-test-execute-unit-tests"><code>totaltestUT</code>: Topaz for Total Test - Execute unit tests</a></li>
+<li><a href="#totaltest-topaz-for-total-test-execute-total-test-scenarios"><code>totaltest</code>: Topaz for Total Test - Execute Total Test scenarios.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="compuware-topaz-for-total-test"><a class="anchor" href="#compuware-topaz-for-total-test"></a>Compuware Topaz for Total Test</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/compuware-topaz-for-total-test">View this plugin on the Plugins site</a></p>
+</div>
+<div class="sect2">
+<h3 id="totaltestut-topaz-for-total-test-execute-unit-tests"><a class="anchor" href="#totaltestut-topaz-for-total-test-execute-unit-tests"></a><code>totaltestUT</code>: Topaz for Total Test - Execute unit tests</h3>
+<ul><li><code>connectionId : String</code>
+<div><div>
+ This field specifies the host connection to use to execute on.
+ <p></p> Host connections can be configured in the Jenkins system configuration (Manage Jenkins -&gt; Configure System).
+</div></div>
+
+</li>
+<li><code>credentialsId : String</code>
+<div><div>
+ The available credentials to use for logging onto the host. Alternatively, click <b>Add</b> to add credentials using the Credentials Plugin. Refer to the Jenkins documentation for the Credentials Plugin.
+</div></div>
+
+</li>
+<li><code>projectFolder : String</code>
+<div><div>
+ The path to the Topaz for Total Test project folder containing the test scenario or test suite to run.
+</div></div>
+
+</li>
+<li><code>testSuite : String</code>
+<div><div>
+ A comma separated list of Topaz for Total Test test scenarios/suites names. On Windows the names are case-insensitive.
+ <p>Wild carding of test scenarios/suites names can be done using '*' for any characters and '?' for a single character. 'All_Scenarios' can be used to run all test scenarios or 'All_Suites' can be used to run all test suites.</p>
+</div></div>
+
+</li>
+<li><code>jcl : String</code>
+<div><div>
+ The name of the JCL file to run the Topaz for Total Test test scenario or test suite.
+</div></div>
+
+</li>
+<li><code>ccClearStats : boolean</code> (optional)
+<div><div>
+ Indicates if the Code Coverage repository statistics should be cleared before running the test.
+</div></div>
+
+</li>
+<li><code>ccDB2 : boolean</code> (optional)
+</li>
+<li><code>ccPgmType : String</code> (optional)
+<div><div>
+ The type of the program specified on the EXEC statement, in the JCL, for the Total Test step. If PGM=IKJEFT01 was specified, select "Live DB2". When PGM=DFSRRC00 was specified select "Live IMS", otherwise select TotalTest.
+</div></div>
+
+</li>
+<li><code>ccRepo : String</code> (optional)
+<div><div>
+ The dataset where Topaz for Total Test will write coverage information. This dataset will later be fed into the Code Coverage reporting system. Members with like systems, names, and compile date and times will automatically be merged together.
+</div></div>
+
+</li>
+<li><code>ccSystem : String</code> (optional)
+<div><div>
+ A system name for this test. Code Coverage keeps statistics by programs separate by system name. This name can be any-specified name. The name must be 16 characters or less and will be converted to upper-case when the test is run.s. If not specified defaults to the test scenario/suite name.
+</div></div>
+
+</li>
+<li><code>ccTestId : String</code> (optional)
+<div><div>
+ A test identification to be added to the Code Coverage test. This information can be useful when reviewing test reports from Code Coverage. This test identification can be any-specified string. The test identification must be 16 characters or less and will be converted to upper-case when the test is run. If not specified defaults to the test scenario/suite name.
+</div></div>
+
+</li>
+<li><code>deleteTemp : boolean</code> (optional)
+<div><div>
+ Delete temporary files after test run. The default is to delete temporary files.
+</div></div>
+
+</li>
+<li><code>hlq : String</code> (optional)
+<div><div>
+ Optional high level qualifier to be used when allocating datasets.
+</div></div>
+
+</li>
+<li><code>hostPort : String</code> (optional)
+</li>
+<li><code>recursive : boolean</code> (optional)
+<div><div>
+ Indicates if the test runner should recursively check for Total Test Unit Test projects. The default is not to recursively check for Total Test Unit Test projects..
+</div></div>
+
+</li>
+<li><code>useStubs : boolean</code> (optional)
+<div><div>
+ Indicates if stubs should be used when running the test scenario or test suite. The default is to use stubs.
+</div></div>
+
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="totaltest-topaz-for-total-test-execute-total-test-scenarios"><a class="anchor" href="#totaltest-topaz-for-total-test-execute-total-test-scenarios"></a><code>totaltest</code>: Topaz for Total Test - Execute Total Test scenarios.</h3>
+<ul><li><code>environmentId : String</code>
+<div><div>
+ Environment ID of the environment defined in the Total Test repository server or local TotalTestConfiguration directory where tests are executed.
+</div></div>
+
+</li>
+<li><code>folderPath : String</code>
+<div><div>
+ <ul>
+  <li>Folder path to the test scenario or context file(s) to execute (.xactx or .xaunit)</li>
+  <li>A relative path or an empty string will set the folder path relative to the Jenkins workspace directory</li>
+  <li>An absolute path can also be used to specify Test folder path</li>
+ </ul>
+</div></div>
+
+</li>
+<li><code>serverUrl : String</code>
+<div><div>
+ This field specifies the CES URL where the Total Test repository server is published on.
+ <p></p> The CES URL can be configured in Jenkins system configuration (Manage Jenkins -&gt; Configure System -&gt; Compuware Configurations -&gt; Host Connections).
+</div></div>
+
+</li>
+<li><code>serverCredentialsId : String</code>
+<div><div>
+ The available credentials to use for logging onto CES (used only when using the Total Test repository server). Alternatively, click <b>Add</b> to add credentials using the Credentials Plugin. Refer to the Jenkins documentation for the Credentials Plugin.
+</div></div>
+
+</li>
+<li><code>connectionId : String</code>
+<div><div>
+ This field specifies the host connection to use to execute on.
+ <p></p> Host connections can be configured in the Jenkins system configuration (Manage Jenkins -&gt; Configure System).
+</div></div>
+
+</li>
+<li><code>credentialsId : String</code>
+<div><div>
+ The available credentials to use for logging onto the host. Alternatively, click <b>Add</b> to add credentials using the Credentials Plugin. Refer to the Jenkins documentation for the Credentials Plugin.
+</div></div>
+
+</li>
+<li><code>sonarVersion : String</code> (optional)
+<div><div>
+ SonarQube version 5 or 6
+</div></div>
+
+</li>
+<li><code>logLevel : String</code> (optional)
+<div><div>
+ Set the logging level to be used when executing the test.
+</div></div>
+
+</li>
+<li><code>accountInfo : String</code> (optional)
+<div><div>
+ Optional job account information.
+ <p>Use the accounting information field to enter an account number and any other accounting information that your installation requires.<br> The accounting information must be entered, just as it would be on the job card. Currently only 52 characters are allowed for the accounting information.</p>
+</div></div>
+
+</li>
+<li><code>ccThreshold : int</code> (optional)
+</li>
+<li><code>clearCodeCoverage : boolean</code> (optional)
+</li>
+<li><code>collectCCRepository : String</code> (optional)
+</li>
+<li><code>collectCCSystem : String</code> (optional)
+</li>
+<li><code>collectCCTestID : String</code> (optional)
+</li>
+<li><code>collectCodeCoverage : boolean</code> (optional)
+<div><div>
+ Select this option to collect Code Coverage information during test execution.
+</div></div>
+
+</li>
+<li><code>compareJUnits : boolean</code> (optional)
+</li>
+<li><code>contextVariables : String</code> (optional)
+<div><div>
+ Execution context variable in the format "field1=value1,field2=value2".
+</div></div>
+
+</li>
+<li><code>createJUnitReport : boolean</code> (optional)
+</li>
+<li><code>createReport : boolean</code> (optional)
+</li>
+<li><code>createResult : boolean</code> (optional)
+</li>
+<li><code>createSonarReport : boolean</code> (optional)
+</li>
+<li><code>customerId : String</code> (optional)
+<div><div>
+ Compuware customer id for use on the Compuware cloud license server.
+ <p></p> This is required for obtaining a license from the Compuware license server.
+</div></div>
+
+</li>
+<li><code>enterpriseDataHostPort : String</code> (optional)
+<div><div>
+ This field allows you to specify the host and port of the Enterprise Data Communication Manager to connect to. The host and port must be separated by a ':' character.
+</div></div>
+
+</li>
+<li><code>enterpriseDataWorkspace : String</code> (optional)
+<div><div>
+ The Topaz for Enterprise Data Communication Manager's workspace.
+</div></div>
+
+</li>
+<li><code>haltAtFailure : boolean</code> (optional)
+</li>
+<li><code>haltPipelineOnFailure : boolean</code> (optional)
+</li>
+<li><code>jclPath : String</code> (optional)
+<div><div>
+ The path to the JCL file to use when executing '.testscenario' files.
+</div></div>
+
+</li>
+<li><code>jsonFile : String</code> (optional)
+<div><div>
+ Optional JSON file containing tests to execute.
+ <p>Use the JSON file field to enter a JSON file containing the tests to execute.<br> <b>Note: This field is only used for Total Test CLI version 20.04.01 and later</b></p>
+</div></div>
+
+</li>
+<li><code>localConfig : boolean</code> (optional)
+<div><div>
+ When selected use the defined local TotalTestConfiguration directory. Otherwise use the Total Test repository server running on the CES server.
+</div></div>
+
+</li>
+<li><code>localConfigLocation : String</code> (optional)
+<div><div>
+ Optional location of TotalTestConfiguration directory.
+ <p></p>
+</div></div>
+
+</li>
+<li><code>programList : String</code> (optional)
+<div><div>
+ Optional comma separated list of tests tests to execute.
+ <p>Use the Test list field to enter a comma separated list of program names to be tested. Will only include test scenarios that have component under test defined as one of these<br> <b>Note: This field is only used for Total Test CLI version 20.04.01 and later</b></p>
+</div></div>
+
+</li>
+<li><code>recursive : boolean</code> (optional)
+<div><div>
+ Should test scenarios be found recursively in the folder
+</div></div>
+
+</li>
+<li><code>reportFolder : String</code> (optional)
+<div><div>
+ The folder path containing produced test results vary depending on the Total Test CLI version.
+ <ul>
+  <li>Total Test CLI version 20.03.01 and later</li>
+  <ul>
+   <li>The Report Folder field will be ignored.</li>
+   <li>The produced test result will be contained in the Output directory relative to the Test folder path.</li>
+   <li>Junit and Sonar report files are copied to TTTUnit and TTTSonar folders in the Jenkins workspace.</li>
+  </ul>
+  <li>Total Test CLI version prior to 20.03.01</li>
+  <ul>
+   <li>The produced test results will be contained in this folder path.</li>
+   <li>Default folder path is TTTReport.</li>
+   <li>Relative folder paths are relative to the Jenkins workspace.</li>
+   <li>An absolute path can also be used to specify Report folder.</li>
+  </ul>
+ </ul> <b>Note: This field is only used for Total Test CLI version prior to 20.03.01</b>
+</div></div>
+
+</li>
+<li><code>selectEnvironmentRadio : String</code> (optional)
+</li>
+<li><code>selectProgramsOption : boolean</code> (optional)
+</li>
+<li><code>selectProgramsRadio : String</code> (optional)
+</li>
+<li><code>siteId : String</code> (optional)
+<div><div>
+ Compuware customer's site id for use on the Compuware cloud license server.
+ <p></p> This is required for obtaining a license from the Compuware license server.
+</div></div>
+
+</li>
+<li><code>sourceFolder : String</code> (optional)
+<div><div>
+ Optional file path to a folder that contains source code of tested programs.<br> Default is COBOL. <br> It is only used to set the source path.
+</div></div>
+
+</li>
+<li><code>stopIfTestFailsOrThresholdReached : boolean</code> (optional)
+<div><div>
+ Stop if test fails or threshold is reached (default is true)
+</div></div>
+
+</li>
+<li><code>uploadToServer : boolean</code> (optional)
+</li>
+<li><code>useEnterpriseData : boolean</code> (optional)
+</li>
+<li><code>useScenarios : boolean</code> (optional)
+<div><div>
+ Should .scenarios files be used instead of .context files
+</div></div>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+https://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+https://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-bs-toggle="collapse">Was this page helpful?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>Please submit your feedback about this page through this
+<a href="/doc/feedback-form/">quick form</a>.</p>
+
+<p>Alternatively, if you don't wish to complete the quick form, you can simply
+indicate if you found this page helpful?</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="Yes" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="No"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="Submit"/></p>
+
+</form>
+
+<p>See existing feedback <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank" rel="noreferrer noopener">here</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+<script>
+  $(function() {
+    var collapsibleList = function(e){
+      for (var i=1; i < e.length; i++) {
+        var li = e[i];
+        if (li.tagName == "LI" && li.children[0]) {
+          var r=li.children[0].innerText;
+  
+          var plus = $("<button class='btn btn-outline-secondary btn-xs'>+</button>");
+          var minus = $("<button class='btn btn-outline-secondary btn-xs'>-</button>");
+          $(li.children[0]).prepend(minus);
+  
+          var expander = $("<li/>").append($("<code/>").text(r)).prepend(plus);
+          var toggle = (function() {
+            this.next().toggleClass("collapse");
+            this.toggleClass("collapse")
+          }).bind(plus.parent());
+          plus.on("click", toggle);
+          minus.on("click", toggle);
+          expander.insertBefore($(li));
+          $(li).addClass("collapse");
+        }
+      }
+    };
+    $("ul>b:contains('Nested')").each(function(e,f){
+      collapsibleList($(f).parent().children())
+    });
+  });
+</script>
+
+</div>
+</div>
+</div>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath=""></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

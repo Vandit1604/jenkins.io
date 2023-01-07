@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+The journey of becoming a Jenkins contributor: Introduction
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/03/29/becoming-contributor-intro/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="The journey of becoming a Jenkins contributor: Introduction" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="The journey of becoming a Jenkins contributor: Introduction" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="The journey of becoming a Jenkins contributor: Introduction" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2019/03/29/becoming-contributor-intro/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="The journey of becoming a Jenkins contributor: Introduction" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+The journey of becoming a Jenkins contributor: Introduction
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/romenrg/"><div class="app-avatar"><img alt="Romén Rodríguez-Gil" class="app-avatar__image" src="/images/avatars/romenrg.jpg"></div> Romén Rodríguez-Gil</a>
+March 29, 2019
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=The+journey+of+becoming+a+Jenkins+contributor%3A+Introduction&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2019%2F03%2F29%2Fbecoming-contributor-intro%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="paragraph">
+<p>As a software engineer, for many years I have used open source software (frameworks, libraries, tools&#8230;&#8203;) in the
+different companies I have worked at. However, I had never been able to engage in an open-source project as a
+contributor, until now.</p>
+</div>
+<div class="paragraph">
+<p>Since I made my first&#8212;&#8203;ridiculously simple&#8212;&#8203;commit into Jenkins, six months ago (in September, 2018), I have been
+attempting to contribute more to the Jenkins project. However, contributing to open-source projects is, in general,
+challenging. Especially to long-lived projects, with a lot of history, legacy code and tribal knowledge. It is often
+difficult to know where to start and also difficult to come up with a plan to keep moving forward and contributing
+regularly, and in more meaningful ways over time.</p>
+</div>
+<div class="paragraph">
+<p>When it comes to the Jenkins project, I have encountered challenges that others trying to get into the community are
+likely to encounter. For that reason, I have decided to go ahead and share my journey of becoming a more engaged Jenkins
+contributor.</p>
+</div>
+<div class="paragraph">
+<p>I plan to publish roughly 1 post per month, describing this journey. I will attempt to start contributing to the pieces
+that are easier to start with, transitioning towards more complex contributions over time.</p>
+</div>
+<div class="sect1">
+<h2 id="where-to-start"><a class="anchor" href="#where-to-start"></a>Where to start</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="jenkins-io"><a class="anchor" href="#jenkins-io"></a>jenkins.io</h3>
+<div class="paragraph">
+<p>To become a Jenkins contributor, the most obvious place to start looking at is <a href="https://jenkins.io">jenkins.io</a>. In the
+top navbar there is a Community dropdown, with several links to different sections. The first entry,
+<a href="https://jenkins.io/participate/">Overview</a>, takes us to the “Participate and contribute” section.</p>
+</div>
+<div class="paragraph">
+<p>In this section we get lots of information about the many ways in which we can engage with the Jenkins project and
+community. Even though the intention is to display all the possible options, allowing the reader to choose, it can feel
+a bit overwhelming.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/jenkins-participate-page.png" alt="jenkins participate page">
+</div>
+</div>
+<div class="paragraph">
+<p>The page is divided into two columns, the column on the left shows the different options to participate, while the
+column on the right shows the different options to contribute.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="suggestions-to-participate"><a class="anchor" href="#suggestions-to-participate"></a>Suggestions to Participate</h3>
+<div class="paragraph">
+<p>In the left column of the “Participate and contribute” page, there are several ideas on how to engage with the community,
+ranging from communicating to reviewing changes or providing feedback.</p>
+</div>
+<div class="paragraph">
+<p>One of the pieces that got me confused at first in this area were the communication channels. There are many different
+channels for communication. There are <a href="https://jenkins.io/mailing-lists">several mailing lists</a> and there are also IRC
+and Gitter channels.</p>
+</div>
+<div class="paragraph">
+<p>During my first attempts to get involved, I subscribed to many of the mailing lists and several IRC and Gitter channels,
+but I quickly noticed that there is significant communication going on; and that most threads in the most active lists
+and channels are specific to issues users or developers have. So, unless your goal is to support other users right away
+(if you are an experienced Jenkins user already it might be the case) or you plan to ask questions that you already
+have in mind, I would advise against spending too much time on this at first.</p>
+</div>
+<div class="paragraph">
+<p>Even though it is great to see how the community members support each other, the amount of communication might be
+overwhelming for a newcomer, and if you are also trying to contribute to the project (either with translations,
+documentation or code), following these conversations might not be the best way to start.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="suggestions-to-contribute"><a class="anchor" href="#suggestions-to-contribute"></a>Suggestions to Contribute</h3>
+<div class="paragraph">
+<p>In the right column of the “Participate and contribute” page there are several ideas on how to contribute, mostly
+grouped into: writing code, translating, documenting and testing.</p>
+</div>
+<div class="paragraph">
+<p>In following posts, I will be going through all of these types of contributions, as well as through some of the
+suggestions to participate, which include reviewing Pull Requests (PRs) or providing feedback (either reporting new
+issues or replicating cases other users have already described, providing additional information to help the maintainer
+reproduce and fix them).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="my-first-contribution-in-this-journey"><a class="anchor" href="#my-first-contribution-in-this-journey"></a>My first contribution in this journey</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When looking at the “Participate and contribute” page, I noticed a couple of things in that page that I could help
+improve. And I was actually planning to pick one of those as the first example of a contribution for this post. But
+when I was reading the contributing guidelines of the repository, I found an even easier contribution I could make,
+which I thought would be a great example to illustrate how simple it could be to start contributing. So I decided to go
+ahead with it.</p>
+</div>
+<div class="sect2">
+<h3 id="the-website-repository"><a class="anchor" href="#the-website-repository"></a>The website repository</h3>
+<div class="paragraph">
+<p>In the ”Document” section there is a link to the
+<a href="https://github.com/jenkins-infra/jenkins.io/blob/master/CONTRIBUTING.adoc">contributing guidelines of the jenkins.io repository</a>.
+The CONTRIBUTING file is a common file present in the root folder of most open-source-project repositories.</p>
+</div>
+<div class="paragraph">
+<p>Following the link to that file, I reached the jenkins.io repository, which is the one that contains the sources for
+the corresponding website&#8212;&#8203;which also includes this blog. And, in fact, the contributing file was the first file I
+wanted to review, in order to learn more about how to contribute to the website.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="found-a-broken-link"><a class="anchor" href="#found-a-broken-link"></a>Found a broken link</h3>
+<div class="paragraph">
+<p>When reading the contributing file, I learned about the Awestruct static site generator, which is the tool used to
+transform the AsciiDoc source files in the repo into a website. However, when I clicked the link to learn more about it, I noticed it was broken. The domain had expired.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/awestruct-site.png" alt="awestruct site">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="why-not-fix-it"><a class="anchor" href="#why-not-fix-it"></a>Why not fix it?</h3>
+<div class="paragraph">
+<p>This was the opportunity I chose to show other newcomers how easy it can be to start contributing.</p>
+</div>
+<div class="sect3">
+<h4 id="forking-the-repository"><a class="anchor" href="#forking-the-repository"></a>Forking the repository</h4>
+<div class="paragraph">
+<p>The first step, as usual, would be to fork the repository and clone it to my machine.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="applying-the-change"><a class="anchor" href="#applying-the-change"></a>Applying the change</h4>
+<div class="paragraph">
+<p>The next step would be to apply the change to the corresponding file. To do so, I created a new branch
+“alternative-awestruct-link” and applied the change there:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/making-change.png" alt="making change">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-sure-everything-builds-correctly-and-tests-pass"><a class="anchor" href="#making-sure-everything-builds-correctly-and-tests-pass"></a>Making sure everything builds correctly and tests pass</h4>
+<div class="paragraph">
+<p>Even though in this case my contribution was not to the actual website, but to the contributing guidelines (and for
+that reason was unlikely to break anything), it is a best practice to get used to the regular process every
+contribution should follow, making sure everything builds correctly after any change.</p>
+</div>
+<div class="paragraph">
+<p>As stated in the contributing guidelines themselves, in order to build this repository we just have to run the default
+“make” target, in the root of the repository.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/executing-make.png" alt="executing make">
+</div>
+</div>
+<div class="paragraph">
+<p>Once the command execution finishes, if everything looks good, we are ready to go to the next step: creating the PR.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-the-pr"><a class="anchor" href="#creating-the-pr"></a>Creating the PR</h4>
+<div class="paragraph">
+<p>Once my change had been committed and pushed to my repository, I just had to create the PR. We have an easy way to do so
+by just clicking the link that we get in our git logs once the push is completed, although we can create the PR directly
+through the GitHub UI, if we prefer so; or even use <a href="https://github.com/github/hub">“hub”</a>, the GitHub CLI, to do it.</p>
+</div>
+<div class="paragraph">
+<p>In this case, I just clicked the link, which took me to the PR creation page on GitHub. Once there, I added a
+description and created the PR.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/creating-pr.png" alt="creating pr">
+</div>
+</div>
+<div class="paragraph">
+<p>When a PR to this repository is created, we notice there are some checks that start running. Jenkins repositories are
+configured to notify the <a href="https://ci.jenkins.io/">“Jenkins on Jenkins”</a>, which runs the corresponding CI pipelines for
+each repository, as described in the corresponding <a href="https://github.com/jenkins-infra/jenkins.io/blob/master/Jenkinsfile">Jenkinsfile</a>.</p>
+</div>
+<div class="paragraph">
+<p>Once the checks are completed, we can see the result in the PR:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/pr-created-passing.png" alt="pr created passing">
+</div>
+</div>
+<div class="paragraph">
+<p>And if we want to see the details of the execution, we can follow the “Show all checks” link:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/pr-checks-jenkins.png" alt="pr checks jenkins">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pr-review"><a class="anchor" href="#pr-review"></a>PR Review</h4>
+<div class="paragraph">
+<p>Now that the PR has been created and all automated checks are passing, we only have to wait for peer code reviews.</p>
+</div>
+<div class="paragraph">
+<p>Once someone approves the PR and it is later merged, your contribution is integrated into the master branch of the
+repository, becoming part of the next release.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/2019-03-29-becoming-contributor/pr-merged.png" alt="pr merged">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="i-have-contributed"><a class="anchor" href="#i-have-contributed"></a>I have contributed!</h3>
+<div class="paragraph">
+<p>This contribution I made is a trivial one, with very little complexity and it might not be the most interesting one if
+you are trying to contribute code to the Jenkins project itself.</p>
+</div>
+<div class="paragraph">
+<p>However, for me, as the contributor, it was a great way to get familiar with the repository, its contributing
+guidelines, the technology behind the jenkins.io website; and, above anything else, to start “losing the fear” of
+contributing to an open source project like Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>So, if you are in the same position I was, do not hesitate. Go ahead and find your own first contribution. Every little
+counts!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/community/">
+community
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/developer/">
+developer
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/contributing/">
+contributing
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/newcomer/">
+newcomer
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Romén Rodríguez-Gil" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/romenrg.jpg">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/romenrg/">
+Romén Rodríguez-Gil
+</a>
+</p>
+<div class="paragraph">
+<p>Romén is a lifelong learner, software engineer and former digital entrepreneur. He lives in the Canary Islands,
+from where he currently works as a Training Engineer at CloudBees.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/romenrg" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/romenrg" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://www.romenrg.com" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2019/03/2019-03-29-becoming-contributor-intro.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

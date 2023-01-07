@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Health Advisor by CloudBees Tool Makes Life Easier for Jenkins Administrators
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/09/23/jenkins-health-advisor-by-cloudbees/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Jenkins Health Advisor by CloudBees Tool Makes Life Easier for Jenkins Administrators" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Health Advisor by CloudBees Tool Makes Life Easier for Jenkins Administrators" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Health Advisor by CloudBees Tool Makes Life Easier for Jenkins Administrators" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/blog/2021/09/23/jenkins-health-advisor-by-cloudbees/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Health Advisor by CloudBees Tool Makes Life Easier for Jenkins Administrators" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/images/logo-title-opengraph.png" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/stylesheets/styles.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial anchors.html.haml -->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<!-- ending partial anchors.html.haml -->
+<article class="container app-post-page">
+<div class="app-!-display-flex">
+<a class="app-back-link" href="/jenkins.io/independent-scrolling-patch/node/">
+Back to blog
+</a>
+</div>
+<h1>
+Jenkins Health Advisor by CloudBees Tool Makes Life Easier for Jenkins Administrators
+</h1>
+<div class="post-attrs">
+<a class="app-author-link" href="/blog/authors/aheritier/"><div class="app-avatar"><img alt="Arnaud Héritier" class="app-avatar__image" src="/images/avatars/aheritier.png"></div> Arnaud Héritier</a>
+September 23, 2021
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/intent/tweet?text=Jenkins+Health+Advisor+by+CloudBees+Tool+Makes+Life+Easier+for+Jenkins+Administrators&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fjenkins.io%2Findependent-scrolling-patch%2Fblog%2F2021%2F09%2F23%2Fjenkins-health-advisor-by-cloudbees%2F" rel="noreferrer nofollow" target="_blank">
+Tweet
+</a>
+</div>
+<div class="blog-content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By Arnaud Héritier, Support Tooling Manager, and Darin Pope, DevOps Consultant, CloudBees
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right"><a class="image" href="https://plugins.jenkins.io/cloudbees-jenkins-advisor"><img src="/images/post-images/jenkins-health-advisor-by-cloudbees/logo.svg" alt="Jenkins Health Advisor by CloudBees logo" width="128"></a></span></p>
+</div>
+<div class="paragraph">
+<p>There are many ways to set up your Jenkins environment, and depending on the configuration you choose, there are different best practices and options to optimize your environment.
+In this blog, I’m going to focus on <a href="https://docs.cloudbees.com/docs/admin-resources/latest/plugins/cloudbees-jenkins-advisor">Jenkins Health Advisor by CloudBees</a> as a way to fine-tune your environment.
+It’s a free tool that can help administrators understand and manage their Jenkins controller.
+If you’re a CloudBees customer, the tool automatically comes with CloudBees CI.
+However, it’s also available as a free open source tool to anyone who uses Jenkins.
+The Jenkins Health Advisor tool can make your life easier, because it can arm you with the information you need to keep your Jenkins environment running smoothly.</p>
+</div>
+<div class="paragraph">
+<p><strong>A Bit of Background</strong></p>
+</div>
+<div class="paragraph">
+<p>The CloudBees support team originally created the tool as a way to help customers troubleshoot Jenkins issues.
+With the tool, our support engineers could gather information from a customer’s Jenkins controller about the configuration of the controller and agents, the operating system, stats from web requests, and the like.
+Our tech support teams used this data to help customers pinpoint problems, such as security vulnerabilities, performance problems, and plugin version issues.
+Very quickly, our support tooling team saw the bigger-picture benefits of the diagnostic tool as an opportunity for people to proactively manage their controller.
+With that bit of background, let’s dive into the Jenkins Health Advisor tool so you understand how it can help you.</p>
+</div>
+<div class="paragraph">
+<p><strong>The Problem — Lack of Visibility into Controller Environment</strong></p>
+</div>
+<div class="paragraph">
+<p>Because of the open-source nature of Jenkins and the vast array of plugins that you can deploy in your Jenkins installation, downstream code changes to plugins and corresponding dependencies can inadvertently impact your environment, which slows productivity, causes confusion, and impacts the quality of your software delivery.
+When problems arise, Jenkins administrators need to quickly pinpoint the root cause of an issue, and that can be quite a challenge.</p>
+</div>
+<div class="paragraph">
+<p><strong>The Solution — Jenkins Health Advisor by CloudBees</strong></p>
+</div>
+<div class="paragraph">
+<p>When an issue arises, you need razor sharp insight to help you quickly sift through lines upon lines of data about your Jenkins controller and your plugins to identify the problem.
+And, that’s exactly what Jenkins Health Advisor does.
+It gives you specific information about potential problems in your environment so you can resolve issues as quickly as possible.</p>
+</div>
+<div class="paragraph">
+<p>When you first install the Jenkins Health Advisor tool in your environment, you’ll receive a report that lists everything it detects in your system.
+You’ll then receive report emails only when something changes that could impact your environment or when the tool identifies an issue that could be problematic.
+If there are no issues in your environment, you don’t receive an email.
+It’s really that simple.</p>
+</div>
+<div class="paragraph">
+<p><strong>The Power is in the Insight … and the CloudBees Support</strong></p>
+</div>
+<div class="paragraph">
+<p>Ok, so let’s explain how Jenkins Health Advisor uses data to help you optimize your environment.
+The tool actually generates a support bundle every 24 hours.
+We don’t want to bog down your email inbox with redundant reports emails, so we don’t send every report to you—only the reports that indicate an issue with your environment.
+However, CloudBees receives every support bundle from every user.
+We are constantly monitoring all of this active Jenkins controller data with external Jenkins and open source data about known issues, plugin updates, security vulnerabilities, etc.
+If the Jenkins Health Advisor tool identifies an issue that could impact your system, you’ll receive an email so you can proactively address the problem.
+At the same time, CloudBees engineering teams are continually working to enhance the detection capabilities of the Jenkins Health Advisor tool, so you can work as proactively as possible to manage your environment.</p>
+</div>
+<div class="paragraph">
+<p>The emails you receive identify potential problems, and they also include supporting information to help you resolve issues, with links to solutions and recommended resolutions as well as articles to understand the problem.</p>
+</div>
+<div class="paragraph">
+<p><strong>Helpful Tips to Gain Value from Jenkins Health Advisor</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="underline">Improve Troubleshooting</span></p>
+<div class="paragraph">
+<p>If you need to troubleshoot a particular issue, you can manually generate a support bundle to give you point-in-time information on your environment.
+You can filter the support bundle data on different system parameters, like the build queue, dump agent export tables, and garbage collection logs, so you get the specific information you need.</p>
+</div>
+</li>
+<li>
+<p><span class="underline">Generate Anonymized System Data</span></p>
+<div class="paragraph">
+<p>At any time, you can change the settings on your tool to anonymize the data in your support bundles.
+You may want to do this if you don’t want to share sensitive project data with CloudBees.
+Our support and engineering teams can still gain valuable insight from your generic system data.
+This is also a helpful feature if you need to share system data with a partner or vendor, and you don’t want to share project or personnel data.</p>
+</div>
+</li>
+<li>
+<p><span class="underline">Jenkins Health Advisor Tool Updates and Support</span></p>
+<div class="paragraph">
+<p>As we mentioned above, the CloudBees support tooling team is constantly working to enhance the tool.
+To ensure it’s always as current as possible, we release updates to the tool every two weeks.
+Usually these updates won’t impact your Jenkins environment.
+However, if there are changes to the tool that might affect your system, you’ll receive a notification email so there are no surprises.
+And, if you need help with the Jenkins Health Advisor tool, our support engineers are available to answer your questions.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Start Using Jenkins Health Advisor Today</strong></p>
+</div>
+<div class="paragraph">
+<p>Given the vast Jenkins community, it’s impossible to know everything that may impact your environment, even if you look at your control panel every day and scour open source forums on a regular basis to stay on top of new issues and vulnerabilities.
+The Jenkins Health Advisor tool is designed to streamline the work effort of your daily routine by automatically telling you when there’s an issue that may impact your Jenkins environment.
+With the proactive Jenkins Health Advisor notifications, you can spend your time on more strategic tasks.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/cloudbees-jenkins-advisor/">Install the plugin and enroll your controller with Jenkins Health Advisor today!</a></p>
+</div>
+</div>
+<ul class="app-tags">
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/jenkins/">
+jenkins
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/health/">
+health
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/healthcheck/">
+healthcheck
+</a>
+</li>
+<li>
+<a class="app-tags__tag" href="/jenkins.io/independent-scrolling-patch/node/tags/stability/">
+stability
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<!-- starting partial author.html.haml -->
+<div class="app-author" id="about-the-author">
+<!-- starting partial avatar.html.haml -->
+<div class="app-avatar" style="min-width: 64px; width: 25vw; max-width: 128px">
+<img alt="Arnaud Héritier" class="app-avatar__image" src="/jenkins.io/independent-scrolling-patch/images/avatars/aheritier.png">
+</div>
+
+<!-- ending partial avatar.html.haml -->
+<div class="app-author__content">
+<p class="app-author__name">
+<a href="/blog/authors/aheritier/">
+Arnaud Héritier
+</a>
+</p>
+<div class="paragraph">
+<p>Specialised in <a href="https://www.linkedin.com/in/aheritier">software development and process automation</a>, he has been contributing for many years to various open source projects such as <a href="https://jenkins.io">Jenkins</a>, <a href="https://maven.apache.org">Apache Maven</a> and to various communities around Java and DevOps.
+Member of <a href="https://lescastcodeurs.com">Les Cast Codeurs</a> podcast (a french podcast dedicated to IT in general and Java ecosystem), he regularly speaks at various conferences, users groups and participates in the organisation of <a href="https://devoxx.fr/what-is-devoxx-france">Devoxx France</a>.</p>
+</div>
+<div class="paragraph">
+<p>In 2015, he joined <a href="http://www.cloudbees.com">CloudBees, Inc.</a>, where he is now managing the Support Tooling development activity.</p>
+</div>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="app-social-media-buttons">
+<li>
+<a href="https://github.com/aheritier" rel="noreferrer noopener" target="_blank">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://twitter.com/aheritier" rel="noreferrer noopener" target="_blank">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://aheritier.net" rel="noreferrer noopener" target="_blank">
+Blog
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</div>
+</div>
+
+<!-- ending partial author.html.haml -->
+<!-- starting partial discuss.html.haml -->
+
+<!-- ending partial discuss.html.haml -->
+</article>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//blog/2021/09/2021-09-23-jenkins-health-advisor-by-cloudbees.adoc"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>

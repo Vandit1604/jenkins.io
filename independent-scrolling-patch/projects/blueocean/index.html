@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Blue Ocean
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/blueocean/" rel="canonical">
+<!-- Favicons -->
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/site.webmanifest" rel="manifest">
+<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon">
+<meta content="#2b5797" name="msapplication-TileColor">
+<meta content="#ffffff" name="theme-color">
+<meta content="Blue Ocean" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Blue Ocean" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="/jenkins.io/independent-scrolling-patch/projects/blueocean/img/blueocean.gif" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Blue Ocean" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://Vandit1604.github.io/jenkins.io/independent-scrolling-patch/projects/blueocean/" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Blue Ocean" property="og:site_name">
+<meta content="/jenkins.io/independent-scrolling-patch/projects/blueocean/img/blueocean.gif" name="og:image">
+<link href="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/jenkins.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/blueocean-animate.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/blueocean-style.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/jenkins.io/independent-scrolling-patch/css/footer.css" media="screen" rel="stylesheet">
+<link href="/jenkins.io/independent-scrolling-patch/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
+</head>
+<body>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<jio-navbar class="fixed-top" id="ji-toolbar" property="https://www.jenkins.io" showSearchBox=""></jio-navbar>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<header class="header" id="header">
+<div class="skew">
+<div class="container wow fadeIn" data-wow-delay="0.5s">
+<div class="row">
+<div class="header-inner col-lg-12">
+<div class="logo" style="width: 128px;">
+<img src="/images/logos/jenkins/jenkins.svg">
+</div>
+<h1 class="intro-title">
+Blue Ocean for Jenkins Pipelines
+</h1>
+<a class="btn btn-secondary" href="/jenkins.io/independent-scrolling-patch/projects/blueocean/about/">
+Overview
+</a>
+<a class="btn btn-secondary" href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/">
+Documentation
+</a>
+<a class="btn btn-secondary" href="https://github.com/jenkinsci/blueocean-plugin/releases">
+Releases
+</a>
+<a class="btn btn-primary" href="/jenkins.io/independent-scrolling-patch/projects/blueocean/contribute/">
+How to contribute
+</a>
+<a class="btn btn-primary" href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/getting-started/">
+Get started
+</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="intro wow fadeInUp" data-wow-delay="0.7s">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-11 col-lg-10 col-xl-9">
+<a class="video" data-bs-target="#videoModal" data-bs-toggle="modal" data-video="https://www.youtube.com/embed/k_fVlU1FwP4">
+<video autoplay="" loop="" muted="" poster="img/video.png">
+<source src="img/video.webm" type="video/webm">
+<source src="img/video.mp4" type="video/mp4">
+</source>
+</video>
+<span class="ion-md-play"></span>
+</a>
+</div>
+<div class="col-xs-12 col-sm-10 offset-sm-2 col-md-8 offset-md-4 col-lg-5 offset-lg-7">
+<div class="introblurb wow fadeInUp" data-wow-delay="0.1s">
+<h2>Continuous delivery pipelines should be easy</h2>
+<p>That’s why we’ve built Blue Ocean; the continuous delivery tool for teams just like yours.</p>
+<p>
+It’s a way to use Jenkins that even your boss’s boss can understand.
+<span class="emoji">😉</span>
+<span class="emoji">🙌</span>
+</p>
+<a class="btn btn-secondary" href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/getting-started/" role="button">Get started</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="features">
+<div class="container">
+<div class="row">
+<div class="col-xl-10 offset-xl-1">
+<div class="featuresblurb col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+<h2>Continuous Delivery for every team</h2>
+<p>Blue Ocean puts Continuous Delivery in reach of any team without sacrificing the power and sophistication of Jenkins.</p>
+<br>
+</div>
+<div class="row">
+<div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+<div class="icon">
+<span class="ion-md-create"></span>
+</div>
+<h3>Visual Pipeline Editor</h3>
+<p class="smaller">Create your first Continuous Delivery pipeline from start to finish.</p>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+<div class="icon">
+<span class="ion-md-eye"></span>
+</div>
+<h3>Pipeline visualization</h3>
+<p class="smaller">
+Visually represent pipelines so that even your boss’s boss can understand.
+</p>
+</div>
+<div class="clearfix hidden-lg-up"></div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+<div class="icon">
+<span class="ion-md-pulse"></span>
+</div>
+<h3>Diagnosis</h3>
+<p class="smaller">
+Diagnose problems instantly and say
+<br class="hidden-lg-down">
+<em>good-riddance</em>
+to endlessly scanning through logs.
+</p>
+</div>
+<div class="clearfix hidden-md-down"></div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+<div class="icon">
+<span class="ion-logo-github"></span>
+</div>
+<h3>GitHub & Git</h3>
+<p class="smaller">Run the pipeline for every feature branch and pull request.</p>
+</div>
+<div class="clearfix hidden-lg-up"></div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.5s">
+<div class="icon">
+<span class="ion-md-person"></span>
+</div>
+<h3>Personalization</h3>
+<p class="smaller">Customize your dashboard so that you only see pipelines that matter to you.</p>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="0.6s">
+<div class="icon">
+<svg height="24px" version="1.1" viewbox="0 0 24 24" width="24px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.38341175,23.0798118 C3.04752489,21.2711041 0,16.9914458 0,12 C0,5.372583 5.372583,0 12,0 C18.627417,0 24,5.372583 24,12 C24,16.9914458 20.9524751,21.2711041 16.6165883,23.0798118 L13.5388628,15.6932706 C14.9841584,15.090368 16,13.6638153 16,12 C16,9.790861 14.209139,8 12,8 C9.790861,8 8,9.790861 8,12 C8,13.6638153 9.01584163,15.090368 10.4611372,15.6932706 L7.38341175,23.0798118 Z" fill-rule="evenodd" fill="#000000" id="Combined-Shape" stroke="none"></path>
+</svg>
+</div>
+<h3>100% Open Source</h3>
+<p class="smaller">
+Blue Ocean is 100% free and open source software. Yup, you heard right —
+<em>free!</em>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="props">
+<div class="skew">
+<div class="container">
+<div class="row">
+<div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.2s">
+<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p dir="ltr" lang="en">
+I've just been testing
+<a href="https://twitter.com/jenkinsci">@jenkinsci</a>
+with the new UI/UX. Awesome! Very good job! Creating pipelines is now dead simple.
+<a href="https://t.co/dSFlauhpxd">pic.twitter.com/dSFlauhpxd</a>
+</p>—
+Jochen Breuer (@mr_brejoc)
+<a href="https://twitter.com/mr_brejoc/status/846108945794191361">March 26, 2017</a>
+</blockquote>
+</div>
+<div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.4s">
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p dir="ltr" lang="en">
+<a href="https://twitter.com/i386">@i386</a>
+blue ocean is life 👌🏻 you have made work fun again
+</p>— Gabriel Csapo (@gabriel_csapo)
+<a href="https://twitter.com/gabriel_csapo/status/845506373785796608">March 25, 2017</a>
+</blockquote>
+</div>
+<div class="col-lg-4 hidden-md-down wow fadeIn" data-wow-delay="0.6s">
+<blockquote class="twitter-tweet" data-lang="en"><p dir="ltr" lang="en">
+<a href="https://twitter.com/hashtag/blueocean?src=hash">#blueocean</a>
+is going to change the way you use
+<a href="https://twitter.com/jenkinsci">@jenkinsci</a>
+<a href="https://twitter.com/hashtag/ModernUI?src=hash">#ModernUI</a>
+<a href="https://t.co/bD4qaOGQLs">https://t.co/bD4qaOGQLs</a>
+</p>— Mario Cruz (@mariocruz)
+<a href="https://twitter.com/mariocruz/status/736250745725550593">May 27, 2016</a>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="container">
+<div class="row">
+<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 wow fadeIn" data-wow-delay="0.3s">
+<h2>Continuous Delivery shouldn’t be hard</h2>
+<p>
+Blue Ocean focuses on the needs of regular developers
+<em>just like you</em>.
+</p>
+<p>We do all the hard work making things simple so you can get back to building your next big thing.</p>
+<a class="btn btn-secondary" href="/jenkins.io/independent-scrolling-patch/doc/book/blueocean/getting-started/" role="button">
+Get started
+</a>
+</div>
+</div>
+</div>
+</section>
+<div class="socials wow fadeIn" data-wow-delay="4s" data-wow-duration=".5s">
+<a class="socialLinks socialsFacebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//jenkins.io/projects/blueocean/" onclick="doyourthang(this); return false;" rel="noreferrer noopener" target="_blank">
+<i class="icon ion-logo-facebook"></i>
+<p class="socialLabel">Share</p>
+</a>
+<a class="socialLinks socialsTwitter" href="https://twitter.com/share?url=http%3A%2F%2Fjenkins.io/projects/blueocean/&amp;
+  related=jenkinsci%2Ccloudbees&amp;hashtags=jenkinsci,devops&amp;text=Introducing%20Jenkins%20Blue%20Ocean%201.0%20%E2%80%93%20Continuous%20Delivery%20for%20every%20team." onclick="doyourthang(this); return false;" rel="noreferrer noopener" target="_blank">
+<i class="icon ion-logo-twitter"></i>
+<p class="socialLabel">Share</p>
+</a>
+<a class="socialLinks socialsLinkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A//jenkins.io/projects/blueocean/&amp;title=Introducing%20Jenkins%20Blue%20Ocean%201.0&amp;summary=Jenkins%20Blue%20Ocean%20%E2%80%93%20Continuous%20Delivery%20for%20every%20team&amp;source=" onclick="doyourthang(this); return false;" rel="noreferrer noopener" target="_blank">
+<i class="icon ion-logo-linkedin"></i>
+<p class="socialLabel">Share</p>
+</a>
+</div>
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="videoModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-body">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true">
+<i class="icon ion-ios-close"></i>
+</span>
+</button>
+<iframe allowfullscreen="" frameborder="0" height="490" src="" width="100%"></iframe>
+</div>
+</div>
+</div>
+</div>
+<script src="/jenkins.io/independent-scrolling-patch/js/wow.js" type="text/javascript"></script>
+<script>
+  new WOW().init();
+</script>
+<script charset="utf-8" src="/jenkins.io/independent-scrolling-patch/js/blueocean-landing-script.js"></script>
+
+
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/@popperjs/core/umd/popper.min.js"></script>
+<script src="/jenkins.io/independent-scrolling-patch/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lit@2.5.0/polyfill-support.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.6.0/webcomponents-loader.js"></script>
+<script data="ionicons" defer="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
+<script data="ionicons" defer="" nomodule="" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm" type="module"></script>
+<script defer="" nomodule="" src="https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/"></script>
+<jio-footer githubBranch="master" githubRepo="jenkins-infra/jenkins.io" property="https://www.jenkins.io" sourcePath="content//projects/blueocean/index.html.haml"></jio-footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" type="text/javascript"></script>
+<script type="text/javascript">
+docsearch({
+  container: document.querySelector('input.searchbox').parentNode,
+  indexName: 'jenkins',
+  appId: "M6L7Q4Z8HS",
+  apiKey: "52f8dfbff76ffd9106f1c68fee16154b",
+  algoliaOptions: { 'facetFilters': ["tags:en"] },
+  debug: false
+});
+</script>
+</body>
+</html>
